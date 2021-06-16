@@ -58,11 +58,10 @@ public class Server {
             return e.toString();
         }
     }
-    public void sendPOSTRequest(String urlToJoin, JSONObject postData) {
 
+    public String sendPOSTRequest( JSONObject postData) {
         try {
-            String url = urlToJoin;
-            URL obj = new URL(url);
+            URL obj = new URL(this.url);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
             con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
             con.setRequestProperty("Accept", "application/json");
@@ -87,10 +86,12 @@ public class Server {
             in.close();
             //print in String
             System.out.println(response.toString());
+            return response.toString();
 
         }
         catch (Exception e){
             System.out.println(e);
+            return e.toString();
         }
     }
 

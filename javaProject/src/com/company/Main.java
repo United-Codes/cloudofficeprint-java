@@ -15,9 +15,8 @@ public class Main {
 
         String ret = server.readJson("./src/test.json");
         JSONObject jsonObject=new JSONObject(ret);
-        Boolean isReachable = server.isReachable();
-        if (isReachable==true){
-            server.sendPOSTRequest("http://localhost:8010", jsonObject);
+        if (server.isReachable()){
+            server.sendPOSTRequest(jsonObject);
         }
     }
 }
