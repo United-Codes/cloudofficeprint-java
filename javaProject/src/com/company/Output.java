@@ -1,5 +1,7 @@
 package com.company;
 
+import org.json.JSONObject;
+
 public class Output {
     private String type;
     private String encoding;
@@ -10,6 +12,13 @@ public class Output {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public JSONObject getJSON(){
+        JSONObject json = new JSONObject();
+        json.put("output_type", type);
+        json.put("output_encoding",encoding);
+        return json;
     }
 
     public String getEncoding() {

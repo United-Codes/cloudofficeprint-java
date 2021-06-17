@@ -15,9 +15,9 @@ public class PrintJob {
     private String tool;
     private ArrayList<String> prepend_files = new ArrayList<String>();
     private ArrayList<String> append_files= new ArrayList<String>();
-    private ArrayList<JSONObject> templates = new ArrayList<JSONObject>();
-    private Output output;
-    private ArrayList<JSONObject> filesToGenerate =new ArrayList<JSONObject>(); //data for output files
+    private JSONObject template; //maybe Arraylist if we want several
+    private JSONObject output;
+    private ArrayList<JSONObject> fileWithData =new ArrayList<JSONObject>(); //data for output files
     private ArrayList<JSONObject> subtemplates = new ArrayList<JSONObject>();
 
 
@@ -65,8 +65,8 @@ public class PrintJob {
         append_files.add(file);
     }
 
-    public void addTemplate(Resource template){
-        templates.add(template.getJSON());
+    public void setTemplate(Template template){
+        this.template = template.getJSON();
     }
 
     public void addSubTemplate(JSONObject template){
@@ -74,51 +74,44 @@ public class PrintJob {
     }
 
     public void setOutput( Output output){
-        this.output = output;
+        this.output = output.getJSON();
     }
 
-    public void addFileToGenerate(JSONObject file){
-        this.filesToGenerate.add(file);
+    public void addFileToGenerate(FileWithData file){
+        this.fileWithData.add(file.getJSON());
     }
 
-    public void addSubTemplates(JSONObject subtemplate){
-        this.subtemplates.add(subtemplate);
-    }
 
     public JSONObject createJSON(){
         JSONObject jsonForServer = new JSONObject();
         jsonForServer.put("aop_remote_debug", aop_remote_debug);
         jsonForServer.put("apex_version", apex_version);
-        jsonForServer.put("APIKey", APIKey);
+        jsonForServer.put("api_key", APIKey);
         jsonForServer.put("version", version);
         jsonForServer.put("tool", tool);
         jsonForServer.put("prepend_files", prepend_files);
         jsonForServer.put("append_files", append_files);
-        jsonForServer.put("template", templates);
+        jsonForServer.put("template", template);
         jsonForServer.put("output", output);
-        jsonForServer.put("files", filesToGenerate);
+        jsonForServer.put("files", fileWithData);
         jsonForServer.put("templates", subtemplates);
         return jsonForServer;
     }
 
-    public void printJSON(){
-        JSONObject jsonForServer = createJSON();
-        System.out.println(jsonForServer.toString());
-    }
 
-    public void execute(){
+    public void execute() throws Exception {
         if (server == null){
             System.out.println("No server specified.");
             return;
         }
         JSONObject JSONForServer = createJSON();
-        printJSON();
+        System.out.println(JSONForServer.toString());
+
         if (server.isReachable() == true){
-            //server.sendPOSTRequest(JSONForServer);
+            server.sendPOSTRequest(JSONForServer);
         }
         else {
-            System.out.println("Server is not reachable.");
-            return;
+            throw new Exception("Server is not reachable.");
         }
 
     }

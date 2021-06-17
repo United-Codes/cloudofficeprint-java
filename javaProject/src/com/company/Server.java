@@ -1,15 +1,10 @@
 package com.company;
 
-import com.sun.tools.internal.ws.wsdl.document.Output;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
 import java.util.Scanner;
 
 public class Server {
@@ -59,23 +54,23 @@ public class Server {
         }
     }
 
-    public String sendPOSTRequest( JSONObject postData) {
-        try {
-            URL obj = new URL(this.url);
-            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-            con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-            con.setRequestProperty("Accept", "application/json");
-            con.setDoOutput(true);
-            con.setRequestMethod("POST");
-            OutputStream outputStream = con.getOutputStream();
-            //System.out.println((postData.toString()));
-            byte[] bytes = postData.toString().getBytes("UTF-8");
-            outputStream.write(bytes, 0, bytes.length);
-            outputStream.flush();
-            outputStream.close();
+    public String sendPOSTRequest( JSONObject postData) throws Exception{
+        URL obj = new URL(this.url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+        con.setRequestProperty("Accept", "application/json");
+        con.setDoOutput(true);
+        con.setRequestMethod("POST");
+        OutputStream outputStream = con.getOutputStream();
+        //System.out.println((postData.toString()));
+        byte[] bytes = postData.toString().getBytes("UTF-8");
+        outputStream.write(bytes, 0, bytes.length);
+        outputStream.flush();
+        outputStream.close();
 
-            int responseCode = con.getResponseCode();
-            System.out.println("\nSending 'POST' request to URL : " + url);
+        int responseCode = con.getResponseCode();
+        System.out.println("\nSending 'POST' request to URL : " + url);
+        if (responseCode == 200) {
             System.out.println("Response Code : " + responseCode);
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
             String inputLine;
@@ -84,14 +79,20 @@ public class Server {
                 response.append(inputLine);
             }
             in.close();
-            //print in String
             System.out.println(response.toString());
-            return response.toString();
-
+            return response.toString(); //gérer la réponse avec download ici
         }
-        catch (Exception e){
-            System.out.println(e);
-            return e.toString();
+        else {
+            BufferedReader in = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+            //System.out.println(response.toString());
+            throw new AOPException(responseCode,response.toString());
+            //throw new Exception("Server raised response code  : "+ responseCode + "\n Message from AOP : " + response.toString());
         }
     }
 
