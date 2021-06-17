@@ -77,7 +77,6 @@ public class Server {
         outputStream.write(bytes, 0, bytes.length);
         outputStream.flush();
         outputStream.close();
-
         int responseCode = con.getResponseCode();
         System.out.println("\nSending 'POST' request to URL : " + url);
         if (responseCode == 200) {
@@ -86,12 +85,10 @@ public class Server {
             MimeTypes allTypes = MimeTypes.getDefaultMimeTypes();
             MimeType type = allTypes.forName(con.getHeaderField("Content-Type"));
             String ext = type.getExtension();
-            System.out.println(ext);
-
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             byte[] buffer = new byte[1024];
             int length = 0;
-            while ((length = con.getInputStream().read(buffer)) != -1) {
+            while ((length = con.getInputStream().read(buffer)) != -1) { //attempt is made to read as many as len bytes
                 baos.write(buffer, 0, length);
             }
 

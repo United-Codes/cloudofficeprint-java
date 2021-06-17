@@ -32,7 +32,7 @@ public class Response {
     }
 
     public void downloadLocally(String path) throws IOException {
-        path = "./downloads/"+path +"." +ext ;
+        path = "./downloads/"+path  +ext ;
         FileUtils.writeByteArrayToFile(new File(path), body); //creates the file if it doesn't exist yet
     }
 }

@@ -124,7 +124,7 @@ implements <a href="../../../../../org/apache/poi/ss/usermodel/Workbook.html" ti
  This allows to write very large files without running out of memory as only
  a configurable portion of the rows are kept in memory at any one time.
 
- You can provide a template workbook which is used as basis for the written
+ You can provide a base64Ressource workbook which is used as basis for the written
  data.
 
  See https://poi.apache.org/spreadsheet/how-to.html#sxssf for details.
@@ -239,7 +239,7 @@ implements <a href="../../../../../org/apache/poi/ss/usermodel/Workbook.html" ti
 </tr>
 <tr class="altColor">
 <td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/poi/xssf/streaming/SXSSFWorkbook.html#SXSSFWorkbook-org.apache.poi.xssf.usermodel.XSSFWorkbook-">SXSSFWorkbook</a></span>(<a href="../../../../../org/apache/poi/xssf/usermodel/XSSFWorkbook.html" title="class in org.apache.poi.xssf.usermodel">XSSFWorkbook</a>&nbsp;workbook)</code>
-<div class="block">Construct a workbook from a template.</div>
+<div class="block">Construct a workbook from a base64Ressource.</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -828,7 +828,7 @@ implements <a href="../../../../../org/apache/poi/ss/usermodel/Workbook.html" ti
 <li class="blockList">
 <h4>SXSSFWorkbook</h4>
 <pre>public&nbsp;SXSSFWorkbook(<a href="../../../../../org/apache/poi/xssf/usermodel/XSSFWorkbook.html" title="class in org.apache.poi.xssf.usermodel">XSSFWorkbook</a>&nbsp;workbook)</pre>
-<div class="block"><p>Construct a workbook from a template.</p>
+<div class="block"><p>Construct a workbook from a base64Ressource.</p>
 
  There are three use-cases to use SXSSFWorkbook(XSSFWorkbook) :
  <ol>
@@ -838,10 +838,10 @@ implements <a href="../../../../../org/apache/poi/ss/usermodel/Workbook.html" ti
    </li>
    <li>
        Append rows to existing sheets. The row number MUST be greater
-       than <code>max(rownum)</code> in the template sheet.
+       than <code>max(rownum)</code> in the base64Ressource sheet.
    </li>
    <li>
-       Use existing workbook as a template and re-use global objects such
+       Use existing workbook as a base64Ressource and re-use global objects such
        as cell styles, formats, images, etc.
    </li>
  </ol>
@@ -850,7 +850,7 @@ implements <a href="../../../../../org/apache/poi/ss/usermodel/Workbook.html" ti
  What is not supported:
  <ul>
    <li>
-   Access initial cells and rows in the template. After constructing
+   Access initial cells and rows in the base64Ressource. After constructing
    all internal windows are empty and <a href="../../../../../org/apache/poi/xssf/streaming/SXSSFSheet.html#getRow-int-"><code>SXSSFSheet.getRow(int)</code></a> and
    <a href="../../../../../org/apache/poi/xssf/streaming/SXSSFRow.html#getCell-int-"><code>SXSSFRow.getCell(int)</code></a> return <code>null</code>.
    </li>
@@ -861,7 +861,7 @@ implements <a href="../../../../../org/apache/poi/ss/usermodel/Workbook.html" ti
  </ul></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>workbook</code> - the template workbook</dd>
+<dd><code>workbook</code> - the base64Ressource workbook</dd>
 </dl>
 </li>
 </ul>
@@ -955,7 +955,7 @@ implements <a href="../../../../../org/apache/poi/ss/usermodel/Workbook.html" ti
  </p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>workbook</code> - the template workbook</dd>
+<dd><code>workbook</code> - the base64Ressource workbook</dd>
 <dd><code>rowAccessWindowSize</code> - the number of rows that are kept in memory until flushed out, see above.</dd>
 <dd><code>compressTmpFiles</code> - whether to use gzip compression for temporary files</dd>
 <dd><code>useSharedStringsTable</code> - whether to use a shared strings table</dd>

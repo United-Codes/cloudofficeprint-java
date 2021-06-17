@@ -111,9 +111,9 @@ var activeTableTab = "activeTableTab";
 <pre>public final class <span class="typeNameLabel">PropertyTemplate</span>
 extends java.lang.Object</pre>
 <div class="block"><p>
- A <a href="../../../../../org/apache/poi/ss/util/PropertyTemplate.html" title="class in org.apache.poi.ss.util"><code>PropertyTemplate</code></a> is a template that can be applied to any sheet in
+ A <a href="../../../../../org/apache/poi/ss/util/PropertyTemplate.html" title="class in org.apache.poi.ss.util"><code>PropertyTemplate</code></a> is a base64Ressource that can be applied to any sheet in
  a project. It contains all the border type and color attributes needed to
- draw all the borders for a single sheet. That template can be applied to any
+ draw all the borders for a single sheet. That base64Ressource can be applied to any
  sheet in any workbook.
  
  This class requires the full spreadsheet to be in memory, so 
@@ -150,7 +150,7 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/poi/ss/util/PropertyTemplate.html#PropertyTemplate-org.apache.poi.ss.util.PropertyTemplate-">PropertyTemplate</a></span>(<a href="../../../../../org/apache/poi/ss/util/PropertyTemplate.html" title="class in org.apache.poi.ss.util">PropertyTemplate</a>&nbsp;template)</code>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/poi/ss/util/PropertyTemplate.html#PropertyTemplate-org.apache.poi.ss.util.PropertyTemplate-">PropertyTemplate</a></span>(<a href="../../../../../org/apache/poi/ss/util/PropertyTemplate.html" title="class in org.apache.poi.ss.util">PropertyTemplate</a>&nbsp;base64Ressource)</code>
 <div class="block">Create a PropertyTemplate object from another PropertyTemplate</div>
 </td>
 </tr>
@@ -294,11 +294,11 @@ extends java.lang.Object</pre>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>PropertyTemplate</h4>
-<pre>public&nbsp;PropertyTemplate(<a href="../../../../../org/apache/poi/ss/util/PropertyTemplate.html" title="class in org.apache.poi.ss.util">PropertyTemplate</a>&nbsp;template)</pre>
+<pre>public&nbsp;PropertyTemplate(<a href="../../../../../org/apache/poi/ss/util/PropertyTemplate.html" title="class in org.apache.poi.ss.util">PropertyTemplate</a>&nbsp;base64Ressource)</pre>
 <div class="block">Create a PropertyTemplate object from another PropertyTemplate</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>template</code> - a PropertyTemplate object</dd>
+<dd><code>base64Ressource</code> - a PropertyTemplate object</dd>
 </dl>
 </li>
 </ul>
@@ -320,7 +320,7 @@ extends java.lang.Object</pre>
                         <a href="../../../../../org/apache/poi/ss/usermodel/BorderStyle.html" title="enum in org.apache.poi.ss.usermodel">BorderStyle</a>&nbsp;borderType,
                         <a href="../../../../../org/apache/poi/ss/usermodel/BorderExtent.html" title="enum in org.apache.poi.ss.usermodel">BorderExtent</a>&nbsp;extent)</pre>
 <div class="block">Draws a group of cell borders for a cell range. The borders are not
- applied to the cells at this time, just the template is drawn. To apply
+ applied to the cells at this time, just the base64Ressource is drawn. To apply
  the drawn borders to a sheet, use <a href="../../../../../org/apache/poi/ss/util/PropertyTemplate.html#applyBorders-org.apache.poi.ss.usermodel.Sheet-"><code>applyBorders(org.apache.poi.ss.usermodel.Sheet)</code></a>.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -343,7 +343,7 @@ extends java.lang.Object</pre>
                         short&nbsp;color,
                         <a href="../../../../../org/apache/poi/ss/usermodel/BorderExtent.html" title="enum in org.apache.poi.ss.usermodel">BorderExtent</a>&nbsp;extent)</pre>
 <div class="block">Draws a group of cell borders for a cell range. The borders are not
- applied to the cells at this time, just the template is drawn. To apply
+ applied to the cells at this time, just the base64Ressource is drawn. To apply
  the drawn borders to a sheet, use <a href="../../../../../org/apache/poi/ss/util/PropertyTemplate.html#applyBorders-org.apache.poi.ss.usermodel.Sheet-"><code>applyBorders(org.apache.poi.ss.usermodel.Sheet)</code></a>.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -383,7 +383,7 @@ extends java.lang.Object</pre>
                              short&nbsp;color,
                              <a href="../../../../../org/apache/poi/ss/usermodel/BorderExtent.html" title="enum in org.apache.poi.ss.usermodel">BorderExtent</a>&nbsp;extent)</pre>
 <div class="block">Sets the color for a group of cell borders for a cell range. The borders
- are not applied to the cells at this time, just the template is drawn. If
+ are not applied to the cells at this time, just the base64Ressource is drawn. If
  the borders do not exist, a BORDER_THIN border is used. To apply the
  drawn borders to a sheet, use <a href="../../../../../org/apache/poi/ss/util/PropertyTemplate.html#applyBorders-org.apache.poi.ss.usermodel.Sheet-"><code>applyBorders(org.apache.poi.ss.usermodel.Sheet)</code></a>.</div>
 <dl>

@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.Resources.Template;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -65,8 +66,8 @@ public class PrintJob {
         append_files.add(file);
     }
 
-    public void setTemplate(Template template){
-        this.template = template.getJSON();
+    public void setTemplate(Template base64Ressource){
+        this.template = base64Ressource.getJSON();
     }
 
     public void addSubTemplate(JSONObject template){
