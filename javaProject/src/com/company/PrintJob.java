@@ -99,16 +99,15 @@ public class PrintJob {
     }
 
 
-    public void execute() throws Exception {
+    public Response execute() throws Exception {
         if (server == null){
-            System.out.println("No server specified.");
-            return;
+            throw new Exception("No server specified.");
         }
         JSONObject JSONForServer = createJSON();
         System.out.println(JSONForServer.toString());
 
         if (server.isReachable() == true){
-            server.sendPOSTRequest(JSONForServer);
+            return server.sendPOSTRequest(JSONForServer);
         }
         else {
             throw new Exception("Server is not reachable.");

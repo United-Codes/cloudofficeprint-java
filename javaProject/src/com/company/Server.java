@@ -1,10 +1,14 @@
 package com.company;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.tika.mime.MimeType;
+import org.apache.tika.mime.MimeTypes;
 import org.json.JSONObject;
 
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class Server {
@@ -54,7 +58,14 @@ public class Server {
         }
     }
 
-    public String sendPOSTRequest( JSONObject postData) throws Exception{
+    /**
+     * Sends a POST request with the given json file as body.
+     * Gets back the response and stores the body locally.
+     * @param postData json to send to the server
+     * @throws AOPException when server response's code is not equal to 200.
+     * @return Response object containing the file extension and body (in bytes)
+     */
+    public Response sendPOSTRequest( JSONObject postData) throws Exception{
         URL obj = new URL(this.url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
         con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
@@ -62,7 +73,6 @@ public class Server {
         con.setDoOutput(true);
         con.setRequestMethod("POST");
         OutputStream outputStream = con.getOutputStream();
-        //System.out.println((postData.toString()));
         byte[] bytes = postData.toString().getBytes("UTF-8");
         outputStream.write(bytes, 0, bytes.length);
         outputStream.flush();
@@ -72,16 +82,22 @@ public class Server {
         System.out.println("\nSending 'POST' request to URL : " + url);
         if (responseCode == 200) {
             System.out.println("Response Code : " + responseCode);
-            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-            String inputLine;
-            StringBuffer response = new StringBuffer();
-            while ((inputLine = in.readLine()) != null) {
-                response.append(inputLine);
+            System.out.println("Content-Type : " + con.getHeaderField("Content-Type"));
+            MimeTypes allTypes = MimeTypes.getDefaultMimeTypes();
+            MimeType type = allTypes.forName(con.getHeaderField("Content-Type"));
+            String ext = type.getExtension();
+            System.out.println(ext);
+
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            byte[] buffer = new byte[1024];
+            int length = 0;
+            while ((length = con.getInputStream().read(buffer)) != -1) {
+                baos.write(buffer, 0, length);
             }
-            in.close();
-            System.out.println(response.toString());
-            return response.toString(); //gérer la réponse avec download ici
-        }
+
+            Response response = new Response(ext,baos.toByteArray());
+            return response;
+            }
         else {
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getErrorStream()));
             String inputLine;
@@ -92,9 +108,9 @@ public class Server {
             in.close();
             //System.out.println(response.toString());
             throw new AOPException(responseCode,response.toString());
-            //throw new Exception("Server raised response code  : "+ responseCode + "\n Message from AOP : " + response.toString());
         }
     }
+
 
     public String readJson(String path) throws FileNotFoundException {
         StringBuffer dataString = new StringBuffer("");

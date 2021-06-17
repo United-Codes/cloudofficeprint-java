@@ -43,7 +43,8 @@ public class Main {
 
             //printJob.addSubTemplate(template);
 
-            printJob.execute();
+            Response response = printJob.execute();
+            response.downloadLocally("output");
 
             /*
             String ret = server.readJson("./src/test.json");
