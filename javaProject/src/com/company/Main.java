@@ -2,7 +2,7 @@ package com.company;
 
 //https://www.jetbrains.com/help/idea/creating-and-running-your-first-java-application.html#run_jar_artifact will be usefull to build the JAR
 
-import com.company.Resources.Template;
+import com.company.Resources.Base64Resource;
 
 import java.io.IOException;
 
@@ -24,12 +24,12 @@ public class Main {
             printJob.setTool("webeditor-new");
             //printJob.addPrepend_file();
             //printJob.addAppend_file();
-            Template base64Ressource = new Template();
-            base64Ressource.setFilename("templateTest");
-            base64Ressource.setFiletype("docx");
-            base64Ressource.setFileFromLocalFile("./src/templateTest.docx");
+            Base64Resource base64Resource = new Base64Resource();
+            base64Resource.setFilename("templateTest");
+            base64Resource.setFiletype("docx");
+            base64Resource.setFileFromLocalFile("./src/templateTest.docx");
             //template.setFileFromLocalFile("./src/hello.txt");
-            printJob.setTemplate(base64Ressource);
+            printJob.setTemplate(base64Resource);
 
             Output output = new Output();
             output.setEncoding("raw");

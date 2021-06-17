@@ -6,7 +6,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.util.Base64;
 
-public class Base64Resource {
+public class Base64Resource extends Resource{
     private String filename;
     private String fileBase64; //base64 encoded
     private String filetype;

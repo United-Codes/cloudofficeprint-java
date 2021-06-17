@@ -2,7 +2,7 @@ package com.company.Resources;
 
 import org.json.JSONObject;
 
-public class URLResource {
+public class URLResource extends Resource{
     private String url;
     private String filetype;
 
