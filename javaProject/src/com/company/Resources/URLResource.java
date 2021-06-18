@@ -22,6 +22,7 @@ public class URLResource extends Resource{
         this.url = url;
     }
 
+    @Override
     public JSONObject getJSON(){
         JSONObject json = new JSONObject();
         json.put("url", url);

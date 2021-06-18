@@ -26,7 +26,7 @@ public class Main {
             //printJob.addAppend_file();
             Base64Resource base64Resource = new Base64Resource();
             base64Resource.setFilename("templateTest");
-            base64Resource.setFiletype("docx");
+            //base64Resource.setFiletype("docx");
             base64Resource.setFileFromLocalFile("./src/templateTest.docx");
             //template.setFileFromLocalFile("./src/hello.txt");
             printJob.setTemplate(base64Resource);

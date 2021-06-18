@@ -35,6 +35,7 @@ public class Base64Resource extends Resource{
     /**
      * @return JSONObject with the tags for the AOP server ("filename","file","template_type").
      */
+    @Override
     public JSONObject getJSON(){
         JSONObject jsonResource = new JSONObject();
         jsonResource.put("filename",filename);
@@ -68,20 +69,6 @@ public class Base64Resource extends Resource{
         //System.out.println(s); //only works for txt or json not office files
     }
 
-    /**
-     * @param filePath path of the file
-     * @return File extension of the file
-     */
-    public String getExtension(String filePath) throws Exception {
-        int index = filePath.lastIndexOf('.');
-        if(index > 0) {
-            String extension = filePath.substring(index + 1);
-            //System.out.println("File extension is " + extension);
-            return extension;
-        }
-        else {
-            throw new Exception("No extension found");
-        }
-    }
+
 }
 
