@@ -1,9 +1,9 @@
 package com.company;
 
+import com.google.gson.JsonObject;
 import org.apache.commons.io.FileUtils;
 import org.apache.tika.mime.MimeType;
 import org.apache.tika.mime.MimeTypes;
-import org.json.JSONObject;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -65,7 +65,7 @@ public class Server {
      * @throws AOPException when server response's code is not equal to 200.
      * @return Response object containing the file extension and body (in bytes)
      */
-    public Response sendPOSTRequest( JSONObject postData) throws Exception{
+    public Response sendPOSTRequest( JsonObject postData) throws Exception{
         URL obj = new URL(this.url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
         con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");

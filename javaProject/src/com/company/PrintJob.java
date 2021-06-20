@@ -1,7 +1,9 @@
 package com.company;
 
 import com.company.Resources.Resource;
-import org.json.JSONObject;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
 
 import java.util.ArrayList;
 
@@ -14,12 +16,13 @@ public class PrintJob {
     private String APIKey;
     private String version;
     private String tool;
-    private ArrayList<String> prepend_files = new ArrayList<String>();
-    private ArrayList<String> append_files= new ArrayList<String>();
-    private JSONObject template; //maybe Arraylist if we want several
-    private JSONObject output;
-    private ArrayList<JSONObject> fileWithData =new ArrayList<JSONObject>(); //data for output files
-    private ArrayList<JSONObject> subtemplates = new ArrayList<JSONObject>();
+    private JsonArray prepend_files = new JsonArray();
+    //private ArrayList<String> append_files= new ArrayList<String>();
+    private JsonArray append_files= new JsonArray();
+    private JsonObject template; //maybe Arraylist if we want several
+    private JsonObject output;
+    private JsonArray fileWithData =new JsonArray(); //data for output files
+    private JsonArray subtemplates = new JsonArray();
 
 
     public void setServer(Server server){
@@ -33,7 +36,7 @@ public class PrintJob {
         else return false;
     }
 
-    public void setAop_remote_debug(String debugmode){
+    public void setAOP_remote_debug(String debugmode){
         if (checkDebug(debugmode)){
             aop_remote_debug = debugmode;
         }
@@ -67,10 +70,10 @@ public class PrintJob {
     }
 
     public void setTemplate(Resource template){
-        this.template = template.getJSON();
+        this.template = template.getJSONForTemplate();
     }
 
-    public void addSubTemplate(JSONObject template){
+    public void addSubTemplate(JsonObject template){
         this.subtemplates.add(template);
     }
 
@@ -83,19 +86,19 @@ public class PrintJob {
     }
 
 
-    public JSONObject createJSON(){
-        JSONObject jsonForServer = new JSONObject();
-        jsonForServer.put("aop_remote_debug", aop_remote_debug);
-        jsonForServer.put("apex_version", apex_version);
-        jsonForServer.put("api_key", APIKey);
-        jsonForServer.put("version", version);
-        jsonForServer.put("tool", tool);
-        jsonForServer.put("prepend_files", prepend_files);
-        jsonForServer.put("append_files", append_files);
-        jsonForServer.put("template", template);
-        jsonForServer.put("output", output);
-        jsonForServer.put("files", fileWithData);
-        jsonForServer.put("templates", subtemplates);
+    public JsonObject createJSON(){
+        JsonObject jsonForServer = new JsonObject();
+        jsonForServer.addProperty("aop_remote_debug", aop_remote_debug);
+        jsonForServer.addProperty("apex_version", apex_version);
+        jsonForServer.addProperty("api_key", APIKey);
+        jsonForServer.addProperty("version", version);
+        jsonForServer.addProperty("tool", tool);
+        jsonForServer.add("prepend_files", prepend_files);
+        jsonForServer.add("append_files", append_files);
+        jsonForServer.add("template", template);
+        jsonForServer.add("output", output);
+        jsonForServer.add("files", fileWithData);
+        jsonForServer.add("templates", subtemplates);
         return jsonForServer;
     }
 
@@ -104,7 +107,7 @@ public class PrintJob {
         if (server == null){
             throw new Exception("No server specified.");
         }
-        JSONObject JSONForServer = createJSON();
+        JsonObject JSONForServer = createJSON();
         System.out.println(JSONForServer.toString());
 
         if (server.isReachable() == true){

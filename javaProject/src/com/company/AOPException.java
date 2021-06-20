@@ -19,11 +19,12 @@ public class AOPException extends Exception {
      */
     AOPException(int responseCode, String error) {
         this.responseCode = responseCode;
+        System.out.println(error);
         String [] errorSplited = error.split("URID:");
-        String [] splitForUrid = errorSplited[1].split(" Please have a look at the following errors:");
+        String [] splitForUrid = errorSplited[1].split(" ");
         URID = splitForUrid[0];
 
-        errorSplited = error.split("Please have a look at the following errors:");
+        errorSplited = error.split(URID);
         String [] splitForUserM = errorSplited[1].split("If you are contacting AOP support please make sure you include the following.");
         userMessage = splitForUserM[0];
         messageForSupport = splitForUserM[1];

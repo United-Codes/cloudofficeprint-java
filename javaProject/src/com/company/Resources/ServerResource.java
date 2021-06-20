@@ -1,21 +1,47 @@
 package com.company.Resources;
 
-import org.json.JSONObject;
+
+import com.google.gson.JsonObject;
+import org.apache.tika.mime.MimeType;
+import org.apache.tika.mime.MimeTypeException;
+import org.apache.tika.mime.MimeTypes;
+
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class ServerResource extends Resource{
     private String path;
-    private String ext;
 
-    ServerResource(String path) throws Exception {
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
         this.path = path;
-        this.ext = getExtension(path);
+    }
+
+    public ServerResource(String path) throws Exception {
+        this.path = path;
+        Path temp = new File(path).toPath();
+        setMimeType(Files.probeContentType(temp));
+        setFiletype(getExtension(path));
     }
 
     @Override
-    public JSONObject getJSON() {
-        JSONObject json = new JSONObject();
-        json.put("template_type", ext);
-        json.put("filename",path);
+    public JsonObject getJSONForTemplate() {
+        JsonObject json = new JsonObject();
+        json.addProperty("template_type", getFiletype());
+        json.addProperty("filename",path);
         return json;
+    }
+
+    @Override
+    public JsonObject getJSONForSecondaryFile() throws MimeTypeException {
+        JsonObject jsonResource = new JsonObject();
+        jsonResource.addProperty("mime_type",getMimeType()); //changer ca vers mimetype
+        jsonResource.addProperty("file", path);
+        jsonResource.addProperty("file_source","file");
+        return jsonResource;
     }
 }

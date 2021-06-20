@@ -1,15 +1,17 @@
 package com.company.Resources;
 
-import org.json.JSONObject;
+
+import com.google.gson.JsonObject;
+import org.apache.tika.mime.MimeTypeException;
 
 import java.io.*;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Base64;
 
 public class Base64Resource extends Resource{
-    private String filename;
+
     private String fileBase64; //base64 encoded
-    private String filetype;
 
     /**
      * @return a string of the file base64 encoded
@@ -18,38 +20,29 @@ public class Base64Resource extends Resource{
         return fileBase64;
     }
 
-    /**
-     * @return name of the file
-     */
-    public String getFilename() {
-        return filename;
-    }
-
-    /**
-     * @return the type of the file
-     */
-    public String getFiletype() {
-        return filetype;
+    public void setFileBase64(String fileBase64) {
+        this.fileBase64 = fileBase64;
     }
 
     /**
      * @return JSONObject with the tags for the AOP server ("filename","file","template_type").
      */
     @Override
-    public JSONObject getJSON(){
-        JSONObject jsonResource = new JSONObject();
-        jsonResource.put("filename",filename);
-        jsonResource.put("file", fileBase64);
-        jsonResource.put("template_type",filetype);
+    public JsonObject getJSONForTemplate(){
+        JsonObject jsonResource = new JsonObject();
+        //jsonResource.addProperty("filename",getFilename());
+        jsonResource.addProperty("file", fileBase64);
+        jsonResource.addProperty("template_type",getFiletype());
         return jsonResource;
     }
 
-    public void setFilename(String filename) {
-        this.filename = filename;
-    }
-
-    public void setFiletype(String filetype) {
-        this.filetype = filetype;
+    @Override
+    public JsonObject getJSONForSecondaryFile() throws MimeTypeException {
+        JsonObject jsonResource = new JsonObject();
+        jsonResource.addProperty("mime_type",getMimeType()); //changer ca vers mimetype
+        jsonResource.addProperty("file_content", getFileBase64());
+        jsonResource.addProperty("file_source","base64");
+        return jsonResource;
     }
 
     /**
@@ -60,11 +53,13 @@ public class Base64Resource extends Resource{
      */
     public void setFileFromLocalFile(String filePath) throws Exception {
         String extension = getExtension(filePath);
-        this.filetype = extension;
+        setFiletype(extension);
         File file = new File(filePath);
+        Path path = file.toPath();
+        setMimeType(Files.probeContentType(path));
         byte[] bytes = Files.readAllBytes(file.toPath());
         String encodedString = Base64.getEncoder().encodeToString(bytes);
-        this.fileBase64 = encodedString;
+        setFileBase64(encodedString);
         //String s = new String(bytes, StandardCharsets.UTF_8);
         //System.out.println(s); //only works for txt or json not office files
     }

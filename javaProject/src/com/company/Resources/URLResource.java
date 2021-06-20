@@ -1,21 +1,22 @@
 package com.company.Resources;
 
-import org.json.JSONObject;
+
+import com.google.gson.JsonObject;
+import org.apache.tika.mime.MimeTypeException;
+
+import java.net.URL;
 
 public class URLResource extends Resource{
     private String url;
-    private String filetype;
+
+    public URLResource(String url, String filetype, String mimeType){
+        setUrl(url);
+        setFiletype(filetype);
+        setMimeType(mimeType);
+    }
 
     public String getUrl() {
         return url;
-    }
-
-    public String getFiletype() {
-        return filetype;
-    }
-
-    public void setFiletype(String filetype) {
-        this.filetype = filetype;
     }
 
     public void setUrl(String url) {
@@ -23,10 +24,20 @@ public class URLResource extends Resource{
     }
 
     @Override
-    public JSONObject getJSON(){
-        JSONObject json = new JSONObject();
-        json.put("url", url);
-        json.put("template_type", url);
+    public JsonObject getJSONForSecondaryFile() throws MimeTypeException {
+        JsonObject jsonResource = new JsonObject();
+        jsonResource.addProperty("mime_type",getMimeType()); //changer ca vers mimetype
+        jsonResource.addProperty("file_url", getUrl());
+        jsonResource.addProperty("file_source","file");
+        return jsonResource;
+    }
+
+    @Override
+    public JsonObject getJSONForTemplate() {
+        JsonObject json = new JsonObject();
+        json.addProperty("url", url);
+        json.addProperty("template_type", url);
         return json;
     }
+
 }

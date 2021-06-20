@@ -1,25 +1,28 @@
 package com.company;
 
-import org.json.JSONObject;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 
 public class FileWithData {
     String name;
-    ArrayList<JSONObject> dataList = new ArrayList<JSONObject>();
+    JsonArray dataList = new JsonArray();
 
     public void addData(String [] [] key_values) {
-        JSONObject jsonObject = new JSONObject();
+        JsonObject jsonObject = new JsonObject();
         for (String[] str :  key_values){
-            jsonObject.put(str[0],str[1]);
+            jsonObject.addProperty(str[0],str[1]);
         }
         dataList.add(jsonObject);
     }
 
-    public JSONObject getJSON(){
-        JSONObject json =new JSONObject();
-        json.put("filename",name);
-        json.put("data",dataList);
+    public JsonObject getJSON(){
+        JsonObject json =new JsonObject();
+        json.addProperty("filename",name);
+        json.add("data",dataList); //check ca ici
+        System.out.println(json);
         return json;
     }
 
@@ -27,7 +30,7 @@ public class FileWithData {
         this.name = name;
     }
 
-    public ArrayList<JSONObject> getDataList() {
+    public JsonArray getDataList() {
         return dataList;
     }
 

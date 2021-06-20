@@ -3,6 +3,8 @@ package com.company;
 //https://www.jetbrains.com/help/idea/creating-and-running-your-first-java-application.html#run_jar_artifact will be usefull to build the JAR
 
 import com.company.Resources.Base64Resource;
+import org.apache.tika.mime.MimeType;
+import org.apache.tika.mime.MimeTypes;
 
 import java.io.IOException;
 
@@ -17,7 +19,7 @@ public class Main {
 
             PrintJob printJob = new PrintJob();
             printJob.setServer(server);
-            printJob.setAop_remote_debug("No");
+            printJob.setAOP_remote_debug("No");
             printJob.setApex_version("web editor 2");
             printJob.setAPIKey("1C511A58ECC73874E0530100007FD01A");
             printJob.setVersion("3.0");
@@ -25,8 +27,6 @@ public class Main {
             //printJob.addPrepend_file();
             //printJob.addAppend_file();
             Base64Resource base64Resource = new Base64Resource();
-            base64Resource.setFilename("templateTest");
-            //base64Resource.setFiletype("docx");
             base64Resource.setFileFromLocalFile("./src/templateTest.docx");
             //template.setFileFromLocalFile("./src/hello.txt");
             printJob.setTemplate(base64Resource);

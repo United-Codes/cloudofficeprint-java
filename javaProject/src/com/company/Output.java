@@ -1,6 +1,7 @@
 package com.company;
 
-import org.json.JSONObject;
+
+import com.google.gson.JsonObject;
 
 public class Output {
     private String type;
@@ -14,10 +15,10 @@ public class Output {
         this.type = type;
     }
 
-    public JSONObject getJSON(){
-        JSONObject json = new JSONObject();
-        json.put("output_type", type);
-        json.put("output_encoding",encoding);
+    public JsonObject getJSON(){
+        JsonObject json = new JsonObject();
+        json.addProperty("output_type", type);
+        json.addProperty("output_encoding",encoding);
         return json;
     }
 
