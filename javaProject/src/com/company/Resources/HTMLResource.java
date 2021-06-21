@@ -1,45 +1,79 @@
 package com.company.Resources;
 
 import com.google.gson.JsonObject;
-import org.apache.tika.mime.MimeTypeException;
 
+/**
+ * Child class of Resource. A class representing a resource with HTML data for the AOP server.
+ */
 public class HTMLResource extends Resource {
-    private String html;
-    private Boolean landscape = false; //optional false by default
+    /**
+     * HTML data in plain text.
+     */
+    private String HTML;
 
-    HTMLResource(String html){
-        this.html = html;
+    /**
+     * Whether the HTML should be rendered as landscape-oriented page (default :false).
+     * Only supported for templates, will be neglected for secondary files.
+     */
+    private Boolean landscape = false;
+
+    /**
+     * Constructor for this class. Instantiates the HTML data to given argument.
+     * @param HTML data for this resource.
+     */
+    HTMLResource(String HTML){
+        this.HTML = HTML;
     }
 
-    HTMLResource(String html, Boolean landscape){
-        this.html = html;
+    /**
+     * Constructor for this class. Instantiates the HTML data to the HTML argument and the landscape option to landscape.
+     * Landscape option will be neglected for secondary files (not templates).
+     * @param HTML data for this resource.
+     * @param landscape Whether the HTML should be rendered as landscape-oriented page (default :false)
+     */
+    HTMLResource(String HTML, Boolean landscape){
+        this.HTML = HTML;
         this.landscape = landscape;
     }
 
-    public String getHtml() {
-        return html;
+    /**
+     * @return HTML data of this resource.
+     */
+    public String getHTML() {
+        return HTML;
     }
 
+    /**
+     * @return Whether the HTML should be rendered as landscape-oriented page.
+     */
     public Boolean getLandscape() {
         return landscape;
     }
 
+    /**
+     * @return JSONObject with the tags for a HTML resource as template for the AOP server
+     * ("html_template_content","template_type" and "orientation" if specified).
+     */
     @Override
     public JsonObject getJSONForTemplate() {
         JsonObject jsonResource = new JsonObject();
         jsonResource.addProperty("template_type", "html");
-        jsonResource.addProperty("html_template_content",getHtml());
+        jsonResource.addProperty("html_template_content", getHTML());
         if (getLandscape() == true){
             jsonResource.addProperty("orientation", "landscape");
         }
         return jsonResource;
     }
 
+    /**
+     * @return JSONObject with the tags ("mime_type","file_content","file_source") for an HTML resource as a secondary file
+     * (subtemplates, files to prepend, files to append and files to insert) for the AOP server.
+     */
     @Override
-    public JsonObject getJSONForSecondaryFile() throws MimeTypeException {
+    public JsonObject getJSONForSecondaryFile()  {
         JsonObject jsonResource = new JsonObject();
         jsonResource.addProperty("mime_type",getMimeType()); //changer ca vers mimetype
-        jsonResource.addProperty("file_content", getHtml());
+        jsonResource.addProperty("file_content", getHTML());
         jsonResource.addProperty("file_source","file");
         return jsonResource;
     }
