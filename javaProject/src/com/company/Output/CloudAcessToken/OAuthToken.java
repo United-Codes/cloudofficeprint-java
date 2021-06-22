@@ -3,7 +3,7 @@ package com.company.Output.CloudAcessToken;
 import com.google.gson.JsonObject;
 
 /**
- * Class to use for OAuth 2 tokens. For Dropbox, Google Drive and OneDrive.
+ * Class to use for OAuth tokens. For Dropbox, Google Drive and OneDrive.
  */
 public class OAuthToken extends CloudAccessToken {
 
@@ -25,6 +25,16 @@ public class OAuthToken extends CloudAccessToken {
      */
     public void setToken(String token) {
         this.token = token;
+    }
+
+    /**
+     * Constructor for an OAuthToken object. Needs to be used if output wants to be stored on Dropbox, Google Drive or OneDrive.
+     * @param service Dropbox, Google Drive or OneDrive
+     * @param token OAuthToken 
+     */
+    public OAuthToken(String service, String token){
+        setService(service);
+        setToken(token);
     }
 
     /**
