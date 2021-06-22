@@ -5,7 +5,7 @@ import org.apache.tika.mime.MimeTypeException;
 
 
 /**
- * Resource is an abstract for all the different resource types for the templates and "secondary files" : subtemplates,
+ * Resource is an abstract class for all the different resource types for the templates and "secondary files" : subtemplates,
  * files to prepend, files to append and files to insert (in the template).
  */
 public abstract class Resource {

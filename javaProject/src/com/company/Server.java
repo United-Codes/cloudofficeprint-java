@@ -70,6 +70,7 @@ public class Server {
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
         con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
         con.setRequestProperty("Accept", "application/json");
+        con.setRequestProperty("User-Agent", "JavaSDK");
         con.setDoOutput(true);
         con.setRequestMethod("POST");
         OutputStream outputStream = con.getOutputStream();

@@ -1,11 +1,9 @@
 package com.company;
 
+import com.company.Output.Output;
 import com.company.Resources.Resource;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-
-
-import java.util.ArrayList;
 
 
 public class PrintJob {

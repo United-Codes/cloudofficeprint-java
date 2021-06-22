@@ -1,0 +1,63 @@
+package com.company.Output.CloudAcessToken;
+
+import com.google.gson.JsonObject;
+
+/**
+ * Class to use for AWS token identification.
+ */
+public class AWSToken extends CloudAccessToken{
+
+    /**
+     * AWS key ID.
+     */
+    String keyID;
+
+    /**
+     * AWS secret key.
+     */
+    String secretKey;
+
+    /**
+     * @return AWS secret key.
+     */
+    public String getSecretKey() {
+        return secretKey;
+    }
+
+    /**
+     * @return AWS key ID.
+     */
+    public String getKeyID() {
+        return keyID;
+    }
+
+    /**
+     * Sets the AWS keyID.
+     * @param keyID
+     */
+    public void setKeyID(String keyID) {
+        this.keyID = keyID;
+    }
+
+    /**
+     * Sets the AWS secret key.
+     * @param secretKey
+     */
+    public void setSecretKey(String secretKey) {
+        this.secretKey = secretKey;
+    }
+
+    /**
+     * @return JSONObject with the tags for the AWSToken for the AOP server.
+     */
+    @Override
+    public JsonObject getJSON() {
+        JsonObject json = new JsonObject();
+        json.addProperty("output_location",getService());
+        JsonObject token = new JsonObject();
+        token.addProperty("access_key",getKeyID());
+        token.addProperty("secret_access_key",getSecretKey());
+        json.add("cloud_access_token",token);
+        return json;
+    }
+}

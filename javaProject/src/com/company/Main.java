@@ -2,9 +2,8 @@ package com.company;
 
 //https://www.jetbrains.com/help/idea/creating-and-running-your-first-java-application.html#run_jar_artifact will be usefull to build the JAR
 
+import com.company.Output.Output;
 import com.company.Resources.Base64Resource;
-import org.apache.tika.mime.MimeType;
-import org.apache.tika.mime.MimeTypes;
 
 import java.io.IOException;
 
@@ -31,9 +30,7 @@ public class Main {
             //template.setFileFromLocalFile("./src/hello.txt");
             printJob.setTemplate(base64Resource);
 
-            Output output = new Output();
-            output.setEncoding("raw");
-            output.setType("pdf");
+            Output output = new Output("pdf","raw",null,null,null,null);
             printJob.setOutput(output);
 
             FileWithData file = new FileWithData();
