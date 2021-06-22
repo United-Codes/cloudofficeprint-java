@@ -1,5 +1,7 @@
 package com.company.Output.PDFOptions;
 
+import com.google.gson.JsonObject;
+
 public class pageDimension {
 
     String unit;
@@ -31,5 +33,15 @@ public class pageDimension {
      */
     public void setDimension(String dimension) {
         this.dimension = dimension;
+    }
+
+    /**
+     * @return JSONObject with the tags for the pageDimension for the AOP server.
+     */
+    public JsonObject getJSON(){
+        JsonObject json = new JsonObject();
+        json.addProperty("dimension",getDimension());
+        json.addProperty("unit",getUnit());
+        return json;
     }
 }
