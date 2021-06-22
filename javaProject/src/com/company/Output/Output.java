@@ -1,8 +1,13 @@
 package com.company.Output;
 
 
+import com.company.Output.CloudAcessToken.AWSToken;
 import com.company.Output.CloudAcessToken.CloudAccessToken;
+import com.company.Output.PDFOptions.PDFOptions;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+
+import java.util.Map;
 
 /**
  * Class representing the output configuration of a request. The class only has the Output() constructor, you need to use the set
@@ -49,7 +54,7 @@ public class Output {
     /**
      * Optional PDF options. They are described in the PDFOptions class. Default : null.
      */
-    private com.company.Output.PDFOptions PDFOptions = null;
+    private com.company.Output.PDFOptions.PDFOptions PDFOptions = null;
 
     /**
      * @return the encoding to use for the output.
@@ -183,14 +188,22 @@ public class Output {
         if (getType() != null){
             json.addProperty("output_type", getType());
         }
+        AWSToken token = new AWSToken("test1","test2");
+        setAccessToken(token);
         if (getAccessToken()!= null){
-            json.add("cloud_access_token", getAccessToken().getJSON());
+            for(Map.Entry<String, JsonElement> tag : getAccessToken().getJSON().entrySet()){
+                json.add(tag.getKey(),tag.getValue()); //these tags need to be at output level
+            }
         }
+        System.out.println("json");
+        System.out.println(json);
         if(getServerDirectory() != null){
             json.addProperty("output_directory", getServerDirectory());
         }
         if(getPDFOptions() != null){
-            json.add("pdf_options", getPDFOptions().getJSON());
+            for(Map.Entry<String, JsonElement> tag : getPDFOptions().getJSON().entrySet()){
+                json.add(tag.getKey(),tag.getValue()); //these tags need to be at output level
+            }
         }
         return json;
     }
