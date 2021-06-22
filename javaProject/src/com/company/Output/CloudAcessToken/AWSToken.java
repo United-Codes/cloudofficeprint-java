@@ -10,12 +10,12 @@ public class AWSToken extends CloudAccessToken{
     /**
      * AWS access key ID.
      */
-    String keyID;
+    private String keyID;
 
     /**
      * AWS secret key.
      */
-    String secretKey;
+    private String secretKey;
 
     /**
      * @return AWS secret key.

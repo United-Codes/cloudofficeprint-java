@@ -145,12 +145,6 @@ public class Output {
     }
 
     /**
-     * Constructor to create an output object. The variables of the class need to be instantiated with the set functions.
-     */
-    public Output(){
-    }
-
-    /**
      * Constructor to create a populated output object. If you don't need to instantiate some variables, use their default value as argument.
      * @param filetype This states what kind of output file type is required. It can be either the same as
      *                 template_type ("docx", "pptx", "xlsx", "html", "md"), "pdf" or any other output file supported by libreoffice/openoffice.
