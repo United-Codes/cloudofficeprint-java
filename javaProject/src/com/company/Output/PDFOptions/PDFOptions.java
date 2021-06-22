@@ -245,6 +245,12 @@ public class PDFOptions {
         this.signCertificate = signCertificate;
     }
 
+    /**
+     * Constructor for the PDFOptions object. Set the options with the setters. Uninitialised options won't be included in the JSON.
+     */
+    public PDFOptions(){
+    }
+
 
     public JsonObject getJSON(){
         JsonObject json = new JsonObject();
