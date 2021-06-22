@@ -3,12 +3,12 @@ package com.company.Output.CloudAcessToken;
 import com.google.gson.JsonObject;
 
 /**
- * Class to use for AWS token identification.
+ * Class to use for AWS tokens to store output on AWS.
  */
 public class AWSToken extends CloudAccessToken{
 
     /**
-     * AWS key ID.
+     * AWS access key ID.
      */
     String keyID;
 
@@ -45,6 +45,17 @@ public class AWSToken extends CloudAccessToken{
      */
     public void setSecretKey(String secretKey) {
         this.secretKey = secretKey;
+    }
+
+    /**
+     * Constructor for an AWSToken object. Needs to be used if output wants to be stored on AWS.
+     * @param keyID AWS access key ID.
+     * @param secretKey AWS secret key.
+     */
+    public AWSToken(String keyID, String secretKey){
+        setService("aws_s3");
+        setKeyID(keyID);
+        setSecretKey(secretKey);
     }
 
     /**
