@@ -19,8 +19,7 @@ public class FileWithData {
     public JsonObject getJSON(){
         JsonObject json =new JsonObject();
         json.addProperty("filename",name);
-        json.add("data",dataList); //check ca ici
-        System.out.println(json);
+        json.add("data",dataList);
         return json;
     }
 

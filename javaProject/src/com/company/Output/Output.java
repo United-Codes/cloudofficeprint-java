@@ -188,15 +188,11 @@ public class Output {
         if (getType() != null){
             json.addProperty("output_type", getType());
         }
-        AWSToken token = new AWSToken("test1","test2");
-        setAccessToken(token);
         if (getAccessToken()!= null){
             for(Map.Entry<String, JsonElement> tag : getAccessToken().getJSON().entrySet()){
                 json.add(tag.getKey(),tag.getValue()); //these tags need to be at output level
             }
         }
-        System.out.println("json");
-        System.out.println(json);
         if(getServerDirectory() != null){
             json.addProperty("output_directory", getServerDirectory());
         }
