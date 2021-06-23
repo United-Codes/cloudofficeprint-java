@@ -3,7 +3,9 @@ package com.company;
 //https://www.jetbrains.com/help/idea/creating-and-running-your-first-java-application.html#run_jar_artifact will be usefull to build the JAR
 
 import com.company.Output.Output;
+import com.company.RenderElements.FileWithData;
 import com.company.Resources.Base64Resource;
+import com.company.Server.Server;
 
 import java.io.IOException;
 
@@ -16,11 +18,14 @@ public class Main {
 
             Server server = new Server("http://localhost:8010");
 
+            //test
+            server.getAOPVersionOnServer();
+
             PrintJob printJob = new PrintJob();
             printJob.setServer(server);
             printJob.setAOP_remote_debug("No");
             printJob.setApex_version("web editor 2");
-            printJob.setAPIKey("1C511A58ECC73874E0530100007FD01A");
+            //printJob.setAPIKey("1C511A58ECC73874E0530100007FD01A");
             printJob.setVersion("3.0");
             printJob.setTool("webeditor-new");
             //printJob.addPrepend_file();

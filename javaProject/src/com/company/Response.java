@@ -10,7 +10,7 @@ public class Response {
     private String ext;
     private  byte[] body;
 
-    Response(String ext,byte[] body){
+    public Response(String ext, byte[] body){
         this.ext = ext;
         this.body =body;
     }

@@ -32,7 +32,7 @@ public class AOPException extends Exception {
      * @param responseCode responseCode of the HTTP response of the AOP server.
      * @param error text of the HTTP response (error) of the AOP server.
      */
-    AOPException(int responseCode, String error) {
+    public AOPException(int responseCode, String error) {
         this.responseCode = responseCode;
         System.out.println(error);
         String [] errorSplited = error.split("URID:");
