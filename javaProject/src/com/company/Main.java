@@ -48,7 +48,7 @@ public class Main {
             //printJob.addSubTemplate(template);
 
             Response response = printJob.execute();
-            response.downloadLocally("output");
+            response.downloadLocally("./downloads/output");
 
             /*
             String ret = server.readJson("./src/test.json");
