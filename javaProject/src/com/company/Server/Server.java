@@ -295,7 +295,7 @@ public class Server {
                 baos.write(buffer, 0, length);
             }
 
-            Response response = new Response(ext,baos.toByteArray());
+            Response response = new Response(ext,type.toString(),baos.toByteArray());
             return response;
             }
         else {

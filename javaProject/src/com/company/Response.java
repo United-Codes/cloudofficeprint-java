@@ -11,7 +11,22 @@ import java.io.IOException;
 public class Response {
 
     private String ext;
+    private String mimetype;
     private  byte[] body;
+
+    /**
+     * @return mimetype of the file in the body.
+     */
+    public String getMimetype() {
+        return mimetype;
+    }
+
+    /**
+     * @param mimetype of the file in the body.
+     */
+    public void setMimetype(String mimetype) {
+        this.mimetype = mimetype;
+    }
 
     /**
      * @return body (file base64) of the response.
@@ -45,8 +60,9 @@ public class Response {
      * @param ext Extension of the file in the body.
      * @param body (file base64) of the response.
      */
-    public Response(String ext, byte[] body){
+    public Response(String ext,String mimetype, byte[] body){
         setExt(ext);
+        setMimetype(mimetype);
         setBody(body);
     }
 
