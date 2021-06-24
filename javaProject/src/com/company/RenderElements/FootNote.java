@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * Only supported in Word and Excel templates.
  * Element to insert a footnote in a template.
  */
 public class FootNote extends RenderElement{

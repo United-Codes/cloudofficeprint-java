@@ -7,23 +7,23 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Only supported in Word, Excel, HTML and Md templates.
- * HTML text can be rendered and put in templates.
+ * Only available for HTML and Markdown templates.
+ * When you use the Property Renderelement in HTML or in MD, it will escape any special characters like "<" or "_".
+ * By using the Raw Renderelement, nothing will be escaped.
  */
-public class HTML extends RenderElement{
+public class Raw extends RenderElement{
 
     /**
-     * HTML text can be rendered and put in templates.
-     * @param name Name of this html element for the tag.
-     * @param HTMLText HTML text.
+     * @param name Name of this element for the tag.
+     * @param value Value of this element to replace the tag with.
      */
-    public HTML(String name, String HTMLText){
+    public Raw(String name, String value){
         setName(name);
-        setValue(String.valueOf(HTMLText));
+        setValue(value);
     }
 
     /**
-     * @return JSONObject with the tags for this HTML element for the AOP server.
+     * @return JSONObject with the tags for this property for the AOP server.
      */
     @Override
     public JsonObject getJSON() {
@@ -38,7 +38,7 @@ public class HTML extends RenderElement{
     @Override
     public Set<String> getTemplateTags() {
         Set<String> hash_Set = new HashSet<String>();
-        hash_Set.add("{_"+getName()+"}");
+        hash_Set.add("{@"+getName()+"}");
         return ImmutableSet.copyOf(hash_Set);
     }
 }

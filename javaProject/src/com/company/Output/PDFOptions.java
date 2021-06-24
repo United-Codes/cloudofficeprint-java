@@ -305,7 +305,7 @@ public class PDFOptions {
         if (getMerge()!=null){
             json.addProperty("output_merge", getMerge());
         }
-        if (getLandscape()==true){
+        if (getLandscape()!= null && getLandscape()==true){
             json.addProperty("output_page_orientation", "landscape"); //this mises in the python sdk Sunil
         }
         return json;

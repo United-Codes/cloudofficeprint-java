@@ -17,8 +17,8 @@ public class Property extends RenderElement{
     /**
      * The most basic RenderElement. It simply consists of a name and a value.
      * In a template the tag '{name}' will be replaced by 'value'.
-     * @param name Name of this property.
-     * @param value Value of this property.
+     * @param name Name of this property for the tag.
+     * @param value Value of this element to replace the tag with.
      */
     public Property(String name, String value){
         setName(name);
@@ -28,8 +28,8 @@ public class Property extends RenderElement{
     /**
      * The most basic RenderElement. It simply consists of a name and a value.
      * In a template the tag '{name}' will be replaced by 'value'.
-     * @param name Name of this property.
-     * @param value Value of this property.
+     * @param name Name of this property for the tag.
+     * @param value Value of this property to replace the tag with.
      */
     public Property(String name, int value){
         setName(name);

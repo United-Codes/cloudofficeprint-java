@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * Only supported in Word templates, might work in other templates but behaviour is not predictable.
  * When substituting the content in a language written in right to left, like Arabic, the {<name} tag can be used
  * to properly format the language. If the substituting content does not contain any right to left language character,
  * then it will behave as a regular substitution tag.

@@ -7,23 +7,25 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Only supported in Word, Excel, HTML and Md templates.
- * HTML text can be rendered and put in templates.
+ * Only supported in Excel.
+ * This class represents an Excel formula.
+ * Note that no validation is performed on this formula.
  */
-public class HTML extends RenderElement{
+public class Formula extends RenderElement{
 
     /**
-     * HTML text can be rendered and put in templates.
-     * @param name Name of this html element for the tag.
-     * @param HTMLText HTML text.
+     * Represents an Excel formula.
+     * Note that no validation is performed on this formula.
+     * @param name Name of the formula for the tag.
+     * @param formula Excel formula to replace the tag with.
      */
-    public HTML(String name, String HTMLText){
+    public Formula(String name, String formula){
         setName(name);
-        setValue(String.valueOf(HTMLText));
+        setValue(formula);
     }
 
     /**
-     * @return JSONObject with the tags for this HTML element for the AOP server.
+     * @return JSONObject with the tags for this element for the AOP server.
      */
     @Override
     public JsonObject getJSON() {
@@ -38,7 +40,7 @@ public class HTML extends RenderElement{
     @Override
     public Set<String> getTemplateTags() {
         Set<String> hash_Set = new HashSet<String>();
-        hash_Set.add("{_"+getName()+"}");
+        hash_Set.add("{>"+getName()+"}");
         return ImmutableSet.copyOf(hash_Set);
     }
 }

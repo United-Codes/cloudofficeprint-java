@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * Only supported in Word templates.
  * Class representing a table of content for templates.
  */
 public class TableOfContents extends RenderElement{

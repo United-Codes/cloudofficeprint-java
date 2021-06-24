@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * Only supported in Word, Excel, Powerpoint templates (they all have tables with cells).
  * Represents a cell element. It includes the name for the tag, the value and
  * optionally the cell background color and width.
  */

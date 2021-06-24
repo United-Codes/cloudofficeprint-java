@@ -15,21 +15,21 @@ public abstract class RenderElement {
     private String value;
 
     /**
-     * @return Name of this element.
+     * @return Name of this element for the tag.
      */
     public String getName() {
         return name;
     }
 
     /**
-     * @param name Name of this element.
+     * @param name Name of this element for the tag.
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * @return Value of this property.
+     * @return Value of this element.
      */
     public String getValue() {
         return value;
