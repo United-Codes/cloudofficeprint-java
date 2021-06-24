@@ -176,16 +176,16 @@ public class PrintJob {
         for(Map.Entry<String, RenderElement> data : getData().entrySet()){
             JsonObject file = new JsonObject();
             file.addProperty("filename",data.getKey());
+            file.add("data",data.getValue().getJSON());
 
-            //this need to change for final version
+            /*//this need to change for final version
             JsonArray testttt = new JsonArray();
             String ret = "{\"first_name\":\"DemoName\",\"last_name\":\"DemoLastName\",\"city\":\"DemoCity\"}";
             JsonObject testj = new JsonParser().parse(ret).getAsJsonObject();
             testttt.add(testj);
             file.add("data",testttt);
-            //this need to change for final version
+            //this need to change for final version*/
 
-            //file.add("data",data.getValue().getJSON()); // pour plus tard mtn
             files.add(file);
         }
         jsonForServer.add("files", files);
@@ -219,12 +219,8 @@ public class PrintJob {
 
     //add async version
     public Response execute() throws Exception {
-        if (server == null){
-            throw new Exception("No server specified.");
-        }
         JsonObject JSONForServer = getJSON();
-        System.out.println(JSONForServer.toString());
-
+        System.out.println("Json for server : " + JSONForServer.toString());
         if (server.isReachable() == true){
             return server.sendPOSTRequest(JSONForServer);
         }
