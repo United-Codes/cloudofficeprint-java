@@ -1,113 +1,228 @@
 package com.company;
 
 import com.company.Output.Output;
-import com.company.RenderElements.FileWithData;
+import com.company.RenderElements.RenderElement;
 import com.company.Resources.Resource;
 import com.company.Server.Server;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import org.apache.tika.mime.MimeTypeException;
 
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.Map;
 
+/**
+ * A print job for the AOP server containing all the necessary information to generate the adequate JSON for the AOP server.
+ */
 public class PrintJob {
-    //tout ce qui est JSONObject ici va un peu falloir changer et créer des classes appart
     private Server server;
-    private String aop_remote_debug;
-    private String apex_version;
-    private String APIKey;
-    private String version;
-    private String tool;
-    private JsonArray prepend_files = new JsonArray();
-    //private ArrayList<String> append_files= new ArrayList<String>();
-    private JsonArray append_files= new JsonArray();
-    private JsonObject template; //maybe Arraylist if we want several
-    private JsonObject output;
-    private JsonArray fileWithData =new JsonArray(); //data for output files
-    private JsonArray subtemplates = new JsonArray();
+    private Output output;
+    private Resource template;
+    private Resource[] prependFiles;
+    private Resource[] appendFiles;
+    private Hashtable<String, Resource> subTemplates = new Hashtable<String, Resource>();
+    private Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
 
+    /**
+     * @return Server to user for this printjob.
+     */
+    public Server getServer() {
+        return server;
+    }
 
-    public void setServer(Server server){
+    /**
+     * @param server to use for this printjob.
+     */
+    public void setServer(Server server) {
         this.server = server;
     }
 
-    public boolean checkDebug(String debugmode){
-        if (debugmode.equals("Yes")|| debugmode.equals("No")){
-            return true;
-        }
-        else return false;
+    /**
+     * @return Output object containing output configuration for this printjob.
+     */
+    public Output getOutput() {
+        return output;
     }
 
-    public void setAOP_remote_debug(String debugmode){
-        if (checkDebug(debugmode)){
-            aop_remote_debug = debugmode;
-        }
-        else{
-            System.out.println("Debug mode not correctly specified, only Yes or No accepted.");
-        }
+    /**
+     * @param output object containing the output configuration for this printjob.
+     */
+    public void setOutput(Output output) {
+        this.output = output;
     }
 
-    public void setApex_version(String version){
-        apex_version = version;
+    /**
+     * @return Template for this print job.
+     */
+    public Resource getTemplate() {
+        return template;
     }
 
-    public void setAPIKey(String APIKey){
-        this.APIKey = APIKey;
+    /**
+     * @param template for this printjob.
+     */
+    public void setTemplate(Resource template) {
+        this.template = template;
     }
 
-    public void setVersion(String version){
-        this.version = version;
+    /**
+     * @return Files to prepend to the output.
+     */
+    public Resource[] getPrependFiles() {
+        return prependFiles;
     }
 
-    public void setTool (String tool){
-        this.tool = tool;
+    /**
+     * @param prependFiles Files to prepend to the output.
+     */
+    public void setPrependFiles(Resource[] prependFiles) {
+        this.prependFiles = prependFiles;
     }
 
-    public void addPrepend_file(String file){
-        prepend_files.add(file);
+    /**
+     * @return Files to append to the output.
+     */
+    public Resource[] getAppendFiles() {
+        return appendFiles;
     }
 
-    public void addAppend_file(String file){
-        append_files.add(file);
+    /**
+     * @param appendFiles Files to append to the output.
+     */
+    public void setAppendFiles(Resource[] appendFiles) {
+        this.appendFiles = appendFiles;
     }
 
-    public void setTemplate(Resource template){
-        this.template = template.getJSONForTemplate();
+    /**
+     * Subtemplates are only accessible (in docx).
+     * They will replace the `{?include subtemplate_dict_key}` tag in the docx.
+     * @return Subtemplates for this print job. Hashtable<key, subTemplate>
+     */
+    public Hashtable<String, Resource> getSubTemplates() {
+        return subTemplates;
     }
 
-    public void addSubTemplate(JsonObject template){
-        this.subtemplates.add(template);
+    /**
+     * Subtemplates are only accessible (in docx).
+     * They will replace the `{?include subtemplate_dict_key}` tag in the docx.
+     * @param subTemplates for this print job. Hashtable<key, subTemplate>
+     */
+    public void setSubTemplates(Hashtable<String, Resource> subTemplates) {
+        this.subTemplates = subTemplates;
     }
 
-    public void setOutput( Output output){
-        this.output = output.getJSON();
+    /**
+     * Renderelements will replace their corresponding tag in the template.
+     * Multiple output files will be produced if the hashtable has more then one element, the AOP server will return
+     * a zip file containing all of them.
+     * @return Hashtable<filename, RenderElement>
+     */
+    public Hashtable<String, RenderElement> getData() {
+        return data;
     }
 
-    public void addFileToGenerate(FileWithData file){
-        this.fileWithData.add(file.getJSON());
+    /**
+     * Renderelements will replace their corresponding tag in the template.
+     * Multiple output files will be produced if the hashtable has more then one element, the AOP server will return
+     * a zip file containing all of them.
+     * @param data Hashtable<filename, RenderElement>
+     */
+    public void setData(Hashtable<String, RenderElement> data) {
+        this.data = data;
     }
 
+    /**
+     * A print job for the AOP server containing all the necessary information to generate the adequate JSON for the AOP server.
+     * If you don't want to instantiate a variable, use null for this argument.
+     * @param data data Hashtable<filename, RenderElement>
+     *             Renderelements will replace their corresponding tag in the template.
+     *             Multiple output files will be produced if the hashtable has more then one element, the AOP server will return
+     *             a zip file containing all of them.
+     * @param server Server to user for this printjob.
+     * @param output object containing the output configuration for this printjob.
+     * @param template for this printjob.
+     * @param subTemplates  for this print job. Hashtable<key, subTemplate>
+     *                      Subtemplates are only accessible (in docx).
+     *                      They will replace the `{?include subtemplate_dict_key}` tag in the docx.
+     * @param prependFiles Files to prepend to the output.
+     * @param appendFiles Files to append to the output.
+     */
+    public PrintJob(Hashtable<String, RenderElement> data,Server server,Output output, Resource template,Hashtable<String,
+            Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles){
+        setData(data);
+        setServer(server);
+        setOutput(output);
+        setTemplate(template);
+        setSubTemplates(subTemplates);
+        setPrependFiles(prependFiles);
+        setAppendFiles(appendFiles);
+    }
 
-    public JsonObject createJSON(){
+    /**
+     * @return Jsonobject containing all the info about the printjob, for the POST request to the AOP server.
+     */
+    public JsonObject getJSON() throws MimeTypeException {
         JsonObject jsonForServer = new JsonObject();
-        jsonForServer.addProperty("aop_remote_debug", aop_remote_debug);
-        jsonForServer.addProperty("apex_version", apex_version);
-        jsonForServer.addProperty("api_key", APIKey);
-        jsonForServer.addProperty("version", version);
-        jsonForServer.addProperty("tool", tool);
-        jsonForServer.add("prepend_files", prepend_files);
-        jsonForServer.add("append_files", append_files);
-        jsonForServer.add("template", template);
-        jsonForServer.add("output", output);
-        jsonForServer.add("files", fileWithData);
-        jsonForServer.add("templates", subtemplates);
+        for(Map.Entry<String, JsonElement> tag : getServer().getJSON().entrySet()){
+            jsonForServer.add(tag.getKey(),tag.getValue()); //these tags for the server need to be at the upper level in the JSON
+        }
+        jsonForServer.add("output", getOutput().getJSON());
+        jsonForServer.add("template", getTemplate().getJSONForTemplate());
+        //ArrayList<String> files = new ArrayList<String>();
+        JsonArray files = new JsonArray();
+        for(Map.Entry<String, RenderElement> data : getData().entrySet()){
+            JsonObject file = new JsonObject();
+            file.addProperty("filename",data.getKey());
+
+            //this need to change for final version
+            JsonArray testttt = new JsonArray();
+            String ret = "{\"first_name\":\"DemoName\",\"last_name\":\"DemoLastName\",\"city\":\"DemoCity\"}";
+            JsonObject testj = new JsonParser().parse(ret).getAsJsonObject();
+            testttt.add(testj);
+            file.add("data",testttt);
+            //this need to change for final version
+            
+            //file.add("data",data.getValue().getJSON()); // pour plus tard mtn
+            files.add(file);
+        }
+        jsonForServer.add("files", files);
+        if (getPrependFiles() != null && getPrependFiles().length>0){
+            JsonArray prependFiles = new JsonArray();
+            for(Resource prependFile : getPrependFiles()){
+                prependFiles.add(prependFile.getJSONForSecondaryFile()); //check je pense que malheureusement il manque les [] pour [files].
+            }
+            jsonForServer.add("prepend_files",prependFiles);
+        }
+        if (getAppendFiles() != null && getAppendFiles().length>0){
+            JsonArray appendFiles = new JsonArray();
+            for(Resource appendFile : getAppendFiles()){
+                appendFiles.add(appendFile.getJSONForSecondaryFile()); //check je pense que malheureusement il manque les [] pour [files].
+            }
+            jsonForServer.add("append_files",appendFiles);
+        }
+        if (getSubTemplates()!=null){
+            JsonArray subTemplates = new JsonArray();
+            for(Map.Entry<String, Resource> subtemplate : getSubTemplates().entrySet()){
+                JsonObject sub = subtemplate.getValue().getJSONForSecondaryFile();
+                sub.addProperty("name",subtemplate.getKey());
+                subTemplates.add(sub);
+            }
+            jsonForServer.add("templates",subTemplates);
+        }
+
         return jsonForServer;
     }
 
 
+    //add async version
     public Response execute() throws Exception {
         if (server == null){
             throw new Exception("No server specified.");
         }
-        JsonObject JSONForServer = createJSON();
+        JsonObject JSONForServer = getJSON();
         System.out.println(JSONForServer.toString());
 
         if (server.isReachable() == true){

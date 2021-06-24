@@ -18,8 +18,8 @@ import java.util.Scanner;
  */
 public class Server {
 
-    private int APIKey;
-    private JsonObject logginInfo;
+    private String APIKey;
+    private JsonObject loggingInfo;
     private String url;
     //private String proxies; not sure needed?
     private Printer printer;
@@ -29,7 +29,7 @@ public class Server {
      * Only applicable for service users.
      * @return The value of this key is the API key given by APEXOfficePrint.
      */
-    public int getAPIKey() {
+    public String getAPIKey() {
         return APIKey;
     }
 
@@ -37,7 +37,7 @@ public class Server {
      * Only applicable for service users.
      * @param APIKey given by APEXOfficePrint.
      */
-    public void setAPIKey(int APIKey) {
+    public void setAPIKey(String APIKey) {
         this.APIKey = APIKey;
     }
 
@@ -45,8 +45,8 @@ public class Server {
      * When the AOP server is started with --enable_printlog, it will create a file on the server called server_printjob.log.
      * @return Jsonobject with the extra information you want to be logged in that file.
      */
-    public JsonObject getLogginInfo() {
-        return logginInfo;
+    public JsonObject getLoggingInfo() {
+        return loggingInfo;
     }
 
     /**
@@ -55,8 +55,8 @@ public class Server {
      * by adding additional keys and values in the logging object.
      * @param loginInfo Jsonobject with the information you want to be logged.
      */
-    public void setLogginInfo(JsonObject loginInfo) { //Need to change this to appart function maybe but need info : Sunil
-        this.logginInfo = loginInfo;
+    public void setLoggingInfo(JsonObject loginInfo) { //Need to change this to appart function maybe but need info : Sunil
+        this.loggingInfo = loginInfo;
     }
 
     /**
@@ -134,12 +134,12 @@ public class Server {
      * @param loggingInfo When the AOP server is started with --enable_printlog, it will create a file on the server called server_printjob.log.
      *                    Jsonobject with the extra information you want to be logged in that file.
      */
-    public Server(String url, int APIKey, Printer printer, Commands commands, JsonObject loggingInfo) {
+    public Server(String url, String APIKey, Printer printer, Commands commands, JsonObject loggingInfo) {
         setUrl(url);
         setAPIKey(APIKey);
         setPrinter(printer);
         setCommands(commands);
-        setLogginInfo(loggingInfo);
+        setLoggingInfo(loggingInfo);
     }
 
     /**
@@ -147,11 +147,11 @@ public class Server {
      */
     public JsonObject getJSON(){
         JsonObject json =new JsonObject();
-        if (getAPIKey()!=0){
+        if (getAPIKey()!=null){
             json.addProperty("api_key",getAPIKey());
         }
-        if (getLogginInfo()!= null){
-            json.add("logging",getLogginInfo());
+        if (getLoggingInfo()!= null){
+            json.add("logging", getLoggingInfo());
         }
         if (getPrinter() != null){
             json.add("ipp",getPrinter().getJSON());
@@ -272,7 +272,7 @@ public class Server {
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
         con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
         con.setRequestProperty("Accept", "application/json");
-        con.setRequestProperty("User-Agent", "JavaSDK");
+        con.setRequestProperty("User-Agent", "AOPJavaSDK");
         con.setDoOutput(true);
         con.setRequestMethod("POST");
         OutputStream outputStream = con.getOutputStream();

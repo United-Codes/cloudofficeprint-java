@@ -184,7 +184,9 @@ public class Output {
     public JsonObject getJSON(){
         JsonObject json = new JsonObject();
         json.addProperty("output_encoding",getEncoding());
-        json.addProperty("output_converter",getConverter());
+        if (getConverter()!=null){
+            json.addProperty("output_converter",getConverter());
+        }
         if (getType() != null){
             json.addProperty("output_type", getType());
         }
