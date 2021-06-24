@@ -184,7 +184,7 @@ public class PrintJob {
             testttt.add(testj);
             file.add("data",testttt);
             //this need to change for final version
-            
+
             //file.add("data",data.getValue().getJSON()); // pour plus tard mtn
             files.add(file);
         }

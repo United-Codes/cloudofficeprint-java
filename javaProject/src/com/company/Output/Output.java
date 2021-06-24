@@ -1,9 +1,7 @@
 package com.company.Output;
 
 
-import com.company.Output.CloudAcessToken.AWSToken;
 import com.company.Output.CloudAcessToken.CloudAccessToken;
-import com.company.Output.PDFOptions.PDFOptions;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
@@ -54,7 +52,7 @@ public class Output {
     /**
      * Optional PDF options. They are described in the PDFOptions class. Default : null.
      */
-    private com.company.Output.PDFOptions.PDFOptions PDFOptions = null;
+    private com.company.Output.PDFOptions PDFOptions = null;
 
     /**
      * @return the encoding to use for the output.

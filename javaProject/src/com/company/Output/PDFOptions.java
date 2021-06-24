@@ -1,4 +1,4 @@
-package com.company.Output.PDFOptions;
+package com.company.Output;
 
 import com.google.gson.JsonObject;
 
@@ -9,8 +9,8 @@ public class PDFOptions {
 
     private String readPassword;
     private String watermark;
-    private pageDimension pageWidth;
-    private pageDimension pageHeight;
+    private String pageWidth;
+    private String pageHeight;
     private Boolean evenPage;
     private Boolean mergeMakingEven;
     private String modifyPassword;
@@ -52,30 +52,30 @@ public class PDFOptions {
     }
 
     /**
-     * @return pageDimension with width and unit.
+     * @return pageWidth width followed by unit : px, mm, cm, in (e.g. : 20 px). No unit means px.
      */
-    public pageDimension getPageWidth() {
+    public String getPageWidth() {
         return pageWidth;
     }
 
     /**
-     * @param pageWidth pageDimension object
+     * @param pageWidth width followed by unit : px, mm, cm, in (e.g. : 20 px). No unit means px.
      */
-    public void setPageWidth(pageDimension pageWidth) {
+    public void setPageWidth(String pageWidth) {
         this.pageWidth = pageWidth;
     }
 
     /**
-     * @return pageDimension with height and unit.
+     * @return pageHeight height followed by unit : px, mm, cm, in (e.g. : 20 px). No unit means px.
      */
-    public pageDimension getPageHeight() {
+    public String getPageHeight() {
         return pageHeight;
     }
 
     /**
-     * @param pageHeight pageDimension object
+     * @param pageHeight eight followed by unit : px, mm, cm, in (e.g. : 20 px). No unit means px.
      */
-    public void setPageHeight(pageDimension pageHeight) {
+    public void setPageHeight(String pageHeight) {
         this.pageHeight = pageHeight;
     }
 
@@ -127,14 +127,16 @@ public class PDFOptions {
     }
 
     /**
-     * @return protection flag for the PDF (in addition to the user password).
+     * More info on the flag bits on https://pdfhummus.com/post/147451287581/hummus-1058-and-pdf-writer-updates-encryption.
+     * @return protection flag for the PDF (in addition to the user password). (int representation of the 12 flag bits)
      */
     public int getPasswordProtectionFlag() {
         return passwordProtectionFlag;
     }
 
     /**
-     * @param passwordProtectionFlag protection flag for the PDF (in addition to the user password).
+     * More info on the flag bits on https://pdfhummus.com/post/147451287581/hummus-1058-and-pdf-writer-updates-encryption.
+     * @param passwordProtectionFlag protection flag for the PDF (in addition to the user password). (int representation of the 12 flag bits)
      */
     public void setPasswordProtectionFlag(int passwordProtectionFlag) {
         this.passwordProtectionFlag = passwordProtectionFlag;
@@ -292,10 +294,10 @@ public class PDFOptions {
             }
         }
         if (getPageWidth()!=null){
-            json.add("output_page_width", getPageWidth().getJSON()); //check this with Sunil
+            json.addProperty("output_page_width", getPageWidth()); //check this with Sunil
         }
         if (getPageHeight()!=null){
-            json.add("output_page_height", getPageHeight().getJSON()); //check this with Sunil
+            json.addProperty("output_page_height", getPageHeight()); //check this with Sunil
         }
         if (getPageFormat()!=null){
             json.addProperty("output_page_format", getPageFormat());

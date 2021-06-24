@@ -13,7 +13,7 @@ public class Commands {
 
     private Command postProcess;
     private Boolean postProcessReturn;
-    private int postProcessDeleteDelay;
+    private int postProcessDeleteDelay =-1;
     private Command preConversion;
     private Command postConversion;
     private Command postMerge;
@@ -33,14 +33,15 @@ public class Commands {
     }
 
     /**
-     * @return Whether to return the output or not. Note this output is AOP's output and not the post process command output. //Sunil bit unclear?
+     * If you are already doing something with the file and don't want it to be returned in the response set this to true.
+     * @return Whether to return the output file or not. Note this output is AOP's output and not the post process command output.
      */
     public Boolean getPostProcessReturn() {
         return postProcessReturn;
     }
 
     /**
-     * @param postProcessReturn Whether to return the output or not. Note this output is AOP's output and not the post process command output.
+     * @param postProcessReturn Whether to return the output file or not. Note this output is AOP's output and not the post process command output.
      */
     public void setPostProcessReturn(Boolean postProcessReturn) {
         this.postProcessReturn = postProcessReturn;
@@ -48,6 +49,7 @@ public class Commands {
 
     /**
      * AOP deletes the file provided to the command directly after executing it. This can be delayed with this option.
+     * If you have a postcommand to execute on this file and it takes some time to execute, add a postProcessDeleteDelay.
      * @return delay in ms.
      */
     public int getPostProcessDeleteDelay() {
@@ -56,6 +58,7 @@ public class Commands {
 
     /**
      * AOP deletes the file provided to the command directly after executing it. This can be delayed with this option.
+     * If you have a postcommand to execute on this file and it takes some time to execute, add a postProcessDeleteDelay.
      * @param postProcessDeleteDelay delay in ms.
      */
     public void setPostProcessDeleteDelay(int postProcessDeleteDelay) {
@@ -114,10 +117,10 @@ public class Commands {
             for(Map.Entry<String, JsonElement> tag : getPostProcess().getJSON().entrySet()){
                 postProcess.add(tag.getKey(),tag.getValue());
             }
-            if (getPostProcessReturn()== true){
+            if (getPostProcessReturn()== false){
                 postProcess.addProperty("return_output", getPostProcessReturn());
             }
-            if (getPostProcessDeleteDelay()!= 0){
+            if (getPostProcessDeleteDelay()!= -1){
                 postProcess.addProperty("delete_delay", getPostProcessDeleteDelay());
             }
             json.add("post_process",postProcess);
