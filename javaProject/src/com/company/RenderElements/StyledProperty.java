@@ -50,14 +50,14 @@ public class StyledProperty extends RenderElement{
     }
 
     /**
-     * @return Color of the text, in hex format.
+     * @return Color of the text, in CSS format.
      */
     public String getFontColor() {
         return fontColor;
     }
 
     /**
-     * @param fontColor Color of the text, in hex format.
+     * @param fontColor Color of the text, in CSS format.
      */
     public void setFontColor(String fontColor) {
         this.fontColor = fontColor;
@@ -119,14 +119,14 @@ public class StyledProperty extends RenderElement{
     }
 
     /**
-     * @return Color to highlight the text with.
+     * @return Color to highlight the text with in CSS format.
      */
     public String getHighlightColor() {
         return highlightColor;
     }
 
     /**
-     * @param highlightColor Color to highlight the text with.
+     * @param highlightColor Color to highlight the text with in CSS format.
      */
     public void setHighlightColor(String highlightColor) {
         this.highlightColor = highlightColor;
