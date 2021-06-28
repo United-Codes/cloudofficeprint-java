@@ -19,106 +19,184 @@ public class ChartAxisOptions {
     private Boolean minorGridLines;
     private Float minorUnit;
 
+    /**
+     * @return Orientation of the axis : minMax or maxMin.
+     */
     public String getOrientation() {
         return orientation;
     }
 
+    /**
+     * @param orientation  Orientation of the axis : minMax or maxMin.
+     */
     public void setOrientation(String orientation) {
         this.orientation = orientation;
     }
 
+    /**
+     * @return Minimum of the axis.
+     */
     public Float getMin() {
         return min;
     }
 
+    /**
+     * @param min Minimum of the axis.
+     */
     public void setMin(Float min) {
         this.min = min;
     }
 
+    /**
+     * @return Maximum of the axis.
+     */
     public Float getMax() {
         return max;
     }
 
+    /**
+     * @param max Maximum of the axis.
+     */
     public void setMax(Float max) {
         this.max = max;
     }
 
+    /**
+     * @return Date options, only for stock charts.
+     */
     public ChartDateOptions getDate() {
         return date;
     }
 
+    /**
+     * @param date Date options, only for stock charts.
+     */
     public void setDate(ChartDateOptions date) {
         this.date = date;
     }
 
+    /**
+     * @return Tittle of the axis.
+     */
     public String getTitle() {
         return title;
     }
 
+    /**
+     * @param title Tittle of the axis.
+     */
     public void setTitle(String title) {
         this.title = title;
     }
 
+    /**
+     * @return Whether to show or not the values of the axis.
+     */
     public Boolean getValues() {
         return values;
     }
 
+    /**
+     * @param values Whether to show or not the values of the axis.
+     */
     public void setValues(Boolean values) {
         this.values = values;
     }
 
+    /**
+     * @return Axis value styles.
+     */
     public ChartTextStyle getValuesStyle() {
         return valuesStyle;
     }
 
+    /**
+     * @param valuesStyle Axis value styles.
+     */
     public void setValuesStyle(ChartTextStyle valuesStyle) {
         this.valuesStyle = valuesStyle;
     }
 
+    /**
+     * @return Style options of the title.
+     */
     public ChartTextStyle getTitleStyle() {
         return titleStyle;
     }
 
+    /**
+     * @param titleStyle Style options of the title.
+     */
     public void setTitleStyle(ChartTextStyle titleStyle) {
         this.titleStyle = titleStyle;
     }
 
+    /**
+     * @return Title rotation in degrees, clockwise from horizontal axis.
+     */
     public Integer getTitleRotation() {
         return titleRotation;
     }
 
+    /**
+     * @param titleRotation Title rotation in degrees, clockwise from horizontal axis.
+     */
     public void setTitleRotation(Integer titleRotation) {
         this.titleRotation = titleRotation;
     }
 
+    /**
+     * @return Whether to show major grid lines or not.
+     */
     public Boolean getMajorGridLines() {
         return majorGridLines;
     }
 
+    /**
+     * @param majorGridLines Whether to show major grid lines or not.
+     */
     public void setMajorGridLines(Boolean majorGridLines) {
         this.majorGridLines = majorGridLines;
     }
 
+    /**
+     * @return Automatic when undefined, spacing between major grid lines and axis values.
+     */
     public Float getMajorUnit() {
         return majorUnit;
     }
 
+    /**
+     * @param majorUnit Automatic when undefined, spacing between major grid lines and axis values.
+     */
     public void setMajorUnit(Float majorUnit) {
         this.majorUnit = majorUnit;
     }
 
+    /**
+     * @return Whether to show minor grid lines or not.
+     */
     public Boolean getMinorGridLines() {
         return minorGridLines;
     }
 
+    /**
+     * @param minorGridLines  Whether to show minor grid lines or not.
+     */
     public void setMinorGridLines(Boolean minorGridLines) {
         this.minorGridLines = minorGridLines;
     }
 
+    /**
+     * @return Automatic when undefined, spacing between minor grid lines.
+     */
     public Float getMinorUnit() {
         return minorUnit;
     }
 
+    /**
+     * @param minorUnit Automatic when undefined, spacing between minor grid lines.
+     */
     public void setMinorUnit(Float minorUnit) {
         this.minorUnit = minorUnit;
     }
