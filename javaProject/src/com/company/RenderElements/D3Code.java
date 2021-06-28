@@ -14,14 +14,14 @@ public class D3Code extends RenderElement{
     private String data;
 
     /**
-     * @return Global data the code has access to.
+     * @return Global data the code has access to. You can access it in the JS code through with global.data or just data.
      */
     public String getData() {
         return data;
     }
 
     /**
-     * @param data Global data the code has access to.
+     * @param data Global data the code has access to. You can access it in the JS code through with global.data or just data.
      */
     public void setData(String data) {
         this.data = data;

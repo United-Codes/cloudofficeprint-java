@@ -143,12 +143,15 @@ public class Code extends RenderElement{
     }
 
     /**
-     * Element to insert a footnote in a template.
-     * @param name Name of this footnote for the tag.
-     * @param value Value to replace the tag with.
+     * This class represents a barcode or a QR code (created using the data of the key) for a template.
+     * All the options can be set with the setter functions.
+     * @param key Key_type, e.g. "barcode_type" if the key used is "barcode".
+     *            This field contains the type of barcode required. The options can be found on:
+     *            http://www.apexofficeprint.com/docs/#615-barcode-qrcode-tags
+     * @param value Data to create the code from.
      */
-    public Code(String name, String value){
-        setName(name);
+    public Code(String key, String value){
+        setName(key);
         setValue(String.valueOf(value));
     }
 
@@ -159,6 +162,30 @@ public class Code extends RenderElement{
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         json.addProperty(getName(),getValue());
+        if (getHeight()!= null){
+            json.addProperty(getName()+"_height",getHeight());
+        }
+        if (getWidth()!= null){
+            json.addProperty(getName()+"_width",getWidth());
+        }
+        if (getLinkUrl()!= null){
+            json.addProperty(getName()+"_url",getLinkUrl());
+        }
+        if (getRotation()!= null){
+            json.addProperty(getName()+"_rotation",getRotation());
+        }
+        if (getBackgroundColor()!= null){
+            json.addProperty(getName()+"_background_color",getBackgroundColor());
+        }
+        if (getPaddingWidth()!= null){
+            json.addProperty(getName()+"_padding_width",getPaddingWidth());
+        }
+        if (getPaddingHeight()!= null){
+            json.addProperty(getName()+"_padding_height",getPaddingHeight());
+        }
+        if (getQrErrorCorrectionLevel()!= null){
+            json.addProperty(getName()+"_errorcorrectlevel",getQrErrorCorrectionLevel());
+        }
         return json;
     }
 
@@ -168,7 +195,7 @@ public class Code extends RenderElement{
     @Override
     public Set<String> getTemplateTags() {
         Set<String> hash_Set = new HashSet<String>();
-        hash_Set.add("{|+"+getName()+"}");
+        hash_Set.add("{'"+getName()+"}");
         return ImmutableSet.copyOf(hash_Set);
     }
 }
