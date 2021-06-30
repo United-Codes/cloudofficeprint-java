@@ -1,4 +1,4 @@
-package com.company.RenderElements.Charts;
+package com.company.RenderElements.Charts.Series;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -6,9 +6,9 @@ import com.google.gson.JsonObject;
 import java.util.Iterator;
 
 /**
- * Represents a bubble chart.
+ * Represents series for a bubble chart.
  */
-public class BubbleSeries extends XYSeries{
+public class BubbleSeries extends XYSeries {
 
     private JsonArray sizes = new JsonArray();
 
@@ -27,7 +27,7 @@ public class BubbleSeries extends XYSeries{
     }
 
     /**
-     * This object represents a bubble chart.
+     * This object represents series for a bubble chart.
      * @param name Name of the chart.
      * @param x X-data of the chart.
      * @param y Y-data of the chart.
@@ -43,6 +43,7 @@ public class BubbleSeries extends XYSeries{
     /**
      * @return JSONObject with the tags for this element for the AOP server.
      */
+    @Override
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         Iterator itrX = getX().iterator();

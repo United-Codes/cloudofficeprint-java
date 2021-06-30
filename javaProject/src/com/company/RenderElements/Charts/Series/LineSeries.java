@@ -1,12 +1,12 @@
-package com.company.RenderElements.Charts;
+package com.company.RenderElements.Charts.Series;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 /**
- * Represents a chart where the data-points are connected with lines.
+ * Represents series for a chart where the data-points are connected with lines.
  */
-public class LineSeries extends XYSeries{
+public class LineSeries extends XYSeries {
 
     private Boolean smooth;
     private String symbol;
@@ -100,7 +100,7 @@ public class LineSeries extends XYSeries{
     }
 
     /**
-     * This object represents a line chart (where data-points are connected with lines).
+     * This object represents series for a line chart (where data-points are connected with lines).
      * @param name Name of the chart.
      * @param x X-data of the chart.
      * @param y Y-data of the chart.
@@ -127,6 +127,7 @@ public class LineSeries extends XYSeries{
     /**
      * @return JSONObject with the tags for this element for the AOP server.
      */
+    @Override
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         json.add("data", getJSONData());

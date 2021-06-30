@@ -1,6 +1,7 @@
-package com.company.RenderElements.Charts;
+package com.company.RenderElements.Charts.Series;
 
 import com.google.gson.JsonObject;
+
 
 public abstract class Series {
     private String name;

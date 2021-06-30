@@ -1,14 +1,12 @@
-package com.company.RenderElements.Charts;
+package com.company.RenderElements.Charts.Series;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-import java.util.Iterator;
-
 /**
- * This class represents an area chart.
+ * This class represents series for an area chart.
  */
-public class AreaSeries extends XYSeries{
+public class AreaSeries extends XYSeries {
 
     private String color;
     private Float opacity;
@@ -48,7 +46,7 @@ public class AreaSeries extends XYSeries{
     }
 
     /**
-     * This object represents a pie chart.
+     * This object represents series for a pie chart.
      * @param name Name of the chart.
      * @param x X-data of the chart.
      * @param y Y-data of the chart.
@@ -69,6 +67,7 @@ public class AreaSeries extends XYSeries{
     /**
      * @return JSONObject with the tags for this element for the AOP server.
      */
+    @Override
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         json.add("data", getJSONData());

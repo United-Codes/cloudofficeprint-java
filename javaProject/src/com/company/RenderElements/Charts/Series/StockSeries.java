@@ -1,4 +1,4 @@
-package com.company.RenderElements.Charts;
+package com.company.RenderElements.Charts.Series;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -6,9 +6,9 @@ import com.google.gson.JsonObject;
 import java.util.Iterator;
 
 /**
- * This class represents stock charts.
+ * This class represents series for stock charts.
  */
-public class StockSeries extends XYSeries{
+public class StockSeries extends XYSeries {
 
     private JsonArray high = new JsonArray();
     private JsonArray low = new JsonArray();
@@ -87,7 +87,7 @@ public class StockSeries extends XYSeries{
     }
 
     /**
-     * This object represents a stock chart.
+     * This object represents series for a stock chart.
      * @param name Name of the chart.
      * @param x X-data of the chart.
      * @param high High values for the open-high-low-close chart.
@@ -109,6 +109,7 @@ public class StockSeries extends XYSeries{
     /**
      * @return JSONObject with the tags for this element for the AOP server.
      */
+    @Override
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         Iterator itrX = getX().iterator();

@@ -1,4 +1,4 @@
-package com.company.RenderElements.Charts;
+package com.company.RenderElements.Charts.Series;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -6,9 +6,9 @@ import com.google.gson.JsonObject;
 import java.util.Iterator;
 
 /**
- * This class represents pie charts.
+ * This class represents series for pie charts.
  */
-public class PieSeries extends  XYSeries{
+public class PieSeries extends XYSeries {
 
     private JsonArray colors;
 
@@ -31,7 +31,7 @@ public class PieSeries extends  XYSeries{
     }
 
     /**
-     * This object represents a pie chart.
+     * This object represents series for a pie chart.
      * @param name Name of the chart.
      * @param x X-data of the chart.
      * @param y Y-data of the chart.
@@ -48,6 +48,7 @@ public class PieSeries extends  XYSeries{
     /**
      * @return JSONObject with the tags for this element for the AOP server.
      */
+    @Override
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         Iterator itrX = getX().iterator();
