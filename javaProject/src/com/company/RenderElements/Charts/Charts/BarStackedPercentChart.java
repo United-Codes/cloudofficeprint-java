@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 
 /**
- * Represents a stacked bar chart where the y-axis is expressed in percentage.
+ * Represents a stacked bar chart where the x-axis is expressed in percentage.
  */
 public class BarStackedPercentChart extends Chart{
     ArrayList<BarStackedPercentSeries> barStackedPercentSeries = new ArrayList<BarStackedPercentSeries>();
