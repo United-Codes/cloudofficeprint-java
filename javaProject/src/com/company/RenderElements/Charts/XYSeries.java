@@ -6,7 +6,7 @@ import com.google.gson.JsonObject;
 
 import java.util.Iterator;
 
-public class XYSeries extends Series{
+public abstract class XYSeries extends Series{
     JsonArray x;
     JsonArray y;
 
@@ -38,14 +38,6 @@ public class XYSeries extends Series{
         this.y = y;
     }
 
-    /**
-     * @param x X-data of the serie.
-     * @param y Y-data of the serie.
-     */
-    public XYSeries(JsonArray x, JsonArray y){
-        setX(x);
-        setY(y);
-    }
 
     /**
      * @return Json of the data of the serie.
