@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class AreaChart extends Chart{
     ArrayList<AreaSeries> series = new ArrayList<>();
 
+    /**
      * @return Serie with the data for the chart.
      */
     public ArrayList<AreaSeries> getSeries() {
