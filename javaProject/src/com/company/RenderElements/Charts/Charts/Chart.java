@@ -7,6 +7,9 @@ import com.google.common.collect.ImmutableSet;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * It would be more optimal to make this class generic.
+ */
 public abstract class Chart extends RenderElement {
 
     private ChartOptions options;
