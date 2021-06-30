@@ -50,9 +50,9 @@ public class PieSeries extends  XYSeries{
      */
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
-        Iterator itrX = x.iterator();
-        Iterator itrY = y.iterator();
-        Iterator itrC = colors.iterator();
+        Iterator itrX = getX().iterator();
+        Iterator itrY = getY().iterator();
+        Iterator itrC = getColors().iterator();
         while(itrX.hasNext()) {
             JsonObject xy = new JsonObject();
             String x = (String) itrX.next();

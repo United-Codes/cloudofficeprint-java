@@ -44,8 +44,8 @@ public abstract class XYSeries extends Series{
      */
     public JsonObject getJSONData() {
         JsonObject json = new JsonObject();
-        Iterator itrX = x.iterator();
-        Iterator itrY = y.iterator();
+        Iterator itrX = getX().iterator();
+        Iterator itrY = getY().iterator();
         while(itrX.hasNext()) {
             JsonObject xy = new JsonObject();
             String x = (String) itrX.next();
