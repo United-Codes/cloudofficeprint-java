@@ -25,6 +25,8 @@ public class PrintJob {
     private Resource[] appendFiles;
     private Hashtable<String, Resource> subTemplates = new Hashtable<String, Resource>();
     private Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
+    private Boolean aopRemoteDebug;
+
 
     /**
      * @return Server to user for this printjob.
@@ -135,6 +137,22 @@ public class PrintJob {
     }
 
     /**
+     * @return If set to true the AOP server will log your JSON into out database and you can see it when you log into
+     * apexofficeprint.com.
+     */
+    public Boolean getAopRemoteDebug() {
+        return aopRemoteDebug;
+    }
+
+    /**
+     * @param aopRemoteDebug If set to true the AOP server will log your JSON into out database and you can see it when you log
+     *                       into apexofficeprint.com.
+     */
+    public void setAopRemoteDebug(Boolean aopRemoteDebug) {
+        this.aopRemoteDebug = aopRemoteDebug;
+    }
+
+    /**
      * A print job for the AOP server containing all the necessary information to generate the adequate JSON for the AOP server.
      * If you don't want to instantiate a variable, use null for this argument.
      * @param data data Hashtable<filename, RenderElement>
@@ -149,9 +167,11 @@ public class PrintJob {
      *                      They will replace the `{?include subtemplate_dict_key}` tag in the docx.
      * @param prependFiles Files to prepend to the output.
      * @param appendFiles Files to append to the output.
+     * @param aopRemoteDebug If set to true the AOP server will log your JSON into out database and you can see it when you
+     *                       log into apexofficeprint.com.
      */
     public PrintJob(Hashtable<String, RenderElement> data,Server server,Output output, Resource template,Hashtable<String,
-            Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles){
+            Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles, Boolean aopRemoteDebug){
         setData(data);
         setServer(server);
         setOutput(output);
@@ -159,6 +179,7 @@ public class PrintJob {
         setSubTemplates(subTemplates);
         setPrependFiles(prependFiles);
         setAppendFiles(appendFiles);
+        setAopRemoteDebug(aopRemoteDebug);
     }
 
     /**
@@ -168,6 +189,10 @@ public class PrintJob {
         JsonObject jsonForServer = new JsonObject();
         for(Map.Entry<String, JsonElement> tag : getServer().getJSON().entrySet()){
             jsonForServer.add(tag.getKey(),tag.getValue()); //these tags for the server need to be at the upper level in the JSON
+        }
+        jsonForServer.addProperty("apex_version", "java_sdk_version");
+        if (getAopRemoteDebug()==true){
+            jsonForServer.addProperty("aop_remote_debug", "Yes");
         }
         jsonForServer.add("output", getOutput().getJSON());
         jsonForServer.add("template", getTemplate().getJSONForTemplate());
