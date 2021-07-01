@@ -5,10 +5,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * A collection used to group multiple RenderElements together.
@@ -57,33 +54,48 @@ public class ElementCollection extends RenderElement{
         setName(name);
         setElements(elements);
     }
-
-
     /**
-     * @return Jsonarray of all the elements.
+     * A collection used to group multiple RenderElements together.
+     * The arrayList of elements isn't initialised in this constructor so setFromDict should be called.
+     * @param name The name is used as a key name when the collection is nested,
+     *             but ignored when it's the outer object.
      */
-    public JsonArray getJsonArray(){
-        JsonArray array = new JsonArray();
-        for( RenderElement element : getElements() ) {
-            if (element instanceof ElementCollection){
-                JsonObject el = element.getJSON();
-                el.add(element.getName(),element.getJSON());
-                array.add(el);
-            }
-            else array.add(element.getJSON());
-        }
-        return array;
+    public ElementCollection(String name){
+        setName(name);
+        setElements(elements);
     }
 
     /**
-     * @return JSONObject with the tags for this element for the AOP server.
+     * Sets the list of properties from a mapping.
+     * @param properties Hashtable of (propertyName,propertyValue).
+     */
+    public void setFromDict(Hashtable<String,String> properties){
+        for (Map.Entry<String,String> entry : properties.entrySet()){
+            Property property = new Property(entry.getKey(),entry.getValue());
+            getElements().add(property);
+        }
+    }
+
+
+    /**
+     * @return JSONObject with the tags for this property for the AOP server.
      */
     @Override
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
-        json.add(getName(),getJsonArray());
+        for( RenderElement element : getElements() ) {
+            if (element instanceof ElementCollection){
+                json.add(element.getName(),element.getJSON());
+            }
+            else {
+                for (Map.Entry<String,JsonElement> entry : element.getJSON().entrySet()){
+                    json.add(entry.getKey(),entry.getValue());
+                }
+            }
+        }
         return json;
     }
+
 
     /**
      * @return An immutable set containing all available template tags this element can replace.

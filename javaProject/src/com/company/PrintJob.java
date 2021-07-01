@@ -1,6 +1,7 @@
 package com.company;
 
 import com.company.Output.Output;
+import com.company.RenderElements.ElementCollection;
 import com.company.RenderElements.RenderElement;
 import com.company.Resources.Resource;
 import com.company.Server.Server;

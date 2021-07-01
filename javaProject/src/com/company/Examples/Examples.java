@@ -4,8 +4,8 @@ import com.company.AOPException;
 import com.company.Output.Output;
 import com.company.PrintJob;
 import com.company.RenderElements.ElementCollection;
+import com.company.RenderElements.Images.ImageBase64;
 import com.company.RenderElements.Property;
-import com.company.RenderElements.PropertyList;
 import com.company.RenderElements.RenderElement;
 import com.company.Resources.Base64Resource;
 import com.company.Response;
@@ -13,6 +13,7 @@ import com.company.Server.Server;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class Examples {
@@ -38,8 +39,8 @@ public class Examples {
     }
 
     /**
-     * Example with templateTest.docx as template and a list of properties as data. 2 outputs will be created in downloads
-     * in a zipfile named outputLocalTemplate.
+     * Example with templateTest.docx as template, a list of properties and an image as data. A zipfile named outputLocalTemplate will contain
+     * 2 outputs files in the downloads folder.
      */
     public void localTemplate(){
         try {
@@ -52,17 +53,28 @@ public class Examples {
             Property property1 = new Property("first_name","Quent");
             Property property2 = new Property("last_name","Stroob");
             Property property3 = new Property("city","Leuven");
-            PropertyList propertyList1 = new PropertyList(new Property[]{property1, property2, property3}); //first way to create a list of properties.
+            ImageBase64 image = new ImageBase64("imageTag");
+            image.setFileFromLocalFile("./src/com/company/Examples/test.jpg");
+            image.setMaxWidth(500);
+            image.setRotation(75);
+            ArrayList<RenderElement> dataList =  new ArrayList<RenderElement>();
+            dataList.add(property1);
+            dataList.add(property2);
+            dataList.add(property3);
+            dataList.add(image);
+            ElementCollection data1 = new ElementCollection("data1",dataList);
 
             Hashtable<String, String> propertyDict = new Hashtable<String, String>();
             propertyDict.put("first_name","B");
             propertyDict.put("last_name","A");
             propertyDict.put("city","C");
-            PropertyList propertyList2 = new PropertyList(propertyDict); //another way to create a list of properties.
+            ElementCollection data2 = new ElementCollection("data2");
+            data2.setFromDict(propertyDict);
+            data2.addElement(image);
 
             Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
-            data.put("output1",propertyList1);
-            data.put("output2",propertyList2);
+            data.put("output1",data1);
+            data.put("output2",data2);
 
             PrintJob printJob = new PrintJob(data,server,output,base64Resource,null,null,null,null);
 

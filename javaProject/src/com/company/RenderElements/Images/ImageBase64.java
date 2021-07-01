@@ -14,6 +14,16 @@ import java.util.Base64;
 public class ImageBase64 extends Image{
 
     /**
+     * This object represent an image to insert in the template.
+     * This constructor doesn't set the base64-string so setFromLocalFile should be called.
+     * The options of the image can be turned on via the setter functions.
+     * @param name Name of this image for the tag.
+     */
+    public ImageBase64(String name){
+        setName(name);
+    }
+
+    /**
      * This object represent an image to insert in the template. The options of the image can be turned on via the setter functions.
      * The source of this image is a base64-encoded string.
      * @param name Name of this image for the tag.
@@ -29,7 +39,7 @@ public class ImageBase64 extends Image{
      * @param filePath Path of the local file.
      * @throws IOException If file not found.
      */
-    public void setFileFromLocalFile(String name, String filePath) throws IOException {
+    public void setFileFromLocalFile(String filePath) throws IOException {
         File file = new File(filePath);
         byte[] bytes = Files.readAllBytes(file.toPath());
         String encodedString = Base64.getEncoder().encodeToString(bytes);
