@@ -191,8 +191,8 @@ public class PrintJob {
             jsonForServer.add(tag.getKey(),tag.getValue()); //these tags for the server need to be at the upper level in the JSON
         }
         jsonForServer.addProperty("apex_version", "java_sdk_version");
-        if (getAopRemoteDebug()==true){
-            jsonForServer.addProperty("aop_remote_debug", "Yes");
+        if (getAopRemoteDebug()!=null){
+            jsonForServer.addProperty("aop_remote_debug", getAopRemoteDebug());
         }
         jsonForServer.add("output", getOutput().getJSON());
         jsonForServer.add("template", getTemplate().getJSONForTemplate());
