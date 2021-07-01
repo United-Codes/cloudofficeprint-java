@@ -2,6 +2,7 @@ package com.company.RenderElements;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
@@ -63,8 +64,13 @@ public class ElementCollection extends RenderElement{
      */
     public JsonArray getJsonArray(){
         JsonArray array = new JsonArray();
-        for( RenderElement entry : getElements() ) {
-            array.add(entry.getJSON());
+        for( RenderElement element : getElements() ) {
+            if (element instanceof ElementCollection){
+                JsonObject el = element.getJSON();
+                el.add(element.getName(),element.getJSON());
+                array.add(el);
+            }
+            else array.add(element.getJSON());
         }
         return array;
     }
