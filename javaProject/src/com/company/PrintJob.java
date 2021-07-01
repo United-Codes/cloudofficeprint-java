@@ -241,7 +241,6 @@ public class PrintJob {
      */
     public Response execute() throws Exception {
         JsonObject JSONForServer = getJSON();
-        System.out.println("Json for server : " + JSONForServer.toString());
         if (server.isReachable() == true){
             return server.sendPOSTRequest(JSONForServer);
         }

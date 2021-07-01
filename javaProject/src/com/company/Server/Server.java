@@ -295,11 +295,6 @@ public class Server {
         System.out.println(response + "\n");
         return response.toString();
 
-        //Parsing Response as JSON
-        //JSONObject myResponse = new JSONObject(response.toString());
-        //System.out.println("result after Reading JSON Response");
-        //System.out.println(myResponse);
-        //System.out.println(myResponse.get("docx"));
         }
         catch (Exception e){
             System.out.println(e);
@@ -314,6 +309,7 @@ public class Server {
      * @return Response object containing the file extension and body (in bytes)
      */
     public Response sendPOSTRequest(JsonObject postData) throws Exception{
+        System.out.println("Json for server : " + postData.toString());
         URL obj = new URL(this.url);
         HttpURLConnection con;
         if(getProxyPort()!=null){
@@ -334,10 +330,10 @@ public class Server {
         outputStream.flush();
         outputStream.close();
         int responseCode = con.getResponseCode();
-        System.out.println("\nSending 'POST' request to URL : " + url);
+        System.out.println("Sending 'POST' request to URL : " + url);
         if (responseCode == 200) {
             System.out.println("Response Code : " + responseCode);
-            System.out.println("Content-Type : " + con.getHeaderField("Content-Type"));
+            System.out.println("Content-Type : " + con.getHeaderField("Content-Type")+"\n");
             MimeTypes allTypes = MimeTypes.getDefaultMimeTypes();
             MimeType type = allTypes.forName(con.getHeaderField("Content-Type"));
             String ext = type.getExtension();
@@ -359,7 +355,6 @@ public class Server {
                 response.append(inputLine);
             }
             in.close();
-            //System.out.println(response.toString());
             throw new AOPException(responseCode,response.toString());
         }
     }

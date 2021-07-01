@@ -1,8 +1,6 @@
 {
-  "aop_remote_debug": "No","apex_version": "web editor 2",
+  "aop_remote_debug": "No","apex_version": "java_sdk_version",
   "api_key": "1C511A58ECC73874E0530100007FD01A",
-  "version": "3.0",
-  "tool": "webeditor-new",
   "prepend_files": [],
   "append_files": [],
   "template": {

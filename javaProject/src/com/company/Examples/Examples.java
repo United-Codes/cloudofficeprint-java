@@ -3,6 +3,7 @@ package com.company.Examples;
 import com.company.AOPException;
 import com.company.Output.Output;
 import com.company.PrintJob;
+import com.company.RenderElements.ElementCollection;
 import com.company.RenderElements.Property;
 import com.company.RenderElements.RenderElement;
 import com.company.Resources.Base64Resource;
@@ -26,6 +27,7 @@ public class Examples {
             base64Resource.setFileFromLocalFile("./src/com/company/Examples/templateTest.docx");
 
             Property property = new Property("first_name","DemoName");
+            //ElementCollection collection = new ElementCollection();
             Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
             data.put("output",property);
 
