@@ -3,8 +3,7 @@ package com.company.RenderElements;
 import com.google.common.collect.ImmutableSet;
 import com.google.gson.JsonObject;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * List of properties' name and value.
@@ -31,10 +30,33 @@ public class PropertyList extends RenderElement{
     /**
      * List of properties' name and value.
      * In a template the tags '{name}' will be replaced by 'value'.
+     * @param properties Mapping of names to values of the different properties.
+     */
+    public PropertyList(Hashtable<String,String> properties){
+        setFromDict(properties);
+    }
+
+    /**
+     * List of properties' name and value.
+     * In a template the tags '{name}' will be replaced by 'value'.
      * @param properties Array of properties.
      */
     public PropertyList(Property[] properties){
         setProperties(properties);
+    }
+
+
+    /**
+     * Sets the list of properties from a mapping.
+     * @param properties Hashtable of (propertyName,propertyValue).
+     */
+    public void setFromDict(Hashtable<String,String> properties){
+        ArrayList<Property> propertyList = new ArrayList<Property>();
+        for (Map.Entry<String,String> entry : properties.entrySet()){
+            Property property = new Property(entry.getKey(),entry.getValue());
+            propertyList.add(property);
+        }
+        setProperties( propertyList.toArray(new Property[0]));
     }
 
     /**

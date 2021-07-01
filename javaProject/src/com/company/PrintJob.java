@@ -155,8 +155,7 @@ public class PrintJob {
     /**
      * A print job for the AOP server containing all the necessary information to generate the adequate JSON for the AOP server.
      * If you don't want to instantiate a variable, use null for this argument.
-     * @param data data Hashtable<filename, RenderElement>
-     *             Renderelements will replace their corresponding tag in the template.
+     * @param data Hashtable of (filename, RenderElement) elements.
      *             Multiple output files will be produced if the hashtable has more then one element, the AOP server will return
      *             a zip file containing all of them.
      * @param server Server to user for this printjob.

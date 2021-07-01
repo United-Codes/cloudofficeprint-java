@@ -49,7 +49,7 @@ public class Command {
     public JsonObject getJSON(){
         JsonObject json =new JsonObject();
         json.addProperty("command",getCommand());
-        json.add("args",getArgs());
+        json.add("command_parameters",getArgs());
         return json;
     }
 
