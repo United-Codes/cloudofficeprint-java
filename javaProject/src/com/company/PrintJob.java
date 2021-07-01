@@ -178,14 +178,6 @@ public class PrintJob {
             file.addProperty("filename",data.getKey());
             file.add("data",data.getValue().getJSON());
 
-            /*//this need to change for final version
-            JsonArray testttt = new JsonArray();
-            String ret = "{\"first_name\":\"DemoName\",\"last_name\":\"DemoLastName\",\"city\":\"DemoCity\"}";
-            JsonObject testj = new JsonParser().parse(ret).getAsJsonObject();
-            testttt.add(testj);
-            file.add("data",testttt);
-            //this need to change for final version*/
-
             files.add(file);
         }
         jsonForServer.add("files", files);
@@ -216,8 +208,12 @@ public class PrintJob {
         return jsonForServer;
     }
 
-
-    //add async version
+    /**
+     * Creates the adequate JSON and sends it to the AOP server.
+     * @return The response of the AOP server.
+     * @throws Exception If the server is not reachable.
+     * @throws AOPException If the server response doesn't have a 200 code.
+     */
     public Response execute() throws Exception {
         JsonObject JSONForServer = getJSON();
         System.out.println("Json for server : " + JSONForServer.toString());
@@ -227,6 +223,6 @@ public class PrintJob {
         else {
             throw new Exception("Server is not reachable.");
         }
-
     }
+
 }

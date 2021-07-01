@@ -24,20 +24,7 @@ public class Main {
         try {
             System.out.println("hello world");
 
-            JsonArray dat = new JsonArray();
-            dat.add("Volvo");
-            dat.add("Text");
-            dat.add("Bmw");
-
-            HashMap<String, JsonArray> map = new HashMap<>();
-            map.put("vishal", dat);
-            map.put("sachin", dat);
-
-
-            AOPChart test = new AOPChart( "hello", dat,map,"title","xtitle","ytitle","y2title","x2title");
-            test.getJSON();
-
-            Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,null,null);
+            Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,null,null,null,null);
             Output output = new Output("pdf","raw",null,null,null,null);
             Base64Resource base64Resource = new Base64Resource();
             base64Resource.setFileFromLocalFile("./src/templateTest.docx");
@@ -54,10 +41,8 @@ public class Main {
 
             String ret = server.readJson("./src/test.json");
             JsonObject jsonObject = new JsonParser().parse(ret).getAsJsonObject();
+            server.sendPOSTRequest(jsonObject);
             //System.out.println("Correct Json : " + jsonObject);
-
-            //System.out.println("Mine : " + printJob.getJSON().get("files").toString().replace("\\\"","\""));
-            //System.out.println("Correct : " + jsonObject.get("files"));
             //JSONAssert.assertEquals(printJob.getJSON().get("template").toString(), jsonObject.get("template").toString(), false);
 
             //Response response = printJob.execute();

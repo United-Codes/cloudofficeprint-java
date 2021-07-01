@@ -294,10 +294,10 @@ public class PDFOptions {
             }
         }
         if (getPageWidth()!=null){
-            json.addProperty("output_page_width", getPageWidth()); //check this with Sunil
+            json.addProperty("output_page_width", getPageWidth());
         }
         if (getPageHeight()!=null){
-            json.addProperty("output_page_height", getPageHeight()); //check this with Sunil
+            json.addProperty("output_page_height", getPageHeight());
         }
         if (getPageFormat()!=null){
             json.addProperty("output_page_format", getPageFormat());
@@ -306,7 +306,10 @@ public class PDFOptions {
             json.addProperty("output_merge", getMerge());
         }
         if (getLandscape()!= null && getLandscape()==true){
-            json.addProperty("output_page_orientation", "landscape"); //this mises in the python sdk Sunil
+            json.addProperty("output_page_orientation", "landscape");
+        }
+        if (getSignCertificate()!= null){
+            json.addProperty("output_sign_certificate", getSignCertificate());
         }
         return json;
     }

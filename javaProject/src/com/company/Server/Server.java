@@ -9,6 +9,8 @@ import org.apache.tika.mime.MimeTypes;
 
 import java.io.*;
 import java.net.HttpURLConnection;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
 import java.net.URL;
 import java.util.Map;
 import java.util.Scanner;
@@ -21,9 +23,41 @@ public class Server {
     private String APIKey;
     private JsonObject loggingInfo;
     private String url;
-    //private String proxies; not sure needed?
     private Printer printer;
     private Commands commands;
+    private String proxyIP;
+    private Integer proxyPort;
+    private Boolean AOPDebug;
+
+
+
+    /**
+     * @return IP address of the proxy used, null if not used.
+     */
+    public String getProxyIP() {
+        return proxyIP;
+    }
+
+    /**
+     * @param proxyIP IP address of the proxy used, null if not used.
+     */
+    public void setProxyIP(String proxyIP) {
+        this.proxyIP = proxyIP;
+    }
+
+    /**
+     * @return Port of the proxy used, null if not used.
+     */
+    public Integer getProxyPort() {
+        return proxyPort;
+    }
+
+    /**
+     * @param proxyPort Port of the proxy used, null if not used.
+     */
+    public void setProxyPort(Integer proxyPort) {
+        this.proxyPort = proxyPort;
+    }
 
     /**
      * Only applicable for service users.
@@ -133,13 +167,18 @@ public class Server {
      * @param commands Commands object with commands for the AOP server to run before or after the post processing.
      * @param loggingInfo When the AOP server is started with --enable_printlog, it will create a file on the server called server_printjob.log.
      *                    Jsonobject with the extra information you want to be logged in that file.
+     * @param proxyIP IP of the optional proxy. Only HTTP proxies supported.
+     * @param proxyPort Port of the optional proxy. Only HTTP proxies supported.
      */
-    public Server(String url, String APIKey, Printer printer, Commands commands, JsonObject loggingInfo) {
+    public Server(String url, String APIKey, Printer printer, Commands commands, JsonObject loggingInfo,
+                  String proxyIP, Integer proxyPort) {
         setUrl(url);
         setAPIKey(APIKey);
         setPrinter(printer);
         setCommands(commands);
         setLoggingInfo(loggingInfo);
+        setProxyIP(proxyIP);
+        setProxyPort(proxyPort);
     }
 
     /**
@@ -234,7 +273,14 @@ public class Server {
         try {
         String url = urlToJoin;
         URL obj = new URL(url);
-        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        HttpURLConnection con;
+        if(getProxyPort()!=null){
+            Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(getProxyIP(), getProxyPort()));
+            con = (HttpURLConnection) obj.openConnection(proxy);
+        }
+        else{
+            con = (HttpURLConnection) obj.openConnection();
+        }
         con.setRequestMethod("GET");
         int responseCode = con.getResponseCode();
         System.out.println("\nSending 'GET' request to URL : " + url);
@@ -269,7 +315,14 @@ public class Server {
      */
     public Response sendPOSTRequest(JsonObject postData) throws Exception{
         URL obj = new URL(this.url);
-        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        HttpURLConnection con;
+        if(getProxyPort()!=null){
+            Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(getProxyIP(), getProxyPort()));
+            con = (HttpURLConnection) obj.openConnection(proxy);
+        }
+        else{
+            con = (HttpURLConnection) obj.openConnection();
+        }
         con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
         con.setRequestProperty("Accept", "application/json");
         con.setRequestProperty("User-Agent", "AOPJavaSDK");
