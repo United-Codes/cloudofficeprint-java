@@ -2,6 +2,7 @@ package com.company.Examples;
 
 import com.company.AOPException;
 import com.company.Output.Output;
+import com.company.Output.PDFOptions;
 import com.company.PrintJob;
 import com.company.RenderElements.ElementCollection;
 import com.company.RenderElements.Images.ImageBase64;
@@ -46,7 +47,9 @@ public class Examples {
         try {
             Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,
                     null,null,null,null);
-            Output output = new Output("pdf","raw",null,null,null,null);
+            PDFOptions pdfOptions = new PDFOptions();
+            pdfOptions.setReadPassword("hello");
+            Output output = new Output("pdf","raw",null,null,null,pdfOptions);
             Base64Resource base64Resource = new Base64Resource();
             base64Resource.setFileFromLocalFile("./src/com/company/Examples/templateTest.docx");
 
@@ -61,7 +64,7 @@ public class Examples {
             dataList.add(property1);
             dataList.add(property2);
             dataList.add(property3);
-            dataList.add(image);
+            //dataList.add(image);
             ElementCollection data1 = new ElementCollection("data1",dataList);
 
             Hashtable<String, String> propertyDict = new Hashtable<String, String>();
@@ -70,7 +73,7 @@ public class Examples {
             propertyDict.put("city","C");
             ElementCollection data2 = new ElementCollection("data2");
             data2.setFromDict(propertyDict);
-            data2.addElement(image);
+            //data2.addElement(image);
 
             Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
             data.put("output1",data1);
