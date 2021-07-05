@@ -66,10 +66,10 @@ public class ElementCollection extends RenderElement{
     }
 
     /**
-     * Sets the list of properties from a mapping.
+     * Adds the list of properties from a mapping.
      * @param properties Hashtable of (propertyName,propertyValue).
      */
-    public void setFromDict(Hashtable<String,String> properties){
+    public void addFromDict(Hashtable<String,String> properties){
         for (Map.Entry<String,String> entry : properties.entrySet()){
             Property property = new Property(entry.getKey(),entry.getValue());
             getElements().add(property);

@@ -1,6 +1,8 @@
 package com.company.Examples;
 
 import com.company.AOPException;
+import com.company.Output.CloudAcessToken.AWSToken;
+import com.company.Output.CloudAcessToken.OAuth2Token;
 import com.company.Output.Output;
 import com.company.Output.PDFOptions;
 import com.company.PrintJob;
@@ -49,9 +51,10 @@ public class Examples {
                     null,null,null,null);
             PDFOptions pdfOptions = new PDFOptions();
             pdfOptions.setReadPassword("hello");
+            pdfOptions.setLandscape(true);
             Output output = new Output("pdf","raw",null,null,null,pdfOptions);
             Base64Resource base64Resource = new Base64Resource();
-            base64Resource.setFileFromLocalFile("./src/com/company/Examples/templateTest.docx");
+            base64Resource.setFileFromLocalFile("./src/com/company/Examples/localTemplate.docx");
 
             Property property1 = new Property("first_name","Quent");
             Property property2 = new Property("last_name","Stroob");
@@ -72,7 +75,7 @@ public class Examples {
             propertyDict.put("last_name","A");
             propertyDict.put("city","C");
             ElementCollection data2 = new ElementCollection("data2");
-            data2.setFromDict(propertyDict);
+            data2.addFromDict(propertyDict);
             //data2.addElement(image);
 
             Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
@@ -90,5 +93,91 @@ public class Examples {
         catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    /**
+     * This test stores the output on Google Drive.
+     */
+    public void testCloudAccessToken(String OAUTH2token){
+        OAuth2Token googleToken = new OAuth2Token("Google Drive",OAUTH2token);
+        AWSToken amazonToken = new AWSToken("AWS_access_key_id","AWS_secret_access_key");
+        System.out.println(googleToken.getJSON());
+        System.out.println(amazonToken.getJSON());
+    }
+
+    public void loopExample(){
+        try {
+            Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,
+                    null,null,null,null);
+
+            Output output = new Output("pdf","raw",null,null,null,null);
+            Base64Resource base64Resource = new Base64Resource();
+            base64Resource.setFileFromLocalFile("./src/com/company/Examples/orderTemplate.docx");
+
+            //Main object that includes all the data
+            ElementCollection data = new ElementCollection("data");
+
+            // Company information
+            Property companyName = new Property("company_name","APEXOfficePrint");
+            ImageBase64 companyLogo = new ImageBase64("company_logo");
+            companyLogo.setFileFromLocalFile("./src/com/company/Examples/logoAOP.jpg");
+            companyLogo.setMaxWidth(200);
+            companyLogo.setMaxHeight(200);
+            data.addElement(companyName);
+            data.addElement(companyLogo);
+
+            // Customer information
+            Hashtable<String, String> customerInfo = new Hashtable<String, String>();
+            customerInfo.put("cust_city","B");
+            customerInfo.put("cust_first_name","A");
+            customerInfo.put("cust_last_name","C");
+            data.addFromDict(customerInfo);
+
+            //Order 1
+            ElementCollection order1 = new ElementCollection("order1");
+            Hashtable<String, String> orderInfo = new Hashtable<String, String>();
+            orderInfo.put("order_name","Order 1");
+            orderInfo.put("order_total","610");
+            orderInfo.put("ref_nb","5645");
+            order1.addFromDict(customerInfo);
+
+            //Product 1 for order 1
+            ElementCollection product1 = new ElementCollection("product1");
+            Hashtable<String, String> product1Info = new Hashtable<String, String>();
+            product1Info.put("product_name","Order 1");
+            product1Info.put("quantity","3");
+            product1Info.put("unit_price","50");
+            product1Info.put("in_stock","3");
+            product1.addFromDict(product1Info);
+            ImageBase64 image1 = new ImageBase64("image","/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBhAQDxINEhQPEw8SEBcVEBQUEBAP\r\nFBAQFBAVFhQQFBQXGyYeFxkjGRISHy8gIygsLCwsFR8xNTwqNSYrLCkBCQoKDQoN\r\nGQwOGikeHBgpNSkpKSk0KSwpKSk0MCw0NSkpKSksMikpLC4wKSwqKSkpKSkpKjQ0\r\nKSkpKjYpNCkyKf/AABEIAGgAaAMBIgACEQEDEQH/xAAbAAACAwEBAQAAAAAAAAAA\r\nAAAABQIDBAEHBv/EADgQAAIBAgMEBgYKAwAAAAAAAAABAgMRBBIhBTFBUWFxgZGx\r\n0RMWIlKhwQYyYnKSorLh8PEUQlP/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEB\r\nAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A9xAAAAA43YDNjdpU6P13Z8Et\r\nW+wX+tFPhGfwQlxSdSrObu7y046cLdli+ns52vu62A19ZIe5LvRbS2/Se9Sj1q/g\r\nJqWCbbXItlhcu9PxXwA+lp1VJZk00+KJCfYtVRk6d1qsy15NLTv+A4AAAAAAAAAA\r\nAwbRx7ptRSV2r3fDsF06spJyk29G10dhbtN3qtckl8/mQy6NdAGLA1LeybZbtDBK\r\ni4u5vjVWXM2kubAoouTk1mk8u9ejyp3XCTWvYzXOqorMyFDFQnua6tz67bzLj53Q\r\nGKlXbrqb0TurLgmtPiOqGJnHc9OT1Qow1FucXykvEcTQDTDVs8VLdzXJotMWzZaS\r\nj037/wCjaAAAAAAACTFK9Sb+14JIjF2O1PrS+8/FnUwMmNxcKavLe90Vq5dSFTwO\r\nIxLTlelT4J3Vl1b2+kfwpxTbSV3vfHvJ5uICWv8ARySSdObutybt8UcpzrR0rQlZ\r\nf7LXvtvHaqABmwltJKzXQamRVJJ3sk+jS/XzJsC/Au0+uIwF1DScevxQxAAAAAAA\r\nBFU+tL7z/UyJ2b9qS+0/1M7YATLEiOQ7GNgJJO/C1tAtqSQAdsQJORyIFkXZp8mv\r\nEZiqW4aRd0nzQHQAAAjOVk29yV32EjNtCpanLp07wEyXEsvYqlVUd/8AP5clU1Vu\r\nene7AXU5XSb32JoruSTAkpq9tL8gcjmVXvxOMCRKKIRZK4EhhhneEerwFqZvwUvY\r\n6m/G/wAwNAAAAL9sJuMdbe1ustdBgKts1NYx6G+/+gF0r3XFX1emnwLL8en5lfpl\r\nxaXaV1MZDRZo3bVldcwNiJJlDrHP8gDSpHGzI8dHNk4/tcs9OBoTJJmZV0WKogLT\r\nbs6Wkl0371+wuzGzZsvaa5rwf7gMQAAAWbU2FCvJTbkmlZ21uuHQuIABi9ScM9+d\r\n9sV8jtP6E4WMlJekTTunmW/uAANi2BT96r+JeRx/R+lzqfiXkAAQ9WaV82arf7y8\r\nifq9T96r+KPkcADvq/D36nfHyBbAj79T8vkAASWxV/0qfl8i3C7OySzZ5PTc0l4A\r\nAG0AAD//2Q==");
+            product1.addElement(image1);
+
+            //Product 2 for order 1
+            ElementCollection product2 = new ElementCollection("product1");
+            Hashtable<String, String> product2Info = new Hashtable<String, String>();
+            product2Info.put("product_name","Trousers");
+            product2Info.put("quantity","2");
+            product2Info.put("unit_price","80");
+            product2Info.put("in_stock","1");
+            product2.addFromDict(product2Info);
+            ImageBase64 image2 = new ImageBase64("image","/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsU\\r\\nFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5Ojf/2wBDAQoK\\r\\nCg0MDRoPDxo3JR8lNzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3\\r\\nNzc3Nzc3Nzc3Nzc3Nzf/wAARCABoAGgDASIAAhEBAxEB/8QAHAABAQACAwEBAAAA\\r\\nAAAAAAAAAAcBBQQGCAID/8QAPRAAAQMDAAUHCAgHAAAAAAAAAQACAwQFEQYHEiFB\\r\\nEyIxUWFxoSMygZGxssHRFBUXQnOiwuEINVJiY5Lw/8QAFgEBAQEAAAAAAAAAAAAA\\r\\nAAAAAAEC/8QAFhEBAQEAAAAAAAAAAAAAAAAAAAEx/9oADAMBAAIRAxEAPwC4IiIM\\r\\nrCIg02mV2msWi1zulNyRmpad0kYlBLS7gDgjioH9q+mVRkG5RQ/hUkfxBVE1/wBx\\r\\nmp9GKKgiJaytqgJSOLWDaA/22fUoZAcwskA+9zh2ZPzVSu1yaw9LZRz9IKvH+OKN\\r\\nvsYvlmmek4eyV16uLwJBzTOQCenBAxuWjiY1swjxuLNof96Av2iZtU+Cd4dg9+Qi\\r\\nPUdkucN5tNLcaYERVEYeA7pHWD3HIXOU51J10k1jraF7tptLUbUeTvDXjOPWD61R\\r\\nlGjiiIgIiIMrCIgysIiCOfxCTbQstM3pHKyeLB81HaPPloXjGDnHYVYtfcYdXWVw\\r\\nbl3JTA92WKPy+Sq439AcC0+1VHMjOWwv+807JXLi3Pdu3Eg56iuJT+cWg8071ywc\\r\\nIioajpD9PvEY6DFE71F3zVcUj1GRONZeJgeaI4mEdpLj8FXFFhxRERRERAREQZWE\\r\\nRBJte0flLHN+Oz3Co5eOZG2TGcOHtVs16szbrPJje2qe3Pez9lFrwM0TtyrNYo3Z\\r\\n2CuaOhauhf5Nh7ls3bgT1DoKCt6iTmkvO7onjH5SqmpdqIwbZd3jjUs9xVFRqHFE\\r\\nRAREQZWERBlYREEw16Of9WWho8w1Tye8M3fFRqtbtwFvXn2K068o9qzWx+7m1Z3Z\\r\\n/sKjFUPJFVm61NAc0+OIOFtXzBpZtea9vVxWotxB5RufvLZAcpA0EZLDgoLPqF/k\\r\\n91B4VTfcCqKleoUn6tu7DwqGe7+yqijRxREQEREBERAREQTjXfHtWC3yZI2azHfl\\r\\njvkopVHmY61ateJA0ftw4/Th7jlE6l2B6FUutZbqdxp6qdmTyUzGFvDnB5z+VbKl\\r\\ndtMeR6WkbwU0coZaux6Qzx9FGKed3aNtzT4OJ9C+WO2XZG8ObvCIsGoZ+YL207nc\\r\\nrC7HYWu+Sq6iOomqLdI7jS7RxLRh5Hax4H6yrco1BE4ogIiICIiAiIgm+vFubBbn\\r\\ndVaPccofWuPmbO8g4wrlrxZIdGKJ7Gkhla0uPVzHY8VEWkAgzOGT0AqpVE1QWMT6\\r\\nFaWzSAbdYx1MMjOyGxkjxf4Kd0+HxjaG9vR3KxainNqtGbzGHDZdXubu4Dk2BSSo\\r\\npH2+4VFHNukp3uid3tOPgg7hqdcINPI2jOZaWVvsd+lX1eeNVTj9odvA382UHu5N\\r\\ny9DqEETiiKIiICIiAiIg1mktlh0hsdVaql7o46hoBe0AluCCDv7QugQalLYJM1F3\\r\\nrXs/pjYxnjvREHdNEtEbXolST09qExE8nKSvmk2nOOMDqHgpppdq20irdIq2uoI6\\r\\nSaCpnfK3E+y5oJzghwHhlEQdh1eatn2G4C8XeoD65meRihflke00g7Rxzjv7h2qk\\r\\nIiAiIgIiIP/Z");
+            product2.addElement(image2);
+
+
+            Hashtable<String, RenderElement> file = new Hashtable<String, RenderElement>();
+            file.put("output",data);
+
+            PrintJob printJob = new PrintJob(file,server,output,base64Resource,null,null,null,null);
+
+            Response response = printJob.execute();
+            response.downloadLocally("./downloads/outputLocalTemplate");
+
+        }catch (AOPException e){
+            e.printStackTrace();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 }
