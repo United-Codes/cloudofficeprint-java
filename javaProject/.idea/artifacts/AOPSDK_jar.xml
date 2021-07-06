@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="AOPSDK:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/AOPSDK_jar</output-path>
+    <root id="archive" name="javaProject.jar">
+      <element id="module-output" name="javaProject" />
+    </root>
+  </artifact>
+</component>

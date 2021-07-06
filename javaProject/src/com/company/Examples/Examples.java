@@ -28,7 +28,8 @@ public class Examples {
     public void localJson(){
         try {
             Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,
-                    null,null,null,null);
+                    //null,null,"127.0.0.1",3000);
+            null,null,null,null);
             String ret = server.readJson("./src/com/company/Examples/test.json");
             JsonObject jsonObject = new JsonParser().parse(ret).getAsJsonObject();
             Response response = server.sendPOSTRequest(jsonObject);

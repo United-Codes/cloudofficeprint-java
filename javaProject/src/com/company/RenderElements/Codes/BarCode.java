@@ -1,5 +1,6 @@
-package com.company.RenderElements;
+package com.company.RenderElements.Codes;
 
+import com.company.RenderElements.RenderElement;
 import com.google.common.collect.ImmutableSet;
 import com.google.gson.JsonObject;
 
@@ -9,7 +10,7 @@ import java.util.Set;
 /**
  * This class represents a barcode or a QR code (created using the data of the key) for a template.
  */
-public class Code extends RenderElement{
+public class BarCode extends Code {
 
     private Integer height;
     private Integer width;
@@ -19,6 +20,7 @@ public class Code extends RenderElement{
     private Integer paddingWidth;
     private Integer paddingHeight;
     private String qrErrorCorrectionLevel;
+    private String extraOptions;
 
     /**
      * @return Height for the generated code.
@@ -143,16 +145,37 @@ public class Code extends RenderElement{
     }
 
     /**
-     * This class represents a barcode or a QR code (created using the data of the key) for a template.
+     * If you want to include extra options like including barcode text on the botto
+     * The options should be space separated and should be followed by a "=" and their value.
+     * E.g.: "includetext guardwhitespace guardwidth=3 guardheight=3".
+     * Please visit: https://github.com/bwipp/postscriptbarcode/wiki/Symbologies-Reference for all option availability.
+     * @return These extra options.
+     */
+    public String getExtraOptions() {
+        return extraOptions;
+    }
+
+    /**
+     * If you want to include extra options like including barcode text on the botto
+     * The options should be space separated and should be followed by a "=" and their value.
+     * E.g.: "includetext guardwhitespace guardwidth=3 guardheight=3".
+     * Please visit: https://github.com/bwipp/postscriptbarcode/wiki/Symbologies-Reference for all option availability.
+     * @param extraOptions These extra options.
+     */
+    public void setExtraOptions(String extraOptions) {
+        this.extraOptions = extraOptions;
+    }
+
+    /**
+     * This class represents a barcode (created using the data of the key) for a template.
      * All the options can be set with the setter functions.
-     * @param key Key_type, e.g. "barcode_type" if the key used is "barcode".
-     *            This field contains the type of barcode required. The options can be found on:
-     *            http://www.apexofficeprint.com/docs/#615-barcode-qrcode-tags
+     * @param name Name of this code for the tag.
+     * @param type Type of barcode required. The options can be found on:
+     *             http://www.apexofficeprint.com/docs/#615-barcode-qrcode-tags
      * @param value Data to create the code from.
      */
-    public Code(String key, String value){
-        setName(key);
-        setValue(String.valueOf(value));
+    public BarCode(String name, String type, String value){
+        super(name,type,value);
     }
 
     /**
@@ -189,13 +212,4 @@ public class Code extends RenderElement{
         return json;
     }
 
-    /**
-     * @return An immutable set containing all available template tags this element can replace.
-     */
-    @Override
-    public Set<String> getTemplateTags() {
-        Set<String> hash_Set = new HashSet<String>();
-        hash_Set.add("{'"+getName()+"}");
-        return ImmutableSet.copyOf(hash_Set);
-    }
 }
