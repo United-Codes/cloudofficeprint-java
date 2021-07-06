@@ -10,19 +10,19 @@ import java.util.Iterator;
  */
 public class BubbleSeries extends XYSeries {
 
-    private JsonArray sizes = new JsonArray();
+    private Integer[] sizes;
 
     /**
      * @return Sizes of each of the bubbles.
      */
-    public JsonArray getSizes() {
+    public Integer[] getSizes() {
         return sizes;
     }
 
     /**
      * @param sizes Sizes of each of the bubbles.
      */
-    public void setSizes(JsonArray sizes) {
+    public void setSizes(Integer[] sizes) {
         this.sizes = sizes;
     }
 
@@ -33,7 +33,7 @@ public class BubbleSeries extends XYSeries {
      * @param y Y-data of the chart.
      * @param sizes Sizes of each of the bubbles.
      */
-    public BubbleSeries(String name, String[] x, String[] y, JsonArray sizes){
+    public BubbleSeries(String name, String[] x, String[] y, Integer[] sizes){
         setName(name);
         setX(x);
         setY(y);
@@ -46,20 +46,15 @@ public class BubbleSeries extends XYSeries {
     @Override
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
-        Iterator itrX = getX().iterator();
-        Iterator itrY = getY().iterator();
-        Iterator itrS = getSizes().iterator();
-        while(itrX.hasNext()) {
+        for (int i = 0; i <getX().length; i++) {
             JsonObject xy = new JsonObject();
-            String x = (String) itrX.next();
-            String y = (String) itrY.next();
-            xy.addProperty("x",x);
-            xy.addProperty("y",y);
+            xy.addProperty("x",getX()[i]);
+            xy.addProperty("y",getY()[i]);
             if (getSizes()!=null){
-                String color = (String) itrS.next();
-                xy.addProperty("size",color);
+                xy.addProperty("size",getSizes()[i]);
             }
         }
+
         if (getName()!=null){
             json.addProperty("name",getName());
         }

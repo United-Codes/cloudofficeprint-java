@@ -42,15 +42,10 @@ public abstract class XYSeries extends Series {
      */
     public JsonObject getJSONData() {
         JsonObject json = new JsonObject();
-        Iterator itrX = getX().iterator();
-        Iterator itrY = getY().iterator();
-        for ()
-        while(itrX.hasNext()) {
+        for (int i = 0; i <getX().length; i++){
             JsonObject xy = new JsonObject();
-            String x = (String) itrX.next();
-            String y = (String) itrY.next();
-            xy.addProperty("x",x);
-            xy.addProperty("y",y);
+            xy.addProperty("x",getX()[i]);
+            xy.addProperty("y",getY()[i]);
         }
         return json;
     }

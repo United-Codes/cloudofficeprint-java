@@ -1,6 +1,5 @@
 package com.company.RenderElements.Charts.Series;
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import java.util.Iterator;
@@ -10,14 +9,14 @@ import java.util.Iterator;
  */
 public class PieSeries extends XYSeries {
 
-    private JsonArray colors;
+    private String[] colors;
 
     /**
      * Note : If no colors are specified, the document's theme is used.
      * If some colors are specified, but not for all data points, random colors will fill the gaps.
      * @return Individual colors for each pie slice in CSS format.
      */
-    public JsonArray getColors() {
+    public String[] getColors() {
         return colors;
     }
 
@@ -26,7 +25,7 @@ public class PieSeries extends XYSeries {
      * If some colors are specified, but not for all data points, random colors will fill the gaps.
      * @param colors Individual colors for each pie slice.
      */
-    public void setColors(JsonArray colors) {
+    public void setColors(String[] colors) {
         this.colors = colors;
     }
 
@@ -38,7 +37,7 @@ public class PieSeries extends XYSeries {
      * @param colors Colors for each pie slice. Note : If no colors are specified (null argument), the document's theme is used.
      *               If some colors are specified, but not for all data points, random colors will fill the gaps.
      */
-    public PieSeries(String name, String[] x, String[] y, JsonArray colors){
+    public PieSeries(String name, String[] x, String[] y, String[] colors){
         setName(name);
         setX(x);
         setY(y);
@@ -51,18 +50,13 @@ public class PieSeries extends XYSeries {
     @Override
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
-        Iterator itrX = getX().iterator();
-        Iterator itrY = getY().iterator();
-        Iterator itrC = getColors().iterator();
-        while(itrX.hasNext()) {
+
+        for (int i = 0; i <getX().length; i++){
             JsonObject xy = new JsonObject();
-            String x = (String) itrX.next();
-            String y = (String) itrY.next();
-            xy.addProperty("x",x);
-            xy.addProperty("y",y);
+            xy.addProperty("x",getX()[i]);
+            xy.addProperty("y",getY()[i]);
             if (getColors()!=null){
-                String color = (String) itrC.next();
-                xy.addProperty("color",color);
+                xy.addProperty("color",getColors()[i]);
             }
         }
         if (getName()!=null){

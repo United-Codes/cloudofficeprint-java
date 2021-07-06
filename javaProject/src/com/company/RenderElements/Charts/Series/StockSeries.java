@@ -1,6 +1,5 @@
 package com.company.RenderElements.Charts.Series;
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import java.util.Iterator;
@@ -10,79 +9,79 @@ import java.util.Iterator;
  */
 public class StockSeries extends XYSeries {
 
-    private JsonArray high = new JsonArray();
-    private JsonArray low = new JsonArray();
-    private JsonArray close = new JsonArray();
-    private JsonArray open = new JsonArray();
-    private JsonArray volume = new JsonArray();
+    private Integer[] high;
+    private Integer[] low;
+    private Integer[] close;
+    private Integer[] open;
+    private Integer[] volume;
 
     /**
      * @return High values for the open-high-low-close chart.
      */
-    public JsonArray getHigh() {
+    public Integer[] getHigh() {
         return high;
     }
 
     /**
      * @param high High values for the open-high-low-close chart.
      */
-    public void setHigh(JsonArray high) {
+    public void setHigh(Integer[] high) {
         this.high = high;
     }
 
     /**
      * @return Low values for the open-high-low-close chart.
      */
-    public JsonArray getLow() {
+    public Integer[] getLow() {
         return low;
     }
 
     /**
      * @param low Low values for the open-high-low-close chart.
      */
-    public void setLow(JsonArray low) {
+    public void setLow(Integer[] low) {
         this.low = low;
     }
 
     /**
      * @return Close values for the open-high-low-close chart.
      */
-    public JsonArray getClose() {
+    public Integer[] getClose() {
         return close;
     }
 
     /**
      * @param close Close values for the open-high-low-close chart.
      */
-    public void setClose(JsonArray close) {
+    public void setClose(Integer[] close) {
         this.close = close;
     }
 
     /**
      * @return Open values for the open-high-low-close chart.
      */
-    public JsonArray getOpen() {
+    public Integer[] getOpen() {
         return open;
     }
 
     /**
      * @param open Open values for the open-high-low-close chart.
      */
-    public void setOpen(JsonArray open) {
+    public void setOpen(Integer[] open) {
         this.open = open;
     }
 
     /**
      * @return Volume values for the open-high-low-close chart.
      */
-    public JsonArray getVolume() {
+    public Integer[] getVolume() {
         return volume;
     }
 
     /**
      * @param volume Volume values for the open-high-low-close chart.
      */
-    public void setVolume(JsonArray volume) {
+    public void setVolume(Integer[] volume) {
         this.volume = volume;
     }
 
@@ -96,7 +95,7 @@ public class StockSeries extends XYSeries {
      * @param open Open values for the open-high-low-close chart.
      * @param volume Volume values for the open-high-low-close chart.
      */
-    public StockSeries(String name, String[] x, JsonArray high, JsonArray low, JsonArray close, JsonArray open, JsonArray volume){
+    public StockSeries(String name, String[] x, Integer[] high, Integer[] low, Integer[] close, Integer[] open, Integer[] volume){
         setName(name);
         setX(x);
         setHigh(high);
@@ -112,34 +111,21 @@ public class StockSeries extends XYSeries {
     @Override
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
-        Iterator itrX = getX().iterator();
-        Iterator itrY = getY().iterator();
-        Iterator itrH = getHigh().iterator();
-        Iterator itrL = getLow().iterator();
-        Iterator itrC = getClose().iterator();
-        Iterator itrV = getVolume().iterator();
-        Iterator itrO = getOpen().iterator();
-        while(itrX.hasNext()) {
-            JsonObject xy = new JsonObject();
-            String x = (String) itrX.next();
-            String y = (String) itrY.next();
-            xy.addProperty("x",x);
-            xy.addProperty("y",y);
 
-            String high = (String) itrH.next();
-            xy.addProperty("high",high);
-            String low = (String) itrL.next();
-            xy.addProperty("low",low);
-            String close = (String) itrC.next();
-            xy.addProperty("close",close);
+        for (int i = 0; i <getX().length; i++){
+            JsonObject xy = new JsonObject();
+            xy.addProperty("x",getX()[i]);
+            xy.addProperty("y",getY()[i]);
+
+            xy.addProperty("high",getHigh()[i]);
+            xy.addProperty("low",getLow()[i]);
+            xy.addProperty("close",getClose()[i]);
 
             if (getVolume()!=null){
-                String volume = (String) itrV.next();
-                xy.addProperty("volume",volume);
+                xy.addProperty("volume",getVolume()[i]);
             }
             if (getOpen()!=null){
-                String open = (String) itrO.next();
-                xy.addProperty("volume",open);
+                xy.addProperty("volume",getOpen()[i]);
             }
         }
         if (getName()!=null){
