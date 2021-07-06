@@ -185,6 +185,7 @@ public class BarCode extends Code {
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         json.addProperty(getName(),getValue());
+        json.addProperty(getName()+"_type",getType());
         if (getHeight()!= null){
             json.addProperty(getName()+"_height",getHeight());
         }

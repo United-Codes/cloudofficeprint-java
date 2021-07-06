@@ -9,9 +9,8 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        System.out.println("hello");
-        //Examples example = new Examples();
-        //example.localJson(); //works
+        Examples example = new Examples();
+        example.localJson(); //works
         //example.localTemplate(); works
         //example.testCloudAccessToken("token");
         //example.loopExample();
