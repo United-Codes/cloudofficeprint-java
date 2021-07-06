@@ -13,5 +13,6 @@ public class Main {
         //example.localJson(); //works
         //example.localTemplate(); works
         //example.testCloudAccessToken("token");
+        example.loopExample();
     }
 }
