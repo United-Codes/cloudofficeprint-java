@@ -34,7 +34,7 @@ public class ColumnChart extends Chart{
      * @param options Options of the chart.
      * @param columnSeries Series with the data for the chart.
      */
-    public ColumnChart(String name, ChartOptions options, ColumnSeries[] columnSeries){
+    public ColumnChart(String name, ChartOptions options, ColumnSeries ... columnSeries){
         setName(name);
         setOptions(options);
         for (ColumnSeries columnSerie: columnSeries){

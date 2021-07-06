@@ -33,7 +33,7 @@ public class BubbleChart extends Chart{
      * @param options Options of the chart.
      * @param series Series with the data for the chart.
      */
-    public BubbleChart(String name, ChartOptions options, BubbleSeries[] series){
+    public BubbleChart(String name, ChartOptions options, BubbleSeries ... series){
         setName(name);
         setOptions(options);
         for (BubbleSeries serie: series){

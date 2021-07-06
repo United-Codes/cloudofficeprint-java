@@ -34,7 +34,7 @@ public class ScatterChart extends Chart{
      * @param options Options of the chart.
      * @param series Series with the data for the chart.
      */
-    public ScatterChart(String name, ChartOptions options, ScatterSeries[] series){
+    public ScatterChart(String name, ChartOptions options, ScatterSeries ... series){
         setName(name);
         setOptions(options);
         for (ScatterSeries serie: series){

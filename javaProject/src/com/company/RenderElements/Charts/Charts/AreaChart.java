@@ -34,7 +34,7 @@ public class AreaChart extends Chart{
      * @param options Options of the chart.
      * @param series Series with the data for the chart.
      */
-    public AreaChart(String name, ChartOptions options, AreaSeries[] series){
+    public AreaChart(String name, ChartOptions options, AreaSeries ... series){
         setName(name);
         setOptions(options);
         for (AreaSeries serie: series){

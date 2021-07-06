@@ -34,7 +34,7 @@ public class DoughnutChart extends Chart{
      * @param options Options of the chart.
      * @param pieSeries Series with the data for the chart.
      */
-    public DoughnutChart(String name, ChartOptions options, PieSeries[] pieSeries){
+    public DoughnutChart(String name, ChartOptions options, PieSeries ... pieSeries){
         setName(name);
         setOptions(options);
         for (PieSeries serie: pieSeries){

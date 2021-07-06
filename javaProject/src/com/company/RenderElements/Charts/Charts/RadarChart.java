@@ -33,7 +33,7 @@ public class RadarChart extends Chart{
      * @param options Options of the chart.
      * @param series Series with the data for the chart.
      */
-    public RadarChart(String name, ChartOptions options, RadarSeries[] series){
+    public RadarChart(String name, ChartOptions options, RadarSeries ... series){
         setName(name);
         setOptions(options);
         for (RadarSeries serie: series){

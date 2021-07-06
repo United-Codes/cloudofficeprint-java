@@ -34,7 +34,7 @@ public class Pie3DChart extends Chart{
      * @param options Options of the chart.
      * @param pieSeries Series with the data for the chart.
      */
-    public Pie3DChart(String name, ChartOptions options, PieSeries[] pieSeries){
+    public Pie3DChart(String name, ChartOptions options, PieSeries ... pieSeries){
         setName(name);
         setOptions(options);
         for (PieSeries serie: pieSeries){

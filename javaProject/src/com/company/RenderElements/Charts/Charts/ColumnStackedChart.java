@@ -33,7 +33,7 @@ public class ColumnStackedChart extends Chart{
      * @param options Options of the chart.
      * @param stackedColumnSeries Series with the data for the chart.
      */
-    public ColumnStackedChart(String name, ChartOptions options, ColumnStackedSeries[] stackedColumnSeries){
+    public ColumnStackedChart(String name, ChartOptions options, ColumnStackedSeries ... stackedColumnSeries){
         setName(name);
         setOptions(options);
         for (ColumnStackedSeries columnSerie: stackedColumnSeries){

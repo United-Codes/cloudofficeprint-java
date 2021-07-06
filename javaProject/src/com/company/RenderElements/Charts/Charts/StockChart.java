@@ -34,7 +34,7 @@ public class StockChart extends Chart{
      * @param options Options of the chart.
      * @param series Series with the data for the chart.
      */
-    public StockChart(String name, ChartOptions options, StockSeries[] series){
+    public StockChart(String name, ChartOptions options, StockSeries ... series){
         setName(name);
         setOptions(options);
         for (StockSeries serie: series){

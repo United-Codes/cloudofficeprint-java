@@ -33,7 +33,7 @@ public class ColumnStackedPercentChart extends Chart{
      * @param options Options of the chart.
      * @param columnStackedPercentageSeries Series with the data for the chart.
      */
-    public ColumnStackedPercentChart(String name, ChartOptions options, ColumnStackedPercentSeries[] columnStackedPercentageSeries){
+    public ColumnStackedPercentChart(String name, ChartOptions options, ColumnStackedPercentSeries ... columnStackedPercentageSeries){
         setName(name);
         setOptions(options);
         for (ColumnStackedPercentSeries columnStackedPercentSerie: columnStackedPercentageSeries){
