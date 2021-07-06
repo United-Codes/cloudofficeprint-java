@@ -41,14 +41,14 @@ public class AOPChart extends  RenderElement{
     }
 
     /**
-     * @return HashMap<Name of the serie, JsonArray of y-data> in the same format as xData.
+     * @return HashMap(Name of the serie, JsonArray of y-data) in the same format as xData.
      */
     public HashMap<String, JsonArray> getYData() {
         return yData;
     }
 
     /**
-     * @param yData HashMap<Name of the serie, JsonArray of y-data> in the same format as xData.
+     * @param yData HashMap(Name of the serie, JsonArray of y-data) in the same format as xData.
      */
     public void setYData(HashMap<String, JsonArray> yData) {
         this.yData = yData;
@@ -127,9 +127,9 @@ public class AOPChart extends  RenderElement{
     /**
      * Represent an AOP chart (including data and style). If you don't want te specify some parameters, use null as argument.
      * @param name Name of the chart for the tag.
-     * @param xData ArrayList<String> of the data of the x-axis. Format : ["day 1", "day 2", "day 3", "day 4", "day 5"] or
+     * @param xData ArrayList(String) of the data of the x-axis. Format : ["day 1", "day 2", "day 3", "day 4", "day 5"] or
      *              [{"value": "day 1"}, {"value": "day 2"}, {"value": "day 3"}, {"value": "day 4"}, {"value": "day 5"}]
-     * @param yData HashMap<Name of the serie, ArrayList<y-data>> data in the same format as xData.
+     * @param yData HashMap(Name of the serie), ArrayList(y-data) data in the same format as xData.
      * @param title Title of the chart.
      * @param xTitle Title of the x-axis.
      * @param yTitle Title of the y-axis.

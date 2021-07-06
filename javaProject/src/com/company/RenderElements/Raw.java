@@ -8,7 +8,7 @@ import java.util.Set;
 
 /**
  * Only available for HTML and Markdown templates.
- * When you use the Property Renderelement in HTML or in MD, it will escape any special characters like "<" or "_".
+ * When you use the Property Renderelement in HTML or in MD, it will escape any special characters like "_".
  * By using the Raw Renderelement, nothing will be escaped.
  */
 public class Raw extends RenderElement{

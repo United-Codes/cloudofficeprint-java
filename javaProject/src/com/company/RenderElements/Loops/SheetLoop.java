@@ -40,7 +40,7 @@ public class SheetLoop extends Loop{
     /**
      * To repeat a sheet for each element of elements.
      * @param name     Name of this loop for the tag.
-     * @param elements HashMap<name, elements>, elements to replace the tag with.
+     * @param elements HashMap(name, elements), elements to replace the tag with.
      */
     public SheetLoop(String name, HashMap<String, RenderElement> elements) {
         super(name, null);

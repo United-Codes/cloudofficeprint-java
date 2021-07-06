@@ -102,7 +102,7 @@ public class PrintJob {
     /**
      * Subtemplates are only accessible (in docx).
      * They will replace the `{?include subtemplate_dict_key}` tag in the docx.
-     * @return Subtemplates for this print job. Hashtable<key, subTemplate>
+     * @return Subtemplates for this print job. Hashtable(key, subTemplate).
      */
     public Hashtable<String, Resource> getSubTemplates() {
         return subTemplates;
@@ -111,7 +111,7 @@ public class PrintJob {
     /**
      * Subtemplates are only accessible (in docx).
      * They will replace the `{?include subtemplate_dict_key}` tag in the docx.
-     * @param subTemplates for this print job. Hashtable<key, subTemplate>
+     * @param subTemplates for this print job. Hashtable(key, subTemplate).
      */
     public void setSubTemplates(Hashtable<String, Resource> subTemplates) {
         this.subTemplates = subTemplates;
@@ -121,7 +121,7 @@ public class PrintJob {
      * Renderelements will replace their corresponding tag in the template.
      * Multiple output files will be produced if the hashtable has more then one element, the AOP server will return
      * a zip file containing all of them.
-     * @return Hashtable<filename, RenderElement>
+     * @return Hashtable(filename, RenderElement)
      */
     public Hashtable<String, RenderElement> getData() {
         return data;
@@ -131,7 +131,7 @@ public class PrintJob {
      * Renderelements will replace their corresponding tag in the template.
      * Multiple output files will be produced if the hashtable has more then one element, the AOP server will return
      * a zip file containing all of them.
-     * @param data Hashtable<filename, RenderElement>
+     * @param data Hashtable(filename, RenderElement)
      */
     public void setData(Hashtable<String, RenderElement> data) {
         this.data = data;
@@ -162,7 +162,7 @@ public class PrintJob {
      * @param server Server to user for this printjob.
      * @param output object containing the output configuration for this printjob.
      * @param template for this printjob.
-     * @param subTemplates  for this print job. Hashtable<key, subTemplate>
+     * @param subTemplates  for this print job. Hashtable(key, subTemplate)
      *                      Subtemplates are only accessible (in docx).
      *                      They will replace the `{?include subtemplate_dict_key}` tag in the docx.
      * @param prependFiles Files to prepend to the output.

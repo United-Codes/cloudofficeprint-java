@@ -97,7 +97,7 @@ public class Examples {
     }
 
     /**
-     * This test stores the output on Google Drive.
+     * This checks the json of the Googletoken and Amazontoken.
      */
     public void testCloudAccessToken(String OAUTH2token){
         OAuth2Token googleToken = new OAuth2Token("Google Drive",OAUTH2token);
@@ -227,6 +227,7 @@ public class Examples {
             Hashtable<String, RenderElement> file = new Hashtable<String, RenderElement>();
             file.put("output",data);
 
+            //Create the printjob
             PrintJob printJob = new PrintJob(file,server,output,base64Resource,null,null,null,null);
 
             Response response = printJob.execute();

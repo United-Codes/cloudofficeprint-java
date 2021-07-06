@@ -25,7 +25,7 @@ public class Printer {
     }
 
     /**
-     * @return Address where the printer is available.
+     * @param location Address where the printer is available.
      */
     public void setLocation(String location) {
         this.location = location;
