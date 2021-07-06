@@ -1,7 +1,5 @@
 package com.company.RenderElements.Charts.Series;
 
-import com.google.gson.JsonArray;
-
 
 /**
  * Represents series for column charts.
@@ -14,7 +12,7 @@ public class ColumnSeries extends XYSeries {
      * @param x X-data of the chart.
      * @param y Y-data of the chart.
      */
-    public ColumnSeries(String name, JsonArray x, JsonArray y){
+    public ColumnSeries(String name, String[] x, String[] y){
         setName(name);
         setX(x);
         setY(y);

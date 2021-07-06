@@ -33,7 +33,7 @@ public class BubbleSeries extends XYSeries {
      * @param y Y-data of the chart.
      * @param sizes Sizes of each of the bubbles.
      */
-    public BubbleSeries(String name, JsonArray x, JsonArray y, JsonArray sizes){
+    public BubbleSeries(String name, String[] x, String[] y, JsonArray sizes){
         setName(name);
         setX(x);
         setY(y);

@@ -1,6 +1,5 @@
 package com.company.RenderElements.Charts.Series;
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 /**
@@ -56,7 +55,7 @@ public class AreaSeries extends XYSeries {
      *                includes an alpha value in the color field (rgba, hsla and hwba are supported). The opacity field is also
      *                ignored in that case.
      */
-    public AreaSeries(String name, JsonArray x, JsonArray y, String color, Float opacity){
+    public AreaSeries(String name, String[] x, String[] y, String color, Float opacity){
         setName(name);
         setX(x);
         setY(y);

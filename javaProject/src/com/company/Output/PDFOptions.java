@@ -3,7 +3,7 @@ package com.company.Output;
 import com.google.gson.JsonObject;
 
 /**
- * Class for all the optional PDF output options.
+ * Class for all the optional PDF output options. Only for
  */
 public class PDFOptions {
 
@@ -22,6 +22,7 @@ public class PDFOptions {
     private String pageFormat;
     private Boolean merge;
     private String signCertificate;
+    private Boolean identifyFormFields;
 
     /**
      * @return password to read the output.
@@ -52,6 +53,7 @@ public class PDFOptions {
     }
 
     /**
+     * Only supported when converting HTML to PDF.
      * @return pageWidth width followed by unit : px, mm, cm, in (e.g. : 20 px). No unit means px.
      */
     public String getPageWidth() {
@@ -59,6 +61,7 @@ public class PDFOptions {
     }
 
     /**
+     * Only supported when converting HTML to PDF.
      * @param pageWidth width followed by unit : px, mm, cm, in (e.g. : 20 px). No unit means px.
      */
     public void setPageWidth(String pageWidth) {
@@ -66,6 +69,7 @@ public class PDFOptions {
     }
 
     /**
+     * Only supported when converting HTML to PDF.
      * @return pageHeight height followed by unit : px, mm, cm, in (e.g. : 20 px). No unit means px.
      */
     public String getPageHeight() {
@@ -73,6 +77,7 @@ public class PDFOptions {
     }
 
     /**
+     * Only supported when converting HTML to PDF.
      * @param pageHeight eight followed by unit : px, mm, cm, in (e.g. : 20 px). No unit means px.
      */
     public void setPageHeight(String pageHeight) {
@@ -171,6 +176,7 @@ public class PDFOptions {
     }
 
     /**
+     * Only supported when converting HTML to PDF.
      * @return top bottom left right margin in pixels .
      */
     public int[] getPageMargin() {
@@ -178,16 +184,26 @@ public class PDFOptions {
     }
 
     /**
-     * @param pageMargin top bottom left right margin in pixels .
+     * Only supported when converting HTML to PDF.
+     * @param pageMargins top bottom left right margin in pixels .
      */
-    public void setPageMargin(int[] pageMargin) throws Exception {
-        if (pageMargin.length!=4){
+    public void setPageMargin(int[] pageMargins) throws Exception {
+        if (pageMargins.length!=4){
             throw new Exception("Please specify 4 margins.");
         }
-        this.pageMargin = pageMargin;
+        this.pageMargin = pageMargins;
     }
 
     /**
+     * Only supported when converting HTML to PDF.
+     * @param pageMargin Margin (same for all sides).
+     */
+    public void setPageMargin(int pageMargin) throws Exception {
+        this.pageMargin = new int[]{pageMargin, pageMargin, pageMargin, pageMargin};
+    }
+
+    /**
+     * Only supported when converting HTML to PDF.
      * @return True if orientation is landscape, false if orientation is portrait (default used by server).
      */
     public Boolean getLandscape() {
@@ -195,6 +211,7 @@ public class PDFOptions {
     }
 
     /**
+     * Only supported when converting HTML to PDF.
      * @param landscape Set to true if you want the orientation of the output to be landscape, false for portrait (default used by server).
      */
     public void setLandscape(Boolean landscape) {
@@ -202,6 +219,7 @@ public class PDFOptions {
     }
 
     /**
+     * Only supported when converting HTML to PDF.
      * @return The page format: "A4" (default used by AOP) or "letter".
      */
     public String getPageFormat() {
@@ -209,6 +227,7 @@ public class PDFOptions {
     }
 
     /**
+     * Only supported when converting HTML to PDF.
      * @param pageFormat The page format: "A4" or "letter".
      */
     public void setPageFormat(String pageFormat) {
@@ -248,6 +267,20 @@ public class PDFOptions {
     }
 
     /**
+     * @return If it is set to true AOP tries to identify the form fields and fills them in.
+     */
+    public Boolean getIdentifyFormFields() {
+        return identifyFormFields;
+    }
+
+    /**
+     * @param identifyFormFields If it is set to true AOP tries to identify the form fields and fills them in.
+     */
+    public void setIdentifyFormFields(Boolean identifyFormFields) {
+        this.identifyFormFields = identifyFormFields;
+    }
+
+    /**
      * Constructor for the PDFOptions object. Set the options with the setters. Uninitialised options won't be included in the JSON.
      */
     public PDFOptions(){
@@ -278,20 +311,22 @@ public class PDFOptions {
             json.addProperty("lock_form", getLockForm());
         }
         if (getPageMargin()!=null){
+            JsonObject marginDict = new JsonObject();
             for (int i =0; i< getPageMargin().length; i++){
                 if (i==0){
-                    json.addProperty("output_page_margin_top", getPageMargin()[0]);
+                    marginDict.addProperty("top", getPageMargin()[0]);
                 }
                 if (i==1){
-                    json.addProperty("output_page_margin_bottom", getPageMargin()[1]);
+                    marginDict.addProperty("bottom", getPageMargin()[1]);
                 }
                 if (i==2){
-                    json.addProperty("output_page_margin_left", getPageMargin()[2]);
+                    marginDict.addProperty("left", getPageMargin()[2]);
                 }
                 if (i==3){
-                    json.addProperty("output_page_margin_right", getPageMargin()[3]);
+                    marginDict.addProperty("right", getPageMargin()[3]);
                 }
             }
+            json.add("page_margin",marginDict); //For AOP versions later than 21.1.1, output_page_margin will also be supported as tag name to be consistent with the other namings.
         }
         if (getPageWidth()!=null){
             json.addProperty("output_page_width", getPageWidth());
@@ -306,10 +341,13 @@ public class PDFOptions {
             json.addProperty("output_merge", getMerge());
         }
         if (getLandscape()!= null && getLandscape()==true){
-            json.addProperty("output_page_orientation", "landscape");
+            json.addProperty("page_orientation", "landscape"); //For AOP versions later than 21.1.1, output_page_orientation will also be supported as tag name to be consistent with the other namings.
         }
         if (getSignCertificate()!= null){
             json.addProperty("output_sign_certificate", getSignCertificate());
+        }
+        if (getIdentifyFormFields()!= null){
+            json.addProperty("identify_form_fields", getIdentifyFormFields());
         }
         return json;
     }

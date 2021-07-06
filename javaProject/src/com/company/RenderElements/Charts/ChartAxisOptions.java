@@ -18,6 +18,7 @@ public class ChartAxisOptions {
     private Float majorUnit;
     private Boolean minorGridLines;
     private Float minorUnit;
+    private String formatCode;
 
     /**
      * @return Orientation of the axis : minMax or maxMin.
@@ -202,6 +203,20 @@ public class ChartAxisOptions {
     }
 
     /**
+     * @return Format code for axis data, "General", "Number" ...
+     */
+    public String getFormatCode() {
+        return formatCode;
+    }
+
+    /**
+     * @param formatCode Format code for axis data, "General", "Number" ...
+     */
+    public void setFormatCode(String formatCode) {
+        this.formatCode = formatCode;
+    }
+
+    /**
      * Represents the options for an axis of a chart.
      * Options can be populated with the setter functions.
      */
@@ -251,6 +266,9 @@ public class ChartAxisOptions {
         }
         if (getMinorUnit()!= null){
             json.addProperty("minorUnit",getMinorUnit());
+        }
+        if (getFormatCode()!= null){
+            json.addProperty("formatCode",getFormatCode());
         }
         return json;
     }

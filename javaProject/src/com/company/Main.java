@@ -10,9 +10,9 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         Examples example = new Examples();
-        example.localJson(); //works
-        //example.localTemplate(); works
+        //example.localJson(); //works
+        //example.localTemplate(); //works
         //example.testCloudAccessToken("token");
-        //example.loopExample();
+        example.loopExample();
     }
 }

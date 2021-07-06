@@ -96,7 +96,7 @@ public class StockSeries extends XYSeries {
      * @param open Open values for the open-high-low-close chart.
      * @param volume Volume values for the open-high-low-close chart.
      */
-    public StockSeries(String name, JsonArray x, JsonArray high, JsonArray low, JsonArray close, JsonArray open, JsonArray volume){
+    public StockSeries(String name, String[] x, JsonArray high, JsonArray low, JsonArray close, JsonArray open, JsonArray volume){
         setName(name);
         setX(x);
         setHigh(high);

@@ -1,7 +1,5 @@
 package com.company.RenderElements.Charts.Series;
 
-import com.google.gson.JsonArray;
-
 
 /**
  * Represents series for scatter charts. Note: x-axis should only contain numbers.
@@ -14,7 +12,7 @@ public class ScatterSeries extends XYSeries {
      * @param x X-data of the chart.
      * @param y Y-data of the chart.
      */
-    public ScatterSeries(String name, JsonArray x, JsonArray y){
+    public ScatterSeries(String name, String[] x, String[] y){
         setName(name);
         setX(x);
         setY(y);

@@ -188,7 +188,6 @@ public abstract class Image extends RenderElement {
         if(getTargetUrl()!=null){
             json.addProperty(getName()+"_url",getTargetUrl());
         }
-
         return json;
     }
 

@@ -1,40 +1,38 @@
 package com.company.RenderElements.Charts.Series;
 
-import com.company.RenderElements.Charts.Series.Series;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import java.util.Iterator;
 
 public abstract class XYSeries extends Series {
-    JsonArray x;
-    JsonArray y;
+    String[] x;
+    String[] y;
 
     /**
      * @return X-data of the serie.
      */
-    public JsonArray getX() {
+    public String[] getX() {
         return x;
     }
 
     /**
      * @param x X-data of the serie.
      */
-    public void setX(JsonArray x) {
+    public void setX(String[] x) {
         this.x = x;
     }
 
     /**
      * @return Y-data of the serie.
      */
-    public JsonArray getY() {
+    public String[] getY() {
         return y;
     }
 
     /**
      * @param y Y-data of the serie.
      */
-    public void setY(JsonArray y) {
+    public void setY(String[] y) {
         this.y = y;
     }
 
@@ -46,6 +44,7 @@ public abstract class XYSeries extends Series {
         JsonObject json = new JsonObject();
         Iterator itrX = getX().iterator();
         Iterator itrY = getY().iterator();
+        for ()
         while(itrX.hasNext()) {
             JsonObject xy = new JsonObject();
             String x = (String) itrX.next();

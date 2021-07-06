@@ -1,6 +1,5 @@
 package com.company.RenderElements.Charts.Series;
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 /**
@@ -111,7 +110,7 @@ public class LineSeries extends XYSeries {
      * @param lineThickness Thickness of the connecting line in em, pt, px, cm or in. e.g. : 20 pt.
      * @param lineStyle Style of the line. Supported options can be found online on the AOP documentation.
      */
-    public LineSeries(String name, JsonArray x, JsonArray y, String color, Boolean smooth, String symbol, String symbolSize,
+    public LineSeries(String name, String[] x, String[] y, String color, Boolean smooth, String symbol, String symbolSize,
                       String lineThickness, String lineStyle){
         setName(name);
         setX(x);

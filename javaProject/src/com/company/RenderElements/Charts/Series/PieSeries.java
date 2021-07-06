@@ -38,7 +38,7 @@ public class PieSeries extends XYSeries {
      * @param colors Colors for each pie slice. Note : If no colors are specified (null argument), the document's theme is used.
      *               If some colors are specified, but not for all data points, random colors will fill the gaps.
      */
-    public PieSeries(String name, JsonArray x, JsonArray y, JsonArray colors){
+    public PieSeries(String name, String[] x, String[] y, JsonArray colors){
         setName(name);
         setX(x);
         setY(y);

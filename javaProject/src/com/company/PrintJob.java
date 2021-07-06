@@ -190,7 +190,7 @@ public class PrintJob {
         for(Map.Entry<String, JsonElement> tag : getServer().getJSON().entrySet()){
             jsonForServer.add(tag.getKey(),tag.getValue()); //these tags for the server need to be at the upper level in the JSON
         }
-        jsonForServer.addProperty("apex_version", "java_sdk_version");
+        jsonForServer.addProperty("java_sdk_version", "21.1");
         if (getAopRemoteDebug()!=null){
             jsonForServer.addProperty("aop_remote_debug", getAopRemoteDebug());
         }
