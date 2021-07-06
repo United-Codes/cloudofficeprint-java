@@ -54,7 +54,8 @@ public class WifiQRCode extends QRCode{
     }
 
     /**
-     * This class is a subclass of QRCode and is used to generate a WiFi QR-code element
+     * This class is a subclass of QRCode and is used to generate a WiFi QR-code element.
+     * Styling options can be set with the setter functions of the upper class.
      * @param name  Name of this code for the tag.
      * @param SSID SSID of the Wifi.
      */
@@ -66,7 +67,7 @@ public class WifiQRCode extends QRCode{
     }
 
     /**
-     * @return JSONObject with the tags for a base64 resource as template for the AOP server ("file","template_type").
+     * @return JSONObject with the tags for this element for the AOP server.
      */
     @Override
     public JsonObject getJSON(){
