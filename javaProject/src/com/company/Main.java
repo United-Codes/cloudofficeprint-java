@@ -19,5 +19,6 @@ public class Main {
 
         Tests tests = new Tests();
         tests.testCombinedChart();
+        tests.testChartOptions();
     }
 }

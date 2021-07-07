@@ -6,9 +6,9 @@ import com.google.gson.JsonObject;
  * This class represents the chart options.
  */
 public class ChartOptions {
-    ChartAxisOptions xAxis;
-    ChartAxisOptions yAxis;
-    ChartAxisOptions Y2Axis;
+    ChartAxisOptions xAxisOptions;
+    ChartAxisOptions yAxisOptions;
+    ChartAxisOptions Y2AxisOptions;
     Integer width;
     Integer height;
     Boolean border;
@@ -37,42 +37,42 @@ public class ChartOptions {
      * @return The options for the x-axis.
      */
     public ChartAxisOptions getXAxis() {
-        return xAxis;
+        return xAxisOptions;
     }
 
     /**
      * @param xAxis The options for the x-axis.
      */
-    public void setXAxis(ChartAxisOptions xAxis) {
-        this.xAxis = xAxis;
+    public void setXAxisOptions(ChartAxisOptions xAxis) {
+        this.xAxisOptions = xAxis;
     }
 
     /**
      * @return The options for the y-axis.
      */
     public ChartAxisOptions getYAxis() {
-        return yAxis;
+        return yAxisOptions;
     }
 
     /**
      * @param yAxis The options for the y-axis.
      */
-    public void setYAxis(ChartAxisOptions yAxis) {
-        this.yAxis = yAxis;
+    public void setYAxisOptions(ChartAxisOptions yAxis) {
+        this.yAxisOptions = yAxis;
     }
 
     /**
      * @return The options for the second y-axis.
      */
-    public ChartAxisOptions getY2Axis() {
-        return Y2Axis;
+    public ChartAxisOptions getY2AxisOptions() {
+        return Y2AxisOptions;
     }
 
     /**
      * @param y2Axis The options for the y2-axis.
      */
-    public void setY2Axis(ChartAxisOptions y2Axis) {
-        Y2Axis = y2Axis;
+    public void setY2AxisOptions(ChartAxisOptions y2Axis) {
+        Y2AxisOptions = y2Axis;
     }
 
     /**
@@ -363,14 +363,11 @@ public class ChartOptions {
         if (getYAxis()!=null){
             axis.add("y", getYAxis().getJSON());
         }
-        if (getY2Axis()!= null){
-            axis.add("y2", getY2Axis().getJSON());
+        if (getY2AxisOptions()!= null){
+            axis.add("y2", getY2AxisOptions().getJSON());
         }
-        if (getXAxis() != null || getYAxis() != null || getY2Axis()!=null){
+        if (getXAxis() != null || getYAxis() != null || getY2AxisOptions()!=null){
             json.add("axis", axis);
-        }
-        if (getGrid()!= null){
-            json.addProperty("grid",getGrid());
         }
         if (getWidth()!= null){
             json.addProperty("width",getWidth());
@@ -394,7 +391,21 @@ public class ChartOptions {
             json.addProperty("title",getTitle());
         }
         if (getTitleStyle()!= null){
-            json.add("title_style",getTitleStyle().getJSON());
+            json.add("titleStyle",getTitleStyle().getJSON());
+        }
+        if (getGrid()!= null){
+            json.addProperty("grid",getGrid());
+        }
+        if (getShowLegend()!= null && getShowLegend()== true){
+            JsonObject legend = new JsonObject();
+            legend.addProperty("showLegend", true);
+            if (getLegendPosition()!=null){
+                legend.addProperty("position", getLegendPosition());
+            }
+            if (getLegendStyle()!=null){
+                legend.add("style", getLegendStyle().getJSON());
+            }
+            json.add("legend",legend);
         }
         if (getShowDataLabels()!= null && getShowDataLabels()== true){
             JsonObject dataLabels = new JsonObject();
@@ -403,7 +414,7 @@ public class ChartOptions {
                 dataLabels.addProperty("separator", getSeparator());
             }
             if (getShowSeriesName()!=null){
-                dataLabels.addProperty("showSeriesName", getPosition());
+                dataLabels.addProperty("showSeriesName", getShowSeriesName());
             }
             if (getShowCategoryName()!=null){
                 dataLabels.addProperty("showCategoryName", getShowCategoryName());
@@ -421,17 +432,6 @@ public class ChartOptions {
                 dataLabels.addProperty("position", getPosition());
             }
             json.add("dataLabels",dataLabels);
-        }
-        if (getShowLegend()!= null && getShowLegend()== true){
-            JsonObject legend = new JsonObject();
-            if (getLegendPosition()!=null){
-                legend.addProperty("position", getLegendPosition());
-            }
-            legend.addProperty("showLegend", true);
-            if (getLegendStyle()!=null){
-                legend.add("style", getLegendStyle().getJSON());
-            }
-            json.add("legend",legend);
         }
         return json;
     }

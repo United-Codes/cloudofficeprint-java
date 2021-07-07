@@ -72,7 +72,7 @@ public class ChartAxisOptions {
     /**
      * @param date Date options, only for stock charts.
      */
-    public void setDate(ChartDateOptions date) {
+    public void setDateOptions(ChartDateOptions date) {
         this.date = date;
     }
 

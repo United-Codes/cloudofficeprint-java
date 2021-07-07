@@ -10,7 +10,7 @@ public class ChartDateOptions {
     private String format;
     private String code;
     private String unit;
-    private String step;
+    private Integer step;
 
     /**
      * @return Date format e.g. : unix.
@@ -57,14 +57,14 @@ public class ChartDateOptions {
     /**
      * @return Unit steps.
      */
-    public String getStep() {
+    public Integer getStep() {
         return step;
     }
 
     /**
      * @param step Unit steps.
      */
-    public void setStep(String step) {
+    public void setStep(Integer step) {
         this.step = step;
     }
 
