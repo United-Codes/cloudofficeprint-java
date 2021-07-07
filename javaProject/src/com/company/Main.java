@@ -17,6 +17,6 @@ public class Main {
         example.chartExample();
 
         Tests tests = new Tests();
-        tests.testChart();
+        tests.testCombinedChart();
     }
 }

@@ -253,7 +253,7 @@ public class Examples {
                     null,null,null,null,"sysDashDotDot");
             ChartOptions options = new ChartOptions();
             options.setBorder(true);
-            options.setLegend("r",null);
+            options.setLegend("l",null);
             options.setTitle("Line Chart");
             options.setWidth(500);
 

@@ -13,7 +13,7 @@ import com.google.gson.JsonArray;
 
 public class Tests {
 
-    public void testChart(){
+    public void testCombinedChart(){
         LineSeries lineserie1 = new LineSeries("lineserie1",new String[]{"1", "2", "3", "4"} ,new String[]{"1", "2", "3", "4"},"green",
                 null,null,null,null,null);
         LineSeries lineserie2 = new LineSeries("lineserie2",new String[]{"1", "2", "3", "4"} ,new String[]{"a", "b", "c", "d"},null,

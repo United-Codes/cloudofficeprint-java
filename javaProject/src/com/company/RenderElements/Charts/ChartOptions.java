@@ -223,6 +223,7 @@ public class ChartOptions {
     public void setLegend(String position, ChartTextStyle style) {
         this.showLegend = true;
         this.legendPosition = position;
+        System.out.println("ici " + getLegendPosition());
         this.legendStyle = style;
     }
 
@@ -404,11 +405,11 @@ public class ChartOptions {
             }
             json.add("dataLabels",dataLabels);
         }
-        if (getShowLegend()== true){
+        if (getShowLegend()!= null && getShowLegend()== true){
             JsonObject legend = new JsonObject();
             legend.addProperty("showLegend", true);
-            if (getPosition()!=null){
-                legend.addProperty("position", getPosition());
+            if (getLegendPosition()!=null){
+                legend.addProperty("position", getLegendPosition());
             }
             if (getLegendStyle()!=null){
                 legend.add("style", getLegendStyle().getJSON());
