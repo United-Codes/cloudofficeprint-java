@@ -71,7 +71,6 @@ public class CombinedChart extends Chart{
      * @return Json with the old key replaced by the new key.
      */
     public JsonObject replaceKeyRecursive(JsonObject json, String oldKey, String newKey){
-        System.out.println(json);
         for (Map.Entry entry : json.entrySet()){
             if (entry.getKey().toString() == oldKey){
                 json.remove((String) entry.getKey());
@@ -94,7 +93,6 @@ public class CombinedChart extends Chart{
                 }
             }
         }
-        System.out.println(json);
         return json;
     }
 
@@ -109,18 +107,13 @@ public class CombinedChart extends Chart{
             dict.remove("options");
             array.add(dict);
         }
-        //System.out.println(array);
         for (Chart chart : getSecondaryCharts()){
             JsonObject dict = chart.getJSON();
             dict = dict.getAsJsonObject(chart.getName());
             dict.remove("options");
-            //System.out.println(dict);
-            replaceKeyRecursive(dict,"y","y2"); //check ici
-            //System.out.println(dict);
-            //System.out.println(chart.getJSON());
+            replaceKeyRecursive(dict,"y","y2");
             array.add(dict);
         }
-        System.out.println(array);
         return array;
     }
     /**
@@ -130,11 +123,11 @@ public class CombinedChart extends Chart{
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         JsonObject result = new JsonObject();
-        result.addProperty("type","multiple");
+        result.add("multiples",getModifiedChartDicts());
         if(getOptions()!=null){
             result.add("options",getOptions().getJSON());
         }
-        result.add("multiples",getModifiedChartDicts());
+        result.addProperty("type","multiple");
         json.add(getName(),result);
         return json;
     }

@@ -29,10 +29,13 @@ public class Tests {
         options.setBorder(true);
         options.setGrid(true);
         options.setLegend("r",null);
-        options.setTitle("false");
+        //options.setTitle("false");
         options.setWidth(500);
         options.setHeight(700);
-        CombinedChart combinedChart = new CombinedChart("combinedChart",options, new ColumnChart[]{columnChart}, new LineChart[]{lineChart});
+        CombinedChart combinedChart = new CombinedChart("multiples",options, new ColumnChart[]{columnChart}, new LineChart[]{lineChart});
+
+        //"options":{"border":true,"grid":true,"height":700,"legend":{"position":"r","showLegend":true},"width":500}
+
         String correct = "{\n" +
                 "    \"multiples\": [\n" +
                 "        {\n" +
@@ -122,15 +125,14 @@ public class Tests {
                 "            \"position\": \"r\",\n" +
                 "            \"showLegend\": true\n" +
                 "        },\n" +
-                "        \"title\": false,\n" +
                 "        \"width\": 500\n" +
                 "    },\n" +
                 "    \"type\": \"multiple\"\n" +
                 "}";
         JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
-        System.out.println("My JSON : " + combinedChart.getJSON());
-        System.out.println("Correct JSON : " + jsonCorrect);
-        Assert.assertEquals(jsonCorrect,combinedChart.getJSON());
+        //System.out.println("My JSON : " + combinedChart.getJSON().getAsJsonObject("multiples"));
+        //System.out.println("Correct JSON : " + jsonCorrect);
+        Assert.assertEquals(jsonCorrect,combinedChart.getJSON().getAsJsonObject("multiples"));
     }
 
     /**

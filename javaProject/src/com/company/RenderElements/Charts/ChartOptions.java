@@ -424,10 +424,10 @@ public class ChartOptions {
         }
         if (getShowLegend()!= null && getShowLegend()== true){
             JsonObject legend = new JsonObject();
-            legend.addProperty("showLegend", true);
             if (getLegendPosition()!=null){
                 legend.addProperty("position", getLegendPosition());
             }
+            legend.addProperty("showLegend", true);
             if (getLegendStyle()!=null){
                 legend.add("style", getLegendStyle().getJSON());
             }
