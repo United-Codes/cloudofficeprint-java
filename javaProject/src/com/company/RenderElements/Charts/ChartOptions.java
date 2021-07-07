@@ -12,6 +12,7 @@ public class ChartOptions {
     Integer width;
     Integer height;
     Boolean border;
+    Boolean grid;
     Boolean roundedCorners;
     String backgroundColor;
     Integer backgroundOpacity;
@@ -223,7 +224,6 @@ public class ChartOptions {
     public void setLegend(String position, ChartTextStyle style) {
         this.showLegend = true;
         this.legendPosition = position;
-        System.out.println("ici " + getLegendPosition());
         this.legendStyle = style;
     }
 
@@ -333,6 +333,20 @@ public class ChartOptions {
     }
 
     /**
+     * @return Whether the chart should have a grid or not.
+     */
+    public Boolean getGrid() {
+        return grid;
+    }
+
+    /**
+     * @param grid Whether the chart should have a grid or not.
+     */
+    public void setGrid(Boolean grid) {
+        this.grid = grid;
+    }
+
+    /**
      * This object represents the options for a chart. You can populate the options with the setter functions.
      */
     public ChartOptions(){};
@@ -354,6 +368,9 @@ public class ChartOptions {
         }
         if (getXAxis() != null || getYAxis() != null || getY2Axis()!=null){
             json.add("axis", axis);
+        }
+        if (getGrid()!= null){
+            json.addProperty("grid",getGrid());
         }
         if (getWidth()!= null){
             json.addProperty("width",getWidth());

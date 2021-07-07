@@ -14,7 +14,7 @@ public class Main {
         //example.localJson(); //works
         //example.localTemplate(); //works
         //example.loopExample(); //works
-        example.chartExample();
+        //example.chartExample(); works
 
         Tests tests = new Tests();
         tests.testCombinedChart();
