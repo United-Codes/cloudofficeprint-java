@@ -7,10 +7,7 @@ import com.company.Output.Output;
 import com.company.Output.PDFOptions;
 import com.company.PrintJob;
 import com.company.RenderElements.Charts.ChartOptions;
-import com.company.RenderElements.Charts.Charts.BarChart;
-import com.company.RenderElements.Charts.Charts.ColumnChart;
-import com.company.RenderElements.Charts.Charts.CombinedChart;
-import com.company.RenderElements.Charts.Charts.LineChart;
+import com.company.RenderElements.Charts.Charts.*;
 import com.company.RenderElements.Charts.Series.BarSeries;
 import com.company.RenderElements.Charts.Series.ColumnSeries;
 import com.company.RenderElements.Charts.Series.LineSeries;
@@ -310,7 +307,7 @@ public class Examples {
             options.setTitle("Combined Chart");
             options.setHeight(500);
             options.setWidth(600);
-            CombinedChart combinedChart = new CombinedChart("chartname",options, new ColumnChart[]{columnChart}, new LineChart[]{lineChart});
+            CombinedChart combinedChart = new CombinedChart("chartname",options, new Chart[]{columnChart}, new Chart[]{lineChart});
 
             Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
             data.put("output1",combinedChart);

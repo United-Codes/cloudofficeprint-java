@@ -133,9 +133,6 @@ public class LineSeries extends XYSeries {
         if (getName()!=null){
             json.addProperty("name",getName());
         }
-        if (getColor()!=null){
-            json.addProperty("color",getColor());
-        }
         if (getSmooth()!=null){
             json.addProperty("smooth",getSmooth());
         }
@@ -144,6 +141,9 @@ public class LineSeries extends XYSeries {
         }
         if (getSymbolSize()!=null){
             json.addProperty("symbolSize",getSymbolSize());
+        }
+        if (getColor()!=null){
+            json.addProperty("color",getColor());
         }
         if (getLineThickness()!=null){
             json.addProperty("lineWidth", getLineThickness());

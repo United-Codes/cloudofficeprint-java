@@ -55,7 +55,7 @@ public class PieSeries extends XYSeries {
             JsonObject xy = new JsonObject();
             xy.addProperty("x",getX()[i]);
             xy.addProperty("y",getY()[i]);
-            if (getColors()!=null){
+            if (getColors()[i]!=null){
                 xy.addProperty("color",getColors()[i]);
             }
             jsonArray.add(xy);

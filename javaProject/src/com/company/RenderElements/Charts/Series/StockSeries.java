@@ -115,7 +115,6 @@ public class StockSeries extends XYSeries {
         for (int i = 0; i <getX().length; i++){
             JsonObject xy = new JsonObject();
             xy.addProperty("x",getX()[i]);
-            xy.addProperty("y",getY()[i]);
 
             xy.addProperty("high",getHigh()[i]);
             xy.addProperty("low",getLow()[i]);

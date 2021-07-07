@@ -12,6 +12,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.junit.Assert;
 
+import java.awt.geom.Area;
+
 
 public class Tests {
 
@@ -118,123 +120,112 @@ public class Tests {
         Assert.assertEquals(jsonCorrect,options.getJSON());
     }
 
-    public void testCombinedChart(){
-        ColumnSeries columnSeries1 = new ColumnSeries("bar 1",new String[]{"day 1", "day 2", "day 3"} ,new String[]{"4.3", "2.5", "3.5"});
-        ColumnSeries columnSeries2 = new ColumnSeries("bar 2",new String[]{"day 1", "day 2", "day 3"} ,new String[]{"2.4", "4.4", "1.8"});
-        ColumnChart columnChart = new ColumnChart("columns",null,columnSeries1,columnSeries2);
-
-        LineSeries lineSerie1 = new LineSeries("line 1",new String[]{"day 1", "day 2", "day 3"} ,new String[]{"43", "25", "35"},
-                null,null,null,null,null,null);
-        LineSeries lineSerie2 = new LineSeries("line 2",new String[]{"day 1", "day 2", "day 3"} ,new String[]{"24", "44", "18"},
-                null,null,null,null,null,null);
-        LineChart lineChart = new LineChart("lines",null,lineSerie1,lineSerie2);
-        ChartOptions options = new ChartOptions();
-        options.setBorder(true);
-        options.setGrid(true);
-        options.setLegend("r",null);
-        //options.setTitle("false");
-        options.setWidth(500);
-        options.setHeight(700);
-        CombinedChart combinedChart = new CombinedChart("multiples",options, new ColumnChart[]{columnChart}, new LineChart[]{lineChart});
-
-
-        String correct = "{\n" +
-                "    \"multiples\": [\n" +
-                "        {\n" +
-                "            \"columns\": [\n" +
-                "                {\n" +
-                "                    \"data\": [\n" +
-                "                        {\n" +
-                "                            \"x\": \"day 1\",\n" +
-                "                            \"y\": \"4.3\"\n" +
-                "                        },\n" +
-                "                        {\n" +
-                "                            \"x\": \"day 2\",\n" +
-                "                            \"y\": \"2.5\"\n" +
-                "                        },\n" +
-                "                        {\n" +
-                "                            \"x\": \"day 3\",\n" +
-                "                            \"y\": \"3.5\"\n" +
-                "                        }\n" +
-                "                    ],\n" +
-                "                    \"name\": \"bar 1\"\n" +
-                "                },\n" +
-                "                {\n" +
-                "                    \"data\": [\n" +
-                "                        {\n" +
-                "                            \"x\": \"day 1\",\n" +
-                "                            \"y\": \"2.4\"\n" +
-                "                        },\n" +
-                "                        {\n" +
-                "                            \"x\": \"day 2\",\n" +
-                "                            \"y\": \"4.4\"\n" +
-                "                        },\n" +
-                "                        {\n" +
-                "                            \"x\": \"day 3\",\n" +
-                "                            \"y\": \"1.8\"\n" +
-                "                        }\n" +
-                "                    ],\n" +
-                "                    \"name\": \"bar 2\"\n" +
-                "                }\n" +
-                "            ],\n" +
-                "            \"type\": \"column\"\n" +
-                "        },\n" +
-                "        {\n" +
-                "            \"lines\": [\n" +
-                "                {\n" +
-                "                    \"data\": [\n" +
-                "                        {\n" +
-                "                            \"x\": \"day 1\",\n" +
-                "                            \"y2\": \"43\"\n" +
-                "                        },\n" +
-                "                        {\n" +
-                "                            \"x\": \"day 2\",\n" +
-                "                            \"y2\": \"25\"\n" +
-                "                        },\n" +
-                "                        {\n" +
-                "                            \"x\": \"day 3\",\n" +
-                "                            \"y2\": \"35\"\n" +
-                "                        }\n" +
-                "                    ],\n" +
-                "                    \"name\": \"line 1\"\n" +
-                "                },\n" +
-                "                {\n" +
-                "                    \"data\": [\n" +
-                "                        {\n" +
-                "                            \"x\": \"day 1\",\n" +
-                "                            \"y2\": \"24\"\n" +
-                "                        },\n" +
-                "                        {\n" +
-                "                            \"x\": \"day 2\",\n" +
-                "                            \"y2\": \"44\"\n" +
-                "                        },\n" +
-                "                        {\n" +
-                "                            \"x\": \"day 3\",\n" +
-                "                            \"y2\": \"18\"\n" +
-                "                        }\n" +
-                "                    ],\n" +
-                "                    \"name\": \"line 2\"\n" +
-                "                }\n" +
-                "            ],\n" +
-                "            \"type\": \"line\"\n" +
-                "        }\n" +
-                "    ],\n" +
-                "    \"options\": {\n" +
-                "        \"border\": true,\n" +
-                "        \"grid\": true,\n" +
-                "        \"height\": 700,\n" +
-                "        \"legend\": {\n" +
-                "            \"position\": \"r\",\n" +
-                "            \"showLegend\": true\n" +
-                "        },\n" +
-                "        \"width\": 500\n" +
-                "    },\n" +
-                "    \"type\": \"multiple\"\n" +
-                "}";
+    public void testChartLine(){
+        LineSeries line1 = new LineSeries("line1", new String[]{"a", "b", "c"}, new String[]{"1", "2", "3"},"red",true,"diamond","10px","0.2cm","sysDashDotDot");
+        LineSeries line2 = new LineSeries("line2", new String[]{"a", "b", "c"}, new String[]{"4", "5", "6"},"blue",true,"square","12px","2px","sysDash");
+        LineChart lineChart = new LineChart("test_name",null,line1,line2);
+        String correct= "{'test_name': {'lines': [{'data': [{'x': 'a', 'y': '1'}, {'x': 'b', 'y': '2'}, {'x': 'c', 'y': '3'}], 'name': 'line1', 'smooth': True, 'symbol': 'diamond', 'symbolSize': '10px', 'color': 'red', 'lineWidth': '0.2cm', 'lineStyle': 'sysDashDotDot'}, {'data': [{'x': 'a', 'y': '4'}, {'x': 'b', 'y': '5'}, {'x': 'c', 'y': '6'}], 'name': 'line2', 'smooth': True, 'symbol': 'square', 'symbolSize': '12px', 'color': 'blue', 'lineWidth': '2px', 'lineStyle': 'sysDash'}], 'type': 'line'}}";
+        //System.out.println(lineChart.getJSON());
         JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
-        //System.out.println("My JSON : " + combinedChart.getJSON().getAsJsonObject("multiples"));
-        //System.out.println("Correct JSON : " + jsonCorrect);
-        Assert.assertEquals(jsonCorrect,combinedChart.getJSON().getAsJsonObject("multiples"));
+        //System.out.println(jsonCorrect);
+        Assert.assertEquals(jsonCorrect,lineChart.getJSON());
+    }
+
+    public void testChartBar(){
+        BarSeries bar1 = new BarSeries("bars1", new String[]{"a", "b", "c"}, new String[]{"1", "2", "3"});
+        BarSeries bar2 = new BarSeries("bars2", new String[]{"a", "b", "c"}, new String[]{"4", "5", "6"});
+        BarChart barChart = new BarChart("bar_chart",null,bar1,bar2);
+        String correct= "{'bar_chart': {'bars': [{'data': [{'x': 'a', 'y': '1'}, {'x': 'b', 'y': '2'}, {'x': 'c', 'y': '3'}], 'name': 'bars1'}, {'data': [{'x': 'a', 'y': '4'}, {'x': 'b', 'y': '5'}, {'x': 'c', 'y': '6'}], 'name': 'bars2'}], 'type': 'bar'}}\n";
+        //System.out.println(barChart.getJSON());
+        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        //System.out.println(jsonCorrect);
+        Assert.assertEquals(jsonCorrect,barChart.getJSON());
+    }
+
+    public void testChartPie(){
+        PieSeries pie1 = new PieSeries("pies1", new String[]{"a", "b", "c"}, new String[]{"1", "2", "3"}, new String[]{"red", null, "blue"});
+        PieSeries pie2 = new PieSeries("pies2", new String[]{"a", "b", "c"}, new String[]{"4", "5", "6"},new String[]{"green", "blue", null});
+        PieChart barChart = new PieChart("pie_chart",null,pie1,pie2);
+        String correct= "{'pie_chart': {'pies': [{'data': [{'x': 'a', 'y': '1', 'color': 'red'}, {'x': 'b', 'y': '2'}, {'x': 'c', 'y': '3', 'color': 'blue'}], 'name': 'pies1'}, {'data': [{'x': 'a', 'y': '4', 'color': 'green'}, {'x': 'b', 'y': '5', 'color': 'blue'}, {'x': 'c', 'y': '6'}], 'name': 'pies2'}], 'type': 'pie'}}";
+        //System.out.println(barChart.getJSON());
+        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        //System.out.println(jsonCorrect);
+        Assert.assertEquals(jsonCorrect,barChart.getJSON());
+    }
+
+    public void testChartArea(){
+        AreaSeries serie1 = new AreaSeries("area1", new String[]{"a", "b", "c"}, new String[]{"1", "2", "3"}, "red", 50F);
+        AreaSeries serie2 = new AreaSeries("area2", new String[]{"a", "b", "c"}, new String[]{"4", "5", "6"},"blue", 80F);
+        AreaChart areaChart = new AreaChart("area_chart",null,serie1,serie2);
+        String correct= "{'area_chart': {'areas': [{'data': [{'x': 'a', 'y': '1'}, {'x': 'b', 'y': '2'}, {'x': 'c', 'y': '3'}], 'name': 'area1', 'color': 'red', 'opacity': 50.0}, {'data': [{'x': 'a', 'y': '4'}, {'x': 'b', 'y': '5'}, {'x': 'c', 'y': '6'}], 'name': 'area2', 'color': 'blue', 'opacity': 80.0}], 'type': 'area'}}";
+        //System.out.println(areaChart.getJSON());
+        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        //System.out.println(jsonCorrect);
+        Assert.assertEquals(jsonCorrect,areaChart.getJSON());
+    }
+
+
+    public void testChartBubble(){
+        BubbleSeries serie1 = new BubbleSeries("bubble1", new String[]{"a", "b", "c"}, new String[]{"1", "2", "3"}, new Integer[]{5, 6, 2});
+        BubbleSeries serie2 = new BubbleSeries("bubble2", new String[]{"a", "b", "c"}, new String[]{"4", "5", "6"},new Integer[]{5, 6, 2});
+        BubbleChart areaChart = new BubbleChart("bubble_chart",null,serie1,serie2);
+        String correct= "{'bubble_chart': {'bubbles': [{'data': [{'x': 'a', 'y': '1', 'size': 5}, {'x': 'b', 'y': '2', 'size': 6}, {'x': 'c', 'y': '3', 'size': 2}], 'name': 'bubble1'}, {'data': [{'x': 'a', 'y': '4', 'size': 5}, {'x': 'b', 'y': '5', 'size': 6}, {'x': 'c', 'y': '6', 'size': 2}], 'name': 'bubble2'}], 'type': 'bubble'}}";
+        //System.out.println(areaChart.getJSON());
+        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        //System.out.println(jsonCorrect);
+        Assert.assertEquals(jsonCorrect,areaChart.getJSON());
+    }
+
+    public void testChartStock(){
+        StockSeries serie1 = new StockSeries("stock1", new String[]{"1", "2", "3"}, new Integer[]{4, 5, 6}, new Integer[]{7, 8, 9},
+                new Integer[]{10,11, 12}, new Integer[]{13, 14, 15}, new Integer[]{16, 17, 18});
+        StockSeries serie2 = new StockSeries("stock2", new String[]{"1", "2", "3"}, new Integer[]{4, 5, 6}, new Integer[]{7, 8, 9},
+                new Integer[]{10,11, 12}, new Integer[]{13, 14, 15}, new Integer[]{16, 17, 18});
+        StockChart chart = new StockChart("stock_chart",null,serie1,serie2);
+        String correct= "{'stock_chart': {'stocks': [{'data': [{'x': '1', 'high': 4, 'low': 7, 'close': 10, 'open': 13, 'volume': 16}, {'x': '2', 'high': 5, 'low': 8, 'close': 11, 'open': 14, 'volume': 17}, {'x': '3', 'high': 6, 'low': 9, 'close': 12, 'open': 15, 'volume': 18}], 'name': 'stock1'}, {'data': [{'x': '1', 'high': 4, 'low': 7, 'close': 10, 'open': 13, 'volume': 16}, {'x': '2', 'high': 5, 'low': 8, 'close': 11, 'open': 14, 'volume': 17}, {'x': '3', 'high': 6, 'low': 9, 'close': 12, 'open': 15, 'volume': 18}], 'name': 'stock2'}], 'type': 'stock'}}";
+        //System.out.println(chart.getJSON());
+        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        //System.out.println(jsonCorrect);
+        Assert.assertEquals(jsonCorrect,chart.getJSON());
+    }
+
+
+    public void testCombinedChart(){
+        ColumnSeries columnSeries1 = new ColumnSeries("column1",new String[]{"a", "b", "c"} ,new String[]{"1", "2", "3"});
+        ColumnSeries columnSeries2 = new ColumnSeries("column2",new String[]{"a", "b", "c"} ,new String[]{"4", "5", "6"});
+        ColumnChart columnChart = new ColumnChart("column_chart",null,columnSeries1,columnSeries2);
+
+        LineSeries lineSerie1 = new LineSeries("line1",new String[]{"a", "b", "c"} ,new String[]{"1", "2", "3"},
+                null,null,"square",null,null,null);
+        LineSeries lineSerie2 = new LineSeries("line2",new String[]{"a", "b", "c"} ,new String[]{"4", "5", "6"},
+                null,null,"square",null,null,null);
+        ChartOptions chartOptions = new ChartOptions();
+        ChartAxisOptions axisOptions = new ChartAxisOptions();
+        chartOptions.setXAxisOptions(axisOptions);
+        chartOptions.setYAxisOptions(axisOptions);
+        chartOptions.setWidth(50);
+        chartOptions.setBackgroundColor("gray");
+        chartOptions.setBackgroundOpacity(50);
+        LineChart lineChart = new LineChart("lines",chartOptions,lineSerie1,lineSerie2); //chartoptions of subcharts will be removed.
+
+
+        BarSeries bar1 = new BarSeries("bar1", new String[]{"a", "b", "c"}, new String[]{"1", "2", "3"});
+        BarSeries bar2 = new BarSeries("bar2", new String[]{"a", "b", "c"}, new String[]{"4", "5", "6"});
+        ChartOptions barChartOptions = new ChartOptions();
+        barChartOptions.setXAxisOptions(axisOptions);
+        barChartOptions.setYAxisOptions(axisOptions);
+        barChartOptions.setWidth(100);
+        barChartOptions.setHeight(100);
+        barChartOptions.setRoundedCorners(false);
+        BarChart barChart = new BarChart("bar_chart",barChartOptions,bar1,bar2);
+
+        CombinedChart combinedChart = new CombinedChart("combined_chart",chartOptions, new Chart[]{columnChart,lineChart}, new Chart[]{barChart}); //chartoptions of subcharts will be removed.
+
+        String correct = "{'combined_chart': {'multiples': [{'columns': [{'data': [{'x': 'a', 'y': '1'}, {'x': 'b', 'y': '2'}, {'x': 'c', 'y': '3'}], 'name': 'column1'}, {'data': [{'x': 'a', 'y': '4'}, {'x': 'b', 'y': '5'}, {'x': 'c', 'y': '6'}], 'name': 'column2'}], 'type': 'column'}, {'lines': [{'data': [{'x': 'a', 'y': '1'}, {'x': 'b', 'y': '2'}, {'x': 'c', 'y': '3'}], 'name': 'line1', 'symbol': 'square'}, {'data': [{'x': 'a', 'y': '4'}, {'x': 'b', 'y': '5'}, {'x': 'c', 'y': '6'}], 'name': 'line2', 'symbol': 'square'}], 'type': 'line'}, {'bars': [{'data': [{'x': 'a', 'y2': '1'}, {'x': 'b', 'y2': '2'}, {'x': 'c', 'y2': '3'}], 'name': 'bar1'}, {'data': [{'x': 'a', 'y2': '4'}, {'x': 'b', 'y2': '5'}, {'x': 'c', 'y2': '6'}], 'name': 'bar2'}], 'type': 'bar'}], 'options': {'axis': {'x': {}, 'y': {}}, 'width': 50, 'backgroundColor': 'gray', 'backgroundOpacity': 50}, 'type': 'multiple'}}\n";
+        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        //System.out.println(combinedChart.getJSON());
+        //System.out.println(jsonCorrect);
+        Assert.assertEquals(jsonCorrect,combinedChart.getJSON());
     }
 
     /**

@@ -18,7 +18,16 @@ public class Main {
         //example.combinedChartExample(); //works
 
         Tests tests = new Tests();
-        tests.testCombinedChart();
         tests.testChartOptions();
+        tests.testChartLine();
+        tests.testChartBar();
+        tests.testChartPie();
+        tests.testChartArea();
+        tests.testChartBubble();
+        tests.testChartStock();
+        tests.testCombinedChart();
+        tests.testChartStock();
+        tests.testChartStock();
+        tests.testChartStock();
     }
 }
