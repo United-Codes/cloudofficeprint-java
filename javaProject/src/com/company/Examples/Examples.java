@@ -6,6 +6,9 @@ import com.company.Output.CloudAcessToken.OAuth2Token;
 import com.company.Output.Output;
 import com.company.Output.PDFOptions;
 import com.company.PrintJob;
+import com.company.RenderElements.Charts.ChartOptions;
+import com.company.RenderElements.Charts.Charts.LineChart;
+import com.company.RenderElements.Charts.Series.LineSeries;
 import com.company.RenderElements.ElementCollection;
 import com.company.RenderElements.Images.ImageBase64;
 import com.company.RenderElements.Loops.Loop;
@@ -95,16 +98,6 @@ public class Examples {
         catch (Exception e){
             e.printStackTrace();
         }
-    }
-
-    /**
-     * This checks the json of the Googletoken and Amazontoken.
-     */
-    public void testCloudAccessToken(String OAUTH2token){
-        OAuth2Token googleToken = new OAuth2Token("Google Drive",OAUTH2token);
-        AWSToken amazonToken = new AWSToken("AWS_access_key_id","AWS_secret_access_key");
-        System.out.println(googleToken.getJSON());
-        System.out.println(amazonToken.getJSON());
     }
 
     /**
@@ -233,6 +226,46 @@ public class Examples {
 
             Response response = printJob.execute();
             response.downloadLocally("./downloads/outputLoop");
+
+        }catch (AOPException e){
+            e.printStackTrace();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * This example show how to build a chart.
+     */
+    public void chartExample(){
+        try {
+            Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,
+                    null,null,null,null);
+            Output output = new Output("pdf","raw",null,null,null,null);
+            Base64Resource base64Resource = new Base64Resource();
+            base64Resource.setFileFromLocalFile("./src/com/company/Examples/chartname.docx");
+
+
+            LineSeries lineserie1 = new LineSeries("lineserie1",new String[]{"day 1", "day 2", "day 3"} ,new String[]{"4.3", "2.5", "3.5"},"red",
+                    true,"square",null,"0.2cm",null);
+            LineSeries lineserie2 = new LineSeries("lineserie2",new String[]{"day 1", "day 2", "day 3"} ,new String[]{"2.4", "4.4", "1.8"},"purple",
+                    null,null,null,null,"sysDashDotDot");
+            ChartOptions options = new ChartOptions();
+            options.setBorder(true);
+            options.setLegend("r",null);
+            options.setTitle("Line Chart");
+            options.setWidth(500);
+
+            LineChart lineChart = new LineChart("chartname",options,lineserie1,lineserie2); //chartname is the tag in the template
+
+            Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
+            data.put("output1",lineChart);
+
+            PrintJob printJob = new PrintJob(data,server,output,base64Resource,null,null,null,null);
+
+            Response response = printJob.execute();
+            response.downloadLocally("./downloads/outputChartName");
 
         }catch (AOPException e){
             e.printStackTrace();

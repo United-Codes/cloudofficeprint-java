@@ -1,5 +1,6 @@
 package com.company.RenderElements.Charts.Series;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import java.util.Iterator;
@@ -38,16 +39,17 @@ public abstract class XYSeries extends Series {
 
 
     /**
-     * @return Json of the data of the serie.
+     * @return JsonArray of the data of the serie.
      */
-    public JsonObject getJSONData() {
-        JsonObject json = new JsonObject();
+    public JsonArray getJSONData() {
+        JsonArray jsonArray = new JsonArray();
         for (int i = 0; i <getX().length; i++){
             JsonObject xy = new JsonObject();
             xy.addProperty("x",getX()[i]);
             xy.addProperty("y",getY()[i]);
+            jsonArray.add(xy);
         }
-        return json;
+        return jsonArray;
     }
 
     /**

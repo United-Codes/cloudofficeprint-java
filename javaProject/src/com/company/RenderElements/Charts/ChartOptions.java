@@ -342,12 +342,18 @@ public class ChartOptions {
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         JsonObject axis = new JsonObject();
-        axis.add("x", getXAxis().getJSON());
-        axis.add("y", getYAxis().getJSON());
+        if (getXAxis()!=null){
+            axis.add("x", getXAxis().getJSON());
+        }
+        if (getYAxis()!=null){
+            axis.add("y", getYAxis().getJSON());
+        }
         if (getY2Axis()!= null){
             axis.add("y2", getY2Axis().getJSON());
         }
-        json.add("axis", axis);
+        if (getXAxis() != null || getYAxis() != null || getY2Axis()!=null){
+            json.add("axis", axis);
+        }
         if (getWidth()!= null){
             json.addProperty("width",getWidth());
         }
@@ -372,7 +378,7 @@ public class ChartOptions {
         if (getTitleStyle()!= null){
             json.add("title_style",getTitleStyle().getJSON());
         }
-        if (getShowDataLabels()== true){
+        if (getShowDataLabels()!= null && getShowDataLabels()== true){
             JsonObject dataLabels = new JsonObject();
             dataLabels.addProperty("showDataLabels", true);
             if (getSeparator()!=null){
@@ -401,8 +407,12 @@ public class ChartOptions {
         if (getShowLegend()== true){
             JsonObject legend = new JsonObject();
             legend.addProperty("showLegend", true);
-            legend.addProperty("position", getPosition()); //maybe problem with boolean here
-            legend.add("style", getLegendStyle().getJSON());
+            if (getPosition()!=null){
+                legend.addProperty("position", getPosition());
+            }
+            if (getLegendStyle()!=null){
+                legend.add("style", getLegendStyle().getJSON());
+            }
             json.add("legend",legend);
         }
         return json;
