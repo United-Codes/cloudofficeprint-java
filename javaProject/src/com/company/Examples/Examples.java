@@ -8,9 +8,11 @@ import com.company.Output.PDFOptions;
 import com.company.PrintJob;
 import com.company.RenderElements.Charts.ChartOptions;
 import com.company.RenderElements.Charts.Charts.BarChart;
+import com.company.RenderElements.Charts.Charts.ColumnChart;
 import com.company.RenderElements.Charts.Charts.CombinedChart;
 import com.company.RenderElements.Charts.Charts.LineChart;
 import com.company.RenderElements.Charts.Series.BarSeries;
+import com.company.RenderElements.Charts.Series.ColumnSeries;
 import com.company.RenderElements.Charts.Series.LineSeries;
 import com.company.RenderElements.ElementCollection;
 import com.company.RenderElements.Images.ImageBase64;
@@ -291,9 +293,10 @@ public class Examples {
             base64Resource.setFileFromLocalFile("./src/com/company/Examples/chartname.docx");
 
 
-            BarSeries barserie1 = new BarSeries("bar 1",new String[]{"day 1", "day 2", "day 3"} ,new String[]{"4.3", "2.5", "3.5"});
-            BarSeries barserie2 = new BarSeries("bar 2",new String[]{"day 1", "day 2", "day 3"} ,new String[]{"2.4", "4.4", "1.8"});
-            BarChart barChart = new BarChart("columns",null,barserie1,barserie2);
+
+            ColumnSeries columnSeries1 = new ColumnSeries("bar 1",new String[]{"day 1", "day 2", "day 3"} ,new String[]{"4.3", "2.5", "3.5"}); //bar 1 should be column 1
+            ColumnSeries columnSeries2 = new ColumnSeries("bar 2",new String[]{"day 1", "day 2", "day 3"} ,new String[]{"2.4", "4.4", "1.8"}); //bar 2 should be column 1
+            ColumnChart columnChart = new ColumnChart("columns",null,columnSeries1,columnSeries2);
 
             LineSeries lineSerie1 = new LineSeries("line 1",new String[]{"day 1", "day 2", "day 3"} ,new String[]{"43", "25", "35"},
                     null,null,null,null,null,null);
@@ -304,10 +307,10 @@ public class Examples {
             options.setBorder(true);
             options.setGrid(true);
             options.setLegend("r",null);
-            options.setTitle("false");
+            options.setTitle("Combined Chart ");
             options.setWidth(500);
             options.setWidth(700);
-            CombinedChart combinedChart = new CombinedChart("chartname",options, new BarChart[]{barChart}, new LineChart[]{lineChart});
+            CombinedChart combinedChart = new CombinedChart("chartname",options, new ColumnChart[]{columnChart}, new LineChart[]{lineChart});
 
             Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
             data.put("output1",combinedChart);

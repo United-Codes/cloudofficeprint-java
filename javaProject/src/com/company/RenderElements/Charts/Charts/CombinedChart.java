@@ -122,11 +122,13 @@ public class CombinedChart extends Chart{
     @Override
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
-        json.addProperty("type","multiple");
+        JsonObject result = new JsonObject();
+        result.addProperty("type","multiple");
         if(getOptions()!=null){
-            json.add("options",getOptions().getJSON());
+            result.add("options",getOptions().getJSON());
         }
-        json.add("multiples",getModifiedChartDicts());
+        result.add("multiples",getModifiedChartDicts());
+        json.add(getName(),result);
         return json;
     }
 

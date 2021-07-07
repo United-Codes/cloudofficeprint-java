@@ -15,9 +15,9 @@ public class Main {
         //example.localTemplate(); //works
         //example.loopExample(); //works
         //example.chartExample(); //works
-        //example.combinedChartExample(); //doesn't work yet
+        example.combinedChartExample(); //doesn't work yet
 
         Tests tests = new Tests();
-        tests.testCombinedChart();
+        //tests.testCombinedChart();
     }
 }
