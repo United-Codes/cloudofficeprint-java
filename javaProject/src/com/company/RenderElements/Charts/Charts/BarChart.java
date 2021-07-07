@@ -11,20 +11,20 @@ import java.util.ArrayList;
  * Represents a bar chart.
  */
 public class BarChart extends Chart{
-    ArrayList<BarSeries> lineseries = new ArrayList<BarSeries>();
+    ArrayList<BarSeries> barSeries = new ArrayList<BarSeries>();
 
     /**
      * @return BarSeries with the data for the chart.
      */
     public ArrayList<BarSeries> getBarSeries() {
-        return lineseries;
+        return barSeries;
     }
 
     /**
-     * @param lineseries BarSeries with the data for the chart.
+     * @param barSeries BarSeries with the data for the chart.
      */
-    public void setBarSeries(ArrayList<BarSeries> lineseries) {
-        this.lineseries = lineseries;
+    public void setBarSeries(ArrayList<BarSeries> barSeries) {
+        this.barSeries = barSeries;
     }
 
     /**
@@ -36,7 +36,7 @@ public class BarChart extends Chart{
     public BarChart(String name, ChartOptions options, BarSeries ... barSeries){
         setName(name);
         setOptions(options);
-        for (BarSeries barSerie: lineseries){
+        for (BarSeries barSerie: barSeries){
             getBarSeries().add(barSerie);
         }
     }

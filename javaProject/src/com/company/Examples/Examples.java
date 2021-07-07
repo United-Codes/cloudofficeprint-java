@@ -7,7 +7,10 @@ import com.company.Output.Output;
 import com.company.Output.PDFOptions;
 import com.company.PrintJob;
 import com.company.RenderElements.Charts.ChartOptions;
+import com.company.RenderElements.Charts.Charts.BarChart;
+import com.company.RenderElements.Charts.Charts.CombinedChart;
 import com.company.RenderElements.Charts.Charts.LineChart;
+import com.company.RenderElements.Charts.Series.BarSeries;
 import com.company.RenderElements.Charts.Series.LineSeries;
 import com.company.RenderElements.ElementCollection;
 import com.company.RenderElements.Images.ImageBase64;
@@ -236,7 +239,7 @@ public class Examples {
     }
 
     /**
-     * This example show how to build a chart.
+     * This example show how to build a combined chart.
      */
     public void chartExample(){
         try {
@@ -275,4 +278,51 @@ public class Examples {
         }
 
     }
+
+    /**
+     * This example show how to build a chart.
+     */
+    public void combinedChartExample(){
+        try {
+            Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,
+                    null,null,null,null);
+            Output output = new Output("pdf","raw",null,null,null,null);
+            Base64Resource base64Resource = new Base64Resource();
+            base64Resource.setFileFromLocalFile("./src/com/company/Examples/chartname.docx");
+
+
+            BarSeries barserie1 = new BarSeries("bar 1",new String[]{"day 1", "day 2", "day 3"} ,new String[]{"4.3", "2.5", "3.5"});
+            BarSeries barserie2 = new BarSeries("bar 2",new String[]{"day 1", "day 2", "day 3"} ,new String[]{"2.4", "4.4", "1.8"});
+            BarChart barChart = new BarChart("columns",null,barserie1,barserie2);
+
+            LineSeries lineSerie1 = new LineSeries("line 1",new String[]{"day 1", "day 2", "day 3"} ,new String[]{"43", "25", "35"},
+                    null,null,null,null,null,null);
+            LineSeries lineSerie2 = new LineSeries("line 2",new String[]{"day 1", "day 2", "day 3"} ,new String[]{"24", "44", "18"},
+                    null,null,null,null,null,null);
+            LineChart lineChart = new LineChart("lines",null,lineSerie1,lineSerie2);
+            ChartOptions options = new ChartOptions();
+            options.setBorder(true);
+            options.setGrid(true);
+            options.setLegend("r",null);
+            options.setTitle("false");
+            options.setWidth(500);
+            options.setWidth(700);
+            CombinedChart combinedChart = new CombinedChart("chartname",options, new BarChart[]{barChart}, new LineChart[]{lineChart});
+
+            Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
+            data.put("output1",combinedChart);
+
+            PrintJob printJob = new PrintJob(data,server,output,base64Resource,null,null,null,null);
+
+            Response response = printJob.execute();
+            response.downloadLocally("./downloads/outputCombinedChartName");
+
+        }catch (AOPException e){
+            e.printStackTrace();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 }

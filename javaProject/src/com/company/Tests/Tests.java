@@ -3,26 +3,22 @@ package com.company.Tests;
 import com.company.Output.CloudAcessToken.AWSToken;
 import com.company.Output.CloudAcessToken.OAuth2Token;
 import com.company.RenderElements.Charts.ChartOptions;
-import com.company.RenderElements.Charts.Charts.AreaChart;
-import com.company.RenderElements.Charts.Charts.BarChart;
-import com.company.RenderElements.Charts.Charts.CombinedChart;
-import com.company.RenderElements.Charts.Charts.LineChart;
-import com.company.RenderElements.Charts.Series.AreaSeries;
-import com.company.RenderElements.Charts.Series.BarSeries;
-import com.company.RenderElements.Charts.Series.LineSeries;
-import com.company.RenderElements.Charts.Series.XYSeries;
+import com.company.RenderElements.Charts.Charts.*;
+import com.company.RenderElements.Charts.Series.*;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.sun.tools.javac.util.Assert;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.Assert.*;
 
 
 public class Tests {
 
     public void testCombinedChart(){
-        BarSeries barserie1 = new BarSeries("bar 1",new String[]{"day 1", "day 2", "day 3"} ,new String[]{"4.3", "2.5", "3.5"});
-        BarSeries barserie2 = new BarSeries("bar 2",new String[]{"day 1", "day 2", "day 3"} ,new String[]{"2.4", "4.4", "1.8"});
-        BarChart barChart = new BarChart("columns",null,barserie1,barserie2);
+        ColumnSeries columnSeries1 = new ColumnSeries("bar 1",new String[]{"day 1", "day 2", "day 3"} ,new String[]{"4.3", "2.5", "3.5"});
+        ColumnSeries columnSeries2 = new ColumnSeries("bar 2",new String[]{"day 1", "day 2", "day 3"} ,new String[]{"2.4", "4.4", "1.8"});
+        ColumnChart columnChart = new ColumnChart("columns",null,columnSeries1,columnSeries2);
 
         LineSeries lineSerie1 = new LineSeries("line 1",new String[]{"day 1", "day 2", "day 3"} ,new String[]{"43", "25", "35"},
                 null,null,null,null,null,null);
@@ -36,9 +32,7 @@ public class Tests {
         options.setTitle("false");
         options.setWidth(500);
         options.setWidth(700);
-        CombinedChart combinedChart = new CombinedChart("combinedChart",options, new BarChart[]{barChart}, new LineChart[]{lineChart});
-        System.out.println(combinedChart.getJSON());
-
+        CombinedChart combinedChart = new CombinedChart("combinedChart",options, new ColumnChart[]{columnChart}, new LineChart[]{lineChart});
         String correct = "{\n" +
                 "    \"multiples\": [\n" +
                 "        {\n" +
@@ -134,9 +128,9 @@ public class Tests {
                 "    \"type\": \"multiple\"\n" +
                 "}";
         JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
-        Assert
-        assertEquals(jsonCorrect,combinedChart.getJSON()),
-        System.out.println(jsonCorrect);
+        System.out.println("My JSON : " + combinedChart.getJSON());
+        System.out.println("Correct JSON : " + jsonCorrect);
+        Assert.assertEquals(jsonCorrect,combinedChart.getJSON());
     }
 
     /**
