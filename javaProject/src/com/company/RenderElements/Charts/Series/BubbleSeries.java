@@ -41,20 +41,30 @@ public class BubbleSeries extends XYSeries {
     }
 
     /**
-     * @return JSONObject with the tags for this element for the AOP server.
+     * @return JsonArray of the data of the serie.
      */
     @Override
-    public JsonObject getJSON() {
-        JsonObject json = new JsonObject();
-        for (int i = 0; i <getX().length; i++) {
+    public JsonArray getJSONData() {
+        JsonArray jsonArray = new JsonArray();
+        for (int i = 0; i <getX().length; i++){
             JsonObject xy = new JsonObject();
             xy.addProperty("x",getX()[i]);
             xy.addProperty("y",getY()[i]);
             if (getSizes()!=null){
                 xy.addProperty("size",getSizes()[i]);
             }
+            jsonArray.add(xy);
         }
+        return jsonArray;
+    }
 
+    /**
+     * @return JSONObject with the tags for this element for the AOP server.
+     */
+    @Override
+    public JsonObject getJSON() {
+        JsonObject json = new JsonObject();
+        json.add("data", getJSONData());
         if (getName()!=null){
             json.addProperty("name",getName());
         }

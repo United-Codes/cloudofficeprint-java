@@ -5,9 +5,24 @@ import com.google.gson.JsonObject;
 
 import java.util.Iterator;
 
-public abstract class XYSeries extends Series {
+public abstract class XYSeries {
     String[] x;
     String[] y;
+    private String name;
+
+    /**
+     * @return Name of the serie.
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name Name of the serie.
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
 
     /**
      * @return X-data of the serie.
