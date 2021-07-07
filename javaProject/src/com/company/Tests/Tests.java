@@ -31,7 +31,7 @@ public class Tests {
         options.setLegend("r",null);
         options.setTitle("false");
         options.setWidth(500);
-        options.setWidth(700);
+        options.setHeight(700);
         CombinedChart combinedChart = new CombinedChart("combinedChart",options, new ColumnChart[]{columnChart}, new LineChart[]{lineChart});
         String correct = "{\n" +
                 "    \"multiples\": [\n" +

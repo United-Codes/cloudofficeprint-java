@@ -294,8 +294,8 @@ public class Examples {
 
 
 
-            ColumnSeries columnSeries1 = new ColumnSeries("bar 1",new String[]{"day 1", "day 2", "day 3"} ,new String[]{"4.3", "2.5", "3.5"}); //bar 1 should be column 1
-            ColumnSeries columnSeries2 = new ColumnSeries("bar 2",new String[]{"day 1", "day 2", "day 3"} ,new String[]{"2.4", "4.4", "1.8"}); //bar 2 should be column 1
+            ColumnSeries columnSeries1 = new ColumnSeries("column 1",new String[]{"day 1", "day 2", "day 3"} ,new String[]{"4.3", "2.5", "3.5"});
+            ColumnSeries columnSeries2 = new ColumnSeries("column 2",new String[]{"day 1", "day 2", "day 3"} ,new String[]{"2.4", "4.4", "1.8"});
             ColumnChart columnChart = new ColumnChart("columns",null,columnSeries1,columnSeries2);
 
             LineSeries lineSerie1 = new LineSeries("line 1",new String[]{"day 1", "day 2", "day 3"} ,new String[]{"43", "25", "35"},
@@ -307,9 +307,9 @@ public class Examples {
             options.setBorder(true);
             options.setGrid(true);
             options.setLegend("r",null);
-            options.setTitle("Combined Chart ");
-            options.setWidth(500);
-            options.setWidth(700);
+            options.setTitle("Combined Chart");
+            options.setHeight(500);
+            options.setWidth(600);
             CombinedChart combinedChart = new CombinedChart("chartname",options, new ColumnChart[]{columnChart}, new LineChart[]{lineChart});
 
             Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();

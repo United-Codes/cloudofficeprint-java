@@ -71,6 +71,7 @@ public class CombinedChart extends Chart{
      * @return Json with the old key replaced by the new key.
      */
     public JsonObject replaceKeyRecursive(JsonObject json, String oldKey, String newKey){
+        System.out.println(json);
         for (Map.Entry entry : json.entrySet()){
             if (entry.getKey().toString() == oldKey){
                 json.remove((String) entry.getKey());
@@ -88,11 +89,12 @@ public class CombinedChart extends Chart{
                     newarray.add(replaceKeyRecursive(next,oldKey,newKey));
                 }
                 for (int i =0; i< newarray.size();i++){
-                    ((JsonArray) entry.getValue()).remove(i);
+                    ((JsonArray) entry.getValue()).remove(0);
                     ((JsonArray) entry.getValue()).add(newarray.get(i));
                 }
             }
         }
+        System.out.println(json);
         return json;
     }
 
@@ -107,13 +109,18 @@ public class CombinedChart extends Chart{
             dict.remove("options");
             array.add(dict);
         }
+        //System.out.println(array);
         for (Chart chart : getSecondaryCharts()){
             JsonObject dict = chart.getJSON();
             dict = dict.getAsJsonObject(chart.getName());
             dict.remove("options");
-            replaceKeyRecursive(dict,"y","y2");
+            //System.out.println(dict);
+            replaceKeyRecursive(dict,"y","y2"); //check ici
+            //System.out.println(dict);
+            //System.out.println(chart.getJSON());
             array.add(dict);
         }
+        System.out.println(array);
         return array;
     }
     /**
