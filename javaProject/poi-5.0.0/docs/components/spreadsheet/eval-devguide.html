@@ -617,14 +617,14 @@ document.write("Last Published: " + document.lastModified);
 	The source code for this is in the file: o.a.p.h.record.formula.GenericFormulaTestCase.java
 	This class has a reference to the test xls file (not /a/ test xls, /the/ test xls :)
 	which may need to be changed for your environment. Once you do that, in the test xls,
-	locate the entry for the function that you have implemented and enter different tests 
+	locate the entry for the function that you have implemented and enter different chartTests
 	in a cell in the FORMULA row. Then copy the "value of" the formula that you entered in the
 	cell just below it (this is easily done in excel as: 
 	[copy the formula cell] &gt; [go to cell below] &gt; Edit &gt; Paste Special &gt; Values &gt; "ok").
 	You can enter multiple such formulas and paste their values in the cell below and the
 	test framework will automatically test if the formula evaluation matches the expected
 	value (Again, hard to put in words, so if you will, please take time to quickly look
-	at the code and the currently entered tests in the patch attachment "FormulaEvalTestData.xls" 
+	at the code and the currently entered chartTests in the patch attachment "FormulaEvalTestData.xls"
 	file).
 	</p>
 </div>

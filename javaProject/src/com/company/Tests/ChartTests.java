@@ -19,7 +19,7 @@ import java.awt.geom.Area;
 import java.util.HashMap;
 
 
-public class Tests {
+public class ChartTests {
 
     public void testChartOptions(){
 
