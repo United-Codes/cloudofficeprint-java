@@ -181,12 +181,14 @@ public class Output {
      */
     public JsonObject getJSON(){
         JsonObject json = new JsonObject();
-        json.addProperty("output_encoding",getEncoding());
-        if (getConverter()!=null){
-            json.addProperty("output_converter",getConverter());
-        }
         if (getType() != null){
             json.addProperty("output_type", getType());
+        }
+        if (getEncoding() != null){
+            json.addProperty("output_encoding",getEncoding());
+        }
+        if (getConverter()!=null){
+            json.addProperty("output_converter",getConverter());
         }
         if (getAccessToken()!= null){
             for(Map.Entry<String, JsonElement> tag : getAccessToken().getJSON().entrySet()){

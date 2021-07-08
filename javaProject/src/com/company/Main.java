@@ -4,6 +4,7 @@ package com.company;
 
 import com.company.Examples.Examples;
 import com.company.Tests.ChartTests;
+import com.company.Tests.ConfigTests;
 
 import java.io.IOException;
 
@@ -29,5 +30,11 @@ public class Main {
         chartTests.testChartAOP();
         chartTests.testChartStock();
         chartTests.testChartStock();
+
+        ConfigTests configTests = new ConfigTests();
+        configTests.testPdfOptions();
+        configTests.testCloudAccessTokens();
+        configTests.testCommands();
+        configTests.testRoutePaths();
     }
 }

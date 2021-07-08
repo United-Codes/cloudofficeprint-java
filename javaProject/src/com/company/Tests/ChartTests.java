@@ -18,7 +18,9 @@ import org.junit.Assert;
 import java.awt.geom.Area;
 import java.util.HashMap;
 
-
+/**
+ * Class containing tests for all the charts (also AOP chart from RenderElements).
+ */
 public class ChartTests {
 
     public void testChartOptions(){
@@ -164,7 +166,6 @@ public class ChartTests {
         Assert.assertEquals(jsonCorrect,areaChart.getJSON());
     }
 
-
     public void testChartBubble(){
         BubbleSeries serie1 = new BubbleSeries("bubble1", new String[]{"a", "b", "c"}, new String[]{"1", "2", "3"}, new Integer[]{5, 6, 2});
         BubbleSeries serie2 = new BubbleSeries("bubble2", new String[]{"a", "b", "c"}, new String[]{"4", "5", "6"},new Integer[]{5, 6, 2});
@@ -188,7 +189,6 @@ public class ChartTests {
         //System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect,chart.getJSON());
     }
-
 
     public void testCombinedChart(){
         ColumnSeries columnSeries1 = new ColumnSeries("column1",new String[]{"a", "b", "c"} ,new String[]{"1", "2", "3"});
@@ -259,13 +259,4 @@ public class ChartTests {
         Assert.assertEquals(jsonCorrect,chart.getJSON());
     }
 
-    /**
-     * This checks the json of the Googletoken and Amazontoken.
-     */
-    public void testCloudAccessToken(String OAUTH2token){
-        OAuth2Token googleToken = new OAuth2Token("Google Drive",OAUTH2token);
-        AWSToken amazonToken = new AWSToken("AWS_access_key_id","AWS_secret_access_key");
-        System.out.println(googleToken.getJSON());
-        System.out.println(amazonToken.getJSON());
-    }
 }

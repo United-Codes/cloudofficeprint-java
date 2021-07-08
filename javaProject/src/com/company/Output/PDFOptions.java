@@ -14,9 +14,9 @@ public class PDFOptions {
     private Boolean evenPage;
     private Boolean mergeMakingEven;
     private String modifyPassword;
-    private int passwordProtectionFlag =-1;
+    private Integer passwordProtectionFlag;
     private Boolean lockForm;
-    private int copies =-1;
+    private Integer copies;
     private int [] pageMargin;
     private Boolean landscape;
     private String pageFormat;
@@ -135,7 +135,7 @@ public class PDFOptions {
      * More info on the flag bits on https://pdfhummus.com/post/147451287581/hummus-1058-and-pdf-writer-updates-encryption.
      * @return protection flag for the PDF (in addition to the user password). (int representation of the 12 flag bits)
      */
-    public int getPasswordProtectionFlag() {
+    public Integer getPasswordProtectionFlag() {
         return passwordProtectionFlag;
     }
 
@@ -143,7 +143,7 @@ public class PDFOptions {
      * More info on the flag bits on https://pdfhummus.com/post/147451287581/hummus-1058-and-pdf-writer-updates-encryption.
      * @param passwordProtectionFlag protection flag for the PDF (in addition to the user password). (int representation of the 12 flag bits)
      */
-    public void setPasswordProtectionFlag(int passwordProtectionFlag) {
+    public void setPasswordProtectionFlag(Integer passwordProtectionFlag) {
         this.passwordProtectionFlag = passwordProtectionFlag;
     }
 
@@ -164,14 +164,14 @@ public class PDFOptions {
     /**
      * @return Number of times the output will be repeated.
      */
-    public int getCopies() {
+    public Integer getCopies() {
         return copies;
     }
 
     /**
      * @param copies Amount of times the output will be repeated.
      */
-    public void setCopies(int copies) {
+    public void setCopies(Integer copies) {
         this.copies = copies;
     }
 
@@ -198,7 +198,7 @@ public class PDFOptions {
      * Only supported when converting HTML to PDF.
      * @param pageMargin Margin (same for all sides).
      */
-    public void setPageMargin(int pageMargin) throws Exception {
+    public void setPageMargin(int pageMargin)  {
         this.pageMargin = new int[]{pageMargin, pageMargin, pageMargin, pageMargin};
     }
 
@@ -289,6 +289,18 @@ public class PDFOptions {
 
     public JsonObject getJSON(){
         JsonObject json = new JsonObject();
+        if (getReadPassword()!=null){
+            json.addProperty("output_read_password", getReadPassword());
+        }
+        if (getWatermark()!=null){
+            json.addProperty("output_watermark", getWatermark());
+        }
+        if (getPageWidth()!=null){
+            json.addProperty("output_page_width", getPageWidth());
+        }
+        if (getPageHeight()!=null){
+            json.addProperty("output_page_height", getPageHeight());
+        }
         if (getEvenPage()!=null){
             json.addProperty("output_even_page", getEvenPage());
         }
@@ -298,17 +310,14 @@ public class PDFOptions {
         if (getModifyPassword()!=null){
             json.addProperty("output_modify_password", getModifyPassword());
         }
-        if (getReadPassword()!=null){
-            json.addProperty("output_read_password", getReadPassword());
-        }
-        if (getPasswordProtectionFlag()!=-1){
+        if (getPasswordProtectionFlag()!=null){
             json.addProperty("output_password_protection_flag", getPasswordProtectionFlag());
-        }
-        if (getWatermark()!=null){
-            json.addProperty("output_watermark", getWatermark());
         }
         if (getLockForm()!=null){
             json.addProperty("lock_form", getLockForm());
+        }
+        if (getCopies()!=null){
+            json.addProperty("output_copies", getCopies());
         }
         if (getPageMargin()!=null){
             JsonObject marginDict = new JsonObject();
@@ -327,12 +336,6 @@ public class PDFOptions {
                 }
             }
             json.add("page_margin",marginDict); //For AOP versions later than 21.1.1, output_page_margin will also be supported as tag name to be consistent with the other namings.
-        }
-        if (getPageWidth()!=null){
-            json.addProperty("output_page_width", getPageWidth());
-        }
-        if (getPageHeight()!=null){
-            json.addProperty("output_page_height", getPageHeight());
         }
         if (getPageFormat()!=null){
             json.addProperty("output_page_format", getPageFormat());
