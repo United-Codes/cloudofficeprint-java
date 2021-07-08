@@ -26,7 +26,7 @@ public class Main {
         tests.testChartBubble();
         tests.testChartStock();
         tests.testCombinedChart();
-        tests.testChartStock();
+        tests.testChartAOP();
         tests.testChartStock();
         tests.testChartStock();
     }

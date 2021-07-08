@@ -23,6 +23,7 @@ public class AOPChart extends  RenderElement{
     private String yTitle;
     private String y2Title;
     private String x2Title;
+    private AOPChartDateOptions aopChartDateOptions;
 
     /**
      * @return JsonArray of the data of the x-axis. Format : ["day 1", "day 2", "day 3", "day 4", "day 5"] or
@@ -125,6 +126,20 @@ public class AOPChart extends  RenderElement{
     }
 
     /**
+     * @return Date options for the chart.
+     */
+    public AOPChartDateOptions getAopChartDateOptions() {
+        return aopChartDateOptions;
+    }
+
+    /**
+     * @param aopChartDateOptions Date options for the chart.
+     */
+    public void setAopChartDateOptions(AOPChartDateOptions aopChartDateOptions) {
+        this.aopChartDateOptions = aopChartDateOptions;
+    }
+
+    /**
      * Represent an AOP chart (including data and style). If you don't want te specify some parameters, use null as argument.
      * @param name Name of the chart for the tag.
      * @param xData ArrayList(String) of the data of the x-axis. Format : ["day 1", "day 2", "day 3", "day 4", "day 5"] or
@@ -135,9 +150,10 @@ public class AOPChart extends  RenderElement{
      * @param yTitle Title of the y-axis.
      * @param y2Title Title of the second x-axis.
      * @param x2Title Title of the second y-axis.
+     * @param aopChartDateOptions Date options for the chart.
      */
     public AOPChart(String name, JsonArray xData, HashMap<String, JsonArray> yData, String  title,
-                    String xTitle, String yTitle, String y2Title, String x2Title){
+                    String xTitle, String yTitle, String y2Title, String x2Title, AOPChartDateOptions aopChartDateOptions){
         setName(name);
         setXData(xData);
         setYData(yData);
@@ -146,6 +162,7 @@ public class AOPChart extends  RenderElement{
         setYTitle(yTitle);
         setY2Title(y2Title);
         setX2Title(x2Title);
+        setAopChartDateOptions(aopChartDateOptions);
     }
 
     /**
@@ -154,16 +171,17 @@ public class AOPChart extends  RenderElement{
     @Override
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
-        if (getTitle()!=null){
-            json.addProperty("title", getTitle());
-        }
+        JsonObject result = new JsonObject();
 
         JsonObject xAxis = new JsonObject();
         xAxis.add("data",getXData());
         if (getXTitle()!=null){
             xAxis.addProperty("title",getXTitle());
         }
-        json.add("xAxis", xAxis);
+        if (getAopChartDateOptions()!=null){
+            xAxis.add("date",getAopChartDateOptions().getJSON());
+        }
+        result.add("xAxis", xAxis);
 
         JsonArray series = new JsonArray();
         for(Map.Entry<String, JsonArray> entry : getYData().entrySet()) {
@@ -174,24 +192,28 @@ public class AOPChart extends  RenderElement{
         }
         JsonObject yAxis = new JsonObject();
         yAxis.add("series", series);
-        yAxis.add("data",getXData());
         if(getYTitle()!=null){
             yAxis.addProperty("title",getYTitle());
         }
-        json.add("yAxis", yAxis);
+        result.add("yAxis", yAxis);
+
+
+        if (getTitle()!=null){
+            result.addProperty("title", getTitle());
+        }
 
         if (getX2Title()!=null){
             JsonObject x2title = new JsonObject();
             x2title.addProperty("title", getX2Title());
-            json.add("x2Axis", x2title);
+            result.add("x2Axis", x2title);
         }
 
         if (getY2Title()!=null) {
             JsonObject y2title = new JsonObject();
             y2title.addProperty("title", getY2Title());
-            json.add("y2Axis", y2title);
+            result.add("y2Axis", y2title);
         }
-
+        json.add(getName(),result);
         return json;
     }
 

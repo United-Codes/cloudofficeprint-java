@@ -2,17 +2,21 @@ package com.company.Tests;
 
 import com.company.Output.CloudAcessToken.AWSToken;
 import com.company.Output.CloudAcessToken.OAuth2Token;
+import com.company.RenderElements.AOPChart;
+import com.company.RenderElements.AOPChartDateOptions;
 import com.company.RenderElements.Charts.ChartAxisOptions;
 import com.company.RenderElements.Charts.ChartDateOptions;
 import com.company.RenderElements.Charts.ChartOptions;
 import com.company.RenderElements.Charts.ChartTextStyle;
 import com.company.RenderElements.Charts.Charts.*;
 import com.company.RenderElements.Charts.Series.*;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.junit.Assert;
 
 import java.awt.geom.Area;
+import java.util.HashMap;
 
 
 public class Tests {
@@ -25,11 +29,7 @@ public class Tests {
         xAxisOptions.setMin(5F);
         xAxisOptions.setMax(10F);
 
-        ChartDateOptions chartDateOptions = new ChartDateOptions();
-        chartDateOptions.setFormat("unix");
-        chartDateOptions.setCode("mm/yy");
-        chartDateOptions.setUnit("months");
-        chartDateOptions.setStep(1);
+        ChartDateOptions chartDateOptions = new ChartDateOptions("unix","mm/yy","months",1);
         xAxisOptions.setDateOptions(chartDateOptions);
 
         xAxisOptions.setTitle("title_x");
@@ -226,6 +226,37 @@ public class Tests {
         //System.out.println(combinedChart.getJSON());
         //System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect,combinedChart.getJSON());
+    }
+
+    public void testChartAOP(){
+        JsonArray xdata = new JsonArray();
+        xdata.add("a");
+        xdata.add("b");
+        xdata.add("c");
+
+        JsonArray ydata1 = new JsonArray();
+        ydata1.add("1");
+        ydata1.add("2");
+        ydata1.add("3");
+
+        JsonArray ydata2 = new JsonArray();
+        ydata2.add("4");
+        ydata2.add("5");
+        ydata2.add("6");
+
+        HashMap<String,JsonArray> yDatas = new HashMap<>();
+        yDatas.put("series 1", ydata1);
+        yDatas.put("series 2", ydata2);
+        AOPChartDateOptions aopChartDateOptions = new AOPChartDateOptions("d/m/yyyy","days",1);
+
+
+        AOPChart chart = new AOPChart("aop_chart",xdata ,yDatas,"aop_chart_title","x-axis","y-axis","y2-axis","x2-axis",aopChartDateOptions);
+
+        String correct = "{'aop_chart': {'xAxis': {'data': ['a', 'b', 'c'], 'title': 'x-axis', 'date': {'format': 'd/m/yyyy', 'unit': 'days', 'step': 1}}, 'yAxis': {'series': [{'name': 'series 1', 'data': ['1', '2', '3']}, {'name': 'series 2', 'data': ['4', '5', '6']}], 'title': 'y-axis'}, 'title': 'aop_chart_title', 'x2Axis': {'title': 'x2-axis'}, 'y2Axis': {'title': 'y2-axis'}}}\n";
+        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        //System.out.println(chart.getJSON());
+        //System.out.println(jsonCorrect);
+        Assert.assertEquals(jsonCorrect,chart.getJSON());
     }
 
     /**

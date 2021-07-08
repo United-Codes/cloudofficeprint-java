@@ -1,14 +1,13 @@
-package com.company.RenderElements.Charts;
-
+package com.company.RenderElements;
 
 import com.google.gson.JsonObject;
 
 /**
- * This class represents date options, only applicable for stock charts.
+ * Date options for an AOPChart (different from ChartDateOptions for the other Charts).
  */
-public class ChartDateOptions {
+public class AOPChartDateOptions {
+
     private String format;
-    private String code;
     private String unit;
     private Integer step;
 
@@ -27,20 +26,6 @@ public class ChartDateOptions {
     }
 
     /**
-     * @return Code format of the date. e.g. : mm/yy
-     */
-    public String getCode() {
-        return code;
-    }
-
-    /**
-     * @param code Code format of the date. e.g. : mm/yy
-     */
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    /**
      * @return The unit to be used for spacing the axis values e.g. : months.
      */
     public String getUnit() {
@@ -55,14 +40,16 @@ public class ChartDateOptions {
     }
 
     /**
-     * @return How many units should be used for spacing the axis values (automatic if undefined). This option is not supported in LibreOffice.
+     * @return How many units should be used for spacing the axis values (automatic if undefined).
+     *         This option is not supported in LibreOffice.
      */
     public Integer getStep() {
         return step;
     }
 
     /**
-     * @param step How many units should be used for spacing the axis values (automatic if undefined). This option is not supported in LibreOffice.
+     * @param step How many units should be used for spacing the axis values (automatic if undefined).
+     *             This option is not supported in LibreOffice.
      */
     public void setStep(Integer step) {
         this.step = step;
@@ -71,13 +58,11 @@ public class ChartDateOptions {
     /**
      * This object represents the date options for a chart.
      * @param format Date format e.g. : unix.
-     * @param code Code format of the date. e.g. : mm/yy
      * @param unit The unit to be used for spacing the axis values e.g. : months.
      * @param step How many units should be used for spacing the axis values (automatic if undefined). This option is not supported in LibreOffice.
      */
-    public ChartDateOptions(String format, String code, String unit, Integer step){
+    public AOPChartDateOptions(String format, String unit, Integer step){
         setFormat(format);
-        setCode(code);
         setUnit(unit);
         setStep(step);
     }
@@ -89,9 +74,6 @@ public class ChartDateOptions {
         JsonObject json = new JsonObject();
         if (getFormat()!= null){
             json.addProperty("format",getFormat());
-        }
-        if (getCode()!= null){
-            json.addProperty("code",getCode());
         }
         if (getUnit()!= null){
             json.addProperty("unit",getUnit());
