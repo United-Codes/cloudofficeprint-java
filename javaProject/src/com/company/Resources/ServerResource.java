@@ -39,13 +39,12 @@ public class ServerResource extends Resource{
     /**
      * Creates a resource with given path. Mimetype and filetype (extension) are deduced from the path.
      * @param path Path of the file on the AOP server.
+     * @param mimeType Mimetype of the file on the AOP server.
      * @throws IOException if mimetype can't be deduced.
      * @throws Exception if extension can't be deduced.
      */
-    public ServerResource(String path) throws Exception {
+    public ServerResource(String path, String mimeType) throws Exception {
         this.path = path;
-        Path temp = new File(path).toPath();
-        setMimeType(Files.probeContentType(temp));
         setFiletype(getExtension(path));
     }
 

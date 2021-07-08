@@ -6,19 +6,31 @@ import com.company.Examples.Examples;
 import com.company.Tests.ChartTests;
 import com.company.Tests.CodesTests;
 import com.company.Tests.ConfigTests;
+import com.company.Tests.GeneralTests;
 
 import java.io.IOException;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         Examples example = new Examples();
-        //example.localJson(); //works
-        //example.localTemplate(); //works
-        //example.loopExample(); //works
-        //example.chartExample(); //works
-        //example.combinedChartExample(); //works
-        example.qrCodeExample();
+        //example.localJson();
+        //example.localTemplate();
+        //example.loopExample();
+        //example.chartExample();
+        //example.combinedChartExample();
+        //example.qrCodeExample();
+
+        GeneralTests generalTests = new GeneralTests();
+        generalTests.ResourceTest();
+        generalTests.PrePendAppendSubTemplatesTest();
+        generalTests.ResourceTest();
+        generalTests.ResourceTest();
+        generalTests.ResourceTest();
+        generalTests.ResourceTest();
+        generalTests.ResourceTest();
+        generalTests.ResourceTest();
+        generalTests.ResourceTest();
 
         ChartTests chartTests = new ChartTests();
         chartTests.testChartOptions();

@@ -31,7 +31,7 @@ public class HTMLResource extends Resource {
      * @param HTML data for this resource.
      * @param landscape Whether the HTML should be rendered as landscape-oriented page (default :false)
      */
-    HTMLResource(String HTML, Boolean landscape){
+    public HTMLResource(String HTML, Boolean landscape){
         this.HTML = HTML;
         this.landscape = landscape;
     }
@@ -58,10 +58,10 @@ public class HTMLResource extends Resource {
     public JsonObject getJSONForTemplate() {
         JsonObject jsonResource = new JsonObject();
         jsonResource.addProperty("template_type", "html");
-        jsonResource.addProperty("html_template_content", getHTML());
         if (getLandscape() == true){
             jsonResource.addProperty("orientation", "landscape");
         }
+        jsonResource.addProperty("html_template_content", getHTML());
         return jsonResource;
     }
 

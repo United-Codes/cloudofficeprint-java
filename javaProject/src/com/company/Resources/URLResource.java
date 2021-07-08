@@ -48,8 +48,8 @@ public class URLResource extends Resource{
     @Override
     public JsonObject getJSONForTemplate() {
         JsonObject json = new JsonObject();
-        json.addProperty("url", URL);
-        json.addProperty("template_type", URL);
+        json.addProperty("url", getURL());
+        json.addProperty("template_type", getFiletype());
         return json;
     }
 
