@@ -2,10 +2,15 @@ package com.company.Resources;
 
 
 import com.google.gson.JsonObject;
+import org.apache.sis.storage.event.WarningEvent;
+import org.apache.tika.Tika;
+import org.apache.tika.exception.TikaConfigException;
 import org.apache.tika.mime.MimeTypeException;
 import ucar.units.Base;
 
+import javax.activation.MimetypesFileTypeMap;
 import java.io.*;
+import java.net.URLConnection;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Base64;
@@ -73,8 +78,8 @@ public class Base64Resource extends Resource{
     @Override
     public JsonObject getJSONForSecondaryFile()  {
         JsonObject jsonResource = new JsonObject();
-        jsonResource.addProperty("mime_type",getMimeType());
         jsonResource.addProperty("file_content", getFileBase64());
+        jsonResource.addProperty("mime_type",getMimeType());
         jsonResource.addProperty("file_source","base64");
         return jsonResource;
     }
@@ -90,13 +95,50 @@ public class Base64Resource extends Resource{
         String extension = getExtension(filePath);
         setFiletype(extension);
         File file = new File(filePath);
-        Path path = file.toPath();
-        setMimeType(Files.probeContentType(path));
+
+        //Tika tika = new Tika();
+        //setMimeType(tika.detect(file)); // would be a better way to do it but it throws two warnings.
+        System.out.println(extension);
+        setMimeType(getMimeType(extension));
+
+
+        System.out.println("mimetype " + getMimeType());
         byte[] bytes = Files.readAllBytes(file.toPath());
         String encodedString = Base64.getEncoder().encodeToString(bytes);
         setFileBase64(encodedString);
         //String s = new String(bytes, StandardCharsets.UTF_8);
         //System.out.println(s); //only works for txt or json not office files
+    }
+
+    /**
+     * As the tika library gives two warnings I decided to implement if manually for all the supported document formats (not a lot). I didn't find any better option for the moment.
+     * @param extension Extension of the file to find the mimetype.
+     * @return Mimetype of the file.
+     * @throws Exception If the file type is not supported (cannot find the mimetype).
+     */
+    public String getMimeType(String extension) throws Exception {
+        if (extension.equals("txt")){
+            return "text/plain";
+        }
+        if (extension.equals("md")){
+            return "text/markdown";
+        }
+        if (extension.equals("html")){
+            return "text/html";
+        }
+        if (extension.equals("docx")){
+            return "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+        }
+        if (extension.equals("xlsx")){
+            return "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+        }
+        if (extension.equals("pptx")){
+            return "application/vnd.openxmlformats-officedocument.presentationml.presentation";
+        }
+        if (extension.equals("csv")){
+            return "text/csv";
+        }
+        else throw new Exception("File type not supported, so cannot find the mimetype");
     }
 
 
