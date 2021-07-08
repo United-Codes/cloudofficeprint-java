@@ -11,6 +11,8 @@ import com.company.RenderElements.Charts.Charts.*;
 import com.company.RenderElements.Charts.Series.BarSeries;
 import com.company.RenderElements.Charts.Series.ColumnSeries;
 import com.company.RenderElements.Charts.Series.LineSeries;
+import com.company.RenderElements.Codes.BarCode;
+import com.company.RenderElements.Codes.WifiQRCode;
 import com.company.RenderElements.ElementCollection;
 import com.company.RenderElements.Images.ImageBase64;
 import com.company.RenderElements.Loops.Loop;
@@ -316,6 +318,53 @@ public class Examples {
 
             Response response = printJob.execute();
             response.downloadLocally("./downloads/outputCombinedChartName");
+
+        }catch (AOPException e){
+            e.printStackTrace();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * This example show how to build a chart.
+     */
+    public void qrCodeExample(){
+        try {
+            Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,
+                    null,null,null,null);
+            Output output = new Output("pdf","raw",null,null,null,null);
+            Base64Resource base64Resource = new Base64Resource();
+            base64Resource.setFileFromLocalFile("./src/com/company/Examples/localTemplate.docx");
+
+            //Barcode
+            BarCode barCode =new BarCode("barc","ean13","978020137962");
+            barCode.setWidth(50);
+            barCode.setHeight(50);
+            barCode.setQrErrorCorrectionLevel("L");
+            barCode.setLinkUrl("url");
+            barCode.setRotation(45);
+            barCode.setBackgroundColor("red");
+            barCode.setPaddingWidth(25);
+            barCode.setPaddingHeight(25);
+            barCode.setExtraOptions("includetext guardwhitespace");
+
+            //WifiQRCode
+            WifiQRCode wifiQRCode =new WifiQRCode("wifiqr","ssid","password","WPA",false);
+
+
+            ElementCollection codes = new ElementCollection("codes");
+            codes.addElement(barCode);
+            codes.addElement(wifiQRCode);
+
+            Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
+            data.put("output1",codes);
+
+            PrintJob printJob = new PrintJob(data,server,output,base64Resource,null,null,null,null);
+
+            Response response = printJob.execute();
+            response.downloadLocally("./downloads/outputCodes");
 
         }catch (AOPException e){
             e.printStackTrace();

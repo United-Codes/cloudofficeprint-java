@@ -18,6 +18,7 @@ public class Main {
         //example.loopExample(); //works
         //example.chartExample(); //works
         //example.combinedChartExample(); //works
+        example.qrCodeExample();
 
         ChartTests chartTests = new ChartTests();
         chartTests.testChartOptions();
