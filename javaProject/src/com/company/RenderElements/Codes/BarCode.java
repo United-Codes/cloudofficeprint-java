@@ -192,6 +192,9 @@ public class BarCode extends Code {
         if (getWidth()!= null){
             json.addProperty(getName()+"_width",getWidth());
         }
+        if (getQrErrorCorrectionLevel()!= null){
+            json.addProperty(getName()+"_errorcorrectlevel",getQrErrorCorrectionLevel());
+        }
         if (getLinkUrl()!= null){
             json.addProperty(getName()+"_url",getLinkUrl());
         }
@@ -207,8 +210,8 @@ public class BarCode extends Code {
         if (getPaddingHeight()!= null){
             json.addProperty(getName()+"_padding_height",getPaddingHeight());
         }
-        if (getQrErrorCorrectionLevel()!= null){
-            json.addProperty(getName()+"_errorcorrectlevel",getQrErrorCorrectionLevel());
+        if (getExtraOptions()!=null){
+            json.addProperty(getName()+"_extra_options",getExtraOptions());
         }
         return json;
     }

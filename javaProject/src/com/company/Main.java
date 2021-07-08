@@ -4,6 +4,7 @@ package com.company;
 
 import com.company.Examples.Examples;
 import com.company.Tests.ChartTests;
+import com.company.Tests.CodesTests;
 import com.company.Tests.ConfigTests;
 
 import java.io.IOException;
@@ -35,6 +36,17 @@ public class Main {
         configTests.testPdfOptions();
         configTests.testCloudAccessTokens();
         configTests.testCommands();
-        configTests.testRoutePaths();
+
+        CodesTests codesTests = new CodesTests();
+        codesTests.barCodeTest();
+        codesTests.QRWifiTest();
+        codesTests.QRTelephoneTest();
+        codesTests.QREmailTest();
+        codesTests.QRSMSTest();
+        codesTests.QRURLTest();
+        codesTests.QRVCardTest();
+        codesTests.QRMeCardTest();
+        codesTests.QRGeoTest();
+        codesTests.QREventTest();
     }
 }
