@@ -18,7 +18,7 @@ import java.util.Hashtable;
 public class PrintJobTest {
 
 
-    public void PrePendAppendSubTemplatesTest() throws Exception {
+    public void prePendAppendSubTemplatesTest() throws Exception {
 
 
         Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,

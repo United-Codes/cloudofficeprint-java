@@ -13,6 +13,8 @@ import com.company.RenderElements.Codes.WifiQRCode;
 import com.company.RenderElements.ElementCollection;
 import com.company.RenderElements.Images.ImageBase64;
 import com.company.RenderElements.Loops.Loop;
+import com.company.RenderElements.PDF.PDFText;
+import com.company.RenderElements.PDF.PDFTexts;
 import com.company.RenderElements.Property;
 import com.company.RenderElements.RenderElement;
 import com.company.Resources.Base64Resource;
@@ -376,9 +378,72 @@ public class Examples {
      * Look in the generalTests to see the code.
      * @throws Exception
      */
-    public void PrePendAppendSubTemplatesExample() throws Exception {
+    public void prePendAppendSubTemplatesExample() throws Exception {
         PrintJobTest printJobTest = new PrintJobTest();
-        printJobTest.PrePendAppendSubTemplatesTest();
+        printJobTest.prePendAppendSubTemplatesTest();
+    }
+
+
+    public void AOPPDFTextExample()  {
+        try {
+            Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,
+                    null,null,null,null);
+            Output output = new Output("pdf","raw",null,null,null,null);
+            Base64Resource base64Resource = new Base64Resource();
+            base64Resource.setFileFromLocalFile("./src/com/company/Examples/localTemplate.docx"); //doesn't have importance
+
+            PDFText pdfText1_1 = new PDFText(150,160,1,"test1_1");
+            pdfText1_1.setRotation(45);
+            pdfText1_1.setBold(false);
+            pdfText1_1.setItalic(true);
+            pdfText1_1.setFont("Arial");
+            pdfText1_1.setFontColor("blue");
+            pdfText1_1.setFontSize(12);
+
+            PDFText pdfText1_2 = new PDFText(20,30,1,"test1_2");
+            pdfText1_2.setRotation(45);
+            pdfText1_2.setBold(false);
+            pdfText1_2.setItalic(false);
+            pdfText1_2.setFont("Arial");
+            pdfText1_2.setFontColor("red");
+            pdfText1_2.setFontSize(10);
+
+            PDFText pdfText2 = new PDFText(60,70,2,"test2");
+            pdfText2.setRotation(30);
+            pdfText2.setBold(true);
+            pdfText2.setItalic(true);
+            pdfText2.setFont("Times new roman");
+            pdfText2.setFontColor("#FF00FF");
+            pdfText2.setFontSize(15);
+
+            PDFText pdfTextAll = new PDFText(420,430,-1,"test_all"); //-1 means on all pages
+            pdfTextAll.setRotation(15);
+            pdfTextAll.setBold(true);
+            pdfTextAll.setItalic(false);
+            pdfTextAll.setFont("Arial");
+            pdfTextAll.setFontColor("red");
+            pdfTextAll.setFontSize(20);
+
+            PDFTexts pdfTexts = new PDFTexts(new PDFText[]{pdfText1_1, pdfText1_2, pdfText2, pdfTextAll});
+
+
+            ElementCollection codes = new ElementCollection("codes");
+            codes.addElement(pdfTexts);
+
+            Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
+            data.put("output1",codes);
+
+            PrintJob printJob = new PrintJob(data,server,output,base64Resource,null,null,null,null);
+
+            Response response = printJob.execute();
+            response.downloadLocally("./downloads/outputAOPPDFText");
+
+        }catch (AOPException e){
+            e.printStackTrace();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 }

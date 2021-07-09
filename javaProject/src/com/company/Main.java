@@ -15,9 +15,11 @@ public class Main {
         //example.chartExample();
         //example.combinedChartExample();
         //example.qrCodeExample();
+        //example.prePendAppendSubTemplatesExample();
+        example.AOPPDFTextExample();
 
         PrintJobTest printJobTest = new PrintJobTest();
-        printJobTest.PrePendAppendSubTemplatesTest();
+        //printJobTest.prePendAppendSubTemplatesTest(); //contacts server and makes a download so is in comment
 
         ResourcesTests resourcesTests = new ResourcesTests();
         resourcesTests.ResourceTest();
@@ -51,5 +53,8 @@ public class Main {
         codesTests.QRMeCardTest();
         codesTests.QRGeoTest();
         codesTests.QREventTest();
+
+        PDFTests pdfTests = new PDFTests();
+        pdfTests.AOPPDFTextTest();
     }
 }
