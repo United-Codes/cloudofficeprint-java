@@ -3,12 +3,7 @@ package com.company;
 //https://www.jetbrains.com/help/idea/creating-and-running-your-first-java-application.html#run_jar_artifact will be usefull to build the JAR
 
 import com.company.Examples.Examples;
-import com.company.Tests.ChartTests;
-import com.company.Tests.CodesTests;
-import com.company.Tests.ConfigTests;
-import com.company.Tests.GeneralTests;
-
-import java.io.IOException;
+import com.company.Tests.*;
 
 public class Main {
 
@@ -21,16 +16,11 @@ public class Main {
         //example.combinedChartExample();
         //example.qrCodeExample();
 
-        GeneralTests generalTests = new GeneralTests();
-        generalTests.ResourceTest();
-        generalTests.PrePendAppendSubTemplatesTest();
-        generalTests.ResourceTest();
-        generalTests.ResourceTest();
-        generalTests.ResourceTest();
-        generalTests.ResourceTest();
-        generalTests.ResourceTest();
-        generalTests.ResourceTest();
-        generalTests.ResourceTest();
+        PrintJobTest printJobTest = new PrintJobTest();
+        printJobTest.PrePendAppendSubTemplatesTest();
+
+        ResourcesTests resourcesTests = new ResourcesTests();
+        resourcesTests.ResourceTest();
 
         ChartTests chartTests = new ChartTests();
         chartTests.testChartOptions();

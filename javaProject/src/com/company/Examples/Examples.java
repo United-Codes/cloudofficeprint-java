@@ -1,14 +1,11 @@
 package com.company.Examples;
 
 import com.company.AOPException;
-import com.company.Output.CloudAcessToken.AWSToken;
-import com.company.Output.CloudAcessToken.OAuth2Token;
 import com.company.Output.Output;
 import com.company.Output.PDFOptions;
 import com.company.PrintJob;
 import com.company.RenderElements.Charts.ChartOptions;
 import com.company.RenderElements.Charts.Charts.*;
-import com.company.RenderElements.Charts.Series.BarSeries;
 import com.company.RenderElements.Charts.Series.ColumnSeries;
 import com.company.RenderElements.Charts.Series.LineSeries;
 import com.company.RenderElements.Codes.BarCode;
@@ -21,6 +18,7 @@ import com.company.RenderElements.RenderElement;
 import com.company.Resources.Base64Resource;
 import com.company.Response;
 import com.company.Server.Server;
+import com.company.Tests.PrintJobTest;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -372,6 +370,15 @@ public class Examples {
         catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Look in the generalTests to see the code.
+     * @throws Exception
+     */
+    public void PrePendAppendSubTemplatesExample() throws Exception {
+        PrintJobTest printJobTest = new PrintJobTest();
+        printJobTest.PrePendAppendSubTemplatesTest();
     }
 
 }

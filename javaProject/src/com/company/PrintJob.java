@@ -187,9 +187,11 @@ public class PrintJob {
      */
     public JsonObject getJSON() throws MimeTypeException {
         JsonObject jsonForServer = new JsonObject();
+
         for(Map.Entry<String, JsonElement> tag : getServer().getJSON().entrySet()){
             jsonForServer.add(tag.getKey(),tag.getValue()); //these tags for the server need to be at the upper level in the JSON
         }
+
         if (getAppendFiles() != null && getAppendFiles().length>0){
             JsonArray appendFiles = new JsonArray();
             for(Resource appendFile : getAppendFiles()){
@@ -197,13 +199,7 @@ public class PrintJob {
             }
             jsonForServer.add("append_files",appendFiles);
         }
-        jsonForServer.addProperty("java_sdk_version", "21.1");
-        if (getAopRemoteDebug()!=null){
-            jsonForServer.addProperty("aop_remote_debug", getAopRemoteDebug());
-        }
-        jsonForServer.add("output", getOutput().getJSON());
-        jsonForServer.add("template", getTemplate().getJSONForTemplate());
-        //ArrayList<String> files = new ArrayList<String>();
+
         JsonArray files = new JsonArray();
         for(Map.Entry<String, RenderElement> data : getData().entrySet()){
             JsonObject file = new JsonObject();
@@ -213,6 +209,11 @@ public class PrintJob {
             files.add(file);
         }
         jsonForServer.add("files", files);
+        if (getAopRemoteDebug()!=null){
+            jsonForServer.addProperty("aop_remote_debug", getAopRemoteDebug());
+        }
+        jsonForServer.add("output", getOutput().getJSON());
+
         if (getPrependFiles() != null && getPrependFiles().length>0){
             JsonArray prependFiles = new JsonArray();
             for(Resource prependFile : getPrependFiles()){
@@ -220,6 +221,10 @@ public class PrintJob {
             }
             jsonForServer.add("prepend_files",prependFiles);
         }
+
+
+        jsonForServer.add("template", getTemplate().getJSONForTemplate());
+
         if (getSubTemplates()!=null){
             JsonArray subTemplates = new JsonArray();
             for(Map.Entry<String, Resource> subtemplate : getSubTemplates().entrySet()){
@@ -229,7 +234,8 @@ public class PrintJob {
             }
             jsonForServer.add("templates",subTemplates);
         }
-
+        jsonForServer.addProperty("tool", "AOP_java_sdk");
+        jsonForServer.addProperty("java_sdk_version", "21.1");
         return jsonForServer;
     }
 

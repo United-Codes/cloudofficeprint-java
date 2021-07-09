@@ -79,8 +79,8 @@ public class Base64Resource extends Resource{
     public JsonObject getJSONForSecondaryFile()  {
         JsonObject jsonResource = new JsonObject();
         jsonResource.addProperty("file_content", getFileBase64());
-        jsonResource.addProperty("mime_type",getMimeType());
         jsonResource.addProperty("file_source","base64");
+        jsonResource.addProperty("mime_type",getMimeType());
         return jsonResource;
     }
 
@@ -98,11 +98,8 @@ public class Base64Resource extends Resource{
 
         //Tika tika = new Tika();
         //setMimeType(tika.detect(file)); // would be a better way to do it but it throws two warnings.
-        System.out.println(extension);
         setMimeType(getMimeType(extension));
 
-
-        System.out.println("mimetype " + getMimeType());
         byte[] bytes = Files.readAllBytes(file.toPath());
         String encodedString = Base64.getEncoder().encodeToString(bytes);
         setFileBase64(encodedString);
