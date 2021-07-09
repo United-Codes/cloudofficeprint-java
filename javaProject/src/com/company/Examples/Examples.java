@@ -13,6 +13,8 @@ import com.company.RenderElements.Codes.WifiQRCode;
 import com.company.RenderElements.ElementCollection;
 import com.company.RenderElements.Images.ImageBase64;
 import com.company.RenderElements.Loops.Loop;
+import com.company.RenderElements.PDF.PDFImage;
+import com.company.RenderElements.PDF.PDFImages;
 import com.company.RenderElements.PDF.PDFText;
 import com.company.RenderElements.PDF.PDFTexts;
 import com.company.RenderElements.Property;
@@ -240,7 +242,7 @@ public class Examples {
     }
 
     /**
-     * This example show how to build a combined chart.
+     * This example show how to build charts.
      */
     public void chartExample(){
         try {
@@ -281,7 +283,7 @@ public class Examples {
     }
 
     /**
-     * This example show how to build a chart.
+     * This example show how to build a combined chart.
      */
     public void combinedChartExample(){
         try {
@@ -328,7 +330,7 @@ public class Examples {
     }
 
     /**
-     * This example show how to build a chart.
+     * This example show how to work with Codes (QR code and barcode).
      */
     public void qrCodeExample(){
         try {
@@ -375,6 +377,7 @@ public class Examples {
     }
 
     /**
+     * This example shows you how to prepend/append files and how to use subtemplates in a template.
      * Look in the generalTests to see the code.
      * @throws Exception
      */
@@ -384,7 +387,10 @@ public class Examples {
     }
 
 
-    public void AOPPDFTextExample()  {
+    /**
+     * This example shows you how to add text and images on each page of a template without tag.
+     */
+    public void AOPPDFTextAndImageExample()  {
         try {
             Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,
                     null,null,null,null);
@@ -426,9 +432,15 @@ public class Examples {
 
             PDFTexts pdfTexts = new PDFTexts(new PDFText[]{pdfText1_1, pdfText1_2, pdfText2, pdfTextAll});
 
+            PDFImage pdfImage = new PDFImage(800,100,1);
+            pdfImage.setImageFromLocalFile("./src/com/company/Examples/logoAOP.jpg");
+            pdfImage.setMaxWidth(100);
+
+            PDFImages pdfImages = new PDFImages(new PDFImage[]{pdfImage});
 
             ElementCollection codes = new ElementCollection("codes");
             codes.addElement(pdfTexts);
+            codes.addElement(pdfImages);
 
             Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
             data.put("output1",codes);

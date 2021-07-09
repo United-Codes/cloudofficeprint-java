@@ -2,6 +2,10 @@ package com.company.RenderElements.PDF;
 
 import com.google.gson.JsonObject;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.Base64;
 
 
 public class PDFImage extends PDFInsertObject{
@@ -95,6 +99,17 @@ public class PDFImage extends PDFInsertObject{
     }
 
     /**
+     * Represents an image to insert in a PDF. The image options can be set with the setter functions. In this constructor the image is not
+     * set. It should be set with setImageFromLocalFile.
+     * @param x X-coordinate of the position of the text in the template starting from bottom left.
+     * @param y Y-coordinate of the position of the text in the template starting from bottom left.
+     * @param pageNumber Page number of the page where the text should be inserted. -1 if the text should be displayed on all pages.
+     */
+    public PDFImage(Integer x, Integer y, Integer pageNumber){
+        super(x,y,pageNumber);
+    }
+
+    /**
      * @return JSONObject with the tags for this element for the AOP server.
      */
     @Override
@@ -116,6 +131,18 @@ public class PDFImage extends PDFInsertObject{
             json.addProperty("image_max_width", getMaxWidth());
         }
         return json;
+    }
+
+    /**
+     * Sets the image to the image on the filepath.
+     * @param filePath Path of the local file.
+     * @throws IOException If file not found.
+     */
+    public void setImageFromLocalFile(String filePath) throws Exception {
+        File file = new File(filePath);
+        byte[] bytes = Files.readAllBytes(file.toPath());
+        String encodedString = Base64.getEncoder().encodeToString(bytes);
+        setImage(encodedString);
     }
 
     /**

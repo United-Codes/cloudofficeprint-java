@@ -16,7 +16,7 @@ public class Main {
         //example.combinedChartExample();
         //example.qrCodeExample();
         //example.prePendAppendSubTemplatesExample();
-        example.AOPPDFTextExample();
+        //example.AOPPDFTextAndImageExample();
 
         PrintJobTest printJobTest = new PrintJobTest();
         //printJobTest.prePendAppendSubTemplatesTest(); //contacts server and makes a download so is in comment
@@ -56,5 +56,7 @@ public class Main {
 
         PDFTests pdfTests = new PDFTests();
         pdfTests.AOPPDFTextTest();
+        pdfTests.AOPPDFImagesTest();
+        pdfTests.AOPPDFForms();
     }
 }

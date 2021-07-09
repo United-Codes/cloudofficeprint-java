@@ -37,7 +37,7 @@ public class PDFFormData extends RenderElement {
      * an object with the key aop_pdf_form_data.
      * @param formData  Hashmap of the fieldname and value to fill in. Two options : inputfieldname : value and radio/checkbox : true/false.
      */
-    PDFFormData(HashMap<String, String> formData){
+    public PDFFormData(HashMap<String, String> formData){
         setName("AOP_PDF_IMAGES");
         setFormData(formData);
     }
@@ -48,9 +48,11 @@ public class PDFFormData extends RenderElement {
     @Override
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
+        JsonObject result = new JsonObject();
         for (Map.Entry<String,String> entry : getFormData().entrySet()){
-            json.addProperty(entry.getKey(),entry.getValue());
+            result.addProperty(entry.getKey(),entry.getValue());
         }
+        json.add("aop_pdf_form_data",result);
         return json;
     }
 

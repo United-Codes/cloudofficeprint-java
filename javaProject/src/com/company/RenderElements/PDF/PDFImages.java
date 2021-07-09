@@ -32,7 +32,7 @@ public class PDFImages extends RenderElement {
     /**
      * @param images Group of different PDF images as one RenderElement. There can only be one PDFImage element in the JSON for AOP.
      */
-    PDFImages(PDFImage[] images){
+    public PDFImages(PDFImage[] images){
         setName("AOP_PDF_IMAGES");
         setImages(images);
     }
@@ -43,12 +43,27 @@ public class PDFImages extends RenderElement {
     @Override
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
+        JsonObject result = new JsonObject();
         for (PDFImage image : getImages()){
-            JsonArray array = new JsonArray();
-            array.add(image.getJson());
-            json.add(image.getPageNumber().toString(),array);
+            if (image.getPageNumber() == -1){
+                JsonArray array = new JsonArray();
+                array.add(image.getJson());
+                result.add("all",array);
+            }
+            else if (result.get(image.getPageNumber().toString())!=null){
+                JsonArray array = (JsonArray) result.get(image.getPageNumber().toString());
+                array.add(image.getJson());
+                //result.add(text.getPageNumber().toString(),array);
+            }
+            else {
+                JsonArray array = new JsonArray();
+                array.add(image.getJson());
+                result.add(image.getPageNumber().toString(),array);
+            }
         }
-        json.addProperty(getName(),getValue());
+        JsonArray array = new JsonArray();
+        array.add(result);
+        json.add("AOP_PDF_IMAGES", array);
         return json;
     }
 

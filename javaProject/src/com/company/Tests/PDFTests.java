@@ -1,10 +1,11 @@
 package com.company.Tests;
 
-import com.company.RenderElements.PDF.PDFText;
-import com.company.RenderElements.PDF.PDFTexts;
+import com.company.RenderElements.PDF.*;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.junit.Assert;
+
+import java.util.HashMap;
 
 public class PDFTests {
 
@@ -49,5 +50,55 @@ public class PDFTests {
         JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
         //System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect,pdfTexts.getJSON());
+    }
+
+    public void AOPPDFImagesTest(){
+
+        PDFImage PDFImage1_1 = new PDFImage(50,60,3,"test1_1");
+        PDFImage1_1.setRotation(45);
+        PDFImage1_1.setWidth(50);
+        PDFImage1_1.setHeight(50);
+        PDFImage1_1.setMaxWidth(100);
+
+        PDFImage PDFImage1_2 = new PDFImage(60,70,3,"test1_2");
+        PDFImage1_2.setRotation(30);
+        PDFImage1_2.setWidth(75);
+        PDFImage1_2.setHeight(75);
+        PDFImage1_2.setMaxWidth(75);
+
+        PDFImage PDFImage2 = new PDFImage(20,30,5,"test2");
+        PDFImage2.setRotation(15);
+        PDFImage2.setWidth(100);
+        PDFImage2.setHeight(100);
+        PDFImage2.setMaxWidth(100);
+
+        PDFImage PDFImageAll = new PDFImage(25,26,-1,"test_all");
+        PDFImageAll.setRotation(45);
+        PDFImageAll.setWidth(20);
+        PDFImageAll.setHeight(20);
+        PDFImageAll.setMaxWidth(50);
+
+        PDFImages pdfTexts = new PDFImages(new PDFImage[]{PDFImage1_1, PDFImage1_2, PDFImage2, PDFImageAll});
+
+        String correct= "{'AOP_PDF_IMAGES': [{'3': [{'image': 'test1_1', 'x': 50, 'y': 60, 'rotation': 45, 'image_width': 50, 'image_height': 50, 'image_max_width': 100}, {'image': 'test1_2', 'x': 60, 'y': 70, 'rotation': 30, 'image_width': 75, 'image_height': 75, 'image_max_width': 75}], '5': [{'image': 'test2', 'x': 20, 'y': 30, 'rotation': 15, 'image_width': 100, 'image_height': 100, 'image_max_width': 100}], 'all': [{'image': 'test_all', 'x': 25, 'y': 26, 'rotation': 45, 'image_width': 20, 'image_height': 20, 'image_max_width': 50}]}]}";
+        //System.out.println(pdfTexts.getJSON());
+        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        //System.out.println(jsonCorrect);
+        Assert.assertEquals(jsonCorrect,pdfTexts.getJSON());
+    }
+
+    public void AOPPDFForms(){
+        HashMap<String,String> data = new HashMap<String,String>();
+        data.put("f_1","5");
+        data.put("f_2","test");
+        data.put("r_1","true");
+        data.put("r_2","false");
+        PDFFormData pdfFormData = new PDFFormData(data);
+
+        String correct= "{'aop_pdf_form_data': {'f_1': '5', 'f_2': 'test', 'r_1': 'true', 'r_2': 'false'}}";
+        //System.out.println(pdfFormData.getJSON());
+        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        //System.out.println(jsonCorrect);
+        Assert.assertEquals(jsonCorrect,pdfFormData.getJSON());
     }
 }
