@@ -179,8 +179,7 @@ public class Examples {
             product3_1.addElement(image3);
 
             //Add products to order 1
-            RenderElement[] elements1 = {product1_1,product2_1,product3_1};
-            Loop products1 = new Loop("product",elements1);
+            Loop products1 = new Loop("product", new ElementCollection[]{product1_1, product2_1, product3_1});
             order1.addElement(products1);
 
             //Order 2
@@ -433,7 +432,7 @@ public class Examples {
             PDFTexts pdfTexts = new PDFTexts(new PDFText[]{pdfText1_1, pdfText1_2, pdfText2, pdfTextAll});
 
             PDFImage pdfImage = new PDFImage(800,100,1);
-            pdfImage.setImageFromLocalFile("./src/com/company/Examples/logoAOP.jpg");
+            pdfImage.setImageFromLocalFile("./src/com/company/Examples/logoAOP.jpg"); //doesn't work for the moment idk why
             pdfImage.setMaxWidth(100);
 
             PDFImages pdfImages = new PDFImages(new PDFImage[]{pdfImage});
