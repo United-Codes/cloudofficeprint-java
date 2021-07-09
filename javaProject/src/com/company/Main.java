@@ -59,9 +59,12 @@ public class Main {
         pdfTests.AOPPDFImagesTest();
         pdfTests.AOPPDFForms();
 
-
         LoopsTests loopsTests  = new LoopsTests();
         loopsTests.forEach();
         loopsTests.testForEachSheet();
+
+        ImagesTests imagesTests =new ImagesTests();
+        imagesTests.imageBase64();
+        imagesTests.imageURL();
     }
 }

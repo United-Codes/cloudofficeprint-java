@@ -164,20 +164,20 @@ public abstract class Image extends RenderElement {
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         json.addProperty(getName(),getValue());
-        if(getWidth()!=null){
-            json.addProperty(getName()+"_width",getWidth());
-        }
-        if(getHeight()!=null){
-            json.addProperty(getName()+"_height",getHeight());
-        }
         if(getMaxWidth()!=null){
             json.addProperty(getName()+"_max_width",getMaxWidth());
         }
         if(getMaxHeight()!=null){
             json.addProperty(getName()+"_max_height",getMaxHeight());
         }
-        if(getMaxHeight()!=null){
-            json.addProperty(getName()+"_alt_text",getMaxHeight());
+        if(getAltText()!=null){
+            json.addProperty(getName()+"_alt_text",getAltText());
+        }
+        if(getWidth()!=null){
+            json.addProperty(getName()+"_width",getWidth());
+        }
+        if(getHeight()!=null){
+            json.addProperty(getName()+"_height",getHeight());
         }
         if(getWrapText()!=null){
             json.addProperty(getName()+"_wrap_text",getWrapText());
@@ -187,6 +187,9 @@ public abstract class Image extends RenderElement {
         }
         if(getTargetUrl()!=null){
             json.addProperty(getName()+"_url",getTargetUrl());
+        }
+        if(getTransparency()!=null){
+            json.addProperty(getName()+"_transparency",getTransparency());
         }
         return json;
     }
