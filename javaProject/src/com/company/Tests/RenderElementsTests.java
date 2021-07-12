@@ -97,9 +97,15 @@ public class RenderElementsTests {
     }
 
     public void textBox(){
-        D3Code prop = new D3Code("d3_code","test_code","['a', 1, 2, 3, 'b']");
+        TextBox prop = new TextBox("tbox_name","tbox_value");
+        prop.setFont("Arial");
+        prop.setFontColor("blue");
+        prop.setFontSize(12);
+        prop.setTransparency("50%");
+        prop.setWidth("30");
+        prop.setHeight("25");
 
-        String correct= "{'d3_code': 'test_code', 'd3_code_data': \"['a', 1, 2, 3, 'b']\"}";
+        String correct= "{'tbox_name': 'tbox_value', 'tbox_name_font': 'Arial', 'tbox_name_font_color': 'blue', 'tbox_name_font_size': 12, 'tbox_name_transparency': '50%', 'tbox_name_width': '30', 'tbox_name_height': '25'}";
         //System.out.println(prop.getJSON());
         JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
         //System.out.println(jsonCorrect);

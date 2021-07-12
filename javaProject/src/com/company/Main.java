@@ -77,7 +77,7 @@ public class Main {
         renderElementsTests.styledProp();
         renderElementsTests.waterMark();
         renderElementsTests.D3Code();
-        renderElementsTests.cellStyleProperty();
+        renderElementsTests.textBox();
         renderElementsTests.cellStyleProperty();
         renderElementsTests.cellStyleProperty();
         renderElementsTests.cellStyleProperty();
