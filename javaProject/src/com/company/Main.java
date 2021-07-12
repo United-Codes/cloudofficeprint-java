@@ -17,6 +17,7 @@ public class Main {
         //example.qrCodeExample();
         //example.prePendAppendSubTemplatesExample();
         //example.AOPPDFTextAndImageExample();
+        //example.renderElements();
 
         PrintJobTest printJobTest = new PrintJobTest();
         //printJobTest.prePendAppendSubTemplatesTest(); //contacts server and makes a download so is in comment
@@ -70,12 +71,12 @@ public class Main {
         RenderElementsTests renderElementsTests =new RenderElementsTests();
         renderElementsTests.Property();
         renderElementsTests.cellStyleProperty();
-        renderElementsTests.cellStyleProperty();
-        renderElementsTests.cellStyleProperty();
-        renderElementsTests.cellStyleProperty();
-        renderElementsTests.cellStyleProperty();
-        renderElementsTests.cellStyleProperty();
-        renderElementsTests.cellStyleProperty();
+        renderElementsTests.hyperLink();
+        renderElementsTests.tableOfContent();
+        renderElementsTests.CellSpan();
+        renderElementsTests.styledProp();
+        renderElementsTests.waterMark();
+        renderElementsTests.D3Code();
         renderElementsTests.cellStyleProperty();
         renderElementsTests.cellStyleProperty();
         renderElementsTests.cellStyleProperty();

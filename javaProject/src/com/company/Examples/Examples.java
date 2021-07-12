@@ -4,21 +4,19 @@ import com.company.AOPException;
 import com.company.Output.Output;
 import com.company.Output.PDFOptions;
 import com.company.PrintJob;
+import com.company.RenderElements.*;
 import com.company.RenderElements.Charts.ChartOptions;
 import com.company.RenderElements.Charts.Charts.*;
 import com.company.RenderElements.Charts.Series.ColumnSeries;
 import com.company.RenderElements.Charts.Series.LineSeries;
 import com.company.RenderElements.Codes.BarCode;
 import com.company.RenderElements.Codes.WifiQRCode;
-import com.company.RenderElements.ElementCollection;
 import com.company.RenderElements.Images.ImageBase64;
 import com.company.RenderElements.Loops.Loop;
 import com.company.RenderElements.PDF.PDFImage;
 import com.company.RenderElements.PDF.PDFImages;
 import com.company.RenderElements.PDF.PDFText;
 import com.company.RenderElements.PDF.PDFTexts;
-import com.company.RenderElements.Property;
-import com.company.RenderElements.RenderElement;
 import com.company.Resources.Base64Resource;
 import com.company.Response;
 import com.company.Server.Server;
@@ -448,6 +446,53 @@ public class Examples {
 
             Response response = printJob.execute();
             response.downloadLocally("./downloads/outputAOPPDFText");
+
+        }catch (AOPException e){
+            e.printStackTrace();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Example for a styled property and a watermark.
+     */
+    public void renderElements(){
+        try {
+            Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,
+                    null,null,null,null);
+            Output output = new Output("pdf","raw",null,null,null,null);
+            Base64Resource base64Resource = new Base64Resource();
+            base64Resource.setFileFromLocalFile("./src/com/company/Examples/localTemplate.docx");
+
+            StyledProperty prop = new StyledProperty("first_name","DemoCustomerName");
+            prop.setFont("NanumMyeongjo");
+            prop.setFontSize("25pt");
+            prop.setFontColor("#ff00ff");
+            prop.setBold(true);
+            prop.setItalic(true);
+            prop.setUnderline(false);
+            prop.setStrikethrough(false);
+            prop.setHighlightColor("darkMagenta");
+
+            Watermark watermark = new Watermark("watermark","wm_text");
+            watermark.setFont("Arial");
+            watermark.setColor("red");
+            watermark.setOpacity(0.5F);
+            watermark.setRotation(-45);
+
+            ElementCollection collection = new ElementCollection("collection");
+            collection.addElement(prop);
+            collection.addElement(watermark);
+
+            Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
+            data.put("output1",collection);
+
+            PrintJob printJob = new PrintJob(data,server,output,base64Resource,null,null,null,null);
+
+            Response response = printJob.execute();
+            response.downloadLocally("./downloads/outputRenderElements");
 
         }catch (AOPException e){
             e.printStackTrace();

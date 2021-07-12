@@ -135,11 +135,11 @@ public class StyledProperty extends RenderElement{
     /**
      * Represents styled text. Set the style with the set functions.
      * @param name Name of the property for the tag.
-     * @param formula Property to replace the tag with.
+     * @param value Value to replace the tag with.
      */
-    public StyledProperty(String name, String formula){
+    public StyledProperty(String name, String value){
         setName(name);
-        setValue(formula);
+        setValue(value);
     }
 
     /**
@@ -182,7 +182,7 @@ public class StyledProperty extends RenderElement{
     @Override
     public Set<String> getTemplateTags() {
         Set<String> hash_Set = new HashSet<String>();
-        hash_Set.add("{"+getName()+" }");
+        hash_Set.add("{style "+getName()+"}");
         return ImmutableSet.copyOf(hash_Set);
     }
 }
