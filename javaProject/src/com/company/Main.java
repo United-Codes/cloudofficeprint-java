@@ -45,6 +45,7 @@ public class Main {
         configTests.testPdfOptions();
         configTests.testCloudAccessTokens();
         configTests.testCommands();
+        //needs to add printer test.
 
         CodesTests codesTests = new CodesTests();
         codesTests.barCodeTest();
@@ -57,6 +58,7 @@ public class Main {
         codesTests.QRMeCardTest();
         codesTests.QRGeoTest();
         codesTests.QREventTest();
+        //qr-options needs a test as well
 
         PDFTests pdfTests = new PDFTests();
         pdfTests.AOPPDFTextTest();
@@ -82,6 +84,6 @@ public class Main {
         renderElementsTests.D3Code();
         renderElementsTests.textBox();
         renderElementsTests.elementCollection();
-        //footnote, formula,HTML,MarkDownContent,PageBreak,Raw,RightToLeft are missing a test.
+        //footnote, formula,HTML,MarkDownContent,PageBreak,Raw,RightToLeft don't need a test as they are all similar to Property.
     }
 }
