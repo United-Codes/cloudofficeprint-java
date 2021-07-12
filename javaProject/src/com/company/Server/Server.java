@@ -292,7 +292,7 @@ public class Server {
             response.append(inputLine);
         }
         in.close();
-        System.out.println(response + "\n");
+        //System.out.println(response + "\n");
         return response.toString();
 
         }

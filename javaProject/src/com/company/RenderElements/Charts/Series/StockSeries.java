@@ -121,10 +121,14 @@ public class StockSeries extends XYSeries {
             xy.addProperty("close",getClose()[i]);
 
             if (getVolume()!=null){
-                xy.addProperty("volume",getVolume()[i]);
+                if (getVolume()[i]!=null){
+                    xy.addProperty("volume",getVolume()[i]);
+                }
             }
             if (getOpen()!=null){
-                xy.addProperty("open",getOpen()[i]);
+                if (getOpen()[i]!=null) {
+                    xy.addProperty("open", getOpen()[i]);
+                }
             }
             jsonArray.add(xy);
         }

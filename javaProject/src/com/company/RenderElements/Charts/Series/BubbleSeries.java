@@ -50,8 +50,10 @@ public class BubbleSeries extends XYSeries {
             JsonObject xy = new JsonObject();
             xy.addProperty("x",getX()[i]);
             xy.addProperty("y",getY()[i]);
-            if (getSizes()[i]!=null){
-                xy.addProperty("size",getSizes()[i]);
+            if (getSizes()!=null){
+                if (getSizes()[i]!=null){
+                    xy.addProperty("size",getSizes()[i]);
+                }
             }
             jsonArray.add(xy);
         }

@@ -20,7 +20,7 @@ public class Output {
      * one single page.
      * Default : null (the type of the template will be used).
      */
-    private String type = "pdf";
+    private String type;
 
     /**
      * This states what kind of output encoding is wished for the output file. It must be either "raw" or "base64".

@@ -10,7 +10,7 @@ import java.util.Iterator;
  */
 public class PieSeries extends XYSeries {
 
-    private String[] colors;
+    private String[] colors = {};
 
     /**
      * Note : If no colors are specified, the document's theme is used.
@@ -55,8 +55,10 @@ public class PieSeries extends XYSeries {
             JsonObject xy = new JsonObject();
             xy.addProperty("x",getX()[i]);
             xy.addProperty("y",getY()[i]);
-            if (getColors()[i]!=null){
-                xy.addProperty("color",getColors()[i]);
+            if (getColors()!=null){
+                if (getColors()[i]!=null){
+                    xy.addProperty("color",getColors()[i]);
+                }
             }
             jsonArray.add(xy);
         }
