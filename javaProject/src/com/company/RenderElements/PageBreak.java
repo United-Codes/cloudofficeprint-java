@@ -15,7 +15,7 @@ public class PageBreak extends  RenderElement{
      * Represents an object that indicates to put a break in the template or not.
      * @param name Name of this break for the tag.
      * @param value Value should be set to 'page' or 'pagebreak' for PageBreak, 'column' or 'columnbreak' for column breaks,
-     *              if set to true (default) it will create a pagebreak.
+     *              if set to true it will create a pagebreak.
      */
     public PageBreak(String name, String value){
         setName(name);

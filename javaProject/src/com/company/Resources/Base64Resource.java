@@ -33,13 +33,12 @@ public class Base64Resource extends Resource{
 
     /**
      * Constructor for creating an object of this class where the database64 can be supplied as a string.
-     * @param filetype Type (extension) of the resource.
-     * @param mimetype Mimetype of the resource.
+     * @param filetype Type (extension) of the resource e.g. : docx (not docx. !).
      * @param database64 Data of the resource base64 encoded.
      */
-    public Base64Resource(String filetype, String mimetype, String database64){
+    public Base64Resource(String filetype, String database64) throws Exception {
         setFiletype(filetype);
-        setMimeType(mimetype);
+        setMimeType(getMimeType(filetype));
         setFileBase64(database64);
     }
 

@@ -3,6 +3,7 @@ package com.company;
 import com.company.Output.Output;
 import com.company.RenderElements.ElementCollection;
 import com.company.RenderElements.RenderElement;
+import com.company.Resources.ExternalResource;
 import com.company.Resources.Resource;
 import com.company.Server.Server;
 import com.google.gson.JsonArray;
@@ -26,6 +27,7 @@ public class PrintJob {
     private Resource[] appendFiles;
     private Hashtable<String, Resource> subTemplates = new Hashtable<String, Resource>();
     private Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
+    private ExternalResource externalResource;
     private Boolean aopRemoteDebug;
 
 
@@ -154,6 +156,20 @@ public class PrintJob {
     }
 
     /**
+     * @return External resource for the data (REST or graphQL).
+     */
+    public ExternalResource getExternalResource() {
+        return externalResource;
+    }
+
+    /**
+     * @param externalResource External resource for the data (REST or graphQL).
+     */
+    public void setExternalResource(ExternalResource externalResource) {
+        this.externalResource = externalResource;
+    }
+
+    /**
      * A print job for the AOP server containing all the necessary information to generate the adequate JSON for the AOP server.
      * If you don't want to instantiate a variable, use null for this argument.
      * @param data Hashtable of (filename, RenderElement) elements.
@@ -183,45 +199,46 @@ public class PrintJob {
     }
 
     /**
+     * A print job for the AOP server containing all the necessary information to generate the adequate JSON for the AOP server.
+     * If you don't want to instantiate a variable, use null for this argument.
+     * @param externalResource External resource for the data (REST or graphQL).
+     * @param server Server to user for this printjob.
+     * @param output object containing the output configuration for this printjob.
+     * @param template for this printjob.
+     * @param subTemplates  for this print job. Hashtable(key, subTemplate)
+     *                      Subtemplates are only accessible (in docx).
+     *                      They will replace the `{?include subtemplate_dict_key}` tag in the docx.
+     * @param prependFiles Files to prepend to the output.
+     * @param appendFiles Files to append to the output.
+     * @param aopRemoteDebug If set to true the AOP server will log your JSON into out database and you can see it when you
+     *                       log into apexofficeprint.com.
+     */
+    public PrintJob(ExternalResource externalResource, Server server, Output output, Resource template, Hashtable<String,
+            Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles, Boolean aopRemoteDebug){
+        setExternalResource(externalResource);
+        setServer(server);
+        setOutput(output);
+        setTemplate(template);
+        setSubTemplates(subTemplates);
+        setPrependFiles(prependFiles);
+        setAppendFiles(appendFiles);
+        setAopRemoteDebug(aopRemoteDebug);
+    }
+
+    /**
      * @return Jsonobject containing all the info about the printjob, for the POST request to the AOP server.
      */
     public JsonObject getJSON() throws MimeTypeException {
         JsonObject jsonForServer = new JsonObject();
 
+        jsonForServer.addProperty("tool", "AOP_java_sdk");
+        jsonForServer.addProperty("java_sdk_version", "21.1");
+
         for(Map.Entry<String, JsonElement> tag : getServer().getJSON().entrySet()){
             jsonForServer.add(tag.getKey(),tag.getValue()); //these tags for the server need to be at the upper level in the JSON
         }
 
-        if (getAppendFiles() != null && getAppendFiles().length>0){
-            JsonArray appendFiles = new JsonArray();
-            for(Resource appendFile : getAppendFiles()){
-                appendFiles.add(appendFile.getJSONForSecondaryFile()); //check je pense que malheureusement il manque les [] pour [files].
-            }
-            jsonForServer.add("append_files",appendFiles);
-        }
-
-        JsonArray files = new JsonArray();
-        for(Map.Entry<String, RenderElement> data : getData().entrySet()){
-            JsonObject file = new JsonObject();
-            file.addProperty("filename",data.getKey());
-            file.add("data",data.getValue().getJSON());
-
-            files.add(file);
-        }
-        jsonForServer.add("files", files);
-        if (getAopRemoteDebug()!=null){
-            jsonForServer.addProperty("aop_remote_debug", getAopRemoteDebug());
-        }
         jsonForServer.add("output", getOutput().getJSON());
-
-        if (getPrependFiles() != null && getPrependFiles().length>0){
-            JsonArray prependFiles = new JsonArray();
-            for(Resource prependFile : getPrependFiles()){
-                prependFiles.add(prependFile.getJSONForSecondaryFile()); //check je pense que malheureusement il manque les [] pour [files].
-            }
-            jsonForServer.add("prepend_files",prependFiles);
-        }
-
 
         jsonForServer.add("template", getTemplate().getJSONForTemplate());
 
@@ -234,8 +251,40 @@ public class PrintJob {
             }
             jsonForServer.add("templates",subTemplates);
         }
-        jsonForServer.addProperty("tool", "AOP_java_sdk");
-        jsonForServer.addProperty("java_sdk_version", "21.1");
+
+        if (getAppendFiles() != null && getAppendFiles().length>0){
+            JsonArray appendFiles = new JsonArray();
+            for(Resource appendFile : getAppendFiles()){
+                appendFiles.add(appendFile.getJSONForSecondaryFile()); //check je pense que malheureusement il manque les [] pour [files].
+            }
+            jsonForServer.add("append_files",appendFiles);
+        }
+
+        JsonArray files = new JsonArray();
+        if (getExternalResource()==null){
+            for(Map.Entry<String, RenderElement> data : getData().entrySet()){
+                JsonObject file = new JsonObject();
+                file.addProperty("filename",data.getKey());
+                file.add("data",data.getValue().getJSON());
+
+                files.add(file);
+            }
+        }
+        else{
+            files.add(getExternalResource().getJSON()); //external resource was specified for the data
+        }
+        jsonForServer.add("files", files);
+        if (getAopRemoteDebug()!=null){
+            jsonForServer.addProperty("aop_remote_debug", getAopRemoteDebug());
+        }
+        if (getPrependFiles() != null && getPrependFiles().length>0){
+            JsonArray prependFiles = new JsonArray();
+            for(Resource prependFile : getPrependFiles()){
+                prependFiles.add(prependFile.getJSONForSecondaryFile()); //check je pense que malheureusement il manque les [] pour [files].
+            }
+            jsonForServer.add("prepend_files",prependFiles);
+        }
+
         return jsonForServer;
     }
 

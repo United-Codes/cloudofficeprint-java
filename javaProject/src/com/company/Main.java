@@ -24,6 +24,9 @@ public class Main {
 
         ResourcesTests resourcesTests = new ResourcesTests();
         resourcesTests.ResourceTest();
+        resourcesTests.restResource();
+        resourcesTests.graphQLResource();
+        resourcesTests.restResourcePrintJob();
 
         ChartTests chartTests = new ChartTests();
         chartTests.testChartOptions();
@@ -79,8 +82,6 @@ public class Main {
         renderElementsTests.D3Code();
         renderElementsTests.textBox();
         renderElementsTests.elementCollection();
-        renderElementsTests.cellStyleProperty();
-        renderElementsTests.cellStyleProperty();
-        renderElementsTests.cellStyleProperty();
+        //footnote, formula,HTML,MarkDownContent,PageBreak,Raw,RightToLeft are missing a test.
     }
 }
