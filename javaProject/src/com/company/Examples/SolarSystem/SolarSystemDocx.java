@@ -28,42 +28,29 @@ public class SolarSystemDocx {
         //Get solar system data
         Server server =new Server("https://api.le-systeme-solaire.net/rest/bodies/");
         String response = server.sendGETRequest(server.getUrl());
-        //JsonObject parsed = ;
-        JsonObject parsed = new JsonParser().parse(response).getAsJsonObject();
+        JsonObject parsed = JsonParser.parseString(response).getAsJsonObject();
         JsonArray bodiesAr = parsed.getAsJsonArray("bodies");
-        //System.out.println(parsed);
+
 
         ElementCollection planetData = new ElementCollection("data");
 
-        //ElementCollection bodies = new ElementCollection("bodies");
         ArrayList<String> planets = new ArrayList<>();
         ArrayList<String> radius = new ArrayList<>();
         for (JsonElement body : bodiesAr){
             JsonObject json = (JsonObject) body;
-            /*for (Map.Entry entry : json.entrySet()){
-                String key = entry.getKey().toString();
-                String value = entry.getValue().toString();
-                Property prop = new Property(key,value);
-                System.out.println(entry);
-                System.out.println(key);
-                System.out.println(value);
-                System.out.println(prop.getJSON());
-                bodies.addElement(prop);
-            }*/
             if (json.get("isPlanet").getAsBoolean()==true){
                 planets.add(json.get("name").getAsString());
                 radius.add(json.get("meanRadius").getAsString());
             }
         }
 
+        String[] colors = new String[bodiesAr.size()];
+        colors[0] = "blue"; //minimum one color needs to be specified. Doesn't work otherwise.
 
-        PieSeries pieSeries = new PieSeries("Mass",planets.toArray(new String[0]),radius.toArray(new String[0]),null);
+        PieSeries pieSeries = new PieSeries("Mass",planets.toArray(new String[0]),radius.toArray(new String[0]),colors);
         Pie3DChart pie3DChart = new Pie3DChart("planet_radius_chart",null,pieSeries);
         planetData.addElement(pie3DChart);
 
-        /*System.out.println("testtttt");
-        System.out.println(planetData.getElements());
-        System.out.println("testtttt");*/
         planetData.addElement(new HelpArray("bodies",bodiesAr));
 
         Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
