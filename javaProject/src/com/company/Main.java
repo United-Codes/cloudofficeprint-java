@@ -66,5 +66,20 @@ public class Main {
         ImagesTests imagesTests =new ImagesTests();
         imagesTests.imageBase64();
         imagesTests.imageURL();
+
+        RenderElementsTests renderElementsTests =new RenderElementsTests();
+        renderElementsTests.Property();
+        renderElementsTests.cellStyleProperty();
+        renderElementsTests.cellStyleProperty();
+        renderElementsTests.cellStyleProperty();
+        renderElementsTests.cellStyleProperty();
+        renderElementsTests.cellStyleProperty();
+        renderElementsTests.cellStyleProperty();
+        renderElementsTests.cellStyleProperty();
+        renderElementsTests.cellStyleProperty();
+        renderElementsTests.cellStyleProperty();
+        renderElementsTests.cellStyleProperty();
+        renderElementsTests.cellStyleProperty();
+        renderElementsTests.cellStyleProperty();
     }
 }

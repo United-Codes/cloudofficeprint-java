@@ -69,8 +69,12 @@ public class TableCell extends RenderElement{
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         json.addProperty(getName(),getValue());
-        json.addProperty(getName()+"_cell_background_color",getBackgroundColor());
-        json.addProperty(getName()+"_width",getWidth());
+        if (getBackgroundColor()!=null){
+            json.addProperty(getName()+"_background_color",getBackgroundColor());
+        }
+        if (getWidth()!=null){
+            json.addProperty(getName()+"_width",getWidth());
+        }
         return json;
     }
 
