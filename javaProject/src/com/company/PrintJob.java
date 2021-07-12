@@ -3,6 +3,7 @@ package com.company;
 import com.company.Output.Output;
 import com.company.RenderElements.ElementCollection;
 import com.company.RenderElements.RenderElement;
+import com.company.Resources.Base64Resource;
 import com.company.Resources.ExternalResource;
 import com.company.Resources.Resource;
 import com.company.Server.Server;
@@ -29,6 +30,7 @@ public class PrintJob {
     private Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
     private ExternalResource externalResource;
     private Boolean aopRemoteDebug;
+
 
 
     /**
