@@ -1,6 +1,9 @@
 package com.company.Tests;
 
 import com.company.RenderElements.*;
+import com.company.RenderElements.Images.Image;
+import com.company.RenderElements.Images.ImageUrl;
+import com.company.RenderElements.Loops.Loop;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.junit.Assert;
@@ -110,5 +113,32 @@ public class RenderElementsTests {
         JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
         //System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect,prop.getJSON());
+    }
+
+    public void elementCollection(){
+        ElementCollection data= new ElementCollection("data");
+        ImageUrl element1 = new ImageUrl("image1","url");
+        element1.setAltText("alt_text");
+        data.addElement(element1);
+
+        Property prop1 = new Property("prop","value1");
+        Property prop2 = new Property("prop","value2");
+        Loop element2 = new Loop("loop", new Property[]{prop1, prop2});
+
+        data.addElement(element2);
+
+        String correct= "{'image1': 'url', 'image1_alt_text': 'alt_text', 'image1_url': 'url', 'loop': [{'prop': 'value1'}, {'prop': 'value2'}]}";
+        //System.out.println(data.getJSON());
+        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        //System.out.println(jsonCorrect);
+        Assert.assertEquals(jsonCorrect,data.getJSON());
+
+        data.removeElementByName("image1");
+
+        correct= "{'loop': [{'prop': 'value1'}, {'prop': 'value2'}]}";
+        //System.out.println(data.getJSON());
+        jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        //System.out.println(jsonCorrect);
+        Assert.assertEquals(jsonCorrect,data.getJSON());
     }
 }

@@ -45,6 +45,17 @@ public class ElementCollection extends RenderElement{
     }
 
     /**
+     * @param elementName Name of the element to remove from the list of elements.
+     */
+    public void removeElementByName(String elementName){
+        for (RenderElement element : getElements()){
+            if (element.getName() == elementName){
+                getElements().remove(element);
+            }
+        }
+    }
+
+    /**
      * A collection used to group multiple RenderElements together.
      * @param name The name is used as a key name when the collection is nested,
      *             but ignored when it's the outer object.
