@@ -95,7 +95,10 @@ public class ElementCollection extends RenderElement{
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         for( RenderElement element : getElements() ) {
-            if (element instanceof ElementCollection){
+            if (element instanceof HelpArray){
+                json.add(element.getName(),((HelpArray) element).getJsonArray());
+            }
+            else if (element instanceof ElementCollection){
                 json.add(element.getName(),element.getJSON());
             }
             else {

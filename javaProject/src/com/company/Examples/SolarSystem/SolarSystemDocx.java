@@ -5,6 +5,7 @@ import com.company.PrintJob;
 import com.company.RenderElements.Charts.Charts.Pie3DChart;
 import com.company.RenderElements.Charts.Series.PieSeries;
 import com.company.RenderElements.ElementCollection;
+import com.company.RenderElements.HelpArray;
 import com.company.RenderElements.Loops.Loop;
 import com.company.RenderElements.Property;
 import com.company.RenderElements.RenderElement;
@@ -33,37 +34,37 @@ public class SolarSystemDocx {
         //System.out.println(parsed);
 
         ElementCollection planetData = new ElementCollection("data");
-        ElementCollection bodies = new ElementCollection("bodies");
+
+        //ElementCollection bodies = new ElementCollection("bodies");
         ArrayList<String> planets = new ArrayList<>();
         ArrayList<String> radius = new ArrayList<>();
         for (JsonElement body : bodiesAr){
             JsonObject json = (JsonObject) body;
-            for (Map.Entry entry : json.entrySet()){
+            /*for (Map.Entry entry : json.entrySet()){
                 String key = entry.getKey().toString();
                 String value = entry.getValue().toString();
                 Property prop = new Property(key,value);
-                /*System.out.println(entry);
+                System.out.println(entry);
                 System.out.println(key);
                 System.out.println(value);
-                System.out.println(prop.getJSON());*/
+                System.out.println(prop.getJSON());
                 bodies.addElement(prop);
-            }
+            }*/
             if (json.get("isPlanet").getAsBoolean()==true){
                 planets.add(json.get("name").getAsString());
                 radius.add(json.get("meanRadius").getAsString());
             }
         }
 
-        Loop loop =new Loop("bodies",bodies.getElements().toArray(new RenderElement[0]));
-        planetData.addElement(loop);
 
         PieSeries pieSeries = new PieSeries("Mass",planets.toArray(new String[0]),radius.toArray(new String[0]),null);
         Pie3DChart pie3DChart = new Pie3DChart("planet_radius_chart",null,pieSeries);
-        System.out.println(planetData.getElements());
         planetData.addElement(pie3DChart);
+
         /*System.out.println("testtttt");
         System.out.println(planetData.getElements());
         System.out.println("testtttt");*/
+        planetData.addElement(new HelpArray("bodies",bodiesAr));
 
         Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
         data.put("planetData",planetData);
