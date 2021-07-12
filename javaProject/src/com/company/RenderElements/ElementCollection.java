@@ -82,7 +82,7 @@ public class ElementCollection extends RenderElement{
      */
     public void addFromDict(Hashtable<String,String> properties){
         for (Map.Entry<String,String> entry : properties.entrySet()){
-            Property property = new Property(entry.getKey(),entry.getValue());
+            Property property = new Property(entry.getKey(),entry.getValue().replace("\"",""));
             getElements().add(property);
         }
     }

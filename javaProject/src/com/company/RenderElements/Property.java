@@ -22,7 +22,7 @@ public class Property extends RenderElement{
      */
     public Property(String name, String value){
         setName(name);
-        setValue(value);
+        setValue(value.replace("\"",""));
     }
 
     /**

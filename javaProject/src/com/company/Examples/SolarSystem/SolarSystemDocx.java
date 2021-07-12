@@ -5,6 +5,7 @@ import com.company.PrintJob;
 import com.company.RenderElements.Charts.Charts.Pie3DChart;
 import com.company.RenderElements.Charts.Series.PieSeries;
 import com.company.RenderElements.ElementCollection;
+import com.company.RenderElements.Loops.Loop;
 import com.company.RenderElements.Property;
 import com.company.RenderElements.RenderElement;
 import com.company.Resources.Base64Resource;
@@ -29,9 +30,10 @@ public class SolarSystemDocx {
         //JsonObject parsed = ;
         JsonObject parsed = new JsonParser().parse(response).getAsJsonObject();
         JsonArray bodiesAr = parsed.getAsJsonArray("bodies");
-        System.out.println(parsed);
+        //System.out.println(parsed);
 
         ElementCollection planetData = new ElementCollection("data");
+        ElementCollection bodies = new ElementCollection("bodies");
         ArrayList<String> planets = new ArrayList<>();
         ArrayList<String> radius = new ArrayList<>();
         for (JsonElement body : bodiesAr){
@@ -44,7 +46,7 @@ public class SolarSystemDocx {
                 System.out.println(key);
                 System.out.println(value);
                 System.out.println(prop.getJSON());*/
-                planetData.addElement(prop);
+                bodies.addElement(prop);
             }
             if (json.get("isPlanet").getAsBoolean()==true){
                 planets.add(json.get("name").getAsString());
@@ -52,10 +54,16 @@ public class SolarSystemDocx {
             }
         }
 
+        Loop loop =new Loop("bodies",bodies.getElements().toArray(new RenderElement[0]));
+        planetData.addElement(loop);
+
         PieSeries pieSeries = new PieSeries("Mass",planets.toArray(new String[0]),radius.toArray(new String[0]),null);
         Pie3DChart pie3DChart = new Pie3DChart("planet_radius_chart",null,pieSeries);
-
+        System.out.println(planetData.getElements());
         planetData.addElement(pie3DChart);
+        /*System.out.println("testtttt");
+        System.out.println(planetData.getElements());
+        System.out.println("testtttt");*/
 
         Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
         data.put("planetData",planetData);
@@ -67,7 +75,7 @@ public class SolarSystemDocx {
         Base64Resource base64Resource = new Base64Resource();
         base64Resource.setFileFromLocalFile("./src/com/company/Examples/SolarSystem/docx/solar_system_template.docx");
 
-        Output output = new Output("pdf","raw",null,null,null,null);
+        Output output = new Output("pdf","raw","libreoffice",null,null,null);
         PrintJob printJob = new PrintJob(data,aopServer,output,base64Resource,null,null,null,null);
 
         Response responseAOP = printJob.execute();
