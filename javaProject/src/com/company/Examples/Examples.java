@@ -38,7 +38,7 @@ public class Examples {
              //       null,null,"127.0.0.1",8000);
             null,null,null,null);
             String ret = server.readJson("./src/com/company/Examples/test.json");
-            JsonObject jsonObject = new JsonParser().parse(ret).getAsJsonObject();
+            JsonObject jsonObject = JsonParser.parseString(ret).getAsJsonObject();
             Response response = server.sendPOSTRequest(jsonObject);
             response.downloadLocally("./downloads/outputLocalJson");
 
@@ -49,6 +49,8 @@ public class Examples {
             e.printStackTrace();
         }
     }
+
+
 
     /**
      * Example with templateTest.docx as template, a list of properties and an image as data. A zipfile named outputLocalTemplate will contain
@@ -95,6 +97,66 @@ public class Examples {
 
             Response response = printJob.execute();
             response.downloadLocally("./downloads/outputLocalTemplate");
+
+        }catch (AOPException e){
+            e.printStackTrace();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Asynchronous call of execute.
+     * Example with templateTest.docx as template, a list of properties and an image as data. A zipfile named outputLocalTemplate will contain
+     * 2 outputs files in the downloads folder.
+     */
+    public void localTemplateAsync(){
+        try {
+            Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,
+                    null,null,null,null);
+            PDFOptions pdfOptions = new PDFOptions();
+            pdfOptions.setReadPassword("hello");
+            pdfOptions.setLandscape(true);
+            Output output = new Output("pdf","raw",null,null,null,pdfOptions);
+            Base64Resource base64Resource = new Base64Resource();
+            base64Resource.setFileFromLocalFile("./src/com/company/Examples/localTemplate.docx");
+
+            Property property1 = new Property("first_name","Quent");
+            Property property2 = new Property("last_name","Stroob");
+            Property property3 = new Property("city","Leuven");
+            ImageBase64 image = new ImageBase64("imageTag");
+            image.setFileFromLocalFile("./src/com/company/Examples/test.jpg");
+            image.setMaxWidth(500);
+            image.setRotation(75);
+            ArrayList<RenderElement> dataList =  new ArrayList<RenderElement>();
+            dataList.add(property1);
+            dataList.add(property2);
+            dataList.add(property3);
+            //dataList.add(image);
+            ElementCollection data1 = new ElementCollection("data1",dataList);
+
+            Hashtable<String, String> propertyDict = new Hashtable<String, String>();
+            propertyDict.put("first_name","B");
+            propertyDict.put("last_name","A");
+            propertyDict.put("city","C");
+            ElementCollection data2 = new ElementCollection("data2");
+            data2.addFromDict(propertyDict);
+            //data2.addElement(image);
+
+            Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
+            data.put("output1",data1);
+            data.put("output2",data2);
+
+            PrintJob printJob = new PrintJob(data,server,output,base64Resource,null,null,null,null);
+
+            Thread thread = new Thread(printJob); //This is how to run send the POST request asynchronously (because it can sometimes take a few seconds before getting back the response).
+            thread.start();
+            //System.out.println("in between");
+            thread.join();
+            //System.out.println("after");
+            Response response = printJob.getResponse();
+            response.downloadLocally("./downloads/outputLocalTemplateAsync");
 
         }catch (AOPException e){
             e.printStackTrace();
@@ -429,9 +491,9 @@ public class Examples {
 
             PDFTexts pdfTexts = new PDFTexts(new PDFText[]{pdfText1_1, pdfText1_2, pdfText2, pdfTextAll});
 
-            PDFImage pdfImage = new PDFImage(800,100,1);
-            pdfImage.setImageFromLocalFile("./src/com/company/Examples/logoAOP.jpg"); //doesn't work for the moment idk why
-            pdfImage.setMaxWidth(100);
+            PDFImage pdfImage = new PDFImage(200,700,1);
+            pdfImage.setImageFromLocalFile("./src/com/company/Examples/logoAOP.jpg");
+            pdfImage.setWidth(200);
 
             PDFImages pdfImages = new PDFImages(new PDFImage[]{pdfImage});
 

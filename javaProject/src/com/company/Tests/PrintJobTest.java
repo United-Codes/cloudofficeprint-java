@@ -60,4 +60,5 @@ public class PrintJobTest {
         Response response = printJob.execute();
         response.downloadLocally("./downloads/preappsubtemplates");
     }
+
 }

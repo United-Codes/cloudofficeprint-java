@@ -12,6 +12,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Examples example = new Examples();
         //example.localJson();
+        //example.localTemplateAsync();
         //example.localTemplate();
         //example.loopExample();
         //example.chartExample();
@@ -54,7 +55,6 @@ public class Main {
         configTests.testCloudAccessTokens();
         configTests.testCommands();
         configTests.testPrinter();
-        //needs to add printer test.
 
         CodesTests codesTests = new CodesTests();
         codesTests.QROptionsTest();
@@ -68,7 +68,6 @@ public class Main {
         codesTests.QRMeCardTest();
         codesTests.QRGeoTest();
         codesTests.QREventTest();
-        //qr-options needs a test as well
 
         PDFTests pdfTests = new PDFTests();
         pdfTests.AOPPDFTextTest();

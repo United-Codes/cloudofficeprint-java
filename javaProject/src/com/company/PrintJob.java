@@ -20,7 +20,7 @@ import java.util.Map;
 /**
  * A print job for the AOP server containing all the necessary information to generate the adequate JSON for the AOP server.
  */
-public class PrintJob {
+public class PrintJob implements Runnable{
     private Server server;
     private Output output;
     private Resource template;
@@ -31,7 +31,7 @@ public class PrintJob {
     private ExternalResource externalResource;
     private Boolean aopRemoteDebug;
 
-
+    private volatile Response response; //for asynchronous calls
 
     /**
      * @return Server to user for this printjob.
@@ -172,6 +172,16 @@ public class PrintJob {
     }
 
     /**
+     * For getting to response after asynchronous execution.
+     * To used after run() has been called and the thread joined.
+     * @return Response of the request to AOP.
+     */
+    public Response getResponse() {
+        return response;
+    }
+
+
+    /**
      * A print job for the AOP server containing all the necessary information to generate the adequate JSON for the AOP server.
      * If you don't want to instantiate a variable, use null for this argument.
      * @param data Hashtable of (filename, RenderElement) elements.
@@ -306,6 +316,32 @@ public class PrintJob {
         }
         else {
             throw new Exception("Server is not reachable.");
+        }
+    }
+
+    /**
+     * Asynchronous version of execute(). The response can be obtained with the getResponse() function.
+     * Creates the adequate JSON and sends it to the AOP server.
+     * @return The response of the AOP server.
+     * @throws Exception If the server is not reachable.
+     * @throws AOPException If the server response doesn't have a 200 code.
+     */
+    public void run()  {
+        JsonObject JSONForServer = null;
+        try {
+            JSONForServer = getJSON();
+        } catch (MimeTypeException e) {
+            e.printStackTrace();
+        }
+        if (server.isReachable() == true){
+            try {
+                response = server.sendPOSTRequest(JSONForServer);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else {
+            System.out.println("Server is not reachable.");
         }
     }
 

@@ -12,6 +12,8 @@ import java.net.HttpURLConnection;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.net.URL;
+import java.nio.Buffer;
+import java.util.Base64;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -27,9 +29,8 @@ public class Server {
     private Commands commands;
     private String proxyIP;
     private Integer proxyPort;
-    private Boolean AOPDebug;
-
-
+    private String username;
+    private String password;
 
     /**
      * @return IP address of the proxy used, null if not used.
@@ -107,20 +108,6 @@ public class Server {
         this.url = url;
     }
 
-
-//    /**
-//     * Proxy for URLconnection, not sure this is needed. Sunil
-//        https://stackoverflow.com/questions/1432961/how-do-i-make-httpurlconnection-use-a-proxy
-//     * @return
-//     */
-//    public String getProxies() {
-//        return proxies;
-//    }
-//
-//    public void setProxies(String proxies) {
-//        this.proxies = proxies;
-//    }
-
     /**
      * AOP supports to print directly to an IP Printer.
      * @return Printer object containing the required info for the AOP server.
@@ -149,6 +136,34 @@ public class Server {
      */
     public void setCommands(Commands commands) {
         this.commands = commands;
+    }
+
+    /**
+     * @return Username for the proxy authentication.
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @param username Username for the proxy authentication.
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    /**
+     * @return Password for the proxy authentication.
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * @param password Password for the proxy authentication.
+     */
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     /**
@@ -281,6 +296,11 @@ public class Server {
         else{
             con = (HttpURLConnection) obj.openConnection();
         }
+        if (getUsername()!=null&&getPassword()!=null){
+            String uspw = getUsername() + ':' + getPassword();
+            String encodedString = Base64.getEncoder().encodeToString(uspw.getBytes());
+            con.setRequestProperty("Proxy-Authorization", "Basic " + encodedString);
+        }
         con.setRequestMethod("GET");
         int responseCode = con.getResponseCode();
         System.out.println("\nSending 'GET' request to URL : " + url);
@@ -311,7 +331,7 @@ public class Server {
      */
     public Response sendPOSTRequest(JsonObject postData) throws Exception{
         //System.out.println("Json for server : " + postData.toString());
-        //System.out.println("Files for server : " + postData.get("files").toString());
+        System.out.println("Files for server : " + postData.get("files").toString());
         URL obj = new URL(this.url);
         HttpURLConnection con;
         if(getProxyPort()!=null){
@@ -320,6 +340,11 @@ public class Server {
         }
         else{
             con = (HttpURLConnection) obj.openConnection();
+        }
+        if (getUsername()!=null&&getPassword()!=null){
+            String uspw = getUsername() + ':' + getPassword();
+            String encodedString = Base64.getEncoder().encodeToString(uspw.getBytes());
+            con.setRequestProperty("Proxy-Authorization", "Basic " + encodedString);
         }
         con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
         con.setRequestProperty("Accept", "application/json");
