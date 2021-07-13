@@ -57,6 +57,7 @@ public class Main {
         //needs to add printer test.
 
         CodesTests codesTests = new CodesTests();
+        codesTests.QROptionsTest();
         codesTests.barCodeTest();
         codesTests.QRWifiTest();
         codesTests.QRTelephoneTest();

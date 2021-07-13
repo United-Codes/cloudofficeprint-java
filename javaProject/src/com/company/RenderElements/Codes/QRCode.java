@@ -11,19 +11,19 @@ import java.util.Base64;
  * This class is a subclass of Code and serves as a superclass for the different types of QR-codes. It contains all the styling
  * options of the QR codes.
  */
-public abstract class QRCode extends Code {
+public class QRCode extends Code {
 
     private Integer dotScale;
     private String logo;
     private String backGroundImage;
-    private Integer colorDark;
+    private String colorDark;
     private String colorLight;
     private Integer WidthLogo;
     private Integer HeightLogo;
     private String logoBackGroundColor;
     private Integer quietZone;
     private String quietZoneColor;
-    private Integer backgroundImageAlpha;
+    private Double backgroundImageAlpha;
     private String poColor;
     private String piColor;
     private String poTLColor;
@@ -108,14 +108,14 @@ public abstract class QRCode extends Code {
     /**
      * @return Dark color of the QR code.
      */
-    public Integer getColorDark() {
+    public String getColorDark() {
         return colorDark;
     }
 
     /**
      * @param colorDark Dark color of the QR code.
      */
-    public void setColorDark(Integer colorDark) {
+    public void setColorDark(String colorDark) {
         this.colorDark = colorDark;
     }
 
@@ -206,14 +206,14 @@ public abstract class QRCode extends Code {
     /**
      * @return Background image transparency, value between 0 and 1. default is 1
      */
-    public Integer getBackgroundImageAlpha() {
+    public Double getBackgroundImageAlpha() {
         return backgroundImageAlpha;
     }
 
     /**
      * @param backgroundImageAlpha Background image transparency, value between 0 and 1. default is 1
      */
-    public void setBackgroundImageAlpha(Integer backgroundImageAlpha) {
+    public void setBackgroundImageAlpha(Double backgroundImageAlpha) {
         this.backgroundImageAlpha = backgroundImageAlpha;
     }
 

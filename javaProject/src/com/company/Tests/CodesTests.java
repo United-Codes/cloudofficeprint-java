@@ -1,6 +1,5 @@
 package com.company.Tests;
 
-import com.company.Output.CloudAcessToken.OAuth2Token;
 import com.company.RenderElements.Codes.*;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -26,6 +25,70 @@ public class CodesTests {
         JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
         //System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect,barCode.getJSON());
+    }
+
+    public void QROptionsTest(){
+        QRCode qrCode =new QRCode("product_name","qrcode","Chocolates");
+        qrCode.setDotScale(1);
+        qrCode.setLogo("image");
+        qrCode.setBackGroundImage("image");
+        qrCode.setColorDark("#111111");
+        qrCode.setColorLight("#dddddd");
+        qrCode.setWidthLogo(80);
+        qrCode.setHeightLogo(80);
+        qrCode.setLogoBackGroundColor("#dddddd");
+        qrCode.setQuietZone(2);
+        qrCode.setQuietZoneColor("#000000");
+        qrCode.setBackgroundImageAlpha(0.3);
+        qrCode.setPoColor("#e1622f");
+        qrCode.setPiColor("#aa5b71");
+        qrCode.setPoTLColor("#aabbcc");
+        qrCode.setPiTLColor("#231333");
+        qrCode.setPoTRColor("#342442");
+        qrCode.setPiTRColor("#ab2134");
+        qrCode.setPoBLColor("#4380ba");
+        qrCode.setPiBLColor("#e2b454");
+        qrCode.setTimingVColor("#ac2059");
+        qrCode.setTimingHColor("#376d71");
+        qrCode.setTimingColor("#376d71");
+        qrCode.setAutoColor(true);
+        qrCode.setAutoColorDark("#000000");
+        qrCode.setAutoColorLight("#ffffff");
+
+        String correct= "{" +
+                "\"product_name\": \"Chocolates\"," +
+                "\"product_name_type\": \"qrcode\"," +
+                "\"product_name_qr_dotscale\": 1, " +
+                "\"product_name_qr_logo\": \"image\", " +
+                "\"product_name_qr_background_image\": \"image\", " +
+                "\"product_name_qr_color_dark\": \"#111111\", " +
+                "\"product_name_qr_color_light\": \"#dddddd\"," +
+                "\"product_name_qr_logo_width\": 80," +
+                "                \"product_name_qr_logo_height\": 80, " +
+                "                \"product_name_qr_logo_background_color\": \"#dddddd\"," +
+                "                \"product_name_qr_quiet_zone\": 2, " +
+                "                \"product_name_qr_quiet_zone_color\": \"#000000\", " +
+                "                \"product_name_qr_background_image_alpha\": 0.3, " +
+                "                \"product_name_qr_po_color\": \"#e1622f\", " +
+                "                \"product_name_qr_pi_color\": \"#aa5b71\", " +
+                "                \"product_name_qr_po_tl_color\": \"#aabbcc\", " +
+                "                \"product_name_qr_pi_tl_color\": \"#231333\", " +
+                "                \"product_name_qr_po_tr_color\": \"#342442\", " +
+                "                \"product_name_qr_pi_tr_color\": \"#ab2134\", " +
+                "                \"product_name_qr_po_bl_color\": \"#4380ba\", " +
+                "                \"product_name_qr_pi_bl_color\": \"#e2b454\", " +
+                "                \"product_name_qr_timing_v_color\":\"#ac2059\", " +
+                "                \"product_name_qr_timing_h_color\":\"#376d71\", " +
+                "                \"product_name_qr_timing_color\": \"#376d71\", " +
+                "                \"product_name_qr_auto_color\": true, " +
+                "                \"product_name_qr_auto_color_dark\": \"#000000\", " +
+                "                \"product_name_qr_auto_color_light\": \"#ffffff\" " +
+                "" +
+                "        }";
+        //System.out.println(qrCode.getJSON());
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        //System.out.println(jsonCorrect);
+        Assert.assertEquals(jsonCorrect,qrCode.getJSON());
     }
 
     public void QRWifiTest(){
