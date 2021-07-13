@@ -1,4 +1,4 @@
-package com.company.Examples.SolarSystem;
+package com.company.Examples.SolarSystem.docx;
 
 import com.company.Output.Output;
 import com.company.PrintJob;

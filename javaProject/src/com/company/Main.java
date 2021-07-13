@@ -3,7 +3,8 @@ package com.company;
 //https://www.jetbrains.com/help/idea/creating-and-running-your-first-java-application.html#run_jar_artifact will be usefull to build the JAR
 
 import com.company.Examples.Examples;
-import com.company.Examples.SolarSystem.SolarSystemDocx;
+import com.company.Examples.SolarSystem.docx.SolarSystemDocx;
+import com.company.Examples.SolarSystem.pptx.SolarSystemPptx;
 import com.company.Tests.*;
 
 public class Main {
@@ -21,7 +22,10 @@ public class Main {
         //example.renderElements();
 
         SolarSystemDocx solarSystemDocx = new SolarSystemDocx();
-        solarSystemDocx.main();
+        //solarSystemDocx.main();
+
+        SolarSystemPptx solarSystemPptx = new SolarSystemPptx();
+        solarSystemPptx.main();
 
         PrintJobTest printJobTest = new PrintJobTest();
         //printJobTest.prePendAppendSubTemplatesTest(); //contacts server and makes a download so is in comment

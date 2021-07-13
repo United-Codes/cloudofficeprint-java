@@ -240,9 +240,12 @@ public class PrintJob {
             jsonForServer.add(tag.getKey(),tag.getValue()); //these tags for the server need to be at the upper level in the JSON
         }
 
-        jsonForServer.add("output", getOutput().getJSON());
-
-        jsonForServer.add("template", getTemplate().getJSONForTemplate());
+        if (getOutput()!=null){
+            jsonForServer.add("output", getOutput().getJSON());
+        }
+        if (getTemplate()!=null){
+            jsonForServer.add("template", getTemplate().getJSONForTemplate());
+        }
 
         if (getSubTemplates()!=null){
             JsonArray subTemplates = new JsonArray();
