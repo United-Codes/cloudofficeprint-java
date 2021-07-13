@@ -3,6 +3,7 @@ package com.company.RenderElements.Loops;
 import com.company.RenderElements.RenderElement;
 import com.google.common.collect.ImmutableSet;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,7 +23,7 @@ public class Labels extends Loop {
      * @param name Name of these labels for the tag.
      * @param labels Data for the labels.
      */
-    public Labels(String name, RenderElement[] labels) {
+    public Labels(String name, ArrayList<RenderElement> labels) {
         super(name, labels);
     }
 

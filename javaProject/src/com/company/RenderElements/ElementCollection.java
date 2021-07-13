@@ -82,8 +82,65 @@ public class ElementCollection extends RenderElement{
      */
     public void addFromDict(Hashtable<String,String> properties){
         for (Map.Entry<String,String> entry : properties.entrySet()){
-            Property property = new Property(entry.getKey(),entry.getValue().replace("\"",""));
+            Property property = new Property(entry.getKey(),entry.getValue());
             getElements().add(property);
+        }
+    }
+
+    /**
+     * Parses a JsonArray to an elementcollection.
+     * @param name Name of the elementcollection.
+     * @param json Json to parse.
+     * @return Elementcollection of the parsed json.
+     */
+    public static ElementCollection makeCollectionFromJson(String name,JsonObject json){
+        ElementCollection col = new ElementCollection(name);
+        for (Map.Entry entry : json.entrySet()){
+            if (entry.getValue().toString().startsWith("{\"")){
+                JsonObject value = (JsonObject) entry.getValue();
+                col.addElement(makeCollectionFromJson(entry.getKey().toString(),value));
+            }
+            else if (entry.getValue().toString().startsWith("[{\"")){
+                JsonArray array = (JsonArray) entry.getValue();
+                for (JsonElement element : array){
+                    col.addElement(makeCollectionFromJson(entry.getKey().toString(), (JsonObject) element));
+                }
+            }
+            else if (entry.getValue().toString().startsWith("[\"")){
+                JsonArray array = (JsonArray) entry.getValue();
+                col.addElement(new RawJsonArray(entry.getKey().toString(),array));
+            }
+            else {
+                if (entry.getValue().toString().contains("null")){
+                    Property property = new Property(entry.getKey().toString(),null);
+                    col.addElement(property);
+                }
+                else {
+                    Property property = new Property(entry.getKey().toString(),entry.getValue().toString().replace("\"",""));
+                    col.addElement(property);
+                }
+            }
+        }
+        return col;
+    }
+
+    /**
+     * Adds all the elements from the elementcollection to the elements of this collection.
+     * @param collection Elementcollection.
+     */
+    public void addAllRenderElements( ElementCollection collection){
+        for (RenderElement element: collection.getElements()){
+            getElements().add(element);
+        }
+    }
+
+    /**
+     * @param json1 Json to add the data from json2 to.
+     * @param json2 Json to take the data from. Cannot have nested JSON's/JsonArrays.
+     */
+    public static void updateJson1WithJson2(JsonObject json1, JsonObject json2 ){
+        for (Map.Entry entry : json2.entrySet()){
+                json1.addProperty(entry.getKey().toString(),entry.getValue().toString().replace("\"",""));
         }
     }
 
@@ -95,8 +152,8 @@ public class ElementCollection extends RenderElement{
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         for( RenderElement element : getElements() ) {
-            if (element instanceof HelpArray){
-                json.add(element.getName(),((HelpArray) element).getJsonArray());
+            if (element instanceof RawJsonArray){
+                json.add(element.getName(),((RawJsonArray) element).getJsonArray());
             }
             else if (element instanceof ElementCollection){
                 json.add(element.getName(),element.getJSON());

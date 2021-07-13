@@ -33,6 +33,15 @@ public class SheetLoop extends Loop{
      * @param name     Name of this loop for the tag.
      * @param elements Value to replace the tag with.
      */
+    public SheetLoop(String name, ArrayList<RenderElement> elements) {
+        super(name, elements);
+    }
+
+    /**
+     * To repeat a sheet for each element of elements.
+     * @param name     Name of this loop for the tag.
+     * @param elements Value to replace the tag with.
+     */
     public SheetLoop(String name, RenderElement[] elements) {
         super(name, elements);
     }
@@ -43,13 +52,13 @@ public class SheetLoop extends Loop{
      * @param elements HashMap(name, elements), elements to replace the tag with.
      */
     public SheetLoop(String name, HashMap<String, RenderElement> elements) {
-        super(name, null);
+        super(name, new RenderElement[]{});
         ArrayList<RenderElement> elementList = new ArrayList<>();
         for (Map.Entry<String,RenderElement> entry : elements.entrySet()){
             sheetNames.add(entry.getKey());
             elementList.add(entry.getValue());
         }
-        setElements((RenderElement[]) elementList.toArray());
+        setElements(elementList);
     }
 
     /**

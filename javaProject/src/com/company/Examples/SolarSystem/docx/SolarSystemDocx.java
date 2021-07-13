@@ -5,9 +5,7 @@ import com.company.PrintJob;
 import com.company.RenderElements.Charts.Charts.Pie3DChart;
 import com.company.RenderElements.Charts.Series.PieSeries;
 import com.company.RenderElements.ElementCollection;
-import com.company.RenderElements.HelpArray;
-import com.company.RenderElements.Loops.Loop;
-import com.company.RenderElements.Property;
+import com.company.RenderElements.RawJsonArray;
 import com.company.RenderElements.RenderElement;
 import com.company.Resources.Base64Resource;
 import com.company.Response;
@@ -19,7 +17,6 @@ import com.google.gson.JsonParser;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.Map;
 
 public class SolarSystemDocx {
 
@@ -51,7 +48,7 @@ public class SolarSystemDocx {
         Pie3DChart pie3DChart = new Pie3DChart("planet_radius_chart",null,pieSeries);
         planetData.addElement(pie3DChart);
 
-        planetData.addElement(new HelpArray("bodies",bodiesAr));
+        planetData.addElement(new RawJsonArray("bodies",bodiesAr));
 
         Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
         data.put("planetData",planetData);

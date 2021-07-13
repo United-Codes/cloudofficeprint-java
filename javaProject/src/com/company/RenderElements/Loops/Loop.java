@@ -1,10 +1,12 @@
 package com.company.RenderElements.Loops;
 
+import com.company.RenderElements.ElementCollection;
 import com.company.RenderElements.RenderElement;
 import com.google.common.collect.ImmutableSet;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,20 +15,39 @@ import java.util.Set;
  */
 public class Loop extends RenderElement {
 
-    RenderElement[] elements;
+    ArrayList<RenderElement> elements = new ArrayList<RenderElement>();
 
     /**
      * @return All the elements of the loop.
      */
-    public RenderElement[] getElements() {
+    public ArrayList<RenderElement> getElements() {
         return elements;
     }
 
     /**
      * @param elements All the elements of the loop.
      */
-    public void setElements(RenderElement[] elements) {
+    public void setElements(ArrayList<RenderElement> elements) {
         this.elements = elements;
+    }
+
+    /**
+     * @param element RenderElement to add to the loop.
+     */
+    public void addElement(RenderElement element){
+        getElements().add(element);
+    }
+
+
+
+    /**
+     * Loop elements for a template.
+     * @param name  Name of this loop for the tag.
+     * @param elements Elements to replace the tag with.
+     */
+    public Loop(String name, ArrayList<RenderElement> elements) {
+        setName(name);
+        setElements(elements);
     }
 
     /**
@@ -36,7 +57,17 @@ public class Loop extends RenderElement {
      */
     public Loop(String name, RenderElement[] elements) {
         setName(name);
-        setElements(elements);
+        for (RenderElement element : elements){
+            addElement(element);
+        }
+    }
+
+    /**
+     * Loop elements for a template.
+     * @param name  Name of this loop for the tag.
+     */
+    public Loop(String name) {
+        setName(name);
     }
 
     /**

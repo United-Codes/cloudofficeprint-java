@@ -3,6 +3,7 @@ package com.company.RenderElements.Loops;
 import com.company.RenderElements.RenderElement;
 import com.google.common.collect.ImmutableSet;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,7 +21,7 @@ public class InlineDataLoop extends Loop{
      * @param name     Name of this loop for the tag.
      * @param elements Elements to replace the tag with.
      */
-    public InlineDataLoop(String name, RenderElement[] elements) {
+    public InlineDataLoop(String name, ArrayList<RenderElement> elements) {
         super(name, elements);
     }
 

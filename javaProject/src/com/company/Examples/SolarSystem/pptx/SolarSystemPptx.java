@@ -2,21 +2,17 @@ package com.company.Examples.SolarSystem.pptx;
 
 import com.company.Output.Output;
 import com.company.PrintJob;
-import com.company.RenderElements.Charts.Charts.Pie3DChart;
-import com.company.RenderElements.Charts.Series.PieSeries;
 import com.company.RenderElements.ElementCollection;
-import com.company.RenderElements.HelpArray;
+import com.company.RenderElements.RawJsonArray;
 import com.company.RenderElements.Property;
 import com.company.RenderElements.RenderElement;
 import com.company.Resources.Base64Resource;
 import com.company.Response;
 import com.company.Server.Server;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class SolarSystemPptx {
@@ -34,7 +30,7 @@ public class SolarSystemPptx {
         planetData.addElement(new Property("main_title","The solar system"));
 
 
-        planetData.addElement(new HelpArray("bodies",bodiesAr));
+        planetData.addElement(new RawJsonArray("bodies",bodiesAr));
 
         Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
         data.put("planetData",planetData);

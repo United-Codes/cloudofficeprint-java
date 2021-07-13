@@ -5,6 +5,7 @@ package com.company;
 import com.company.Examples.Examples;
 import com.company.Examples.SolarSystem.docx.SolarSystemDocx;
 import com.company.Examples.SolarSystem.pptx.SolarSystemPptx;
+import com.company.Examples.SpaceX.SpaceXExample;
 import com.company.Tests.*;
 
 public class Main {
@@ -27,6 +28,9 @@ public class Main {
 
         SolarSystemPptx solarSystemPptx = new SolarSystemPptx();
         //solarSystemPptx.main();
+
+        SpaceXExample spaceXExample = new SpaceXExample();
+        spaceXExample.main();
 
         PrintJobTest printJobTest = new PrintJobTest();
         //printJobTest.prePendAppendSubTemplatesTest(); //contacts server and makes a download so is in comment
