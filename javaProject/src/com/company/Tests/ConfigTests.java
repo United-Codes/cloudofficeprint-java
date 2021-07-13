@@ -8,6 +8,7 @@ import com.company.Output.Output;
 import com.company.Output.PDFOptions;
 import com.company.Server.Command;
 import com.company.Server.Commands;
+import com.company.Server.Printer;
 import com.company.Server.Server;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -128,5 +129,14 @@ public class ConfigTests {
         jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
         //System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect,postMergeCommands.getJSON());
+    }
+
+    public void testPrinter(){
+        Printer printer = new Printer("http://10.0.14.223:631/","1.1","your name","AOP");
+        String correct= " {  'location': 'http://10.0.14.223:631/', 'version': '1.1','requester': 'your name', 'job_name': 'AOP' }";
+        //System.out.println(printer.getJSON());
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        //System.out.println(jsonCorrect);
+        Assert.assertEquals(jsonCorrect,printer.getJSON());
     }
 }

@@ -25,7 +25,7 @@ public class Main {
         //solarSystemDocx.main();
 
         SolarSystemPptx solarSystemPptx = new SolarSystemPptx();
-        solarSystemPptx.main();
+        //solarSystemPptx.main();
 
         PrintJobTest printJobTest = new PrintJobTest();
         //printJobTest.prePendAppendSubTemplatesTest(); //contacts server and makes a download so is in comment
@@ -53,6 +53,7 @@ public class Main {
         configTests.testPdfOptions();
         configTests.testCloudAccessTokens();
         configTests.testCommands();
+        configTests.testPrinter();
         //needs to add printer test.
 
         CodesTests codesTests = new CodesTests();
