@@ -292,6 +292,7 @@ public class Server {
             response.append(inputLine);
         }
         in.close();
+        System.out.println();
         //System.out.println(response + "\n");
         return response.toString();
 
@@ -309,8 +310,8 @@ public class Server {
      * @return Response object containing the file extension and body (in bytes)
      */
     public Response sendPOSTRequest(JsonObject postData) throws Exception{
-        System.out.println("Json for server : " + postData.toString());
-        System.out.println("Files for server : " + postData.get("files").toString());
+        //System.out.println("Json for server : " + postData.toString());
+        //System.out.println("Files for server : " + postData.get("files").toString());
         URL obj = new URL(this.url);
         HttpURLConnection con;
         if(getProxyPort()!=null){
