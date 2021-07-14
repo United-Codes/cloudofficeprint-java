@@ -155,9 +155,9 @@ public class LoopsTests {
 
         SheetLoop sheetLoop = new SheetLoop("customers", new ElementCollection[]{element1, element2});
 
-        String correct= "{'customers': [{'sheet_name': 'John Dulles', 'sheet_dynamic_print_area': 'true', 'cust_first_name': 'John', 'cust_last_name': 'Dulles', 'cust_city': 'Sterling', 'orders': [{'order_total': '2380', 'order_name': 'Order 1', 'product': [{'product_name': 'Business Shirt', 'quantity': '3', 'unit_price': '50'}, {'product_name': 'Trousers', 'quantity': '3', 'unit_price': '80'}, {'product_name': 'Jacket', 'quantity': '3', 'unit_price': '150'}]}]}, {'sheet_name': 'William Hartsfield', 'cust_first_name': 'William', 'cust_last_name': 'Hartsfield', 'cust_city': 'Atlanta', 'orders': [{'order_total': '1640', 'order_name': 'Order 1', 'product': [{'product_name': 'Blouse', 'quantity': '4', 'unit_price': '60'}, {'product_name': 'Skirt', 'quantity': '4', 'unit_price': '80'}]}, {'order_total': '730', 'order_name': 'Order 2', 'product': [{'product_name': 'Blouse', 'quantity': '4', 'unit_price': '60'}]}]}]}";
+        String correct= "{'customers': [{'sheet_name': 'John Dulles', 'sheet_dynamic_print_area': true, 'cust_first_name': 'John', 'cust_last_name': 'Dulles', 'cust_city': 'Sterling', 'orders': [{'order_total': '2380', 'order_name': 'Order 1', 'product': [{'product_name': 'Business Shirt', 'quantity': '3', 'unit_price': '50'}, {'product_name': 'Trousers', 'quantity': '3', 'unit_price': '80'}, {'product_name': 'Jacket', 'quantity': '3', 'unit_price': '150'}]}]}, {'sheet_name': 'William Hartsfield', 'cust_first_name': 'William', 'cust_last_name': 'Hartsfield', 'cust_city': 'Atlanta', 'orders': [{'order_total': '1640', 'order_name': 'Order 1', 'product': [{'product_name': 'Blouse', 'quantity': '4', 'unit_price': '60'}, {'product_name': 'Skirt', 'quantity': '4', 'unit_price': '80'}]}, {'order_total': '730', 'order_name': 'Order 2', 'product': [{'product_name': 'Blouse', 'quantity': '4', 'unit_price': '60'}]}]}]}";
         //System.out.println(sheetLoop.getJSON());
-        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         //System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect,sheetLoop.getJSON());
     }

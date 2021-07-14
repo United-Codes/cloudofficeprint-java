@@ -43,7 +43,22 @@ public class Property extends RenderElement{
     @Override
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
-        json.addProperty(getName(),getValue());
+        //System.out.println(getValue());
+        //System.out.println(getValue()!=null);
+        if (getValue()!=null){
+            if (getValue().equals("false")){
+                json.addProperty(getName(),false);
+            }
+            else if (getValue().equals("true")){
+                json.addProperty(getName(),true);
+            }
+            else {
+                json.addProperty(getName(),getValue());
+            }
+        }
+        else {
+            json.add(getName(),null);
+        }
         return json;
     }
 

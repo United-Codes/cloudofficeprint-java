@@ -32,7 +32,11 @@ public class SpaceXExample {
         return description.split("[.]")[0] + ".";
     }
 
-    public void main() throws Exception {
+    /**
+     * @param template Should be pptx or xlsx.
+     * @throws Exception
+     */
+    public void main(String template) throws Exception {
 
         //Get SpaceX data from https://docs.spacexdata.com
         Server server =new Server("https://api.spacexdata.com/v3/info");
@@ -101,6 +105,7 @@ public class SpaceXExample {
             costY.add(rocket.get("cost_per_launch").getAsString());
         }
         ColumnSeries cost_series = new ColumnSeries("Cost per launch",x.toArray(new String[0]),costY.toArray(new String[0]));
+        cost_series.setColor("#087c6c");
 
         ChartOptions rocketChartOptions = new ChartOptions();
         ChartAxisOptions xAxisOptions= new ChartAxisOptions();
@@ -112,6 +117,7 @@ public class SpaceXExample {
         yAxisOptions.setTitle("Cost ($)");
         yAxisOptions.setTitleStyle(new ChartTextStyle(null,null,"black",null));
         yAxisOptions.setTitleRotation(-90);
+        yAxisOptions.setMajorGridLines(true);
         rocketChartOptions.setYAxisOptions(yAxisOptions);
 
         rocketChartOptions.setWidth(800);
@@ -209,13 +215,6 @@ public class SpaceXExample {
             else {
                 coll.addElement(new HyperLink("website","Website",null));
             }
-            /*if (coll.getJSON().get("legacy_id").toString().contains("AMERICANSPIRIT")){
-                String correct = "{\"mass_kg\": null, \"mass_lbs\": null, \"year_built\": null, \"home_port\": \"Port of Los Angeles\", \"status\": null, \"speed_kn\": null, \"course_deg\": null, \"latitude\": null, \"longitude\": null, \"last_ais_update\": null, \"link\": null, \"image\": null, \"launches\": [\"5eb87ce1ffd86e000604b334\"], \"name\": \"American Spirit\", \"legacy_id\": \"AMERICANSPIRIT\", \"active\": false, \"model\": null, \"id\": \"5ea6ed2d080df4000697c903\", \"type\": \"Cargo\", \"image_max_width\": 400, \"roles\": [\"Support Ship\"], \"image_max_height\": 250, \"imo\": null, \"mmsi\": null, \"abs\": null, \"class\": null, \"website\": null, \"website_text\": \"Website\"}";
-                JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
-                System.out.println(jsonCorrect);
-                //Assert.assertEquals(jsonCorrect,coll.getJSON());
-            }*/
-            System.out.println(coll.getJSON());
             shipLoop.addElement(coll);
         }
         spaceXData.addElement(shipLoop);
@@ -229,7 +228,12 @@ public class SpaceXExample {
         aopServer.setAPIKey("1C511A58ECC73874E0530100007FD01A");
 
         Base64Resource base64Resource = new Base64Resource();
-        base64Resource.setFileFromLocalFile("./src/com/company/Examples/SpaceX/spacex_template.pptx");
+        if (template.equals("pptx")){
+            base64Resource.setFileFromLocalFile("./src/com/company/Examples/SpaceX/spacex_template.pptx");
+        }
+        if (template.equals("xlsx")){
+            base64Resource.setFileFromLocalFile("./src/com/company/Examples/SpaceX/spacex_template.xlsx");
+        }
 
         Output output = new Output(null,"raw","libreoffice",null,null,null);
         PrintJob printJob = new PrintJob(data,aopServer,output,base64Resource,null,null,null,null);
