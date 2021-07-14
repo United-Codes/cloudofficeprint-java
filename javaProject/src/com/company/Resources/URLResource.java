@@ -58,7 +58,7 @@ public class URLResource extends Resource{
      * (subtemplates, files to prepend, files to append and files to insert) for the AOP server.
      */
     @Override
-    public JsonObject getJSONForSecondaryFile() throws MimeTypeException {
+    public JsonObject getJSONForSecondaryFile()  {
         JsonObject jsonResource = new JsonObject();
         jsonResource.addProperty("mime_type",getMimeType()); //changer ca vers mimetype
         jsonResource.addProperty("file_url", getURL());

@@ -32,16 +32,14 @@ public class AWSToken extends CloudAccessToken{
     }
 
     /**
-     * Sets the AWS keyID.
-     * @param keyID
+     * @param keyID AWS keyID.
      */
     public void setKeyID(String keyID) {
         this.keyID = keyID;
     }
 
     /**
-     * Sets the AWS secret key.
-     * @param secretKey
+     * @param secretKey AWS secret key.
      */
     public void setSecretKey(String secretKey) {
         this.secretKey = secretKey;

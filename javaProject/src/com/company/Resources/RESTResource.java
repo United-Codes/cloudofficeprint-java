@@ -35,6 +35,7 @@ public class RESTResource extends ExternalResource{
     }
 
     /**
+     * @param body Body of HTTP request (can be left empty for GET requests).
      */
     public void setBody(String body) {
         this.body = body;
@@ -71,7 +72,7 @@ public class RESTResource extends ExternalResource{
 
     /**
      * Cannot be used for a resource.
-     * @return
+     * @return null
      */
     @Override
     public Set<String> getTemplateTags() {

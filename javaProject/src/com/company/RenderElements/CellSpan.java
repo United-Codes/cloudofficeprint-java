@@ -47,6 +47,8 @@ public class CellSpan extends RenderElement{
     /**
      * @param name Name of this property.
      * @param value Value of this property.
+     * @param columns Number of columns to span.
+     * @param rows Number of rows to span.
      */
     public CellSpan(String name, String value, int columns, int rows){
         setName(name);

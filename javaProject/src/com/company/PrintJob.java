@@ -240,7 +240,7 @@ public class PrintJob implements Runnable{
     /**
      * @return Jsonobject containing all the info about the printjob, for the POST request to the AOP server.
      */
-    public JsonObject getJSON() throws MimeTypeException {
+    public JsonObject getJSON()  {
         JsonObject jsonForServer = new JsonObject();
 
         jsonForServer.addProperty("tool", "AOP_java_sdk");
@@ -325,11 +325,7 @@ public class PrintJob implements Runnable{
      */
     public void run()  {
         JsonObject JSONForServer = null;
-        try {
-            JSONForServer = getJSON();
-        } catch (MimeTypeException e) {
-            e.printStackTrace();
-        }
+        JSONForServer = getJSON();
         if (server.isReachable() == true){
             try {
                 response = server.sendPOSTRequest(JSONForServer);

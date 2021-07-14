@@ -20,8 +20,7 @@ public abstract class CloudAccessToken {
     }
 
     /**
-     * Sets which cloud service needs to be used for the output.
-     * @param service
+     * @param service Cloud service needs to be used for the output.
      */
     public void setService(String service) {
         this.service = service;

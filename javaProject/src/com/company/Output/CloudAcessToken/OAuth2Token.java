@@ -20,8 +20,7 @@ public class OAuth2Token extends CloudAccessToken {
     }
 
     /**
-     * Sets the OAuth 2 access token.
-     * @param token
+     * @param token OAuth 2 access token.
      */
     public void setToken(String token) {
         this.token = token;

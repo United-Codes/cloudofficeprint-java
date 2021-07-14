@@ -50,7 +50,7 @@ public class GraphQLResource extends ExternalResource {
 
     /**
      * Cannot be used for a resource.
-     * @return
+     * @return null
      */
     @Override
     public Set<String> getTemplateTags() {

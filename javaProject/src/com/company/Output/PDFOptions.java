@@ -92,8 +92,7 @@ public class PDFOptions {
     }
 
     /**
-     * If you want your output to have even pages (blank page added if uneven amount of pages), set this to true.
-     * @param evenPage
+     * @param evenPage Whether output has even pages (blank page added if uneven amount of pages).
      */
     public void setEvenPage(Boolean evenPage) {
         this.evenPage = evenPage;
@@ -108,9 +107,8 @@ public class PDFOptions {
     }
 
     /**
-     * If you want to merge all the append/prepend and template files, making sure the output is even-paged
-     * (adding a blank page if the output is uneven-paged) set this to true.
-     * @param mergeMakingEven
+     * @param mergeMakingEven Whether you want to merge all the append/prepend and template files, making sure the output is even-paged
+     *                        (adding a blank page if the output is uneven-paged).
      */
     public void setMergeMakingEven(Boolean mergeMakingEven) {
         this.mergeMakingEven = mergeMakingEven;
@@ -124,8 +122,7 @@ public class PDFOptions {
     }
 
     /**
-     * Sets the password needed to modify the PDF.
-     * @param modifyPassword
+     * @param modifyPassword Password needed to modify the PDF.
      */
     public void setModifyPassword(String modifyPassword) {
         this.modifyPassword = modifyPassword;
@@ -186,6 +183,7 @@ public class PDFOptions {
     /**
      * Only supported when converting HTML to PDF.
      * @param pageMargins top bottom left right margin in pixels .
+     * @throws Exception If not exact 4 margins are given.
      */
     public void setPageMargin(int[] pageMargins) throws Exception {
         if (pageMargins.length!=4){
@@ -250,7 +248,7 @@ public class PDFOptions {
 
     /**
      * It is possible to sign the output PDF if the output pdf has a signature field.
-     * * @return The certificate (pkcs #12 .p12/.pfx) in a base64 encoded format
+     * @return The certificate (pkcs #12 .p12/.pfx) in a base64 encoded format
      *           (this can also be a URL, FTP location or a location in the file system of the server).
      */
     public String getSignCertificate() {

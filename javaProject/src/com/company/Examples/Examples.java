@@ -438,7 +438,7 @@ public class Examples {
     /**
      * This example shows you how to prepend/append files and how to use subtemplates in a template.
      * Look in the generalTests to see the code.
-     * @throws Exception
+     * @throws Exception Exceptions.
      */
     public void prePendAppendSubTemplatesExample() throws Exception {
         PrintJobTest printJobTest = new PrintJobTest();

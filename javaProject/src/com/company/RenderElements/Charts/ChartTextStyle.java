@@ -71,10 +71,10 @@ public class ChartTextStyle {
 
     /**
      * Contains the styling options for the text of the chart.
-     * @param italic
-     * @param bold
-     * @param color
-     * @param font
+     * @param italic Whether the text is in italic.
+     * @param bold Whether the text is in bold.
+     * @param color Color of the text.
+     * @param font Font of the text.
      */
     public ChartTextStyle(Boolean italic, Boolean bold, String color, String font){
         setItalic(italic);

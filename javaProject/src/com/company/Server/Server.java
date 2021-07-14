@@ -281,7 +281,7 @@ public class Server {
 
     /**
      * Sends a GET request to the url.
-     * @param urlToJoin
+     * @param urlToJoin URL to send the GET request to.
      * @return body of the response of the request.
      */
     public String sendGETRequest(String urlToJoin) {
@@ -390,7 +390,7 @@ public class Server {
      * Function to read a local JSON file.
      * @param path Local path of the file.
      * @return String of the json.
-     * @throws FileNotFoundException
+     * @throws FileNotFoundException If the file is not found.
      */
     public String readJson(String path) throws FileNotFoundException {
         StringBuffer dataString = new StringBuffer("");

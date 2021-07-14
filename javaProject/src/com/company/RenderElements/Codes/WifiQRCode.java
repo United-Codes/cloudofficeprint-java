@@ -58,6 +58,9 @@ public class WifiQRCode extends QRCode{
      * Styling options can be set with the setter functions of the upper class.
      * @param name  Name of this code for the tag.
      * @param SSID SSID of the Wifi.
+     * @param password Password of the WiFi.
+     * @param encryption Encryption of the WiFi.
+     * @param wifiHidden Whether the WiFi is hidden or not.
      */
     public WifiQRCode(String name, String SSID, String password, String encryption, Boolean wifiHidden) {
         super(name, "qr_wifi", SSID);

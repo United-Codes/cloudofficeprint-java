@@ -97,8 +97,7 @@ public class Output {
     }
 
     /**
-     * Sets the encoding of the output. It must be either "raw" or "base64".
-     * @param encoding
+     * @param encoding Encoding of the output. It must be either "raw" or "base64".
      */
     public void setEncoding(String encoding) {
         this.encoding = encoding;
@@ -121,27 +120,24 @@ public class Output {
     }
 
     /**
-     * Sets which software the server should use to convert the output to pdf. The ApexOfficePrint server uses LibreOffice.
-     * If you are running the on premise version then the available values are : "officetopdf" (only when server runs on Windows )
-     * or "libreoffice" (Windows, Linux, OSX) "libreoffice-standalone" or any other custom defined converters in the aop_config.json
-     * file.
-     * @param converter
+     * @param converter Sets which software the server should use to convert the output to pdf. The ApexOfficePrint server uses LibreOffice.
+     *                  If you are running the on premise version then the available values are : "officetopdf" (only when server runs on Windows )
+     *                  or "libreoffice" (Windows, Linux, OSX) "libreoffice-standalone" or any other custom defined converters in the aop_config.json
+     *                  file.
      */
     public void setConverter(String converter) {
         this.converter = converter;
     }
 
     /**
-     * Sets the directory path on server, if you want to save the output on the server.
-     * @param serverDirectory
+     * @param serverDirectory Directory path on server, if you want to save the output on the server.
      */
     public void setServerDirectory(String serverDirectory) {
         this.serverDirectory = serverDirectory;
     }
 
     /**
-     * Sets the pdf options object of this output. All the options are described in the PDFOptions class.
-     * @param PDFOptions
+     * @param PDFOptions PDF options object of this output. All the options are described in the PDFOptions class.
      */
     public void setPDFOptions(PDFOptions PDFOptions) {
         this.PDFOptions = PDFOptions;

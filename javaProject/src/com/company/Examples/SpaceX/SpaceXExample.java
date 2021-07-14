@@ -34,7 +34,7 @@ public class SpaceXExample {
 
     /**
      * @param template Should be pptx or xlsx.
-     * @throws Exception
+     * @throws Exception Exceptions.
      */
     public void main(String template) throws Exception {
 

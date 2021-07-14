@@ -65,11 +65,12 @@ public abstract class Resource {
      * because their JSON has a different format then for a template.
      * @return JsonObject to add in the JSON for the server.
      */
-    public abstract JsonObject getJSONForSecondaryFile() throws MimeTypeException;
+    public abstract JsonObject getJSONForSecondaryFile() ;
 
     /**
      * @param filePath path of the file
      * @return File extension of the file
+     * @throws Exception If no extension is found.
      */
     public String getExtension(String filePath) throws Exception {
         int index = filePath.lastIndexOf('.');
