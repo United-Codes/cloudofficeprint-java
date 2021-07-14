@@ -51,17 +51,13 @@ public class SolarSystemDocx {
         Pie3DChart pie3DChart = new Pie3DChart("planet_radius_chart",null,pieSeries);
         planetData.addElement(pie3DChart);
 
-        //System.out.println(bodiesAr);
-        //planetData.addElement(new RawJsonArray("bodies",bodiesAr));
-
-        Loop rocketLoop = new Loop("bodies");
+        Loop bodyLoop = new Loop("bodies");
         for (JsonElement json : bodiesAr){
             JsonObject body = (JsonObject) json;
             ElementCollection coll = ElementCollection.makeCollectionFromJson("body",body);
-            rocketLoop.addElement(coll);
+            bodyLoop.addElement(coll);
         }
-        System.out.println(rocketLoop.getJSON());
-        planetData.addElement(rocketLoop);
+        planetData.addElement(bodyLoop);
 
 
         Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();

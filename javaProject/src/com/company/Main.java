@@ -24,13 +24,13 @@ public class Main {
         //example.renderElements();
 
         SolarSystemDocx solarSystemDocx = new SolarSystemDocx();
-        //solarSystemDocx.main();
+        solarSystemDocx.main();
 
         SolarSystemPptx solarSystemPptx = new SolarSystemPptx();
         //solarSystemPptx.main();
 
         SpaceXExample spaceXExample = new SpaceXExample();
-        //spaceXExample.main("pptx");
+        spaceXExample.main("pptx");
         //spaceXExample.main("xlsx");
 
         PrintJobTest printJobTest = new PrintJobTest();

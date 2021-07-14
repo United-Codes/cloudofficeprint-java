@@ -111,16 +111,10 @@ public class ElementCollection extends RenderElement{
                 col.addElement(new RawJsonArray(entry.getKey().toString(),array));
             }
             else {
-                //System.out.println(entry.getValue().toString());
-                //System.out.println(entry.getValue().toString().equals("null"));
                 if (entry.getValue().toString().equals("\"null\"")){
                     Property property = new Property(entry.getKey().toString(),null);
                     col.addElement(property);
                 }
-                /*else if (entry.getValue().toString().equals("null")){
-                    Property property = new Property(entry.getKey().toString(),null);
-                    col.addElement(property);
-                }*/
                 else {
                     Property property = new Property(entry.getKey().toString(),entry.getValue().toString().replace("\"",""));
                     col.addElement(property);
