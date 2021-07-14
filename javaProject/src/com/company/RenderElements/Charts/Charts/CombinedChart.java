@@ -74,7 +74,6 @@ public class CombinedChart extends Chart{
      */
     public JsonObject replaceKeyRecursive(JsonObject jsonOld, String oldKey, String newKey){
         JsonObject json = jsonOld.deepCopy();
-        System.out.println(json);
         for (Map.Entry entry : json.entrySet()){
             if (entry.getKey().toString() == oldKey){
                 json.remove((String) entry.getKey());
