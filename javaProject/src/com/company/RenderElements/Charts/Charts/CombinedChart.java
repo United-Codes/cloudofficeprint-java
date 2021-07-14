@@ -5,6 +5,7 @@ import com.company.RenderElements.Charts.Series.StockSeries;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -71,6 +72,7 @@ public class CombinedChart extends Chart{
      * @return Json with the old key replaced by the new key.
      */
     public JsonObject replaceKeyRecursive(JsonObject json, String oldKey, String newKey){
+        System.out.println(json);
         for (Map.Entry entry : json.entrySet()){
             if (entry.getKey().toString() == oldKey){
                 json.remove((String) entry.getKey());
@@ -81,15 +83,15 @@ public class CombinedChart extends Chart{
                 json.add((String) entry.getKey(), replaceKeyRecursive((JsonObject) entry.getValue(),oldKey,newKey));
             }
             else if (entry.getValue()instanceof JsonArray ){
-                JsonArray newarray = new JsonArray();
+                JsonArray newArray = new JsonArray();
                 Iterator iterator = ((JsonArray) entry.getValue()).iterator();
                 while (iterator.hasNext()){
                     JsonObject next = (JsonObject) iterator.next();
-                    newarray.add(replaceKeyRecursive(next,oldKey,newKey));
+                    newArray.add(replaceKeyRecursive(next,oldKey,newKey));
                 }
-                for (int i =0; i< newarray.size();i++){
+                for (int i =0; i< newArray.size();i++){
                     ((JsonArray) entry.getValue()).remove(0);
-                    ((JsonArray) entry.getValue()).add(newarray.get(i));
+                    ((JsonArray) entry.getValue()).add(newArray.get(i));
                 }
             }
         }
@@ -100,6 +102,21 @@ public class CombinedChart extends Chart{
      * @return An array of the JSONs of the charts but adapted to a multiple chart.
      */
     public JsonArray getModifiedChartDicts(){
+        String test = "{\n" +
+                "'test1': {\n" +
+                "'old': 5\n" +
+                "},\n" +
+                "'test2': [\n" +
+                "{\n" +
+                "'old': 5\n" +
+                "},\n" +
+                "{\n" +
+                "'old': 6\n" +
+                "}\n" +
+                "]\n" +
+                "}";
+        JsonObject testjson = JsonParser.parseString(test).getAsJsonObject();
+        //replaceKeyRecursive(testjson,"old","new");
         JsonArray array = new JsonArray();
         for (Chart chart : getCharts()){
             JsonObject dict = chart.getJSON();

@@ -96,19 +96,22 @@ public class ElementCollection extends RenderElement{
     public static ElementCollection makeCollectionFromJson(String name,JsonObject json){
         ElementCollection col = new ElementCollection(name);
         for (Map.Entry entry : json.entrySet()){
-            if (entry.getValue().toString().startsWith("{\"")){
+            if (entry.getValue() instanceof JsonObject){
                 JsonObject value = (JsonObject) entry.getValue();
                 col.addElement(makeCollectionFromJson(entry.getKey().toString(),value));
             }
-            else if (entry.getValue().toString().startsWith("[{\"")){
+            else if (entry.getValue().toString().startsWith("[\"")){ //just array of strings
+                JsonArray array = (JsonArray) entry.getValue();
+                RawJsonArray test= new RawJsonArray(entry.getKey().toString(),array);
+                col.addElement(new RawJsonArray(entry.getKey().toString(),array));
+            }
+            else if (entry.getValue() instanceof JsonArray){
                 JsonArray array = (JsonArray) entry.getValue();
                 for (JsonElement element : array){
-                    col.addElement(makeCollectionFromJson(entry.getKey().toString(), (JsonObject) element));
+                    if (element instanceof JsonObject){
+                        col.addElement(makeCollectionFromJson(entry.getKey().toString(), (JsonObject) element));
+                    }
                 }
-            }
-            else if (entry.getValue().toString().startsWith("[\"")){
-                JsonArray array = (JsonArray) entry.getValue();
-                col.addElement(new RawJsonArray(entry.getKey().toString(),array));
             }
             else {
                 if (entry.getValue().toString().equals("\"null\"")){
