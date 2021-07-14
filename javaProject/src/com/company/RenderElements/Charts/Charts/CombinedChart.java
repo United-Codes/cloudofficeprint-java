@@ -2,6 +2,7 @@ package com.company.RenderElements.Charts.Charts;
 
 import com.company.RenderElements.Charts.ChartOptions;
 import com.company.RenderElements.Charts.Series.StockSeries;
+import com.company.RenderElements.ElementCollection;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -71,7 +72,8 @@ public class CombinedChart extends Chart{
      * @param newKey New key to replace the old key.
      * @return Json with the old key replaced by the new key.
      */
-    public JsonObject replaceKeyRecursive(JsonObject json, String oldKey, String newKey){
+    public JsonObject replaceKeyRecursive(JsonObject jsonOld, String oldKey, String newKey){
+        JsonObject json = jsonOld.deepCopy();
         System.out.println(json);
         for (Map.Entry entry : json.entrySet()){
             if (entry.getKey().toString() == oldKey){
@@ -102,21 +104,6 @@ public class CombinedChart extends Chart{
      * @return An array of the JSONs of the charts but adapted to a multiple chart.
      */
     public JsonArray getModifiedChartDicts(){
-        String test = "{\n" +
-                "'test1': {\n" +
-                "'old': 5\n" +
-                "},\n" +
-                "'test2': [\n" +
-                "{\n" +
-                "'old': 5\n" +
-                "},\n" +
-                "{\n" +
-                "'old': 6\n" +
-                "}\n" +
-                "]\n" +
-                "}";
-        JsonObject testjson = JsonParser.parseString(test).getAsJsonObject();
-        //replaceKeyRecursive(testjson,"old","new");
         JsonArray array = new JsonArray();
         for (Chart chart : getCharts()){
             JsonObject dict = chart.getJSON();
@@ -128,7 +115,7 @@ public class CombinedChart extends Chart{
             JsonObject dict = chart.getJSON();
             dict = dict.getAsJsonObject(chart.getName());
             dict.remove("options");
-            replaceKeyRecursive(dict,"y","y2");
+            dict=replaceKeyRecursive(dict,"y","y2"); //j'ai changé qlq chose ici
             array.add(dict);
         }
         return array;
