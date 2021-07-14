@@ -10,7 +10,6 @@ public class LineSeries extends XYSeries {
     private Boolean smooth;
     private String symbol;
     private String symbolSize;
-    private String color;
     private String lineThickness;
     private String lineStyle;
 
@@ -54,20 +53,6 @@ public class LineSeries extends XYSeries {
      */
     public void setSymbolSize(String symbolSize) {
         this.symbolSize = symbolSize;
-    }
-
-    /**
-     * @return Color of the lines in CSS format.
-     */
-    public String getColor() {
-        return color;
-    }
-
-    /**
-     * @param color Color of the lines in CSS format.
-     */
-    public void setColor(String color) {
-        this.color = color;
     }
 
     /**
@@ -128,11 +113,7 @@ public class LineSeries extends XYSeries {
      */
     @Override
     public JsonObject getJSON() {
-        JsonObject json = new JsonObject();
-        json.add("data", getJSONData());
-        if (getName()!=null){
-            json.addProperty("name",getName());
-        }
+        JsonObject json = super.getJSON();
         if (getSmooth()!=null){
             json.addProperty("smooth",getSmooth());
         }
@@ -141,9 +122,6 @@ public class LineSeries extends XYSeries {
         }
         if (getSymbolSize()!=null){
             json.addProperty("symbolSize",getSymbolSize());
-        }
-        if (getColor()!=null){
-            json.addProperty("color",getColor());
         }
         if (getLineThickness()!=null){
             json.addProperty("lineWidth", getLineThickness());

@@ -60,16 +60,4 @@ public class BubbleSeries extends XYSeries {
         return jsonArray;
     }
 
-    /**
-     * @return JSONObject with the tags for this element for the AOP server.
-     */
-    @Override
-    public JsonObject getJSON() {
-        JsonObject json = new JsonObject();
-        json.add("data", getJSONData());
-        if (getName()!=null){
-            json.addProperty("name",getName());
-        }
-        return json;
-    }
 }

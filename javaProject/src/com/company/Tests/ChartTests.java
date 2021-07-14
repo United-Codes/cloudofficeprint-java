@@ -135,24 +135,28 @@ public class ChartTests {
 
     public void testChartBar(){
         BarSeries bar1 = new BarSeries("bars1", new String[]{"a", "b", "c"}, new String[]{"1", "2", "3"});
+        bar1.setColor("red");
         BarSeries bar2 = new BarSeries("bars2", new String[]{"a", "b", "c"}, new String[]{"4", "5", "6"});
+        bar2.setColor("blue");
         BarChart barChart = new BarChart("bar_chart",null,bar1,bar2);
-        String correct= "{'bar_chart': {'bars': [{'data': [{'x': 'a', 'y': '1'}, {'x': 'b', 'y': '2'}, {'x': 'c', 'y': '3'}], 'name': 'bars1'}, {'data': [{'x': 'a', 'y': '4'}, {'x': 'b', 'y': '5'}, {'x': 'c', 'y': '6'}], 'name': 'bars2'}], 'type': 'bar'}}\n";
+        String correct= "{'bar_chart': {'bars': [{'data': [{'x': 'a', 'y': '1'}, {'x': 'b', 'y': '2'}, {'x': 'c', 'y': '3'}], 'name': 'bars1','color':'red'}, {'data': [{'x': 'a', 'y': '4'}, {'x': 'b', 'y': '5'}, {'x': 'c', 'y': '6'}], 'name': 'bars2','color':'blue'}], 'type': 'bar'}}\n";
         //System.out.println(barChart.getJSON());
-        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         //System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect,barChart.getJSON());
     }
 
     public void testChartPie(){
         PieSeries pie1 = new PieSeries("pies1", new String[]{"a", "b", "c"}, new String[]{"1", "2", "3"}, new String[]{"red", null, "blue"});
+        pie1.setColor("red");
         PieSeries pie2 = new PieSeries("pies2", new String[]{"a", "b", "c"}, new String[]{"4", "5", "6"},new String[]{"green", "blue", null});
-        PieChart barChart = new PieChart("pie_chart",null,pie1,pie2);
-        String correct= "{'pie_chart': {'pies': [{'data': [{'x': 'a', 'y': '1', 'color': 'red'}, {'x': 'b', 'y': '2'}, {'x': 'c', 'y': '3', 'color': 'blue'}], 'name': 'pies1'}, {'data': [{'x': 'a', 'y': '4', 'color': 'green'}, {'x': 'b', 'y': '5', 'color': 'blue'}, {'x': 'c', 'y': '6'}], 'name': 'pies2'}], 'type': 'pie'}}";
-        //System.out.println(barChart.getJSON());
-        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        pie2.setColor("green");
+        PieChart pieChart = new PieChart("pie_chart",null,pie1,pie2);
+        String correct= "{'pie_chart': {'pies': [{'data': [{'x': 'a', 'y': '1', 'color': 'red'}, {'x': 'b', 'y': '2'}, {'x': 'c', 'y': '3', 'color': 'blue'}], 'name': 'pies1', 'color': 'red'}, {'data': [{'x': 'a', 'y': '4', 'color': 'green'}, {'x': 'b', 'y': '5', 'color': 'blue'}, {'x': 'c', 'y': '6'}], 'name': 'pies2', 'color': 'green'}], 'type': 'pie'}}";
+        //System.out.println(pieChart.getJSON());
+        JsonObject jsonCorrect =  JsonParser.parseString(correct).getAsJsonObject();
         //System.out.println(jsonCorrect);
-        Assert.assertEquals(jsonCorrect,barChart.getJSON());
+        Assert.assertEquals(jsonCorrect,pieChart.getJSON());
     }
 
     public void testChartArea(){
@@ -167,14 +171,16 @@ public class ChartTests {
     }
 
     public void testChartBubble(){
-        BubbleSeries serie1 = new BubbleSeries("bubble1", new String[]{"a", "b", "c"}, new String[]{"1", "2", "3"}, new Integer[]{5, 6, 2});
-        BubbleSeries serie2 = new BubbleSeries("bubble2", new String[]{"a", "b", "c"}, new String[]{"4", "5", "6"},new Integer[]{5, 6, 2});
-        BubbleChart areaChart = new BubbleChart("bubble_chart",null,serie1,serie2);
-        String correct= "{'bubble_chart': {'bubbles': [{'data': [{'x': 'a', 'y': '1', 'size': 5}, {'x': 'b', 'y': '2', 'size': 6}, {'x': 'c', 'y': '3', 'size': 2}], 'name': 'bubble1'}, {'data': [{'x': 'a', 'y': '4', 'size': 5}, {'x': 'b', 'y': '5', 'size': 6}, {'x': 'c', 'y': '6', 'size': 2}], 'name': 'bubble2'}], 'type': 'bubble'}}";
-        //System.out.println(areaChart.getJSON());
-        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        BubbleSeries bubble1 = new BubbleSeries("bubble1", new String[]{"a", "b", "c"}, new String[]{"1", "2", "3"}, new Integer[]{5, 6, 2});
+        bubble1.setColor("red");
+        BubbleSeries bubble2 = new BubbleSeries("bubble2", new String[]{"a", "b", "c"}, new String[]{"4", "5", "6"},new Integer[]{5, 6, 2});
+        bubble2.setColor("blue");
+        BubbleChart bubbleChart = new BubbleChart("bubble_chart",null,bubble1,bubble2);
+        String correct= "{'bubble_chart': {'bubbles': [{'data': [{'x': 'a', 'y': '1', 'size': 5}, {'x': 'b', 'y': '2', 'size': 6}, {'x': 'c', 'y': '3', 'size': 2}], 'name': 'bubble1', 'color': 'red'}, {'data': [{'x': 'a', 'y': '4', 'size': 5}, {'x': 'b', 'y': '5', 'size': 6}, {'x': 'c', 'y': '6', 'size': 2}], 'name': 'bubble2', 'color': 'blue'}], 'type': 'bubble'}}";
+        //System.out.println(bubbleChart.getJSON());
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         //System.out.println(jsonCorrect);
-        Assert.assertEquals(jsonCorrect,areaChart.getJSON());
+        Assert.assertEquals(jsonCorrect,bubbleChart.getJSON());
     }
 
     public void testChartStock(){

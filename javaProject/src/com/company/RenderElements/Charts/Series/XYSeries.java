@@ -6,9 +6,10 @@ import com.google.gson.JsonObject;
 import java.util.Iterator;
 
 public abstract class XYSeries {
-    String[] x;
-    String[] y;
+    private String[] x;
+    private String[] y;
     private String name;
+    private String color;
 
     /**
      * @return Name of the serie.
@@ -52,6 +53,19 @@ public abstract class XYSeries {
         this.y = y;
     }
 
+    /**
+     * @return Color of the series in CSS format.
+     */
+    public String getColor() {
+        return color;
+    }
+
+    /**
+     * @param color Color of the series in CSS format.
+     */
+    public void setColor(String color) {
+        this.color = color;
+    }
 
     /**
      * @return JsonArray of the data of the serie.
@@ -76,6 +90,10 @@ public abstract class XYSeries {
         if (getName()!=null){
             json.addProperty("name",getName());
         }
+        if (getColor()!=null){
+            json.addProperty("color",getColor());
+        }
+        //System.out.println(json);
         return json;
     }
 }

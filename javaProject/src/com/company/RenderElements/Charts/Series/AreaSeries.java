@@ -68,14 +68,7 @@ public class AreaSeries extends XYSeries {
      */
     @Override
     public JsonObject getJSON() {
-        JsonObject json = new JsonObject();
-        json.add("data", getJSONData());
-        if (getName()!=null){
-            json.addProperty("name",getName());
-        }
-        if (getColor()!=null){
-            json.addProperty("color",getColor());
-        }
+        JsonObject json = super.getJSON();
         if (getOpacity()!=null){
             json.addProperty("opacity",getOpacity());
         }

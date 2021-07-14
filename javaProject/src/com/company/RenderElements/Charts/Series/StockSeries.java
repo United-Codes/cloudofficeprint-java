@@ -136,6 +136,7 @@ public class StockSeries extends XYSeries {
     }
 
     /**
+     * No color needed for stockseries.
      * @return JSONObject with the tags for this element for the AOP server.
      */
     @Override

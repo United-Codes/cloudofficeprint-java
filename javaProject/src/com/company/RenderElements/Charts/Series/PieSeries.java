@@ -37,6 +37,7 @@ public class PieSeries extends XYSeries {
      * @param y Y-data of the chart.
      * @param colors Colors for each pie slice. Note : If no colors are specified (null argument), the document's theme is used.
      *               If some colors are specified, but not for all data points, random colors will fill the gaps.
+     *               (setColor() doesn't have an impact on pieseries.)
      */
     public PieSeries(String name, String[] x, String[] y, String[] colors){
         setName(name);
@@ -65,16 +66,5 @@ public class PieSeries extends XYSeries {
         return jsonArray;
     }
 
-    /**
-     * @return JSONObject with the tags for this element for the AOP server.
-     */
-    @Override
-    public JsonObject getJSON() {
-        JsonObject json = new JsonObject();
-        json.add("data", getJSONData());
-        if (getName()!=null){
-            json.addProperty("name",getName());
-        }
-        return json;
-    }
+
 }

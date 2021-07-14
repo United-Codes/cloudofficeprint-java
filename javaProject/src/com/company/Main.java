@@ -30,7 +30,7 @@ public class Main {
         //solarSystemPptx.main();
 
         SpaceXExample spaceXExample = new SpaceXExample();
-        spaceXExample.main();
+        //spaceXExample.main();
 
         PrintJobTest printJobTest = new PrintJobTest();
         //printJobTest.prePendAppendSubTemplatesTest(); //contacts server and makes a download so is in comment
