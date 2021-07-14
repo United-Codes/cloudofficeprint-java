@@ -50,6 +50,45 @@ public class Examples {
         }
     }
 
+    /**
+     * Example without template. AOP will generate the template based on the data. Output type determines the template type generated. Cannot be PDF in this case.
+     */
+    public void withoutTemplate(){
+        try {
+            Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,
+                    null,null,null,null);
+            Output output = new Output("docx","raw",null,null,null,null);
+
+            Property property1 = new Property("first_name","Quent");
+            Property property2 = new Property("last_name","Stroob");
+            Property property3 = new Property("city","Leuven");
+            ImageBase64 image = new ImageBase64("imageTag");
+            image.setFileFromLocalFile("./src/com/company/Examples/test.jpg");
+            image.setMaxWidth(500);
+            image.setRotation(75);
+            ArrayList<RenderElement> dataList =  new ArrayList<RenderElement>();
+            dataList.add(property1);
+            dataList.add(property2);
+            dataList.add(property3);
+            dataList.add(image);
+            ElementCollection data1 = new ElementCollection("data1",dataList);
+
+
+            Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
+            data.put("output1",data1);
+
+            PrintJob printJob = new PrintJob(data,server,output,null,null,null,null,null);
+
+            Response response = printJob.execute();
+            response.downloadLocally("./downloads/outputWithoutTemplate");
+
+        }catch (AOPException e){
+            e.printStackTrace();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
 
     /**
@@ -78,7 +117,7 @@ public class Examples {
             dataList.add(property1);
             dataList.add(property2);
             dataList.add(property3);
-            //dataList.add(image);
+            dataList.add(image);
             ElementCollection data1 = new ElementCollection("data1",dataList);
 
             Hashtable<String, String> propertyDict = new Hashtable<String, String>();

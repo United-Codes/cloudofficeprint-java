@@ -216,7 +216,8 @@ public class PrintJob implements Runnable{
      * @param externalResource External resource for the data (REST or graphQL).
      * @param server Server to user for this printjob.
      * @param output object containing the output configuration for this printjob.
-     * @param template for this printjob.
+     * @param template Template for this printjob. If no template is specified AOP will generate a template based on the data.
+     *                  Output type determines the template type generated. Cannot be PDF in this case.
      * @param subTemplates  for this print job. Hashtable(key, subTemplate)
      *                      Subtemplates are only accessible (in docx).
      *                      They will replace the `{?include subtemplate_dict_key}` tag in the docx.

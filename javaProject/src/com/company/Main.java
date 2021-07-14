@@ -15,6 +15,7 @@ public class Main {
         //example.localJson();
         //example.localTemplateAsync();
         //example.localTemplate();
+        example.withoutTemplate();
         //example.loopExample();
         //example.chartExample();
         //example.combinedChartExample();
