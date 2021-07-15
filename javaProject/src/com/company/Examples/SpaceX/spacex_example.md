@@ -398,7 +398,7 @@ It might be interesting to plot the cost per launch for each of the rockets on a
 
 <img src="./imgs/pptx_template/slide5.png" width="600" />
 
-The tag `{$rockets_chart}` is used to insert a chart at the place of this placeholder. The data for the chart can be generated using the Python SDK.
+The tag `{$rockets_chart}` is used to insert a chart at the place of this placeholder. The data for the chart can be generated using the Java SDK.
 
 ### Dragons
 Similar to the section [Rockets](#rockets), we can add the slides for the SpaceX-dragons. The slides used are:
@@ -471,7 +471,7 @@ We loop through all the rockets by using the loop-tag `{#rockets}...{/rockets}`:
 
 There are some new elements which we have not yet seen in the previous templates. 'rockets' is an array and we can get the current index in the loop by adding '_index' after the name of the array 'rockets'. The total length of the array can be received by adding '.length' after the array name 'rockets'. We use this to display the current page number compared to the total amount of pages of rockets. 
 
-We also want to have the information for each rocket to be an a separate page. That's why we use a pagebreak-tag `{?pageBreak}`. The value of `pageBreak` can be determined in the data by the Python SDK, but since we always want this to be true in this case, we use `{?true}`. The only time when we don't want to use the pagebreak is when we're at the last element of the 'rockets'-array, otherwise we'll end up with a blank page after the last rocket. We can achieve this by using a 'condition'-tag. We compare the current loop index `rockets_index` with the loop length `rockets.length` to know if we are at the last rocket.
+We also want to have the information for each rocket to be an a separate page. That's why we use a pagebreak-tag `{?pageBreak}`. The value of `pageBreak` can be determined in the data by the Java SDK, but since we always want this to be true in this case, we use `{?true}`. The only time when we don't want to use the pagebreak is when we're at the last element of the 'rockets'-array, otherwise we'll end up with a blank page after the last rocket. We can achieve this by using a 'condition'-tag. We compare the current loop index `rockets_index` with the loop length `rockets.length` to know if we are at the last rocket.
 
 We also want to show a chart of the cost per launch for each rocket:
 
@@ -493,7 +493,7 @@ We also want to show a chart of the cost per launch for each rocket:
 # Process input data (Java SDK)
 Now that our template is finished, we have to process the data used by the template. That is where the Java SDK comes into play. In this section we will explain in detail all the Java code needed to generate the data to fill in the template. The full Java code can also be found in the file `spacex_example.py`.
 
-The beauty of AOP is that the data created by the Python SDK can be used in all templates of different file extensions while using the same tags.
+The beauty of AOP is that the data created by the Java SDK can be used in all templates of different file extensions while using the same tags.
 
 ## Setup
 First make sure the AOPJavaSDK is imported in your Java Project and IDE.
