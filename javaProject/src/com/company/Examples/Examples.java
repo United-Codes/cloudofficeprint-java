@@ -37,6 +37,7 @@ public class Examples {
             Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,
              //       null,null,"127.0.0.1",8000);
             null,null,null,null);
+            server.setVerbose(true);
             String ret = server.readJson("./src/com/company/Examples/test.json");
             JsonObject jsonObject = JsonParser.parseString(ret).getAsJsonObject();
             Response response = server.sendPOSTRequest(jsonObject);
@@ -57,6 +58,7 @@ public class Examples {
         try {
             Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,
                     null,null,null,null);
+            server.setVerbose(true);
             Output output = new Output("docx","raw",null,null,null,null);
 
             Property property1 = new Property("first_name","Quent");
@@ -155,6 +157,7 @@ public class Examples {
         try {
             Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,
                     null,null,null,null);
+            server.setVerbose(true);
             PDFOptions pdfOptions = new PDFOptions();
             pdfOptions.setReadPassword("hello");
             pdfOptions.setLandscape(true);
@@ -213,6 +216,7 @@ public class Examples {
         try {
             Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,
                     null,null,null,null);
+            server.setVerbose(true);
 
             Output output = new Output("pdf","raw",null,null,null,null);
             Base64Resource base64Resource = new Base64Resource();
@@ -347,6 +351,7 @@ public class Examples {
         try {
             Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,
                     null,null,null,null);
+            server.setVerbose(true);
             Output output = new Output("pdf","raw",null,null,null,null);
             Base64Resource base64Resource = new Base64Resource();
             base64Resource.setFileFromLocalFile("./src/com/company/Examples/chartname.docx");
@@ -388,6 +393,7 @@ public class Examples {
         try {
             Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,
                     null,null,null,null);
+            server.setVerbose(true);
             Output output = new Output("pdf","raw",null,null,null,null);
             Base64Resource base64Resource = new Base64Resource();
             base64Resource.setFileFromLocalFile("./src/com/company/Examples/chartname.docx");
@@ -435,6 +441,7 @@ public class Examples {
         try {
             Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,
                     null,null,null,null);
+            server.setVerbose(true);
             Output output = new Output("pdf","raw",null,null,null,null);
             Base64Resource base64Resource = new Base64Resource();
             base64Resource.setFileFromLocalFile("./src/com/company/Examples/localTemplate.docx");
@@ -493,6 +500,7 @@ public class Examples {
         try {
             Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,
                     null,null,null,null);
+            server.setVerbose(true);
             Output output = new Output("pdf","raw",null,null,null,null);
             Base64Resource base64Resource = new Base64Resource();
             base64Resource.setFileFromLocalFile("./src/com/company/Examples/localTemplate.docx"); //doesn't have importance
@@ -564,6 +572,7 @@ public class Examples {
         try {
             Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,
                     null,null,null,null);
+            server.setVerbose(true);
             Output output = new Output("pdf","raw",null,null,null,null);
             Base64Resource base64Resource = new Base64Resource();
             base64Resource.setFileFromLocalFile("./src/com/company/Examples/localTemplate.docx");

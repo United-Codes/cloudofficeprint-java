@@ -21,6 +21,7 @@ public class SolarSystemPptx {
 
         //Get solar system data
         Server server =new Server("https://api.le-systeme-solaire.net/rest/bodies/");
+        server.setVerbose(true);
         String response = server.sendGETRequest(server.getUrl());
         JsonObject parsed = JsonParser.parseString(response).getAsJsonObject();
         JsonArray bodiesAr = parsed.getAsJsonArray("bodies");
@@ -37,6 +38,7 @@ public class SolarSystemPptx {
 
         //Set-Up AOP Server
         Server aopServer = new Server("http://localhost:8010");
+        aopServer.setVerbose(true);
         aopServer.setAPIKey("1C511A58ECC73874E0530100007FD01A");
 
         Base64Resource base64Resource = new Base64Resource();

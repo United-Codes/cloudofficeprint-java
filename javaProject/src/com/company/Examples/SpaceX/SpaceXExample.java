@@ -225,6 +225,7 @@ public class SpaceXExample {
 
         //Set-Up AOP Server
         Server aopServer = new Server("http://localhost:8010");
+        aopServer.setVerbose(true);
         aopServer.setAPIKey("1C511A58ECC73874E0530100007FD01A");
 
         Base64Resource base64Resource = new Base64Resource();
