@@ -12,27 +12,27 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         Examples example = new Examples();
-        //example.localJson();
-        //example.localTemplateAsync();
-        //example.localTemplate();
+        example.localJson();
+        example.localTemplateAsync();
+        example.localTemplate();
         example.withoutTemplate();
-        //example.loopExample();
-        //example.chartExample();
-        //example.combinedChartExample();
-        //example.qrCodeExample();
-        //example.prePendAppendSubTemplatesExample();
-        //example.AOPPDFTextAndImageExample();
-        //example.renderElements();
+        example.loopExample();
+        example.chartExample();
+        example.combinedChartExample();
+        example.qrCodeExample();
+        example.prePendAppendSubTemplatesExample();
+        example.AOPPDFTextAndImageExample();
+        example.renderElements();
 
         SolarSystemDocx solarSystemDocx = new SolarSystemDocx();
-        //solarSystemDocx.main();
+        solarSystemDocx.main();
 
         SolarSystemPptx solarSystemPptx = new SolarSystemPptx();
-        //solarSystemPptx.main();
+        solarSystemPptx.main();
 
         SpaceXExample spaceXExample = new SpaceXExample();
-        //spaceXExample.main("pptx");
-        //spaceXExample.main("xlsx");
+        spaceXExample.main("pptx");
+        spaceXExample.main("xlsx");
 
         PrintJobTest printJobTest = new PrintJobTest();
         //printJobTest.prePendAppendSubTemplatesTest(); //contacts server and makes a download so is in comment

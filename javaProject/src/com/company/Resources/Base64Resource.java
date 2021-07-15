@@ -1,6 +1,7 @@
 package com.company.Resources;
 
 
+import com.company.Mimetype;
 import com.google.gson.JsonObject;
 import org.apache.sis.storage.event.WarningEvent;
 import org.apache.tika.Tika;
@@ -39,7 +40,7 @@ public class Base64Resource extends Resource{
      */
     public Base64Resource(String filetype, String database64) throws Exception {
         setFiletype(filetype);
-        setMimeType(getMimeType(filetype));
+        setMimeType(Mimetype.getMimeType(filetype));
         setFileBase64(database64);
     }
 
@@ -98,7 +99,7 @@ public class Base64Resource extends Resource{
 
         //Tika tika = new Tika();
         //setMimeType(tika.detect(file)); // would be a better way to do it but it throws two warnings.
-        setMimeType(getMimeType(extension));
+        setMimeType(Mimetype.getMimeType(extension));
 
         byte[] bytes = Files.readAllBytes(file.toPath());
         String encodedString = Base64.getEncoder().encodeToString(bytes);
@@ -107,36 +108,6 @@ public class Base64Resource extends Resource{
         //System.out.println(s); //only works for txt or json not office files
     }
 
-    /**
-     * As the tika library gives two warnings I decided to implement if manually for all the supported document formats (not a lot). I didn't find any better option for the moment.
-     * @param extension Extension of the file to find the mimetype.
-     * @return Mimetype of the file.
-     * @throws Exception If the file type is not supported (cannot find the mimetype).
-     */
-    public String getMimeType(String extension) throws Exception {
-        if (extension.equals("txt")){
-            return "text/plain";
-        }
-        if (extension.equals("md")){
-            return "text/markdown";
-        }
-        if (extension.equals("html")){
-            return "text/html";
-        }
-        if (extension.equals("docx")){
-            return "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
-        }
-        if (extension.equals("xlsx")){
-            return "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-        }
-        if (extension.equals("pptx")){
-            return "application/vnd.openxmlformats-officedocument.presentationml.presentation";
-        }
-        if (extension.equals("csv")){
-            return "text/csv";
-        }
-        else throw new Exception("File type not supported, so cannot find the mimetype");
-    }
 
 
 }
