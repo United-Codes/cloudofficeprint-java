@@ -490,70 +490,71 @@ We also want to show a chart of the cost per launch for each rocket:
 <img src="./imgs/docx_template/page7.png" width="600" />
 
 
-# Process input data (Python SDK)
-Now that our template is finished, we have to process the data used by the template. That is where the Python SDK comes into play. In this section we will explain in detail all the Python code needed to generate the data to fill in the template. The full Python code can also be found in the file `spacex_example.py`.
+# Process input data (Java SDK)
+Now that our template is finished, we have to process the data used by the template. That is where the Java SDK comes into play. In this section we will explain in detail all the Java code needed to generate the data to fill in the template. The full Java code can also be found in the file `spacex_example.py`.
 
 The beauty of AOP is that the data created by the Python SDK can be used in all templates of different file extensions while using the same tags.
 
 ## Setup
-First we create a new Python file and import the APEX Office Print library and the `requests`-library:
-
-```python
-import apexofficeprint as aop
-import requests
-```
+First make sure the AOPJavaSDK is imported in your Java Project and IDE.
 
 Then we need to set up the AOP server where we will send our template and data to:
-```python
-LOCAL_SERVER_URL = "http://localhost:8010"
-API_KEY = "1C511A58ECC73874E0530100007FD01A"
-
-server = aop.config.Server(
-    LOCAL_SERVER_URL,
-    aop.config.ServerConfig(api_key=API_KEY)
-)
+```
+Server aopServer = new Server("http://localhost:8010");
+aopServer.setVerbose(true); //This sets the verbose mode on.
+aopServer.setAPIKey(APIKey);
 ```
 If you do not have an AOP server running on localhost (e.g. on-premise version) and want to use the AOP cloud server, replace the local server url by the url of our cloud server: https://api.apexofficeprint.com/.
 
 We also need to create the main element-collection object that contains all our data:
-```python
-data = aop.elements.ElementCollection()
+```
+ElementCollection spaceXData = new ElementCollection("data");
 ```
 
 Lastly we write a function that return the first sentence of a text input. This is used when we only want to display the first sentence of a discription:
-```python
-def shorten_description(input: str) -> str:
-    """Return only the first sentence of an input.
-
-    Args:
-        input (str): The input that needs to be shortened
-
-    Returns:
-        str: First sentence of input string
-    """
-    return input.split('.')[0] + '.'
+```
+/**
+ * @param description Text to shorten.
+ * @return Only the first phrase of the description.
+ */
+public String shortenDescription(String description){
+    return description.split("[.]")[0] + ".";
+}
 ```
 
 ## Import data
-As discussed in [Input data (API)](#input-data-api), we use an API of a cloud server to receive the data about SpaceX. The information we use for this example can be received as follows using the `requests`-library:
-```python
-info = requests.get('https://api.spacexdata.com/v3/info').json()
-rockets = requests.get('https://api.spacexdata.com/v4/rockets').json()
-dragons = requests.get('https://api.spacexdata.com/v4/dragons').json()
-launch_pads = requests.get('https://api.spacexdata.com/v4/launchpads').json()
-landing_pads = requests.get('https://api.spacexdata.com/v4/landpads').json()
-ships = requests.get('https://api.spacexdata.com/v4/ships').json()
+As discussed in [Input data (API)](#input-data-api), we use an API of a cloud server to receive the data about SpaceX. The information we use for this example can be received by sending get requests to the different URL's of the SpaceX API:
+```
+//Get SpaceX data from https://docs.spacexdata.com
+Server server =new Server("https://api.spacexdata.com/v3/info");
+String response = server.sendGETRequest(server.getUrl());
+JsonObject info = JsonParser.parseString(response).getAsJsonObject();
+
+server =new Server("https://api.spacexdata.com/v4/rockets");
+response = server.sendGETRequest(server.getUrl());
+JsonArray rockets = JsonParser.parseString(response).getAsJsonArray();
+
+server =new Server("https://api.spacexdata.com/v4/dragons");
+response = server.sendGETRequest(server.getUrl());
+JsonArray dragons = JsonParser.parseString(response).getAsJsonArray();
+
+server =new Server("https://api.spacexdata.com/v4/launchpads");
+response = server.sendGETRequest(server.getUrl());
+JsonArray launchPads = JsonParser.parseString(response).getAsJsonArray();
+
+server =new Server("https://api.spacexdata.com/v4/landpads");
+response = server.sendGETRequest(server.getUrl());
+JsonArray landingPads = JsonParser.parseString(response).getAsJsonArray();
+
+server =new Server("https://api.spacexdata.com/v4/ships");
+response = server.sendGETRequest(server.getUrl());
+JsonArray ships = JsonParser.parseString(response).getAsJsonArray();
 ```
 
 ## Title slide
-The template title slide contains the title of our presentation and a hyperlink-tag `{*data_source}`. Now we need to add the data for this tag in our Python code by creating an AOP element (hyperlink) and adding this to the main data collection:
-```python
-data_source = aop.elements.Hyperlink(
-    name='data_source',
-    url='https://docs.spacexdata.com',
-    text='Data source'
-)
-data.add(data_source)
+The template title slide contains the title of our presentation and a hyperlink-tag `{*data_source}`. Now we need to add the data for this tag in our Java code by creating an AOP element (hyperlink) and adding this to the main data collection:
+```java
+spaceXData.addElement( new HyperLink("data_source","Data source","https://docs.spacexdata.com"));
 ```
 The tag `{*data_source}` will be replaced by the text 'Data source' and this text will have a hyperlink to the URL 'https://docs.spacexdata.com'.
 
