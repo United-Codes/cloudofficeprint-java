@@ -613,6 +613,9 @@ public class Examples {
         }
     }
 
+    /**
+     * This example show you how to sign a PDF file.
+     */
     public void signPDF(String APIKey){
         try {
             Server server = new Server("http://apexofficeprint.com/dev/",APIKey,null,

@@ -1,7 +1,7 @@
 package com.company.Tests;
 
 import com.company.RenderElements.*;
-import com.company.RenderElements.Images.Image;
+import com.company.RenderElements.Cells.TableCell;
 import com.company.RenderElements.Images.ImageUrl;
 import com.company.RenderElements.Loops.Loop;
 import com.google.gson.JsonObject;

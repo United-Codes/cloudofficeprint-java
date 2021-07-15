@@ -1,0 +1,71 @@
+package com.company.RenderElements.Cells;
+
+import com.company.RenderElements.RenderElement;
+import com.google.common.collect.ImmutableSet;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+/**
+ * Only supported in Word, Excel, Powerpoint templates (they all have tables with cells).
+ * Represents a cell element. It includes the name for the tag, the value and
+ * optionally the cell background color and width.
+ */
+public class TableCell extends RenderElement {
+
+    private CellStyle cellStyle;
+
+    /**
+     * @return Style of the cell.
+     */
+    public CellStyle getCellStyle() {
+        return cellStyle;
+    }
+
+    /**
+     * @param cellStyle Style of the cell.
+     */
+    public void setCellStyle(CellStyle cellStyle) {
+        this.cellStyle = cellStyle;
+    }
+
+    /**
+     * Represents a cell element. It includes the name for the tag, the value and
+     * optionally the cell style.
+     * @param name Name of this element (for the tempalteTag).
+     * @param value Value that will replace the tag.
+     * @param cellStyle The style of the cell. (optional)
+     */
+    public TableCell(String name, String value, CellStyle cellStyle){
+        setName(name);
+        setValue(value);
+        setCellStyle(cellStyle);
+    }
+
+    /**
+     * @return JSONObject with the tags for this tableCell for the AOP server.
+     */
+    @Override
+    public JsonObject getJSON() {
+        JsonObject json = new JsonObject();
+        json.addProperty(getName(),getValue());
+        for(Map.Entry<String, JsonElement> entry : getCellStyle().getJSON().entrySet()) {
+            json.addProperty(getName() + entry.getKey(), entry.getValue().getAsString());
+        }
+        return json;
+    }
+
+    /**
+     * @return An immutable set containing all available template tags this element can replace.
+     */
+    @Override
+    public Set<String> getTemplateTags() {
+        Set<String> hash_Set = new HashSet<String>();
+        hash_Set.add("{"+getName()+"$}");
+        return ImmutableSet.copyOf(hash_Set);
+    }
+}

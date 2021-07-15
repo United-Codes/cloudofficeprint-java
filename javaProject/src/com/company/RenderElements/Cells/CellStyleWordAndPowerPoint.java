@@ -1,4 +1,4 @@
-package com.company.RenderElements;
+package com.company.RenderElements.Cells;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.gson.JsonObject;
@@ -7,11 +7,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Only supported in Word, Excel, Powerpoint templates (they all have tables with cells).
- * Represents a cell element. It includes the name for the tag, the value and
- * optionally the cell background color and width.
+ * Represent the style of Word and PowerPoint cells.
  */
-public class TableCell extends RenderElement{
+public class CellStyleWordAndPowerPoint extends CellStyle{
 
     private String backgroundColor;
     private String width;
@@ -47,17 +45,12 @@ public class TableCell extends RenderElement{
     }
 
     /**
-     * Represents a cell element. It includes the name for the tag, the value and
-     * optionally the cell background color and width. Use default value if you don't want to specify an optional argument.
-     * @param name Name of this element (for the tempalteTag).
-     * @param value Value that will replace the tag.
+     * Represents the style of a Word/PowerPoint cell element. Use default value if you don't want to specify an optional argument.
      * @param backgroundColor The background color of the cell (hex format). (Optional)
      * @param width  The width of the cell + unit ( in, cm, px, pt, em and % (% is in respect to the initial width of the table)).
      *               Giving a width of 0 will remove the whole column.
      */
-    public TableCell(String name, String value, String backgroundColor, String width){
-        setName(name);
-        setValue(value);
+    public CellStyleWordAndPowerPoint(String backgroundColor, String width){
         setBackgroundColor(backgroundColor);
         setWidth(width);
     }
@@ -68,23 +61,14 @@ public class TableCell extends RenderElement{
     @Override
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
-        json.addProperty(getName(),getValue());
         if (getBackgroundColor()!=null){
-            json.addProperty(getName()+"_background_color",getBackgroundColor());
+            json.addProperty("_background_color",getBackgroundColor());
         }
         if (getWidth()!=null){
-            json.addProperty(getName()+"_width",getWidth());
+            json.addProperty("_width",getWidth());
         }
         return json;
     }
 
-    /**
-     * @return An immutable set containing all available template tags this element can replace.
-     */
-    @Override
-    public Set<String> getTemplateTags() {
-        Set<String> hash_Set = new HashSet<String>();
-        hash_Set.add("{"+getName()+"$}");
-        return ImmutableSet.copyOf(hash_Set);
-    }
+
 }
