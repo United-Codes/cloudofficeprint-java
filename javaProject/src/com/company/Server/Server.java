@@ -320,11 +320,11 @@ public class Server {
         }
         con.setRequestMethod("GET");
         if (isVerbose() == true){
-            System.out.println("\nSending 'GET' request to URL : " + url);
+            System.out.println("Server.java : " +"Sending 'GET' request to URL : " + url);
         }
         int responseCode = con.getResponseCode();
         if (isVerbose() == true){
-            System.out.println("Response Code : " + responseCode);
+            System.out.println("Server.java : " +"Response Code : " + responseCode);
         }
         BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
         String inputLine;
@@ -356,7 +356,7 @@ public class Server {
     public Response sendPOSTRequest(JsonObject postData) throws Exception{
 
         if (isVerbose() == true){
-            System.out.println("Json for server : " + postData.toString() + "\n");
+            System.out.println("Server.java : " +"Json for server : " + postData.toString() + "\n");
         }
         URL obj = new URL(this.url);
         HttpURLConnection con;
@@ -383,15 +383,15 @@ public class Server {
         outputStream.flush();
         outputStream.close();
         if (isVerbose() == true){
-            System.out.println("Sending 'POST' request to URL : " + url);
+            System.out.println("Server.java : " +"Sending 'POST' request to URL : " + url);
         }
         int responseCode = con.getResponseCode();
         if (isVerbose() == true){
-            System.out.println("Response Code : " + responseCode);
+            System.out.println("Server.java : " +"Response Code : " + responseCode);
         }
         if (responseCode == 200) {
             if (isVerbose() == true){
-                System.out.println("Content-Type : " + con.getHeaderField("Content-Type")+"\n");
+                System.out.println("Server.java : " +"Content-Type : " + con.getHeaderField("Content-Type")+"\n");
             }
             MimeTypes allTypes = MimeTypes.getDefaultMimeTypes();
             MimeType type = allTypes.forName(con.getHeaderField("Content-Type"));
@@ -403,10 +403,6 @@ public class Server {
                 baos.write(buffer, 0, length);
             }
             Response response = new Response(ext,type.toString(),baos.toByteArray());
-            if (isVerbose() == true){
-                System.out.println("Server.java : " + "server's response is : "+ response );
-                System.out.println();
-            }
             return response;
             }
         else {

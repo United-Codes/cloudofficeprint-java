@@ -28,12 +28,16 @@ import java.util.Hashtable;
 
 public class SpaceXExample {
 
+    /**
+     * @param description Text to shorten.
+     * @return Only the first phrase of the description.
+     */
     public String shortenDescription(String description){
         return description.split("[.]")[0] + ".";
     }
 
     /**
-     * @param template Should be pptx or xlsx.
+     * @param template Should be docx, pptx or xlsx.
      * @throws Exception Exceptions.
      */
     public void main(String APIKey,String template) throws Exception {
@@ -229,10 +233,13 @@ public class SpaceXExample {
         aopServer.setAPIKey(APIKey);
 
         Base64Resource base64Resource = new Base64Resource();
-        if (template.equals("pptx")){
+        if (template.equals("docx")){
+            base64Resource.setFileFromLocalFile("./src/com/company/Examples/SpaceX/spacex_template.docx");
+        }
+        else if (template.equals("pptx")){
             base64Resource.setFileFromLocalFile("./src/com/company/Examples/SpaceX/spacex_template.pptx");
         }
-        if (template.equals("xlsx")){
+        else if (template.equals("xlsx")){
             base64Resource.setFileFromLocalFile("./src/com/company/Examples/SpaceX/spacex_template.xlsx");
         }
 

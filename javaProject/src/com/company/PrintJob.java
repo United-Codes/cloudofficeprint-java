@@ -325,12 +325,7 @@ public class PrintJob implements Runnable{
      */
     public Response execute() throws Exception {
         JsonObject JSONForServer = getJSON();
-        if (server.isReachable() == true){
-            return server.sendPOSTRequest(JSONForServer);
-        }
-        else {
-            throw new Exception("Server is not reachable. He didn't give back polo on the marco GET request");
-        }
+        return server.sendPOSTRequest(JSONForServer);
     }
 
     /**

@@ -14,7 +14,7 @@ public class Main {
         Examples example = new Examples();
         //example.localJson("1C511A58ECC73874E0530100007FD01A");
         //example.localTemplateAsync("1C511A58ECC73874E0530100007FD01A");
-        example.localTemplate("1C511A58ECC73874E0530100007FD01A");
+        //example.localTemplate("1C511A58ECC73874E0530100007FD01A");
         /*example.withoutTemplate("1C511A58ECC73874E0530100007FD01A");
         example.loopExample("1C511A58ECC73874E0530100007FD01A");
         example.chartExample("1C511A58ECC73874E0530100007FD01A");
@@ -33,6 +33,7 @@ public class Main {
         SpaceXExample spaceXExample = new SpaceXExample();
         //spaceXExample.main("1C511A58ECC73874E0530100007FD01A","pptx");
         //spaceXExample.main("1C511A58ECC73874E0530100007FD01A","xlsx");
+        spaceXExample.main("1C511A58ECC73874E0530100007FD01A","docx");
 
         PrintJobTest printJobTest = new PrintJobTest();
         //printJobTest.prePendAppendSubTemplatesTest("1C511A58ECC73874E0530100007FD01A"); //contacts server and makes a download so is in comment
