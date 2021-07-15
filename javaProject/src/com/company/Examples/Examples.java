@@ -32,9 +32,9 @@ public class Examples {
     /**
      * Example where the local test.json is read and send to the server. The output is downloaded in downloads and named outputLocalJson.
      */
-    public void localJson(){
+    public void localJson(String APIKey){
         try {
-            Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,
+            Server server = new Server("http://localhost:8010",APIKey,null,
              //       null,null,"127.0.0.1",8000);
             null,null,null,null);
             server.setVerbose(true);
@@ -54,9 +54,9 @@ public class Examples {
     /**
      * Example without template. AOP will generate the template based on the data. Output type determines the template type generated. Cannot be PDF in this case.
      */
-    public void withoutTemplate(){
+    public void withoutTemplate(String APIKey){
         try {
-            Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,
+            Server server = new Server("http://localhost:8010",APIKey,null,
                     null,null,null,null);
             server.setVerbose(true);
             Output output = new Output("docx","raw",null,null,null,null);
@@ -97,9 +97,9 @@ public class Examples {
      * Example with templateTest.docx as template, a list of properties and an image as data. A zipfile named outputLocalTemplate will contain
      * 2 outputs files in the downloads folder.
      */
-    public void localTemplate(){
+    public void localTemplate(String APIKey){
         try {
-            Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,
+            Server server = new Server("http://localhost:8010",APIKey,null,
                     null,null,null,null);
             server.setVerbose(true);
             PDFOptions pdfOptions = new PDFOptions();
@@ -153,9 +153,9 @@ public class Examples {
      * Example with templateTest.docx as template, a list of properties and an image as data. A zipfile named outputLocalTemplate will contain
      * 2 outputs files in the downloads folder.
      */
-    public void localTemplateAsync(){
+    public void localTemplateAsync(String APIKey){
         try {
-            Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,
+            Server server = new Server("http://localhost:8010",APIKey,null,
                     null,null,null,null);
             server.setVerbose(true);
             PDFOptions pdfOptions = new PDFOptions();
@@ -212,9 +212,9 @@ public class Examples {
     /**
      * In this example a 2 nested loops are given in the template. One for the orders and one for the products per order.
      */
-    public void loopExample(){
+    public void loopExample(String APIKey){
         try {
-            Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,
+            Server server = new Server("http://localhost:8010",APIKey,null,
                     null,null,null,null);
             server.setVerbose(true);
 
@@ -347,9 +347,9 @@ public class Examples {
     /**
      * This example show how to build charts.
      */
-    public void chartExample(){
+    public void chartExample(String APIKey){
         try {
-            Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,
+            Server server = new Server("http://localhost:8010",APIKey,null,
                     null,null,null,null);
             server.setVerbose(true);
             Output output = new Output("pdf","raw",null,null,null,null);
@@ -389,9 +389,9 @@ public class Examples {
     /**
      * This example show how to build a combined chart.
      */
-    public void combinedChartExample(){
+    public void combinedChartExample(String APIKey){
         try {
-            Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,
+            Server server = new Server("http://localhost:8010",APIKey,null,
                     null,null,null,null);
             server.setVerbose(true);
             Output output = new Output("pdf","raw",null,null,null,null);
@@ -437,9 +437,9 @@ public class Examples {
     /**
      * This example show how to work with Codes (QR code and barcode).
      */
-    public void qrCodeExample(){
+    public void qrCodeExample(String APIKey){
         try {
-            Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,
+            Server server = new Server("http://localhost:8010",APIKey,null,
                     null,null,null,null);
             server.setVerbose(true);
             Output output = new Output("pdf","raw",null,null,null,null);
@@ -487,18 +487,18 @@ public class Examples {
      * Look in the generalTests to see the code.
      * @throws Exception Exceptions.
      */
-    public void prePendAppendSubTemplatesExample() throws Exception {
+    public void prePendAppendSubTemplatesExample(String APIKey) throws Exception {
         PrintJobTest printJobTest = new PrintJobTest();
-        printJobTest.prePendAppendSubTemplatesTest();
+        printJobTest.prePendAppendSubTemplatesTest(APIKey);
     }
 
 
     /**
      * This example shows you how to add text and images on each page of a template without tag.
      */
-    public void AOPPDFTextAndImageExample()  {
+    public void AOPPDFTextAndImageExample(String APIKey)  {
         try {
-            Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,
+            Server server = new Server("http://localhost:8010",APIKey,null,
                     null,null,null,null);
             server.setVerbose(true);
             Output output = new Output("pdf","raw",null,null,null,null);
@@ -568,9 +568,9 @@ public class Examples {
     /**
      * Example for a styled property and a watermark.
      */
-    public void renderElements(){
+    public void renderElements(String APIKey){
         try {
-            Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,
+            Server server = new Server("http://localhost:8010",APIKey,null,
                     null,null,null,null);
             server.setVerbose(true);
             Output output = new Output("pdf","raw",null,null,null,null);

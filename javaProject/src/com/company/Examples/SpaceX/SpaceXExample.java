@@ -36,7 +36,7 @@ public class SpaceXExample {
      * @param template Should be pptx or xlsx.
      * @throws Exception Exceptions.
      */
-    public void main(String template) throws Exception {
+    public void main(String APIKey,String template) throws Exception {
 
         //Get SpaceX data from https://docs.spacexdata.com
         Server server =new Server("https://api.spacexdata.com/v3/info");
@@ -226,7 +226,7 @@ public class SpaceXExample {
         //Set-Up AOP Server
         Server aopServer = new Server("http://localhost:8010");
         aopServer.setVerbose(true);
-        aopServer.setAPIKey("1C511A58ECC73874E0530100007FD01A");
+        aopServer.setAPIKey(APIKey);
 
         Base64Resource base64Resource = new Base64Resource();
         if (template.equals("pptx")){

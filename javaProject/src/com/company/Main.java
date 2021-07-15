@@ -12,30 +12,30 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         Examples example = new Examples();
-        //example.localJson();
-        //example.localTemplateAsync();
-        example.localTemplate();
-        /*example.withoutTemplate();
-        example.loopExample();
-        example.chartExample();
-        example.combinedChartExample();
-        example.qrCodeExample();
-        example.prePendAppendSubTemplatesExample();
-        example.AOPPDFTextAndImageExample();
-        example.renderElements();*/
+        //example.localJson("1C511A58ECC73874E0530100007FD01A");
+        //example.localTemplateAsync("1C511A58ECC73874E0530100007FD01A");
+        example.localTemplate("1C511A58ECC73874E0530100007FD01A");
+        /*example.withoutTemplate("1C511A58ECC73874E0530100007FD01A");
+        example.loopExample("1C511A58ECC73874E0530100007FD01A");
+        example.chartExample("1C511A58ECC73874E0530100007FD01A");
+        example.combinedChartExample("1C511A58ECC73874E0530100007FD01A");
+        example.qrCodeExample("1C511A58ECC73874E0530100007FD01A");
+        example.prePendAppendSubTemplatesExample("1C511A58ECC73874E0530100007FD01A");
+        example.AOPPDFTextAndImageExample("1C511A58ECC73874E0530100007FD01A");
+        example.renderElements("1C511A58ECC73874E0530100007FD01A");*/
 
         SolarSystemDocx solarSystemDocx = new SolarSystemDocx();
-        //solarSystemDocx.main();
+        //solarSystemDocx.main("1C511A58ECC73874E0530100007FD01A");
 
         SolarSystemPptx solarSystemPptx = new SolarSystemPptx();
-        //solarSystemPptx.main();
+        //solarSystemPptx.main("1C511A58ECC73874E0530100007FD01A");
 
         SpaceXExample spaceXExample = new SpaceXExample();
-        //spaceXExample.main("pptx");
-        //spaceXExample.main("xlsx");
+        //spaceXExample.main("1C511A58ECC73874E0530100007FD01A","pptx");
+        //spaceXExample.main("1C511A58ECC73874E0530100007FD01A","xlsx");
 
         PrintJobTest printJobTest = new PrintJobTest();
-        //printJobTest.prePendAppendSubTemplatesTest(); //contacts server and makes a download so is in comment
+        //printJobTest.prePendAppendSubTemplatesTest("1C511A58ECC73874E0530100007FD01A"); //contacts server and makes a download so is in comment
 
         ResourcesTests resourcesTests = new ResourcesTests();
         resourcesTests.ResourceTest();

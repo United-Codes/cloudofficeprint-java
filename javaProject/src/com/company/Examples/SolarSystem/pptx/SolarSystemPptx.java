@@ -17,7 +17,7 @@ import java.util.Hashtable;
 
 public class SolarSystemPptx {
 
-    public void main() throws Exception {
+    public void main(String APIKey) throws Exception {
 
         //Get solar system data
         Server server =new Server("https://api.le-systeme-solaire.net/rest/bodies/");
@@ -39,7 +39,7 @@ public class SolarSystemPptx {
         //Set-Up AOP Server
         Server aopServer = new Server("http://localhost:8010");
         aopServer.setVerbose(true);
-        aopServer.setAPIKey("1C511A58ECC73874E0530100007FD01A");
+        aopServer.setAPIKey(APIKey);
 
         Base64Resource base64Resource = new Base64Resource();
         base64Resource.setFileFromLocalFile("./src/com/company/Examples/SolarSystem/pptx/solar_system_template.pptx");
