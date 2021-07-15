@@ -21,8 +21,9 @@ public class Main {
         example.combinedChartExample("1C511A58ECC73874E0530100007FD01A");
         example.qrCodeExample("1C511A58ECC73874E0530100007FD01A");
         example.prePendAppendSubTemplatesExample("1C511A58ECC73874E0530100007FD01A");
-        example.AOPPDFTextAndImageExample("1C511A58ECC73874E0530100007FD01A");
-        example.renderElements("1C511A58ECC73874E0530100007FD01A");*/
+        example.AOPPDFTextAndImageExample("1C511A58ECC73874E0530100007FD01A");*/
+        //example.renderElements("1C511A58ECC73874E0530100007FD01A");
+        example.signPDF("1C511A58ECC73874E0530100007FD01A");
 
         SolarSystemDocx solarSystemDocx = new SolarSystemDocx();
         //solarSystemDocx.main("1C511A58ECC73874E0530100007FD01A");
@@ -31,7 +32,7 @@ public class Main {
         //solarSystemPptx.main("1C511A58ECC73874E0530100007FD01A");
 
         SpaceXExample spaceXExample = new SpaceXExample();
-        spaceXExample.main("1C511A58ECC73874E0530100007FD01A","pptx");
+        //spaceXExample.main("1C511A58ECC73874E0530100007FD01A","pptx");
         //spaceXExample.main("1C511A58ECC73874E0530100007FD01A","xlsx");
         //spaceXExample.main("1C511A58ECC73874E0530100007FD01A","docx");
 

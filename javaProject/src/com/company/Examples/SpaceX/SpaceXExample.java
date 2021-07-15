@@ -205,7 +205,7 @@ public class SpaceXExample {
         data.put("spaceXData",spaceXData);
 
         //Set-Up AOP Server
-        Server aopServer = new Server("http://localhost:8010");
+        Server aopServer = new Server("http://apexofficeprint.com/dev/");
         aopServer.setVerbose(true);
         aopServer.setAPIKey(APIKey);
 
