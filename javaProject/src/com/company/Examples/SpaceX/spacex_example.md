@@ -560,17 +560,12 @@ The tag `{*data_source}` will be replaced by the text 'Data source' and this tex
 
 ## Company
 We see why we said in [Template](#template) to use as the variable names inside the tags, the name of the keys available in the responses of [Input data (API)](#input-data-api). Now we can just add the data received from the SpaceX-API to our data collection and this data can be accessed by the template:
-```python
-data.add_all(aop.elements.ElementCollection.from_mapping(info))
+```java
+spaceXData.addAllRenderElements(spaceXData.makeCollectionFromJson("info",info));
 ```
 The only thing we need to create ourselves is the SpaceX-website hyperlink:
-```python
-website = aop.elements.Hyperlink(
-    name='spacex_website',
-    url=info['links']['website'],
-    text='Website'
-)
-data.add(website)
+```java
+spaceXData.addElement(new HyperLink("spacex_website","Website", info.get("links").getAsJsonObject().get("website").getAsString()));
 ```
 
 ## Rockets
@@ -578,265 +573,231 @@ We now add all the information about SpaceX's rockets to our main element collec
 
 ### Description
 First we add the description for the tag `{rockets_description}`:
-```python
-rockets_description = aop.elements.Property('rockets_description', 'Data about the rockets built by SpaceX')
-data.add(rockets_description)
+```java
+spaceXData.addElement( new Property("rockets_description","Data about the rockets built by SpaceX"));
 ```
 
 ### Main loop
-Since we want a separate slide for each rocket, we need to add the rockets information in an array to be able to loop through the rockets. So we create a rocket list: 
-```python
-rocket_list = []
-```
 
-We cannot just add the rocket data to our element collection, because we need to do some processing on it. We want the images to be accessible with the tag `{%image}` and we want to choose the size of these images. We also want to add a hyperlink for their Wikipedia page and we want to shorten their description to one sentence. The code for this is the following:
-```python
-for rocket in rockets:
-    collec = aop.elements.ElementCollection.from_mapping(rocket)
-
-    img = aop.elements.Image.from_url('image', rocket['flickr_images'][0])
-    img.max_height = 250
-    img.max_width = 400
-    collec.add(img)
-
-    hyper = aop.elements.Hyperlink(
-        name='wikipedia',
-        url=rocket['wikipedia'],
-        text='Wikipedia'
-    )
-    collec.add(hyper)
-
-    short_description = aop.elements.Property('description', shorten_description(rocket['description']))
-    collec.add(short_description)  # Overwrites the current description
-
-    rocket_list.append(collec)
-```
-We loop through all the rockets and for each rocket, we first create an element collection with the data received from the API. Then we create the image element and specify its height and width and add this image to the collection. Next we create the hyperlink and also add this to the collection. Finally we shorten the description, add this to the collection and add the rocket element collection to the rocket list created earlier.
-
-Now we need to make an element of the rocket list. Because we use `{!rockets}` in our template to loop over all the rockets, the name of this loop-element needs to be 'rockets'. Finally we add this loop-element to the main data collection:
-```python
-rocket_data = aop.elements.ForEach('rockets', rocket_list)
-data.add(rocket_data)
+We cannot just add the rocket data to our element collection, because we need to do some processing on it. We want the images to be accessible with the tag `{%image}` and we want to choose the size of these images. We also want to add a hyperlink for their Wikipedia page and we want to shorten their description to one sentence. 
+We loop through all the rockets and for each rocket, we first create an imageUrl object with the URL we find under the "flickr_images" tag (and remove it afterwards as we don't need it anymore). We specify the image height and width. We then create an element collection with the data received from the API and add the image to it. Next we create the hyperlink and also add this to the collection. Finally we shorten the description, add this to the collection and add the rocket element collection to the rocket loop created earlier. Because we use `{!rockets}` in our template to loop over all the rockets, the name of this loop-element needs to be 'rockets'. Finally we add this loop-element to the main data collection:
+```java
+//Add rocket data
+Loop rocketLoop = new Loop("rockets");
+for (JsonElement json : rockets){
+    JsonObject rocket = (JsonObject) json;
+    ImageUrl img = new ImageUrl("image",rocket.get("flickr_images").getAsJsonArray().get(0).getAsString());
+    img.setMaxHeight(250);
+    img.setMaxWidth(400);
+    rocket.remove("flickr_images");//we don't need this anymore
+    ElementCollection coll = spaceXData.makeCollectionFromJson("rocket",rocket);
+    coll.addElement(img);
+    coll.addElement(new Property("description",shortenDescription(rocket.get("description").getAsString()))); //should overwrite the older one
+    coll.addElement(new HyperLink("wikipedia","Wikipedia",rocket.get("wikipedia").getAsString()));
+    rocketLoop.addElement(coll);
+}
+spaceXData.addElement(rocketLoop);
 ```
 
 ### Chart
 We also want to implement a chart in our example. The tag in the template is `{$rockets_chart}`. We want to plot the cost per launch for each rocket. That means that on the x-axis we want to see the rocket names and on the y-axis their costs per launch. We thus create two lists like this:
-```python
-x = []
-cost_y = []
-
-for rocket in rockets:
-    x.append(rocket['name'])
-    cost_y.append(rocket['cost_per_launch'])
+```java
+ArrayList<String> x = new ArrayList<String>();
+ArrayList<String> costY = new ArrayList<String>();
+for (int i =0; i< rockets.size();i++){
+    JsonObject rocket = (JsonObject) rockets.get(i);
+    x.add(rocket.get("name").getAsString());
+    costY.add(rocket.get("cost_per_launch").getAsString());
+}
 ```
 Each chart can contain multiple data series. Since we only want to show the cost per launch for the rockets, we only need one series. Let's say we want our chart to show the data in vertical bars, then we can use this code:
-```python
-cost_series = aop.elements.ColumnSeries(
-    x=x,
-    y=cost_y,
-    name='Cost per launch',
-    color='#087c6c'
-)
+```java
+ColumnSeries cost_series = new ColumnSeries("Cost per launch",x.toArray(new String[0]),costY.toArray(new String[0]));
+cost_series.setColor("#087c6c");
 ```
 We also specify the name of the series (showed in the legend) and the color of the bars.
 
 Next we want to choose the style of our chart, so we create an element for chart options:
-```python
-rockets_chart_options = aop.elements.ChartOptions(
-    x_axis=aop.elements.ChartAxisOptions(
-        title='Rocket',
-        title_style=aop.elements.ChartTextStyle(color='black')
-    ),
-    y_axis=aop.elements.ChartAxisOptions(
-        title='Cost ($)',
-        title_rotation=-90,
-        title_style=aop.elements.ChartTextStyle(color='black'),
-        major_grid_lines=True
-    ),
-    width=800,
-    height=300,
-    rounded_corners=True,
-    border=False,
-    background_color='#c8a45c',
-    background_opacity=50
-)
-```
-We also create styling elements for the axes, which include the title of the axis and its styling, the title rotation and if the grid lines need to be shown. The other options speak for themselves.
+```java
+ChartOptions rocketChartOptions = new ChartOptions();
+ChartAxisOptions xAxisOptions= new ChartAxisOptions();
+xAxisOptions.setTitle("Rocket");
+xAxisOptions.setTitleStyle(new ChartTextStyle(null,null,"black",null));
+rocketChartOptions.setXAxisOptions(xAxisOptions);
 
-Next we would like to have a legend showing on the right side of the chart:
-```python
-rockets_chart_options.set_legend(
-    style=aop.elements.ChartTextStyle(color='black')
-)
+ChartAxisOptions yAxisOptions= new ChartAxisOptions();
+yAxisOptions.setTitle("Cost ($)");
+yAxisOptions.setTitleStyle(new ChartTextStyle(null,null,"black",null));
+yAxisOptions.setTitleRotation(-90);
+yAxisOptions.setMajorGridLines(true);
+rocketChartOptions.setYAxisOptions(yAxisOptions);
+
+rocketChartOptions.setWidth(800);
+rocketChartOptions.setHeight(300);
+rocketChartOptions.setRoundedCorners(true);
+rocketChartOptions.setBorder(false);
+rocketChartOptions.setBackgroundColor("#c8a45c");
+rocketChartOptions.setBackgroundOpacity(50);
+rocketChartOptions.setLegend(null,new ChartTextStyle(null,null,"black",null));
 ```
-The color of the text in the legend is chosen to be black and its position is on the right side of the chart by default.
+We also create styling elements for the axes, which include the title of the axis and its styling, the title rotation, legend and if the grid lines need to be shown. The other options speak for themselves.  The color of the text in the legend is chosen to be black and its position is on the right side of the chart by default.
+
 
 Now we create the actual chart with the series created earlier and the chart options and add this to the main element collection (data). Because the tag used in our template is `{$rockets_chart}`, the name of the chart element should be 'rockets_chart':
-```python
-rockets_chart = aop.elements.ColumnChart(
-    name='rockets_chart',
-    columns=(cost_series,),
-    options=rockets_chart_options
-)
-
-data.add(rockets_chart)
+```java
+ColumnChart rocketChart = new ColumnChart("rockets_chart",rocketChartOptions,cost_series);
+spaceXData.addElement(rocketChart);
 ```
-The argument `columns` expects an array of series. That's why we create a tuple with one element: `(cost_series,)`.
+This function can take multiple series as last arguments, but here we have only one.
 
 ## Dragons
 The dragons data can be added in the same way as the rockets.
 
 ### Description
-```python
-data.add(aop.elements.Property('dragons_description', 'Data about the dragon capsules of SpaceX'))
+```java
+spaceXData.addElement( new Property("dragons_description","Data about the dragon capsules of SpaceX"));
 ```
 
 ### Main loop
-```python
-dragon_list = []
-
-## Add dragon images, wikipedia hyperlink and shortened description for each dragon
-for dragon in dragons:
-    collec = aop.elements.ElementCollection.from_mapping(dragon)
-    
-    img = aop.elements.Image.from_url('image', dragon['flickr_images'][0])
-    img.max_height = 250
-    img.max_width = 400
-    collec.add(img)
-
-    hyper = aop.elements.Hyperlink(
-        name='wikipedia',
-        url=dragon['wikipedia'],
-        text='Wikipedia'
-    )
-    collec.add(hyper)
-
-    short_description = aop.elements.Property('description', shorten_description(dragon['description']))
-    collec.add(short_description)  # Overwrites the current description
-
-    dragon_list.append(collec)
-
-dragon_data = aop.elements.ForEach('dragons', dragon_list)
-data.add(dragon_data)
+```java
+//Add dragon data
+Loop dragonLoop = new Loop("dragons");
+for (JsonElement json : dragons){
+    JsonObject dragon = (JsonObject) json;
+    ImageUrl img = new ImageUrl("image",dragon.get("flickr_images").getAsJsonArray().get(0).getAsString());
+    img.setMaxHeight(250);
+    img.setMaxWidth(400);
+    ElementCollection coll = spaceXData.makeCollectionFromJson("dragon",dragon);
+    coll.addElement(img);
+    coll.addElement(new Property("description", shortenDescription(dragon.get("description").getAsString())));
+    coll.addElement(new HyperLink("wikipedia","Wikipedia",dragon.get("wikipedia").getAsString()));
+    dragonLoop.addElement(coll);
+}
+spaceXData.addElement(dragonLoop);
 ```
 
 ## Launch pads
 
 ### Description
-```python
-data.add(aop.elements.Property('launch_pads_description', "Data about SpaceX's launch pads"))
+```java
+spaceXData.addElement( new Property("launch_pads_description","Data about SpaceX's launch pads"));
 ```
 
 ### Main loop
-```python
-launch_pad_list = []
-
-## Add launch pad images, wikipedia hyperlink and shortened description for each launch_pad
-for launch_pad in launch_pads:
-    collec = aop.elements.ElementCollection.from_mapping(launch_pad)
-    
-    img = aop.elements.Image.from_url('image', launch_pad['images']['large'][0])
-    img.max_height = 250
-    img.max_width = 400
-    collec.add(img)
-
-    short_description = aop.elements.Property('details', shorten_description(launch_pad['details']))
-    collec.add(short_description)  # Overwrites the current description
-
-    launch_pad_list.append(collec)
-
-launch_pad_data = aop.elements.ForEach('launch_pads', launch_pad_list)
-data.add(launch_pad_data)
+```java
+Loop launchpadLoop = new Loop("launch_pads");
+for (JsonElement json : launchPads){
+    JsonObject launchpad = (JsonObject) json;
+    ImageUrl img = new ImageUrl("image",launchpad.get("images").getAsJsonObject().get("large").getAsJsonArray().get(0).getAsString());
+    img.setMaxHeight(250);
+    img.setMaxWidth(400);
+    ElementCollection coll = spaceXData.makeCollectionFromJson("launchpad",launchpad);
+    coll.addElement(img);
+    coll.addElement(new Property("details",shortenDescription(launchpad.get("details").getAsString())));
+    launchpadLoop.addElement(coll);
+}
+spaceXData.addElement(launchpadLoop);
 ```
 Here we didn't add Wikipedia hyperlinks, because there are not available in the API data.
 
 ## Landing pads
 
 ### Description
-```python
-data.add(aop.elements.Property('landing_pads_description', "Data about SpaceX's landing pads"))
+```java
+spaceXData.addElement( new Property("landing_pads_description","Data about SpaceX's landing pads"));
 ```
 
 ### Main loop
-```python
-landing_pad_list = []
-
-## Add landing pad images, wikipedia hyperlink and shortened description for each landing pad
-for landing_pad in landing_pads:
-    collec = aop.elements.ElementCollection.from_mapping(landing_pad)
-    
-    img = aop.elements.Image.from_url('image', landing_pad['images']['large'][0])
-    img.max_height = 250
-    img.max_width = 400
-    collec.add(img)
-
-    hyper = aop.elements.Hyperlink(
-        name='wikipedia',
-        url=landing_pad['wikipedia'],
-        text='Wikipedia'
-    )
-    collec.add(hyper)
-
-    short_description = aop.elements.Property('details', shorten_description(landing_pad['details']))
-    collec.add(short_description)  # Overwrites the current description
-
-    landing_pad_list.append(collec)
-
-landing_pad_data = aop.elements.ForEach('landing_pads', landing_pad_list)
-
-data.add(landing_pad_data)
+```java
+Loop landingpadLoop = new Loop("landing_pads");
+for (JsonElement json : landingPads){
+    JsonObject landingpad = (JsonObject) json;
+    ImageUrl img = new ImageUrl("image",landingpad.get("images").getAsJsonObject().get("large").getAsJsonArray().get(0).getAsString());
+    img.setMaxHeight(250);
+    img.setMaxWidth(400);
+    ElementCollection coll = spaceXData.makeCollectionFromJson("landingpad",landingpad);
+    coll.addElement(img);
+    coll.addElement(new Property("details",shortenDescription(landingpad.get("details").getAsString())));
+    coll.addElement(new HyperLink("wikipedia","Wikipedia",landingpad.get("wikipedia").getAsString()));
+    landingpadLoop.addElement(coll);
+}
+spaceXData.addElement(landingpadLoop);
 ```
 
 ## Ships
 
 ### Description
-```python
-data.add(aop.elements.Property('ships_description', 'Data about the ships that assist SpaceX launches, including ASDS drone ships, tugs, fairing recovery ships, and various support ships'))
+```java
+spaceXData.addElement( new Property("ships_description","Data about the ships that assist SpaceX launches, including ASDS drone ships, tugs, fairing recovery ships, and various support ships"));
 ```
 
 ### Main loop
-```python
-ship_list = []
-
-## Add ship images and website hyperlink for each ship
-for ship in ships:
-    collec = aop.elements.ElementCollection.from_mapping(ship)
-    
-    img = aop.elements.Image.from_url('image', ship['image'])
-    img.max_height = 250
-    img.max_width = 400
-    collec.add(img)
-
-    hyper = aop.elements.Hyperlink(
-        name='website',
-        url=ship['link'],
-        text='Website'
-    )
-    collec.add(hyper)
-
-    ship_list.append(collec)
-
-ship_data = aop.elements.ForEach('ships', ship_list)
-data.add(ship_data)
+```java
+Loop shipLoop = new Loop("ships");
+for (JsonElement json : ships){
+    JsonObject ship = (JsonObject) json;
+    ImageUrl img;
+    if (ship.get("image").isJsonNull()==false){
+        img = new ImageUrl("image",ship.get("image").getAsString());
+        img.setMaxHeight(250);
+        img.setMaxWidth(400);
+    }
+    else {
+        img = new ImageUrl("image",null);
+        img.setMaxHeight(250);
+        img.setMaxWidth(400);
+    }
+    ElementCollection coll = spaceXData.makeCollectionFromJson("ship",ship);
+    coll.addElement(img);
+    if (ship.get("link").isJsonNull()==false){
+        coll.addElement(new HyperLink("website","Website",ship.get("link").getAsString()));
+    }
+    else {
+        coll.addElement(new HyperLink("website","Website",null));
+    }
+    shipLoop.addElement(coll);
+}
+spaceXData.addElement(shipLoop);
 ```
-Here we didn't shorten the description to one sentence, since there is no description available for the ships in the API data.
+Here we didn't shorten the description to one sentence, since there is no description available for the ships in the API data. We add a null image where there are no images, so the image tag in the loop of the ship will become empty (otherwise it will show a "missing image" logo in the result).
 
+# Add templates from local files
+We need to make an object that contains the template. We take the template from our local files. In this example we have 3 different types for the template.
+```java
+Base64Resource base64Resource = new Base64Resource();
+if (template.equals("docx")){
+    base64Resource.setFileFromLocalFile("./src/com/company/Examples/SpaceX/spacex_template.docx");
+}
+else if (template.equals("pptx")){
+    base64Resource.setFileFromLocalFile("./src/com/company/Examples/SpaceX/spacex_template.pptx");
+}
+else if (template.equals("xlsx")){
+    base64Resource.setFileFromLocalFile("./src/com/company/Examples/SpaceX/spacex_template.xlsx");
+}
+```
 
 # AOP server and response
-Now that we have the template and the data ready, it is time to let AOP merge them together. In the Python SDK this is implemented by creating a printjob:
-```python
-printjob = aop.PrintJob(
-    template=aop.Resource.from_local_file('./spacex_example/spacex_template.pptx'), # For pptx
-    # template=aop.Resource.from_local_file('./spacex_example/spacex_template.xlsx'), # For xlsx
-    # template=aop.Resource.from_local_file('./spacex_example/spacex_template.docx'), # For docx
-    data=data,
-    server=server
-)
+Now that we have the template and the data ready, it is time to let AOP merge them together. In the Java SDK this is implemented by creating a printjob. The printjob expects a Hashtable for the data elements. Each entry in the hashtable generates another output. If the table has more then one entry the output will be a zip file containing the different output with their name equal to their entry key. The printjob expects an Output object that contains the output configuration as well.
+```java
+Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
+data.put("spaceXData",spaceXData);
+Output output = new Output(null,"raw","libreoffice",null,null,null);
+PrintJob printJob = new PrintJob(data,aopServer,output,base64Resource,null,null,null,null);
 ```
-We loaded the template from a local file, passed in our data element collection and our server object.
 
 Finally we actually send this printjob to an AOP server and save the response into our output file:
-```python
-printjob.execute().to_file('./spacex_example/output')
+```java
+Response responseAOP = printJob.execute();
+responseAOP.downloadLocally("./downloads/spaceX");
 ```
-The resulting file can now be found in the specified folder. We will not add the result in this markdown file, but the result can be seen in the files `output.pptx`, `output.xlsx` and `output.docx` that can be found in the folder `spacex_example`.
+If we would want to do this asynchronously, we shoud do it like this :
+```
+java
+Thread thread = new Thread(printJob); //This is how to run send the POST request asynchronously (because it can sometimes take a few seconds before getting back the response).
+thread.start();
+//do some stuf in between
+thread.join();
+Response response = printJob.getResponse();
+response.downloadLocally("./downloads/spaceX");
+```
+The resulting file can now be found in the specified folder. We will not add the result in this markdown file, but the result can be seen in the files `spaceX.pptx`, `spaceX.xlsx` and `spaceX.docx` that can be found in the folder `downloads`.

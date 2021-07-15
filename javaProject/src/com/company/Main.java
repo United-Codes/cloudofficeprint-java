@@ -31,9 +31,9 @@ public class Main {
         //solarSystemPptx.main("1C511A58ECC73874E0530100007FD01A");
 
         SpaceXExample spaceXExample = new SpaceXExample();
-        //spaceXExample.main("1C511A58ECC73874E0530100007FD01A","pptx");
+        spaceXExample.main("1C511A58ECC73874E0530100007FD01A","pptx");
         //spaceXExample.main("1C511A58ECC73874E0530100007FD01A","xlsx");
-        spaceXExample.main("1C511A58ECC73874E0530100007FD01A","docx");
+        //spaceXExample.main("1C511A58ECC73874E0530100007FD01A","docx");
 
         PrintJobTest printJobTest = new PrintJobTest();
         //printJobTest.prePendAppendSubTemplatesTest("1C511A58ECC73874E0530100007FD01A"); //contacts server and makes a download so is in comment

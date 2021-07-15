@@ -70,8 +70,7 @@ public class SpaceXExample {
 
         ElementCollection spaceXData = new ElementCollection("data");
 
-        ElementCollection collection = spaceXData.makeCollectionFromJson("info",info);
-        spaceXData.addAllRenderElements(collection);
+        spaceXData.addAllRenderElements(spaceXData.makeCollectionFromJson("info",info));
 
         spaceXData.addElement(new HyperLink("spacex_website","Website", info.get("links").getAsJsonObject().get("website").getAsString()));
         spaceXData.addElement( new HyperLink("data_source","Data source","https://docs.spacexdata.com"));
@@ -82,19 +81,16 @@ public class SpaceXExample {
         spaceXData.addElement( new Property("ships_description","Data about the ships that assist SpaceX launches, including ASDS drone ships, tugs, fairing recovery ships, and various support ships"));
 
         //Add rocket data
-        for (int i =0; i< rockets.size();i++){
-            JsonObject rocket = (JsonObject) rockets.get(i);
-            ImageUrl img = new ImageUrl("image",rocket.get("flickr_images").getAsJsonArray().get(0).getAsString());
-            img.setMaxHeight(250);
-            img.setMaxWidth(400);
-            ElementCollection.updateJson1WithJson2(rocket,img.getJSON());
-            rocket.addProperty("description",shortenDescription(rocket.get("description").getAsString()));
-        }
-
         Loop rocketLoop = new Loop("rockets");
         for (JsonElement json : rockets){
             JsonObject rocket = (JsonObject) json;
+            ImageUrl img = new ImageUrl("image",rocket.get("flickr_images").getAsJsonArray().get(0).getAsString());
+            img.setMaxHeight(250);
+            img.setMaxWidth(400);
+            rocket.remove("flickr_images");//we don't need this anymore
             ElementCollection coll = spaceXData.makeCollectionFromJson("rocket",rocket);
+            coll.addElement(img);
+            coll.addElement(new Property("description",shortenDescription(rocket.get("description").getAsString()))); //should overwrite the older one
             coll.addElement(new HyperLink("wikipedia","Wikipedia",rocket.get("wikipedia").getAsString()));
             rocketLoop.addElement(coll);
         }
@@ -137,82 +133,64 @@ public class SpaceXExample {
         spaceXData.addElement(rocketChart);
 
         //Add dragon data
-        for (int i =0; i< dragons.size();i++){
-            JsonObject dragon = (JsonObject) dragons.get(i);
-            ImageUrl img = new ImageUrl("image",dragon.get("flickr_images").getAsJsonArray().get(0).getAsString());
-            img.setMaxHeight(250);
-            img.setMaxWidth(400);
-            ElementCollection.updateJson1WithJson2(dragon,img.getJSON());
-            dragon.addProperty("description",shortenDescription(dragon.get("description").getAsString()));
-        }
-
         Loop dragonLoop = new Loop("dragons");
         for (JsonElement json : dragons){
             JsonObject dragon = (JsonObject) json;
+            ImageUrl img = new ImageUrl("image",dragon.get("flickr_images").getAsJsonArray().get(0).getAsString());
+            img.setMaxHeight(250);
+            img.setMaxWidth(400);
             ElementCollection coll = spaceXData.makeCollectionFromJson("dragon",dragon);
+            coll.addElement(img);
+            coll.addElement(new Property("description", shortenDescription(dragon.get("description").getAsString())));
             coll.addElement(new HyperLink("wikipedia","Wikipedia",dragon.get("wikipedia").getAsString()));
             dragonLoop.addElement(coll);
         }
         spaceXData.addElement(dragonLoop);
 
         //Add launchpad data
-        for (int i =0; i< launchPads.size();i++){
-            JsonObject launchPad = (JsonObject) launchPads.get(i);
-            ImageUrl img = new ImageUrl("image",launchPad.get("images").getAsJsonObject().get("large").getAsJsonArray().get(0).getAsString());
-            img.setMaxHeight(250);
-            img.setMaxWidth(400);
-            ElementCollection.updateJson1WithJson2(launchPad,img.getJSON());
-            launchPad.addProperty("details",shortenDescription(launchPad.get("details").getAsString()));
-        }
-
         Loop launchpadLoop = new Loop("launch_pads");
         for (JsonElement json : launchPads){
             JsonObject launchpad = (JsonObject) json;
+            ImageUrl img = new ImageUrl("image",launchpad.get("images").getAsJsonObject().get("large").getAsJsonArray().get(0).getAsString());
+            img.setMaxHeight(250);
+            img.setMaxWidth(400);
             ElementCollection coll = spaceXData.makeCollectionFromJson("launchpad",launchpad);
+            coll.addElement(img);
+            coll.addElement(new Property("details",shortenDescription(launchpad.get("details").getAsString())));
             launchpadLoop.addElement(coll);
         }
         spaceXData.addElement(launchpadLoop);
 
         //Add landingpad data
-        for (int i =0; i< landingPads.size();i++){
-            JsonObject landingpad = (JsonObject) landingPads.get(i);
-            ImageUrl img = new ImageUrl("image",landingpad.get("images").getAsJsonObject().get("large").getAsJsonArray().get(0).getAsString());
-            img.setMaxHeight(250);
-            img.setMaxWidth(400);
-            ElementCollection.updateJson1WithJson2(landingpad,img.getJSON());
-            landingpad.addProperty("details",shortenDescription(landingpad.get("details").getAsString()));
-        }
-
         Loop landingpadLoop = new Loop("landing_pads");
         for (JsonElement json : landingPads){
             JsonObject landingpad = (JsonObject) json;
+            ImageUrl img = new ImageUrl("image",landingpad.get("images").getAsJsonObject().get("large").getAsJsonArray().get(0).getAsString());
+            img.setMaxHeight(250);
+            img.setMaxWidth(400);
             ElementCollection coll = spaceXData.makeCollectionFromJson("landingpad",landingpad);
+            coll.addElement(img);
+            coll.addElement(new Property("details",shortenDescription(landingpad.get("details").getAsString())));
             coll.addElement(new HyperLink("wikipedia","Wikipedia",landingpad.get("wikipedia").getAsString()));
             landingpadLoop.addElement(coll);
         }
         spaceXData.addElement(landingpadLoop);
 
         //Add ship data
-        for (int i =0; i< ships.size();i++){
-            JsonObject ship = (JsonObject) ships.get(i);
-            if (ship.get("image").isJsonNull()==false){
-                ImageUrl img = new ImageUrl("image",ship.get("image").getAsString());
-                img.setMaxHeight(250);
-                img.setMaxWidth(400);
-                ElementCollection.updateJson1WithJson2(ship,img.getJSON());
-            }
-            else {
-                ImageUrl img = new ImageUrl("image",null);
-                img.setMaxHeight(250);
-                img.setMaxWidth(400);
-                ElementCollection.updateJson1WithJson2(ship,img.getJSON());
-            }
-        }
-
         Loop shipLoop = new Loop("ships");
         for (JsonElement json : ships){
             JsonObject ship = (JsonObject) json;
+            ImageUrl img;
+            if (ship.get("image").isJsonNull()==false){
+                img = new ImageUrl("image",ship.get("image").getAsString());
+                img.setMaxHeight(250);
+                img.setMaxWidth(400);
+            }
+            else {
+                img = new ImageUrl("image",null);
+            }
             ElementCollection coll = spaceXData.makeCollectionFromJson("ship",ship);
+            coll.addElement(img);
             if (ship.get("link").isJsonNull()==false){
                 coll.addElement(new HyperLink("website","Website",ship.get("link").getAsString()));
             }
@@ -225,7 +203,6 @@ public class SpaceXExample {
 
         Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
         data.put("spaceXData",spaceXData);
-
 
         //Set-Up AOP Server
         Server aopServer = new Server("http://localhost:8010");

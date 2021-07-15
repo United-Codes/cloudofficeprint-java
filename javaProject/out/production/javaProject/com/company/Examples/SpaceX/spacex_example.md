@@ -490,86 +490,82 @@ We also want to show a chart of the cost per launch for each rocket:
 <img src="./imgs/docx_template/page7.png" width="600" />
 
 
-# Process input data (Python SDK)
-Now that our template is finished, we have to process the data used by the template. That is where the Python SDK comes into play. In this section we will explain in detail all the Python code needed to generate the data to fill in the template. The full Python code can also be found in the file `spacex_example.py`.
+# Process input data (Java SDK)
+Now that our template is finished, we have to process the data used by the template. That is where the Java SDK comes into play. In this section we will explain in detail all the Java code needed to generate the data to fill in the template. The full Java code can also be found in the file `spacex_example.py`.
 
 The beauty of AOP is that the data created by the Python SDK can be used in all templates of different file extensions while using the same tags.
 
 ## Setup
-First we create a new Python file and import the APEX Office Print library and the `requests`-library:
-
-```python
-import apexofficeprint as aop
-import requests
-```
+First make sure the AOPJavaSDK is imported in your Java Project and IDE.
 
 Then we need to set up the AOP server where we will send our template and data to:
-```python
-LOCAL_SERVER_URL = "http://localhost:8010"
-API_KEY = "1C511A58ECC73874E0530100007FD01A"
-
-server = aop.config.Server(
-    LOCAL_SERVER_URL,
-    aop.config.ServerConfig(api_key=API_KEY)
-)
+```java
+Server aopServer = new Server("http://localhost:8010");
+aopServer.setVerbose(true); //This sets the verbose mode on.
+aopServer.setAPIKey(APIKey);
 ```
 If you do not have an AOP server running on localhost (e.g. on-premise version) and want to use the AOP cloud server, replace the local server url by the url of our cloud server: https://api.apexofficeprint.com/.
 
 We also need to create the main element-collection object that contains all our data:
-```python
-data = aop.elements.ElementCollection()
+```java
+ElementCollection spaceXData = new ElementCollection("data");
 ```
 
 Lastly we write a function that return the first sentence of a text input. This is used when we only want to display the first sentence of a discription:
-```python
-def shorten_description(input: str) -> str:
-    """Return only the first sentence of an input.
-
-    Args:
-        input (str): The input that needs to be shortened
-
-    Returns:
-        str: First sentence of input string
-    """
-    return input.split('.')[0] + '.'
+```java
+/**
+ * @param description Text to shorten.
+ * @return Only the first phrase of the description.
+ */
+public String shortenDescription(String description){
+    return description.split("[.]")[0] + ".";
+}
 ```
 
 ## Import data
-As discussed in [Input data (API)](#input-data-api), we use an API of a cloud server to receive the data about SpaceX. The information we use for this example can be received as follows using the `requests`-library:
-```python
-info = requests.get('https://api.spacexdata.com/v3/info').json()
-rockets = requests.get('https://api.spacexdata.com/v4/rockets').json()
-dragons = requests.get('https://api.spacexdata.com/v4/dragons').json()
-launch_pads = requests.get('https://api.spacexdata.com/v4/launchpads').json()
-landing_pads = requests.get('https://api.spacexdata.com/v4/landpads').json()
-ships = requests.get('https://api.spacexdata.com/v4/ships').json()
+As discussed in [Input data (API)](#input-data-api), we use an API of a cloud server to receive the data about SpaceX. The information we use for this example can be received by sending get requests to the different URL's of the SpaceX API:
+```java
+//Get SpaceX data from https://docs.spacexdata.com
+Server server =new Server("https://api.spacexdata.com/v3/info");
+String response = server.sendGETRequest(server.getUrl());
+JsonObject info = JsonParser.parseString(response).getAsJsonObject();
+
+server =new Server("https://api.spacexdata.com/v4/rockets");
+response = server.sendGETRequest(server.getUrl());
+JsonArray rockets = JsonParser.parseString(response).getAsJsonArray();
+
+server =new Server("https://api.spacexdata.com/v4/dragons");
+response = server.sendGETRequest(server.getUrl());
+JsonArray dragons = JsonParser.parseString(response).getAsJsonArray();
+
+server =new Server("https://api.spacexdata.com/v4/launchpads");
+response = server.sendGETRequest(server.getUrl());
+JsonArray launchPads = JsonParser.parseString(response).getAsJsonArray();
+
+server =new Server("https://api.spacexdata.com/v4/landpads");
+response = server.sendGETRequest(server.getUrl());
+JsonArray landingPads = JsonParser.parseString(response).getAsJsonArray();
+
+server =new Server("https://api.spacexdata.com/v4/ships");
+response = server.sendGETRequest(server.getUrl());
+JsonArray ships = JsonParser.parseString(response).getAsJsonArray();
 ```
 
 ## Title slide
-The template title slide contains the title of our presentation and a hyperlink-tag `{*data_source}`. Now we need to add the data for this tag in our Python code by creating an AOP element (hyperlink) and adding this to the main data collection:
-```python
-data_source = aop.elements.Hyperlink(
-    name='data_source',
-    url='https://docs.spacexdata.com',
-    text='Data source'
-)
-data.add(data_source)
+The template title slide contains the title of our presentation and a hyperlink-tag `{*data_source}`. Now we need to add the data for this tag in our Java code by creating an AOP element (hyperlink) and adding this to the main data collection:
+```java
+spaceXData.addElement( new HyperLink("data_source","Data source","https://docs.spacexdata.com"));
 ```
 The tag `{*data_source}` will be replaced by the text 'Data source' and this text will have a hyperlink to the URL 'https://docs.spacexdata.com'.
 
 ## Company
 We see why we said in [Template](#template) to use as the variable names inside the tags, the name of the keys available in the responses of [Input data (API)](#input-data-api). Now we can just add the data received from the SpaceX-API to our data collection and this data can be accessed by the template:
-```python
-data.add_all(aop.elements.ElementCollection.from_mapping(info))
+```java
+spaceXData.addAllRenderElements(spaceXData.makeCollectionFromJson("info",info));
 ```
 The only thing we need to create ourselves is the SpaceX-website hyperlink:
-```python
-website = aop.elements.Hyperlink(
-    name='spacex_website',
-    url=info['links']['website'],
-    text='Website'
-)
-data.add(website)
+```java
+spaceXData.addElement(new HyperLink("spacex_website","Website", info.get("links").getAsJsonObject().get("website").getAsString()));
 ```
 
 ## Rockets
@@ -577,45 +573,35 @@ We now add all the information about SpaceX's rockets to our main element collec
 
 ### Description
 First we add the description for the tag `{rockets_description}`:
-```python
-rockets_description = aop.elements.Property('rockets_description', 'Data about the rockets built by SpaceX')
-data.add(rockets_description)
+```java
+spaceXData.addElement( new Property("rockets_description","Data about the rockets built by SpaceX"));
 ```
 
 ### Main loop
-Since we want a separate slide for each rocket, we need to add the rockets information in an array to be able to loop through the rockets. So we create a rocket list: 
-```python
-rocket_list = []
-```
 
-We cannot just add the rocket data to our element collection, because we need to do some processing on it. We want the images to be accessible with the tag `{%image}` and we want to choose the size of these images. We also want to add a hyperlink for their Wikipedia page and we want to shorten their description to one sentence. The code for this is the following:
-```python
-for rocket in rockets:
-    collec = aop.elements.ElementCollection.from_mapping(rocket)
-
-    img = aop.elements.Image.from_url('image', rocket['flickr_images'][0])
-    img.max_height = 250
-    img.max_width = 400
-    collec.add(img)
-
-    hyper = aop.elements.Hyperlink(
-        name='wikipedia',
-        url=rocket['wikipedia'],
-        text='Wikipedia'
-    )
-    collec.add(hyper)
-
-    short_description = aop.elements.Property('description', shorten_description(rocket['description']))
-    collec.add(short_description)  # Overwrites the current description
-
-    rocket_list.append(collec)
+We cannot just add the rocket data to our element collection, because we need to do some processing on it. We want the images to be accessible with the tag `{%image}` and we want to choose the size of these images. We also want to shorten their description to one sentence. The code for this is the following:
+```java
+for (int i =0; i< rockets.size();i++){
+            JsonObject rocket = (JsonObject) rockets.get(i);
+            ImageUrl img = new ImageUrl("image",rocket.get("flickr_images").getAsJsonArray().get(0).getAsString());
+            img.setMaxHeight(250);
+            img.setMaxWidth(400);
+            ElementCollection.updateJson1WithJson2(rocket,img.getJSON());
+            rocket.addProperty("description",shortenDescription(rocket.get("description").getAsString()));
+        }
 ```
 We loop through all the rockets and for each rocket, we first create an element collection with the data received from the API. Then we create the image element and specify its height and width and add this image to the collection. Next we create the hyperlink and also add this to the collection. Finally we shorten the description, add this to the collection and add the rocket element collection to the rocket list created earlier.
 
-Now we need to make an element of the rocket list. Because we use `{!rockets}` in our template to loop over all the rockets, the name of this loop-element needs to be 'rockets'. Finally we add this loop-element to the main data collection:
-```python
-rocket_data = aop.elements.ForEach('rockets', rocket_list)
-data.add(rocket_data)
+Now we need to make an element of the rocket list. Because we use `{!rockets}` in our template to loop over all the rockets, the name of this loop-element needs to be 'rockets'.  Finally we add this loop-element to the main data collection:
+```java
+Loop rocketLoop = new Loop("rockets");
+for (JsonElement json : rockets){
+    JsonObject rocket = (JsonObject) json;
+    ElementCollection coll = spaceXData.makeCollectionFromJson("rocket",rocket);
+    coll.addElement(new HyperLink("wikipedia","Wikipedia",rocket.get("wikipedia").getAsString()));
+    rocketLoop.addElement(coll);
+}
+spaceXData.addElement(rocketLoop);
 ```
 
 ### Chart
