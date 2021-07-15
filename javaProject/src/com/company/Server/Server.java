@@ -19,6 +19,7 @@ import java.util.Scanner;
 
 /**
  * Class representing the AOP server to interact with.
+ * This class has a verbose mode.
  */
 public class Server {
 
@@ -31,6 +32,22 @@ public class Server {
     private Integer proxyPort;
     private String username;
     private String password;
+
+    private boolean verbose = false;
+
+    /**
+     * @return Whether to include debug prints or not.
+     */
+    public boolean isVerbose() {
+        return verbose;
+    }
+
+    /**
+     * @param verbose Whether to include debug prints or not.
+     */
+    public void setVerbose(boolean verbose) {
+        this.verbose = verbose;
+    }
 
     /**
      * @return IP address of the proxy used, null if not used.
@@ -302,9 +319,13 @@ public class Server {
             con.setRequestProperty("Proxy-Authorization", "Basic " + encodedString);
         }
         con.setRequestMethod("GET");
+        if (isVerbose() == true){
+            System.out.println("\nSending 'GET' request to URL : " + url);
+        }
         int responseCode = con.getResponseCode();
-        System.out.println("\nSending 'GET' request to URL : " + url);
-        System.out.println("Response Code : " + responseCode);
+        if (isVerbose() == true){
+            System.out.println("Response Code : " + responseCode);
+        }
         BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
         String inputLine;
         StringBuffer response = new StringBuffer();
@@ -312,7 +333,10 @@ public class Server {
             response.append(inputLine);
         }
         in.close();
-        System.out.println();
+        if (isVerbose() == true){
+            System.out.println("Server.java : " + "server's response is : "+ response );
+            System.out.println();
+        }
         //System.out.println(response + "\n");
         return response.toString();
 
@@ -330,8 +354,10 @@ public class Server {
      * @return Response object containing the file extension and body (in bytes)
      */
     public Response sendPOSTRequest(JsonObject postData) throws Exception{
-        //System.out.println("Json for server : " + postData.toString());
-        //System.out.println("Files for server : " + postData.get("files").toString());
+
+        if (isVerbose() == true){
+            System.out.println("Json for server : " + postData.toString() + "\n");
+        }
         URL obj = new URL(this.url);
         HttpURLConnection con;
         if(getProxyPort()!=null){
@@ -356,11 +382,17 @@ public class Server {
         outputStream.write(bytes, 0, bytes.length);
         outputStream.flush();
         outputStream.close();
+        if (isVerbose() == true){
+            System.out.println("Sending 'POST' request to URL : " + url);
+        }
         int responseCode = con.getResponseCode();
-        System.out.println("Sending 'POST' request to URL : " + url);
-        if (responseCode == 200) {
+        if (isVerbose() == true){
             System.out.println("Response Code : " + responseCode);
-            System.out.println("Content-Type : " + con.getHeaderField("Content-Type")+"\n");
+        }
+        if (responseCode == 200) {
+            if (isVerbose() == true){
+                System.out.println("Content-Type : " + con.getHeaderField("Content-Type")+"\n");
+            }
             MimeTypes allTypes = MimeTypes.getDefaultMimeTypes();
             MimeType type = allTypes.forName(con.getHeaderField("Content-Type"));
             String ext = type.getExtension();
@@ -370,8 +402,11 @@ public class Server {
             while ((length = con.getInputStream().read(buffer)) != -1) { //attempt is made to read as many as len bytes
                 baos.write(buffer, 0, length);
             }
-
             Response response = new Response(ext,type.toString(),baos.toByteArray());
+            if (isVerbose() == true){
+                System.out.println("Server.java : " + "server's response is : "+ response );
+                System.out.println();
+            }
             return response;
             }
         else {

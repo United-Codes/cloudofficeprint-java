@@ -11,6 +11,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.apache.tika.mime.MimeTypeException;
 
 import java.util.ArrayList;
@@ -31,7 +32,10 @@ public class PrintJob implements Runnable{
     private ExternalResource externalResource;
     private Boolean aopRemoteDebug;
 
+
     private volatile Response response; //for asynchronous calls
+
+
 
     /**
      * @return Server to user for this printjob.
@@ -180,6 +184,15 @@ public class PrintJob implements Runnable{
         return response;
     }
 
+    /**
+     * For setting to response after asynchronous execution.
+     * Call getResponse() after run() has been called and the thread joined to get the response.
+     * @param response Response of the request to AOP.
+     */
+    public void setResponse(Response response) {
+        this.response = response;
+    }
+
 
     /**
      * A print job for the AOP server containing all the necessary information to generate the adequate JSON for the AOP server.
@@ -316,7 +329,7 @@ public class PrintJob implements Runnable{
             return server.sendPOSTRequest(JSONForServer);
         }
         else {
-            throw new Exception("Server is not reachable.");
+            throw new Exception("Server is not reachable. He didn't give back polo on the marco GET request");
         }
     }
 
@@ -327,9 +340,9 @@ public class PrintJob implements Runnable{
     public void run()  {
         JsonObject JSONForServer = null;
         JSONForServer = getJSON();
-        if (server.isReachable() == true){
+        if (getServer().isReachable() == true){
             try {
-                response = server.sendPOSTRequest(JSONForServer);
+                setResponse(getServer().sendPOSTRequest(JSONForServer));
             } catch (Exception e) {
                 e.printStackTrace();
             }
