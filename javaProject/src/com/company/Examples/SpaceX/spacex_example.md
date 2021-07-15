@@ -499,7 +499,7 @@ The beauty of AOP is that the data created by the Python SDK can be used in all 
 First make sure the AOPJavaSDK is imported in your Java Project and IDE.
 
 Then we need to set up the AOP server where we will send our template and data to:
-```
+```java
 Server aopServer = new Server("http://localhost:8010");
 aopServer.setVerbose(true); //This sets the verbose mode on.
 aopServer.setAPIKey(APIKey);
@@ -507,12 +507,12 @@ aopServer.setAPIKey(APIKey);
 If you do not have an AOP server running on localhost (e.g. on-premise version) and want to use the AOP cloud server, replace the local server url by the url of our cloud server: https://api.apexofficeprint.com/.
 
 We also need to create the main element-collection object that contains all our data:
-```
+```java
 ElementCollection spaceXData = new ElementCollection("data");
 ```
 
 Lastly we write a function that return the first sentence of a text input. This is used when we only want to display the first sentence of a discription:
-```
+```java
 /**
  * @param description Text to shorten.
  * @return Only the first phrase of the description.
@@ -524,7 +524,7 @@ public String shortenDescription(String description){
 
 ## Import data
 As discussed in [Input data (API)](#input-data-api), we use an API of a cloud server to receive the data about SpaceX. The information we use for this example can be received by sending get requests to the different URL's of the SpaceX API:
-```
+```java
 //Get SpaceX data from https://docs.spacexdata.com
 Server server =new Server("https://api.spacexdata.com/v3/info");
 String response = server.sendGETRequest(server.getUrl());
