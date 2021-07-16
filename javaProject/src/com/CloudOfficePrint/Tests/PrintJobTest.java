@@ -14,6 +14,11 @@ import java.util.Hashtable;
 public class PrintJobTest {
 
 
+    /**
+     * This one is only for showing purposes. The code doesn't work as the files cannot be found in the jar like this.
+     * @param APIKey
+     * @throws Exception
+     */
     public void prePendAppendSubTemplatesTest(String APIKey) throws Exception {
 
 

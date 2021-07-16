@@ -1,5 +1,6 @@
 package com.CloudOfficePrint.Examples.SolarSystem.pptx;
 
+import com.CloudOfficePrint.Mimetype;
 import com.CloudOfficePrint.Output.Output;
 import com.CloudOfficePrint.PrintJob;
 import com.CloudOfficePrint.RenderElements.*;
@@ -12,6 +13,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import java.io.InputStream;
+import java.util.Base64;
 import java.util.Hashtable;
 
 public class SolarSystemPptx {
@@ -53,7 +56,18 @@ public class SolarSystemPptx {
 
         //Define template.
         Base64Resource base64Resource = new Base64Resource();
-        base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/SolarSystem/pptx/solar_system_template.pptx");
+
+        //The next line should normally be used by the user in his project but when the jar is exported the reference to the files don't work anymore, so there is a replacement code to make it work.
+        //base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/SolarSystem/docx/solar_system_template.pptx");
+        //Begin replacement code:
+        InputStream resourceAsStream = getClass().getResourceAsStream("solar_system_template.pptx");
+        byte[] targetArray = new byte[resourceAsStream.available()];
+        resourceAsStream.read(targetArray);
+        String encodedString = Base64.getEncoder().encodeToString(targetArray);
+        base64Resource.setFileBase64(encodedString);
+        base64Resource.setFiletype("pptx");
+        base64Resource.setMimeType(Mimetype.getMimeType("pptx"));
+        //End replacement code.
 
         //Define output options.
         Output output = new Output(null,"raw","libreoffice",null,null,null);

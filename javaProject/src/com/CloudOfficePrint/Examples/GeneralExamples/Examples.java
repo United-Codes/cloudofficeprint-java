@@ -1,9 +1,8 @@
 package com.CloudOfficePrint.Examples.GeneralExamples;
 
-import com.CloudOfficePrint.AOPException;
+import com.CloudOfficePrint.*;
 import com.CloudOfficePrint.Output.Output;
 import com.CloudOfficePrint.Output.PDFOptions;
-import com.CloudOfficePrint.PrintJob;
 import com.CloudOfficePrint.RenderElements.*;
 import com.CloudOfficePrint.RenderElements.Charts.ChartOptions;
 import com.CloudOfficePrint.RenderElements.Charts.Charts.*;
@@ -18,13 +17,18 @@ import com.CloudOfficePrint.RenderElements.PDF.PDFImages;
 import com.CloudOfficePrint.RenderElements.PDF.PDFText;
 import com.CloudOfficePrint.RenderElements.PDF.PDFTexts;
 import com.CloudOfficePrint.Resources.Base64Resource;
-import com.CloudOfficePrint.Response;
 import com.CloudOfficePrint.Server.Server;
 import com.CloudOfficePrint.Tests.PrintJobTest;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import org.apache.commons.io.IOUtils;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Hashtable;
 
 public class Examples {
@@ -39,7 +43,10 @@ public class Examples {
              //       null,null,"127.0.0.1",8000);
             null,null,null,null);
             server.setVerbose(true);
-            String ret = server.readJson("./src/com/CloudOfficePrint/Examples/GeneralExamples/test.json");
+
+            InputStream resourceAsStream = getClass().getResourceAsStream("test.json");
+            String ret = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8.name());
+
             JsonObject jsonObject = JsonParser.parseString(ret).getAsJsonObject();
             Response response = server.sendPOSTRequest(jsonObject);
             response.downloadLocally("./downloads/outputLocalJson");
@@ -76,7 +83,17 @@ public class Examples {
 
             //Create an image.
             ImageBase64 image = new ImageBase64("imageTag");
-            image.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/test.jpg");
+
+            //The next line should normally be used by the user in his project but when the jar is exported the reference to the files don't work anymore, so there is a replacement code to make it work.
+            //image.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/test.jpg");
+            //Begin replacement code:
+            InputStream resourceAsStream = getClass().getResourceAsStream("test.jpg");
+            byte[] targetArray = new byte[resourceAsStream.available()];
+            resourceAsStream.read(targetArray);
+            String encodedString = Base64.getEncoder().encodeToString(targetArray);
+            image.setValue(encodedString);
+            //End replacement code.
+
             image.setMaxWidth(500);
             image.setRotation(75);
             data1.addElement(image);
@@ -118,16 +135,38 @@ public class Examples {
 
             //Creating the template resource.
             Base64Resource base64Resource = new Base64Resource();
-            base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/localTemplate.docx");
+
+            //The next line should normally be used by the user in his project but when the jar is exported the reference to the files don't work anymore, so there is a replacement code to make it work.
+            //base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/localTemplate.docx");
+            //Begin replacement code:
+            InputStream resourceAsStream = getClass().getResourceAsStream("localTemplate.docx");
+            byte[] targetArray = new byte[resourceAsStream.available()];
+            resourceAsStream.read(targetArray);
+            String encodedString = Base64.getEncoder().encodeToString(targetArray);
+            base64Resource.setFileBase64(encodedString);
+            base64Resource.setFiletype("docx");
+            base64Resource.setMimeType(Mimetype.getMimeType("docx"));
+            //End replacement code.
 
             //Analog as above example.
             Property property1 = new Property("first_name","Quent");
             Property property2 = new Property("last_name","Stroob");
             Property property3 = new Property("city","Leuven");
             ImageBase64 image = new ImageBase64("imageTag");
-            image.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/test.jpg");
+
+            //The next line should normally be used by the user in his project but when the jar is exported the reference to the files don't work anymore, so there is a replacement code to make it work.
+            //image.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/test.jpg");
+            //Begin replacement code:
+            resourceAsStream = getClass().getResourceAsStream("test.jpg");
+            targetArray = new byte[resourceAsStream.available()];
+            resourceAsStream.read(targetArray);
+            encodedString = Base64.getEncoder().encodeToString(targetArray);
+            image.setValue(encodedString);
+            //End replacement code.
+
             image.setMaxWidth(500);
             image.setRotation(75);
+
             ArrayList<RenderElement> dataList =  new ArrayList<RenderElement>();
             dataList.add(property1);
             dataList.add(property2);
@@ -178,13 +217,33 @@ public class Examples {
             pdfOptions.setLandscape(true);
             Output output = new Output("pdf","raw",null,null,null,pdfOptions);
             Base64Resource base64Resource = new Base64Resource();
-            base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/localTemplate.docx");
+
+            //The next line should normally be used by the user in his project but when the jar is exported the reference to the files don't work anymore, so there is a replacement code to make it work.
+            //base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/localTemplate.docx");
+            //Begin replacement code:
+            InputStream resourceAsStream = getClass().getResourceAsStream("localTemplate.docx");
+            byte[] targetArray = new byte[resourceAsStream.available()];
+            resourceAsStream.read(targetArray);
+            String encodedString = Base64.getEncoder().encodeToString(targetArray);
+            base64Resource.setFileBase64(encodedString);
+            base64Resource.setFiletype("docx");
+            base64Resource.setMimeType(Mimetype.getMimeType("docx"));
+            //End replacement code.
 
             Property property1 = new Property("first_name","Quent");
             Property property2 = new Property("last_name","Stroob");
             Property property3 = new Property("city","Leuven");
             ImageBase64 image = new ImageBase64("imageTag");
-            image.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/test.jpg");
+            //The next line should normally be used by the user in his project but when the jar is exported the reference to the files don't work anymore, so there is a replacement code to make it work.
+            //image.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/test.jpg");
+            //Begin replacement code:
+            resourceAsStream = getClass().getResourceAsStream("test.jpg");
+            targetArray = new byte[resourceAsStream.available()];
+            resourceAsStream.read(targetArray);
+            encodedString = Base64.getEncoder().encodeToString(targetArray);
+            image.setValue(encodedString);
+            //End replacement code.
+
             image.setMaxWidth(500);
             image.setRotation(75);
             ArrayList<RenderElement> dataList =  new ArrayList<RenderElement>();
@@ -236,7 +295,18 @@ public class Examples {
 
             Output output = new Output("pdf","raw",null,null,null,null);
             Base64Resource base64Resource = new Base64Resource();
-            base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/orderTemplate.docx");
+
+            //The next line should normally be used by the user in his project but when the jar is exported the reference to the files don't work anymore, so there is a replacement code to make it work.
+            //base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/orderTemplate.docx");
+            //Begin replacement code:
+            InputStream resourceAsStream = getClass().getResourceAsStream("orderTemplate.docx");
+            byte[] targetArray = new byte[resourceAsStream.available()];
+            resourceAsStream.read(targetArray);
+            String encodedString = Base64.getEncoder().encodeToString(targetArray);
+            base64Resource.setFileBase64(encodedString);
+            base64Resource.setFiletype("docx");
+            base64Resource.setMimeType(Mimetype.getMimeType("docx"));
+            //End replacement code.
 
             //Main object that includes all the data
             ElementCollection data = new ElementCollection("data");
@@ -244,7 +314,17 @@ public class Examples {
             // Company information
             Property companyName = new Property("company_name","APEXOfficePrint");
             ImageBase64 companyLogo = new ImageBase64("company_logo");
-            companyLogo.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/logoAOP.jpg");
+
+            //The next line should normally be used by the user in his project but when the jar is exported the reference to the files don't work anymore, so there is a replacement code to make it work.
+            //image.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/logoAOP.jpg");
+            //Begin replacement code:
+            resourceAsStream = getClass().getResourceAsStream("logoAOP.jpg");
+            targetArray = new byte[resourceAsStream.available()];
+            resourceAsStream.read(targetArray);
+            encodedString = Base64.getEncoder().encodeToString(targetArray);
+            companyLogo.setValue(encodedString);
+            //End replacement code.
+
             companyLogo.setMaxWidth(200);
             companyLogo.setMaxHeight(200);
             data.addElement(companyName);
@@ -371,7 +451,18 @@ public class Examples {
             server.setVerbose(true);
             Output output = new Output("pdf","raw",null,null,null,null);
             Base64Resource base64Resource = new Base64Resource();
-            base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/chartname.docx");
+
+            //The next line should normally be used by the user in his project but when the jar is exported the reference to the files don't work anymore, so there is a replacement code to make it work.
+            //base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/chartname.docx");
+            //Begin replacement code:
+            InputStream resourceAsStream = getClass().getResourceAsStream("chartname.docx");
+            byte[] targetArray = new byte[resourceAsStream.available()];
+            resourceAsStream.read(targetArray);
+            String encodedString = Base64.getEncoder().encodeToString(targetArray);
+            base64Resource.setFileBase64(encodedString);
+            base64Resource.setFiletype("docx");
+            base64Resource.setMimeType(Mimetype.getMimeType("docx"));
+            //End replacement code.
 
             //Create a serie that has the data for one chart "serie".
             LineSeries lineserie1 = new LineSeries("lineserie1",new String[]{"day 1", "day 2", "day 3"} ,new String[]{"4.3", "2.5", "3.5"},"red",
@@ -417,7 +508,19 @@ public class Examples {
             server.setVerbose(true);
             Output output = new Output("pdf","raw",null,null,null,null);
             Base64Resource base64Resource = new Base64Resource();
-            base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/chartname.docx");
+
+            //The next line should normally be used by the user in his project but when the jar is exported the reference to the files don't work anymore, so there is a replacement code to make it work.
+            //base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/chartname.docx");
+            //Begin replacement code:
+            InputStream resourceAsStream = getClass().getResourceAsStream("chartname.docx");
+            byte[] targetArray = new byte[resourceAsStream.available()];
+            resourceAsStream.read(targetArray);
+            String encodedString = Base64.getEncoder().encodeToString(targetArray);
+            base64Resource.setFileBase64(encodedString);
+            base64Resource.setFiletype("docx");
+            base64Resource.setMimeType(Mimetype.getMimeType("docx"));
+            //End replacement code.
+
 
             //Create the series.
             ColumnSeries columnSeries1 = new ColumnSeries("column 1",new String[]{"day 1", "day 2", "day 3"} ,new String[]{"4.3", "2.5", "3.5"});
@@ -468,7 +571,19 @@ public class Examples {
             server.setVerbose(true);
             Output output = new Output("pdf","raw",null,null,null,null);
             Base64Resource base64Resource = new Base64Resource();
-            base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/localTemplate.docx");
+
+            //The next line should normally be used by the user in his project but when the jar is exported the reference to the files don't work anymore, so there is a replacement code to make it work.
+            //base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/localTemplate.docx");
+            //Begin replacement code:
+            InputStream resourceAsStream = getClass().getResourceAsStream("localTemplate.docx");
+            byte[] targetArray = new byte[resourceAsStream.available()];
+            resourceAsStream.read(targetArray);
+            String encodedString = Base64.getEncoder().encodeToString(targetArray);
+            base64Resource.setFileBase64(encodedString);
+            base64Resource.setFiletype("docx");
+            base64Resource.setMimeType(Mimetype.getMimeType("docx"));
+            //End replacement code.
+
 
             //Barcode
             BarCode barCode =new BarCode("barc","ean13","978020137962");
@@ -529,7 +644,18 @@ public class Examples {
             server.setVerbose(true);
             Output output = new Output("pdf","raw",null,null,null,null);
             Base64Resource base64Resource = new Base64Resource();
-            base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/localTemplate.docx"); //doesn't have importance
+
+            //The next line should normally be used by the user in his project but when the jar is exported the reference to the files don't work anymore, so there is a replacement code to make it work.
+            //base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/localTemplate.docx"); //doesn't have importance
+            //Begin replacement code:
+            InputStream resourceAsStream = getClass().getResourceAsStream("localTemplate.docx");
+            byte[] targetArray = new byte[resourceAsStream.available()];
+            resourceAsStream.read(targetArray);
+            String encodedString = Base64.getEncoder().encodeToString(targetArray);
+            base64Resource.setFileBase64(encodedString);
+            base64Resource.setFiletype("docx");
+            base64Resource.setMimeType(Mimetype.getMimeType("docx"));
+            //End replacement code.
 
             //Define the text for the first page.
             PDFText pdfText1_1 = new PDFText(150,160,1,"test1_1");
@@ -573,6 +699,16 @@ public class Examples {
             //Image for on all pages.
             PDFImage pdfImage = new PDFImage(200,700,1);
             pdfImage.setImageFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/logoAOP.jpg");
+            //The next line should normally be used by the user in his project but when the jar is exported the reference to the files don't work anymore, so there is a replacement code to make it work.
+            //image.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/logoAOP.jpg");
+            //Begin replacement code:
+            resourceAsStream = getClass().getResourceAsStream("logoAOP.jpg");
+            targetArray = new byte[resourceAsStream.available()];
+            resourceAsStream.read(targetArray);
+            encodedString = Base64.getEncoder().encodeToString(targetArray);
+            pdfImage.setImage(encodedString);
+            //End replacement code.
+
             pdfImage.setWidth(200);
 
             PDFImages pdfImages = new PDFImages(new PDFImage[]{pdfImage});
@@ -609,7 +745,18 @@ public class Examples {
             server.setVerbose(true);
             Output output = new Output("pdf","raw",null,null,null,null);
             Base64Resource base64Resource = new Base64Resource();
-            base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/localTemplate.docx");
+
+            //The next line should normally be used by the user in his project but when the jar is exported the reference to the files don't work anymore, so there is a replacement code to make it work.
+            //base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/localTemplate.docx"); //doesn't have importance
+            //Begin replacement code:
+            InputStream resourceAsStream = getClass().getResourceAsStream("localTemplate.docx");
+            byte[] targetArray = new byte[resourceAsStream.available()];
+            resourceAsStream.read(targetArray);
+            String encodedString = Base64.getEncoder().encodeToString(targetArray);
+            base64Resource.setFileBase64(encodedString);
+            base64Resource.setFiletype("docx");
+            base64Resource.setMimeType(Mimetype.getMimeType("docx"));
+            //End replacement code.
 
             //Creating a property that has a particular style.
             StyledProperty prop = new StyledProperty("first_name","DemoCustomerName");
@@ -667,6 +814,18 @@ public class Examples {
             Output output = new Output("pdf","raw",null,null,null,pdfOptions);
             Base64Resource base64Resource = new Base64Resource();
             base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/pdfsignature_template.pdf");
+
+            //The next line should normally be used by the user in his project but when the jar is exported the reference to the files don't work anymore, so there is a replacement code to make it work.
+            //base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/localTemplate.docx"); //doesn't have importance
+            //Begin replacement code:
+            InputStream resourceAsStream = getClass().getResourceAsStream("pdfsignature_template.pdf");
+            byte[] targetArray = new byte[resourceAsStream.available()];
+            resourceAsStream.read(targetArray);
+            String encodedString = Base64.getEncoder().encodeToString(targetArray);
+            base64Resource.setFileBase64(encodedString);
+            base64Resource.setFiletype("pdf");
+            base64Resource.setMimeType(Mimetype.getMimeType("pdf"));
+            //End replacement code.
 
             //create empty collection, always need a data collection
             ElementCollection collection = new ElementCollection("collection");

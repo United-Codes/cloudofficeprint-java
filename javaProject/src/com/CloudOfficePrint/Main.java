@@ -37,7 +37,7 @@ public class Main {
         spaceXExample.main(args[0],"docx");
 
         PrintJobTest printJobTest = new PrintJobTest();
-        //printJobTest.prePendAppendSubTemplatesTest("1C511A58ECC73874E0530100007FD01A"); //contacts server and makes a download so is in comment
+        printJobTest.prePendAppendSubTemplatesTest("1C511A58ECC73874E0530100007FD01A"); //contacts server and makes a download so is in comment
 
         ResourcesTests resourcesTests = new ResourcesTests();
         resourcesTests.ResourceTest();

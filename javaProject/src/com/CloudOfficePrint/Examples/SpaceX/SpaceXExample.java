@@ -1,5 +1,6 @@
 package com.CloudOfficePrint.Examples.SpaceX;
 
+import com.CloudOfficePrint.Mimetype;
 import com.CloudOfficePrint.Output.Output;
 import com.CloudOfficePrint.PrintJob;
 import com.CloudOfficePrint.RenderElements.Charts.ChartAxisOptions;
@@ -21,7 +22,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Hashtable;
 
 /**
@@ -212,13 +215,43 @@ public class SpaceXExample {
 
         Base64Resource base64Resource = new Base64Resource();
         if (template.equals("docx")){
-            base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/SpaceX/spacex_template.docx");
+            //The next line should normally be used by the user in his project but when the jar is exported the reference to the files don't work anymore, so there is a replacement code to make it work.
+            //base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/SpaceX/spacex_template.docx");
+            //Begin replacement code:
+            InputStream resourceAsStream = getClass().getResourceAsStream("spacex_template.docx");
+            byte[] targetArray = new byte[resourceAsStream.available()];
+            resourceAsStream.read(targetArray);
+            String encodedString = Base64.getEncoder().encodeToString(targetArray);
+            base64Resource.setFileBase64(encodedString);
+            base64Resource.setFiletype("docx");
+            base64Resource.setMimeType(Mimetype.getMimeType("docx"));
+            //End replacement code.
         }
         else if (template.equals("pptx")){
-            base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/SpaceX/spacex_template.pptx");
+            //The next line should normally be used by the user in his project but when the jar is exported the reference to the files don't work anymore, so there is a replacement code to make it work.
+            //base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/SpaceX/spacex_template.pptx");
+            //Begin replacement code:
+            InputStream resourceAsStream = getClass().getResourceAsStream("spacex_template.pptx");
+            byte[] targetArray = new byte[resourceAsStream.available()];
+            resourceAsStream.read(targetArray);
+            String encodedString = Base64.getEncoder().encodeToString(targetArray);
+            base64Resource.setFileBase64(encodedString);
+            base64Resource.setFiletype("pptx");
+            base64Resource.setMimeType(Mimetype.getMimeType("pptx"));
+            //End replacement code.
         }
         else if (template.equals("xlsx")){
-            base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/SpaceX/spacex_template.xlsx");
+            //The next line should normally be used by the user in his project but when the jar is exported the reference to the files don't work anymore, so there is a replacement code to make it work.
+            //base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/SpaceX/spacex_template.xlsx");
+            //Begin replacement code:
+            InputStream resourceAsStream = getClass().getResourceAsStream("spacex_template.xlsx");
+            byte[] targetArray = new byte[resourceAsStream.available()];
+            resourceAsStream.read(targetArray);
+            String encodedString = Base64.getEncoder().encodeToString(targetArray);
+            base64Resource.setFileBase64(encodedString);
+            base64Resource.setFiletype("xlsx");
+            base64Resource.setMimeType(Mimetype.getMimeType("xlsx"));
+            //End replacement code.
         }
 
         Output output = new Output(null,"raw","libreoffice",null,null,null);

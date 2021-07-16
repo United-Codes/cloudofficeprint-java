@@ -10,6 +10,9 @@ public class Mimetype {
      * @throws Exception If the file type is not supported (cannot find the mimetype).
      */
     public static String getMimeType(String extension) throws Exception {
+        if (extension.startsWith(".")){
+            extension = extension.substring(1);
+        }
         if (extension.equals("bmp")){
             return "image/bmp";
         }

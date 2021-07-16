@@ -1,5 +1,6 @@
 package com.CloudOfficePrint.Examples.SolarSystem.docx;
 
+import com.CloudOfficePrint.Mimetype;
 import com.CloudOfficePrint.Output.Output;
 import com.CloudOfficePrint.PrintJob;
 import com.CloudOfficePrint.RenderElements.Charts.Charts.Pie3DChart;
@@ -15,7 +16,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Hashtable;
 
 public class SolarSystemDocx {
@@ -70,7 +73,17 @@ public class SolarSystemDocx {
         aopServer.setAPIKey(APIKey);
 
         Base64Resource base64Resource = new Base64Resource();
-        base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/SolarSystem/docx/solar_system_template.docx");
+        //The next line should normally be used by the user in his project but when the jar is exported the reference to the files don't work anymore, so there is a replacement code to make it work.
+        //base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/SolarSystem/docx/solar_system_template.docx");
+        //Begin replacement code:
+        InputStream resourceAsStream = getClass().getResourceAsStream("solar_system_template.docx");
+        byte[] targetArray = new byte[resourceAsStream.available()];
+        resourceAsStream.read(targetArray);
+        String encodedString = Base64.getEncoder().encodeToString(targetArray);
+        base64Resource.setFileBase64(encodedString);
+        base64Resource.setFiletype("docx");
+        base64Resource.setMimeType(Mimetype.getMimeType("docx"));
+        //End replacement code.
 
         Output output = new Output("pdf","raw","libreoffice",null,null,null);
         PrintJob printJob = new PrintJob(data,aopServer,output,base64Resource,null,null,null,null);
