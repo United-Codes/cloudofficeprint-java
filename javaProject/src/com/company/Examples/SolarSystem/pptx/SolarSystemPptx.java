@@ -25,11 +25,13 @@ public class SolarSystemPptx {
         JsonObject parsed = JsonParser.parseString(response).getAsJsonObject();
         JsonArray bodiesAr = parsed.getAsJsonArray("bodies");
 
-
+        //Main collection that will hold all the data.
         ElementCollection planetData = new ElementCollection("data");
+
+        //Add a property to the data.
         planetData.addElement(new Property("main_title","The solar system"));
 
-        //Add planet data
+        //Add planets to a loop of planets.
         Loop planetsLoop = new Loop("planets");
         for (JsonElement body : bodiesAr){
             JsonObject bodyjson = (JsonObject) body;
@@ -38,8 +40,10 @@ public class SolarSystemPptx {
                 planetsLoop.addElement(coll);
             }
         }
+        //Add the loop to the data.
         planetData.addElement(planetsLoop);
 
+        //Will create one output.
         Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
         data.put("planetData",planetData);
 
@@ -48,9 +52,11 @@ public class SolarSystemPptx {
         aopServer.setVerbose(true);
         aopServer.setAPIKey(APIKey);
 
+        //Define template.
         Base64Resource base64Resource = new Base64Resource();
         base64Resource.setFileFromLocalFile("./src/com/company/Examples/SolarSystem/pptx/solar_system_template.pptx");
 
+        //Define output options.
         Output output = new Output(null,"raw","libreoffice",null,null,null);
         PrintJob printJob = new PrintJob(data,aopServer,output,base64Resource,null,null,null,null);
 

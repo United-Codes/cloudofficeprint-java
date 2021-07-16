@@ -26,6 +26,9 @@ import org.junit.Assert;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
+/**
+ * This example is fully explained in the spacex_example.md file.
+ */
 public class SpaceXExample {
 
     /**

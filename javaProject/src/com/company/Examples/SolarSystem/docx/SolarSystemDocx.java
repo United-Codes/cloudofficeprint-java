@@ -31,9 +31,10 @@ public class SolarSystemDocx {
         JsonObject parsed = JsonParser.parseString(response).getAsJsonObject();
         JsonArray bodiesAr = parsed.getAsJsonArray("bodies");
 
-
+        //Main collection that will contain all the data.
         ElementCollection planetData = new ElementCollection("data");
 
+        //Parsing the data in a list of planets and a list of radius.
         ArrayList<String> planets = new ArrayList<>();
         ArrayList<String> radius = new ArrayList<>();
         for (JsonElement body : bodiesAr){
@@ -44,13 +45,16 @@ public class SolarSystemDocx {
             }
         }
 
+        //Defining an array of colors for the series.
         String[] colors = new String[bodiesAr.size()];
         colors[0] = "blue"; //minimum one color needs to be specified. Doesn't work otherwise.
 
+        //Creating the series and the chart.
         PieSeries pieSeries = new PieSeries("Mass",planets.toArray(new String[0]),radius.toArray(new String[0]),colors);
         Pie3DChart pie3DChart = new Pie3DChart("planet_radius_chart",null,pieSeries);
         planetData.addElement(pie3DChart);
 
+        //Adding the bodies to a loop and adding this loop to the data.
         Loop bodyLoop = new Loop("bodies");
         for (JsonElement json : bodiesAr){
             JsonObject body = (JsonObject) json;
@@ -59,7 +63,7 @@ public class SolarSystemDocx {
         }
         planetData.addElement(bodyLoop);
 
-
+        //Defining one output.
         Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
         data.put("planetData",planetData);
 
