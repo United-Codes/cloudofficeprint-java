@@ -2,14 +2,14 @@ package com.company.Examples.SolarSystem.pptx;
 
 import com.company.Output.Output;
 import com.company.PrintJob;
-import com.company.RenderElements.ElementCollection;
-import com.company.RenderElements.RawJsonArray;
-import com.company.RenderElements.Property;
-import com.company.RenderElements.RenderElement;
+import com.company.RenderElements.*;
+import com.company.RenderElements.Images.ImageUrl;
+import com.company.RenderElements.Loops.Loop;
 import com.company.Resources.Base64Resource;
 import com.company.Response;
 import com.company.Server.Server;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -21,7 +21,6 @@ public class SolarSystemPptx {
 
         //Get solar system data
         Server server =new Server("https://api.le-systeme-solaire.net/rest/bodies/");
-        server.setVerbose(true);
         String response = server.sendGETRequest(server.getUrl());
         JsonObject parsed = JsonParser.parseString(response).getAsJsonObject();
         JsonArray bodiesAr = parsed.getAsJsonArray("bodies");
@@ -30,8 +29,16 @@ public class SolarSystemPptx {
         ElementCollection planetData = new ElementCollection("data");
         planetData.addElement(new Property("main_title","The solar system"));
 
-
-        planetData.addElement(new RawJsonArray("bodies",bodiesAr));
+        //Add planet data
+        Loop planetsLoop = new Loop("planets");
+        for (JsonElement body : bodiesAr){
+            JsonObject bodyjson = (JsonObject) body;
+            if (bodyjson.get("isPlanet").getAsBoolean()){
+                ElementCollection coll = ElementCollection.makeCollectionFromJson("body",bodyjson);
+                planetsLoop.addElement(coll);
+            }
+        }
+        planetData.addElement(planetsLoop);
 
         Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
         data.put("planetData",planetData);

@@ -29,7 +29,7 @@ public class Main {
         //solarSystemDocx.main("1C511A58ECC73874E0530100007FD01A");
 
         SolarSystemPptx solarSystemPptx = new SolarSystemPptx();
-        //solarSystemPptx.main("1C511A58ECC73874E0530100007FD01A");
+        solarSystemPptx.main("1C511A58ECC73874E0530100007FD01A");
 
         SpaceXExample spaceXExample = new SpaceXExample();
         //spaceXExample.main("1C511A58ECC73874E0530100007FD01A","pptx");
