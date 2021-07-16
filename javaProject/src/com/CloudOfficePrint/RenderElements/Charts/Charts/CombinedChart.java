@@ -64,7 +64,7 @@ public class CombinedChart extends Chart{
 
     /**
      * Replaces all the occurrences of oldKey in the json with the newKey.
-     * @param json Json to be modified.
+     * @param jsonOld Json to be modified.
      * @param oldKey Old keys to be replaced.
      * @param newKey New key to replace the old key.
      * @return Json with the old key replaced by the new key.

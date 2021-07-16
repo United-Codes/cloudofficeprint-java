@@ -1,11 +1,12 @@
 com.CloudOfficePrint
-com.CloudOfficePrint.Examples
+com.CloudOfficePrint.Examples.GeneralExamples
 com.CloudOfficePrint.Examples.SolarSystem.docx
 com.CloudOfficePrint.Examples.SolarSystem.pptx
 com.CloudOfficePrint.Examples.SpaceX
 com.CloudOfficePrint.Output
 com.CloudOfficePrint.Output.CloudAcessToken
 com.CloudOfficePrint.RenderElements
+com.CloudOfficePrint.RenderElements.Cells
 com.CloudOfficePrint.RenderElements.Charts
 com.CloudOfficePrint.RenderElements.Charts.Charts
 com.CloudOfficePrint.RenderElements.Charts.Series

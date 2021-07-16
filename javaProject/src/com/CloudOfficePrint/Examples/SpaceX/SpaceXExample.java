@@ -39,6 +39,7 @@ public class SpaceXExample {
 
     /**
      * @param template Should be docx, pptx or xlsx.
+     * @param APIKey Your AOP APIKey.
      * @throws Exception Exceptions.
      */
     public void main(String APIKey,String template) throws Exception {

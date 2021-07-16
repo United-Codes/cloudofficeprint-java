@@ -31,6 +31,7 @@ public class Examples {
 
     /**
      * Example where the local test.json is read and send to the server. The output is downloaded in downloads and named outputLocalJson.
+     * @param APIKey Your AOP APIKey.
      */
     public void localJson(String APIKey){
         try {
@@ -53,6 +54,7 @@ public class Examples {
 
     /**
      * Example without template. AOP will generate the template based on the data. Output type determines the template type generated. Cannot be PDF in this case.
+     * @param APIKey Your AOP APIKey.
      */
     public void withoutTemplate(String APIKey){
         try {
@@ -100,6 +102,7 @@ public class Examples {
     /**
      * Example with templateTest.docx as template, a list of properties and an image as data. A zipfile named outputLocalTemplate will contain
      * 2 outputs files in the downloads folder.
+     * @param APIKey Your AOP APIKey.
      */
     public void localTemplate(String APIKey){
         try {
@@ -163,6 +166,7 @@ public class Examples {
      * Asynchronous version of the above example.
      * Example with templateTest.docx as template, a list of properties and an image as data. A zipfile named outputLocalTemplate will contain
      * 2 outputs files in the downloads folder.
+     * @param APIKey Your AOP APIKey.
      */
     public void localTemplateAsync(String APIKey){
         try {
@@ -222,6 +226,7 @@ public class Examples {
 
     /**
      * In this example 2 nested loops are given in the template. One for the orders and one for the products per order.
+     * @param APIKey Your AOP APIKey.
      */
     public void loopExample(String APIKey){
         try {
@@ -357,6 +362,7 @@ public class Examples {
 
     /**
      * This example show how to build a line chart.
+     * @param APIKey Your AOP APIKey.
      */
     public void chartExample(String APIKey){
         try {
@@ -402,6 +408,7 @@ public class Examples {
 
     /**
      * This example show how to build a combined chart.
+     * @param APIKey Your AOP APIKey.
      */
     public void combinedChartExample(String APIKey){
         try {
@@ -452,6 +459,7 @@ public class Examples {
 
     /**
      * This example show how to work with Codes (QR code and barcode).
+     * @param APIKey Your AOP APIKey.
      */
     public void qrCodeExample(String APIKey){
         try {
@@ -501,6 +509,7 @@ public class Examples {
     /**
      * This example shows you how to prepend/append files and how to use subtemplates in a template.
      * Look in the generalTests to see the code.
+     * @param APIKey Your AOP APIKey.
      * @throws Exception Exceptions.
      */
     public void prePendAppendSubTemplatesExample(String APIKey) throws Exception {
@@ -511,6 +520,7 @@ public class Examples {
 
     /**
      * This example shows you how to add text and images on pages of a template without tag. The output format needs to be PDF.
+     * @param APIKey Your AOP APIKey.
      */
     public void AOPPDFTextAndImageExample(String APIKey)  {
         try {
@@ -590,6 +600,7 @@ public class Examples {
 
     /**
      * Example for a styled property and a watermark.
+     * @param APIKey Your AOP APIKey.
      */
     public void waterMarkAndStyledProperty(String APIKey){
         try {
@@ -641,6 +652,7 @@ public class Examples {
 
     /**
      * This example show you how to sign a PDF file. (Invisible signature, only to be seen in the options of the file).
+     * @param APIKey Your AOP APIKey.
      */
     public void signPDF(String APIKey){
         try {
