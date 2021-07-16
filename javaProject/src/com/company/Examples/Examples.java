@@ -61,21 +61,25 @@ public class Examples {
             server.setVerbose(true);
             Output output = new Output("docx","raw",null,null,null,null);
 
+            //Main collection that holds all the data elements.
+            ElementCollection data1 = new ElementCollection("data");
+
+            //Add some properties to the data.
             Property property1 = new Property("first_name","Quent");
             Property property2 = new Property("last_name","Stroob");
             Property property3 = new Property("city","Leuven");
+            data1.addElement(property1);
+            data1.addElement(property2);
+            data1.addElement(property3);
+
+            //Create an image.
             ImageBase64 image = new ImageBase64("imageTag");
             image.setFileFromLocalFile("./src/com/company/Examples/test.jpg");
             image.setMaxWidth(500);
             image.setRotation(75);
-            ArrayList<RenderElement> dataList =  new ArrayList<RenderElement>();
-            dataList.add(property1);
-            dataList.add(property2);
-            dataList.add(property3);
-            dataList.add(image);
-            ElementCollection data1 = new ElementCollection("data1",dataList);
+            data1.addElement(image);
 
-
+            //Need to create a hashtable with name of the output and data for the output.
             Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
             data.put("output1",data1);
 
@@ -102,6 +106,69 @@ public class Examples {
             Server server = new Server("http://apexofficeprint.com/dev/",APIKey,null,
                     null,null,null,null);
             server.setVerbose(true);
+
+            //Set some PDF options for showing purposes.
+            PDFOptions pdfOptions = new PDFOptions();
+            pdfOptions.setReadPassword("hello");
+            pdfOptions.setLandscape(true);
+            Output output = new Output("pdf","raw",null,null,null,pdfOptions);
+
+            //Creating the template resource.
+            Base64Resource base64Resource = new Base64Resource();
+            base64Resource.setFileFromLocalFile("./src/com/company/Examples/localTemplate.docx");
+
+            //Analog as above example.
+            Property property1 = new Property("first_name","Quent");
+            Property property2 = new Property("last_name","Stroob");
+            Property property3 = new Property("city","Leuven");
+            ImageBase64 image = new ImageBase64("imageTag");
+            image.setFileFromLocalFile("./src/com/company/Examples/test.jpg");
+            image.setMaxWidth(500);
+            image.setRotation(75);
+            ArrayList<RenderElement> dataList =  new ArrayList<RenderElement>();
+            dataList.add(property1);
+            dataList.add(property2);
+            dataList.add(property3);
+            dataList.add(image);
+            ElementCollection data1 = new ElementCollection("data1",dataList);
+
+            //Another way to add date (from a dict).
+            Hashtable<String, String> propertyDict = new Hashtable<String, String>();
+            propertyDict.put("first_name","B");
+            propertyDict.put("last_name","A");
+            propertyDict.put("city","C");
+            ElementCollection data2 = new ElementCollection("data2");
+            data2.addFromDict(propertyDict);
+            data2.addElement(image);
+
+            //Here we specify two different outputs so a zip file containing both of them will be created.
+            Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
+            data.put("output1",data1);
+            data.put("output2",data2);
+
+            PrintJob printJob = new PrintJob(data,server,output,base64Resource,null,null,null,null);
+
+            Response response = printJob.execute();
+            response.downloadLocally("./downloads/outputLocalTemplate");
+
+        }catch (AOPException e){
+            e.printStackTrace();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Asynchronous version of the above example.
+     * Example with templateTest.docx as template, a list of properties and an image as data. A zipfile named outputLocalTemplate will contain
+     * 2 outputs files in the downloads folder.
+     */
+    public void localTemplateAsync(String APIKey){
+        try {
+            Server server = new Server("http://apexofficeprint.com/dev/",APIKey,null,
+                    null,null,null,null);
+            server.setVerbose(true);
             PDFOptions pdfOptions = new PDFOptions();
             pdfOptions.setReadPassword("hello");
             pdfOptions.setLandscape(true);
@@ -129,63 +196,7 @@ public class Examples {
             propertyDict.put("city","C");
             ElementCollection data2 = new ElementCollection("data2");
             data2.addFromDict(propertyDict);
-            //data2.addElement(image);
-
-            Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
-            data.put("output1",data1);
-            data.put("output2",data2);
-
-            PrintJob printJob = new PrintJob(data,server,output,base64Resource,null,null,null,null);
-
-            Response response = printJob.execute();
-            response.downloadLocally("./downloads/outputLocalTemplate");
-
-        }catch (AOPException e){
-            e.printStackTrace();
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Asynchronous call of execute.
-     * Example with templateTest.docx as template, a list of properties and an image as data. A zipfile named outputLocalTemplate will contain
-     * 2 outputs files in the downloads folder.
-     */
-    public void localTemplateAsync(String APIKey){
-        try {
-            Server server = new Server("http://apexofficeprint.com/dev/",APIKey,null,
-                    null,null,null,null);
-            server.setVerbose(true);
-            PDFOptions pdfOptions = new PDFOptions();
-            pdfOptions.setReadPassword("hello");
-            pdfOptions.setLandscape(true);
-            Output output = new Output("pdf","raw",null,null,null,pdfOptions);
-            Base64Resource base64Resource = new Base64Resource();
-            base64Resource.setFileFromLocalFile("./src/com/company/Examples/localTemplate.docx");
-
-            Property property1 = new Property("first_name","Quent");
-            Property property2 = new Property("last_name","Stroob");
-            Property property3 = new Property("city","Leuven");
-            ImageBase64 image = new ImageBase64("imageTag");
-            image.setFileFromLocalFile("./src/com/company/Examples/test.jpg");
-            image.setMaxWidth(500);
-            image.setRotation(75);
-            ArrayList<RenderElement> dataList =  new ArrayList<RenderElement>();
-            dataList.add(property1);
-            dataList.add(property2);
-            dataList.add(property3);
-            //dataList.add(image);
-            ElementCollection data1 = new ElementCollection("data1",dataList);
-
-            Hashtable<String, String> propertyDict = new Hashtable<String, String>();
-            propertyDict.put("first_name","B");
-            propertyDict.put("last_name","A");
-            propertyDict.put("city","C");
-            ElementCollection data2 = new ElementCollection("data2");
-            data2.addFromDict(propertyDict);
-            //data2.addElement(image);
+            data2.addElement(image);
 
             Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
             data.put("output1",data1);
@@ -210,7 +221,7 @@ public class Examples {
     }
 
     /**
-     * In this example a 2 nested loops are given in the template. One for the orders and one for the products per order.
+     * In this example 2 nested loops are given in the template. One for the orders and one for the products per order.
      */
     public void loopExample(String APIKey){
         try {
@@ -345,7 +356,7 @@ public class Examples {
     }
 
     /**
-     * This example show how to build charts.
+     * This example show how to build a line chart.
      */
     public void chartExample(String APIKey){
         try {
@@ -356,17 +367,20 @@ public class Examples {
             Base64Resource base64Resource = new Base64Resource();
             base64Resource.setFileFromLocalFile("./src/com/company/Examples/chartname.docx");
 
-
+            //Create a serie that has the data for one chart "serie".
             LineSeries lineserie1 = new LineSeries("lineserie1",new String[]{"day 1", "day 2", "day 3"} ,new String[]{"4.3", "2.5", "3.5"},"red",
                     true,"square",null,"0.2cm",null);
             LineSeries lineserie2 = new LineSeries("lineserie2",new String[]{"day 1", "day 2", "day 3"} ,new String[]{"2.4", "4.4", "1.8"},"purple",
                     null,null,null,null,"sysDashDotDot");
+
+            //Define the chart options.
             ChartOptions options = new ChartOptions();
             options.setBorder(true);
             options.setLegend("l",null);
             options.setTitle("Line Chart");
             options.setWidth(500);
 
+            //Create the chart.
             LineChart lineChart = new LineChart("chartname",options,lineserie1,lineserie2); //chartname is the tag in the template
 
             Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
@@ -398,12 +412,14 @@ public class Examples {
             Base64Resource base64Resource = new Base64Resource();
             base64Resource.setFileFromLocalFile("./src/com/company/Examples/chartname.docx");
 
-
-
+            //Create the series.
             ColumnSeries columnSeries1 = new ColumnSeries("column 1",new String[]{"day 1", "day 2", "day 3"} ,new String[]{"4.3", "2.5", "3.5"});
             ColumnSeries columnSeries2 = new ColumnSeries("column 2",new String[]{"day 1", "day 2", "day 3"} ,new String[]{"2.4", "4.4", "1.8"});
+
+            //Create the chart.
             ColumnChart columnChart = new ColumnChart("columns",null,columnSeries1,columnSeries2);
 
+            //Analog
             LineSeries lineSerie1 = new LineSeries("line 1",new String[]{"day 1", "day 2", "day 3"} ,new String[]{"43", "25", "35"},
                     null,null,null,null,null,null);
             LineSeries lineSerie2 = new LineSeries("line 2",new String[]{"day 1", "day 2", "day 3"} ,new String[]{"24", "44", "18"},
@@ -461,7 +477,7 @@ public class Examples {
             //WifiQRCode
             WifiQRCode wifiQRCode =new WifiQRCode("wifiqr","ssid","password","WPA",false);
 
-
+            //Main collection that holds the data.
             ElementCollection codes = new ElementCollection("codes");
             codes.addElement(barCode);
             codes.addElement(wifiQRCode);
@@ -494,7 +510,7 @@ public class Examples {
 
 
     /**
-     * This example shows you how to add text and images on each page of a template without tag.
+     * This example shows you how to add text and images on pages of a template without tag. The output format needs to be PDF.
      */
     public void AOPPDFTextAndImageExample(String APIKey)  {
         try {
@@ -505,6 +521,7 @@ public class Examples {
             Base64Resource base64Resource = new Base64Resource();
             base64Resource.setFileFromLocalFile("./src/com/company/Examples/localTemplate.docx"); //doesn't have importance
 
+            //Define the text for the first page.
             PDFText pdfText1_1 = new PDFText(150,160,1,"test1_1");
             pdfText1_1.setRotation(45);
             pdfText1_1.setBold(false);
@@ -513,6 +530,7 @@ public class Examples {
             pdfText1_1.setFontColor("blue");
             pdfText1_1.setFontSize(12);
 
+            //Another text for the first page.
             PDFText pdfText1_2 = new PDFText(20,30,1,"test1_2");
             pdfText1_2.setRotation(45);
             pdfText1_2.setBold(false);
@@ -521,6 +539,7 @@ public class Examples {
             pdfText1_2.setFontColor("red");
             pdfText1_2.setFontSize(10);
 
+            //Text for the second page.
             PDFText pdfText2 = new PDFText(60,70,2,"test2");
             pdfText2.setRotation(30);
             pdfText2.setBold(true);
@@ -529,6 +548,7 @@ public class Examples {
             pdfText2.setFontColor("#FF00FF");
             pdfText2.setFontSize(15);
 
+            //Text for on all pages.
             PDFText pdfTextAll = new PDFText(420,430,-1,"test_all"); //-1 means on all pages
             pdfTextAll.setRotation(15);
             pdfTextAll.setBold(true);
@@ -537,20 +557,23 @@ public class Examples {
             pdfTextAll.setFontColor("red");
             pdfTextAll.setFontSize(20);
 
+            //Element containing all the text objects.
             PDFTexts pdfTexts = new PDFTexts(new PDFText[]{pdfText1_1, pdfText1_2, pdfText2, pdfTextAll});
 
+            //Image for on all pages.
             PDFImage pdfImage = new PDFImage(200,700,1);
             pdfImage.setImageFromLocalFile("./src/com/company/Examples/logoAOP.jpg");
             pdfImage.setWidth(200);
 
             PDFImages pdfImages = new PDFImages(new PDFImage[]{pdfImage});
 
-            ElementCollection codes = new ElementCollection("codes");
-            codes.addElement(pdfTexts);
-            codes.addElement(pdfImages);
+            //Main collection containing all the data.
+            ElementCollection texts = new ElementCollection("texts");
+            texts.addElement(pdfTexts);
+            texts.addElement(pdfImages);
 
             Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
-            data.put("output1",codes);
+            data.put("output1",texts);
 
             PrintJob printJob = new PrintJob(data,server,output,base64Resource,null,null,null,null);
 
@@ -568,7 +591,7 @@ public class Examples {
     /**
      * Example for a styled property and a watermark.
      */
-    public void renderElements(String APIKey){
+    public void WaterMarkAndStyledProperty(String APIKey){
         try {
             Server server = new Server("http://apexofficeprint.com/dev/",APIKey,null,
                     null,null,null,null);
@@ -577,6 +600,7 @@ public class Examples {
             Base64Resource base64Resource = new Base64Resource();
             base64Resource.setFileFromLocalFile("./src/com/company/Examples/localTemplate.docx");
 
+            //Creating a property that has a particular style.
             StyledProperty prop = new StyledProperty("first_name","DemoCustomerName");
             prop.setFont("NanumMyeongjo");
             prop.setFontSize("25pt");
@@ -587,12 +611,14 @@ public class Examples {
             prop.setStrikethrough(false);
             prop.setHighlightColor("darkMagenta");
 
+            //Creating a watermark to display on all pages.
             Watermark watermark = new Watermark("watermark","wm_text");
             watermark.setFont("Arial");
             watermark.setColor("red");
             watermark.setOpacity(0.5F);
             watermark.setRotation(-45);
 
+            //Main collection containg all the data.
             ElementCollection collection = new ElementCollection("collection");
             collection.addElement(prop);
             collection.addElement(watermark);
@@ -630,7 +656,7 @@ public class Examples {
             Base64Resource base64Resource = new Base64Resource();
             base64Resource.setFileFromLocalFile("./src/com/company/Examples/pdfsignature_template.pdf");
 
-            //create empty collection
+            //create empty collection, always need a data collection
             ElementCollection collection = new ElementCollection("collection");
             Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
             data.put("output1",collection);
