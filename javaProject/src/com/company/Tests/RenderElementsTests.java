@@ -1,6 +1,8 @@
 package com.company.Tests;
 
 import com.company.RenderElements.*;
+import com.company.RenderElements.Cells.CellStyleDocxPpt;
+import com.company.RenderElements.Cells.CellStyleXlsx;
 import com.company.RenderElements.Cells.TableCell;
 import com.company.RenderElements.Images.ImageUrl;
 import com.company.RenderElements.Loops.Loop;
@@ -19,11 +21,48 @@ public class RenderElementsTests {
         Assert.assertEquals(jsonCorrect,property.getJSON());
     }
 
-    public void cellStyleProperty(){
-        TableCell cell = new TableCell("name","value","red", "10");
-        String correct= "{'name': 'value', 'name_background_color': 'red', 'name_width': '10'}";
+    public void cellStylePropertyDocx(){
+        CellStyleDocxPpt cellStyle = new CellStyleDocxPpt("#eb4034","10");
+        TableCell cell = new TableCell("name","value",cellStyle);
+        String correct= "{'name': 'value', 'name_background_color': '#eb4034', 'name_width': '10'}";
         //System.out.println(cell.getJSON());
         JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        //System.out.println(jsonCorrect);
+        Assert.assertEquals(jsonCorrect,cell.getJSON());
+    }
+
+    public void cellStylePropertyXlsx(){
+        CellStyleXlsx cellStyle = new CellStyleXlsx();
+        cellStyle.setCellLocked(true);
+        cellStyle.setCellHidden(false);
+        cellStyle.setCellBackground("#ff0000");
+        cellStyle.setFont("Arial");
+        cellStyle.setFontSize(12);
+        cellStyle.setFontColor("#ff0000");
+        cellStyle.setFontItalic(true);
+        cellStyle.setFontBold(false);
+        cellStyle.setFontStrike(false);
+        cellStyle.setFontUnderline(true);
+        cellStyle.setFontSuperscript(false);
+        cellStyle.setFontSubscript(true);
+        cellStyle.setBorderTop("medium");
+        cellStyle.setBorderTopColor("#ff0000");
+        cellStyle.setBorderBottom("mediumDashed");
+        cellStyle.setBorderBottomColor("#ff0000");
+        cellStyle.setBorderLeft("mediumDashDot");
+        cellStyle.setBorderLeftColor("#ff0000");
+        cellStyle.setBorderRight("mediumDashDotDot");
+        cellStyle.setBorderRightColor("#ff0000");
+        cellStyle.setBorderDiagonal("thick");
+        cellStyle.setBorderDiagonalDirection("up-wards");
+        cellStyle.setBorderDiagonalColor("#ff0000");
+        cellStyle.setTextHAlignment("center");
+        cellStyle.setTextVAlignment("justify");
+        cellStyle.setTextRotation(45);
+        TableCell cell = new TableCell("name","value",cellStyle);
+        String correct= "{'name': 'value', 'name_cell_locked': True, 'name_cell_hidden': False, 'name_cell_background': '#ff0000', 'name_font_name': 'Arial', 'name_font_size': '12', 'name_font_color': '#ff0000', 'name_font_italic': True, 'name_font_bold': False, 'name_font_strike': False, 'name_font_underline': True, 'name_font_superscript': False, 'name_font_subscript': True, 'name_border_top': 'medium', 'name_border_top_color': '#ff0000', 'name_border_bottom': 'mediumDashed', 'name_border_bottom_color': '#ff0000', 'name_border_left': 'mediumDashDot', 'name_border_left_color': '#ff0000', 'name_border_right': 'mediumDashDotDot', 'name_border_right_color': '#ff0000', 'name_border_diagonal': 'thick', 'name_border_diagonal_direction': 'up-wards', 'name_border_diagonal_color': '#ff0000', 'name_text_h_alignment': 'center', 'name_text_v_alignment': 'justify', 'name_text_rotation': '45'}";
+        //System.out.println(cell.getJSON());
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         //System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect,cell.getJSON());
     }

@@ -92,7 +92,8 @@ public class Main {
 
         RenderElementsTests renderElementsTests =new RenderElementsTests();
         renderElementsTests.Property();
-        renderElementsTests.cellStyleProperty();
+        renderElementsTests.cellStylePropertyDocx();
+        renderElementsTests.cellStylePropertyXlsx();
         renderElementsTests.hyperLink();
         renderElementsTests.tableOfContent();
         renderElementsTests.CellSpan();

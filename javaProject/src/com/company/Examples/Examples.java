@@ -614,7 +614,7 @@ public class Examples {
     }
 
     /**
-     * This example show you how to sign a PDF file.
+     * This example show you how to sign a PDF file. (Invisible signature, only to be seen in the options of the file).
      */
     public void signPDF(String APIKey){
         try {

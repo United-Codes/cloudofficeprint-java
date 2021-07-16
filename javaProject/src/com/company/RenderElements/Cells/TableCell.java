@@ -54,7 +54,18 @@ public class TableCell extends RenderElement {
         JsonObject json = new JsonObject();
         json.addProperty(getName(),getValue());
         for(Map.Entry<String, JsonElement> entry : getCellStyle().getJSON().entrySet()) {
-            json.addProperty(getName() + entry.getKey(), entry.getValue().getAsString());
+            if (entry.getValue().getAsString()=="null"){
+                json.add(getName() + entry.getKey(),null);
+            }
+            else if (entry.getValue().getAsString()=="false"){
+                json.addProperty(getName() + entry.getKey(),false);
+            }
+            else if (entry.getValue().getAsString()=="true"){
+                json.addProperty(getName() + entry.getKey(),true);
+            }
+            else {
+                json.addProperty(getName() + entry.getKey(), entry.getValue().getAsString());
+            }
         }
         return json;
     }

@@ -9,7 +9,7 @@ import java.util.Set;
 /**
  * Represent the style of Word and PowerPoint cells.
  */
-public class CellStyleWordAndPowerPoint extends CellStyle{
+public class CellStyleDocxPpt extends CellStyle{
 
     private String backgroundColor;
     private String width;
@@ -50,7 +50,7 @@ public class CellStyleWordAndPowerPoint extends CellStyle{
      * @param width  The width of the cell + unit ( in, cm, px, pt, em and % (% is in respect to the initial width of the table)).
      *               Giving a width of 0 will remove the whole column.
      */
-    public CellStyleWordAndPowerPoint(String backgroundColor, String width){
+    public CellStyleDocxPpt(String backgroundColor, String width){
         setBackgroundColor(backgroundColor);
         setWidth(width);
     }

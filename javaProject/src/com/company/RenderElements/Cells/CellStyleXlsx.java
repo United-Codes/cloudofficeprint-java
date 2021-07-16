@@ -5,7 +5,7 @@ import com.google.gson.JsonObject;
 /**
  * Represents the style of Excel cells.
  */
-public class CellStyleExcel extends CellStyle{
+public class CellStyleXlsx extends CellStyle{
 
     private Boolean cellLocked;
     private Boolean cellHidden;
@@ -32,7 +32,7 @@ public class CellStyleExcel extends CellStyle{
     private String borderDiagonalColor;
     private String textHAlignment;
     private String textVAlignment;
-    private String textRotation;
+    private Integer textRotation;
 
     /**
      * @return Whether the cell is locked.
@@ -387,21 +387,21 @@ public class CellStyleExcel extends CellStyle{
     /**
      * @return Rotation of the text.
      */
-    public String getTextRotation() {
+    public Integer getTextRotation() {
         return textRotation;
     }
 
     /**
      * @param textRotation Rotation of the text.
      */
-    public void setTextRotation(String textRotation) {
+    public void setTextRotation(Integer textRotation) {
         this.textRotation = textRotation;
     }
 
     /**
      * Represents the style of an Excell cell element. The options can be set with the setter functions.
      */
-    public CellStyleExcel(){
+    public CellStyleXlsx(){
     }
 
     /**
@@ -415,6 +415,78 @@ public class CellStyleExcel extends CellStyle{
         }
         if (getCellHidden()!=null){
             json.addProperty("_cell_hidden",getCellHidden());
+        }
+        if (getCellBackground()!=null){
+            json.addProperty("_cell_background",getCellBackground());
+        }
+        if (getFont()!=null){
+            json.addProperty("_font_name",getFont());
+        }
+        if (getFontSize()!=null){
+            json.addProperty("_font_size",getFontSize());
+        }
+        if (getFontColor()!=null){
+            json.addProperty("_font_color",getFontColor());
+        }
+        if (getFontItalic()!=null){
+            json.addProperty("_font_italic",getFontItalic());
+        }
+        if (getFontBold()!=null){
+            json.addProperty("_font_bold",getFontBold());
+        }
+        if (getFontStrike()!=null){
+            json.addProperty("_font_strike",getFontStrike());
+        }
+        if (getFontUnderline()!=null){
+            json.addProperty("_font_underline",getFontUnderline());
+        }
+        if (getFontSuperscript()!=null){
+            json.addProperty("_font_superscript",getFontSuperscript());
+        }
+        if (getFontSubscript()!=null){
+            json.addProperty("_font_subscript",getFontSubscript());
+        }
+        if (getBorderTop()!=null){
+            json.addProperty("_border_top",getBorderTop());
+        }
+        if (getBorderTopColor()!=null){
+            json.addProperty("_border_top_color",getBorderTopColor());
+        }
+        if (getBorderBottom()!=null){
+            json.addProperty("_border_bottom",getBorderBottom());
+        }
+        if (getBorderBottomColor()!=null){
+            json.addProperty("_border_bottom_color",getBorderBottomColor());
+        }
+        if (getBorderLeft()!=null){
+            json.addProperty("_border_left",getBorderLeft());
+        }
+        if (getBorderLeftColor()!=null){
+            json.addProperty("_border_left_color",getBorderLeftColor());
+        }
+        if (getBorderRight()!=null){
+            json.addProperty("_border_right",getBorderRight());
+        }
+        if (getBorderRightColor()!=null){
+            json.addProperty("_border_right_color",getBorderRightColor());
+        }
+        if (getBorderDiagonal()!=null){
+            json.addProperty("_border_diagonal",getBorderDiagonal());
+        }
+        if (getBorderDiagonalDirection()!=null){
+            json.addProperty("_border_diagonal_direction",getBorderDiagonalDirection());
+        }
+        if (getBorderDiagonalColor()!=null){
+            json.addProperty("_border_diagonal_color",getBorderDiagonalColor());
+        }
+        if (getTextHAlignment()!=null){
+            json.addProperty("_text_h_alignment",getTextHAlignment());
+        }
+        if (getTextVAlignment()!=null){
+            json.addProperty("_text_v_alignment",getTextVAlignment());
+        }
+        if (getTextRotation()!=null){
+            json.addProperty("_text_rotation",getTextRotation());
         }
         return json;
     }
