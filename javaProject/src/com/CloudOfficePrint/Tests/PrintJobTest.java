@@ -22,25 +22,25 @@ public class PrintJobTest {
     public void prePendAppendSubTemplatesTest(String APIKey) throws Exception {
 
 
-        Server server = new Server("http://localhost:8010",APIKey,null,
+        Server server = new Server("https://api.apexofficeprint.com/", APIKey, null,
                 null,null,null,null);
         server.setVerbose(true);
 
         Base64Resource prependFile = new Base64Resource();
-        prependFile.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/subTemplate.docx");
+        prependFile.setFileFromLocalFile("./javaProject/src/com/CloudOfficePrint/Examples/GeneralExamples/subTemplate.docx");
 
 
         Base64Resource template = new Base64Resource();
-        template.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/subTemplate.docx");
+        template.setFileFromLocalFile("./javaProject/src/com/CloudOfficePrint/Examples/GeneralExamples/subTemplate.docx");
 
         Base64Resource templateMain = new Base64Resource();
-        templateMain.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/template_prepend_append_subtemplate.docx");
+        templateMain.setFileFromLocalFile("./javaProject/src/com/CloudOfficePrint/Examples/GeneralExamples/template_prepend_append_subtemplate.docx");
 
         ElementCollection coll = new ElementCollection("data");
         coll.addElement(new Property("textTag1","test_text_tag1"));
 
         Base64Resource appendFile = new Base64Resource();
-        appendFile.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/subTemplate.docx");
+        appendFile.setFileFromLocalFile("./javaProject/src/com/CloudOfficePrint/Examples/GeneralExamples/subTemplate.docx");
 
         Hashtable<String, Resource> subTemplates = new Hashtable<String, Resource>();
         subTemplates.put("sub1",template);

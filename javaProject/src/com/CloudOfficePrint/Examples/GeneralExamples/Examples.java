@@ -39,7 +39,7 @@ public class Examples {
      */
     public void localJson(String APIKey){
         try {
-            Server server = new Server("http://apexofficeprint.com/dev/",APIKey,null,
+            Server server = new Server("https://api.apexofficeprint.com/", APIKey, null,
              //       null,null,"127.0.0.1",8000);
             null,null,null,null);
             server.setVerbose(true);
@@ -65,7 +65,7 @@ public class Examples {
      */
     public void withoutTemplate(String APIKey){
         try {
-            Server server = new Server("http://apexofficeprint.com/dev/",APIKey,null,
+            Server server = new Server("https://api.apexofficeprint.com/", APIKey, null,
                     null,null,null,null);
             server.setVerbose(true);
             Output output = new Output("docx","raw",null,null,null,null);
@@ -123,7 +123,7 @@ public class Examples {
      */
     public void localTemplate(String APIKey){
         try {
-            Server server = new Server("http://apexofficeprint.com/dev/",APIKey,null,
+            Server server = new Server("https://api.apexofficeprint.com/", APIKey, null,
                     null,null,null,null);
             server.setVerbose(true);
 
@@ -209,7 +209,7 @@ public class Examples {
      */
     public void localTemplateAsync(String APIKey){
         try {
-            Server server = new Server("http://apexofficeprint.com/dev/",APIKey,null,
+            Server server = new Server("https://api.apexofficeprint.com/", APIKey, null,
                     null,null,null,null);
             server.setVerbose(true);
             PDFOptions pdfOptions = new PDFOptions();
@@ -289,7 +289,7 @@ public class Examples {
      */
     public void loopExample(String APIKey){
         try {
-            Server server = new Server("http://apexofficeprint.com/dev/",APIKey,null,
+            Server server = new Server("https://api.apexofficeprint.com/", APIKey, null,
                     null,null,null,null);
             server.setVerbose(true);
 
@@ -446,7 +446,7 @@ public class Examples {
      */
     public void chartExample(String APIKey){
         try {
-            Server server = new Server("http://apexofficeprint.com/dev/",APIKey,null,
+            Server server = new Server("https://api.apexofficeprint.com/", APIKey, null,
                     null,null,null,null);
             server.setVerbose(true);
             Output output = new Output("pdf","raw",null,null,null,null);
@@ -503,7 +503,7 @@ public class Examples {
      */
     public void combinedChartExample(String APIKey){
         try {
-            Server server = new Server("http://apexofficeprint.com/dev/",APIKey,null,
+            Server server = new Server("https://api.apexofficeprint.com/", APIKey, null,
                     null,null,null,null);
             server.setVerbose(true);
             Output output = new Output("pdf","raw",null,null,null,null);
@@ -566,7 +566,7 @@ public class Examples {
      */
     public void qrCodeExample(String APIKey){
         try {
-            Server server = new Server("http://apexofficeprint.com/dev/",APIKey,null,
+            Server server = new Server("https://api.apexofficeprint.com/", APIKey, null,
                     null,null,null,null);
             server.setVerbose(true);
             Output output = new Output("pdf","raw",null,null,null,null);
@@ -639,7 +639,7 @@ public class Examples {
      */
     public void AOPPDFTextAndImageExample(String APIKey)  {
         try {
-            Server server = new Server("http://apexofficeprint.com/dev/",APIKey,null,
+            Server server = new Server("https://api.apexofficeprint.com/", APIKey, null,
                     null,null,null,null);
             server.setVerbose(true);
             Output output = new Output("pdf","raw",null,null,null,null);
@@ -698,7 +698,7 @@ public class Examples {
 
             //Image for on all pages.
             PDFImage pdfImage = new PDFImage(200,700,1);
-            pdfImage.setImageFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/logoAOP.jpg");
+            pdfImage.setImageFromLocalFile("./javaProject/src/com/CloudOfficePrint/Examples/GeneralExamples/logoAOP.jpg");
             //The next line should normally be used by the user in his project but when the jar is exported the reference to the files don't work anymore, so there is a replacement code to make it work.
             //image.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/logoAOP.jpg");
             //Begin replacement code:
@@ -740,7 +740,7 @@ public class Examples {
      */
     public void waterMarkAndStyledProperty(String APIKey){
         try {
-            Server server = new Server("http://apexofficeprint.com/dev/",APIKey,null,
+            Server server = new Server("https://api.apexofficeprint.com/", APIKey, null,
                     null,null,null,null);
             server.setVerbose(true);
             Output output = new Output("pdf","raw",null,null,null,null);
@@ -803,7 +803,7 @@ public class Examples {
      */
     public void signPDF(String APIKey){
         try {
-            Server server = new Server("http://apexofficeprint.com/dev/",APIKey,null,
+            Server server = new Server("https://api.apexofficeprint.com/", APIKey, null,
                     null,null,null,null);
             server.setVerbose(true);
 
@@ -813,7 +813,7 @@ public class Examples {
 
             Output output = new Output("pdf","raw",null,null,null,pdfOptions);
             Base64Resource base64Resource = new Base64Resource();
-            base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/pdfsignature_template.pdf");
+            base64Resource.setFileFromLocalFile("./javaProject/src/com/CloudOfficePrint/Examples/GeneralExamples/pdfsignature_template.pdf");
 
             //The next line should normally be used by the user in his project but when the jar is exported the reference to the files don't work anymore, so there is a replacement code to make it work.
             //base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/localTemplate.docx"); //doesn't have importance

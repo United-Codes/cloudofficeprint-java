@@ -46,6 +46,16 @@ public class SpaceXExample {
      * @throws Exception Exceptions.
      */
     public void main(String APIKey,String template) throws Exception {
+    	
+		int IMAGE_MAX_HEIGHT = 250;
+		int IMAGE_MAX_WIDTH = 400;
+		int CHART_WIDTH = 800;
+		
+		if (template.equals("docx")) {
+			IMAGE_MAX_HEIGHT = 500;
+			IMAGE_MAX_WIDTH = 640;
+			CHART_WIDTH = 650;
+		}
 
         //Get SpaceX data from https://docs.spacexdata.com
         Server server =new Server("https://api.spacexdata.com/v3/info");
@@ -75,23 +85,23 @@ public class SpaceXExample {
 
         ElementCollection spaceXData = new ElementCollection("data");
 
-        spaceXData.addAllRenderElements(spaceXData.makeCollectionFromJson("info",info));
+        spaceXData.addAllRenderElements(spaceXData.makeCollectionFromJson("info", info));
 
         spaceXData.addElement(new HyperLink("spacex_website","Website", info.get("links").getAsJsonObject().get("website").getAsString()));
-        spaceXData.addElement( new HyperLink("data_source","Data source","https://docs.spacexdata.com"));
-        spaceXData.addElement( new Property("rockets_description","Data about the rockets built by SpaceX"));
-        spaceXData.addElement( new Property("dragons_description","Data about the dragon capsules of SpaceX"));
-        spaceXData.addElement( new Property("launch_pads_description","Data about SpaceX's launch pads"));
-        spaceXData.addElement( new Property("landing_pads_description","Data about SpaceX's landing pads"));
-        spaceXData.addElement( new Property("ships_description","Data about the ships that assist SpaceX launches, including ASDS drone ships, tugs, fairing recovery ships, and various support ships"));
+        spaceXData.addElement(new HyperLink("data_source","Data source","https://docs.spacexdata.com"));
+        spaceXData.addElement(new Property("rockets_description","Data about the rockets built by SpaceX"));
+        spaceXData.addElement(new Property("dragons_description","Data about the dragon capsules of SpaceX"));
+        spaceXData.addElement(new Property("launch_pads_description","Data about SpaceX's launch pads"));
+        spaceXData.addElement(new Property("landing_pads_description","Data about SpaceX's landing pads"));
+        spaceXData.addElement(new Property("ships_description","Data about the ships that assist SpaceX launches, including ASDS drone ships, tugs, fairing recovery ships, and various support ships"));
 
         //Add rocket data
         Loop rocketLoop = new Loop("rockets");
         for (JsonElement json : rockets){
             JsonObject rocket = (JsonObject) json;
             ImageUrl img = new ImageUrl("image",rocket.get("flickr_images").getAsJsonArray().get(0).getAsString());
-            img.setMaxHeight(250);
-            img.setMaxWidth(400);
+            img.setMaxHeight(IMAGE_MAX_HEIGHT);
+            img.setMaxWidth(IMAGE_MAX_WIDTH);
             rocket.remove("flickr_images");//we don't need this anymore
             ElementCollection coll = spaceXData.makeCollectionFromJson("rocket",rocket);
             coll.addElement(img);
@@ -104,7 +114,7 @@ public class SpaceXExample {
         //Add Rocket Chart
         ArrayList<String> x = new ArrayList<String>();
         ArrayList<String> costY = new ArrayList<String>();
-        for (int i =0; i< rockets.size();i++){
+        for (int i =0; i< rockets.size(); i++){
             JsonObject rocket = (JsonObject) rockets.get(i);
             x.add(rocket.get("name").getAsString());
             costY.add(rocket.get("cost_per_launch").getAsString());
@@ -125,8 +135,7 @@ public class SpaceXExample {
         yAxisOptions.setMajorGridLines(true);
         rocketChartOptions.setYAxisOptions(yAxisOptions);
 
-        rocketChartOptions.setWidth(800);
-        rocketChartOptions.setHeight(300);
+        rocketChartOptions.setWidth(CHART_WIDTH);
         rocketChartOptions.setRoundedCorners(true);
         rocketChartOptions.setBorder(false);
         rocketChartOptions.setBackgroundColor("#c8a45c");
@@ -142,8 +151,8 @@ public class SpaceXExample {
         for (JsonElement json : dragons){
             JsonObject dragon = (JsonObject) json;
             ImageUrl img = new ImageUrl("image",dragon.get("flickr_images").getAsJsonArray().get(0).getAsString());
-            img.setMaxHeight(250);
-            img.setMaxWidth(400);
+            img.setMaxHeight(IMAGE_MAX_HEIGHT);
+            img.setMaxWidth(IMAGE_MAX_WIDTH);
             ElementCollection coll = spaceXData.makeCollectionFromJson("dragon",dragon);
             coll.addElement(img);
             coll.addElement(new Property("description", shortenDescription(dragon.get("description").getAsString())));
@@ -157,8 +166,8 @@ public class SpaceXExample {
         for (JsonElement json : launchPads){
             JsonObject launchpad = (JsonObject) json;
             ImageUrl img = new ImageUrl("image",launchpad.get("images").getAsJsonObject().get("large").getAsJsonArray().get(0).getAsString());
-            img.setMaxHeight(250);
-            img.setMaxWidth(400);
+            img.setMaxHeight(IMAGE_MAX_HEIGHT);
+            img.setMaxWidth(IMAGE_MAX_WIDTH);
             ElementCollection coll = spaceXData.makeCollectionFromJson("launchpad",launchpad);
             coll.addElement(img);
             coll.addElement(new Property("details",shortenDescription(launchpad.get("details").getAsString())));
@@ -171,8 +180,8 @@ public class SpaceXExample {
         for (JsonElement json : landingPads){
             JsonObject landingpad = (JsonObject) json;
             ImageUrl img = new ImageUrl("image",landingpad.get("images").getAsJsonObject().get("large").getAsJsonArray().get(0).getAsString());
-            img.setMaxHeight(250);
-            img.setMaxWidth(400);
+            img.setMaxHeight(IMAGE_MAX_HEIGHT);
+            img.setMaxWidth(IMAGE_MAX_WIDTH);
             ElementCollection coll = spaceXData.makeCollectionFromJson("landingpad",landingpad);
             coll.addElement(img);
             coll.addElement(new Property("details",shortenDescription(landingpad.get("details").getAsString())));
@@ -188,8 +197,8 @@ public class SpaceXExample {
             ImageUrl img;
             if (ship.get("image").isJsonNull()==false){
                 img = new ImageUrl("image",ship.get("image").getAsString());
-                img.setMaxHeight(250);
-                img.setMaxWidth(400);
+                img.setMaxHeight(IMAGE_MAX_HEIGHT);
+                img.setMaxWidth(IMAGE_MAX_WIDTH);
             }
             else {
                 img = new ImageUrl("image",null);
@@ -210,7 +219,7 @@ public class SpaceXExample {
         data.put("spaceXData",spaceXData);
 
         //Set-Up AOP Server
-        Server aopServer = new Server("http://apexofficeprint.com/dev/");
+        Server aopServer = new Server("https://api.apexofficeprint.com/");
         aopServer.setVerbose(true);
         aopServer.setAPIKey(APIKey);
 

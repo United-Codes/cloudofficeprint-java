@@ -68,13 +68,13 @@ public class SolarSystemDocx {
         data.put("planetData",planetData);
 
         //Set-Up AOP Server
-        Server aopServer = new Server("http://apexofficeprint.com/dev/");
+        Server aopServer = new Server("https://api.apexofficeprint.com/");
         aopServer.setVerbose(true);
         aopServer.setAPIKey(APIKey);
 
         Base64Resource base64Resource = new Base64Resource();
         //The next line should normally be used by the user in his project but when the jar is exported the reference to the files don't work anymore, so there is a replacement code to make it work.
-        //base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/SolarSystem/docx/solar_system_template.docx");
+        //base64Resource.setFileFromLocalFile("./javaProject/src/com/CloudOfficePrint/Examples/SolarSystem/docx/solar_system_template.docx");
         //Begin replacement code:
         InputStream resourceAsStream = getClass().getResourceAsStream("solar_system_template.docx");
         byte[] targetArray = new byte[resourceAsStream.available()];
