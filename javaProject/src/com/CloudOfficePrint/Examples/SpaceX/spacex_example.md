@@ -791,8 +791,7 @@ Response responseAOP = printJob.execute();
 responseAOP.downloadLocally("./downloads/spaceX");
 ```
 If we would want to do this asynchronously, we shoud do it like this :
-```
-java
+```java
 Thread thread = new Thread(printJob); //This is how to run send the POST request asynchronously (because it can sometimes take a few seconds before getting back the response).
 thread.start();
 //do some stuf in between

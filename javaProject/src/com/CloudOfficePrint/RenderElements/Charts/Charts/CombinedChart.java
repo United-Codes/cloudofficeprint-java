@@ -72,27 +72,26 @@ public class CombinedChart extends Chart{
     public JsonObject replaceKeyRecursive(JsonObject jsonOld, String oldKey, String newKey){
         JsonObject json = jsonOld.deepCopy();
         for (Map.Entry entry : json.entrySet()){
-            if (entry.getKey().toString() == oldKey){
-                json.remove((String) entry.getKey());
-                json.add(newKey, (JsonElement) entry.getValue());
-            }
-            if (entry.getValue()instanceof JsonObject ){
-                json.remove((String) entry.getKey());
-                json.add((String) entry.getKey(), replaceKeyRecursive((JsonObject) entry.getValue(),oldKey,newKey));
-            }
-            else if (entry.getValue()instanceof JsonArray ){
-                JsonArray newArray = new JsonArray();
-                Iterator iterator = ((JsonArray) entry.getValue()).iterator();
-                while (iterator.hasNext()){
-                    JsonObject next = (JsonObject) iterator.next();
-                    newArray.add(replaceKeyRecursive(next,oldKey,newKey));
-                }
-                for (int i =0; i< newArray.size();i++){
-                    ((JsonArray) entry.getValue()).remove(0);
-                    ((JsonArray) entry.getValue()).add(newArray.get(i));
-                }
-            }
+        	if (entry.getValue() instanceof JsonObject) {
+        		json.remove((String) entry.getKey());
+        		json.add((String) entry.getKey(), replaceKeyRecursive((JsonObject) entry.getValue(),oldKey,newKey));
+        	} else if (entry.getValue() instanceof JsonArray) {
+				JsonArray newArray = new JsonArray();
+				Iterator iterator = ((JsonArray) entry.getValue()).iterator();
+				while (iterator.hasNext()){
+				    JsonObject next = (JsonObject) iterator.next();
+				    newArray.add(replaceKeyRecursive(next, oldKey, newKey));
+				}
+				json.add((String) entry.getKey(), newArray);
+        	}
         }
+        
+        if (json.has(oldKey)){
+        	JsonElement value = json.get(oldKey);
+        	json.remove(oldKey);
+        	json.add(newKey, value);
+        }
+    
         return json;
     }
 

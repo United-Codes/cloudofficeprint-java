@@ -433,10 +433,8 @@ public class Server {
                 dataString.append(data);
             }
             myReader.close();
-        } catch (FileNotFoundException e) {
-            System.out.println(e);
-            e.printStackTrace();
         } catch (IOException e) {
+            System.out.println(e);
             e.printStackTrace();
         }
         return dataString.toString();

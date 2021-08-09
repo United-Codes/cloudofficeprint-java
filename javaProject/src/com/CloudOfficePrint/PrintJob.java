@@ -205,7 +205,7 @@ public class PrintJob implements Runnable{
      * @param aopRemoteDebug If set to true the AOP server will log your JSON into out database and you can see it when you
      *                       log into apexofficeprint.com.
      */
-    public PrintJob(Hashtable<String, RenderElement> data,Server server,Output output, Resource template,Hashtable<String,
+    public PrintJob(Hashtable<String, RenderElement> data, Server server, Output output, Resource template, Hashtable<String,
             Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles, Boolean aopRemoteDebug){
         setData(data);
         setServer(server);
