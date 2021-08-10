@@ -23,6 +23,7 @@ public class PDFOptions {
     private Boolean merge;
     private String signCertificate;
     private Boolean identifyFormFields;
+    private Boolean split;
 
     /**
      * @return password to read the output.
@@ -277,6 +278,20 @@ public class PDFOptions {
     public void setIdentifyFormFields(Boolean identifyFormFields) {
         this.identifyFormFields = identifyFormFields;
     }
+    
+    /**
+     * @return whether or not the output PDF should be split into one file per page in a zip file
+     */
+    public Boolean getSplit() {
+		return split;
+	}
+
+    /**
+     * @param split whether or not the output PDF should be split into one file per page in a zip file
+     */
+	public void setSplit(Boolean split) {
+		this.split = split;
+	}
 
     /**
      * Constructor for the PDFOptions object. Set the options with the setters. Uninitialised options won't be included in the JSON.
@@ -349,6 +364,9 @@ public class PDFOptions {
         }
         if (getIdentifyFormFields()!= null){
             json.addProperty("identify_form_fields", getIdentifyFormFields());
+        }
+        if (getSplit() != null) {
+        	json.addProperty("output_split", getSplit());
         }
         return json;
     }
