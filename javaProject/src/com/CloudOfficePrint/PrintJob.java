@@ -264,6 +264,15 @@ public class PrintJob implements Runnable{
         if (getTemplate()!=null){
             jsonForServer.add("template", getTemplate().getJSONForTemplate());
         }
+        
+        if (!(((JsonObject) jsonForServer.get("output")).has("output_type"))) {
+        	if (getTemplate() != null) {
+        		((JsonObject) jsonForServer.get("output")).addProperty("output_type", getTemplate().getFiletype());
+        	} else {
+        		((JsonObject) jsonForServer.get("output")).addProperty("output_type", "docx");
+
+        	}
+        }
 
         if (getSubTemplates()!=null){
             JsonArray subTemplates = new JsonArray();
