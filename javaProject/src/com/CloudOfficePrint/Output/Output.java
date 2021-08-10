@@ -52,7 +52,12 @@ public class Output {
     /**
      * Optional PDF options. They are described in the PDFOptions class. Default : null.
      */
-    private com.CloudOfficePrint.Output.PDFOptions PDFOptions = null;
+    private PDFOptions PDFOptions = null;
+    
+    /**
+     * Optional csv options. They are described in the CsvOptions class. Default : null.
+     */
+    private CsvOptions CsvOptions = null;
 
     /**
      * @return the encoding to use for the output.
@@ -144,6 +149,20 @@ public class Output {
     }
 
     /**
+     * @return the CsvOptions object for this output.
+     */
+    public CsvOptions getCsvOptions() {
+		return this.CsvOptions;
+	}
+
+    /**
+     * @param csvOptions Csv options object of this output. All the options are described in the CsvOptions class.
+     */
+	public void setCsvOptions(CsvOptions csvOptions) {
+		this.CsvOptions = csvOptions;
+	}
+
+	/**
      * Constructor to create a populated output object. If you don't need to instantiate some variables, use their default value as argument.
      * @param filetype This states what kind of output file type is required. It can be either the same as
      *                 template_type ("docx", "pptx", "xlsx", "html", "md"), "pdf" or any other output file supported by libreoffice/openoffice.
@@ -163,13 +182,14 @@ public class Output {
      *                        Default : null.
      * @param pdfOptions Optional PDF options. They are described in the PDFOptions class. Default : null.
      */
-    public Output(String filetype, String encoding, String converter, CloudAccessToken token, String serverDirectory, PDFOptions pdfOptions){
+    public Output(String filetype, String encoding, String converter, CloudAccessToken token, String serverDirectory, PDFOptions pdfOptions, CsvOptions csvOptions){
         setType(filetype);
         setEncoding(encoding);
         setConverter(converter);
         setAccessToken(token);
         setServerDirectory(serverDirectory);
         setPDFOptions(pdfOptions);
+        setCsvOptions(csvOptions);
     }
 
     /**

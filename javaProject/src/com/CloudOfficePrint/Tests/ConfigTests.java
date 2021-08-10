@@ -3,6 +3,7 @@ package com.CloudOfficePrint.Tests;
 import com.CloudOfficePrint.Output.CloudAcessToken.AWSToken;
 import com.CloudOfficePrint.Output.CloudAcessToken.FTPToken;
 import com.CloudOfficePrint.Output.CloudAcessToken.OAuth2Token;
+import com.CloudOfficePrint.Output.CsvOptions;
 import com.CloudOfficePrint.Output.Output;
 import com.CloudOfficePrint.Output.PDFOptions;
 import com.CloudOfficePrint.Server.Command;
@@ -38,13 +39,26 @@ public class ConfigTests {
         pdfOptions.setIdentifyFormFields(true);
         pdfOptions.setSplit(false);
 
-        Output output = new Output("pdf","raw","libreoffice",null,null,pdfOptions);
+        Output output = new Output("pdf", "raw", "libreoffice", null, null, pdfOptions, null);
 
         String correct= "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'output_read_password': 'test_pw', 'output_watermark': 'test_watermark', 'output_page_width': '500', 'output_page_height': '500', 'output_even_page': True, 'output_merge_making_even': False, 'output_modify_password': 'test_modify_password', 'output_password_protection_flag': 0, 'lock_form': True, 'output_copies': 3, 'page_margin': {'top': 5, 'bottom': 5, 'left': 5, 'right': 5}, 'output_page_format': 'test_page_format', 'output_merge': False, 'output_sign_certificate': 'test_sign_certificate', 'identify_form_fields': True, 'output_split': False}";
         //System.out.println(output.getJSON());
         JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
         //System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect,output.getJSON());
+    }
+    
+    public void testCsvOptions() {
+    	CsvOptions csvOptions = new CsvOptions();
+    	csvOptions.setCharacterSet(5);
+    	csvOptions.setFieldSeparator("fieldSep");
+    	csvOptions.setTextDelimiter("textDelim");
+    	
+    	Output output = new Output("pdf", "raw", "libreoffice", null, null, null, csvOptions);
+    	
+    	String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'output_character_set': 5, 'output_field_separator': 'fieldSep': 'output_text_delimiter': 'textDelim'}";
+    	JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+    	Assert.assertEquals(jsonCorrect,output.getJSON());
     }
 
     public void testCloudAccessTokens(){

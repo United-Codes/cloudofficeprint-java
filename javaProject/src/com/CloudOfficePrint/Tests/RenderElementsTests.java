@@ -166,7 +166,7 @@ public class RenderElementsTests {
 
         data.addElement(element2);
 
-        String correct= "{'image1': 'url', 'image1_alt_text': 'alt_text', 'image1_url': 'url', 'loop': [{'prop': 'value1'}, {'prop': 'value2'}]}";
+        String correct= "{'image1': 'url', 'image1_alt_text': 'alt_text', 'loop': [{'prop': 'value1'}, {'prop': 'value2'}]}";
         //System.out.println(data.getJSON());
         JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
         //System.out.println(jsonCorrect);

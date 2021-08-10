@@ -92,7 +92,7 @@ public class ResourcesTests {
 
         Server server = new Server("http://localhost:8010","1C511A58ECC73874E0530100007FD01A",null,
                 null,null,null,null);
-        Output output = new Output("docx","raw","libreoffice",null,null,null);
+        Output output = new Output("docx","raw","libreoffice",null,null,null, null);
         Base64Resource base64Resource = new Base64Resource("docx","test_base64");
 
         PrintJob printJob = new PrintJob(restResource,server,output,base64Resource,null,null,null,null);

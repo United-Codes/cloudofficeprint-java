@@ -46,7 +46,7 @@ public class PrintJobTest {
         subTemplates.put("sub1",template);
         subTemplates.put("sub2",template);
 
-        Output output = new Output("pdf","raw","libreoffice",null,null,null);
+        Output output = new Output("pdf","raw","libreoffice",null,null,null, null);
 
         Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
         data.put("output1",coll);

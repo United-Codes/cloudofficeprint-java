@@ -33,6 +33,7 @@ public class PDFTexts extends RenderElement {
      * @param texts Group of different PDF texts as one RenderElement. There can only be one PDFTexts element in the JSON for AOP.
      */
     public PDFTexts(PDFText[] texts){
+    	setName("AOP_PDF_TEXTS");
         setTexts(texts);
     }
 

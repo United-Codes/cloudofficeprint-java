@@ -264,7 +264,7 @@ public class SpaceXExample {
             //End replacement code.
         }
 
-        Output output = new Output(null,"raw","libreoffice",null,null,null);
+        Output output = new Output(null,"raw","libreoffice",null,null,null, null);
         PrintJob printJob = new PrintJob(data,aopServer,output,base64Resource,null,null,null,null);
 
         Response responseAOP = printJob.execute();

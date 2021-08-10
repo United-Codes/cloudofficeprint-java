@@ -294,12 +294,15 @@ public class PDFOptions {
 	}
 
     /**
-     * Constructor for the PDFOptions object. Set the options with the setters. Uninitialised options won't be included in the JSON.
+     * Constructor for the PDFOptions object. Set the options with the setters. Uninitialized options won't be included in the JSON.
      */
     public PDFOptions(){
     }
 
 
+    /**
+     * @return JSON-representation of this object
+     */
     public JsonObject getJSON(){
         JsonObject json = new JsonObject();
         if (getReadPassword()!=null){

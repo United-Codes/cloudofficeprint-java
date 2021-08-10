@@ -35,11 +35,11 @@ public class AOPException extends Exception {
     public AOPException(int responseCode, String error) {
         this.responseCode = responseCode;
         System.out.println(error);
-        String [] errorSplited = error.split("URID:");
-        String [] splitForUrid = errorSplited[1].split(" ");
+        String [] errorSplit = error.split("URID:");
+        String [] splitForUrid = errorSplit[1].split(" ");
         URID = splitForUrid[0];
-        errorSplited = error.split(URID);
-        String [] splitForUserM = errorSplited[1].split("If you are contacting AOP support please make sure you include the following.");
+        errorSplit = error.split(URID);
+        String [] splitForUserM = errorSplit[1].split("If you are contacting AOP support please make sure you include the following.");
         userMessage = splitForUserM[0];
         messageForSupport = splitForUserM[1];
     }
