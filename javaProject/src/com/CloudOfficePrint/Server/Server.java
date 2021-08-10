@@ -302,42 +302,42 @@ public class Server {
      */
     public String sendGETRequest(String urlToJoin) {
         try {
-        String url = urlToJoin;
-        URL obj = new URL(url);
-        HttpURLConnection con;
-        if(getProxyPort()!=null){
-            Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(getProxyIP(), getProxyPort()));
-            con = (HttpURLConnection) obj.openConnection(proxy);
-        }
-        else{
-            con = (HttpURLConnection) obj.openConnection();
-        }
-        if (getUsername()!=null&&getPassword()!=null){
-            String uspw = getUsername() + ':' + getPassword();
-            String encodedString = Base64.getEncoder().encodeToString(uspw.getBytes());
-            con.setRequestProperty("Proxy-Authorization", "Basic " + encodedString);
-        }
-        con.setRequestMethod("GET");
-        if (isVerbose() == true){
-            System.out.println("Server.java : " +"Sending 'GET' request to URL : " + url);
-        }
-        int responseCode = con.getResponseCode();
-        if (isVerbose() == true){
-            System.out.println("Server.java : " +"Response Code : " + responseCode);
-        }
-        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-        String inputLine;
-        StringBuffer response = new StringBuffer();
-        while ((inputLine = in.readLine()) != null) {
-            response.append(inputLine);
-        }
-        in.close();
-        if (isVerbose() == true){
-            System.out.println("Server.java : " + "server's response is : "+ response );
-            System.out.println();
-        }
-        //System.out.println(response + "\n");
-        return response.toString();
+            String url = urlToJoin;
+            URL obj = new URL(url);
+            HttpURLConnection con;
+            if(getProxyPort()!=null){
+                Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(getProxyIP(), getProxyPort()));
+                con = (HttpURLConnection) obj.openConnection(proxy);
+            }
+            else{
+                con = (HttpURLConnection) obj.openConnection();
+            }
+            if (getUsername()!=null&&getPassword()!=null){
+                String uspw = getUsername() + ':' + getPassword();
+                String encodedString = Base64.getEncoder().encodeToString(uspw.getBytes());
+                con.setRequestProperty("Proxy-Authorization", "Basic " + encodedString);
+            }
+            con.setRequestMethod("GET");
+            if (isVerbose() == true){
+                System.out.println("Server.java : " +"Sending 'GET' request to URL : " + url);
+            }
+            int responseCode = con.getResponseCode();
+            if (isVerbose() == true){
+                System.out.println("Server.java : " +"Response Code : " + responseCode);
+            }
+            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+            if (isVerbose() == true){
+                System.out.println("Server.java : " + "server's response is : "+ response );
+                System.out.println();
+            }
+            //System.out.println(response + "\n");
+            return response.toString();
 
         }
         catch (Exception e){

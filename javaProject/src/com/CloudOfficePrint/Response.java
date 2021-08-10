@@ -4,6 +4,7 @@ import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Class for dealing with the AOP server's response to a printjob request.
@@ -12,7 +13,7 @@ public class Response {
 
     private String ext;
     private String mimetype;
-    private  byte[] body;
+    private byte[] body;
 
     /**
      * @return mimetype of the file in the body.
@@ -61,12 +62,27 @@ public class Response {
      * @param body (file base64) of the response.
      * @param mimetype Mimetype of the file in the body.
      */
-    public Response(String ext,String mimetype, byte[] body){
+    public Response(String ext, String mimetype, byte[] body){
         setExt(ext);
         setMimetype(mimetype);
         setBody(body);
     }
 
+    /**
+     * Return the string representation of this Response.
+     * Useful if the server returns a JSON (e.g. for output_type 'count_tags').
+     * @return string representation of this Response
+     * @throws Exception if the byte-array cannot be decoded
+     */
+    public String asString() throws Exception {
+    	try {
+    		return new String(this.body, StandardCharsets.UTF_8);
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    		return e.toString();
+    	}
+    }
+    
     /**
      * Downloads the file locally to the given path, filename needs to be specified at the end of the path, not the extension.
      * Creates the file at given path if it doesn't exist yet, overwrites it otherwise.

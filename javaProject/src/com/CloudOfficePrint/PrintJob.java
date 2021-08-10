@@ -326,7 +326,7 @@ public class PrintJob implements Runnable{
      * Asynchronous version of execute(). The response can be obtained with the getResponse() function.
      * Creates the adequate JSON and sends it to the AOP server.
      */
-    public void run()  {
+    public void run() {
         JsonObject JSONForServer = null;
         JSONForServer = getJSON();
         if (getServer().isReachable() == true){
