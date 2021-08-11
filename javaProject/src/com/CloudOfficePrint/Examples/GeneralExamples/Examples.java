@@ -17,6 +17,7 @@ import com.CloudOfficePrint.RenderElements.PDF.PDFImages;
 import com.CloudOfficePrint.RenderElements.PDF.PDFText;
 import com.CloudOfficePrint.RenderElements.PDF.PDFTexts;
 import com.CloudOfficePrint.Resources.Base64Resource;
+import com.CloudOfficePrint.Resources.Resource;
 import com.CloudOfficePrint.Server.Server;
 import com.CloudOfficePrint.Tests.PrintJobTest;
 import com.google.gson.JsonObject;
@@ -627,9 +628,69 @@ public class Examples {
      * @param APIKey Your AOP APIKey.
      * @throws Exception Exceptions.
      */
-    public void prePendAppendSubTemplatesExample(String APIKey) throws Exception {
-        PrintJobTest printJobTest = new PrintJobTest();
-        printJobTest.prePendAppendSubTemplatesTest(APIKey);
+    public void prependAppendSubTemplatesExample(String APIKey) throws Exception {
+    	Server server = new Server("http://apexofficeprint.com/dev/", APIKey, null,
+                null,null,null,null);
+        server.setVerbose(true);
+        
+        Base64Resource prependFile = new Base64Resource();
+        InputStream prependFileAsStream = getClass().getResourceAsStream("subTemplate.docx");
+        byte[] prependFileTargetArray = new byte[prependFileAsStream.available()];
+        prependFileAsStream.read(prependFileTargetArray);
+        String prependFileEncodedString = Base64.getEncoder().encodeToString(prependFileTargetArray);
+        prependFile.setFileBase64(prependFileEncodedString);
+        prependFile.setFiletype("docx");
+        prependFile.setMimeType(Mimetype.getMimeType("docx"));
+
+//        prependFile.setFileFromLocalFile("./javaProject/src/com/CloudOfficePrint/Examples/GeneralExamples/subTemplate.docx");
+
+
+        Base64Resource template = new Base64Resource();
+        InputStream templateAsStream = getClass().getResourceAsStream("subTemplate.docx");
+        byte[] templateTargetArray = new byte[templateAsStream.available()];
+        templateAsStream.read(templateTargetArray);
+        String templateEncodedString = Base64.getEncoder().encodeToString(templateTargetArray);
+        template.setFileBase64(templateEncodedString);
+        template.setFiletype("docx");
+        template.setMimeType(Mimetype.getMimeType("docx"));
+//        template.setFileFromLocalFile("./javaProject/src/com/CloudOfficePrint/Examples/GeneralExamples/subTemplate.docx");
+
+        Base64Resource templateMain = new Base64Resource();
+        InputStream templateMainAsStream = getClass().getResourceAsStream("template_prepend_append_subtemplate.docx");
+        byte[] templateMainTargetArray = new byte[templateMainAsStream.available()];
+        templateMainAsStream.read(templateMainTargetArray);
+        String templateMainEncodedString = Base64.getEncoder().encodeToString(templateMainTargetArray);
+        templateMain.setFileBase64(templateMainEncodedString);
+        templateMain.setFiletype("docx");
+        templateMain.setMimeType(Mimetype.getMimeType("docx"));
+//        templateMain.setFileFromLocalFile("./javaProject/src/com/CloudOfficePrint/Examples/GeneralExamples/template_prepend_append_subtemplate.docx");
+
+        ElementCollection coll = new ElementCollection("data");
+        coll.addElement(new Property("textTag1","test_text_tag1"));
+
+        Base64Resource appendFile = new Base64Resource();
+        InputStream appendFileAsStream = getClass().getResourceAsStream("subTemplate.docx");
+        byte[] appendFileTargetArray = new byte[appendFileAsStream.available()];
+        appendFileAsStream.read(appendFileTargetArray);
+        String appendFileEncodedString = Base64.getEncoder().encodeToString(appendFileTargetArray);
+        appendFile.setFileBase64(appendFileEncodedString);
+        appendFile.setFiletype("docx");
+        appendFile.setMimeType(Mimetype.getMimeType("docx"));
+//        appendFile.setFileFromLocalFile("./javaProject/src/com/CloudOfficePrint/Examples/GeneralExamples/subTemplate.docx");
+
+        Hashtable<String, Resource> subTemplates = new Hashtable<String, Resource>();
+        subTemplates.put("sub1",template);
+        subTemplates.put("sub2",template);
+
+        Output output = new Output("pdf","raw","libreoffice",null,null,null, null);
+
+        Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
+        data.put("output1",coll);
+
+        PrintJob printJob = new PrintJob(data,server,output,templateMain,subTemplates, new Resource[]{prependFile},new Resource[]{appendFile},null);
+        
+        printJob.execute().downloadLocally("./downloads/prependAppendSubtemplates");
+
     }
 
 
@@ -698,9 +759,8 @@ public class Examples {
 
             //Image for on all pages.
             PDFImage pdfImage = new PDFImage(200,700,1);
-            pdfImage.setImageFromLocalFile("./javaProject/src/com/CloudOfficePrint/Examples/GeneralExamples/logoAOP.jpg");
             //The next line should normally be used by the user in his project but when the jar is exported the reference to the files don't work anymore, so there is a replacement code to make it work.
-            //image.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/logoAOP.jpg");
+            // pdfImage.setImageFromLocalFile("./javaProject/src/com/CloudOfficePrint/Examples/GeneralExamples/logoAOP.jpg");
             //Begin replacement code:
             resourceAsStream = getClass().getResourceAsStream("logoAOP.jpg");
             targetArray = new byte[resourceAsStream.available()];
@@ -813,10 +873,9 @@ public class Examples {
 
             Output output = new Output("pdf","raw",null,null,null,pdfOptions, null);
             Base64Resource base64Resource = new Base64Resource();
-            base64Resource.setFileFromLocalFile("./javaProject/src/com/CloudOfficePrint/Examples/GeneralExamples/pdfsignature_template.pdf");
-
+            
             //The next line should normally be used by the user in his project but when the jar is exported the reference to the files don't work anymore, so there is a replacement code to make it work.
-            //base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/localTemplate.docx"); //doesn't have importance
+            // base64Resource.setFileFromLocalFile("./javaProject/src/com/CloudOfficePrint/Examples/GeneralExamples/pdfsignature_template.pdf");
             //Begin replacement code:
             InputStream resourceAsStream = getClass().getResourceAsStream("pdfsignature_template.pdf");
             byte[] targetArray = new byte[resourceAsStream.available()];

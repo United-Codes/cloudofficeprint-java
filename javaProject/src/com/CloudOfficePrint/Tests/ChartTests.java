@@ -209,7 +209,7 @@ public class ChartTests {
         chartOptions.setWidth(50);
         chartOptions.setBackgroundColor("gray");
         chartOptions.setBackgroundOpacity(50);
-        LineChart lineChart = new LineChart("lines",chartOptions,lineSerie1,lineSerie2); //chartoptions of subcharts will be removed.
+        LineChart lineChart = new LineChart("lines",chartOptions,lineSerie1,lineSerie2);
 
 
         BarSeries bar1 = new BarSeries("bar1", new String[]{"a", "b", "c"}, new String[]{"1", "2", "3"});

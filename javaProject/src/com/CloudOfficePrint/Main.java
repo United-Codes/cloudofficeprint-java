@@ -23,7 +23,7 @@ public class Main {
 //		example.chartExample(args[0]);
 //		example.combinedChartExample(args[0]);
 //		example.qrCodeExample(args[0]);
-//		example.prePendAppendSubTemplatesExample(args[0]);
+//		example.prependAppendSubTemplatesExample(args[0]);
 //		example.AOPPDFTextAndImageExample(args[0]);
 //		example.waterMarkAndStyledProperty(args[0]);
 //		example.signPDF(args[0]);
@@ -105,5 +105,8 @@ public class Main {
         renderElementsTests.textBox();
         renderElementsTests.elementCollection();
         //footnote, formula, HTML, MarkDownContent, PageBreak, Raw, RightToLeft don't need a test as they are all similar to Property.
+    
+        PrintJobTest printJobTest = new PrintJobTest();
+        printJobTest.prependAppendSubTemplatesTest();
     }
 }
