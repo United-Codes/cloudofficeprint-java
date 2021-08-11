@@ -222,12 +222,12 @@ public class ChartTests {
         barChartOptions.setRoundedCorners(false);
         BarChart barChart = new BarChart("bar_chart",barChartOptions,bar1,bar2);
 
-        CombinedChart combinedChart = new CombinedChart("combined_chart",chartOptions, new Chart[]{columnChart,lineChart}, new Chart[]{barChart}); //chartoptions of subcharts will be removed.
+        CombinedChart combinedChart = new CombinedChart("combined_chart",chartOptions, new Chart[]{columnChart,lineChart}, new Chart[]{barChart});
 
-        String correct = "{'combined_chart': {'multiples': [{'columns': [{'data': [{'x': 'a', 'y': '1'}, {'x': 'b', 'y': '2'}, {'x': 'c', 'y': '3'}], 'name': 'column1'}, {'data': [{'x': 'a', 'y': '4'}, {'x': 'b', 'y': '5'}, {'x': 'c', 'y': '6'}], 'name': 'column2'}], 'type': 'column'}, {'lines': [{'data': [{'x': 'a', 'y': '1'}, {'x': 'b', 'y': '2'}, {'x': 'c', 'y': '3'}], 'name': 'line1', 'symbol': 'square'}, {'data': [{'x': 'a', 'y': '4'}, {'x': 'b', 'y': '5'}, {'x': 'c', 'y': '6'}], 'name': 'line2', 'symbol': 'square'}], 'type': 'line'}, {'bars': [{'data': [{'x': 'a', 'y2': '1'}, {'x': 'b', 'y2': '2'}, {'x': 'c', 'y2': '3'}], 'name': 'bar1'}, {'data': [{'x': 'a', 'y2': '4'}, {'x': 'b', 'y2': '5'}, {'x': 'c', 'y2': '6'}], 'name': 'bar2'}], 'type': 'bar'}], 'options': {'axis': {'x': {}, 'y': {}}, 'width': 50, 'backgroundColor': 'gray', 'backgroundOpacity': 50}, 'type': 'multiple'}}\n";
+        String correct = "{\"combined_chart\":{\"multiples\":[{\"columns\":[{\"data\":[{\"x\":\"a\",\"y\":\"1\"},{\"x\":\"b\",\"y\":\"2\"},{\"x\":\"c\",\"y\":\"3\"}],\"name\":\"column1\"},{\"data\":[{\"x\":\"a\",\"y\":\"4\"},{\"x\":\"b\",\"y\":\"5\"},{\"x\":\"c\",\"y\":\"6\"}],\"name\":\"column2\"}],\"type\":\"column\"},{\"options\":{\"axis\":{\"x\":{},\"y\":{}},\"width\":50,\"backgroundColor\":\"gray\",\"backgroundOpacity\":50},\"lines\":[{\"data\":[{\"x\":\"a\",\"y\":\"1\"},{\"x\":\"b\",\"y\":\"2\"},{\"x\":\"c\",\"y\":\"3\"}],\"name\":\"line1\",\"symbol\":\"square\"},{\"data\":[{\"x\":\"a\",\"y\":\"4\"},{\"x\":\"b\",\"y\":\"5\"},{\"x\":\"c\",\"y\":\"6\"}],\"name\":\"line2\",\"symbol\":\"square\"}],\"type\":\"line\"},{\"options\":{\"axis\":{\"x\":{},\"y\":{}},\"width\":100,\"height\":100,\"roundedCorners\":false},\"bars\":[{\"data\":[{\"x\":\"a\",\"y2\":\"1\"},{\"x\":\"b\",\"y2\":\"2\"},{\"x\":\"c\",\"y2\":\"3\"}],\"name\":\"bar1\"},{\"data\":[{\"x\":\"a\",\"y2\":\"4\"},{\"x\":\"b\",\"y2\":\"5\"},{\"x\":\"c\",\"y2\":\"6\"}],\"name\":\"bar2\"}],\"type\":\"bar\"}],\"options\":{\"axis\":{\"x\":{},\"y\":{}},\"width\":50,\"backgroundColor\":\"gray\",\"backgroundOpacity\":50},\"type\":\"multiple\"}}";
         JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
-        //System.out.println(combinedChart.getJSON());
-        //System.out.println(jsonCorrect);
+//        System.out.println(combinedChart.getJSON());
+//        System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect,combinedChart.getJSON());
     }
 

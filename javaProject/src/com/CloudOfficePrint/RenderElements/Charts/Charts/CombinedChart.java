@@ -64,6 +64,7 @@ public class CombinedChart extends Chart{
 
     /**
      * Replaces all the occurrences of oldKey in the json with the newKey.
+     * Objects with key "options" will not be modified (y-axis stays y-axis).
      * @param jsonOld Json to be modified.
      * @param oldKey Old keys to be replaced.
      * @param newKey New key to replace the old key.
@@ -71,10 +72,13 @@ public class CombinedChart extends Chart{
      */
     public JsonObject replaceKeyRecursive(JsonObject jsonOld, String oldKey, String newKey){
         JsonObject json = jsonOld.deepCopy();
-        for (Map.Entry entry : json.entrySet()){
+
+        for (Map.Entry entry : jsonOld.entrySet()){
         	if (entry.getValue() instanceof JsonObject) {
-        		json.remove((String) entry.getKey());
-        		json.add((String) entry.getKey(), replaceKeyRecursive((JsonObject) entry.getValue(),oldKey,newKey));
+        		if (entry.getKey() != "options") {
+        			json.remove((String) entry.getKey());
+        			json.add((String) entry.getKey(), replaceKeyRecursive((JsonObject) entry.getValue(),oldKey,newKey));
+        		}
         	} else if (entry.getValue() instanceof JsonArray) {
 				JsonArray newArray = new JsonArray();
 				Iterator iterator = ((JsonArray) entry.getValue()).iterator();
@@ -91,8 +95,9 @@ public class CombinedChart extends Chart{
         	json.remove(oldKey);
         	json.add(newKey, value);
         }
-    
+        
         return json;
+    
     }
 
     /**
@@ -103,14 +108,12 @@ public class CombinedChart extends Chart{
         for (Chart chart : getCharts()){
             JsonObject dict = chart.getJSON();
             dict = dict.getAsJsonObject(chart.getName());
-            dict.remove("options");
             array.add(dict);
         }
         for (Chart chart : getSecondaryCharts()){
             JsonObject dict = chart.getJSON();
             dict = dict.getAsJsonObject(chart.getName());
-            dict.remove("options");
-            dict=replaceKeyRecursive(dict,"y","y2"); //j'ai changé qlq chose ici
+            dict=replaceKeyRecursive(dict,"y","y2");
             array.add(dict);
         }
         return array;
