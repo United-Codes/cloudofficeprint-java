@@ -58,7 +58,7 @@ public class CellStyleDocxPpt extends CellStyle{
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         if (getBackgroundColor()!=null){
-            json.addProperty("_background_color",getBackgroundColor());
+            json.addProperty("_cell_background_color",getBackgroundColor());
         }
         if (getWidth()!=null){
             json.addProperty("_width",getWidth());

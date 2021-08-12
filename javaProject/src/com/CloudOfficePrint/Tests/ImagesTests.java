@@ -16,7 +16,7 @@ public class ImagesTests {
         imageBase64.setAltText("alt_text");
         imageBase64.setWrapText("wrap_text");
         imageBase64.setRotation(45);
-        imageBase64.setTransparency("50%"); //changer ca
+        imageBase64.setTransparency("50%");
         imageBase64.setTargetUrl("url");
         imageBase64.setWidth(30);
         imageBase64.setHeight(25);
@@ -36,7 +36,7 @@ public class ImagesTests {
         imageUrl.setAltText("alt_text");
         imageUrl.setWrapText("wrap_text");
         imageUrl.setRotation(45);
-        imageUrl.setTransparency("50%"); //changer ca
+        imageUrl.setTransparency("50%");
         imageUrl.setTargetUrl("url");
         imageUrl.setWidth(30);
         imageUrl.setHeight(25);

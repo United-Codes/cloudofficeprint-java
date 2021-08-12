@@ -24,7 +24,7 @@ public class RenderElementsTests {
     public void cellStylePropertyDocx(){
         CellStyleDocxPpt cellStyle = new CellStyleDocxPpt("#eb4034","10");
         TableCell cell = new TableCell("name","value",cellStyle);
-        String correct= "{'name': 'value', 'name_background_color': '#eb4034', 'name_width': '10'}";
+        String correct= "{'name': 'value', 'name_cell_background_color': '#eb4034', 'name_width': '10'}";
         //System.out.println(cell.getJSON());
         JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
         //System.out.println(jsonCorrect);

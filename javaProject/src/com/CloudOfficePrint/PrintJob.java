@@ -287,7 +287,7 @@ public class PrintJob implements Runnable{
         if (getAppendFiles() != null && getAppendFiles().length>0){
             JsonArray appendFiles = new JsonArray();
             for(Resource appendFile : getAppendFiles()){
-                appendFiles.add(appendFile.getJSONForSecondaryFile()); //check je pense que malheureusement il manque les [] pour [files].
+                appendFiles.add(appendFile.getJSONForSecondaryFile());
             }
             jsonForServer.add("append_files",appendFiles);
         }
@@ -312,7 +312,7 @@ public class PrintJob implements Runnable{
         if (getPrependFiles() != null && getPrependFiles().length>0){
             JsonArray prependFiles = new JsonArray();
             for(Resource prependFile : getPrependFiles()){
-                prependFiles.add(prependFile.getJSONForSecondaryFile()); //check je pense que malheureusement il manque les [] pour [files].
+                prependFiles.add(prependFile.getJSONForSecondaryFile());
             }
             jsonForServer.add("prepend_files",prependFiles);
         }
