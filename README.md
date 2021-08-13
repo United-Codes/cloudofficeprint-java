@@ -105,6 +105,8 @@ The examples can be found in the directory 'src/com/CloudOfficePrint/Examples' o
 
 The examples can be run from the Main.java file, which can be found in the directory 'src/com/CloudOfficePrint/' of the project on [Github](https://github.com/United-Codes/apexofficeprint-java). In the Main.java file you can uncomment the examples you want to run.
 
+To run the Main.java file in Eclipse, you can right-click inside the editor of the Main.java file, then choose 'Run As > 1 Java Application'. You have to pass your API key as an argument when running the Main.java file. To do this, right-click inside the editor of the Main.java file and select 'Run As > Run Configurations...'. Then open the tab 'Arguments' and enter your API key inside the 'Program arguments' box and click 'Run'.
+
 # Documentation
 
 The documentation for this SDK can be found inside the `docs/` folder on [Github](https://github.com/United-Codes/apexofficeprint-java). If you want to generate this documentation yourself, you can use Eclipse to achieve that. Select the root folder, click 'Project' in the top bar and click 'Generate Javadoc...'.
