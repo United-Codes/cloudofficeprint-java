@@ -7,10 +7,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Only supported in Word and Powerpoint templates.
- * This {style } tag allows user to style their text.
+ * Only supported in Word and Powerpoint templates. This {style } tag allows
+ * user to style their text.
  */
-public class StyledProperty extends RenderElement{
+public class StyledProperty extends RenderElement {
 
     private String font;
     private String fontSize;
@@ -78,11 +78,12 @@ public class StyledProperty extends RenderElement{
     }
 
     /**
-     * @return  Whether text is in italic.
+     * @return Whether text is in italic.
      */
     public Boolean getItalic() {
         return italic;
     }
+
     /**
      * @param italic Whether text is in italic.
      */
@@ -91,7 +92,7 @@ public class StyledProperty extends RenderElement{
     }
 
     /**
-     * @return  Whether text is underlind.
+     * @return Whether text is underlind.
      */
     public Boolean getUnderline() {
         return underline;
@@ -105,7 +106,7 @@ public class StyledProperty extends RenderElement{
     }
 
     /**
-     * @return  Whether text is strikethroughed.
+     * @return Whether text is strikethroughed.
      */
     public Boolean getStrikethrough() {
         return strikethrough;
@@ -134,10 +135,11 @@ public class StyledProperty extends RenderElement{
 
     /**
      * Represents styled text. Set the style with the set functions.
-     * @param name Name of the property for the tag.
+     * 
+     * @param name  Name of the property for the tag.
      * @param value Value to replace the tag with.
      */
-    public StyledProperty(String name, String value){
+    public StyledProperty(String name, String value) {
         setName(name);
         setValue(value);
     }
@@ -148,41 +150,42 @@ public class StyledProperty extends RenderElement{
     @Override
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
-        json.addProperty(getName(),getValue());
-        if(getFont()!=null){
-            json.addProperty(getName()+"_font_family",getFont());
+        json.addProperty(getName(), getValue());
+        if (getFont() != null) {
+            json.addProperty(getName() + "_font_family", getFont());
         }
-        if(getFontSize()!=null){
-            json.addProperty(getName()+"_font_size", getFontSize());
+        if (getFontSize() != null) {
+            json.addProperty(getName() + "_font_size", getFontSize());
         }
-        if(getFontColor()!=null){
-            json.addProperty(getName()+"_font_color", getFontColor());
+        if (getFontColor() != null) {
+            json.addProperty(getName() + "_font_color", getFontColor());
         }
-        if(getBold()!=null){
-            json.addProperty(getName()+"_bold",getBold());
+        if (getBold() != null) {
+            json.addProperty(getName() + "_bold", getBold());
         }
-        if(getItalic()!=null){
-            json.addProperty(getName()+"_italic",getItalic());
+        if (getItalic() != null) {
+            json.addProperty(getName() + "_italic", getItalic());
         }
-        if(getUnderline()!=null){
-            json.addProperty(getName()+"_underline",getUnderline());
+        if (getUnderline() != null) {
+            json.addProperty(getName() + "_underline", getUnderline());
         }
-        if(getStrikethrough()!=null){
-            json.addProperty(getName()+"_strikethrough",getStrikethrough());
+        if (getStrikethrough() != null) {
+            json.addProperty(getName() + "_strikethrough", getStrikethrough());
         }
-        if(getHighlightColor()!=null){
-            json.addProperty(getName()+"_highlight", getHighlightColor());
+        if (getHighlightColor() != null) {
+            json.addProperty(getName() + "_highlight", getHighlightColor());
         }
         return json;
     }
 
     /**
-     * @return An immutable set containing all available template tags this element can replace.
+     * @return An immutable set containing all available template tags this element
+     *         can replace.
      */
     @Override
     public Set<String> getTemplateTags() {
         Set<String> hash_Set = new HashSet<String>();
-        hash_Set.add("{style "+getName()+"}");
+        hash_Set.add("{style " + getName() + "}");
         return ImmutableSet.copyOf(hash_Set);
     }
 }

@@ -7,11 +7,10 @@ import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 
-
 /**
  * Represents a column chart.
  */
-public class ColumnChart extends Chart{
+public class ColumnChart extends Chart {
     ArrayList<ColumnSeries> columnSeries = new ArrayList<>();
 
     /**
@@ -30,14 +29,15 @@ public class ColumnChart extends Chart{
 
     /**
      * Represents a column chart.
-     * @param name Name of the chart (for the tag).
-     * @param options Options of the chart.
+     * 
+     * @param name         Name of the chart (for the tag).
+     * @param options      Options of the chart.
      * @param columnSeries Series with the data for the chart.
      */
-    public ColumnChart(String name, ChartOptions options, ColumnSeries ... columnSeries){
+    public ColumnChart(String name, ChartOptions options, ColumnSeries... columnSeries) {
         setName(name);
         setOptions(options);
-        for (ColumnSeries columnSerie: columnSeries){
+        for (ColumnSeries columnSerie : columnSeries) {
             getColumnSeries().add(columnSerie);
         }
     }
@@ -49,16 +49,16 @@ public class ColumnChart extends Chart{
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         JsonObject result = new JsonObject();
-        if(getOptions()!=null){
+        if (getOptions() != null) {
             result.add("options", getOptions().getJSON());
         }
         JsonArray lines = new JsonArray();
-        for (ColumnSeries columnSerie : getColumnSeries()){
+        for (ColumnSeries columnSerie : getColumnSeries()) {
             lines.add(columnSerie.getJSON());
         }
         result.add("columns", lines);
-        result.addProperty("type","column");
-        json.add(getName(),result);
+        result.addProperty("type", "column");
+        json.add(getName(), result);
         return json;
     }
 

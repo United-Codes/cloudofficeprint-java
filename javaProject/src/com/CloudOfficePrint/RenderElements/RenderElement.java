@@ -1,13 +1,12 @@
 package com.CloudOfficePrint.RenderElements;
 
-
 import com.google.gson.JsonObject;
 
 import java.util.Set;
 
-
 /**
- * Abstract class for renderElements. RenderElements will replace their corresponding tag based on their name in the template(s).
+ * Abstract class for renderElements. RenderElements will replace their
+ * corresponding tag based on their name in the template(s).
  */
 public abstract class RenderElement {
 
@@ -48,7 +47,8 @@ public abstract class RenderElement {
     abstract public JsonObject getJSON();
 
     /**
-     * @return An immutable set containing all available template tags this element can replace.
+     * @return An immutable set containing all available template tags this element
+     *         can replace.
      */
     abstract public Set<String> getTemplateTags();
 }

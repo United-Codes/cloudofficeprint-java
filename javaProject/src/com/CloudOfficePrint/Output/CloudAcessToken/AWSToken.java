@@ -5,7 +5,7 @@ import com.google.gson.JsonObject;
 /**
  * Class to use for AWS tokens to store output on AWS.
  */
-public class AWSToken extends CloudAccessToken{
+public class AWSToken extends CloudAccessToken {
 
     /**
      * AWS access key ID.
@@ -46,11 +46,13 @@ public class AWSToken extends CloudAccessToken{
     }
 
     /**
-     * Constructor for an AWSToken object. Needs to be used if output wants to be stored on AWS.
-     * @param keyID AWS access key ID.
+     * Constructor for an AWSToken object. Needs to be used if output wants to be
+     * stored on AWS.
+     * 
+     * @param keyID     AWS access key ID.
      * @param secretKey AWS secret key.
      */
-    public AWSToken(String keyID, String secretKey){
+    public AWSToken(String keyID, String secretKey) {
         setService("aws_s3");
         setKeyID(keyID);
         setSecretKey(secretKey);
@@ -62,11 +64,11 @@ public class AWSToken extends CloudAccessToken{
     @Override
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
-        json.addProperty("output_location",getService());
+        json.addProperty("output_location", getService());
         JsonObject token = new JsonObject();
-        token.addProperty("access_key",getKeyID());
-        token.addProperty("secret_access_key",getSecretKey());
-        json.add("cloud_access_token",token);
+        token.addProperty("access_key", getKeyID());
+        token.addProperty("secret_access_key", getSecretKey());
+        json.add("cloud_access_token", token);
         return json;
     }
 }

@@ -8,12 +8,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Loop where a slide will be repeated for each element of the loop. Only supported in PowerPoint templates.
+ * Loop where a slide will be repeated for each element of the loop. Only
+ * supported in PowerPoint templates.
  */
-public class SlideLoop extends Loop{
+public class SlideLoop extends Loop {
 
     /**
      * To repeat a slide for each element of elements.
+     * 
      * @param name     Name of this loop for the tag.
      * @param elements Elements to replace the tag with.
      */
@@ -22,13 +24,14 @@ public class SlideLoop extends Loop{
     }
 
     /**
-     * @return An immutable set containing all available template tags this element can replace.
+     * @return An immutable set containing all available template tags this element
+     *         can replace.
      */
     @Override
     public Set<String> getTemplateTags() {
         Set<String> hash_Set = new HashSet<String>();
         hash_Set.add("{!" + getName() + "}");
-        for (RenderElement element : getElements()){
+        for (RenderElement element : getElements()) {
             for (String tag : getTemplateTags())
                 hash_Set.add(tag);
         }

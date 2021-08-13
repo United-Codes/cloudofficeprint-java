@@ -7,12 +7,10 @@ import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 
-
-
 /**
  * Represents a stacked bar chart where the x-axis is expressed in percentage.
  */
-public class BarStackedPercentChart extends Chart{
+public class BarStackedPercentChart extends Chart {
     ArrayList<BarStackedPercentSeries> barStackedPercentSeries = new ArrayList<BarStackedPercentSeries>();
 
     /**
@@ -23,7 +21,8 @@ public class BarStackedPercentChart extends Chart{
     }
 
     /**
-     * @param barStackedPercentSeries BarStackedPercentSeries with the data for the chart.
+     * @param barStackedPercentSeries BarStackedPercentSeries with the data for the
+     *                                chart.
      */
     public void setBarStackedPercentSeries(ArrayList<BarStackedPercentSeries> barStackedPercentSeries) {
         this.barStackedPercentSeries = barStackedPercentSeries;
@@ -31,14 +30,16 @@ public class BarStackedPercentChart extends Chart{
 
     /**
      * Represents a stacked bar chart.
-     * @param name Name of the chart (for the tag).
-     * @param options Options of the chart.
+     * 
+     * @param name                    Name of the chart (for the tag).
+     * @param options                 Options of the chart.
      * @param barStackedPercentSeries Series with the data for the chart.
      */
-    public BarStackedPercentChart(String name, ChartOptions options, BarStackedPercentSeries ... barStackedPercentSeries){
+    public BarStackedPercentChart(String name, ChartOptions options,
+            BarStackedPercentSeries... barStackedPercentSeries) {
         setName(name);
         setOptions(options);
-        for (BarStackedPercentSeries barStackedPercentSerie: barStackedPercentSeries){
+        for (BarStackedPercentSeries barStackedPercentSerie : barStackedPercentSeries) {
             getBarStackedPercentSeries().add(barStackedPercentSerie);
         }
     }
@@ -50,16 +51,16 @@ public class BarStackedPercentChart extends Chart{
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         JsonObject result = new JsonObject();
-        if(getOptions()!=null){
+        if (getOptions() != null) {
             result.add("options", getOptions().getJSON());
         }
         JsonArray lines = new JsonArray();
-        for (BarStackedPercentSeries barStackedPercentSerie : getBarStackedPercentSeries()){
+        for (BarStackedPercentSeries barStackedPercentSerie : getBarStackedPercentSeries()) {
             lines.add(barStackedPercentSerie.getJSON());
         }
         result.add("bars", lines);
-        result.addProperty("type","barStackedPercent");
-        json.add(getName(),result);
+        result.addProperty("type", "barStackedPercent");
+        json.add(getName(), result);
         return json;
     }
 

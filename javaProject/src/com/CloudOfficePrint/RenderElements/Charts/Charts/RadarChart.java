@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Represents a radar chart.
  */
-public class RadarChart extends Chart{
+public class RadarChart extends Chart {
     ArrayList<RadarSeries> series = new ArrayList<>();
 
     /**
@@ -29,14 +29,15 @@ public class RadarChart extends Chart{
 
     /**
      * Represents a radar chart.
-     * @param name Name of the chart (for the tag).
+     * 
+     * @param name    Name of the chart (for the tag).
      * @param options Options of the chart.
-     * @param series Series with the data for the chart.
+     * @param series  Series with the data for the chart.
      */
-    public RadarChart(String name, ChartOptions options, RadarSeries ... series){
+    public RadarChart(String name, ChartOptions options, RadarSeries... series) {
         setName(name);
         setOptions(options);
-        for (RadarSeries serie: series){
+        for (RadarSeries serie : series) {
             getSeries().add(serie);
         }
     }
@@ -48,16 +49,16 @@ public class RadarChart extends Chart{
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         JsonObject result = new JsonObject();
-        if(getOptions()!=null){
+        if (getOptions() != null) {
             result.add("options", getOptions().getJSON());
         }
         JsonArray lines = new JsonArray();
-        for (RadarSeries serie : getSeries()){
+        for (RadarSeries serie : getSeries()) {
             lines.add(serie.getJSON());
         }
         result.add("radars", lines);
-        result.addProperty("type","radar");
-        json.add(getName(),result);
+        result.addProperty("type", "radar");
+        json.add(getName(), result);
         return json;
     }
 

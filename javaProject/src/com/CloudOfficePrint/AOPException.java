@@ -1,8 +1,9 @@
 package com.CloudOfficePrint;
 
 /**
- * Class for handling a HTTP response of the AOP server when the responseCode is /= 200.
- * Has 4 variables responseCode, URID, userMessage and messageForSupport.
+ * Class for handling a HTTP response of the AOP server when the responseCode is
+ * /= 200. Has 4 variables responseCode, URID, userMessage and
+ * messageForSupport.
  */
 public class AOPException extends Exception {
 
@@ -27,19 +28,21 @@ public class AOPException extends Exception {
     private String messageForSupport;
 
     /**
-     * Sets this.responseCode to responseCode.
-     * Parses the given response error to get URID, userMessage, messageForSupport.
+     * Sets this.responseCode to responseCode. Parses the given response error to
+     * get URID, userMessage, messageForSupport.
+     * 
      * @param responseCode responseCode of the HTTP response of the AOP server.
-     * @param error text of the HTTP response (error) of the AOP server.
+     * @param error        text of the HTTP response (error) of the AOP server.
      */
     public AOPException(int responseCode, String error) {
         this.responseCode = responseCode;
         System.out.println(error);
-        String [] errorSplit = error.split("URID:");
-        String [] splitForUrid = errorSplit[1].split(" ");
+        String[] errorSplit = error.split("URID:");
+        String[] splitForUrid = errorSplit[1].split(" ");
         URID = splitForUrid[0];
         errorSplit = error.split(URID);
-        String [] splitForUserM = errorSplit[1].split("If you are contacting AOP support please make sure you include the following.");
+        String[] splitForUserM = errorSplit[1]
+                .split("If you are contacting AOP support please make sure you include the following.");
         userMessage = splitForUserM[0];
         messageForSupport = splitForUserM[1];
     }
@@ -73,13 +76,12 @@ public class AOPException extends Exception {
     }
 
     /**
-     * @return A string representation of the error containing the response code and a message for the user.
+     * @return A string representation of the error containing the response code and
+     *         a message for the user.
      */
-    public String toString(){
-        return ("AOP server raised an error code: " + getResponseCode() + "\n" +
-                "Usermessage : " + getUserMessage() + "\n" +
-                "You can access the URID and the messageForAOPSupport in the error with their getter."
-        ) ;
+    public String toString() {
+        return ("AOP server raised an error code: " + getResponseCode() + "\n" + "Usermessage : " + getUserMessage()
+                + "\n" + "You can access the URID and the messageForAOPSupport in the error with their getter.");
     }
 
 }

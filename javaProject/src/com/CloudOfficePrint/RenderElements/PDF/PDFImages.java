@@ -9,7 +9,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Group of different PDF images as one RenderElement. There can only be one PDFImages element in the JSON for AOP.
+ * Group of different PDF images as one RenderElement. There can only be one
+ * PDFImages element in the JSON for AOP.
  */
 public class PDFImages extends RenderElement {
 
@@ -30,9 +31,10 @@ public class PDFImages extends RenderElement {
     }
 
     /**
-     * @param images Group of different PDF images as one RenderElement. There can only be one PDFImage element in the JSON for AOP.
+     * @param images Group of different PDF images as one RenderElement. There can
+     *               only be one PDFImage element in the JSON for AOP.
      */
-    public PDFImages(PDFImage[] images){
+    public PDFImages(PDFImage[] images) {
         setName("AOP_PDF_IMAGES");
         setImages(images);
     }
@@ -44,21 +46,19 @@ public class PDFImages extends RenderElement {
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         JsonObject result = new JsonObject();
-        for (PDFImage image : getImages()){
-            if (image.getPageNumber() == -1){
+        for (PDFImage image : getImages()) {
+            if (image.getPageNumber() == -1) {
                 JsonArray array = new JsonArray();
                 array.add(image.getJson());
-                result.add("all",array);
-            }
-            else if (result.get(image.getPageNumber().toString())!=null){
+                result.add("all", array);
+            } else if (result.get(image.getPageNumber().toString()) != null) {
                 JsonArray array = (JsonArray) result.get(image.getPageNumber().toString());
                 array.add(image.getJson());
-                //result.add(text.getPageNumber().toString(),array);
-            }
-            else {
+                // result.add(text.getPageNumber().toString(),array);
+            } else {
                 JsonArray array = new JsonArray();
                 array.add(image.getJson());
-                result.add(image.getPageNumber().toString(),array);
+                result.add(image.getPageNumber().toString(), array);
             }
         }
         JsonArray array = new JsonArray();
@@ -68,7 +68,8 @@ public class PDFImages extends RenderElement {
     }
 
     /**
-     * @return  An immutable set containing all available template tags this element can replace.
+     * @return An immutable set containing all available template tags this element
+     *         can replace.
      */
     @Override
     public Set<String> getTemplateTags() {

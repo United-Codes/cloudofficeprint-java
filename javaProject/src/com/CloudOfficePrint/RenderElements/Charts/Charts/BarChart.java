@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Represents a bar chart.
  */
-public class BarChart extends Chart{
+public class BarChart extends Chart {
     ArrayList<BarSeries> barSeries = new ArrayList<BarSeries>();
 
     /**
@@ -29,14 +29,15 @@ public class BarChart extends Chart{
 
     /**
      * Represents a bar chart.
-     * @param name Name of the chart (for the tag).
-     * @param options Options of the chart.
+     * 
+     * @param name      Name of the chart (for the tag).
+     * @param options   Options of the chart.
      * @param barSeries Series with the data for the chart.
      */
-    public BarChart(String name, ChartOptions options, BarSeries ... barSeries){
+    public BarChart(String name, ChartOptions options, BarSeries... barSeries) {
         setName(name);
         setOptions(options);
-        for (BarSeries barSerie: barSeries){
+        for (BarSeries barSerie : barSeries) {
             getBarSeries().add(barSerie);
         }
     }
@@ -48,16 +49,16 @@ public class BarChart extends Chart{
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         JsonObject result = new JsonObject();
-        if(getOptions()!=null){
+        if (getOptions() != null) {
             result.add("options", getOptions().getJSON());
         }
         JsonArray lines = new JsonArray();
-        for (BarSeries barSerie : getBarSeries()){
+        for (BarSeries barSerie : getBarSeries()) {
             lines.add(barSerie.getJSON());
         }
         result.add("bars", lines);
-        result.addProperty("type","bar");
-        json.add(getName(),result);
+        result.addProperty("type", "bar");
+        json.add(getName(), result);
         return json;
     }
 

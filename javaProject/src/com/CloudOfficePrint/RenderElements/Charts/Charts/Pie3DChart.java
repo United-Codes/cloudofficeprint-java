@@ -7,11 +7,10 @@ import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 
-
 /**
  * Represents a 3D pie chart.
  */
-public class Pie3DChart extends Chart{
+public class Pie3DChart extends Chart {
     ArrayList<PieSeries> pieSeries = new ArrayList<>();
 
     /**
@@ -30,14 +29,15 @@ public class Pie3DChart extends Chart{
 
     /**
      * Represents a 3D pie chart.
-     * @param name Name of the chart (for the tag).
-     * @param options Options of the chart.
+     * 
+     * @param name      Name of the chart (for the tag).
+     * @param options   Options of the chart.
      * @param pieSeries Series with the data for the chart.
      */
-    public Pie3DChart(String name, ChartOptions options, PieSeries ... pieSeries){
+    public Pie3DChart(String name, ChartOptions options, PieSeries... pieSeries) {
         setName(name);
         setOptions(options);
-        for (PieSeries serie: pieSeries){
+        for (PieSeries serie : pieSeries) {
             getPieSeries().add(serie);
         }
     }
@@ -49,16 +49,16 @@ public class Pie3DChart extends Chart{
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         JsonObject result = new JsonObject();
-        if(getOptions()!=null){
+        if (getOptions() != null) {
             result.add("options", getOptions().getJSON());
         }
         JsonArray lines = new JsonArray();
-        for (PieSeries serie : getPieSeries()){
+        for (PieSeries serie : getPieSeries()) {
             lines.add(serie.getJSON());
         }
         result.add("pies", lines);
-        result.addProperty("type","pie3d");
-        json.add(getName(),result);
+        result.addProperty("type", "pie3d");
+        json.add(getName(), result);
         return json;
     }
 

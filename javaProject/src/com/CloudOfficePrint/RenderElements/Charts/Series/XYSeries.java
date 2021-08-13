@@ -70,10 +70,10 @@ public abstract class XYSeries {
      */
     public JsonArray getJSONData() {
         JsonArray jsonArray = new JsonArray();
-        for (int i = 0; i <getX().length; i++){
+        for (int i = 0; i < getX().length; i++) {
             JsonObject xy = new JsonObject();
-            xy.addProperty("x",getX()[i]);
-            xy.addProperty("y",getY()[i]);
+            xy.addProperty("x", getX()[i]);
+            xy.addProperty("y", getY()[i]);
             jsonArray.add(xy);
         }
         return jsonArray;
@@ -82,16 +82,16 @@ public abstract class XYSeries {
     /**
      * @return JSONObject with the tags for this element for the AOP server.
      */
-    public JsonObject getJSON(){
+    public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         json.add("data", getJSONData());
-        if (getName()!=null){
-            json.addProperty("name",getName());
+        if (getName() != null) {
+            json.addProperty("name", getName());
         }
-        if (getColor()!=null){
-            json.addProperty("color",getColor());
+        if (getColor() != null) {
+            json.addProperty("color", getColor());
         }
-        //System.out.println(json);
+        // System.out.println(json);
         return json;
     }
 }

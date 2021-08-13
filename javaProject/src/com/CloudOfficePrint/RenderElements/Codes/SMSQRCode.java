@@ -3,9 +3,10 @@ package com.CloudOfficePrint.RenderElements.Codes;
 import com.google.gson.JsonObject;
 
 /**
- * This class is a subclass of QRCode and is used to generate an SMS QR-code element.
+ * This class is a subclass of QRCode and is used to generate an SMS QR-code
+ * element.
  */
-public class SMSQRCode extends QRCode{
+public class SMSQRCode extends QRCode {
 
     private String body;
 
@@ -24,13 +25,14 @@ public class SMSQRCode extends QRCode{
     }
 
     /**
-     * This object represents a SMS QR-code.
-     * Styling options can be set with the setter functions of the upper class.
-     * @param name  Name of this code for the tag.
+     * This object represents a SMS QR-code. Styling options can be set with the
+     * setter functions of the upper class.
+     * 
+     * @param name     Name of this code for the tag.
      * @param receiver Phone number of the receiver.
-     * @param body Body of the SMS.
+     * @param body     Body of the SMS.
      */
-    public SMSQRCode(String name, String receiver,String body) {
+    public SMSQRCode(String name, String receiver, String body) {
         super(name, "qr_sms", receiver);
         setBody(body);
     }
@@ -39,10 +41,10 @@ public class SMSQRCode extends QRCode{
      * @return JSONObject with the tags for this element for the AOP server.
      */
     @Override
-    public JsonObject getJSON(){
+    public JsonObject getJSON() {
         JsonObject json = super.getJSON();
-        if (getBody()!= null){
-            json.addProperty(getName()+"_sms_body",getBody());
+        if (getBody() != null) {
+            json.addProperty(getName() + "_sms_body", getBody());
         }
         return json;
     }

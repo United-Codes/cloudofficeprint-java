@@ -27,14 +27,14 @@ public class ChartTextStyle {
     }
 
     /**
-     * @return  Whether the chart text is in bold.
+     * @return Whether the chart text is in bold.
      */
     public Boolean getBold() {
         return bold;
     }
 
     /**
-     * @param bold  Whether the chart text is in bold.
+     * @param bold Whether the chart text is in bold.
      */
     public void setBold(Boolean bold) {
         this.bold = bold;
@@ -70,12 +70,13 @@ public class ChartTextStyle {
 
     /**
      * Contains the styling options for the text of the chart.
+     * 
      * @param italic Whether the text is in italic.
-     * @param bold Whether the text is in bold.
-     * @param color Color of the text.
-     * @param font Font of the text.
+     * @param bold   Whether the text is in bold.
+     * @param color  Color of the text.
+     * @param font   Font of the text.
      */
-    public ChartTextStyle(Boolean italic, Boolean bold, String color, String font){
+    public ChartTextStyle(Boolean italic, Boolean bold, String color, String font) {
         setItalic(italic);
         setBold(bold);
         setColor(color);
@@ -87,17 +88,17 @@ public class ChartTextStyle {
      */
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
-        if (getItalic()!= null){
-            json.addProperty("italic",getItalic());
+        if (getItalic() != null) {
+            json.addProperty("italic", getItalic());
         }
-        if (getBold()!= null){
-            json.addProperty("bold",getBold());
+        if (getBold() != null) {
+            json.addProperty("bold", getBold());
         }
-        if (getColor()!= null){
-            json.addProperty("color",getColor());
+        if (getColor() != null) {
+            json.addProperty("color", getColor());
         }
-        if (getFont()!= null){
-            json.addProperty("font",getFont());
+        if (getFont() != null) {
+            json.addProperty("font", getFont());
         }
         return json;
     }

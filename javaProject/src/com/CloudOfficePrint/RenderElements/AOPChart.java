@@ -7,17 +7,19 @@ import com.google.gson.JsonObject;
 import java.util.*;
 
 /**
- * Supported in Word, Excel and Powerpoint templates.
- * This class represent AOP charts (including the data and style). The chart in the template can be styled through MS Office or
- * LibreOffice as an alternative to passing the style options as a part of the input data. This allows the use of style options we do not support, but moves the
- * chart styling from the data to the template. This may case some difficulties, e.g. : loops containing a chart with different
- * style on each iteration would not be possible using this tag.
+ * Supported in Word, Excel and Powerpoint templates. This class represent AOP
+ * charts (including the data and style). The chart in the template can be
+ * styled through MS Office or LibreOffice as an alternative to passing the
+ * style options as a part of the input data. This allows the use of style
+ * options we do not support, but moves the chart styling from the data to the
+ * template. This may case some difficulties, e.g. : loops containing a chart
+ * with different style on each iteration would not be possible using this tag.
  */
-public class AOPChart extends  RenderElement{
+public class AOPChart extends RenderElement {
 
     private JsonArray xData = new JsonArray();
     private HashMap<String, JsonArray> yData = new HashMap<>();
-    private String  title;
+    private String title;
     private String xTitle;
     private String yTitle;
     private String y2Title;
@@ -25,30 +27,35 @@ public class AOPChart extends  RenderElement{
     private AOPChartDateOptions aopChartDateOptions;
 
     /**
-     * @return JsonArray of the data of the x-axis. Format : ["day 1", "day 2", "day 3", "day 4", "day 5"] or
-     * [{"value": "day 1"}, {"value": "day 2"}, {"value": "day 3"}, {"value": "day 4"}, {"value": "day 5"}]
+     * @return JsonArray of the data of the x-axis. Format : ["day 1", "day 2", "day
+     *         3", "day 4", "day 5"] or [{"value": "day 1"}, {"value": "day 2"},
+     *         {"value": "day 3"}, {"value": "day 4"}, {"value": "day 5"}]
      */
     public JsonArray getXData() {
         return xData;
     }
 
     /**
-     * @param xData JsonArray of the data of the x-axis. Format : ["day 1", "day 2", "day 3", "day 4", "day 5"] or
-     *              [{"value": "day 1"}, {"value": "day 2"}, {"value": "day 3"}, {"value": "day 4"}, {"value": "day 5"}]
+     * @param xData JsonArray of the data of the x-axis. Format : ["day 1", "day 2",
+     *              "day 3", "day 4", "day 5"] or [{"value": "day 1"}, {"value":
+     *              "day 2"}, {"value": "day 3"}, {"value": "day 4"}, {"value": "day
+     *              5"}]
      */
     public void setXData(JsonArray xData) {
         this.xData = xData;
     }
 
     /**
-     * @return HashMap(Name of the serie, JsonArray of y-data) in the same format as xData.
+     * @return HashMap(Name of the serie, JsonArray of y-data) in the same format as
+     *         xData.
      */
     public HashMap<String, JsonArray> getYData() {
         return yData;
     }
 
     /**
-     * @param yData HashMap(Name of the serie, JsonArray of y-data) in the same format as xData.
+     * @param yData HashMap(Name of the serie, JsonArray of y-data) in the same
+     *              format as xData.
      */
     public void setYData(HashMap<String, JsonArray> yData) {
         this.yData = yData;
@@ -139,20 +146,26 @@ public class AOPChart extends  RenderElement{
     }
 
     /**
-     * Represent an AOP chart (including data and style). If you don't want te specify some parameters, use null as argument.
-     * @param name Name of the chart for the tag.
-     * @param xData ArrayList(String) of the data of the x-axis. Format : ["day 1", "day 2", "day 3", "day 4", "day 5"] or
-     *              [{"value": "day 1"}, {"value": "day 2"}, {"value": "day 3"}, {"value": "day 4"}, {"value": "day 5"}]
-     * @param yData HashMap(Name of the serie), ArrayList(y-data) data in the same format as xData.
-     * @param title Title of the chart.
-     * @param xTitle Title of the x-axis.
-     * @param yTitle Title of the y-axis.
-     * @param y2Title Title of the second x-axis.
-     * @param x2Title Title of the second y-axis.
+     * Represent an AOP chart (including data and style). If you don't want te
+     * specify some parameters, use null as argument.
+     * 
+     * @param name                Name of the chart for the tag.
+     * @param xData               ArrayList(String) of the data of the x-axis.
+     *                            Format : ["day 1", "day 2", "day 3", "day 4", "day
+     *                            5"] or [{"value": "day 1"}, {"value": "day 2"},
+     *                            {"value": "day 3"}, {"value": "day 4"}, {"value":
+     *                            "day 5"}]
+     * @param yData               HashMap(Name of the serie), ArrayList(y-data) data
+     *                            in the same format as xData.
+     * @param title               Title of the chart.
+     * @param xTitle              Title of the x-axis.
+     * @param yTitle              Title of the y-axis.
+     * @param y2Title             Title of the second x-axis.
+     * @param x2Title             Title of the second y-axis.
      * @param aopChartDateOptions Date options for the chart.
      */
-    public AOPChart(String name, JsonArray xData, HashMap<String, JsonArray> yData, String  title,
-                    String xTitle, String yTitle, String y2Title, String x2Title, AOPChartDateOptions aopChartDateOptions){
+    public AOPChart(String name, JsonArray xData, HashMap<String, JsonArray> yData, String title, String xTitle,
+            String yTitle, String y2Title, String x2Title, AOPChartDateOptions aopChartDateOptions) {
         setName(name);
         setXData(xData);
         setYData(yData);
@@ -173,17 +186,17 @@ public class AOPChart extends  RenderElement{
         JsonObject result = new JsonObject();
 
         JsonObject xAxis = new JsonObject();
-        xAxis.add("data",getXData());
-        if (getXTitle()!=null){
-            xAxis.addProperty("title",getXTitle());
+        xAxis.add("data", getXData());
+        if (getXTitle() != null) {
+            xAxis.addProperty("title", getXTitle());
         }
-        if (getAopChartDateOptions()!=null){
-            xAxis.add("date",getAopChartDateOptions().getJSON());
+        if (getAopChartDateOptions() != null) {
+            xAxis.add("date", getAopChartDateOptions().getJSON());
         }
         result.add("xAxis", xAxis);
 
         JsonArray series = new JsonArray();
-        for(Map.Entry<String, JsonArray> entry : getYData().entrySet()) {
+        for (Map.Entry<String, JsonArray> entry : getYData().entrySet()) {
             JsonObject serie = new JsonObject();
             serie.addProperty("name", entry.getKey());
             serie.add("data", entry.getValue());
@@ -191,38 +204,38 @@ public class AOPChart extends  RenderElement{
         }
         JsonObject yAxis = new JsonObject();
         yAxis.add("series", series);
-        if(getYTitle()!=null){
-            yAxis.addProperty("title",getYTitle());
+        if (getYTitle() != null) {
+            yAxis.addProperty("title", getYTitle());
         }
         result.add("yAxis", yAxis);
 
-
-        if (getTitle()!=null){
+        if (getTitle() != null) {
             result.addProperty("title", getTitle());
         }
 
-        if (getX2Title()!=null){
+        if (getX2Title() != null) {
             JsonObject x2title = new JsonObject();
             x2title.addProperty("title", getX2Title());
             result.add("x2Axis", x2title);
         }
 
-        if (getY2Title()!=null) {
+        if (getY2Title() != null) {
             JsonObject y2title = new JsonObject();
             y2title.addProperty("title", getY2Title());
             result.add("y2Axis", y2title);
         }
-        json.add(getName(),result);
+        json.add(getName(), result);
         return json;
     }
 
     /**
-     * @return An immutable set containing all available template tags this element can replace.
+     * @return An immutable set containing all available template tags this element
+     *         can replace.
      */
     @Override
     public Set<String> getTemplateTags() {
         Set<String> hash_Set = new HashSet<String>();
-        hash_Set.add("{aopchart "+getName()+"}");
+        hash_Set.add("{aopchart " + getName() + "}");
         return ImmutableSet.copyOf(hash_Set);
     }
 }

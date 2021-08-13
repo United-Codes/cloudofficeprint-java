@@ -13,9 +13,10 @@ import java.util.Hashtable;
 import java.util.Map;
 
 /**
- * A print job for the AOP server containing all the necessary information to generate the adequate JSON for the AOP server.
+ * A print job for the AOP server containing all the necessary information to
+ * generate the adequate JSON for the AOP server.
  */
-public class PrintJob implements Runnable{
+public class PrintJob implements Runnable {
     private Server server;
     private Output output;
     private Resource template;
@@ -26,10 +27,7 @@ public class PrintJob implements Runnable{
     private ExternalResource externalResource;
     private Boolean aopRemoteDebug;
 
-
-    private volatile Response response; //for asynchronous calls
-
-
+    private volatile Response response; // for asynchronous calls
 
     /**
      * @return Server to user for this printjob.
@@ -102,8 +100,9 @@ public class PrintJob implements Runnable{
     }
 
     /**
-     * Subtemplates are only accessible (in docx).
-     * They will replace the `{?include subtemplate_dict_key}` tag in the docx.
+     * Subtemplates are only accessible (in docx). They will replace the `{?include
+     * subtemplate_dict_key}` tag in the docx.
+     * 
      * @return Subtemplates for this print job. Hashtable(key, subTemplate).
      */
     public Hashtable<String, Resource> getSubTemplates() {
@@ -111,8 +110,9 @@ public class PrintJob implements Runnable{
     }
 
     /**
-     * Subtemplates are only accessible (in docx).
-     * They will replace the `{?include subtemplate_dict_key}` tag in the docx.
+     * Subtemplates are only accessible (in docx). They will replace the `{?include
+     * subtemplate_dict_key}` tag in the docx.
+     * 
      * @param subTemplates for this print job. Hashtable(key, subTemplate).
      */
     public void setSubTemplates(Hashtable<String, Resource> subTemplates) {
@@ -120,9 +120,10 @@ public class PrintJob implements Runnable{
     }
 
     /**
-     * Renderelements will replace their corresponding tag in the template.
-     * Multiple output files will be produced if the hashtable has more then one element, the AOP server will return
-     * a zip file containing all of them.
+     * Renderelements will replace their corresponding tag in the template. Multiple
+     * output files will be produced if the hashtable has more then one element, the
+     * AOP server will return a zip file containing all of them.
+     * 
      * @return Hashtable(filename, RenderElement)
      */
     public Hashtable<String, RenderElement> getData() {
@@ -130,9 +131,10 @@ public class PrintJob implements Runnable{
     }
 
     /**
-     * Renderelements will replace their corresponding tag in the template.
-     * Multiple output files will be produced if the hashtable has more then one element, the AOP server will return
-     * a zip file containing all of them.
+     * Renderelements will replace their corresponding tag in the template. Multiple
+     * output files will be produced if the hashtable has more then one element, the
+     * AOP server will return a zip file containing all of them.
+     * 
      * @param data Hashtable(filename, RenderElement)
      */
     public void setData(Hashtable<String, RenderElement> data) {
@@ -140,16 +142,17 @@ public class PrintJob implements Runnable{
     }
 
     /**
-     * @return If set to true the AOP server will log your JSON into out database and you can see it when you log into
-     * apexofficeprint.com.
+     * @return If set to true the AOP server will log your JSON into out database
+     *         and you can see it when you log into apexofficeprint.com.
      */
     public Boolean getAopRemoteDebug() {
         return aopRemoteDebug;
     }
 
     /**
-     * @param aopRemoteDebug If set to true the AOP server will log your JSON into out database and you can see it when you log
-     *                       into apexofficeprint.com.
+     * @param aopRemoteDebug If set to true the AOP server will log your JSON into
+     *                       out database and you can see it when you log into
+     *                       apexofficeprint.com.
      */
     public void setAopRemoteDebug(Boolean aopRemoteDebug) {
         this.aopRemoteDebug = aopRemoteDebug;
@@ -170,8 +173,9 @@ public class PrintJob implements Runnable{
     }
 
     /**
-     * For getting to response after asynchronous execution.
-     * To used after run() has been called and the thread joined.
+     * For getting to response after asynchronous execution. To used after run() has
+     * been called and the thread joined.
+     * 
      * @return Response of the request to AOP.
      */
     public Response getResponse() {
@@ -179,34 +183,41 @@ public class PrintJob implements Runnable{
     }
 
     /**
-     * For setting to response after asynchronous execution.
-     * Call getResponse() after run() has been called and the thread joined to get the response.
+     * For setting to response after asynchronous execution. Call getResponse()
+     * after run() has been called and the thread joined to get the response.
+     * 
      * @param response Response of the request to AOP.
      */
     public void setResponse(Response response) {
         this.response = response;
     }
 
-
     /**
-     * A print job for the AOP server containing all the necessary information to generate the adequate JSON for the AOP server.
-     * If you don't want to instantiate a variable, use null for this argument.
-     * @param data Hashtable of (filename, RenderElement) elements.
-     *             Multiple output files will be produced if the hashtable has more then one element, the AOP server will return
-     *             a zip file containing all of them.
-     * @param server Server to user for this printjob.
-     * @param output object containing the output configuration for this printjob.
-     * @param template for this printjob.
-     * @param subTemplates  for this print job. Hashtable(key, subTemplate)
-     *                      Subtemplates are only accessible (in docx).
-     *                      They will replace the `{?include subtemplate_dict_key}` tag in the docx.
-     * @param prependFiles Files to prepend to the output.
-     * @param appendFiles Files to append to the output.
-     * @param aopRemoteDebug If set to true the AOP server will log your JSON into out database and you can see it when you
-     *                       log into apexofficeprint.com.
+     * A print job for the AOP server containing all the necessary information to
+     * generate the adequate JSON for the AOP server. If you don't want to
+     * instantiate a variable, use null for this argument.
+     * 
+     * @param data           Hashtable of (filename, RenderElement) elements.
+     *                       Multiple output files will be produced if the hashtable
+     *                       has more then one element, the AOP server will return a
+     *                       zip file containing all of them.
+     * @param server         Server to user for this printjob.
+     * @param output         object containing the output configuration for this
+     *                       printjob.
+     * @param template       for this printjob.
+     * @param subTemplates   for this print job. Hashtable(key, subTemplate)
+     *                       Subtemplates are only accessible (in docx). They will
+     *                       replace the `{?include subtemplate_dict_key}` tag in
+     *                       the docx.
+     * @param prependFiles   Files to prepend to the output.
+     * @param appendFiles    Files to append to the output.
+     * @param aopRemoteDebug If set to true the AOP server will log your JSON into
+     *                       out database and you can see it when you log into
+     *                       apexofficeprint.com.
      */
-    public PrintJob(Hashtable<String, RenderElement> data, Server server, Output output, Resource template, Hashtable<String,
-            Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles, Boolean aopRemoteDebug){
+    public PrintJob(Hashtable<String, RenderElement> data, Server server, Output output, Resource template,
+            Hashtable<String, Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles,
+            Boolean aopRemoteDebug) {
         setData(data);
         setServer(server);
         setOutput(output);
@@ -218,23 +229,31 @@ public class PrintJob implements Runnable{
     }
 
     /**
-     * A print job for the AOP server containing all the necessary information to generate the adequate JSON for the AOP server.
-     * If you don't want to instantiate a variable, use null for this argument.
+     * A print job for the AOP server containing all the necessary information to
+     * generate the adequate JSON for the AOP server. If you don't want to
+     * instantiate a variable, use null for this argument.
+     * 
      * @param externalResource External resource for the data (REST or graphQL).
-     * @param server Server to user for this printjob.
-     * @param output object containing the output configuration for this printjob.
-     * @param template Template for this printjob. If no template is specified AOP will generate a template based on the data.
-     *                  Output type determines the template type generated. Cannot be PDF in this case.
-     * @param subTemplates  for this print job. Hashtable(key, subTemplate)
-     *                      Subtemplates are only accessible (in docx).
-     *                      They will replace the `{?include subtemplate_dict_key}` tag in the docx.
-     * @param prependFiles Files to prepend to the output.
-     * @param appendFiles Files to append to the output.
-     * @param aopRemoteDebug If set to true the AOP server will log your JSON into out database and you can see it when you
-     *                       log into apexofficeprint.com.
+     * @param server           Server to user for this printjob.
+     * @param output           object containing the output configuration for this
+     *                         printjob.
+     * @param template         Template for this printjob. If no template is
+     *                         specified AOP will generate a template based on the
+     *                         data. Output type determines the template type
+     *                         generated. Cannot be PDF in this case.
+     * @param subTemplates     for this print job. Hashtable(key, subTemplate)
+     *                         Subtemplates are only accessible (in docx). They will
+     *                         replace the `{?include subtemplate_dict_key}` tag in
+     *                         the docx.
+     * @param prependFiles     Files to prepend to the output.
+     * @param appendFiles      Files to append to the output.
+     * @param aopRemoteDebug   If set to true the AOP server will log your JSON into
+     *                         out database and you can see it when you log into
+     *                         apexofficeprint.com.
      */
-    public PrintJob(ExternalResource externalResource, Server server, Output output, Resource template, Hashtable<String,
-            Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles, Boolean aopRemoteDebug){
+    public PrintJob(ExternalResource externalResource, Server server, Output output, Resource template,
+            Hashtable<String, Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles,
+            Boolean aopRemoteDebug) {
         setExternalResource(externalResource);
         setServer(server);
         setOutput(output);
@@ -246,75 +265,76 @@ public class PrintJob implements Runnable{
     }
 
     /**
-     * @return Jsonobject containing all the info about the printjob, for the POST request to the AOP server.
+     * @return Jsonobject containing all the info about the printjob, for the POST
+     *         request to the AOP server.
      */
-    public JsonObject getJSON()  {
+    public JsonObject getJSON() {
         JsonObject jsonForServer = new JsonObject();
 
         jsonForServer.addProperty("tool", "AOP_java_sdk");
         jsonForServer.addProperty("java_sdk_version", "21.1");
 
-        for(Map.Entry<String, JsonElement> tag : getServer().getJSON().entrySet()){
-            jsonForServer.add(tag.getKey(),tag.getValue()); //these tags for the server need to be at the upper level in the JSON
+        for (Map.Entry<String, JsonElement> tag : getServer().getJSON().entrySet()) {
+            jsonForServer.add(tag.getKey(), tag.getValue()); // these tags for the server need to be at the upper level
+                                                             // in the JSON
         }
 
-        if (getOutput()!=null){
+        if (getOutput() != null) {
             jsonForServer.add("output", getOutput().getJSON());
         }
-        if (getTemplate()!=null){
+        if (getTemplate() != null) {
             jsonForServer.add("template", getTemplate().getJSONForTemplate());
         }
-        
-        if (!(((JsonObject) jsonForServer.get("output")).has("output_type"))) {
-        	if (getTemplate() != null) {
-        		((JsonObject) jsonForServer.get("output")).addProperty("output_type", getTemplate().getFiletype());
-        	} else {
-        		((JsonObject) jsonForServer.get("output")).addProperty("output_type", "docx");
 
-        	}
+        if (!(((JsonObject) jsonForServer.get("output")).has("output_type"))) {
+            if (getTemplate() != null) {
+                ((JsonObject) jsonForServer.get("output")).addProperty("output_type", getTemplate().getFiletype());
+            } else {
+                ((JsonObject) jsonForServer.get("output")).addProperty("output_type", "docx");
+
+            }
         }
 
-        if (getSubTemplates()!=null){
+        if (getSubTemplates() != null) {
             JsonArray subTemplates = new JsonArray();
-            for(Map.Entry<String, Resource> subtemplate : getSubTemplates().entrySet()){
+            for (Map.Entry<String, Resource> subtemplate : getSubTemplates().entrySet()) {
                 JsonObject sub = subtemplate.getValue().getJSONForSecondaryFile();
-                sub.addProperty("name",subtemplate.getKey());
+                sub.addProperty("name", subtemplate.getKey());
                 subTemplates.add(sub);
             }
-            jsonForServer.add("templates",subTemplates);
+            jsonForServer.add("templates", subTemplates);
         }
 
-        if (getAppendFiles() != null && getAppendFiles().length>0){
+        if (getAppendFiles() != null && getAppendFiles().length > 0) {
             JsonArray appendFiles = new JsonArray();
-            for(Resource appendFile : getAppendFiles()){
+            for (Resource appendFile : getAppendFiles()) {
                 appendFiles.add(appendFile.getJSONForSecondaryFile());
             }
-            jsonForServer.add("append_files",appendFiles);
+            jsonForServer.add("append_files", appendFiles);
         }
 
         JsonArray files = new JsonArray();
-        if (getExternalResource()==null){
-            for(Map.Entry<String, RenderElement> data : getData().entrySet()){
+        if (getExternalResource() == null) {
+            for (Map.Entry<String, RenderElement> data : getData().entrySet()) {
                 JsonObject file = new JsonObject();
-                file.addProperty("filename",data.getKey());
-                file.add("data",data.getValue().getJSON());
+                file.addProperty("filename", data.getKey());
+                file.add("data", data.getValue().getJSON());
 
                 files.add(file);
             }
-        }
-        else{
-            files.add(getExternalResource().getJSON()); //external resource was specified for the data
+        } else {
+            files.add(getExternalResource().getJSON()); // external resource was specified for the data
         }
         jsonForServer.add("files", files);
-        if (getAopRemoteDebug()!=null){
+        if (getAopRemoteDebug() != null) {
             jsonForServer.addProperty("aop_remote_debug", getAopRemoteDebug());
         }
-        if (getPrependFiles() != null && getPrependFiles().length>0){
+        if (getPrependFiles() != null && getPrependFiles().length > 0) {
             JsonArray prependFiles = new JsonArray();
-            for(Resource prependFile : getPrependFiles()){
+            for (Resource prependFile : getPrependFiles()) {
                 prependFiles.add(prependFile.getJSONForSecondaryFile());
             }
-            jsonForServer.add("prepend_files",prependFiles);
+            jsonForServer.add("prepend_files", prependFiles);
         }
 
         return jsonForServer;
@@ -322,8 +342,9 @@ public class PrintJob implements Runnable{
 
     /**
      * Creates the adequate JSON and sends it to the AOP server.
+     * 
      * @return The response of the AOP server.
-     * @throws Exception If the server is not reachable.
+     * @throws Exception    If the server is not reachable.
      * @throws AOPException If the server response doesn't have a 200 code.
      */
     public Response execute() throws Exception {
@@ -332,20 +353,20 @@ public class PrintJob implements Runnable{
     }
 
     /**
-     * Asynchronous version of execute(). The response can be obtained with the getResponse() function.
-     * Creates the adequate JSON and sends it to the AOP server.
+     * Asynchronous version of execute(). The response can be obtained with the
+     * getResponse() function. Creates the adequate JSON and sends it to the AOP
+     * server.
      */
     public void run() {
         JsonObject JSONForServer = null;
         JSONForServer = getJSON();
-        if (getServer().isReachable() == true){
+        if (getServer().isReachable() == true) {
             try {
                 setResponse(getServer().sendPOSTRequest(JSONForServer));
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
-        else {
+        } else {
             System.out.println("Server is not reachable.");
         }
     }

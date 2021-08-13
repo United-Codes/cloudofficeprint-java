@@ -7,11 +7,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Only available for Excel and HTML templates.
- * This element allows you to specify the columns and rows to span for this cell.
- * The tag in the cell of the template will be replaced by the value.
+ * Only available for Excel and HTML templates. This element allows you to
+ * specify the columns and rows to span for this cell. The tag in the cell of
+ * the template will be replaced by the value.
  */
-public class CellSpan extends RenderElement{
+public class CellSpan extends RenderElement {
 
     private int columns;
     private int rows;
@@ -45,12 +45,12 @@ public class CellSpan extends RenderElement{
     }
 
     /**
-     * @param name Name of this property.
-     * @param value Value of this property.
+     * @param name    Name of this property.
+     * @param value   Value of this property.
      * @param columns Number of columns to span.
-     * @param rows Number of rows to span.
+     * @param rows    Number of rows to span.
      */
-    public CellSpan(String name, String value, int columns, int rows){
+    public CellSpan(String name, String value, int columns, int rows) {
         setName(name);
         setValue(value);
         setColumns(columns);
@@ -63,19 +63,20 @@ public class CellSpan extends RenderElement{
     @Override
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
-        json.addProperty(getName(),getValue());
-        json.addProperty(getName()+"_row_span",getRows());
-        json.addProperty(getName()+"_col_span",getColumns());
+        json.addProperty(getName(), getValue());
+        json.addProperty(getName() + "_row_span", getRows());
+        json.addProperty(getName() + "_col_span", getColumns());
         return json;
     }
 
     /**
-     * @return An immutable set containing all available template tags this element can replace.
+     * @return An immutable set containing all available template tags this element
+     *         can replace.
      */
     @Override
     public Set<String> getTemplateTags() {
         Set<String> hash_Set = new HashSet<String>();
-        hash_Set.add("{"+getName()+"#}");
+        hash_Set.add("{" + getName() + "#}");
         return ImmutableSet.copyOf(hash_Set);
     }
 }

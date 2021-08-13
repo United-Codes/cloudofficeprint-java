@@ -33,15 +33,14 @@ public class Loop extends RenderElement {
     /**
      * @param element RenderElement to add to the loop.
      */
-    public void addElement(RenderElement element){
+    public void addElement(RenderElement element) {
         getElements().add(element);
     }
 
-
-
     /**
      * Loop elements for a template.
-     * @param name  Name of this loop for the tag.
+     * 
+     * @param name     Name of this loop for the tag.
      * @param elements Elements to replace the tag with.
      */
     public Loop(String name, ArrayList<RenderElement> elements) {
@@ -51,19 +50,21 @@ public class Loop extends RenderElement {
 
     /**
      * Loop elements for a template.
-     * @param name  Name of this loop for the tag.
+     * 
+     * @param name     Name of this loop for the tag.
      * @param elements Elements to replace the tag with.
      */
     public Loop(String name, RenderElement[] elements) {
         setName(name);
-        for (RenderElement element : elements){
+        for (RenderElement element : elements) {
             addElement(element);
         }
     }
 
     /**
      * Loop elements for a template.
-     * @param name  Name of this loop for the tag.
+     * 
+     * @param name Name of this loop for the tag.
      */
     public Loop(String name) {
         setName(name);
@@ -76,7 +77,7 @@ public class Loop extends RenderElement {
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         JsonArray array = new JsonArray();
-        for (RenderElement element : getElements()){
+        for (RenderElement element : getElements()) {
             array.add(element.getJSON());
         }
         json.add(getName(), array);
@@ -84,16 +85,17 @@ public class Loop extends RenderElement {
     }
 
     /**
-     * @return An immutable set containing all available template tags this element can replace.
+     * @return An immutable set containing all available template tags this element
+     *         can replace.
      */
     @Override
     public Set<String> getTemplateTags() {
         Set<String> hash_Set = new HashSet<String>();
         hash_Set.add("{#" + getName() + "}");
         hash_Set.add("{/" + getName() + "}");
-        for (RenderElement element : getElements()){
+        for (RenderElement element : getElements()) {
             for (String tag : getTemplateTags())
-            hash_Set.add(tag);
+                hash_Set.add(tag);
         }
         return ImmutableSet.copyOf(hash_Set);
     }

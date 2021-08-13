@@ -3,9 +3,10 @@ package com.CloudOfficePrint.RenderElements.Codes;
 import com.google.gson.JsonObject;
 
 /**
- * This class is a subclass of QRCode and is used to generate an event QR-code element
+ * This class is a subclass of QRCode and is used to generate an event QR-code
+ * element
  */
-public class EventQRCode extends QRCode{
+public class EventQRCode extends QRCode {
 
     private String startDate;
     private String endDate;
@@ -39,13 +40,14 @@ public class EventQRCode extends QRCode{
     }
 
     /**
-     * This object represents a Event QR Code.
-     * Use null if you don't want to specify an option.
-     * Styling options can be set with the setter functions of the upper class.
-     * @param name  Name of this code for the tag.
-     * @param summary  Summary of the event.
+     * This object represents a Event QR Code. Use null if you don't want to specify
+     * an option. Styling options can be set with the setter functions of the upper
+     * class.
+     * 
+     * @param name      Name of this code for the tag.
+     * @param summary   Summary of the event.
      * @param startdate Latitude.
-     * @param enddate Altitude.
+     * @param enddate   Altitude.
      */
     public EventQRCode(String name, String summary, String startdate, String enddate) {
         super(name, "qr_event", summary);
@@ -57,13 +59,13 @@ public class EventQRCode extends QRCode{
      * @return JSONObject with the tags for this element for the AOP server.
      */
     @Override
-    public JsonObject getJSON(){
+    public JsonObject getJSON() {
         JsonObject json = super.getJSON();
-        if (getStartDate()!= null){
-            json.addProperty(getName()+"_event_startdate",getStartDate());
+        if (getStartDate() != null) {
+            json.addProperty(getName() + "_event_startdate", getStartDate());
         }
-        if (getEndDate()!= null){
-            json.addProperty(getName()+"_event_enddate",getEndDate());
+        if (getEndDate() != null) {
+            json.addProperty(getName() + "_event_enddate", getEndDate());
         }
         return json;
     }

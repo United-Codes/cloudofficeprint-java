@@ -11,9 +11,12 @@ public class AreaSeries extends XYSeries {
     private Float opacity;
 
     /**
-     * Note: Decimal value between 0 and 1. It will only work when a color is manually specified, otherwise it is silently ignored.
-     * The opacity can also be set by using a scheme for the color option which includes an alpha value in the color field
-     * (rgba, hsla and hwba are supported). The opacity field is also ignored in that case.
+     * Note: Decimal value between 0 and 1. It will only work when a color is
+     * manually specified, otherwise it is silently ignored. The opacity can also be
+     * set by using a scheme for the color option which includes an alpha value in
+     * the color field (rgba, hsla and hwba are supported). The opacity field is
+     * also ignored in that case.
+     * 
      * @return Opacity of the chart.
      */
     public Float getOpacity() {
@@ -21,9 +24,12 @@ public class AreaSeries extends XYSeries {
     }
 
     /**
-     * Note: Decimal value between 0 and 1. It will only work when a color is manually specified, otherwise it is silently ignored.
-     * The opacity can also be set by using a scheme for the color option which includes an alpha value in the color field
-     * (rgba, hsla and hwba are supported). The opacity field is also ignored in that case.
+     * Note: Decimal value between 0 and 1. It will only work when a color is
+     * manually specified, otherwise it is silently ignored. The opacity can also be
+     * set by using a scheme for the color option which includes an alpha value in
+     * the color field (rgba, hsla and hwba are supported). The opacity field is
+     * also ignored in that case.
+     * 
      * @param opacity Opacity of the chart.
      */
     public void setOpacity(Float opacity) {
@@ -46,16 +52,19 @@ public class AreaSeries extends XYSeries {
 
     /**
      * This object represents series for a pie chart.
-     * @param name Name of the chart.
-     * @param x X-data of the chart.
-     * @param y Y-data of the chart.
-     * @param color Color of the chart.
-     * @param opacity Opacity of the chart. Note: Decimal value between 0 and 1. It will only work when a color is manually specified,
-     *                otherwise it is silently ignored. The opacity can also be set by using a scheme for the color option which
-     *                includes an alpha value in the color field (rgba, hsla and hwba are supported). The opacity field is also
-     *                ignored in that case.
+     * 
+     * @param name    Name of the chart.
+     * @param x       X-data of the chart.
+     * @param y       Y-data of the chart.
+     * @param color   Color of the chart.
+     * @param opacity Opacity of the chart. Note: Decimal value between 0 and 1. It
+     *                will only work when a color is manually specified, otherwise
+     *                it is silently ignored. The opacity can also be set by using a
+     *                scheme for the color option which includes an alpha value in
+     *                the color field (rgba, hsla and hwba are supported). The
+     *                opacity field is also ignored in that case.
      */
-    public AreaSeries(String name, String[] x, String[] y, String color, Float opacity){
+    public AreaSeries(String name, String[] x, String[] y, String color, Float opacity) {
         setName(name);
         setX(x);
         setY(y);
@@ -69,8 +78,8 @@ public class AreaSeries extends XYSeries {
     @Override
     public JsonObject getJSON() {
         JsonObject json = super.getJSON();
-        if (getOpacity()!=null){
-            json.addProperty("opacity",getOpacity());
+        if (getOpacity() != null) {
+            json.addProperty("opacity", getOpacity());
         }
         return json;
     }

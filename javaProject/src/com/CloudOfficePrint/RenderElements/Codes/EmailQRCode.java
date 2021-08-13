@@ -3,9 +3,10 @@ package com.CloudOfficePrint.RenderElements.Codes;
 import com.google.gson.JsonObject;
 
 /**
- * This class is a subclass of QRCode and is used to generate an email QR-code element
+ * This class is a subclass of QRCode and is used to generate an email QR-code
+ * element
  */
-public class EmailQRCode extends QRCode{
+public class EmailQRCode extends QRCode {
 
     private String cc;
     private String bcc;
@@ -69,16 +70,18 @@ public class EmailQRCode extends QRCode{
     }
 
     /**
-     * This object represents a mail QR-code. Use null if you don't want to specify some options.
-     * Styling options can be set with the setter functions of the upper class.
-     * @param name  Name of this code for the tag.
+     * This object represents a mail QR-code. Use null if you don't want to specify
+     * some options. Styling options can be set with the setter functions of the
+     * upper class.
+     * 
+     * @param name     Name of this code for the tag.
      * @param receiver Mail address of the receiver.
-     * @param cc Extra receivers (cc).
-     * @param bcc Extra blind receivers (bcc).
-     * @param subject Subject of the e-mail.
-     * @param body Body of the e-mail.
+     * @param cc       Extra receivers (cc).
+     * @param bcc      Extra blind receivers (bcc).
+     * @param subject  Subject of the e-mail.
+     * @param body     Body of the e-mail.
      */
-    public EmailQRCode(String name, String receiver,String cc, String bcc, String subject, String body) {
+    public EmailQRCode(String name, String receiver, String cc, String bcc, String subject, String body) {
         super(name, "qr_email", receiver);
         setCc(cc);
         setBcc(bcc);
@@ -90,19 +93,19 @@ public class EmailQRCode extends QRCode{
      * @return JSONObject with the tags for this element for the AOP server.
      */
     @Override
-    public JsonObject getJSON(){
+    public JsonObject getJSON() {
         JsonObject json = super.getJSON();
-        if (getCc()!= null){
-            json.addProperty(getName()+"_email_cc",getCc());
+        if (getCc() != null) {
+            json.addProperty(getName() + "_email_cc", getCc());
         }
-        if (getBcc()!= null){
-            json.addProperty(getName()+"_email_bcc",getBcc());
+        if (getBcc() != null) {
+            json.addProperty(getName() + "_email_bcc", getBcc());
         }
-        if (getSubject()!= null){
-            json.addProperty(getName()+"_email_subject",getSubject());
+        if (getSubject() != null) {
+            json.addProperty(getName() + "_email_subject", getSubject());
         }
-        if (getBody()!= null){
-            json.addProperty(getName()+"_email_body",getBody());
+        if (getBody() != null) {
+            json.addProperty(getName() + "_email_body", getBody());
         }
         return json;
     }

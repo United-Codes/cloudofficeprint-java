@@ -3,7 +3,8 @@ package com.CloudOfficePrint.RenderElements;
 import com.google.gson.JsonObject;
 
 /**
- * Date options for an AOPChart (different from ChartDateOptions for the other Charts).
+ * Date options for an AOPChart (different from ChartDateOptions for the other
+ * Charts).
  */
 public class AOPChartDateOptions {
 
@@ -40,16 +41,17 @@ public class AOPChartDateOptions {
     }
 
     /**
-     * @return How many units should be used for spacing the axis values (automatic if undefined).
-     *         This option is not supported in LibreOffice.
+     * @return How many units should be used for spacing the axis values (automatic
+     *         if undefined). This option is not supported in LibreOffice.
      */
     public Integer getStep() {
         return step;
     }
 
     /**
-     * @param step How many units should be used for spacing the axis values (automatic if undefined).
-     *             This option is not supported in LibreOffice.
+     * @param step How many units should be used for spacing the axis values
+     *             (automatic if undefined). This option is not supported in
+     *             LibreOffice.
      */
     public void setStep(Integer step) {
         this.step = step;
@@ -57,11 +59,14 @@ public class AOPChartDateOptions {
 
     /**
      * This object represents the date options for a chart.
+     * 
      * @param format Date format e.g. : unix.
-     * @param unit The unit to be used for spacing the axis values e.g. : months.
-     * @param step How many units should be used for spacing the axis values (automatic if undefined). This option is not supported in LibreOffice.
+     * @param unit   The unit to be used for spacing the axis values e.g. : months.
+     * @param step   How many units should be used for spacing the axis values
+     *               (automatic if undefined). This option is not supported in
+     *               LibreOffice.
      */
-    public AOPChartDateOptions(String format, String unit, Integer step){
+    public AOPChartDateOptions(String format, String unit, Integer step) {
         setFormat(format);
         setUnit(unit);
         setStep(step);
@@ -72,14 +77,14 @@ public class AOPChartDateOptions {
      */
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
-        if (getFormat()!= null){
-            json.addProperty("format",getFormat());
+        if (getFormat() != null) {
+            json.addProperty("format", getFormat());
         }
-        if (getUnit()!= null){
-            json.addProperty("unit",getUnit());
+        if (getUnit() != null) {
+            json.addProperty("unit", getUnit());
         }
-        if (getStep()!= null){
-            json.addProperty("step",getStep());
+        if (getStep() != null) {
+            json.addProperty("step", getStep());
         }
         return json;
     }

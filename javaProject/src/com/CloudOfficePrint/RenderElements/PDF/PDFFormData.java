@@ -10,33 +10,37 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * It is possible to fill in the forms using AOP. The data object inside the files array should contain
- * an object with the key aop_pdf_form_data.
+ * It is possible to fill in the forms using AOP. The data object inside the
+ * files array should contain an object with the key aop_pdf_form_data.
  */
 public class PDFFormData extends RenderElement {
 
-    HashMap<String,String> formData = new HashMap<>();
+    HashMap<String, String> formData = new HashMap<>();
 
     /**
-     * @return Hashmap of the fieldname and value to fill in. Two options : inputfieldname : value and radio/checkbox : true/false.
+     * @return Hashmap of the fieldname and value to fill in. Two options :
+     *         inputfieldname : value and radio/checkbox : true/false.
      */
     public HashMap<String, String> getFormData() {
         return formData;
     }
 
     /**
-     * @param formData Hashmap of the fieldname and value to fill in. Two options : inputfieldname : value and radio/checkbox : true/false.
+     * @param formData Hashmap of the fieldname and value to fill in. Two options :
+     *                 inputfieldname : value and radio/checkbox : true/false.
      */
     public void setFormData(HashMap<String, String> formData) {
         this.formData = formData;
     }
 
     /**
-     * It is possible to fill in the forms using AOP. The data object inside the files array should contain
-     * an object with the key aop_pdf_form_data.
-     * @param formData  Hashmap of the fieldname and value to fill in. Two options : inputfieldname : value and radio/checkbox : true/false.
+     * It is possible to fill in the forms using AOP. The data object inside the
+     * files array should contain an object with the key aop_pdf_form_data.
+     * 
+     * @param formData Hashmap of the fieldname and value to fill in. Two options :
+     *                 inputfieldname : value and radio/checkbox : true/false.
      */
-    public PDFFormData(HashMap<String, String> formData){
+    public PDFFormData(HashMap<String, String> formData) {
         setName("AOP_PDF_IMAGES");
         setFormData(formData);
     }
@@ -48,15 +52,16 @@ public class PDFFormData extends RenderElement {
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         JsonObject result = new JsonObject();
-        for (Map.Entry<String,String> entry : getFormData().entrySet()){
-            result.addProperty(entry.getKey(),entry.getValue());
+        for (Map.Entry<String, String> entry : getFormData().entrySet()) {
+            result.addProperty(entry.getKey(), entry.getValue());
         }
-        json.add("aop_pdf_form_data",result);
+        json.add("aop_pdf_form_data", result);
         return json;
     }
 
     /**
-     * @return  An immutable set containing all available template tags this element can replace.
+     * @return An immutable set containing all available template tags this element
+     *         can replace.
      */
     @Override
     public Set<String> getTemplateTags() {

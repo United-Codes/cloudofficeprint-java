@@ -3,9 +3,10 @@ package com.CloudOfficePrint.RenderElements.Codes;
 import com.google.gson.JsonObject;
 
 /**
- * This class is a subclass of QRCode and is used to generate a vCard QR-code element
+ * This class is a subclass of QRCode and is used to generate a vCard QR-code
+ * element
  */
-public class VCardQRCode  extends QRCode{
+public class VCardQRCode extends QRCode {
 
     private String firstName;
     private String lastName;
@@ -69,13 +70,14 @@ public class VCardQRCode  extends QRCode{
     }
 
     /**
-     * This object represents a VCF or vCard QR Code.
-     * Styling options can be set with the setter functions of the upper class.
-     * @param name  Name of this code for the tag.
+     * This object represents a VCF or vCard QR Code. Styling options can be set
+     * with the setter functions of the upper class.
+     * 
+     * @param name      Name of this code for the tag.
      * @param firstName First name for the card.
-     * @param lastName Last name for the card.
-     * @param email Email for the card.
-     * @param website Website for the card.
+     * @param lastName  Last name for the card.
+     * @param email     Email for the card.
+     * @param website   Website for the card.
      */
     public VCardQRCode(String name, String firstName, String lastName, String email, String website) {
         super(name, "qr_vcard", firstName);
@@ -88,16 +90,16 @@ public class VCardQRCode  extends QRCode{
      * @return JSONObject with the tags for this element for the AOP server.
      */
     @Override
-    public JsonObject getJSON(){
+    public JsonObject getJSON() {
         JsonObject json = super.getJSON();
-        if (getLastName()!= null){
-            json.addProperty(getName()+"_vcard_last_name",getLastName());
+        if (getLastName() != null) {
+            json.addProperty(getName() + "_vcard_last_name", getLastName());
         }
-        if (getEmail()!= null){
-            json.addProperty(getName()+"_vcard_email",getEmail());
+        if (getEmail() != null) {
+            json.addProperty(getName() + "_vcard_email", getEmail());
         }
-        if (getWebsite()!= null){
-            json.addProperty(getName()+"_vcard_website",getWebsite());
+        if (getWebsite() != null) {
+            json.addProperty(getName() + "_vcard_website", getWebsite());
         }
         return json;
     }

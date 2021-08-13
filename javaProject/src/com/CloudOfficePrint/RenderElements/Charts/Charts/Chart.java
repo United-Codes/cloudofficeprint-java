@@ -29,12 +29,13 @@ public abstract class Chart extends RenderElement {
     }
 
     /**
-     * @return An immutable set containing all available template tags this element can replace.
+     * @return An immutable set containing all available template tags this element
+     *         can replace.
      */
     @Override
     public Set<String> getTemplateTags() {
         Set<String> hash_Set = new HashSet<String>();
-        hash_Set.add("{$"+getName()+"}");
+        hash_Set.add("{$" + getName() + "}");
         return ImmutableSet.copyOf(hash_Set);
     }
 }

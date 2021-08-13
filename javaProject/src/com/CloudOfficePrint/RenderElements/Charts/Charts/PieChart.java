@@ -7,11 +7,10 @@ import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 
-
 /**
  * Represents a pie chart.
  */
-public class PieChart extends Chart{
+public class PieChart extends Chart {
     ArrayList<PieSeries> pieSeries = new ArrayList<>();
 
     /**
@@ -30,14 +29,15 @@ public class PieChart extends Chart{
 
     /**
      * Represents a pie chart.
-     * @param name Name of the chart (for the tag).
-     * @param options Options of the chart.
+     * 
+     * @param name      Name of the chart (for the tag).
+     * @param options   Options of the chart.
      * @param pieSeries Series with the data for the chart.
      */
-    public PieChart(String name, ChartOptions options, PieSeries ... pieSeries){
+    public PieChart(String name, ChartOptions options, PieSeries... pieSeries) {
         setName(name);
         setOptions(options);
-        for (PieSeries serie: pieSeries){
+        for (PieSeries serie : pieSeries) {
             getPieSeries().add(serie);
         }
     }
@@ -49,16 +49,16 @@ public class PieChart extends Chart{
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         JsonObject result = new JsonObject();
-        if(getOptions()!=null){
+        if (getOptions() != null) {
             result.add("options", getOptions().getJSON());
         }
         JsonArray lines = new JsonArray();
-        for (PieSeries serie : getPieSeries()){
+        for (PieSeries serie : getPieSeries()) {
             lines.add(serie.getJSON());
         }
         result.add("pies", lines);
-        result.addProperty("type","pie");
-        json.add(getName(),result);
+        result.addProperty("type", "pie");
+        json.add(getName(), result);
         return json;
     }
 

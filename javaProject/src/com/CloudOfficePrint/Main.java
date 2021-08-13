@@ -3,6 +3,7 @@ package com.CloudOfficePrint;
 //https://www.jetbrains.com/help/idea/creating-and-running-your-first-java-application.html#run_jar_artifact will be usefull to build the JAR
 
 import com.CloudOfficePrint.Examples.GeneralExamples.Examples;
+import com.CloudOfficePrint.Examples.OrderConfirmation.OrderConfirmationExample;
 import com.CloudOfficePrint.Examples.SolarSystem.docx.SolarSystemDocx;
 import com.CloudOfficePrint.Examples.SolarSystem.pptx.SolarSystemPptx;
 import com.CloudOfficePrint.Examples.SpaceX.SpaceXExample;
@@ -12,34 +13,36 @@ public class Main {
 
     // First argument should be your API key
     public static void main(String[] args) throws Exception {
-    	// EXAMPLES
+        // EXAMPLES
 
-//		Examples example = new Examples();
-//		example.localJson(args[0]);
-//		example.localTemplateAsync(args[0]);
-//		example.localTemplate(args[0]);
-//		example.withoutTemplate(args[0]);
-//		example.loopExample(args[0]);
-//		example.chartExample(args[0]);
-//		example.combinedChartExample(args[0]);
-//		example.qrCodeExample(args[0]);
-//		example.prependAppendSubTemplatesExample(args[0]);
-//		example.AOPPDFTextAndImageExample(args[0]);
-//		example.waterMarkAndStyledProperty(args[0]);
-//		example.signPDF(args[0]);
+        // Examples example = new Examples();
+        // example.localJson(args[0]);
+        // example.localTemplateAsync(args[0]);
+        // example.localTemplate(args[0]);
+        // example.withoutTemplate(args[0]);
+        // example.loopExample(args[0]);
+        // example.chartExample(args[0]);
+        // example.combinedChartExample(args[0]);
+        // example.qrCodeExample(args[0]);
+        // example.prependAppendSubTemplatesExample(args[0]);
+        // example.AOPPDFTextAndImageExample(args[0]);
+        // example.waterMarkAndStyledProperty(args[0]);
+        // example.signPDF(args[0]);
 
-//    	SolarSystemDocx solarSystemDocx = new SolarSystemDocx();
-//    	solarSystemDocx.main(args[0]);
-//    	SolarSystemPptx solarSystemPptx = new SolarSystemPptx();
-//    	solarSystemPptx.main(args[0]);
+        // SolarSystemDocx solarSystemDocx = new SolarSystemDocx();
+        // solarSystemDocx.main(args[0]);
+        // SolarSystemPptx solarSystemPptx = new SolarSystemPptx();
+        // solarSystemPptx.main(args[0]);
 
-//    	SpaceXExample spaceXExample = new SpaceXExample();
-//    	spaceXExample.main(args[0], "pptx");
-//    	spaceXExample.main(args[0], "xlsx");
-//    	spaceXExample.main(args[0], "docx");
+        // SpaceXExample spaceXExample = new SpaceXExample();
+        // spaceXExample.main(args[0], "pptx");
+        // spaceXExample.main(args[0], "xlsx");
+        // spaceXExample.main(args[0], "docx");
 
-    	
-    	// TESTS
+        OrderConfirmationExample orderConfirmationExample = new OrderConfirmationExample();
+        orderConfirmationExample.main(args[0]);
+
+        // TESTS
 
         ResourcesTests resourcesTests = new ResourcesTests();
         resourcesTests.ResourceTest();
@@ -84,7 +87,7 @@ public class Main {
         pdfTests.AOPPDFImagesTest();
         pdfTests.AOPPDFForms();
 
-        LoopsTests loopsTests  = new LoopsTests();
+        LoopsTests loopsTests = new LoopsTests();
         loopsTests.forEach();
         loopsTests.testForEachSheet();
 
@@ -104,8 +107,9 @@ public class Main {
         renderElementsTests.D3Code();
         renderElementsTests.textBox();
         renderElementsTests.elementCollection();
-        //footnote, formula, HTML, MarkDownContent, PageBreak, Raw, RightToLeft don't need a test as they are all similar to Property.
-    
+        // footnote, formula, HTML, MarkDownContent, PageBreak, Raw, RightToLeft don't
+        // need a test as they are all similar to Property.
+
         PrintJobTest printJobTest = new PrintJobTest();
         printJobTest.prependAppendSubTemplatesTest();
     }

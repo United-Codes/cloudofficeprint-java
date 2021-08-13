@@ -7,11 +7,10 @@ import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 
-
 /**
  * Represents an area chart.
  */
-public class AreaChart extends Chart{
+public class AreaChart extends Chart {
     ArrayList<AreaSeries> series = new ArrayList<>();
 
     /**
@@ -30,14 +29,15 @@ public class AreaChart extends Chart{
 
     /**
      * Represents an area chart.
-     * @param name Name of the chart (for the tag).
+     * 
+     * @param name    Name of the chart (for the tag).
      * @param options Options of the chart.
-     * @param series Series with the data for the chart.
+     * @param series  Series with the data for the chart.
      */
-    public AreaChart(String name, ChartOptions options, AreaSeries ... series){
+    public AreaChart(String name, ChartOptions options, AreaSeries... series) {
         setName(name);
         setOptions(options);
-        for (AreaSeries serie: series){
+        for (AreaSeries serie : series) {
             getSeries().add(serie);
         }
     }
@@ -49,16 +49,16 @@ public class AreaChart extends Chart{
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         JsonObject result = new JsonObject();
-        if(getOptions()!=null){
+        if (getOptions() != null) {
             result.add("options", getOptions().getJSON());
         }
         JsonArray lines = new JsonArray();
-        for (AreaSeries serie : getSeries()){
+        for (AreaSeries serie : getSeries()) {
             lines.add(serie.getJSON());
         }
         result.add("areas", lines);
-        result.addProperty("type","area");
-        json.add(getName(),result);
+        result.addProperty("type", "area");
+        json.add(getName(), result);
         return json;
     }
 

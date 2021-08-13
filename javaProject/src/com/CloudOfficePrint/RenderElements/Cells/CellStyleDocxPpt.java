@@ -5,7 +5,7 @@ import com.google.gson.JsonObject;
 /**
  * Represent the style of Word and PowerPoint cells.
  */
-public class CellStyleDocxPpt extends CellStyle{
+public class CellStyleDocxPpt extends CellStyle {
 
     private String backgroundColor;
     private String width;
@@ -25,28 +25,39 @@ public class CellStyleDocxPpt extends CellStyle{
     }
 
     /**
-     * The width manipulation is available from AOP 20.2. Giving a width of 0 will remove the whole column.
-     * @return width The width + unit ( in, cm, px, pt, em and % (% is in respect to the initial width of the table)).
+     * The width manipulation is available from AOP 20.2. Giving a width of 0 will
+     * remove the whole column.
+     * 
+     * @return width The width + unit ( in, cm, px, pt, em and % (% is in respect to
+     *         the initial width of the table)).
      */
     public String getWidth() {
         return width;
     }
 
     /**
-     * The width manipulation is available from AOP 20.2. Giving a width of 0 will remove the whole column.
-     * @param width The width +unit ( in, cm, px, pt, em and % (% is in respect to the initial width of the table)).
+     * The width manipulation is available from AOP 20.2. Giving a width of 0 will
+     * remove the whole column.
+     * 
+     * @param width The width +unit ( in, cm, px, pt, em and % (% is in respect to
+     *              the initial width of the table)).
      */
     public void setWidth(String width) {
         this.width = width;
     }
 
     /**
-     * Represents the style of a Word/PowerPoint cell element. Use default value if you don't want to specify an optional argument.
-     * @param backgroundColor The background color of the cell (hex format). (Optional)
-     * @param width  The width of the cell + unit ( in, cm, px, pt, em and % (% is in respect to the initial width of the table)).
-     *               Giving a width of 0 will remove the whole column.
+     * Represents the style of a Word/PowerPoint cell element. Use default value if
+     * you don't want to specify an optional argument.
+     * 
+     * @param backgroundColor The background color of the cell (hex format).
+     *                        (Optional)
+     * @param width           The width of the cell + unit ( in, cm, px, pt, em and
+     *                        % (% is in respect to the initial width of the
+     *                        table)). Giving a width of 0 will remove the whole
+     *                        column.
      */
-    public CellStyleDocxPpt(String backgroundColor, String width){
+    public CellStyleDocxPpt(String backgroundColor, String width) {
         setBackgroundColor(backgroundColor);
         setWidth(width);
     }
@@ -57,14 +68,13 @@ public class CellStyleDocxPpt extends CellStyle{
     @Override
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
-        if (getBackgroundColor()!=null){
-            json.addProperty("_cell_background_color",getBackgroundColor());
+        if (getBackgroundColor() != null) {
+            json.addProperty("_cell_background_color", getBackgroundColor());
         }
-        if (getWidth()!=null){
-            json.addProperty("_width",getWidth());
+        if (getWidth() != null) {
+            json.addProperty("_width", getWidth());
         }
         return json;
     }
-
 
 }

@@ -1,6 +1,5 @@
 package com.CloudOfficePrint.RenderElements.Charts;
 
-
 import com.google.gson.JsonObject;
 
 /**
@@ -55,14 +54,17 @@ public class ChartDateOptions {
     }
 
     /**
-     * @return How many units should be used for spacing the axis values (automatic if undefined). This option is not supported in LibreOffice.
+     * @return How many units should be used for spacing the axis values (automatic
+     *         if undefined). This option is not supported in LibreOffice.
      */
     public Integer getStep() {
         return step;
     }
 
     /**
-     * @param step How many units should be used for spacing the axis values (automatic if undefined). This option is not supported in LibreOffice.
+     * @param step How many units should be used for spacing the axis values
+     *             (automatic if undefined). This option is not supported in
+     *             LibreOffice.
      */
     public void setStep(Integer step) {
         this.step = step;
@@ -70,12 +72,15 @@ public class ChartDateOptions {
 
     /**
      * This object represents the date options for a chart.
+     * 
      * @param format Date format e.g. : unix.
-     * @param code Code format of the date. e.g. : mm/yy
-     * @param unit The unit to be used for spacing the axis values e.g. : months.
-     * @param step How many units should be used for spacing the axis values (automatic if undefined). This option is not supported in LibreOffice.
+     * @param code   Code format of the date. e.g. : mm/yy
+     * @param unit   The unit to be used for spacing the axis values e.g. : months.
+     * @param step   How many units should be used for spacing the axis values
+     *               (automatic if undefined). This option is not supported in
+     *               LibreOffice.
      */
-    public ChartDateOptions(String format, String code, String unit, Integer step){
+    public ChartDateOptions(String format, String code, String unit, Integer step) {
         setFormat(format);
         setCode(code);
         setUnit(unit);
@@ -87,17 +92,17 @@ public class ChartDateOptions {
      */
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
-        if (getFormat()!= null){
-            json.addProperty("format",getFormat());
+        if (getFormat() != null) {
+            json.addProperty("format", getFormat());
         }
-        if (getCode()!= null){
-            json.addProperty("code",getCode());
+        if (getCode() != null) {
+            json.addProperty("code", getCode());
         }
-        if (getUnit()!= null){
-            json.addProperty("unit",getUnit());
+        if (getUnit() != null) {
+            json.addProperty("unit", getUnit());
         }
-        if (getStep()!= null){
-            json.addProperty("step",getStep());
+        if (getStep() != null) {
+            json.addProperty("step", getStep());
         }
         return json;
     }

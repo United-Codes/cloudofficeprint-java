@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Represents a stacked bar chart.
  */
-public class BarStackedChart extends Chart{
+public class BarStackedChart extends Chart {
     ArrayList<BarStackedSeries> lineseries = new ArrayList<BarStackedSeries>();
 
     /**
@@ -29,14 +29,15 @@ public class BarStackedChart extends Chart{
 
     /**
      * Represents a stacked bar chart.
-     * @param name Name of the chart (for the tag).
-     * @param options Options of the chart.
+     * 
+     * @param name             Name of the chart (for the tag).
+     * @param options          Options of the chart.
      * @param barStackedSeries Series with the data for the chart.
      */
-    public BarStackedChart(String name, ChartOptions options, BarStackedSeries ... barStackedSeries){
+    public BarStackedChart(String name, ChartOptions options, BarStackedSeries... barStackedSeries) {
         setName(name);
         setOptions(options);
-        for (BarStackedSeries barStackedSerie: lineseries){
+        for (BarStackedSeries barStackedSerie : lineseries) {
             getBarStackedSeries().add(barStackedSerie);
         }
     }
@@ -48,16 +49,16 @@ public class BarStackedChart extends Chart{
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         JsonObject result = new JsonObject();
-        if(getOptions()!=null){
+        if (getOptions() != null) {
             result.add("options", getOptions().getJSON());
         }
         JsonArray lines = new JsonArray();
-        for (BarStackedSeries barStackedSerie : getBarStackedSeries()){
+        for (BarStackedSeries barStackedSerie : getBarStackedSeries()) {
             lines.add(barStackedSerie.getJSON());
         }
         result.add("bars", lines);
-        result.addProperty("type","barStacked");
-        json.add(getName(),result);
+        result.addProperty("type", "barStacked");
+        json.add(getName(), result);
         return json;
     }
 

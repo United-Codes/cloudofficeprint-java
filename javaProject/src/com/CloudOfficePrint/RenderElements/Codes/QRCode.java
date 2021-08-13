@@ -8,8 +8,8 @@ import java.nio.file.Files;
 import java.util.Base64;
 
 /**
- * This class is a subclass of Code and serves as a superclass for the different types of QR-codes. It contains all the styling
- * options of the QR codes.
+ * This class is a subclass of Code and serves as a superclass for the different
+ * types of QR-codes. It contains all the styling options of the QR codes.
  */
 public class QRCode extends Code {
 
@@ -40,14 +40,16 @@ public class QRCode extends Code {
     private String autoColorLight;
 
     /**
-     * @return For body block, must be greater than 0, less than or equal to 1. default is 1.
+     * @return For body block, must be greater than 0, less than or equal to 1.
+     *         default is 1.
      */
     public Integer getDotScale() {
         return dotScale;
     }
 
     /**
-     * @param dotScale For body block, must be greater than 0, less than or equal to 1. default is 1
+     * @param dotScale For body block, must be greater than 0, less than or equal to
+     *                 1. default is 1
      */
     public void setDotScale(Integer dotScale) {
         this.dotScale = dotScale;
@@ -69,6 +71,7 @@ public class QRCode extends Code {
 
     /**
      * Sets the logo to the given image from the path.
+     * 
      * @param filePath Path of the local file.
      * @throws IOException If file not found.
      */
@@ -95,6 +98,7 @@ public class QRCode extends Code {
 
     /**
      * Sets the background image of the QR code to the given image from the path.
+     * 
      * @param filePath Path of the local file.
      * @throws IOException If file not found.
      */
@@ -211,7 +215,8 @@ public class QRCode extends Code {
     }
 
     /**
-     * @param backgroundImageAlpha Background image transparency, value between 0 and 1. default is 1
+     * @param backgroundImageAlpha Background image transparency, value between 0
+     *                             and 1. default is 1
      */
     public void setBackgroundImageAlpha(Double backgroundImageAlpha) {
         this.backgroundImageAlpha = backgroundImageAlpha;
@@ -225,7 +230,8 @@ public class QRCode extends Code {
     }
 
     /**
-     * @param poColor Global Position Inner color. If not set, the defaut is `colorDark`.
+     * @param poColor Global Position Inner color. If not set, the defaut is
+     *                `colorDark`.
      */
     public void setPoColor(String poColor) {
         this.poColor = poColor;
@@ -288,7 +294,7 @@ public class QRCode extends Code {
     }
 
     /**
-     * @return  Position Inner color - Top Right.
+     * @return Position Inner color - Top Right.
      */
     public String getPiTRColor() {
         return piTRColor;
@@ -372,52 +378,59 @@ public class QRCode extends Code {
     }
 
     /**
-     * @return Automatic color adjustment(for data block) (default is false) (set to false if using background images).
+     * @return Automatic color adjustment(for data block) (default is false) (set to
+     *         false if using background images).
      */
     public Boolean getAutoColor() {
         return autoColor;
     }
 
     /**
-     * @param autoColor Automatic color adjustment(for data block) (default is false) (set to false if using background images).
+     * @param autoColor Automatic color adjustment(for data block) (default is
+     *                  false) (set to false if using background images).
      */
     public void setAutoColor(Boolean autoColor) {
         this.autoColor = autoColor;
     }
 
     /**
-     * @return Automatic color: dark CSS color (only required when qr_auto_color is set true)
-     * (dark color preferred, otherwise may lead to undetectable QR).
+     * @return Automatic color: dark CSS color (only required when qr_auto_color is
+     *         set true) (dark color preferred, otherwise may lead to undetectable
+     *         QR).
      */
     public String getAutoColorDark() {
         return autoColorDark;
     }
 
     /**
-     * @param autoColorDark Automatic color: dark CSS color (only required when qr_auto_color is set true)
-     *                     (dark color preferred, otherwise may lead to undetectable QR).
+     * @param autoColorDark Automatic color: dark CSS color (only required when
+     *                      qr_auto_color is set true) (dark color preferred,
+     *                      otherwise may lead to undetectable QR).
      */
     public void setAutoColorDark(String autoColorDark) {
         this.autoColorDark = autoColorDark;
     }
 
     /**
-     * @return Automatic color: light CSS color (only required when qr_auto_color is set true).
+     * @return Automatic color: light CSS color (only required when qr_auto_color is
+     *         set true).
      */
     public String getAutoColorLight() {
         return autoColorLight;
     }
 
     /**
-     * @param autoColorLight Automatic color: light CSS color (only required when qr_auto_color is set true).
+     * @param autoColorLight Automatic color: light CSS color (only required when
+     *                       qr_auto_color is set true).
      */
     public void setAutoColorLight(String autoColorLight) {
         this.autoColorLight = autoColorLight;
     }
 
     /**
-     * This class is a subclass of Code and serves as a superclass for the different types of QR-codes. It contains all the styling
-     * options of the QR codes.
+     * This class is a subclass of Code and serves as a superclass for the different
+     * types of QR-codes. It contains all the styling options of the QR codes.
+     * 
      * @param name  Name of this code for the tag.
      * @param type  Type of code required. The options can be found on:
      *              http://www.apexofficeprint.com/docs/#615-barcode-qrcode-tags
@@ -433,82 +446,82 @@ public class QRCode extends Code {
     @Override
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
-        json.addProperty(getName(),getValue());
-        json.addProperty(getName()+"_type",getType());
-        if (getDotScale()!= null){
-            json.addProperty(getName()+"_qr_dotscale",getDotScale());
+        json.addProperty(getName(), getValue());
+        json.addProperty(getName() + "_type", getType());
+        if (getDotScale() != null) {
+            json.addProperty(getName() + "_qr_dotscale", getDotScale());
         }
-        if (getLogo()!= null){
-            json.addProperty(getName()+"_qr_logo",getLogo());
+        if (getLogo() != null) {
+            json.addProperty(getName() + "_qr_logo", getLogo());
         }
-        if (getBackGroundImage()!= null){
-            json.addProperty(getName()+"_qr_background_image",getBackGroundImage());
+        if (getBackGroundImage() != null) {
+            json.addProperty(getName() + "_qr_background_image", getBackGroundImage());
         }
-        if (getColorDark()!= null){
-            json.addProperty(getName()+"_qr_color_dark",getColorDark());
+        if (getColorDark() != null) {
+            json.addProperty(getName() + "_qr_color_dark", getColorDark());
         }
-        if (getColorLight()!= null){
-            json.addProperty(getName()+"_qr_color_light",getColorLight());
+        if (getColorLight() != null) {
+            json.addProperty(getName() + "_qr_color_light", getColorLight());
         }
-        if (getWidthLogo()!= null){
-            json.addProperty(getName()+"_qr_logo_width",getWidthLogo());
+        if (getWidthLogo() != null) {
+            json.addProperty(getName() + "_qr_logo_width", getWidthLogo());
         }
-        if (getHeightLogo()!= null){
-            json.addProperty(getName()+"_qr_logo_height",getHeightLogo());
+        if (getHeightLogo() != null) {
+            json.addProperty(getName() + "_qr_logo_height", getHeightLogo());
         }
-        if (getLogoBackGroundColor()!= null){
-            json.addProperty(getName()+"_qr_logo_background_color",getLogoBackGroundColor());
+        if (getLogoBackGroundColor() != null) {
+            json.addProperty(getName() + "_qr_logo_background_color", getLogoBackGroundColor());
         }
-        if (getQuietZone()!= null){
-            json.addProperty(getName()+"_qr_quiet_zone",getQuietZone());
+        if (getQuietZone() != null) {
+            json.addProperty(getName() + "_qr_quiet_zone", getQuietZone());
         }
-        if (getQuietZoneColor()!= null){
-            json.addProperty(getName()+"_qr_quiet_zone_color",getQuietZoneColor());
+        if (getQuietZoneColor() != null) {
+            json.addProperty(getName() + "_qr_quiet_zone_color", getQuietZoneColor());
         }
-        if (getBackgroundImageAlpha()!= null){
-            json.addProperty(getName()+"_qr_background_image_alpha",getBackgroundImageAlpha());
+        if (getBackgroundImageAlpha() != null) {
+            json.addProperty(getName() + "_qr_background_image_alpha", getBackgroundImageAlpha());
         }
-        if (getPoColor()!= null){
-            json.addProperty(getName()+"_qr_po_color",getPoColor());
+        if (getPoColor() != null) {
+            json.addProperty(getName() + "_qr_po_color", getPoColor());
         }
-        if (getPiColor()!= null){
-            json.addProperty(getName()+"_qr_pi_color",getPiColor());
+        if (getPiColor() != null) {
+            json.addProperty(getName() + "_qr_pi_color", getPiColor());
         }
-        if (getPoTLColor()!= null){
-            json.addProperty(getName()+"_qr_po_tl_color",getPoTLColor());
+        if (getPoTLColor() != null) {
+            json.addProperty(getName() + "_qr_po_tl_color", getPoTLColor());
         }
-        if (getPiTLColor()!= null){
-            json.addProperty(getName()+"_qr_pi_tl_color",getPiTLColor());
+        if (getPiTLColor() != null) {
+            json.addProperty(getName() + "_qr_pi_tl_color", getPiTLColor());
         }
-        if (getPoTRColor()!= null){
-            json.addProperty(getName()+"_qr_po_tr_color",getPoTRColor());
+        if (getPoTRColor() != null) {
+            json.addProperty(getName() + "_qr_po_tr_color", getPoTRColor());
         }
-        if (getPiTRColor()!= null){
-            json.addProperty(getName()+"_qr_pi_tr_color",getPiTRColor());
+        if (getPiTRColor() != null) {
+            json.addProperty(getName() + "_qr_pi_tr_color", getPiTRColor());
         }
-        if (getPoBLColor()!= null){
-            json.addProperty(getName()+"_qr_po_bl_color",getPoBLColor());
+        if (getPoBLColor() != null) {
+            json.addProperty(getName() + "_qr_po_bl_color", getPoBLColor());
         }
-        if (getPiBLColor()!= null){
-            json.addProperty(getName()+"_qr_pi_bl_color",getPiBLColor());
+        if (getPiBLColor() != null) {
+            json.addProperty(getName() + "_qr_pi_bl_color", getPiBLColor());
         }
-        if (getTimingVColor()!= null){
-            json.addProperty(getName()+"_qr_timing_v_color",getTimingVColor());
+        if (getTimingVColor() != null) {
+            json.addProperty(getName() + "_qr_timing_v_color", getTimingVColor());
         }
-        if (getTimingHColor()!= null){
-            json.addProperty(getName()+"_qr_timing_h_color",getTimingHColor());
+        if (getTimingHColor() != null) {
+            json.addProperty(getName() + "_qr_timing_h_color", getTimingHColor());
         }
-        if (getTimingColor()!= null){
-            json.addProperty(getName()+"_qr_timing_color",getTimingColor());
+        if (getTimingColor() != null) {
+            json.addProperty(getName() + "_qr_timing_color", getTimingColor());
         }
-        if (getAutoColor()!= null){
-            json.addProperty(getName()+"_qr_auto_color",getAutoColor());
+        if (getAutoColor() != null) {
+            json.addProperty(getName() + "_qr_auto_color", getAutoColor());
         }
-        if (getAutoColorDark()!= null){
-            json.addProperty(getName()+"_qr_auto_color_dark",getAutoColorDark());
+        if (getAutoColorDark() != null) {
+            json.addProperty(getName() + "_qr_auto_color_dark", getAutoColorDark());
         }
-        if (getAutoColorLight()!= null){
-            json.addProperty(getName()+"_qr_auto_color_light",getAutoColorLight());
+        if (getAutoColorLight() != null) {
+            json.addProperty(getName() + "_qr_auto_color_light", getAutoColorLight());
         }
         return json;
     }

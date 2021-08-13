@@ -6,14 +6,15 @@ import com.google.gson.JsonObject;
 import java.util.Map;
 
 /**
- * Commands object with commands for the AOP server to run before or after the post processing.
- * The commands should be present in the aop_config.json file on the AOP server.
+ * Commands object with commands for the AOP server to run before or after the
+ * post processing. The commands should be present in the aop_config.json file
+ * on the AOP server.
  */
 public class Commands {
 
     private Command postProcess;
     private Boolean postProcessReturn;
-    private int postProcessDeleteDelay =-1;
+    private int postProcessDeleteDelay = -1;
     private Command preConversion;
     private Command postConversion;
     private Command postMerge;
@@ -26,30 +27,38 @@ public class Commands {
     }
 
     /**
-     * @param postProcess Command to run on the AOP server after the POST request is processed.
+     * @param postProcess Command to run on the AOP server after the POST request is
+     *                    processed.
      */
     public void setPostProcess(Command postProcess) {
         this.postProcess = postProcess;
     }
 
     /**
-     * If you are already doing something with the file and don't want it to be returned in the response set this to true.
-     * @return Whether to return the output file or not. Note this output is AOP's output and not the post process command output.
+     * If you are already doing something with the file and don't want it to be
+     * returned in the response set this to true.
+     * 
+     * @return Whether to return the output file or not. Note this output is AOP's
+     *         output and not the post process command output.
      */
     public Boolean getPostProcessReturn() {
         return postProcessReturn;
     }
 
     /**
-     * @param postProcessReturn Whether to return the output file or not. Note this output is AOP's output and not the post process command output.
+     * @param postProcessReturn Whether to return the output file or not. Note this
+     *                          output is AOP's output and not the post process
+     *                          command output.
      */
     public void setPostProcessReturn(Boolean postProcessReturn) {
         this.postProcessReturn = postProcessReturn;
     }
 
     /**
-     * AOP deletes the file provided to the command directly after executing it. This can be delayed with this option.
-     * If you have a postcommand to execute on this file and it takes some time to execute, add a postProcessDeleteDelay.
+     * AOP deletes the file provided to the command directly after executing it.
+     * This can be delayed with this option. If you have a postcommand to execute on
+     * this file and it takes some time to execute, add a postProcessDeleteDelay.
+     * 
      * @return delay in ms.
      */
     public int getPostProcessDeleteDelay() {
@@ -57,8 +66,10 @@ public class Commands {
     }
 
     /**
-     * AOP deletes the file provided to the command directly after executing it. This can be delayed with this option.
-     * If you have a postcommand to execute on this file and it takes some time to execute, add a postProcessDeleteDelay.
+     * AOP deletes the file provided to the command directly after executing it.
+     * This can be delayed with this option. If you have a postcommand to execute on
+     * this file and it takes some time to execute, add a postProcessDeleteDelay.
+     * 
      * @param postProcessDeleteDelay delay in ms.
      */
     public void setPostProcessDeleteDelay(int postProcessDeleteDelay) {
@@ -110,37 +121,37 @@ public class Commands {
     /**
      * @return JSONObject with the tags for the commands for the AOP server.
      */
-    public JsonObject getJSON(){
-        JsonObject json =new JsonObject();
-        if(getPostProcess()!=null){
+    public JsonObject getJSON() {
+        JsonObject json = new JsonObject();
+        if (getPostProcess() != null) {
             JsonObject postProcess = new JsonObject();
-            for(Map.Entry<String, JsonElement> tag : getPostProcess().getJSON().entrySet()){
-                postProcess.add(tag.getKey(),tag.getValue());
+            for (Map.Entry<String, JsonElement> tag : getPostProcess().getJSON().entrySet()) {
+                postProcess.add(tag.getKey(), tag.getValue());
             }
-            if (getPostProcessReturn()== false){
+            if (getPostProcessReturn() == false) {
                 postProcess.addProperty("return_output", getPostProcessReturn());
             }
-            if (getPostProcessDeleteDelay()!= -1){
+            if (getPostProcessDeleteDelay() != -1) {
                 postProcess.addProperty("delete_delay", getPostProcessDeleteDelay());
             }
-            json.add("post_process",postProcess);
+            json.add("post_process", postProcess);
         }
-        if(getPreConversion()!=null|| getPostConversion()!=null){
+        if (getPreConversion() != null || getPostConversion() != null) {
             JsonObject conversion = new JsonObject();
-            if (getPreConversion()!=null){
-                for(Map.Entry<String, JsonElement> tag : getPreConversion().getJSONForPre().entrySet()){
-                    conversion.add(tag.getKey(),tag.getValue());
+            if (getPreConversion() != null) {
+                for (Map.Entry<String, JsonElement> tag : getPreConversion().getJSONForPre().entrySet()) {
+                    conversion.add(tag.getKey(), tag.getValue());
                 }
             }
-            if (getPostConversion()!=null){
-                for(Map.Entry<String, JsonElement> tag : getPostConversion().getJSONForPost().entrySet()){
-                    conversion.add(tag.getKey(),tag.getValue());
+            if (getPostConversion() != null) {
+                for (Map.Entry<String, JsonElement> tag : getPostConversion().getJSONForPost().entrySet()) {
+                    conversion.add(tag.getKey(), tag.getValue());
                 }
             }
-            json.add("conversion",conversion);
+            json.add("conversion", conversion);
         }
-        if (getPostMerge()!=null){
-            json.add("merge",getPostMerge().getJSONForPost());
+        if (getPostMerge() != null) {
+            json.add("merge", getPostMerge().getJSONForPost());
         }
         return json;
     }

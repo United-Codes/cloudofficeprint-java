@@ -8,9 +8,10 @@ import com.google.gson.JsonObject;
 import java.util.*;
 
 /**
- * Loop where a sheet will be repeated for each element of the loop. Only supported in Excel templates.
+ * Loop where a sheet will be repeated for each element of the loop. Only
+ * supported in Excel templates.
  */
-public class SheetLoop extends Loop{
+public class SheetLoop extends Loop {
 
     private ArrayList<String> sheetNames;
 
@@ -30,6 +31,7 @@ public class SheetLoop extends Loop{
 
     /**
      * To repeat a sheet for each element of elements.
+     * 
      * @param name     Name of this loop for the tag.
      * @param elements Value to replace the tag with.
      */
@@ -39,6 +41,7 @@ public class SheetLoop extends Loop{
 
     /**
      * To repeat a sheet for each element of elements.
+     * 
      * @param name     Name of this loop for the tag.
      * @param elements Value to replace the tag with.
      */
@@ -48,13 +51,14 @@ public class SheetLoop extends Loop{
 
     /**
      * To repeat a sheet for each element of elements.
+     * 
      * @param name     Name of this loop for the tag.
      * @param elements HashMap(name, elements), elements to replace the tag with.
      */
     public SheetLoop(String name, HashMap<String, RenderElement> elements) {
-        super(name, new RenderElement[]{});
+        super(name, new RenderElement[] {});
         ArrayList<RenderElement> elementList = new ArrayList<>();
-        for (Map.Entry<String,RenderElement> entry : elements.entrySet()){
+        for (Map.Entry<String, RenderElement> entry : elements.entrySet()) {
             sheetNames.add(entry.getKey());
             elementList.add(entry.getValue());
         }
@@ -69,8 +73,8 @@ public class SheetLoop extends Loop{
         JsonObject json = new JsonObject();
         JsonArray array = new JsonArray();
         int i = 0;
-        for (RenderElement element : getElements()){
-            if (getSheetNames()!=null){
+        for (RenderElement element : getElements()) {
+            if (getSheetNames() != null) {
                 element.getJSON().addProperty("sheetname", getSheetNames().get(i));
             }
             array.add(element.getJSON());
@@ -81,13 +85,14 @@ public class SheetLoop extends Loop{
     }
 
     /**
-     * @return An immutable set containing all available template tags this element can replace.
+     * @return An immutable set containing all available template tags this element
+     *         can replace.
      */
     @Override
     public Set<String> getTemplateTags() {
         Set<String> hash_Set = new HashSet<String>();
         hash_Set.add("{!" + getName() + "}");
-        for (RenderElement element : getElements()){
+        for (RenderElement element : getElements()) {
             for (String tag : getTemplateTags())
                 hash_Set.add(tag);
         }

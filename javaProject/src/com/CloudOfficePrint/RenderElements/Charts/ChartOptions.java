@@ -32,7 +32,6 @@ public class ChartOptions {
     Boolean showPercentage;
     String position;
 
-
     /**
      * @return The options for the x-axis.
      */
@@ -133,6 +132,7 @@ public class ChartOptions {
 
     /**
      * Note: displaying rounded corners is not supported by LibreOffice.
+     * 
      * @return Background color of the entire chart.
      */
     public String getBackgroundColor() {
@@ -141,6 +141,7 @@ public class ChartOptions {
 
     /**
      * Note: displaying rounded corners is not supported by LibreOffice.
+     * 
      * @param backgroundColor Background color of the entire chart.
      */
     public void setBackgroundColor(String backgroundColor) {
@@ -148,9 +149,11 @@ public class ChartOptions {
     }
 
     /**
-     * Note: backgroundOpacity is ignored if backgroundColor is not specified or if backgroundColor is specified in a color
-     * space which includes an alpha channel (e.g. rgba(0,191,255,0.5)). In the latter case, the alpha channel in backgroundColor
-     * is used.
+     * Note: backgroundOpacity is ignored if backgroundColor is not specified or if
+     * backgroundColor is specified in a color space which includes an alpha channel
+     * (e.g. rgba(0,191,255,0.5)). In the latter case, the alpha channel in
+     * backgroundColor is used.
+     * 
      * @return The opacity of the entire chart.
      */
     public Integer getBackgroundOpacity() {
@@ -158,9 +161,11 @@ public class ChartOptions {
     }
 
     /**
-     * Note: backgroundOpacity is ignored if backgroundColor is not specified or if backgroundColor is specified in a color
-     * space which includes an alpha channel (e.g. rgba(0,191,255,0.5)). In the latter case, the alpha channel in backgroundColor
-     * is used.
+     * Note: backgroundOpacity is ignored if backgroundColor is not specified or if
+     * backgroundColor is specified in a color space which includes an alpha channel
+     * (e.g. rgba(0,191,255,0.5)). In the latter case, the alpha channel in
+     * backgroundColor is used.
+     * 
      * @param backgroundOpacity The opacity of the entire chart.
      */
     public void setBackgroundOpacity(Integer backgroundOpacity) {
@@ -203,7 +208,7 @@ public class ChartOptions {
     }
 
     /**
-     * @return Position of the legend.  'l' for left, 'r' right, 'b' bottom, 't' top
+     * @return Position of the legend. 'l' for left, 'r' right, 'b' bottom, 't' top
      */
     public String getLegendPosition() {
         return legendPosition;
@@ -217,9 +222,12 @@ public class ChartOptions {
     }
 
     /**
-     * Turns the legend on. Use null for the parameters if you don't want to specify them.
-     * @param position Position of the legend. 'l' for left, 'r' right, 'b' bottom, 't' top
-     * @param style Style for the legend text.
+     * Turns the legend on. Use null for the parameters if you don't want to specify
+     * them.
+     * 
+     * @param position Position of the legend. 'l' for left, 'r' right, 'b' bottom,
+     *                 't' top
+     * @param style    Style for the legend text.
      */
     public void setLegend(String position, ChartTextStyle style) {
         this.showLegend = true;
@@ -230,7 +238,7 @@ public class ChartOptions {
     /**
      * Turns the legend of.
      */
-    public void removeLegend(){
+    public void removeLegend() {
         this.showLegend = null;
         this.legendPosition = null;
         this.legendStyle = null;
@@ -238,6 +246,7 @@ public class ChartOptions {
 
     /**
      * Default true for pie/pie3d and doughnut.
+     * 
      * @return Whether to show data labels on the chart.
      */
     public Boolean getShowDataLabels() {
@@ -245,7 +254,8 @@ public class ChartOptions {
     }
 
     /**
-     * @return Seperator : can be either false or anything else for example \n or \t or ; or (, if false).
+     * @return Seperator : can be either false or anything else for example \n or \t
+     *         or ; or (, if false).
      */
     public String getSeparator() {
         return separator;
@@ -266,7 +276,8 @@ public class ChartOptions {
     }
 
     /**
-     * @return Whether to include the legend key (i.e the color of the series) in the data label.
+     * @return Whether to include the legend key (i.e the color of the series) in
+     *         the data label.
      */
     public Boolean getShowLegendKey() {
         return showLegendKey;
@@ -280,7 +291,8 @@ public class ChartOptions {
     }
 
     /**
-     * @return Whether to include the percentage, default true for pie/pie3d and doughnut.
+     * @return Whether to include the percentage, default true for pie/pie3d and
+     *         doughnut.
      */
     public Boolean getShowPercentage() {
         return showPercentage;
@@ -288,26 +300,36 @@ public class ChartOptions {
 
     /**
      * Note that not all options might be available for specific charts.
-     * @return Position of the data label , can be 'center', 'left', 'right', 'above', 'below', 'insideBase', 'bestFit',
-     * 'outsideEnd', 'insideEnd'.
+     * 
+     * @return Position of the data label , can be 'center', 'left', 'right',
+     *         'above', 'below', 'insideBase', 'bestFit', 'outsideEnd', 'insideEnd'.
      */
     public String getPosition() {
         return position;
     }
 
     /**
-     * Turn the data labels on. If you don't want to specify an option use null as argument.
-     * @param separator Seperator : can be either false or anything else for example \n or \t or ; or (, if false).
-     * @param showSeriesName Whether to include the series name in the data label.
-     * @param showCategoryName Whether to include the series category name in the data label.
-     * @param showLegendKey Whether to include the legend key (i.e the color of the series) in the data label.
-     * @param showValue Whether to include the actual value in the data label.
-     * @param showPercentage Whether to include the percentage, default true for pie/pie3d and doughnut.
-     * @param position Position of the data label , can be 'center', 'left', 'right', 'above', 'below', 'insideBase', 'bestFit',
-     *                 'outsideEnd', 'insideEnd'. Note that not all options might be available for specific charts.
+     * Turn the data labels on. If you don't want to specify an option use null as
+     * argument.
+     * 
+     * @param separator        Seperator : can be either false or anything else for
+     *                         example \n or \t or ; or (, if false).
+     * @param showSeriesName   Whether to include the series name in the data label.
+     * @param showCategoryName Whether to include the series category name in the
+     *                         data label.
+     * @param showLegendKey    Whether to include the legend key (i.e the color of
+     *                         the series) in the data label.
+     * @param showValue        Whether to include the actual value in the data
+     *                         label.
+     * @param showPercentage   Whether to include the percentage, default true for
+     *                         pie/pie3d and doughnut.
+     * @param position         Position of the data label , can be 'center', 'left',
+     *                         'right', 'above', 'below', 'insideBase', 'bestFit',
+     *                         'outsideEnd', 'insideEnd'. Note that not all options
+     *                         might be available for specific charts.
      */
-    public void setDataLabels(String separator, Boolean showSeriesName, Boolean showCategoryName, Boolean showLegendKey, Boolean showValue
-            , Boolean showPercentage, String position) {
+    public void setDataLabels(String separator, Boolean showSeriesName, Boolean showCategoryName, Boolean showLegendKey,
+            Boolean showValue, Boolean showPercentage, String position) {
         this.showDataLabels = true;
         this.separator = separator;
         this.showSeriesName = showSeriesName;
@@ -321,7 +343,7 @@ public class ChartOptions {
     /**
      * Turns the datalabels of.
      */
-    public void removeDataLabels(){
+    public void removeDataLabels() {
         this.showDataLabels = null;
         this.separator = null;
         this.showSeriesName = null;
@@ -347,9 +369,11 @@ public class ChartOptions {
     }
 
     /**
-     * This object represents the options for a chart. You can populate the options with the setter functions.
+     * This object represents the options for a chart. You can populate the options
+     * with the setter functions.
      */
-    public ChartOptions(){};
+    public ChartOptions() {
+    };
 
     /**
      * @return JSONObject with the tags for this element for the AOP server.
@@ -357,81 +381,81 @@ public class ChartOptions {
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         JsonObject axis = new JsonObject();
-        if (getXAxis()!=null){
+        if (getXAxis() != null) {
             axis.add("x", getXAxis().getJSON());
         }
-        if (getYAxis()!=null){
+        if (getYAxis() != null) {
             axis.add("y", getYAxis().getJSON());
         }
-        if (getY2AxisOptions()!= null){
+        if (getY2AxisOptions() != null) {
             axis.add("y2", getY2AxisOptions().getJSON());
         }
-        if (getXAxis() != null || getYAxis() != null || getY2AxisOptions()!=null){
+        if (getXAxis() != null || getYAxis() != null || getY2AxisOptions() != null) {
             json.add("axis", axis);
         }
-        if (getWidth()!= null){
-            json.addProperty("width",getWidth());
+        if (getWidth() != null) {
+            json.addProperty("width", getWidth());
         }
-        if (getHeight()!= null){
-            json.addProperty("height",getHeight());
+        if (getHeight() != null) {
+            json.addProperty("height", getHeight());
         }
-        if (getBorder()!= null){
-            json.addProperty("border",getBorder());
+        if (getBorder() != null) {
+            json.addProperty("border", getBorder());
         }
-        if (getRoundedCorners()!= null){
-            json.addProperty("roundedCorners",getRoundedCorners());
+        if (getRoundedCorners() != null) {
+            json.addProperty("roundedCorners", getRoundedCorners());
         }
-        if (getBackgroundColor()!= null){
-            json.addProperty("backgroundColor",getBackgroundColor());
+        if (getBackgroundColor() != null) {
+            json.addProperty("backgroundColor", getBackgroundColor());
         }
-        if (getBackgroundOpacity()!= null){
-            json.addProperty("backgroundOpacity",getBackgroundOpacity());
+        if (getBackgroundOpacity() != null) {
+            json.addProperty("backgroundOpacity", getBackgroundOpacity());
         }
-        if (getTitle()!= null){
-            json.addProperty("title",getTitle());
+        if (getTitle() != null) {
+            json.addProperty("title", getTitle());
         }
-        if (getTitleStyle()!= null){
-            json.add("titleStyle",getTitleStyle().getJSON());
+        if (getTitleStyle() != null) {
+            json.add("titleStyle", getTitleStyle().getJSON());
         }
-        if (getGrid()!= null){
-            json.addProperty("grid",getGrid());
+        if (getGrid() != null) {
+            json.addProperty("grid", getGrid());
         }
-        if (getShowLegend()!= null && getShowLegend()== true){
+        if (getShowLegend() != null && getShowLegend() == true) {
             JsonObject legend = new JsonObject();
             legend.addProperty("showLegend", true);
-            if (getLegendPosition()!=null){
+            if (getLegendPosition() != null) {
                 legend.addProperty("position", getLegendPosition());
             }
-            if (getLegendStyle()!=null){
+            if (getLegendStyle() != null) {
                 legend.add("style", getLegendStyle().getJSON());
             }
-            json.add("legend",legend);
+            json.add("legend", legend);
         }
-        if (getShowDataLabels()!= null && getShowDataLabels()== true){
+        if (getShowDataLabels() != null && getShowDataLabels() == true) {
             JsonObject dataLabels = new JsonObject();
             dataLabels.addProperty("showDataLabels", true);
-            if (getSeparator()!=null){
+            if (getSeparator() != null) {
                 dataLabels.addProperty("separator", getSeparator());
             }
-            if (getShowSeriesName()!=null){
+            if (getShowSeriesName() != null) {
                 dataLabels.addProperty("showSeriesName", getShowSeriesName());
             }
-            if (getShowCategoryName()!=null){
+            if (getShowCategoryName() != null) {
                 dataLabels.addProperty("showCategoryName", getShowCategoryName());
             }
-            if (getShowLegendKey()!=null){
+            if (getShowLegendKey() != null) {
                 dataLabels.addProperty("showLegendKey", getShowLegendKey());
             }
-            if (getShowValue()!=null){
+            if (getShowValue() != null) {
                 dataLabels.addProperty("showValue", getShowValue());
             }
-            if (getShowPercentage()!=null){
+            if (getShowPercentage() != null) {
                 dataLabels.addProperty("showPercentage", getShowPercentage());
             }
-            if (getPosition()!=null){
+            if (getPosition() != null) {
                 dataLabels.addProperty("position", getPosition());
             }
-            json.add("dataLabels",dataLabels);
+            json.add("dataLabels", dataLabels);
         }
         return json;
     }

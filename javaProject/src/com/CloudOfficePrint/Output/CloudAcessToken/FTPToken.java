@@ -13,17 +13,20 @@ public class FTPToken extends CloudAccessToken {
     private String host;
 
     /**
-     * Port number of the FTP/SFTP server. Default : 0 (The AOP server will then use port 21).
+     * Port number of the FTP/SFTP server. Default : 0 (The AOP server will then use
+     * port 21).
      */
     private int port = 0;
 
     /**
-     * User name for the FTP/SFTP server. Default : null (The AOP server will then use anonymous as user).
+     * User name for the FTP/SFTP server. Default : null (The AOP server will then
+     * use anonymous as user).
      */
     private String username = null;
 
     /**
-     * Password of the user for the FTP/SFTP server. Default : null (The AOP server will then use anonymous@ as password).
+     * Password of the user for the FTP/SFTP server. Default : null (The AOP server
+     * will then use anonymous@ as password).
      */
     private String password = null;
 
@@ -84,21 +87,26 @@ public class FTPToken extends CloudAccessToken {
     }
 
     /**
-     * Constructor for an FTPToken object. Needs to be used if output wants to be stored on a FTP/SFTP server.
-     * If you don't need to instantiate some variables, use their default value as argument. If no default value is specified this
+     * Constructor for an FTPToken object. Needs to be used if output wants to be
+     * stored on a FTP/SFTP server. If you don't need to instantiate some variables,
+     * use their default value as argument. If no default value is specified this
      * argument is compulsory.
-     * @param host Host name or IP address of the FTP/SFTP server.
-     * @param SFTP True if server uses SFTP, false if server uses FTP.
-     * @param port Port number of the FTP/SFTP server. Default : 0 (The AOP server will then use port 21).
-     * @param username User name for the FTP/SFTP server. Default : null (The AOP server will then use anonymous as user).
-     * @param password Password of the user for the FTP/SFTP server. Default : null (The AOP server will then use anonymous@ as password).
+     * 
+     * @param host     Host name or IP address of the FTP/SFTP server.
+     * @param SFTP     True if server uses SFTP, false if server uses FTP.
+     * @param port     Port number of the FTP/SFTP server. Default : 0 (The AOP
+     *                 server will then use port 21).
+     * @param username User name for the FTP/SFTP server. Default : null (The AOP
+     *                 server will then use anonymous as user).
+     * @param password Password of the user for the FTP/SFTP server. Default : null
+     *                 (The AOP server will then use anonymous@ as password).
      */
-    public FTPToken(String host, Boolean SFTP, int port, String username, String password){
+    public FTPToken(String host, Boolean SFTP, int port, String username, String password) {
         setHost(host);
-        if (SFTP==true){
+        if (SFTP == true) {
             setService("sftp");
-        }
-        else setService("ftp");
+        } else
+            setService("ftp");
         setPort(port);
         setUsername(username);
         setPassword(password);
@@ -112,17 +120,17 @@ public class FTPToken extends CloudAccessToken {
         JsonObject json = new JsonObject();
         json.addProperty("output_location", getService());
         JsonObject token = new JsonObject();
-        token.addProperty("host",getHost());
-        if (getPort()!= 0){
-            token.addProperty("port",getPort());
+        token.addProperty("host", getHost());
+        if (getPort() != 0) {
+            token.addProperty("port", getPort());
         }
-        if(getUsername()!= null){
-            token.addProperty("user",getUsername());
+        if (getUsername() != null) {
+            token.addProperty("user", getUsername());
         }
-        if(getPassword()!= null){
-            token.addProperty("password",getPassword());
+        if (getPassword() != null) {
+            token.addProperty("password", getPassword());
         }
-        json.add("cloud_access_token",token);
+        json.add("cloud_access_token", token);
         return json;
     }
 }

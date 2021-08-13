@@ -3,7 +3,8 @@ package com.CloudOfficePrint.Output.CloudAcessToken;
 import com.google.gson.JsonObject;
 
 /**
- * CloudAccessToken is an abstract class for all the different cloud access tokens : OAuth tokens, AWS tokens,FTP/SFTP tokens
+ * CloudAccessToken is an abstract class for all the different cloud access
+ * tokens : OAuth tokens, AWS tokens,FTP/SFTP tokens
  */
 public abstract class CloudAccessToken {
 

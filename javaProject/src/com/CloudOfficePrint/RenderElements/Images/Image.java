@@ -90,12 +90,14 @@ public abstract class Image extends RenderElement {
     }
 
     /**
-     * Note : only supports 5 of the Microsoft Word Text Wrapping options.
-     * In line with text : This option is default. If no wrap option specified images will wrapped in line with text.
-     * Square : In order to use this property, wrap option should be "square".
-     * Top and Bottom : In order to use this property, wrap option should be "top-bottom".
-     * Behind Text : In order to use this property, wrap option should be "behind".
-     * In Front of Text : In order to use this property, wrap option should be "front".
+     * Note : only supports 5 of the Microsoft Word Text Wrapping options. In line
+     * with text : This option is default. If no wrap option specified images will
+     * wrapped in line with text. Square : In order to use this property, wrap
+     * option should be "square". Top and Bottom : In order to use this property,
+     * wrap option should be "top-bottom". Behind Text : In order to use this
+     * property, wrap option should be "behind". In Front of Text : In order to use
+     * this property, wrap option should be "front".
+     * 
      * @return The wrapping mode of the text around the image.
      */
     public String getWrapText() {
@@ -103,12 +105,14 @@ public abstract class Image extends RenderElement {
     }
 
     /**
-     * Note : only supports 5 of the Microsoft Word Text Wrapping options.
-     * In line with text : This option is default. If no wrap option specified images will wrapped in line with text.
-     * Square : In order to use this property, wrap option should be "square".
-     * Top and Bottom : In order to use this property, wrap option should be "top-bottom".
-     * Behind Text : In order to use this property, wrap option should be "behind".
-     * In Front of Text : In order to use this property, wrap option should be "front".
+     * Note : only supports 5 of the Microsoft Word Text Wrapping options. In line
+     * with text : This option is default. If no wrap option specified images will
+     * wrapped in line with text. Square : In order to use this property, wrap
+     * option should be "square". Top and Bottom : In order to use this property,
+     * wrap option should be "top-bottom". Behind Text : In order to use this
+     * property, wrap option should be "behind". In Front of Text : In order to use
+     * this property, wrap option should be "front".
+     * 
      * @param wrapText The wrapping mode of the text around the image.
      */
     public void setWrapText(String wrapText) {
@@ -163,44 +167,45 @@ public abstract class Image extends RenderElement {
     @Override
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
-        json.addProperty(getName(),getValue());
-        if(getMaxWidth()!=null){
-            json.addProperty(getName()+"_max_width",getMaxWidth());
+        json.addProperty(getName(), getValue());
+        if (getMaxWidth() != null) {
+            json.addProperty(getName() + "_max_width", getMaxWidth());
         }
-        if(getMaxHeight()!=null){
-            json.addProperty(getName()+"_max_height",getMaxHeight());
+        if (getMaxHeight() != null) {
+            json.addProperty(getName() + "_max_height", getMaxHeight());
         }
-        if(getAltText()!=null){
-            json.addProperty(getName()+"_alt_text",getAltText());
+        if (getAltText() != null) {
+            json.addProperty(getName() + "_alt_text", getAltText());
         }
-        if(getWidth()!=null){
-            json.addProperty(getName()+"_width",getWidth());
+        if (getWidth() != null) {
+            json.addProperty(getName() + "_width", getWidth());
         }
-        if(getHeight()!=null){
-            json.addProperty(getName()+"_height",getHeight());
+        if (getHeight() != null) {
+            json.addProperty(getName() + "_height", getHeight());
         }
-        if(getWrapText()!=null){
-            json.addProperty(getName()+"_wrap_text",getWrapText());
+        if (getWrapText() != null) {
+            json.addProperty(getName() + "_wrap_text", getWrapText());
         }
-        if(getRotation()!=null){
-            json.addProperty(getName()+"_rotation",getRotation());
+        if (getRotation() != null) {
+            json.addProperty(getName() + "_rotation", getRotation());
         }
-        if(getTargetUrl()!=null){
-            json.addProperty(getName()+"_url",getTargetUrl());
+        if (getTargetUrl() != null) {
+            json.addProperty(getName() + "_url", getTargetUrl());
         }
-        if(getTransparency()!=null){
-            json.addProperty(getName()+"_transparency",getTransparency());
+        if (getTransparency() != null) {
+            json.addProperty(getName() + "_transparency", getTransparency());
         }
         return json;
     }
 
     /**
-     * @return An immutable set containing all available template tags this element can replace.
+     * @return An immutable set containing all available template tags this element
+     *         can replace.
      */
     @Override
     public Set<String> getTemplateTags() {
         Set<String> hash_Set = new HashSet<String>();
-        hash_Set.add("{%"+getName()+"}");
+        hash_Set.add("{%" + getName() + "}");
         return ImmutableSet.copyOf(hash_Set);
     }
 }

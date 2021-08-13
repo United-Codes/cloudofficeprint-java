@@ -7,9 +7,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * This tag will allow you to insert a text box starting in the cell containing the tag in Excel.
+ * This tag will allow you to insert a text box starting in the cell containing
+ * the tag in Excel.
  */
-public class TextBox extends RenderElement{
+public class TextBox extends RenderElement {
 
     private String font;
     private String fontColor;
@@ -68,7 +69,8 @@ public class TextBox extends RenderElement{
     }
 
     /**
-     * @param transparency Transparency of the text in percent, optional default: 0%.
+     * @param transparency Transparency of the text in percent, optional default:
+     *                     0%.
      */
     public void setTransparency(String transparency) {
         this.transparency = transparency;
@@ -103,12 +105,13 @@ public class TextBox extends RenderElement{
     }
 
     /**
-     * This object represents a text box starting in the cell containing the tag in Excel. Options of the text can be set with the
-     * setter functions.
+     * This object represents a text box starting in the cell containing the tag in
+     * Excel. Options of the text can be set with the setter functions.
+     * 
      * @param name Name for the tag.
      * @param text Text of the textbox.
      */
-    public TextBox(String name, String text){
+    public TextBox(String name, String text) {
         setName(name);
         setValue(text);
     }
@@ -119,35 +122,36 @@ public class TextBox extends RenderElement{
     @Override
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
-        json.addProperty(getName(),getValue());
-        if(getFont()!=null){
-            json.addProperty(getName()+"_font",getFont());
+        json.addProperty(getName(), getValue());
+        if (getFont() != null) {
+            json.addProperty(getName() + "_font", getFont());
         }
-        if(getFontColor()!=null){
-            json.addProperty(getName()+"_font_color",getFontColor());
+        if (getFontColor() != null) {
+            json.addProperty(getName() + "_font_color", getFontColor());
         }
-        if(getFontSize()!=null){
-            json.addProperty(getName()+"_font_size",getFontSize());
+        if (getFontSize() != null) {
+            json.addProperty(getName() + "_font_size", getFontSize());
         }
-        if(getTransparency()!=null){
-            json.addProperty(getName()+"_transparency",getTransparency());
+        if (getTransparency() != null) {
+            json.addProperty(getName() + "_transparency", getTransparency());
         }
-        if(getWidth()!=null){
-            json.addProperty(getName()+"_width",getWidth());
+        if (getWidth() != null) {
+            json.addProperty(getName() + "_width", getWidth());
         }
-        if(getHeight()!=null){
-            json.addProperty(getName()+"_height",getHeight());
+        if (getHeight() != null) {
+            json.addProperty(getName() + "_height", getHeight());
         }
         return json;
     }
 
     /**
-     * @return An immutable set containing all available template tags this element can replace.
+     * @return An immutable set containing all available template tags this element
+     *         can replace.
      */
     @Override
     public Set<String> getTemplateTags() {
         Set<String> hash_Set = new HashSet<String>();
-        hash_Set.add("tbox "+getName()+"}");
+        hash_Set.add("tbox " + getName() + "}");
         return ImmutableSet.copyOf(hash_Set);
     }
 }

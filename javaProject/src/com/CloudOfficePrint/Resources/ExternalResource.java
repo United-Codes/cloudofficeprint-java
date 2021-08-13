@@ -58,28 +58,32 @@ public abstract class ExternalResource extends RenderElement {
     }
 
     /**
-     * @return JsonArray of the HTTP headers, e.g. [{"Content-Type":"application/json"},{"Custom-Auth-Token":"xysazxklj4568asdf46a5sd4f"}]
+     * @return JsonArray of the HTTP headers, e.g.
+     *         [{"Content-Type":"application/json"},{"Custom-Auth-Token":"xysazxklj4568asdf46a5sd4f"}]
      */
     public JsonArray getHeaders() {
         return headers;
     }
 
     /**
-     * @param headers JsonArray of the HTTP headers, e.g. [{"Content-Type":"application/json"},{"Custom-Auth-Token":"xysazxklj4568asdf46a5sd4f"}]
+     * @param headers JsonArray of the HTTP headers, e.g.
+     *                [{"Content-Type":"application/json"},{"Custom-Auth-Token":"xysazxklj4568asdf46a5sd4f"}]
      */
     public void setHeaders(JsonArray headers) {
         this.headers = headers;
     }
 
     /**
-     * @return Basic authentication i.e. 'user:password' to compute an Authorization header.
+     * @return Basic authentication i.e. 'user:password' to compute an Authorization
+     *         header.
      */
     public String getAuth() {
         return auth;
     }
 
     /**
-     * @param auth Basic authentication i.e. 'user:password' to compute an Authorization header.
+     * @param auth Basic authentication i.e. 'user:password' to compute an
+     *             Authorization header.
      */
     public void setAuth(String auth) {
         this.auth = auth;
@@ -87,13 +91,17 @@ public abstract class ExternalResource extends RenderElement {
 
     /**
      * Abstract base class for external resources.
-     * @param dataSource  Type of request: graphql or rest.
-     * @param endpoint URL of the data source from where the JSON needs to be read.
-     * @param fileName Name of the output file.
-     * @param headers JsonArray of the HTTP headers, e.g. [{"Content-Type":"application/json"},{"Custom-Auth-Token":"xysazxklj4568asdf46a5sd4f"}]
-     * @param auth Basic authentication i.e. 'user:password' to compute an Authorization header.
+     * 
+     * @param dataSource Type of request: graphql or rest.
+     * @param endpoint   URL of the data source from where the JSON needs to be
+     *                   read.
+     * @param fileName   Name of the output file.
+     * @param headers    JsonArray of the HTTP headers, e.g.
+     *                   [{"Content-Type":"application/json"},{"Custom-Auth-Token":"xysazxklj4568asdf46a5sd4f"}]
+     * @param auth       Basic authentication i.e. 'user:password' to compute an
+     *                   Authorization header.
      */
-    public ExternalResource(String dataSource, String endpoint, String fileName, JsonArray headers, String auth){
+    public ExternalResource(String dataSource, String endpoint, String fileName, JsonArray headers, String auth) {
         setDataSource(dataSource);
         setEndpoint(endpoint);
         setFileName(fileName);
@@ -108,14 +116,14 @@ public abstract class ExternalResource extends RenderElement {
         JsonObject json = new JsonObject();
         json.addProperty("datasource", getDataSource());
         json.addProperty("endpoint", getEndpoint());
-        if (getFileName()!=null){
-            json.addProperty("filename",getFileName());
+        if (getFileName() != null) {
+            json.addProperty("filename", getFileName());
         }
-        if (getHeaders()!=null){
-            json.add("headers",getHeaders());
+        if (getHeaders() != null) {
+            json.add("headers", getHeaders());
         }
-        if (getAuth()!=null){
-            json.addProperty("auth",getAuth());
+        if (getAuth() != null) {
+            json.addProperty("auth", getAuth());
         }
         return json;
     }

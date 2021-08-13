@@ -2,7 +2,7 @@ package com.CloudOfficePrint.RenderElements.PDF;
 
 import com.google.gson.JsonObject;
 
-public class PDFText extends PDFInsertObject{
+public class PDFText extends PDFInsertObject {
 
     private String text;
     private Integer rotation;
@@ -111,14 +111,19 @@ public class PDFText extends PDFInsertObject{
     }
 
     /**
-     * Represents text to insert in a PDF. The text options can be set with the setter functions.
-     * @param x X-coordinate of the position of the text in the template starting from bottom left.
-     * @param y Y-coordinate of the position of the text in the template starting from bottom left.
-     * @param pageNumber Page number of the page where the text should be inserted. -1 if the text should be displayed on all pages.
-     * @param text Text that should be inserted.
+     * Represents text to insert in a PDF. The text options can be set with the
+     * setter functions.
+     * 
+     * @param x          X-coordinate of the position of the text in the template
+     *                   starting from bottom left.
+     * @param y          Y-coordinate of the position of the text in the template
+     *                   starting from bottom left.
+     * @param pageNumber Page number of the page where the text should be inserted.
+     *                   -1 if the text should be displayed on all pages.
+     * @param text       Text that should be inserted.
      */
-    public PDFText(Integer x, Integer y, Integer pageNumber, String text){
-        super(x,y,pageNumber);
+    public PDFText(Integer x, Integer y, Integer pageNumber, String text) {
+        super(x, y, pageNumber);
         setText(text);
     }
 
@@ -131,22 +136,22 @@ public class PDFText extends PDFInsertObject{
         json.addProperty("text", getText());
         json.addProperty("x", getX());
         json.addProperty("y", getY());
-        if (getRotation()!=null){
+        if (getRotation() != null) {
             json.addProperty("rotation", getRotation());
         }
-        if (getBold()!=null){
+        if (getBold() != null) {
             json.addProperty("bold", getBold());
         }
-        if (getItalic()!=null){
+        if (getItalic() != null) {
             json.addProperty("italic", getItalic());
         }
-        if (getFont()!=null){
+        if (getFont() != null) {
             json.addProperty("font", getFont());
         }
-        if (getFontColor()!=null){
+        if (getFontColor() != null) {
             json.addProperty("font_color", getFontColor());
         }
-        if (getFontSize()!=null){
+        if (getFontSize() != null) {
             json.addProperty("font_size", getFontSize());
         }
         return json;

@@ -26,12 +26,13 @@ public class BubbleSeries extends XYSeries {
 
     /**
      * This object represents series for a bubble chart.
-     * @param name Name of the chart.
-     * @param x X-data of the chart.
-     * @param y Y-data of the chart.
+     * 
+     * @param name  Name of the chart.
+     * @param x     X-data of the chart.
+     * @param y     Y-data of the chart.
      * @param sizes Sizes of each of the bubbles.
      */
-    public BubbleSeries(String name, String[] x, String[] y, Integer[] sizes){
+    public BubbleSeries(String name, String[] x, String[] y, Integer[] sizes) {
         setName(name);
         setX(x);
         setY(y);
@@ -44,13 +45,13 @@ public class BubbleSeries extends XYSeries {
     @Override
     public JsonArray getJSONData() {
         JsonArray jsonArray = new JsonArray();
-        for (int i = 0; i <getX().length; i++){
+        for (int i = 0; i < getX().length; i++) {
             JsonObject xy = new JsonObject();
-            xy.addProperty("x",getX()[i]);
-            xy.addProperty("y",getY()[i]);
-            if (getSizes()!=null){
-                if (getSizes()[i]!=null){
-                    xy.addProperty("size",getSizes()[i]);
+            xy.addProperty("x", getX()[i]);
+            xy.addProperty("y", getY()[i]);
+            if (getSizes() != null) {
+                if (getSizes()[i] != null) {
+                    xy.addProperty("size", getSizes()[i]);
                 }
             }
             jsonArray.add(xy);

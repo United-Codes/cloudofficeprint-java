@@ -86,15 +86,17 @@ public class StockSeries extends XYSeries {
 
     /**
      * This object represents series for a stock chart.
-     * @param name Name of the chart.
-     * @param x X-data of the chart.
-     * @param high High values for the open-high-low-close chart.
-     * @param low Low values for the open-high-low-close chart.
-     * @param close Close values for the open-high-low-close chart.
-     * @param open Open values for the open-high-low-close chart.
+     * 
+     * @param name   Name of the chart.
+     * @param x      X-data of the chart.
+     * @param high   High values for the open-high-low-close chart.
+     * @param low    Low values for the open-high-low-close chart.
+     * @param close  Close values for the open-high-low-close chart.
+     * @param open   Open values for the open-high-low-close chart.
      * @param volume Volume values for the open-high-low-close chart.
      */
-    public StockSeries(String name, String[] x, Integer[] high, Integer[] low, Integer[] close, Integer[] open, Integer[] volume){
+    public StockSeries(String name, String[] x, Integer[] high, Integer[] low, Integer[] close, Integer[] open,
+            Integer[] volume) {
         setName(name);
         setX(x);
         setHigh(high);
@@ -110,21 +112,21 @@ public class StockSeries extends XYSeries {
     @Override
     public JsonArray getJSONData() {
         JsonArray jsonArray = new JsonArray();
-        for (int i = 0; i <getX().length; i++){
+        for (int i = 0; i < getX().length; i++) {
             JsonObject xy = new JsonObject();
-            xy.addProperty("x",getX()[i]);
+            xy.addProperty("x", getX()[i]);
 
-            xy.addProperty("high",getHigh()[i]);
-            xy.addProperty("low",getLow()[i]);
-            xy.addProperty("close",getClose()[i]);
+            xy.addProperty("high", getHigh()[i]);
+            xy.addProperty("low", getLow()[i]);
+            xy.addProperty("close", getClose()[i]);
 
-            if (getVolume()!=null){
-                if (getVolume()[i]!=null){
-                    xy.addProperty("volume",getVolume()[i]);
+            if (getVolume() != null) {
+                if (getVolume()[i] != null) {
+                    xy.addProperty("volume", getVolume()[i]);
                 }
             }
-            if (getOpen()!=null){
-                if (getOpen()[i]!=null) {
+            if (getOpen() != null) {
+                if (getOpen()[i] != null) {
                     xy.addProperty("open", getOpen()[i]);
                 }
             }
@@ -135,14 +137,15 @@ public class StockSeries extends XYSeries {
 
     /**
      * No color needed for stockseries.
+     * 
      * @return JSONObject with the tags for this element for the AOP server.
      */
     @Override
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         json.add("data", getJSONData());
-        if (getName()!=null){
-            json.addProperty("name",getName());
+        if (getName() != null) {
+            json.addProperty("name", getName());
         }
         return json;
     }

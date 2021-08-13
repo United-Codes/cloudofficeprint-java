@@ -5,7 +5,7 @@ import com.google.gson.JsonObject;
 /**
  * Represents the style of Excel cells.
  */
-public class CellStyleXlsx extends CellStyle{
+public class CellStyleXlsx extends CellStyle {
 
     private Boolean cellLocked;
     private Boolean cellHidden;
@@ -203,14 +203,18 @@ public class CellStyleXlsx extends CellStyle{
     }
 
     /**
-     * @return Top border style : dashed / dashDot / hair / dashDotDot / dotted / mediumDashDot / mediumDashed / mediumDashDotDot / slantDashDot / medium / double / thick ]
+     * @return Top border style : dashed / dashDot / hair / dashDotDot / dotted /
+     *         mediumDashDot / mediumDashed / mediumDashDotDot / slantDashDot /
+     *         medium / double / thick ]
      */
     public String getBorderTop() {
         return borderTop;
     }
 
     /**
-     * @param borderTop Top border style : dashed / dashDot / hair / dashDotDot / dotted / mediumDashDot / mediumDashed / mediumDashDotDot / slantDashDot / medium / double / thick ]
+     * @param borderTop Top border style : dashed / dashDot / hair / dashDotDot /
+     *                  dotted / mediumDashDot / mediumDashed / mediumDashDotDot /
+     *                  slantDashDot / medium / double / thick ]
      */
     public void setBorderTop(String borderTop) {
         this.borderTop = borderTop;
@@ -231,14 +235,19 @@ public class CellStyleXlsx extends CellStyle{
     }
 
     /**
-     * @return Bottom border style : dashed / dashDot / hair / dashDotDot / dotted / mediumDashDot / mediumDashed / mediumDashDotDot / slantDashDot / medium / double / thick ]
+     * @return Bottom border style : dashed / dashDot / hair / dashDotDot / dotted /
+     *         mediumDashDot / mediumDashed / mediumDashDotDot / slantDashDot /
+     *         medium / double / thick ]
      */
     public String getBorderBottom() {
         return borderBottom;
     }
 
     /**
-     * @param borderBottom Bottom border style : dashed / dashDot / hair / dashDotDot / dotted / mediumDashDot / mediumDashed / mediumDashDotDot / slantDashDot / medium / double / thick ]
+     * @param borderBottom Bottom border style : dashed / dashDot / hair /
+     *                     dashDotDot / dotted / mediumDashDot / mediumDashed /
+     *                     mediumDashDotDot / slantDashDot / medium / double / thick
+     *                     ]
      */
     public void setBorderBottom(String borderBottom) {
         this.borderBottom = borderBottom;
@@ -259,14 +268,18 @@ public class CellStyleXlsx extends CellStyle{
     }
 
     /**
-     * @return Left border style : dashed / dashDot / hair / dashDotDot / dotted / mediumDashDot / mediumDashed / mediumDashDotDot / slantDashDot / medium / double / thick ]
+     * @return Left border style : dashed / dashDot / hair / dashDotDot / dotted /
+     *         mediumDashDot / mediumDashed / mediumDashDotDot / slantDashDot /
+     *         medium / double / thick ]
      */
     public String getBorderLeft() {
         return borderLeft;
     }
 
     /**
-     * @param borderLeft Left border style : dashed / dashDot / hair / dashDotDot / dotted / mediumDashDot / mediumDashed / mediumDashDotDot / slantDashDot / medium / double / thick ]
+     * @param borderLeft Left border style : dashed / dashDot / hair / dashDotDot /
+     *                   dotted / mediumDashDot / mediumDashed / mediumDashDotDot /
+     *                   slantDashDot / medium / double / thick ]
      */
     public void setBorderLeft(String borderLeft) {
         this.borderLeft = borderLeft;
@@ -287,14 +300,18 @@ public class CellStyleXlsx extends CellStyle{
     }
 
     /**
-     * @return Right border style : dashed / dashDot / hair / dashDotDot / dotted / mediumDashDot / mediumDashed / mediumDashDotDot / slantDashDot / medium / double / thick ]
+     * @return Right border style : dashed / dashDot / hair / dashDotDot / dotted /
+     *         mediumDashDot / mediumDashed / mediumDashDotDot / slantDashDot /
+     *         medium / double / thick ]
      */
     public String getBorderRight() {
         return borderRight;
     }
 
     /**
-     * @param borderRight Right border style : dashed / dashDot / hair / dashDotDot / dotted / mediumDashDot / mediumDashed / mediumDashDotDot / slantDashDot / medium / double / thick ]
+     * @param borderRight Right border style : dashed / dashDot / hair / dashDotDot
+     *                    / dotted / mediumDashDot / mediumDashed / mediumDashDotDot
+     *                    / slantDashDot / medium / double / thick ]
      */
     public void setBorderRight(String borderRight) {
         this.borderRight = borderRight;
@@ -315,14 +332,19 @@ public class CellStyleXlsx extends CellStyle{
     }
 
     /**
-     * @return Diagonal border style : dashed / dashDot / hair / dashDotDot / dotted / mediumDashDot / mediumDashed / mediumDashDotDot / slantDashDot / medium / double / thick ]
+     * @return Diagonal border style : dashed / dashDot / hair / dashDotDot / dotted
+     *         / mediumDashDot / mediumDashed / mediumDashDotDot / slantDashDot /
+     *         medium / double / thick ]
      */
     public String getBorderDiagonal() {
         return borderDiagonal;
     }
 
     /**
-     * @param borderDiagonal Diagonal border style : dashed / dashDot / hair / dashDotDot / dotted / mediumDashDot / mediumDashed / mediumDashDotDot / slantDashDot / medium / double / thick ]
+     * @param borderDiagonal Diagonal border style : dashed / dashDot / hair /
+     *                       dashDotDot / dotted / mediumDashDot / mediumDashed /
+     *                       mediumDashDotDot / slantDashDot / medium / double /
+     *                       thick ]
      */
     public void setBorderDiagonal(String borderDiagonal) {
         this.borderDiagonal = borderDiagonal;
@@ -336,7 +358,8 @@ public class CellStyleXlsx extends CellStyle{
     }
 
     /**
-     * @param borderDiagonalDirection Direction of the diagonal border : [up-wards|down-wards| both]
+     * @param borderDiagonalDirection Direction of the diagonal border :
+     *                                [up-wards|down-wards| both]
      */
     public void setBorderDiagonalDirection(String borderDiagonalDirection) {
         this.borderDiagonalDirection = borderDiagonalDirection;
@@ -399,9 +422,10 @@ public class CellStyleXlsx extends CellStyle{
     }
 
     /**
-     * Represents the style of an Excell cell element. The options can be set with the setter functions.
+     * Represents the style of an Excell cell element. The options can be set with
+     * the setter functions.
      */
-    public CellStyleXlsx(){
+    public CellStyleXlsx() {
     }
 
     /**
@@ -410,83 +434,83 @@ public class CellStyleXlsx extends CellStyle{
     @Override
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
-        if (getCellLocked()!=null){
-            json.addProperty("_cell_locked",getCellLocked());
+        if (getCellLocked() != null) {
+            json.addProperty("_cell_locked", getCellLocked());
         }
-        if (getCellHidden()!=null){
-            json.addProperty("_cell_hidden",getCellHidden());
+        if (getCellHidden() != null) {
+            json.addProperty("_cell_hidden", getCellHidden());
         }
-        if (getCellBackground()!=null){
-            json.addProperty("_cell_background",getCellBackground());
+        if (getCellBackground() != null) {
+            json.addProperty("_cell_background", getCellBackground());
         }
-        if (getFont()!=null){
-            json.addProperty("_font_name",getFont());
+        if (getFont() != null) {
+            json.addProperty("_font_name", getFont());
         }
-        if (getFontSize()!=null){
-            json.addProperty("_font_size",getFontSize());
+        if (getFontSize() != null) {
+            json.addProperty("_font_size", getFontSize());
         }
-        if (getFontColor()!=null){
-            json.addProperty("_font_color",getFontColor());
+        if (getFontColor() != null) {
+            json.addProperty("_font_color", getFontColor());
         }
-        if (getFontItalic()!=null){
-            json.addProperty("_font_italic",getFontItalic());
+        if (getFontItalic() != null) {
+            json.addProperty("_font_italic", getFontItalic());
         }
-        if (getFontBold()!=null){
-            json.addProperty("_font_bold",getFontBold());
+        if (getFontBold() != null) {
+            json.addProperty("_font_bold", getFontBold());
         }
-        if (getFontStrike()!=null){
-            json.addProperty("_font_strike",getFontStrike());
+        if (getFontStrike() != null) {
+            json.addProperty("_font_strike", getFontStrike());
         }
-        if (getFontUnderline()!=null){
-            json.addProperty("_font_underline",getFontUnderline());
+        if (getFontUnderline() != null) {
+            json.addProperty("_font_underline", getFontUnderline());
         }
-        if (getFontSuperscript()!=null){
-            json.addProperty("_font_superscript",getFontSuperscript());
+        if (getFontSuperscript() != null) {
+            json.addProperty("_font_superscript", getFontSuperscript());
         }
-        if (getFontSubscript()!=null){
-            json.addProperty("_font_subscript",getFontSubscript());
+        if (getFontSubscript() != null) {
+            json.addProperty("_font_subscript", getFontSubscript());
         }
-        if (getBorderTop()!=null){
-            json.addProperty("_border_top",getBorderTop());
+        if (getBorderTop() != null) {
+            json.addProperty("_border_top", getBorderTop());
         }
-        if (getBorderTopColor()!=null){
-            json.addProperty("_border_top_color",getBorderTopColor());
+        if (getBorderTopColor() != null) {
+            json.addProperty("_border_top_color", getBorderTopColor());
         }
-        if (getBorderBottom()!=null){
-            json.addProperty("_border_bottom",getBorderBottom());
+        if (getBorderBottom() != null) {
+            json.addProperty("_border_bottom", getBorderBottom());
         }
-        if (getBorderBottomColor()!=null){
-            json.addProperty("_border_bottom_color",getBorderBottomColor());
+        if (getBorderBottomColor() != null) {
+            json.addProperty("_border_bottom_color", getBorderBottomColor());
         }
-        if (getBorderLeft()!=null){
-            json.addProperty("_border_left",getBorderLeft());
+        if (getBorderLeft() != null) {
+            json.addProperty("_border_left", getBorderLeft());
         }
-        if (getBorderLeftColor()!=null){
-            json.addProperty("_border_left_color",getBorderLeftColor());
+        if (getBorderLeftColor() != null) {
+            json.addProperty("_border_left_color", getBorderLeftColor());
         }
-        if (getBorderRight()!=null){
-            json.addProperty("_border_right",getBorderRight());
+        if (getBorderRight() != null) {
+            json.addProperty("_border_right", getBorderRight());
         }
-        if (getBorderRightColor()!=null){
-            json.addProperty("_border_right_color",getBorderRightColor());
+        if (getBorderRightColor() != null) {
+            json.addProperty("_border_right_color", getBorderRightColor());
         }
-        if (getBorderDiagonal()!=null){
-            json.addProperty("_border_diagonal",getBorderDiagonal());
+        if (getBorderDiagonal() != null) {
+            json.addProperty("_border_diagonal", getBorderDiagonal());
         }
-        if (getBorderDiagonalDirection()!=null){
-            json.addProperty("_border_diagonal_direction",getBorderDiagonalDirection());
+        if (getBorderDiagonalDirection() != null) {
+            json.addProperty("_border_diagonal_direction", getBorderDiagonalDirection());
         }
-        if (getBorderDiagonalColor()!=null){
-            json.addProperty("_border_diagonal_color",getBorderDiagonalColor());
+        if (getBorderDiagonalColor() != null) {
+            json.addProperty("_border_diagonal_color", getBorderDiagonalColor());
         }
-        if (getTextHAlignment()!=null){
-            json.addProperty("_text_h_alignment",getTextHAlignment());
+        if (getTextHAlignment() != null) {
+            json.addProperty("_text_h_alignment", getTextHAlignment());
         }
-        if (getTextVAlignment()!=null){
-            json.addProperty("_text_v_alignment",getTextVAlignment());
+        if (getTextVAlignment() != null) {
+            json.addProperty("_text_v_alignment", getTextVAlignment());
         }
-        if (getTextRotation()!=null){
-            json.addProperty("_text_rotation",getTextRotation());
+        if (getTextRotation() != null) {
+            json.addProperty("_text_rotation", getTextRotation());
         }
         return json;
     }

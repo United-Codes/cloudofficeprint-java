@@ -7,8 +7,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Base64;
 
-
-public class PDFImage extends PDFInsertObject{
+public class PDFImage extends PDFInsertObject {
 
     private String image;
     private Integer rotation;
@@ -87,26 +86,36 @@ public class PDFImage extends PDFInsertObject{
     }
 
     /**
-     * Represents an image to insert in a PDF. The image options can be set with the setter functions.
-     * @param x X-coordinate of the position of the text in the template starting from bottom left.
-     * @param y Y-coordinate of the position of the text in the template starting from bottom left.
-     * @param pageNumber Page number of the page where the text should be inserted. -1 if the text should be displayed on all pages.
-     * @param image Image base64 or URL.
+     * Represents an image to insert in a PDF. The image options can be set with the
+     * setter functions.
+     * 
+     * @param x          X-coordinate of the position of the text in the template
+     *                   starting from bottom left.
+     * @param y          Y-coordinate of the position of the text in the template
+     *                   starting from bottom left.
+     * @param pageNumber Page number of the page where the text should be inserted.
+     *                   -1 if the text should be displayed on all pages.
+     * @param image      Image base64 or URL.
      */
-    public PDFImage(Integer x, Integer y, Integer pageNumber, String image){
-        super(x,y,pageNumber);
+    public PDFImage(Integer x, Integer y, Integer pageNumber, String image) {
+        super(x, y, pageNumber);
         setImage(image);
     }
 
     /**
-     * Represents an image to insert in a PDF. The image options can be set with the setter functions. In this constructor the image is not
-     * set. It should be set with setImageFromLocalFile.
-     * @param x X-coordinate of the position of the text in the template starting from bottom left.
-     * @param y Y-coordinate of the position of the text in the template starting from bottom left.
-     * @param pageNumber Page number of the page where the text should be inserted. -1 if the text should be displayed on all pages.
+     * Represents an image to insert in a PDF. The image options can be set with the
+     * setter functions. In this constructor the image is not set. It should be set
+     * with setImageFromLocalFile.
+     * 
+     * @param x          X-coordinate of the position of the text in the template
+     *                   starting from bottom left.
+     * @param y          Y-coordinate of the position of the text in the template
+     *                   starting from bottom left.
+     * @param pageNumber Page number of the page where the text should be inserted.
+     *                   -1 if the text should be displayed on all pages.
      */
-    public PDFImage(Integer x, Integer y, Integer pageNumber){
-        super(x,y,pageNumber);
+    public PDFImage(Integer x, Integer y, Integer pageNumber) {
+        super(x, y, pageNumber);
     }
 
     /**
@@ -118,16 +127,16 @@ public class PDFImage extends PDFInsertObject{
         json.addProperty("image", getImage());
         json.addProperty("x", getX());
         json.addProperty("y", getY());
-        if (getRotation()!=null){
+        if (getRotation() != null) {
             json.addProperty("rotation", getRotation());
         }
-        if (getWidth()!=null){
+        if (getWidth() != null) {
             json.addProperty("image_width", getWidth());
         }
-        if (getHeight()!=null){
+        if (getHeight() != null) {
             json.addProperty("image_height", getHeight());
         }
-        if (getMaxWidth()!=null){
+        if (getMaxWidth() != null) {
             json.addProperty("image_max_width", getMaxWidth());
         }
         return json;
@@ -135,6 +144,7 @@ public class PDFImage extends PDFInsertObject{
 
     /**
      * Sets the image to the image on the filepath.
+     * 
      * @param filePath Path of the local file.
      * @throws IOException If file not found.
      */

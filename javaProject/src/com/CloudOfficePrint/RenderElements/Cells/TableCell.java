@@ -10,9 +10,9 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Only supported in Word, Excel, Powerpoint templates (they all have tables with cells).
- * Represents a cell element. It includes the name for the tag, the value and
- * optionally the cell background color and width.
+ * Only supported in Word, Excel, Powerpoint templates (they all have tables
+ * with cells). Represents a cell element. It includes the name for the tag, the
+ * value and optionally the cell background color and width.
  */
 public class TableCell extends RenderElement {
 
@@ -35,11 +35,12 @@ public class TableCell extends RenderElement {
     /**
      * Represents a cell element. It includes the name for the tag, the value and
      * optionally the cell style.
-     * @param name Name of this element (for the tempalteTag).
-     * @param value Value that will replace the tag.
+     * 
+     * @param name      Name of this element (for the tempalteTag).
+     * @param value     Value that will replace the tag.
      * @param cellStyle The style of the cell. (optional)
      */
-    public TableCell(String name, String value, CellStyle cellStyle){
+    public TableCell(String name, String value, CellStyle cellStyle) {
         setName(name);
         setValue(value);
         setCellStyle(cellStyle);
@@ -51,18 +52,15 @@ public class TableCell extends RenderElement {
     @Override
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
-        json.addProperty(getName(),getValue());
-        for(Map.Entry<String, JsonElement> entry : getCellStyle().getJSON().entrySet()) {
-            if (entry.getValue().getAsString()=="null"){
-                json.add(getName() + entry.getKey(),null);
-            }
-            else if (entry.getValue().getAsString()=="false"){
-                json.addProperty(getName() + entry.getKey(),false);
-            }
-            else if (entry.getValue().getAsString()=="true"){
-                json.addProperty(getName() + entry.getKey(),true);
-            }
-            else {
+        json.addProperty(getName(), getValue());
+        for (Map.Entry<String, JsonElement> entry : getCellStyle().getJSON().entrySet()) {
+            if (entry.getValue().getAsString() == "null") {
+                json.add(getName() + entry.getKey(), null);
+            } else if (entry.getValue().getAsString() == "false") {
+                json.addProperty(getName() + entry.getKey(), false);
+            } else if (entry.getValue().getAsString() == "true") {
+                json.addProperty(getName() + entry.getKey(), true);
+            } else {
                 json.addProperty(getName() + entry.getKey(), entry.getValue().getAsString());
             }
         }
@@ -70,12 +68,13 @@ public class TableCell extends RenderElement {
     }
 
     /**
-     * @return An immutable set containing all available template tags this element can replace.
+     * @return An immutable set containing all available template tags this element
+     *         can replace.
      */
     @Override
     public Set<String> getTemplateTags() {
         Set<String> hash_Set = new HashSet<String>();
-        hash_Set.add("{"+getName()+"$}");
+        hash_Set.add("{" + getName() + "$}");
         return ImmutableSet.copyOf(hash_Set);
     }
 }

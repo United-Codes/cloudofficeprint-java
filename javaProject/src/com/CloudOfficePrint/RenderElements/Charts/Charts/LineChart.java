@@ -30,14 +30,15 @@ public class LineChart extends Chart {
 
     /**
      * Represents a line chart.
-     * @param name Name of the chart (for the tag).
-     * @param options Options of the chart.
+     * 
+     * @param name       Name of the chart (for the tag).
+     * @param options    Options of the chart.
      * @param lineseries Series with the data for the chart.
      */
-    public LineChart(String name, ChartOptions options, LineSeries ... lineseries){
+    public LineChart(String name, ChartOptions options, LineSeries... lineseries) {
         setName(name);
         setOptions(options);
-        for (LineSeries lineserie: lineseries){
+        for (LineSeries lineserie : lineseries) {
             getLineseries().add(lineserie);
         }
     }
@@ -49,16 +50,16 @@ public class LineChart extends Chart {
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         JsonObject result = new JsonObject();
-        if(getOptions()!=null){
+        if (getOptions() != null) {
             result.add("options", getOptions().getJSON());
         }
         JsonArray lines = new JsonArray();
-        for (LineSeries lineserie : getLineseries()){
+        for (LineSeries lineserie : getLineseries()) {
             lines.add(lineserie.getJSON());
         }
         result.add("lines", lines);
-        result.addProperty("type","line");
-        json.add(getName(),result);
+        result.addProperty("type", "line");
+        json.add(getName(), result);
         return json;
     }
 

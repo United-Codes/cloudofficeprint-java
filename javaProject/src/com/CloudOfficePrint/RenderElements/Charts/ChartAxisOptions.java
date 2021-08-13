@@ -4,7 +4,6 @@ import com.google.gson.JsonObject;
 
 public class ChartAxisOptions {
 
-
     private String orientation;
     private Float min;
     private Float max;
@@ -28,7 +27,7 @@ public class ChartAxisOptions {
     }
 
     /**
-     * @param orientation  Orientation of the axis : minMax or maxMin.
+     * @param orientation Orientation of the axis : minMax or maxMin.
      */
     public void setOrientation(String orientation) {
         this.orientation = orientation;
@@ -140,7 +139,8 @@ public class ChartAxisOptions {
     }
 
     /**
-     * @param titleRotation Title rotation in degrees, clockwise from horizontal axis.
+     * @param titleRotation Title rotation in degrees, clockwise from horizontal
+     *                      axis.
      */
     public void setTitleRotation(Integer titleRotation) {
         this.titleRotation = titleRotation;
@@ -161,14 +161,16 @@ public class ChartAxisOptions {
     }
 
     /**
-     * @return Automatic when undefined, spacing between major grid lines and axis values.
+     * @return Automatic when undefined, spacing between major grid lines and axis
+     *         values.
      */
     public Float getMajorUnit() {
         return majorUnit;
     }
 
     /**
-     * @param majorUnit Automatic when undefined, spacing between major grid lines and axis values.
+     * @param majorUnit Automatic when undefined, spacing between major grid lines
+     *                  and axis values.
      */
     public void setMajorUnit(Float majorUnit) {
         this.majorUnit = majorUnit;
@@ -182,7 +184,7 @@ public class ChartAxisOptions {
     }
 
     /**
-     * @param minorGridLines  Whether to show minor grid lines or not.
+     * @param minorGridLines Whether to show minor grid lines or not.
      */
     public void setMinorGridLines(Boolean minorGridLines) {
         this.minorGridLines = minorGridLines;
@@ -217,58 +219,59 @@ public class ChartAxisOptions {
     }
 
     /**
-     * Represents the options for an axis of a chart.
-     * Options can be populated with the setter functions.
+     * Represents the options for an axis of a chart. Options can be populated with
+     * the setter functions.
      */
-    public ChartAxisOptions(){};
+    public ChartAxisOptions() {
+    };
 
     /**
      * @return JSONObject with the tags for this element for the AOP server.
      */
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
-        if (getOrientation()!= null){
-            json.addProperty("orientation",getOrientation());
+        if (getOrientation() != null) {
+            json.addProperty("orientation", getOrientation());
         }
-        if (getMin()!= null){
-            json.addProperty("min",getMin());
+        if (getMin() != null) {
+            json.addProperty("min", getMin());
         }
-        if (getMax()!= null){
-            json.addProperty("max",getMax());
+        if (getMax() != null) {
+            json.addProperty("max", getMax());
         }
-        if (getDate()!= null){
-            json.addProperty("type","date");
-            json.add("date",getDate().getJSON());
+        if (getDate() != null) {
+            json.addProperty("type", "date");
+            json.add("date", getDate().getJSON());
         }
-        if (getTitle()!= null){
-            json.addProperty("title",getTitle());
+        if (getTitle() != null) {
+            json.addProperty("title", getTitle());
         }
-        if (getValues()!= null){
-            json.addProperty("showValues",getValues());
+        if (getValues() != null) {
+            json.addProperty("showValues", getValues());
         }
-        if (getValuesStyle()!= null){
-            json.add("valuesStyle",getValuesStyle().getJSON());
+        if (getValuesStyle() != null) {
+            json.add("valuesStyle", getValuesStyle().getJSON());
         }
-        if (getTitleStyle()!= null){
-            json.add("titleStyle",getTitleStyle().getJSON());
+        if (getTitleStyle() != null) {
+            json.add("titleStyle", getTitleStyle().getJSON());
         }
-        if (getTitleRotation()!= null){
-            json.addProperty("titleRotation",getTitleRotation());
+        if (getTitleRotation() != null) {
+            json.addProperty("titleRotation", getTitleRotation());
         }
-        if (getMajorGridLines()!= null){
-            json.addProperty("majorGridlines",getMajorGridLines());
+        if (getMajorGridLines() != null) {
+            json.addProperty("majorGridlines", getMajorGridLines());
         }
-        if (getMajorUnit()!= null){
-            json.addProperty("majorUnit",getMajorUnit());
+        if (getMajorUnit() != null) {
+            json.addProperty("majorUnit", getMajorUnit());
         }
-        if (getMinorGridLines()!= null){
-            json.addProperty("minorGridlines",getMinorGridLines());
+        if (getMinorGridLines() != null) {
+            json.addProperty("minorGridlines", getMinorGridLines());
         }
-        if (getMinorUnit()!= null){
-            json.addProperty("minorUnit",getMinorUnit());
+        if (getMinorUnit() != null) {
+            json.addProperty("minorUnit", getMinorUnit());
         }
-        if (getFormatCode()!= null){
-            json.addProperty("formatCode",getFormatCode());
+        if (getFormatCode() != null) {
+            json.addProperty("formatCode", getFormatCode());
         }
         return json;
     }

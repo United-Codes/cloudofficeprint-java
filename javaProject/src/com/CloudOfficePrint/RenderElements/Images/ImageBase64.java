@@ -10,33 +10,39 @@ import java.nio.file.Files;
 import java.util.Base64;
 
 /**
- * Represents an image to insert in a template with a base64-encoded string as source.
+ * Represents an image to insert in a template with a base64-encoded string as
+ * source.
  */
-public class ImageBase64 extends Image{
+public class ImageBase64 extends Image {
 
     /**
-     * This object represent an image to insert in the template.
-     * This constructor doesn't set the base64-string so setFromLocalFile should be called.
-     * The options of the image can be turned on via the setter functions.
+     * This object represent an image to insert in the template. This constructor
+     * doesn't set the base64-string so setFromLocalFile should be called. The
+     * options of the image can be turned on via the setter functions.
+     * 
      * @param name Name of this image for the tag.
      */
-    public ImageBase64(String name){
+    public ImageBase64(String name) {
         setName(name);
     }
 
     /**
-     * This object represent an image to insert in the template. The options of the image can be turned on via the setter functions.
-     * The source of this image is a base64-encoded string.
-     * @param name Name of this image for the tag.
-     * @param base64 Base64 string of the  image.
+     * This object represent an image to insert in the template. The options of the
+     * image can be turned on via the setter functions. The source of this image is
+     * a base64-encoded string.
+     * 
+     * @param name   Name of this image for the tag.
+     * @param base64 Base64 string of the image.
      */
-    public ImageBase64(String name, String base64){
+    public ImageBase64(String name, String base64) {
         setName(name);
         setValue(base64);
     }
 
     /**
-     * Reads all bytes of the file, converts them to base64 and stores them in this.value.
+     * Reads all bytes of the file, converts them to base64 and stores them in
+     * this.value.
+     * 
      * @param filePath Path of the local file.
      * @throws IOException If file not found.
      */

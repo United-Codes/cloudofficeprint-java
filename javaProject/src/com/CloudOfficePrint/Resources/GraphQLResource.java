@@ -28,11 +28,14 @@ public class GraphQLResource extends ExternalResource {
 
     /**
      * Resource from a GraphQL endpoint.
-     * @param endpoint   URL of the data source from where the JSON needs to be read.
-     * @param query      GraphQL query.
-     * @param fileName   Name of the output file.
-     * @param headers    HTTP headers, e.g. [{"Content-Type":"application/json"},{"Custom-Auth-Token":"xysazxklj4568asdf46a5sd4f"}]
-     * @param auth       Basic authentication i.e. 'user:password' to compute an Authorization header.
+     * 
+     * @param endpoint URL of the data source from where the JSON needs to be read.
+     * @param query    GraphQL query.
+     * @param fileName Name of the output file.
+     * @param headers  HTTP headers, e.g.
+     *                 [{"Content-Type":"application/json"},{"Custom-Auth-Token":"xysazxklj4568asdf46a5sd4f"}]
+     * @param auth     Basic authentication i.e. 'user:password' to compute an
+     *                 Authorization header.
      */
     public GraphQLResource(String endpoint, String query, String fileName, JsonArray headers, String auth) {
         super("graphql", endpoint, fileName, headers, auth);
@@ -44,12 +47,13 @@ public class GraphQLResource extends ExternalResource {
      */
     public JsonObject getJSON() {
         JsonObject json = super.getJSON();
-        json.addProperty("query",getQuery());
+        json.addProperty("query", getQuery());
         return json;
     }
 
     /**
      * Cannot be used for a resource.
+     * 
      * @return null
      */
     @Override

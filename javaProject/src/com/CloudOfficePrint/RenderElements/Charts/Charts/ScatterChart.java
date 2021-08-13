@@ -7,11 +7,10 @@ import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 
-
 /**
  * Represents a scatter chart.
  */
-public class ScatterChart extends Chart{
+public class ScatterChart extends Chart {
     ArrayList<ScatterSeries> series = new ArrayList<>();
 
     /**
@@ -30,14 +29,15 @@ public class ScatterChart extends Chart{
 
     /**
      * Represents an area chart.
-     * @param name Name of the chart (for the tag).
+     * 
+     * @param name    Name of the chart (for the tag).
      * @param options Options of the chart.
-     * @param series Series with the data for the chart.
+     * @param series  Series with the data for the chart.
      */
-    public ScatterChart(String name, ChartOptions options, ScatterSeries ... series){
+    public ScatterChart(String name, ChartOptions options, ScatterSeries... series) {
         setName(name);
         setOptions(options);
-        for (ScatterSeries serie: series){
+        for (ScatterSeries serie : series) {
             getSeries().add(serie);
         }
     }
@@ -49,16 +49,16 @@ public class ScatterChart extends Chart{
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         JsonObject result = new JsonObject();
-        if(getOptions()!=null){
+        if (getOptions() != null) {
             result.add("options", getOptions().getJSON());
         }
         JsonArray lines = new JsonArray();
-        for (ScatterSeries serie : getSeries()){
+        for (ScatterSeries serie : getSeries()) {
             lines.add(serie.getJSON());
         }
         result.add("scatters", lines);
-        result.addProperty("type","scatter");
-        json.add(getName(),result);
+        result.addProperty("type", "scatter");
+        json.add(getName(), result);
         return json;
     }
 

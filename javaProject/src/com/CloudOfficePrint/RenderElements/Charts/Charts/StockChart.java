@@ -7,11 +7,10 @@ import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 
-
 /**
  * Represents a stock chart.
  */
-public class StockChart extends Chart{
+public class StockChart extends Chart {
     ArrayList<StockSeries> series = new ArrayList<>();
 
     /**
@@ -30,14 +29,15 @@ public class StockChart extends Chart{
 
     /**
      * Represents a stock chart.
-     * @param name Name of the chart (for the tag).
+     * 
+     * @param name    Name of the chart (for the tag).
      * @param options Options of the chart.
-     * @param series Series with the data for the chart.
+     * @param series  Series with the data for the chart.
      */
-    public StockChart(String name, ChartOptions options, StockSeries ... series){
+    public StockChart(String name, ChartOptions options, StockSeries... series) {
         setName(name);
         setOptions(options);
-        for (StockSeries serie: series){
+        for (StockSeries serie : series) {
             getSeries().add(serie);
         }
     }
@@ -49,16 +49,16 @@ public class StockChart extends Chart{
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         JsonObject result = new JsonObject();
-        if(getOptions()!=null){
+        if (getOptions() != null) {
             result.add("options", getOptions().getJSON());
         }
         JsonArray lines = new JsonArray();
-        for (StockSeries serie : getSeries()){
+        for (StockSeries serie : getSeries()) {
             lines.add(serie.getJSON());
         }
         result.add("stocks", lines);
-        result.addProperty("type","stock");
-        json.add(getName(),result);
+        result.addProperty("type", "stock");
+        json.add(getName(), result);
         return json;
     }
 

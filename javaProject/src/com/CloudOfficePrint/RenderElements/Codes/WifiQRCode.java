@@ -3,9 +3,10 @@ package com.CloudOfficePrint.RenderElements.Codes;
 import com.google.gson.JsonObject;
 
 /**
- * This class is a subclass of QRCode and is used to generate a WiFi QR-code element.
+ * This class is a subclass of QRCode and is used to generate a WiFi QR-code
+ * element.
  */
-public class WifiQRCode extends QRCode{
+public class WifiQRCode extends QRCode {
 
     private String password;
     private String encryption;
@@ -54,11 +55,13 @@ public class WifiQRCode extends QRCode{
     }
 
     /**
-     * This class is a subclass of QRCode and is used to generate a WiFi QR-code element.
-     * Styling options can be set with the setter functions of the upper class.
-     * @param name  Name of this code for the tag.
-     * @param SSID SSID of the Wifi.
-     * @param password Password of the WiFi.
+     * This class is a subclass of QRCode and is used to generate a WiFi QR-code
+     * element. Styling options can be set with the setter functions of the upper
+     * class.
+     * 
+     * @param name       Name of this code for the tag.
+     * @param SSID       SSID of the Wifi.
+     * @param password   Password of the WiFi.
      * @param encryption Encryption of the WiFi.
      * @param wifiHidden Whether the WiFi is hidden or not.
      */
@@ -73,16 +76,16 @@ public class WifiQRCode extends QRCode{
      * @return JSONObject with the tags for this element for the AOP server.
      */
     @Override
-    public JsonObject getJSON(){
+    public JsonObject getJSON() {
         JsonObject json = super.getJSON();
-        if (getPassword()!= null){
-            json.addProperty(getName()+"_wifi_password",getPassword());
+        if (getPassword() != null) {
+            json.addProperty(getName() + "_wifi_password", getPassword());
         }
-        if (getEncryption()!= null){
-            json.addProperty(getName()+"_wifi_encryption",getEncryption());
+        if (getEncryption() != null) {
+            json.addProperty(getName() + "_wifi_encryption", getEncryption());
         }
-        if (getWifiHidden()!= null){
-            json.addProperty(getName()+"_wifi_hidden",getWifiHidden());
+        if (getWifiHidden() != null) {
+            json.addProperty(getName() + "_wifi_hidden", getWifiHidden());
         }
         return json;
     }
