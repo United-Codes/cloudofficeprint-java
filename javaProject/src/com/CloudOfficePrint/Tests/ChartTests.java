@@ -115,7 +115,7 @@ public class ChartTests {
 
         String optionsExpected = "{'axis': {'x': {'orientation': 'minMax', 'min': 5.0, 'max': 10.0, 'type': 'date', 'date': {'format': 'unix', 'code': 'mm/yy', 'unit': 'months', 'step': 1}, 'title': 'title_x', 'showValues': True, 'valuesStyle': {'italic': True, 'bold': True, 'color': 'red', 'font': 'Arial'}, 'titleStyle': {'italic': True, 'bold': False, 'color': 'blue', 'font': 'Arial'}, 'titleRotation': 45, 'majorGridlines': True, 'majorUnit': 2.0, 'minorGridlines': True, 'minorUnit': 1.0, 'formatCode': 'General'}, 'y': {'orientation': 'minMax', 'min': 5.0, 'max': 10.0, 'title': 'title_y', 'showValues': True, 'valuesStyle': {'italic': True, 'bold': True, 'color': 'red', 'font': 'Arial'}, 'titleStyle': {'italic': True, 'bold': False, 'color': 'blue', 'font': 'Arial'}, 'titleRotation': 45, 'majorGridlines': True, 'majorUnit': 2.0, 'minorGridlines': True, 'minorUnit': 1.0, 'formatCode': 'General'}, 'y2': {'orientation': 'minMax', 'min': 5.0, 'max': 10.0, 'title': 'title_y', 'showValues': True, 'valuesStyle': {'italic': True, 'bold': True, 'color': 'red', 'font': 'Arial'}, 'titleStyle': {'italic': True, 'bold': False, 'color': 'blue', 'font': 'Arial'}, 'titleRotation': 45, 'majorGridlines': True, 'majorUnit': 2.0, 'minorGridlines': True, 'minorUnit': 1.0, 'formatCode': 'General'}}, 'width': 500, 'height': 500, 'border': True, 'roundedCorners': False, 'backgroundColor': 'green', 'backgroundOpacity': 50, 'title': 'title_chart', 'titleStyle': {'italic': False, 'bold': True, 'color': 'red', 'font': 'Arial'}, 'grid': True, 'legend': {'showLegend': True, 'position': 'l', 'style': {'italic': True, 'bold': True, 'color': 'blue', 'font': 'Arial'}}, 'dataLabels': {'showDataLabels': True, 'separator': ';', 'showSeriesName': False, 'showCategoryName': False, 'showLegendKey': True, 'showValue': False, 'showPercentage': True, 'position': 'r'}}";
         // System.out.println(options.getJSON());
-        JsonObject jsonCorrect = new JsonParser().parse(optionsExpected).getAsJsonObject();
+        JsonObject jsonCorrect = JsonParser.parseString(optionsExpected).getAsJsonObject();
         // System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect, options.getJSON());
     }
@@ -128,7 +128,7 @@ public class ChartTests {
         LineChart lineChart = new LineChart("test_name", null, line1, line2);
         String correct = "{'test_name': {'lines': [{'data': [{'x': 'a', 'y': '1'}, {'x': 'b', 'y': '2'}, {'x': 'c', 'y': '3'}], 'name': 'line1', 'smooth': True, 'symbol': 'diamond', 'symbolSize': '10px', 'color': 'red', 'lineWidth': '0.2cm', 'lineStyle': 'sysDashDotDot'}, {'data': [{'x': 'a', 'y': '4'}, {'x': 'b', 'y': '5'}, {'x': 'c', 'y': '6'}], 'name': 'line2', 'smooth': True, 'symbol': 'square', 'symbolSize': '12px', 'color': 'blue', 'lineWidth': '2px', 'lineStyle': 'sysDash'}], 'type': 'line'}}";
         // System.out.println(lineChart.getJSON());
-        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect, lineChart.getJSON());
     }
@@ -169,7 +169,7 @@ public class ChartTests {
         AreaChart areaChart = new AreaChart("area_chart", null, serie1, serie2);
         String correct = "{'area_chart': {'areas': [{'data': [{'x': 'a', 'y': '1'}, {'x': 'b', 'y': '2'}, {'x': 'c', 'y': '3'}], 'name': 'area1', 'color': 'red', 'opacity': 50.0}, {'data': [{'x': 'a', 'y': '4'}, {'x': 'b', 'y': '5'}, {'x': 'c', 'y': '6'}], 'name': 'area2', 'color': 'blue', 'opacity': 80.0}], 'type': 'area'}}";
         // System.out.println(areaChart.getJSON());
-        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect, areaChart.getJSON());
     }
@@ -199,7 +199,7 @@ public class ChartTests {
         StockChart chart = new StockChart("stock_chart", null, serie1, serie2);
         String correct = "{'stock_chart': {'stocks': [{'data': [{'x': '1', 'high': 4, 'low': 7, 'close': 10, 'open': 13, 'volume': 16}, {'x': '2', 'high': 5, 'low': 8, 'close': 11, 'open': 14, 'volume': 17}, {'x': '3', 'high': 6, 'low': 9, 'close': 12, 'open': 15, 'volume': 18}], 'name': 'stock1'}, {'data': [{'x': '1', 'high': 4, 'low': 7, 'close': 10, 'open': 13, 'volume': 16}, {'x': '2', 'high': 5, 'low': 8, 'close': 11, 'open': 14, 'volume': 17}, {'x': '3', 'high': 6, 'low': 9, 'close': 12, 'open': 15, 'volume': 18}], 'name': 'stock2'}], 'type': 'stock'}}";
         // System.out.println(chart.getJSON());
-        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect, chart.getJSON());
     }
@@ -238,7 +238,7 @@ public class ChartTests {
                 new Chart[] { columnChart, lineChart }, new Chart[] { barChart });
 
         String correct = "{\"combined_chart\":{\"multiples\":[{\"columns\":[{\"data\":[{\"x\":\"a\",\"y\":\"1\"},{\"x\":\"b\",\"y\":\"2\"},{\"x\":\"c\",\"y\":\"3\"}],\"name\":\"column1\"},{\"data\":[{\"x\":\"a\",\"y\":\"4\"},{\"x\":\"b\",\"y\":\"5\"},{\"x\":\"c\",\"y\":\"6\"}],\"name\":\"column2\"}],\"type\":\"column\"},{\"options\":{\"axis\":{\"x\":{},\"y\":{}},\"width\":50,\"backgroundColor\":\"gray\",\"backgroundOpacity\":50},\"lines\":[{\"data\":[{\"x\":\"a\",\"y\":\"1\"},{\"x\":\"b\",\"y\":\"2\"},{\"x\":\"c\",\"y\":\"3\"}],\"name\":\"line1\",\"symbol\":\"square\"},{\"data\":[{\"x\":\"a\",\"y\":\"4\"},{\"x\":\"b\",\"y\":\"5\"},{\"x\":\"c\",\"y\":\"6\"}],\"name\":\"line2\",\"symbol\":\"square\"}],\"type\":\"line\"},{\"options\":{\"axis\":{\"x\":{},\"y\":{}},\"width\":100,\"height\":100,\"roundedCorners\":false},\"bars\":[{\"data\":[{\"x\":\"a\",\"y2\":\"1\"},{\"x\":\"b\",\"y2\":\"2\"},{\"x\":\"c\",\"y2\":\"3\"}],\"name\":\"bar1\"},{\"data\":[{\"x\":\"a\",\"y2\":\"4\"},{\"x\":\"b\",\"y2\":\"5\"},{\"x\":\"c\",\"y2\":\"6\"}],\"name\":\"bar2\"}],\"type\":\"bar\"}],\"options\":{\"axis\":{\"x\":{},\"y\":{}},\"width\":50,\"backgroundColor\":\"gray\",\"backgroundOpacity\":50},\"type\":\"multiple\"}}";
-        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(combinedChart.getJSON());
         // System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect, combinedChart.getJSON());
@@ -269,7 +269,7 @@ public class ChartTests {
                 "x2-axis", aopChartDateOptions);
 
         String correct = "{'aop_chart': {'xAxis': {'data': ['a', 'b', 'c'], 'title': 'x-axis', 'date': {'format': 'd/m/yyyy', 'unit': 'days', 'step': 1}}, 'yAxis': {'series': [{'name': 'series 1', 'data': ['1', '2', '3']}, {'name': 'series 2', 'data': ['4', '5', '6']}], 'title': 'y-axis'}, 'title': 'aop_chart_title', 'x2Axis': {'title': 'x2-axis'}, 'y2Axis': {'title': 'y2-axis'}}}\n";
-        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(chart.getJSON());
         // System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect, chart.getJSON());

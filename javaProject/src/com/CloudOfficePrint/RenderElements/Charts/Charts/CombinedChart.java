@@ -77,7 +77,7 @@ public class CombinedChart extends Chart {
     public JsonObject replaceKeyRecursive(JsonObject jsonOld, String oldKey, String newKey) {
         JsonObject json = jsonOld.deepCopy();
 
-        for (Map.Entry entry : jsonOld.entrySet()) {
+        for (Map.Entry<String, JsonElement> entry : jsonOld.entrySet()) {
             if (entry.getValue() instanceof JsonObject) {
                 if (entry.getKey() != "options") {
                     json.remove((String) entry.getKey());
@@ -86,7 +86,7 @@ public class CombinedChart extends Chart {
                 }
             } else if (entry.getValue() instanceof JsonArray) {
                 JsonArray newArray = new JsonArray();
-                Iterator iterator = ((JsonArray) entry.getValue()).iterator();
+                Iterator<JsonElement> iterator = ((JsonArray) entry.getValue()).iterator();
                 while (iterator.hasNext()) {
                     JsonObject next = (JsonObject) iterator.next();
                     newArray.add(replaceKeyRecursive(next, oldKey, newKey));

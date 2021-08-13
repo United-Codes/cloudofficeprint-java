@@ -103,13 +103,12 @@ public class ElementCollection extends RenderElement {
      */
     public static ElementCollection makeCollectionFromJson(String name, JsonObject json) {
         ElementCollection col = new ElementCollection(name);
-        for (Map.Entry entry : json.entrySet()) {
+        for (Map.Entry<String, JsonElement> entry : json.entrySet()) {
             if (entry.getValue() instanceof JsonObject) {
                 JsonObject value = (JsonObject) entry.getValue();
                 col.addElement(makeCollectionFromJson(entry.getKey().toString(), value));
             } else if (entry.getValue().toString().startsWith("[\"")) { // just array of strings
                 JsonArray array = (JsonArray) entry.getValue();
-                RawJsonArray test = new RawJsonArray(entry.getKey().toString(), array);
                 col.addElement(new RawJsonArray(entry.getKey().toString(), array));
             } else if (entry.getValue() instanceof JsonArray) {
                 JsonArray array = (JsonArray) entry.getValue();
@@ -150,7 +149,7 @@ public class ElementCollection extends RenderElement {
      *              JSON's/JsonArrays.
      */
     public static void updateJson1WithJson2(JsonObject json1, JsonObject json2) {
-        for (Map.Entry entry : json2.entrySet()) {
+        for (Map.Entry<String, JsonElement> entry : json2.entrySet()) {
             json1.addProperty(entry.getKey().toString(), entry.getValue().toString().replace("\"", ""));
         }
     }

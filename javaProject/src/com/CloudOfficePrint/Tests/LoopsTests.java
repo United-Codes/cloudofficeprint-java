@@ -30,7 +30,7 @@ public class LoopsTests {
 
         String correct = "{'loop_name': [{'a': '1', 'b': '2', 'c': '3'}, {'a': '4', 'b': '5', 'c': '6'}]}";
         // System.out.println(loop.getJSON());
-        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect, loop.getJSON());
     }

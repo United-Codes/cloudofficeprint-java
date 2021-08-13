@@ -19,14 +19,11 @@ import com.CloudOfficePrint.RenderElements.PDF.PDFTexts;
 import com.CloudOfficePrint.Resources.Base64Resource;
 import com.CloudOfficePrint.Resources.Resource;
 import com.CloudOfficePrint.Server.Server;
-import com.CloudOfficePrint.Tests.PrintJobTest;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.apache.commons.io.IOUtils;
 
-import java.io.BufferedReader;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Base64;

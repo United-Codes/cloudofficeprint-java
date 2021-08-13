@@ -93,7 +93,7 @@ public class SheetLoop extends Loop {
         Set<String> hash_Set = new HashSet<String>();
         hash_Set.add("{!" + getName() + "}");
         for (RenderElement element : getElements()) {
-            for (String tag : getTemplateTags())
+            for (String tag : element.getTemplateTags())
                 hash_Set.add(tag);
         }
         return ImmutableSet.copyOf(hash_Set);

@@ -84,7 +84,7 @@ public class SpaceXExample {
 
         ElementCollection spaceXData = new ElementCollection("data");
 
-        spaceXData.addAllRenderElements(spaceXData.makeCollectionFromJson("info", info));
+        spaceXData.addAllRenderElements(ElementCollection.makeCollectionFromJson("info", info));
 
         spaceXData.addElement(new HyperLink("spacex_website", "Website",
                 info.get("links").getAsJsonObject().get("website").getAsString()));
@@ -104,7 +104,7 @@ public class SpaceXExample {
             img.setMaxHeight(IMAGE_MAX_HEIGHT);
             img.setMaxWidth(IMAGE_MAX_WIDTH);
             rocket.remove("flickr_images");// we don't need this anymore
-            ElementCollection coll = spaceXData.makeCollectionFromJson("rocket", rocket);
+            ElementCollection coll = ElementCollection.makeCollectionFromJson("rocket", rocket);
             coll.addElement(img);
             coll.addElement(new Property("description", shortenDescription(rocket.get("description").getAsString()))); // should
                                                                                                                        // overwrite
@@ -159,7 +159,7 @@ public class SpaceXExample {
             ImageUrl img = new ImageUrl("image", dragon.get("flickr_images").getAsJsonArray().get(0).getAsString());
             img.setMaxHeight(IMAGE_MAX_HEIGHT);
             img.setMaxWidth(IMAGE_MAX_WIDTH);
-            ElementCollection coll = spaceXData.makeCollectionFromJson("dragon", dragon);
+            ElementCollection coll = ElementCollection.makeCollectionFromJson("dragon", dragon);
             coll.addElement(img);
             coll.addElement(new Property("description", shortenDescription(dragon.get("description").getAsString())));
             coll.addElement(new HyperLink("wikipedia", "Wikipedia", dragon.get("wikipedia").getAsString()));
@@ -175,7 +175,7 @@ public class SpaceXExample {
                     launchpad.get("images").getAsJsonObject().get("large").getAsJsonArray().get(0).getAsString());
             img.setMaxHeight(IMAGE_MAX_HEIGHT);
             img.setMaxWidth(IMAGE_MAX_WIDTH);
-            ElementCollection coll = spaceXData.makeCollectionFromJson("launchpad", launchpad);
+            ElementCollection coll = ElementCollection.makeCollectionFromJson("launchpad", launchpad);
             coll.addElement(img);
             coll.addElement(new Property("details", shortenDescription(launchpad.get("details").getAsString())));
             launchpadLoop.addElement(coll);
@@ -190,7 +190,7 @@ public class SpaceXExample {
                     landingpad.get("images").getAsJsonObject().get("large").getAsJsonArray().get(0).getAsString());
             img.setMaxHeight(IMAGE_MAX_HEIGHT);
             img.setMaxWidth(IMAGE_MAX_WIDTH);
-            ElementCollection coll = spaceXData.makeCollectionFromJson("landingpad", landingpad);
+            ElementCollection coll = ElementCollection.makeCollectionFromJson("landingpad", landingpad);
             coll.addElement(img);
             coll.addElement(new Property("details", shortenDescription(landingpad.get("details").getAsString())));
             coll.addElement(new HyperLink("wikipedia", "Wikipedia", landingpad.get("wikipedia").getAsString()));
@@ -210,7 +210,7 @@ public class SpaceXExample {
             } else {
                 img = new ImageUrl("image", null);
             }
-            ElementCollection coll = spaceXData.makeCollectionFromJson("ship", ship);
+            ElementCollection coll = ElementCollection.makeCollectionFromJson("ship", ship);
             coll.addElement(img);
             if (ship.get("link").isJsonNull() == false) {
                 coll.addElement(new HyperLink("website", "Website", ship.get("link").getAsString()));

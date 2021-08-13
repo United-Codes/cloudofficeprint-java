@@ -43,7 +43,7 @@ public class ConfigTests {
 
         String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'output_read_password': 'test_pw', 'output_watermark': 'test_watermark', 'output_page_width': '500', 'output_page_height': '500', 'output_even_page': True, 'output_merge_making_even': False, 'output_modify_password': 'test_modify_password', 'output_password_protection_flag': 0, 'lock_form': True, 'output_copies': 3, 'page_margin': {'top': 5, 'bottom': 5, 'left': 5, 'right': 5}, 'output_page_format': 'test_page_format', 'output_merge': False, 'output_sign_certificate': 'test_sign_certificate', 'identify_form_fields': True, 'output_split': False}";
         // System.out.println(output.getJSON());
-        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect, output.getJSON());
     }
@@ -57,7 +57,7 @@ public class ConfigTests {
         Output output = new Output("pdf", "raw", "libreoffice", null, null, null, csvOptions);
 
         String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'output_character_set': 5, 'output_field_separator': 'fieldSep': 'output_text_delimiter': 'textDelim'}";
-        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         Assert.assertEquals(jsonCorrect, output.getJSON());
     }
 
@@ -65,28 +65,28 @@ public class ConfigTests {
         OAuth2Token oAuth2Token = new OAuth2Token("dropbox", "dummy_token");
         String correct = "{'output_location': 'dropbox', 'cloud_access_token': 'dummy_token'}";
         // System.out.println(oAuth2Token.getJSON());
-        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect, oAuth2Token.getJSON());
 
         AWSToken awsToken = new AWSToken("AWS_access_key_id", "AWS_secter_access_key");
         correct = "{'output_location': 'aws_s3', 'cloud_access_token': {'access_key': 'AWS_access_key_id', 'secret_access_key': 'AWS_secter_access_key'}}";
         // System.out.println(awsToken.getJSON());
-        jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect, awsToken.getJSON());
 
         FTPToken ftpToken = new FTPToken("host_name", false, 35, "dummy_user", "dummy_pw");
         correct = "{'output_location': 'ftp', 'cloud_access_token': {'host': 'host_name', 'port': 35, 'user': 'dummy_user', 'password': 'dummy_pw'}}";
         // System.out.println(awsToken.getJSON());
-        jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect, ftpToken.getJSON());
 
         FTPToken sftpToken = new FTPToken("host_name", true, 35, "dummy_user", "dummy_pw");
         correct = "{'output_location': 'sftp', 'cloud_access_token': {'host': 'host_name', 'port': 35, 'user': 'dummy_user', 'password': 'dummy_pw'}}";
         // System.out.println(awsToken.getJSON());
-        jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect, sftpToken.getJSON());
     }
@@ -107,7 +107,7 @@ public class ConfigTests {
 
         String correct = "{'post_process': {'command': 'echo_post', 'return_output': False, 'delete_delay': 1500, 'command_parameters': {'p1': 'Parameter1', 'p2': 'Parameter2', 'p3': 'Parameter3'}}}";
         // System.out.println(postCommands.getJSON());
-        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect, postCommands.getJSON());
 
@@ -126,7 +126,7 @@ public class ConfigTests {
 
         correct = "{'conversion': {'pre_command': 'echo_pre', 'pre_command_parameters': {'p1': 'Parameter1', 'p2': 'Parameter2', 'p3': 'Parameter3'}, 'post_command': 'echo_post', 'post_command_parameters': {'p1': 'Parameter1', 'p2': 'Parameter2', 'p3': 'Parameter3'}}}";
         // System.out.println(conversionCommand.getJSON());
-        jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect, conversionCommand.getJSON());
 
@@ -138,7 +138,7 @@ public class ConfigTests {
 
         correct = "{'merge': {'post_command': 'echo_post', 'post_command_parameters': {'p1': 'Parameter1', 'p2': 'Parameter2', 'p3': 'Parameter3'}}}";
         // System.out.println(postMergeCommands.getJSON());
-        jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect, postMergeCommands.getJSON());
     }

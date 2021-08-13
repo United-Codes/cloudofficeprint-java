@@ -19,11 +19,6 @@ public abstract class Resource {
     private String mimeType;
 
     /**
-     * Array of the supported resourcetypes (extensions).
-     */
-    private final String[] supportedResourceExtensions = { "txt", "md", "html", "docx", "xlsx", "pptx" };
-
-    /**
      * @return The mimetype of the resource.
      */
     public String getMimeType() {

@@ -16,7 +16,7 @@ public class RenderElementsTests {
         Property property = new Property("name", "value");
         String correct = "{'name': 'value'}";
         // System.out.println(property.getJSON());
-        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect, property.getJSON());
     }
@@ -26,7 +26,7 @@ public class RenderElementsTests {
         TableCell cell = new TableCell("name", "value", cellStyle);
         String correct = "{'name': 'value', 'name_cell_background_color': '#eb4034', 'name_width': '10'}";
         // System.out.println(cell.getJSON());
-        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect, cell.getJSON());
     }
@@ -71,7 +71,7 @@ public class RenderElementsTests {
         HyperLink cell = new HyperLink("hyperlink", "hyperlink_text", "url");
         String correct = "{'hyperlink': 'url', 'hyperlink_text': 'hyperlink_text'}";
         // System.out.println(cell.getJSON());
-        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect, cell.getJSON());
     }
@@ -80,7 +80,7 @@ public class RenderElementsTests {
         TableOfContents cell = new TableOfContents("table", "contents", 4, "underscore");
         String correct = "{'table_title': 'contents', 'table_show_level': 4, 'table_tab_leader': 'underscore'}";
         // System.out.println(cell.getJSON());
-        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect, cell.getJSON());
     }
@@ -89,7 +89,7 @@ public class RenderElementsTests {
         CellSpan cell = new CellSpan("span_name", "This cell will span 2 rows and 3 columns", 3, 2);
         String correct = "{'span_name': 'This cell will span 2 rows and 3 columns', 'span_name_col_span': 3, 'span_name_row_span': 2}";
         // System.out.println(cell.getJSON());
-        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect, cell.getJSON());
     }
@@ -107,7 +107,7 @@ public class RenderElementsTests {
 
         String correct = "{'cust_first_name': 'DemoCustomerName', 'cust_first_name_font_family': 'NanumMyeongjo', 'cust_first_name_font_size': '25pt', 'cust_first_name_font_color': '#ff00ff', 'cust_first_name_bold': True, 'cust_first_name_italic': True, 'cust_first_name_underline': False, 'cust_first_name_strikethrough': False, 'cust_first_name_highlight': 'darkMagenta'}";
         // System.out.println(cell.getJSON());
-        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect, prop.getJSON());
     }
@@ -123,7 +123,7 @@ public class RenderElementsTests {
 
         String correct = "{'wm_name': 'wm_text', 'wm_name_color': 'red', 'wm_name_font': 'Arial', 'wm_name_width': '50', 'wm_name_height': '30', 'wm_name_opacity': 50.0, 'wm_name_rotation': -45}";
         // System.out.println(prop.getJSON());
-        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect, prop.getJSON());
     }
@@ -133,7 +133,7 @@ public class RenderElementsTests {
 
         String correct = "{'d3_code': 'test_code', 'd3_code_data': \"['a', 1, 2, 3, 'b']\"}";
         // System.out.println(prop.getJSON());
-        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect, prop.getJSON());
     }
@@ -149,7 +149,7 @@ public class RenderElementsTests {
 
         String correct = "{'tbox_name': 'tbox_value', 'tbox_name_font': 'Arial', 'tbox_name_font_color': 'blue', 'tbox_name_font_size': 12, 'tbox_name_transparency': '50%', 'tbox_name_width': '30', 'tbox_name_height': '25'}";
         // System.out.println(prop.getJSON());
-        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect, prop.getJSON());
     }
@@ -168,7 +168,7 @@ public class RenderElementsTests {
 
         String correct = "{'image1': 'url', 'image1_alt_text': 'alt_text', 'loop': [{'prop': 'value1'}, {'prop': 'value2'}]}";
         // System.out.println(data.getJSON());
-        JsonObject jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect, data.getJSON());
 
@@ -176,7 +176,7 @@ public class RenderElementsTests {
 
         correct = "{'loop': [{'prop': 'value1'}, {'prop': 'value2'}]}";
         // System.out.println(data.getJSON());
-        jsonCorrect = new JsonParser().parse(correct).getAsJsonObject();
+        jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
         Assert.assertEquals(jsonCorrect, data.getJSON());
     }
