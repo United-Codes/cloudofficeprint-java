@@ -1,8 +1,11 @@
 package com.CloudOfficePrint;
 
+import java.util.Arrays;
+
 //https://www.jetbrains.com/help/idea/creating-and-running-your-first-java-application.html#run_jar_artifact will be usefull to build the JAR
 
 import com.CloudOfficePrint.Examples.GeneralExamples.Examples;
+import com.CloudOfficePrint.Examples.MultipleRequestMerge.MultipleRequestMergeExample;
 import com.CloudOfficePrint.Examples.OrderConfirmation.OrderConfirmationExample;
 import com.CloudOfficePrint.Examples.SolarSystem.docx.SolarSystemDocx;
 import com.CloudOfficePrint.Examples.SolarSystem.pptx.SolarSystemPptx;
@@ -41,6 +44,10 @@ public class Main {
 
 //        OrderConfirmationExample orderConfirmationExample = new OrderConfirmationExample();
 //        orderConfirmationExample.main(args[0]);
+    	
+//    	MultipleRequestMergeExample multipleRequestMergeExample = new MultipleRequestMergeExample();
+//    	multipleRequestMergeExample.main(args[0]);
+    	
 
         // TESTS
 
