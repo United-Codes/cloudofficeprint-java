@@ -7,8 +7,7 @@ import java.util.Arrays;
 import com.CloudOfficePrint.Examples.GeneralExamples.Examples;
 import com.CloudOfficePrint.Examples.MultipleRequestMerge.MultipleRequestMergeExample;
 import com.CloudOfficePrint.Examples.OrderConfirmation.OrderConfirmationExample;
-import com.CloudOfficePrint.Examples.SolarSystem.docx.SolarSystemDocx;
-import com.CloudOfficePrint.Examples.SolarSystem.pptx.SolarSystemPptx;
+import com.CloudOfficePrint.Examples.SolarSystem.SolarSystemExample;
 import com.CloudOfficePrint.Examples.SpaceX.SpaceXExample;
 import com.CloudOfficePrint.Tests.*;
 
@@ -18,35 +17,34 @@ public class Main {
     public static void main(String[] args) throws Exception {
         // EXAMPLES
 
-        // Examples example = new Examples();
-        // example.localJson(args[0]);
-        // example.localTemplateAsync(args[0]);
-        // example.localTemplate(args[0]);
-        // example.withoutTemplate(args[0]);
-        // example.loopExample(args[0]);
-        // example.chartExample(args[0]);
-        // example.combinedChartExample(args[0]);
-        // example.qrCodeExample(args[0]);
-        // example.prependAppendSubTemplatesExample(args[0]);
-        // example.AOPPDFTextAndImageExample(args[0]);
-        // example.waterMarkAndStyledProperty(args[0]);
-        // example.signPDF(args[0]);
-
-        // SolarSystemDocx solarSystemDocx = new SolarSystemDocx();
-        // solarSystemDocx.main(args[0]);
-        // SolarSystemPptx solarSystemPptx = new SolarSystemPptx();
-        // solarSystemPptx.main(args[0]);
-
-        // SpaceXExample spaceXExample = new SpaceXExample();
-        // spaceXExample.main(args[0], "pptx");
-        // spaceXExample.main(args[0], "xlsx");
-        // spaceXExample.main(args[0], "docx");
-
-//        OrderConfirmationExample orderConfirmationExample = new OrderConfirmationExample();
-//        orderConfirmationExample.main(args[0]);
-    	
-//    	MultipleRequestMergeExample multipleRequestMergeExample = new MultipleRequestMergeExample();
-//    	multipleRequestMergeExample.main(args[0]);
+//    	Examples example = new Examples();
+//        example.localJson(args[0]);
+//        example.localTemplateAsync(args[0]);
+//        example.localTemplate(args[0]);
+//        example.withoutTemplate(args[0]);
+//        example.loopExample(args[0]);
+//        example.chartExample(args[0]);
+//        example.combinedChartExample(args[0]);
+//        example.qrCodeExample(args[0]);
+//        example.prependAppendSubTemplatesExample(args[0]);
+//        example.AOPPDFTextAndImageExample(args[0]);
+//        example.waterMarkAndStyledProperty(args[0]);
+//        example.signPDF(args[0]);
+//
+//        SolarSystemExample solarSystemExample = new SolarSystemExample();
+//        solarSystemExample.main(args[0], "docx");
+//        solarSystemExample.main(args[0], "pptx");
+//
+//        SpaceXExample spaceXExample = new SpaceXExample();
+//        spaceXExample.main(args[0], "pptx");
+//        spaceXExample.main(args[0], "xlsx");
+//        spaceXExample.main(args[0], "docx");
+//
+//		OrderConfirmationExample orderConfirmationExample = new OrderConfirmationExample();
+//		orderConfirmationExample.main(args[0]);
+//
+//		MultipleRequestMergeExample multipleRequestMergeExample = new MultipleRequestMergeExample();
+//		multipleRequestMergeExample.main(args[0]);
     	
 
         // TESTS
