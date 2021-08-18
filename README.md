@@ -152,3 +152,30 @@ Again, the `-cp "$(printf %s: ../lib/*.jar)"` includes the .jar files from the '
 
 NOTE: to make the HelloWorld example work, you would have to change the template and output paths, because we're now running the example from the 'src'-folder:
 `./data/template.docx` -> `../data/template.docx` and `./data/output` -> `../data/output`
+
+# Gradle
+## Installation (Linux)
+First download `SDKMAN!` by typing in your terminal:
+```bash
+curl -s "https://get.sdkman.io" | bash
+```
+Then open another terminal (important for `SDKMAN!` to get recognized) and install Gradle by typing in your terminal:
+```bash
+sdk install gradle 7.2
+```
+## Building (and generating .jar file)
+```bash
+./gradlew build
+```
+## Generate .jar file
+```bash
+./gradlew jar
+```
+## Run tests
+```bash
+./gradlew test
+```
+## Generate documentation
+```bash
+./gradlew javadoc
+```
