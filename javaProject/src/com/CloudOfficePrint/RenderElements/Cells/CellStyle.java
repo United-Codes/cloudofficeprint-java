@@ -8,7 +8,8 @@ import com.google.gson.JsonObject;
 public abstract class CellStyle {
 
     /**
-     * @return JSONObject with the tags for this tableCell for the AOP server.
+     * @return JSONObject with the tags for this tableCell for the Cloud Office
+     *         Print server.
      */
     public abstract JsonObject getJSON();
 

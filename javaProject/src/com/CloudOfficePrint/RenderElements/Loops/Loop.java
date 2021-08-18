@@ -71,7 +71,8 @@ public class Loop extends RenderElement {
     }
 
     /**
-     * @return JSONObject with the tags for this element for the AOP server.
+     * @return JSONObject with the tags for this element for the Cloud Office Print
+     *         server.
      */
     @Override
     public JsonObject getJSON() {

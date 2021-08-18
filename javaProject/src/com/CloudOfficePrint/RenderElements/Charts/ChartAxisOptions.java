@@ -226,7 +226,8 @@ public class ChartAxisOptions {
     };
 
     /**
-     * @return JSONObject with the tags for this element for the AOP server.
+     * @return JSONObject with the tags for this element for the Cloud Office Print
+     *         server.
      */
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();

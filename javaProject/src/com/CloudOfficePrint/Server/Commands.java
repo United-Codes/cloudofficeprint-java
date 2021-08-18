@@ -6,9 +6,9 @@ import com.google.gson.JsonObject;
 import java.util.Map;
 
 /**
- * Commands object with commands for the AOP server to run before or after the
- * post processing. The commands should be present in the aop_config.json file
- * on the AOP server.
+ * Commands object with commands for the Cloud Office Print server to run before
+ * or after the post processing. The commands should be present in the
+ * aop_config.json file on the Cloud Office Print server.
  */
 public class Commands {
 
@@ -20,15 +20,16 @@ public class Commands {
     private Command postMerge;
 
     /**
-     * @return Command to run on the AOP server after the POST request is processed.
+     * @return Command to run on the Cloud Office Print server after the POST
+     *         request is processed.
      */
     public Command getPostProcess() {
         return postProcess;
     }
 
     /**
-     * @param postProcess Command to run on the AOP server after the POST request is
-     *                    processed.
+     * @param postProcess Command to run on the Cloud Office Print server after the
+     *                    POST request is processed.
      */
     public void setPostProcess(Command postProcess) {
         this.postProcess = postProcess;
@@ -38,8 +39,8 @@ public class Commands {
      * If you are already doing something with the file and don't want it to be
      * returned in the response set this to true.
      * 
-     * @return Whether to return the output file or not. Note this output is AOP's
-     *         output and not the post process command output.
+     * @return Whether to return the output file or not. Note this output is Cloud
+     *         Office Print's output and not the post process command output.
      */
     public Boolean getPostProcessReturn() {
         return postProcessReturn;
@@ -47,17 +48,18 @@ public class Commands {
 
     /**
      * @param postProcessReturn Whether to return the output file or not. Note this
-     *                          output is AOP's output and not the post process
-     *                          command output.
+     *                          output is Cloud Office Print's output and not the
+     *                          post process command output.
      */
     public void setPostProcessReturn(Boolean postProcessReturn) {
         this.postProcessReturn = postProcessReturn;
     }
 
     /**
-     * AOP deletes the file provided to the command directly after executing it.
-     * This can be delayed with this option. If you have a postcommand to execute on
-     * this file and it takes some time to execute, add a postProcessDeleteDelay.
+     * Cloud Office Print deletes the file provided to the command directly after
+     * executing it. This can be delayed with this option. If you have a postcommand
+     * to execute on this file and it takes some time to execute, add a
+     * postProcessDeleteDelay.
      * 
      * @return delay in ms.
      */
@@ -66,9 +68,10 @@ public class Commands {
     }
 
     /**
-     * AOP deletes the file provided to the command directly after executing it.
-     * This can be delayed with this option. If you have a postcommand to execute on
-     * this file and it takes some time to execute, add a postProcessDeleteDelay.
+     * Cloud Office Print deletes the file provided to the command directly after
+     * executing it. This can be delayed with this option. If you have a postcommand
+     * to execute on this file and it takes some time to execute, add a
+     * postProcessDeleteDelay.
      * 
      * @param postProcessDeleteDelay delay in ms.
      */
@@ -119,7 +122,8 @@ public class Commands {
     }
 
     /**
-     * @return JSONObject with the tags for the commands for the AOP server.
+     * @return JSONObject with the tags for the commands for the Cloud Office Print
+     *         server.
      */
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();

@@ -59,7 +59,8 @@ public class AWSToken extends CloudAccessToken {
     }
 
     /**
-     * @return JSONObject with the tags for the AWSToken for the AOP server.
+     * @return JSONObject with the tags for the AWSToken for the Cloud Office Print
+     *         server.
      */
     @Override
     public JsonObject getJSON() {

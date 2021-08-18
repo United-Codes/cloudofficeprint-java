@@ -224,10 +224,10 @@ public class SpaceXExample {
         Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
         data.put("spaceXData", spaceXData);
 
-        // Set-Up AOP Server
-        Server aopServer = new Server("https://api.apexofficeprint.com/");
-        aopServer.setVerbose(true);
-        aopServer.setAPIKey(APIKey);
+        // Set-Up Cloud Office Print server
+        Server copServer = new Server("https://api.cloudofficeprint.com/");
+        copServer.setVerbose(true);
+        copServer.setAPIKey(APIKey);
 
         Base64Resource base64Resource = new Base64Resource();
         if (template.equals("docx")) {
@@ -275,9 +275,9 @@ public class SpaceXExample {
         }
 
         Output output = new Output(null, "raw", "libreoffice", null, null, null, null);
-        PrintJob printJob = new PrintJob(data, aopServer, output, base64Resource, null, null, null, null);
+        PrintJob printJob = new PrintJob(data, copServer, output, base64Resource, null, null, null, null);
 
-        Response responseAOP = printJob.execute();
-        responseAOP.downloadLocally("./downloads/spaceX");
+        Response res = printJob.execute();
+        res.downloadLocally("./downloads/spaceX");
     }
 }

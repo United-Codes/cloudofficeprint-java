@@ -5,18 +5,18 @@ import com.google.gson.JsonObject;
 import java.io.IOException;
 
 /**
- * Child class of Resource. A class representing a resource (file) on the AOP
- * server.
+ * Child class of Resource. A class representing a resource (file) on the Cloud
+ * Office Print server.
  */
 public class ServerResource extends Resource {
 
     /**
-     * Path to the resource on the AOP server.
+     * Path to the resource on the Cloud Office Print server.
      */
     private String path;
 
     /**
-     * @return Path of the resource on the AOP server.
+     * @return Path of the resource on the Cloud Office Print server.
      */
     public String getPath() {
         return path;
@@ -25,7 +25,7 @@ public class ServerResource extends Resource {
     /**
      * Sets the path of the resource.
      * 
-     * @param path path of the resource on the AOP server.
+     * @param path path of the resource on the Cloud Office Print server.
      */
     public void setPath(String path) {
         this.path = path;
@@ -35,8 +35,8 @@ public class ServerResource extends Resource {
      * Creates a resource with given path. Mimetype and filetype (extension) are
      * deduced from the path.
      * 
-     * @param path     Path of the file on the AOP server.
-     * @param mimeType Mimetype of the file on the AOP server.
+     * @param path     Path of the file on the Cloud Office Print server.
+     * @param mimeType Mimetype of the file on the Cloud Office Print server.
      * @throws IOException if mimetype can't be deduced.
      * @throws Exception   if extension can't be deduced.
      */
@@ -47,7 +47,7 @@ public class ServerResource extends Resource {
 
     /**
      * @return JSONObject with the tags for a resource on server as template for the
-     *         AOP server ("template_type","filename").
+     *         Cloud Office Print server ("template_type","filename").
      */
     @Override
     public JsonObject getJSONForTemplate() {
@@ -60,7 +60,8 @@ public class ServerResource extends Resource {
     /**
      * @return JSONObject with the tags ("mime_type","file","file_source") for a
      *         server resource as a secondary file (subtemplates, files to prepend,
-     *         files to append and files to insert) for the AOP server.
+     *         files to append and files to insert) for the Cloud Office Print
+     *         server.
      */
     @Override
     public JsonObject getJSONForSecondaryFile() {

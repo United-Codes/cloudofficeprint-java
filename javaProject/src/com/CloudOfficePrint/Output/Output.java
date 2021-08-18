@@ -31,8 +31,8 @@ public class Output {
 
     /**
      * This states which software the server should use to convert the output to
-     * pdf. The ApexOfficePrint server uses LibreOffice. If you are running the on
-     * premise version then the available values are : "officetopdf" (only when
+     * pdf. The Cloud Office Print server uses LibreOffice. If you are running the
+     * on premise version then the available values are : "officetopdf" (only when
      * server runs on Windows ) or "libreoffice" (Windows, Linux, OSX)
      * "libreoffice-standalone" or any other custom defined converters in the
      * aop_config.json file. Default : libreoffice.
@@ -133,10 +133,10 @@ public class Output {
 
     /**
      * @param converter Sets which software the server should use to convert the
-     *                  output to pdf. The ApexOfficePrint server uses LibreOffice.
-     *                  If you are running the on premise version then the available
-     *                  values are : "officetopdf" (only when server runs on Windows
-     *                  ) or "libreoffice" (Windows, Linux, OSX)
+     *                  output to pdf. The Cloud Office Print server uses
+     *                  LibreOffice. If you are running the on premise version then
+     *                  the available values are : "officetopdf" (only when server
+     *                  runs on Windows ) or "libreoffice" (Windows, Linux, OSX)
      *                  "libreoffice-standalone" or any other custom defined
      *                  converters in the aop_config.json file.
      */
@@ -191,13 +191,14 @@ public class Output {
      *                        the output file. It must be either "raw" (bytes) or
      *                        "base64". Default : raw.
      * @param converter       This states which software the server should use to
-     *                        convert the output to pdf. The ApexOfficePrint server
-     *                        uses LibreOffice. If you are running the on premise
-     *                        version then the available values are : "officetopdf"
-     *                        (only when server runs on Windows ) or "libreoffice"
-     *                        (Windows, Linux, OSX) "libreoffice-standalone" or any
-     *                        other custom defined converters in the aop_config.json
-     *                        file. Default : libreoffice.
+     *                        convert the output to pdf. The Cloud Office Print
+     *                        server uses LibreOffice. If you are running the on
+     *                        premise version then the available values are :
+     *                        "officetopdf" (only when server runs on Windows ) or
+     *                        "libreoffice" (Windows, Linux, OSX)
+     *                        "libreoffice-standalone" or any other custom defined
+     *                        converters in the aop_config.json file. Default :
+     *                        libreoffice.
      * @param token           If you want to store the output on a cloud based
      *                        service, a specific CloudAccessToken object needs to
      *                        be specified. Default : null.
@@ -219,7 +220,8 @@ public class Output {
     }
 
     /**
-     * @return JSONObject with the tags for the output for the AOP server.
+     * @return JSONObject with the tags for the output for the Cloud Office Print
+     *         server.
      */
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();

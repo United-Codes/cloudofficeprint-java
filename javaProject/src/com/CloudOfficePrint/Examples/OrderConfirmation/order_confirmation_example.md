@@ -1,5 +1,5 @@
 # About
-In this example we are going to show you how to use the Java-/TypeScript SDK for APEX Office Print. The example we will be using is: generating an order confirmation for buying products from a company. The resulting output file will look like this:
+In this example we are going to show you how to use the Java-/TypeScript SDK for Cloud Office Print. The example we will be using is: generating an order confirmation for buying products from a company. The resulting output file will look like this:
 
 ![](./imgs/output_imgs/output-1.jpg)
 <!-- TODO: change this link to Github link -->
@@ -54,24 +54,19 @@ public class OrderConfirmationExample {
         template.setFiletype("docx");
         template.setMimeType(Mimetype.getMimeType("docx"));
 
-        // Setup AOP server
-        Server aopServer = new Server("https://api.apexofficeprint.com/");
-        aopServer.setVerbose(true);
-        aopServer.setAPIKey(APIKey);
+        // Setup Cloud Office Print server
+        Server copServer = new Server("https://api.cloudofficeprint.com/");
+        copServer.setVerbose(true);
+        copServer.setAPIKey(APIKey);
 
         // Main ElementCollection that includes all the data
         ElementCollection data = new ElementCollection("data");
 
         // Company information
-        Property companyName = new Property("company_name", "APEXOfficePrint");
-        ImageBase64 companyLogo = new ImageBase64("company_logo");
+        Property companyName = new Property("company_name", "United Codes");
+        ImageUrl companyLogo = new ImageUrl("company_logo", "https://united-codes.com/assets/dist/images/logo-united-codes.svg");
         companyLogo.setMaxHeight(200);
         companyLogo.setMaxWidth(200);
-        resourceAsStream = getClass().getResourceAsStream("logo-office-print.jpg");
-        targetArray = new byte[resourceAsStream.available()];
-        resourceAsStream.read(targetArray);
-        encodedString = Base64.getEncoder().encodeToString(targetArray);
-        companyLogo.setValue(encodedString);
 
         // / Add company information to data
         data.addElement(companyName);
@@ -198,12 +193,12 @@ public class OrderConfirmationExample {
         Output conf = new Output("pdf", "raw", "libreoffice", null, null, null, null);
         Hashtable<String, RenderElement> dataTable = new Hashtable<String, RenderElement>();
         dataTable.put("data", data);
-        PrintJob printJob = new PrintJob(dataTable, aopServer, conf, template, null, null, null, null);
+        PrintJob printJob = new PrintJob(dataTable, copServer, conf, template, null, null, null, null);
 
-        Response responseAOP = printJob.execute();
+        Response response = printJob.execute();
 
         // Save response to output file
-        responseAOP.downloadLocally("./downloads/output");
+        response.downloadLocally("./downloads/output");
     }
 }
 

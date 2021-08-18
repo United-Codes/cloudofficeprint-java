@@ -13,8 +13,8 @@ import java.util.Hashtable;
 import java.util.Map;
 
 /**
- * A print job for the AOP server containing all the necessary information to
- * generate the adequate JSON for the AOP server.
+ * A print job for the Cloud Office Print server containing all the necessary
+ * information to generate the adequate JSON for the Cloud Office Print server.
  */
 public class PrintJob implements Runnable {
     private Server server;
@@ -25,7 +25,7 @@ public class PrintJob implements Runnable {
     private Hashtable<String, Resource> subTemplates = new Hashtable<String, Resource>();
     private Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
     private ExternalResource externalResource;
-    private Boolean aopRemoteDebug;
+    private Boolean copRemoteDebug;
 
     private volatile Response response; // for asynchronous calls
 
@@ -122,7 +122,7 @@ public class PrintJob implements Runnable {
     /**
      * Renderelements will replace their corresponding tag in the template. Multiple
      * output files will be produced if the hashtable has more then one element, the
-     * AOP server will return a zip file containing all of them.
+     * Cloud Office Print server will return a zip file containing all of them.
      * 
      * @return Hashtable(filename, RenderElement)
      */
@@ -133,7 +133,7 @@ public class PrintJob implements Runnable {
     /**
      * Renderelements will replace their corresponding tag in the template. Multiple
      * output files will be produced if the hashtable has more then one element, the
-     * AOP server will return a zip file containing all of them.
+     * Cloud Office Print server will return a zip file containing all of them.
      * 
      * @param data Hashtable(filename, RenderElement)
      */
@@ -142,20 +142,21 @@ public class PrintJob implements Runnable {
     }
 
     /**
-     * @return If set to true the AOP server will log your JSON into out database
-     *         and you can see it when you log into apexofficeprint.com.
+     * @return If set to true the Cloud Office Print server will log your JSON into
+     *         out database and you can see it when you log into
+     *         cloudofficeprint.com.
      */
-    public Boolean getAopRemoteDebug() {
-        return aopRemoteDebug;
+    public Boolean getCopRemoteDebug() {
+        return copRemoteDebug;
     }
 
     /**
-     * @param aopRemoteDebug If set to true the AOP server will log your JSON into
-     *                       out database and you can see it when you log into
-     *                       apexofficeprint.com.
+     * @param copRemoteDebug If set to true the Cloud Office Print server will log
+     *                       your JSON into out database and you can see it when you
+     *                       log into cloudofficeprint.com.
      */
-    public void setAopRemoteDebug(Boolean aopRemoteDebug) {
-        this.aopRemoteDebug = aopRemoteDebug;
+    public void setCopRemoteDebug(Boolean copRemoteDebug) {
+        this.copRemoteDebug = copRemoteDebug;
     }
 
     /**
@@ -176,7 +177,7 @@ public class PrintJob implements Runnable {
      * For getting to response after asynchronous execution. To used after run() has
      * been called and the thread joined.
      * 
-     * @return Response of the request to AOP.
+     * @return Response of the request to Cloud Office Print.
      */
     public Response getResponse() {
         return response;
@@ -186,21 +187,21 @@ public class PrintJob implements Runnable {
      * For setting to response after asynchronous execution. Call getResponse()
      * after run() has been called and the thread joined to get the response.
      * 
-     * @param response Response of the request to AOP.
+     * @param response Response of the request to Cloud Office Print.
      */
     public void setResponse(Response response) {
         this.response = response;
     }
 
     /**
-     * A print job for the AOP server containing all the necessary information to
-     * generate the adequate JSON for the AOP server. If you don't want to
-     * instantiate a variable, use null for this argument.
+     * A print job for the Cloud Office Print server containing all the necessary
+     * information to generate the adequate JSON for the Cloud Office Print server.
+     * If you don't want to instantiate a variable, use null for this argument.
      * 
      * @param data           Hashtable of (filename, RenderElement) elements.
      *                       Multiple output files will be produced if the hashtable
-     *                       has more then one element, the AOP server will return a
-     *                       zip file containing all of them.
+     *                       has more then one element, the Cloud Office Print
+     *                       server will return a zip file containing all of them.
      * @param server         Server to user for this printjob.
      * @param output         object containing the output configuration for this
      *                       printjob.
@@ -211,13 +212,13 @@ public class PrintJob implements Runnable {
      *                       the docx.
      * @param prependFiles   Files to prepend to the output.
      * @param appendFiles    Files to append to the output.
-     * @param aopRemoteDebug If set to true the AOP server will log your JSON into
-     *                       out database and you can see it when you log into
-     *                       apexofficeprint.com.
+     * @param copRemoteDebug If set to true the Cloud Office Print server will log
+     *                       your JSON into out database and you can see it when you
+     *                       log into cloudofficeprint.com.
      */
     public PrintJob(Hashtable<String, RenderElement> data, Server server, Output output, Resource template,
             Hashtable<String, Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles,
-            Boolean aopRemoteDebug) {
+            Boolean copRemoteDebug) {
         setData(data);
         setServer(server);
         setOutput(output);
@@ -225,35 +226,35 @@ public class PrintJob implements Runnable {
         setSubTemplates(subTemplates);
         setPrependFiles(prependFiles);
         setAppendFiles(appendFiles);
-        setAopRemoteDebug(aopRemoteDebug);
+        setCopRemoteDebug(copRemoteDebug);
     }
 
     /**
-     * A print job for the AOP server containing all the necessary information to
-     * generate the adequate JSON for the AOP server. If you don't want to
-     * instantiate a variable, use null for this argument.
+     * A print job for the Cloud Office Print server containing all the necessary
+     * information to generate the adequate JSON for the Cloud Office Print server.
+     * If you don't want to instantiate a variable, use null for this argument.
      * 
      * @param externalResource External resource for the data (REST or graphQL).
      * @param server           Server to user for this printjob.
      * @param output           object containing the output configuration for this
      *                         printjob.
      * @param template         Template for this printjob. If no template is
-     *                         specified AOP will generate a template based on the
-     *                         data. Output type determines the template type
-     *                         generated. Cannot be PDF in this case.
+     *                         specified Cloud Office Print will generate a template
+     *                         based on the data. Output type determines the
+     *                         template type generated. Cannot be PDF in this case.
      * @param subTemplates     for this print job. Hashtable(key, subTemplate)
      *                         Subtemplates are only accessible (in docx). They will
      *                         replace the `{?include subtemplate_dict_key}` tag in
      *                         the docx.
      * @param prependFiles     Files to prepend to the output.
      * @param appendFiles      Files to append to the output.
-     * @param aopRemoteDebug   If set to true the AOP server will log your JSON into
-     *                         out database and you can see it when you log into
-     *                         apexofficeprint.com.
+     * @param copRemoteDebug   If set to true the Cloud Office Print server will log
+     *                         your JSON into out database and you can see it when
+     *                         you log into cloudofficeprint.com.
      */
     public PrintJob(ExternalResource externalResource, Server server, Output output, Resource template,
             Hashtable<String, Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles,
-            Boolean aopRemoteDebug) {
+            Boolean copRemoteDebug) {
         setExternalResource(externalResource);
         setServer(server);
         setOutput(output);
@@ -261,17 +262,17 @@ public class PrintJob implements Runnable {
         setSubTemplates(subTemplates);
         setPrependFiles(prependFiles);
         setAppendFiles(appendFiles);
-        setAopRemoteDebug(aopRemoteDebug);
+        setCopRemoteDebug(copRemoteDebug);
     }
 
     /**
      * @return Jsonobject containing all the info about the printjob, for the POST
-     *         request to the AOP server.
+     *         request to the Cloud Office Print server.
      */
     public JsonObject getJSON() {
         JsonObject jsonForServer = new JsonObject();
 
-        jsonForServer.addProperty("tool", "AOP_java_sdk");
+        jsonForServer.addProperty("tool", "java_sdk");
         jsonForServer.addProperty("java_sdk_version", "21.1");
 
         for (Map.Entry<String, JsonElement> tag : getServer().getJSON().entrySet()) {
@@ -326,8 +327,8 @@ public class PrintJob implements Runnable {
             files.add(getExternalResource().getJSON()); // external resource was specified for the data
         }
         jsonForServer.add("files", files);
-        if (getAopRemoteDebug() != null) {
-            jsonForServer.addProperty("aop_remote_debug", getAopRemoteDebug());
+        if (getCopRemoteDebug() != null) {
+            jsonForServer.addProperty("aop_remote_debug", getCopRemoteDebug());
         }
         if (getPrependFiles() != null && getPrependFiles().length > 0) {
             JsonArray prependFiles = new JsonArray();
@@ -341,11 +342,11 @@ public class PrintJob implements Runnable {
     }
 
     /**
-     * Creates the adequate JSON and sends it to the AOP server.
+     * Creates the adequate JSON and sends it to the Cloud Office Print server.
      * 
-     * @return The response of the AOP server.
+     * @return The response of the Cloud Office Print server.
      * @throws Exception    If the server is not reachable.
-     * @throws AOPException If the server response doesn't have a 200 code.
+     * @throws COPException If the server response doesn't have a 200 code.
      */
     public Response execute() throws Exception {
         JsonObject JSONForServer = getJSON();
@@ -354,8 +355,8 @@ public class PrintJob implements Runnable {
 
     /**
      * Asynchronous version of execute(). The response can be obtained with the
-     * getResponse() function. Creates the adequate JSON and sends it to the AOP
-     * server.
+     * getResponse() function. Creates the adequate JSON and sends it to the Cloud
+     * Office Print server.
      */
     public void run() {
         JsonObject JSONForServer = null;

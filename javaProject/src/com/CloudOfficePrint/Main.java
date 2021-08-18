@@ -17,35 +17,36 @@ public class Main {
     public static void main(String[] args) throws Exception {
         // EXAMPLES
 
-//    	Examples example = new Examples();
-//        example.localJson(args[0]);
-//        example.localTemplateAsync(args[0]);
-//        example.localTemplate(args[0]);
-//        example.withoutTemplate(args[0]);
-//        example.loopExample(args[0]);
-//        example.chartExample(args[0]);
-//        example.combinedChartExample(args[0]);
-//        example.qrCodeExample(args[0]);
-//        example.prependAppendSubTemplatesExample(args[0]);
-//        example.AOPPDFTextAndImageExample(args[0]);
-//        example.waterMarkAndStyledProperty(args[0]);
-//        example.signPDF(args[0]);
-//
-//        SolarSystemExample solarSystemExample = new SolarSystemExample();
-//        solarSystemExample.main(args[0], "docx");
-//        solarSystemExample.main(args[0], "pptx");
-//
-//        SpaceXExample spaceXExample = new SpaceXExample();
-//        spaceXExample.main(args[0], "pptx");
-//        spaceXExample.main(args[0], "xlsx");
-//        spaceXExample.main(args[0], "docx");
-//
-//		OrderConfirmationExample orderConfirmationExample = new OrderConfirmationExample();
-//		orderConfirmationExample.main(args[0]);
-//
-//		MultipleRequestMergeExample multipleRequestMergeExample = new MultipleRequestMergeExample();
-//		multipleRequestMergeExample.main(args[0]);
-    	
+//         Examples example = new Examples();
+//         example.localJson(args[0]);
+//         example.localTemplateAsync(args[0]);
+//         example.localTemplate(args[0]);
+//         example.withoutTemplate(args[0]);
+//         example.loopExample(args[0]);
+//         example.chartExample(args[0]);
+//         example.combinedChartExample(args[0]);
+//         example.qrCodeExample(args[0]);
+//         example.prependAppendSubTemplatesExample(args[0]);
+//         example.COPPDFTextAndImageExample(args[0]);
+//         example.waterMarkAndStyledProperty(args[0]);
+//         example.signPDF(args[0]);
+        //
+        // SolarSystemExample solarSystemExample = new SolarSystemExample();
+        // solarSystemExample.main(args[0], "docx");
+        // solarSystemExample.main(args[0], "pptx");
+        //
+        // SpaceXExample spaceXExample = new SpaceXExample();
+        // spaceXExample.main(args[0], "pptx");
+        // spaceXExample.main(args[0], "xlsx");
+        // spaceXExample.main(args[0], "docx");
+        //
+        // OrderConfirmationExample orderConfirmationExample = new
+        // OrderConfirmationExample();
+        // orderConfirmationExample.main(args[0]);
+        //
+        // MultipleRequestMergeExample multipleRequestMergeExample = new
+        // MultipleRequestMergeExample();
+        // multipleRequestMergeExample.main(args[0]);
 
         // TESTS
 
@@ -64,7 +65,7 @@ public class Main {
         chartTests.testChartBubble();
         chartTests.testChartStock();
         chartTests.testCombinedChart();
-        chartTests.testChartAOP();
+        chartTests.testChartCOP();
         chartTests.testChartStock();
         chartTests.testChartStock();
 
@@ -88,9 +89,9 @@ public class Main {
         codesTests.QREventTest();
 
         PDFTests pdfTests = new PDFTests();
-        pdfTests.AOPPDFTextTest();
-        pdfTests.AOPPDFImagesTest();
-        pdfTests.AOPPDFForms();
+        pdfTests.COPPDFTextTest();
+        pdfTests.COPPDFImagesTest();
+        pdfTests.COPPDFForms();
 
         LoopsTests loopsTests = new LoopsTests();
         loopsTests.forEach();

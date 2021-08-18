@@ -7,8 +7,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * With Word/Excel/PowerPoint documents, it's possible to let AOP execute some
- * JavaScript code to generate a D3 image (Data Driven Documents).
+ * With Word/Excel/PowerPoint documents, it's possible to let Cloud Office Print
+ * execute some JavaScript code to generate a D3 image (Data Driven Documents).
  */
 public class D3Code extends RenderElement {
 
@@ -45,7 +45,8 @@ public class D3Code extends RenderElement {
     }
 
     /**
-     * @return JSONObject with the tags for this element for the AOP server.
+     * @return JSONObject with the tags for this element for the Cloud Office Print
+     *         server.
      */
     @Override
     public JsonObject getJSON() {

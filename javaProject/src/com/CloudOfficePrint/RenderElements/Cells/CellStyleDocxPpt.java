@@ -25,8 +25,8 @@ public class CellStyleDocxPpt extends CellStyle {
     }
 
     /**
-     * The width manipulation is available from AOP 20.2. Giving a width of 0 will
-     * remove the whole column.
+     * The width manipulation is available from Cloud Office Print 20.2. Giving a
+     * width of 0 will remove the whole column.
      * 
      * @return width The width + unit ( in, cm, px, pt, em and % (% is in respect to
      *         the initial width of the table)).
@@ -36,8 +36,8 @@ public class CellStyleDocxPpt extends CellStyle {
     }
 
     /**
-     * The width manipulation is available from AOP 20.2. Giving a width of 0 will
-     * remove the whole column.
+     * The width manipulation is available from Cloud Office Print 20.2. Giving a
+     * width of 0 will remove the whole column.
      * 
      * @param width The width +unit ( in, cm, px, pt, em and % (% is in respect to
      *              the initial width of the table)).
@@ -63,7 +63,8 @@ public class CellStyleDocxPpt extends CellStyle {
     }
 
     /**
-     * @return JSONObject with the tags for this tableCell for the AOP server.
+     * @return JSONObject with the tags for this tableCell for the Cloud Office
+     *         Print server.
      */
     @Override
     public JsonObject getJSON() {

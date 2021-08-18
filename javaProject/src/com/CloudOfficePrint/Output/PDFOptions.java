@@ -110,9 +110,9 @@ public class PDFOptions {
     }
 
     /**
-     * @return If AOP is going to merge all the append/prepend and template files,
-     *         making sure the output is even-paged (adding a blank page if the
-     *         output is uneven-paged).
+     * @return If Cloud Office Print is going to merge all the append/prepend and
+     *         template files, making sure the output is even-paged (adding a blank
+     *         page if the output is uneven-paged).
      */
     public Boolean getMergeMakingEven() {
         return mergeMakingEven;
@@ -247,7 +247,8 @@ public class PDFOptions {
     /**
      * Only supported when converting HTML to PDF.
      * 
-     * @return The page format: "A4" (default used by AOP) or "letter".
+     * @return The page format: "A4" (default used by Cloud Office Print) or
+     *         "letter".
      */
     public String getPageFormat() {
         return pageFormat;
@@ -303,16 +304,16 @@ public class PDFOptions {
     }
 
     /**
-     * @return If it is set to true AOP tries to identify the form fields and fills
-     *         them in.
+     * @return If it is set to true Cloud Office Print tries to identify the form
+     *         fields and fills them in.
      */
     public Boolean getIdentifyFormFields() {
         return identifyFormFields;
     }
 
     /**
-     * @param identifyFormFields If it is set to true AOP tries to identify the form
-     *                           fields and fills them in.
+     * @param identifyFormFields If it is set to true Cloud Office Print tries to
+     *                           identify the form fields and fills them in.
      */
     public void setIdentifyFormFields(Boolean identifyFormFields) {
         this.identifyFormFields = identifyFormFields;
@@ -392,7 +393,8 @@ public class PDFOptions {
                     marginDict.addProperty("right", getPageMargin()[3]);
                 }
             }
-            json.add("page_margin", marginDict); // For AOP versions later than 21.1.1, output_page_margin will also be
+            json.add("page_margin", marginDict); // For Cloud Office Print versions later than 21.1.1,
+                                                 // output_page_margin will also be
                                                  // supported as tag name to be consistent with the other namings.
         }
         if (getPageFormat() != null) {
@@ -402,7 +404,7 @@ public class PDFOptions {
             json.addProperty("output_merge", getMerge());
         }
         if (getLandscape() != null && getLandscape() == true) {
-            json.addProperty("page_orientation", "landscape"); // For AOP versions later than 21.1.1,
+            json.addProperty("page_orientation", "landscape"); // For Cloud Office Print versions later than 21.1.1,
                                                                // output_page_orientation will also be supported as tag
                                                                // name to be consistent with the other namings.
         }

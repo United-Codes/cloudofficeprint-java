@@ -44,8 +44,8 @@ public class URLResource extends Resource {
     }
 
     /**
-     * @return JSONObject with the tags for a URL resource as template for the AOP
-     *         server ("url","template_type").
+     * @return JSONObject with the tags for a URL resource as template for the Cloud
+     *         Office Print server ("url","template_type").
      */
     @Override
     public JsonObject getJSONForTemplate() {
@@ -58,7 +58,8 @@ public class URLResource extends Resource {
     /**
      * @return JSONObject with the tags ("mime_type","file_url","file_source") for a
      *         URL resource as a secondary file (subtemplates, files to prepend,
-     *         files to append and files to insert) for the AOP server.
+     *         files to append and files to insert) for the Cloud Office Print
+     *         server.
      */
     @Override
     public JsonObject getJSONForSecondaryFile() {

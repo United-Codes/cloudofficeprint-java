@@ -9,7 +9,7 @@ import java.util.Base64;
 
 /**
  * Child class of Resource. A class representing a resource (file) with
- * base64-encoded data for the AOP server.
+ * base64-encoded data for the Cloud Office Print server.
  */
 public class Base64Resource extends Resource {
 
@@ -57,7 +57,7 @@ public class Base64Resource extends Resource {
 
     /**
      * @return JSONObject with the tags for a base64 resource as template for the
-     *         AOP server ("file","template_type").
+     *         Cloud Office Print server ("file","template_type").
      */
     @Override
     public JsonObject getJSONForTemplate() {
@@ -72,7 +72,8 @@ public class Base64Resource extends Resource {
      *
      * @return JSONObject with the tags ("mime_type","file_content","file_source")
      *         for a base 64 resource as a secondary file (subtemplates, files to
-     *         prepend, files to append and files to insert) for the AOP server.
+     *         prepend, files to append and files to insert) for the Cloud Office
+     *         Print server.
      */
     @Override
     public JsonObject getJSONForSecondaryFile() {

@@ -3,8 +3,9 @@ package com.CloudOfficePrint.Server;
 import com.google.gson.JsonObject;
 
 /**
- * Command object with a single command for the AOP server. The command should
- * be present in the aop_config.json file on the AOP server.
+ * Command object with a single command for the Cloud Office Print server. The
+ * command should be present in the aop_config.json file on the Cloud Office
+ * Print server.
  */
 public class Command {
 
@@ -29,7 +30,7 @@ public class Command {
      * @return JsonObject with the parameters for the command. E.g.: {
      *         "p1":"Parameter 1", "p2": "Parameter 2" , "p3" : "Parameter 3"} The
      *         parameter tags need to be defined in the aop_config.json file on the
-     *         AOP server.
+     *         Cloud Office Print server.
      */
     public JsonObject getArgs() {
         return args;
@@ -39,7 +40,7 @@ public class Command {
      * @param args JsonObject with the parameters for the command. E.g.: {
      *             "p1":"Parameter 1", "p2": "Parameter 2" , "p3" : "Parameter 3"}
      *             The parameter tags need to be defined in the aop_config.json file
-     *             on the AOP server.
+     *             on the Cloud Office Print server.
      */
     public void setArgs(JsonObject args) {
         this.args = args;
@@ -52,7 +53,7 @@ public class Command {
      * @param args    JsonObject with the parameters for the command. E.g.: {
      *                "p1":"Parameter 1", "p2": "Parameter 2" , "p3" : "Parameter
      *                3"} The parameter tags need to be defined in the
-     *                aop_config.json file on the AOP server.
+     *                aop_config.json file on the Cloud Office Print server.
      */
     public Command(String command, JsonObject args) {
         setCommand(command);
@@ -60,8 +61,8 @@ public class Command {
     }
 
     /**
-     * @return JSONObject with the tags for the postprocess-command for the AOP
-     *         server.
+     * @return JSONObject with the tags for the postprocess-command for the Cloud
+     *         Office Print server.
      */
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
@@ -71,7 +72,8 @@ public class Command {
     }
 
     /**
-     * @return JSONObject with the tags for the pre-command for the AOP server.
+     * @return JSONObject with the tags for the pre-command for the Cloud Office
+     *         Print server.
      */
     public JsonObject getJSONForPre() {
         JsonObject json = new JsonObject();
@@ -81,7 +83,8 @@ public class Command {
     }
 
     /**
-     * @return JSONObject with the tags for the post-command for the AOP server.
+     * @return JSONObject with the tags for the post-command for the Cloud Office
+     *         Print server.
      */
     public JsonObject getJSONForPost() {
         JsonObject json = new JsonObject();

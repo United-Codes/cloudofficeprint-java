@@ -90,7 +90,7 @@ public class ResourcesTests {
 
         PrintJob printJob = new PrintJob(restResource, server, output, base64Resource, null, null, null, null);
 
-        String correct = "{'tool': 'AOP_java_sdk', 'java_sdk_version': '21.1', 'api_key': '1C511A58ECC73874E0530100007FD01A', 'output': {'output_converter': 'libreoffice', 'output_encoding': 'raw', 'output_type': 'docx'}, 'template': {'template_type': 'docx', 'file': 'test_base64'}, 'files': [{'filename': 'output_file', 'datasource': 'rest', 'method': 'GET', 'body': '', 'endpoint': 'endpoint_url', 'headers': [{'Content-Type': 'application/json'}], 'auth': 'username:password'}]}";
+        String correct = "{'tool': 'java_sdk', 'java_sdk_version': '21.1', 'api_key': '1C511A58ECC73874E0530100007FD01A', 'output': {'output_converter': 'libreoffice', 'output_encoding': 'raw', 'output_type': 'docx'}, 'template': {'template_type': 'docx', 'file': 'test_base64'}, 'files': [{'filename': 'output_file', 'datasource': 'rest', 'method': 'GET', 'body': '', 'endpoint': 'endpoint_url', 'headers': [{'Content-Type': 'application/json'}], 'auth': 'username:password'}]}";
         // System.out.println(printJob.getJSON());
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);

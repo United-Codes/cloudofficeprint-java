@@ -3,16 +3,17 @@ package com.CloudOfficePrint.Server;
 import com.google.gson.JsonObject;
 
 /**
- * AOP supports to print directly to an IP Printer. If your IPP printer supports
- * PDF files, your documents will be converter to PDF and sent to IPP printer.
- * If your printer does not support PDF and supports Postscript then the PDF
- * generated is converter to PDF using pdftops. You need download xpdf tools
- * from: https://www.xpdfreader.com/download.html. Make sure that the binary
- * pdftops is on PATH variable. You can download executables from
- * apexofficeprint.com to check whether or not your IPP printer supports
+ * Cloud Office Print supports to print directly to an IP Printer. If your IPP
+ * printer supports PDF files, your documents will be converter to PDF and sent
+ * to IPP printer. If your printer does not support PDF and supports Postscript
+ * then the PDF generated is converter to PDF using pdftops. You need download
+ * xpdf tools from: https://www.xpdfreader.com/download.html. Make sure that the
+ * binary pdftops is on PATH variable. You can download executables from
+ * cloudofficeprint.com to check whether or not your IPP printer supports
  * PDF/postscript.
  *
- * This class represents an IP-enabled printer to use with the AOP server.
+ * This class represents an IP-enabled printer to use with the Cloud Office
+ * Print server.
  */
 public class Printer {
 
@@ -78,15 +79,15 @@ public class Printer {
     }
 
     /**
-     * AOP supports to print directly to an IP Printer. If your IPP printer supports
-     * PDF files, your documents will be converter to PDF and sent to IPP printer.
-     * If your printer does not support PDF and supports Postscript then the PDF
-     * generated is converter to PDF using pdftops. You need download xpdf tools
-     * from: https://www.xpdfreader.com/download.html. Make sure that the binary
-     * pdftops is on PATH variable. You can download executables from
-     * apexofficeprint.com to check whether or not your IPP printer supports
+     * Cloud Office Print supports to print directly to an IP Printer. If your IPP
+     * printer supports PDF files, your documents will be converter to PDF and sent
+     * to IPP printer. If your printer does not support PDF and supports Postscript
+     * then the PDF generated is converter to PDF using pdftops. You need download
+     * xpdf tools from: https://www.xpdfreader.com/download.html. Make sure that the
+     * binary pdftops is on PATH variable. You can download executables from
+     * cloudofficeprint.com to check whether or not your IPP printer supports
      * PDF/postscript. This Pritner object represents an IP-enabled printer to use
-     * with the AOP server.
+     * with the Cloud Office Print server.
      * 
      * @param location  HTTP adress of the printer.
      * @param version   Version of the IPP protocol.
@@ -102,7 +103,8 @@ public class Printer {
     }
 
     /**
-     * @return JSONObject with the tags for the printer for the AOP server.
+     * @return JSONObject with the tags for the printer for the Cloud Office Print
+     *         server.
      */
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();

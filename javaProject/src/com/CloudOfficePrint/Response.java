@@ -7,7 +7,8 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 /**
- * Class for dealing with the AOP server's response to a printjob request.
+ * Class for dealing with the Cloud Office Print server's response to a printjob
+ * request.
  */
 public class Response {
 

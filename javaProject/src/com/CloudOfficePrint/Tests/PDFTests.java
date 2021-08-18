@@ -9,7 +9,7 @@ import java.util.HashMap;
 
 public class PDFTests {
 
-    public void AOPPDFTextTest() {
+    public void COPPDFTextTest() {
 
         PDFText pdfText1_1 = new PDFText(50, 60, 3, "test1_1");
         pdfText1_1.setRotation(45);
@@ -52,7 +52,7 @@ public class PDFTests {
         Assert.assertEquals(jsonCorrect, pdfTexts.getJSON());
     }
 
-    public void AOPPDFImagesTest() {
+    public void COPPDFImagesTest() {
 
         PDFImage PDFImage1_1 = new PDFImage(50, 60, 3, "test1_1");
         PDFImage1_1.setRotation(45);
@@ -87,7 +87,7 @@ public class PDFTests {
         Assert.assertEquals(jsonCorrect, pdfTexts.getJSON());
     }
 
-    public void AOPPDFForms() {
+    public void COPPDFForms() {
         HashMap<String, String> data = new HashMap<String, String>();
         data.put("f_1", "5");
         data.put("f_2", "test");

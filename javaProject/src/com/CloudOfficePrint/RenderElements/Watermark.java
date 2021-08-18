@@ -55,7 +55,7 @@ public class Watermark extends RenderElement {
     }
 
     /**
-     * Default : automatically determined by AOP.
+     * Default : automatically determined by Cloud Office Print.
      * 
      * @param width Width + unit (px, pt, in, cm or em) e.g. : 10 cm.
      */
@@ -71,7 +71,7 @@ public class Watermark extends RenderElement {
     }
 
     /**
-     * Default : automatically determined by AOP.
+     * Default : automatically determined by Cloud Office Print.
      * 
      * @param height Height + unit (px, pt, in, cm or em) e.g. : 10 cm.
      */
@@ -126,7 +126,8 @@ public class Watermark extends RenderElement {
     }
 
     /**
-     * @return JSONObject with the tags for this element for the AOP server.
+     * @return JSONObject with the tags for this element for the Cloud Office Print
+     *         server.
      */
     @Override
     public JsonObject getJSON() {

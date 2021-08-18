@@ -5,7 +5,7 @@
 	<classpathentry kind="lib" path="javaProject/gson-2.8.6.jar"/>
 	<classpathentry kind="lib" path="javaProject/jsonassert-1.5.0.jar"/>
 	<classpathentry kind="lib" path="javaProject/junit-4.13.2.jar"/>
-	<classpathentry kind="lib" path="javaProject/out/artifacts/AOPSDK_jar/javaProject.jar"/>
+	<classpathentry kind="lib" path="javaProject/out/artifacts/COPSDK_jar/javaProject.jar"/>
 	<classpathentry kind="lib" path="javaProject/poi-5.0.0/auxiliary/batik-all-1.13.jar"/>
 	<classpathentry kind="lib" path="javaProject/poi-5.0.0/auxiliary/bcpkix-jdk15on-1.68.jar"/>
 	<classpathentry kind="lib" path="javaProject/poi-5.0.0/auxiliary/bcprov-jdk15on-1.68.jar"/>
@@ -31,5 +31,5 @@
 	<classpathentry kind="lib" path="javaProject/poi-5.0.0/poi-ooxml-lite-5.0.0.jar"/>
 	<classpathentry kind="lib" path="javaProject/poi-5.0.0/poi-scratchpad-5.0.0.jar"/>
 	<classpathentry kind="lib" path="javaProject/tika-app-1.26.jar"/>
-	<classpathentry kind="output" path="javaProject/out/production/AOPJavaSDK"/>
+	<classpathentry kind="output" path="javaProject/out/production/COPJavaSDK"/>
 </classpath>

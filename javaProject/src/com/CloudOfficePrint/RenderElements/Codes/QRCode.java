@@ -433,7 +433,7 @@ public class QRCode extends Code {
      * 
      * @param name  Name of this code for the tag.
      * @param type  Type of code required. The options can be found on:
-     *              http://www.apexofficeprint.com/docs/#615-barcode-qrcode-tags
+     *              http://www.cloudofficeprint.com/docs/#barcode-qrcode-tags
      * @param value Data to create the code from.
      */
     public QRCode(String name, String type, String value) {
@@ -441,7 +441,8 @@ public class QRCode extends Code {
     }
 
     /**
-     * @return JSONObject with the tags for this element for the AOP server.
+     * @return JSONObject with the tags for this element for the Cloud Office Print
+     *         server.
      */
     @Override
     public JsonObject getJSON() {

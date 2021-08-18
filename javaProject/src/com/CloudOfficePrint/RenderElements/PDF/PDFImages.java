@@ -10,7 +10,7 @@ import java.util.Set;
 
 /**
  * Group of different PDF images as one RenderElement. There can only be one
- * PDFImages element in the JSON for AOP.
+ * PDFImages element in the JSON for Cloud Office Print.
  */
 public class PDFImages extends RenderElement {
 
@@ -32,7 +32,8 @@ public class PDFImages extends RenderElement {
 
     /**
      * @param images Group of different PDF images as one RenderElement. There can
-     *               only be one PDFImage element in the JSON for AOP.
+     *               only be one PDFImage element in the JSON for Cloud Office
+     *               Print.
      */
     public PDFImages(PDFImage[] images) {
         setName("AOP_PDF_IMAGES");
@@ -40,7 +41,8 @@ public class PDFImages extends RenderElement {
     }
 
     /**
-     * @return JSONObject with the tags for this element for the AOP server.
+     * @return JSONObject with the tags for this element for the Cloud Office Print
+     *         server.
      */
     @Override
     public JsonObject getJSON() {

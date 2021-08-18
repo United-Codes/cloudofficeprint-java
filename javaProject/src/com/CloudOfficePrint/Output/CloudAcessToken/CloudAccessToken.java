@@ -28,7 +28,8 @@ public abstract class CloudAccessToken {
     }
 
     /**
-     * @return JSONObject with the tags for the cloudAccesToken for the AOP server.
+     * @return JSONObject with the tags for the cloudAccesToken for the Cloud Office
+     *         Print server.
      */
     abstract public JsonObject getJSON();
 }

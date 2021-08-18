@@ -22,7 +22,7 @@ public class RadarSeries extends LineSeries {
      * @param lineThickness Thickness of the connecting line in em, pt, px, cm or
      *                      in. e.g. : 20 pt.
      * @param lineStyle     Style of the line. Supported options can be found online
-     *                      on the AOP documentation.
+     *                      on the Cloud Office Print documentation.
      */
     public RadarSeries(String name, String[] x, String[] y, String color, Boolean smooth, String symbol,
             String symbolSize, String lineThickness, String lineStyle) {

@@ -15,7 +15,7 @@ public abstract class Code extends RenderElement {
 
     /**
      * @return Type of code required. The options can be found on:
-     *         http://www.apexofficeprint.com/docs/#615-barcode-qrcode-tags
+     *         http://www.cloudofficeprint.com/docs/#barcode-qrcode-tags
      */
     public String getType() {
         return type;
@@ -23,7 +23,7 @@ public abstract class Code extends RenderElement {
 
     /**
      * @param type Type of code required. The options can be found on:
-     *             http://www.apexofficeprint.com/docs/#615-barcode-qrcode-tags
+     *             http://www.cloudofficeprint.com/docs/#barcode-qrcode-tags
      */
     public void setType(String type) {
         this.type = type;
@@ -35,7 +35,7 @@ public abstract class Code extends RenderElement {
      * 
      * @param name  Name of this code for the tag.
      * @param type  Type of code required. The options can be found on:
-     *              http://www.apexofficeprint.com/docs/#615-barcode-qrcode-tags
+     *              http://www.cloudofficeprint.com/docs/#barcode-qrcode-tags
      * @param value Data to create the code from.
      */
     public Code(String name, String type, String value) {

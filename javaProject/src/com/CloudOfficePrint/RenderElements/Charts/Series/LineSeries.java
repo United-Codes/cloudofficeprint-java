@@ -80,8 +80,8 @@ public class LineSeries extends XYSeries {
     }
 
     /**
-     * @return Style of the line. Supported options can be found online on the AOP
-     *         documentation.
+     * @return Style of the line. Supported options can be found online on the Cloud
+     *         Office Print documentation.
      */
     public String getLineStyle() {
         return lineStyle;
@@ -89,7 +89,7 @@ public class LineSeries extends XYSeries {
 
     /**
      * @param lineStyle Style of the line. Supported options can be found online on
-     *                  the AOP documentation.
+     *                  the Cloud Office Print documentation.
      */
     public void setLineStyle(String lineStyle) {
         this.lineStyle = lineStyle;
@@ -113,7 +113,7 @@ public class LineSeries extends XYSeries {
      * @param lineThickness Thickness of the connecting line in em, pt, px, cm or
      *                      in. e.g. : 20 pt.
      * @param lineStyle     Style of the line. Supported options can be found online
-     *                      on the AOP documentation.
+     *                      on the Cloud Office Print documentation.
      */
     public LineSeries(String name, String[] x, String[] y, String color, Boolean smooth, String symbol,
             String symbolSize, String lineThickness, String lineStyle) {
@@ -129,7 +129,8 @@ public class LineSeries extends XYSeries {
     }
 
     /**
-     * @return JSONObject with the tags for this element for the AOP server.
+     * @return JSONObject with the tags for this element for the Cloud Office Print
+     *         server.
      */
     @Override
     public JsonObject getJSON() {

@@ -10,8 +10,9 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * It is possible to fill in the forms using AOP. The data object inside the
- * files array should contain an object with the key aop_pdf_form_data.
+ * It is possible to fill in the forms using Cloud Office Print. The data object
+ * inside the files array should contain an object with the key
+ * aop_pdf_form_data.
  */
 public class PDFFormData extends RenderElement {
 
@@ -34,8 +35,9 @@ public class PDFFormData extends RenderElement {
     }
 
     /**
-     * It is possible to fill in the forms using AOP. The data object inside the
-     * files array should contain an object with the key aop_pdf_form_data.
+     * It is possible to fill in the forms using Cloud Office Print. The data object
+     * inside the files array should contain an object with the key
+     * aop_pdf_form_data.
      * 
      * @param formData Hashmap of the fieldname and value to fill in. Two options :
      *                 inputfieldname : value and radio/checkbox : true/false.
@@ -46,7 +48,8 @@ public class PDFFormData extends RenderElement {
     }
 
     /**
-     * @return JSONObject with the tags for this element for the AOP server.
+     * @return JSONObject with the tags for this element for the Cloud Office Print
+     *         server.
      */
     @Override
     public JsonObject getJSON() {

@@ -13,20 +13,20 @@ public class FTPToken extends CloudAccessToken {
     private String host;
 
     /**
-     * Port number of the FTP/SFTP server. Default : 0 (The AOP server will then use
-     * port 21).
+     * Port number of the FTP/SFTP server. Default : 0 (The Cloud Office Print
+     * server will then use port 21).
      */
     private int port = 0;
 
     /**
-     * User name for the FTP/SFTP server. Default : null (The AOP server will then
-     * use anonymous as user).
+     * User name for the FTP/SFTP server. Default : null (The Cloud Office Print
+     * server will then use anonymous as user).
      */
     private String username = null;
 
     /**
-     * Password of the user for the FTP/SFTP server. Default : null (The AOP server
-     * will then use anonymous@ as password).
+     * Password of the user for the FTP/SFTP server. Default : null (The Cloud
+     * Office Print server will then use anonymous@ as password).
      */
     private String password = null;
 
@@ -94,12 +94,13 @@ public class FTPToken extends CloudAccessToken {
      * 
      * @param host     Host name or IP address of the FTP/SFTP server.
      * @param SFTP     True if server uses SFTP, false if server uses FTP.
-     * @param port     Port number of the FTP/SFTP server. Default : 0 (The AOP
-     *                 server will then use port 21).
-     * @param username User name for the FTP/SFTP server. Default : null (The AOP
-     *                 server will then use anonymous as user).
+     * @param port     Port number of the FTP/SFTP server. Default : 0 (The Cloud
+     *                 Office Print server will then use port 21).
+     * @param username User name for the FTP/SFTP server. Default : null (The Cloud
+     *                 Office Print server will then use anonymous as user).
      * @param password Password of the user for the FTP/SFTP server. Default : null
-     *                 (The AOP server will then use anonymous@ as password).
+     *                 (The Cloud Office Print server will then use anonymous@ as
+     *                 password).
      */
     public FTPToken(String host, Boolean SFTP, int port, String username, String password) {
         setHost(host);
@@ -113,7 +114,8 @@ public class FTPToken extends CloudAccessToken {
     }
 
     /**
-     * @return JSONObject with the tags for the FTPToken for the AOP server.
+     * @return JSONObject with the tags for the FTPToken for the Cloud Office Print
+     *         server.
      */
     @Override
     public JsonObject getJSON() {

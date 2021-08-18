@@ -4,7 +4,7 @@ import com.google.gson.JsonObject;
 
 /**
  * Child class of Resource. A class representing a resource with HTML data for
- * the AOP server.
+ * the Cloud Office Print server.
  */
 public class HTMLResource extends Resource {
     /**
@@ -56,9 +56,9 @@ public class HTMLResource extends Resource {
     }
 
     /**
-     * @return JSONObject with the tags for a HTML resource as template for the AOP
-     *         server ("html_template_content","template_type" and "orientation" if
-     *         specified).
+     * @return JSONObject with the tags for a HTML resource as template for the
+     *         Cloud Office Print server ("html_template_content","template_type"
+     *         and "orientation" if specified).
      */
     @Override
     public JsonObject getJSONForTemplate() {
@@ -74,7 +74,8 @@ public class HTMLResource extends Resource {
     /**
      * @return JSONObject with the tags ("mime_type","file_content","file_source")
      *         for an HTML resource as a secondary file (subtemplates, files to
-     *         prepend, files to append and files to insert) for the AOP server.
+     *         prepend, files to append and files to insert) for the Cloud Office
+     *         Print server.
      */
     @Override
     public JsonObject getJSONForSecondaryFile() {

@@ -1,9 +1,9 @@
  # About
-In this file we are going to show you how you can use the APEX Office Print (AOP) Java SDK to generate an output file using a template and data to fill the template. The general approach is to create a template file in which you want the data to appear, then process the data with the Java SDK and finally let APEX Office Print do the work to merge your template with the data. 
+In this file we are going to show you how you can use the Cloud Office Print Java SDK to generate an output file using a template and data to fill the template. The general approach is to create a template file in which you want the data to appear, then process the data with the Java SDK and finally let Cloud Office Print do the work to merge your template with the data. 
 
 In this example, we are going to use SpaceX data to fill a template we are going to made. The SpaceX data can be received by sending an HTTP-request to an API. The (non-official) API used in this example is https://docs.spacexdata.com/.
 
-Normally you know the data you will be using to fill in the template, but for this example, we are going to start with a brief overview of the data we will be using. Then we will create a template. Then we will get the data from the spacexdata-API and process this data with this Java SDK. Finally we send the template together with the data to an AOP server and save the response into our output file.
+Normally you know the data you will be using to fill in the template, but for this example, we are going to start with a brief overview of the data we will be using. Then we will create a template. Then we will get the data from the spacexdata-API and process this data with this Java SDK. Finally we send the template together with the data to an Cloud Office Print server and save the response into our output file.
 
 # Input data (API)
 The data we use comes from https://docs.spacexdata.com/. More specifically we will use SpaceX data about their company, rockets, dragons, launch pads, landing pads and ships that assist SpaceX launches. Let us have a look at the available data for the different components.
@@ -356,14 +356,14 @@ The response is a JSON array with information about all the ships. One element o
 ```
 
 # Template
-Now we will build the template. We can create templates in different file extensions, namely docx, xlsx, pptx, html, md, txt and csv. In this example we will build a template of filetype pptx, xlsx and docx. The template has to follow a specific structure which can be found at the official AOP documentation: http://www.apexofficeprint.com/docs/.
+Now we will build the template. We can create templates in different file extensions, namely docx, xlsx, pptx, html, md, txt and csv. In this example we will build a template of filetype pptx, xlsx and docx. The template has to follow a specific structure which can be found at the official Cloud Office Print documentation: http://www.cloudofficeprint.com/docs/.
 
 ## pptx
 We will build the template in Google Slides. After choosing a pretty theme, we create the title slide. On this slide, we want the title of our presentation and the source where we got the data from. The title slide looks like this:
 
 <img src="./imgs/pptx_template/slide1.png" width="600" />
 
-Here we encounter our first placeholder/tag: `{*data_source}`. Tags are defined by surrounding a variable name with curly brackets. This is the way we let the AOP server know that data needs to replace this placeholder. We will see what that data is in the section [Process input data](#process-input-data). In this specific case, we used a hyperlink-tag `{*hyperlink}`.
+Here we encounter our first placeholder/tag: `{*data_source}`. Tags are defined by surrounding a variable name with curly brackets. This is the way we let the Cloud Office Print server know that data needs to replace this placeholder. We will see what that data is in the section [Process input data](#process-input-data). In this specific case, we used a hyperlink-tag `{*hyperlink}`.
 
 Note: to minimize the modifications to the input data (see [Input Data (API)](#input-data-api)), it is important to use as variable names the keys available in the input data if possible.
 
@@ -371,7 +371,7 @@ Next we want a slide that gives information about the company itself:
 
 <img src="./imgs/pptx_template/slide2.png" width="600" />
 
-Again, the placeholders will be replaced with data by the AOP server. Since the data given to the AOP server will be in JSON-format (see [Process input data](#process-input-data)), it is possible to reach a subfield of an entry by using `entry.subfield`. So if `headquarters` is a JSON object like this:
+Again, the placeholders will be replaced with data by the Cloud Office Print server. Since the data given to the Cloud Office Print server will be in JSON-format (see [Process input data](#process-input-data)), it is possible to reach a subfield of an entry by using `entry.subfield`. So if `headquarters` is a JSON object like this:
 ```json
 "headquarters": {
     "address": "",
@@ -441,7 +441,7 @@ The 'rockets'-tab contains the rockets description in the left top. It also cont
 
 <img src="./imgs/xlsx_template/tab2.png" width="600" />
 
-We use the loop tags `{#rockets}...{/rockets}` to loop through the 'rockets'-array. The AOP server will repeat everything inside the loop tags on a new row for each object in the array.
+We use the loop tags `{#rockets}...{/rockets}` to loop through the 'rockets'-array. The Cloud Office Print server will repeat everything inside the loop tags on a new row for each object in the array.
 
 ### Dragons
 <img src="./imgs/xlsx_template/tab3.png" width="600" />
@@ -493,18 +493,18 @@ We also want to show a chart of the cost per launch for each rocket:
 # Process input data (Java SDK)
 Now that our template is finished, we have to process the data used by the template. That is where the Java SDK comes into play. In this section we will explain in detail all the Java code needed to generate the data to fill in the template. The full Java code can also be found in the file `spacex_example.py`.
 
-The beauty of AOP is that the data created by the Java SDK can be used in all templates of different file extensions while using the same tags.
+The beauty of Cloud Office Print is that the data created by the Java SDK can be used in all templates of different file extensions while using the same tags.
 
 ## Setup
-First make sure the AOPJavaSDK is imported in your Java Project and IDE.
+First make sure the JavaSDK is imported in your Java Project and IDE.
 
-Then we need to set up the AOP server where we will send our template and data to:
+Then we need to set up the Cloud Office Print server where we will send our template and data to:
 ```java
-Server aopServer = new Server("http://localhost:8010");
-aopServer.setVerbose(true); //This sets the verbose mode on.
-aopServer.setAPIKey(APIKey);
+Server copServer = new Server("http://localhost:8010");
+copServer.setVerbose(true); //This sets the verbose mode on.
+copServer.setAPIKey(APIKey);
 ```
-If you do not have an AOP server running on localhost (e.g. on-premise version) and want to use the AOP cloud server, replace the local server url by the url of our cloud server: https://api.apexofficeprint.com/.
+If you do not have an Cloud Office Print server running on localhost (e.g. on-premise version) and want to use the Cloud Office Print cloud server, replace the local server url by the url of our cloud server: https://api.cloudofficeprint.com/.
 
 We also need to create the main element-collection object that contains all our data:
 ```java
@@ -552,7 +552,7 @@ JsonArray ships = JsonParser.parseString(response).getAsJsonArray();
 ```
 
 ## Title slide
-The template title slide contains the title of our presentation and a hyperlink-tag `{*data_source}`. Now we need to add the data for this tag in our Java code by creating an AOP element (hyperlink) and adding this to the main data collection:
+The template title slide contains the title of our presentation and a hyperlink-tag `{*data_source}`. Now we need to add the data for this tag in our Java code by creating an Cloud Office Print element (hyperlink) and adding this to the main data collection:
 ```java
 spaceXData.addElement( new HyperLink("data_source","Data source","https://docs.spacexdata.com"));
 ```
@@ -776,19 +776,19 @@ else if (template.equals("xlsx")){
 }
 ```
 
-# AOP server and response
-Now that we have the template and the data ready, it is time to let AOP merge them together. In the Java SDK this is implemented by creating a printjob. The printjob expects a Hashtable for the data elements. Each entry in the hashtable generates another output. If the table has more then one entry the output will be a zip file containing the different output with their name equal to their entry key. The printjob expects an Output object that contains the output configuration as well.
+# Cloud Office Print server and response
+Now that we have the template and the data ready, it is time to let Cloud Office Print merge them together. In the Java SDK this is implemented by creating a printjob. The printjob expects a Hashtable for the data elements. Each entry in the hashtable generates another output. If the table has more then one entry the output will be a zip file containing the different output with their name equal to their entry key. The printjob expects an Output object that contains the output configuration as well.
 ```java
 Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
 data.put("spaceXData",spaceXData);
 Output output = new Output(null,"raw","libreoffice",null,null,null);
-PrintJob printJob = new PrintJob(data,aopServer,output,base64Resource,null,null,null,null);
+PrintJob printJob = new PrintJob(data,copServer,output,base64Resource,null,null,null,null);
 ```
 
-Finally we actually send this printjob to an AOP server and save the response into our output file:
+Finally we actually send this printjob to an Cloud Office Print server and save the response into our output file:
 ```java
-Response responseAOP = printJob.execute();
-responseAOP.downloadLocally("./downloads/spaceX");
+Response response = printJob.execute();
+response.downloadLocally("./downloads/spaceX");
 ```
 If we would want to do this asynchronously, we shoud do it like this :
 ```

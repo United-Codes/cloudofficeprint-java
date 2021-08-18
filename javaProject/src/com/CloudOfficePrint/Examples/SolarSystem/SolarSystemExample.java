@@ -28,16 +28,16 @@ import java.util.List;
 public class SolarSystemExample {
 
     /**
-     * @param APIKey       Your AOP API key
+     * @param APIKey       Your Cloud Office Print API key
      * @param templatetype The type of the template: either "docx" or "pptx"
      * @throws Exception
      */
     public void main(String APIKey, String templatetype) throws Exception {
 
-        // Set-Up AOP Server
-        Server aopServer = new Server("https://api.apexofficeprint.com/");
-        aopServer.setVerbose(true);
-        aopServer.setAPIKey(APIKey);
+        // Set-Up Cloud Office Print server
+        Server copServer = new Server("https://api.cloudofficeprint.com/");
+        copServer.setVerbose(true);
+        copServer.setAPIKey(APIKey);
 
         // Create the main element collection that contains all data
         ElementCollection data = new ElementCollection("data");
@@ -117,7 +117,7 @@ public class SolarSystemExample {
         Output output = new Output("pdf", "raw", "libreoffice", null, null, null, null);
         Hashtable<String, RenderElement> dataTable = new Hashtable<String, RenderElement>();
         dataTable.put("data", data);
-        PrintJob printjob = new PrintJob(dataTable, aopServer, output, base64Resource, null, null, null, null);
+        PrintJob printjob = new PrintJob(dataTable, copServer, output, base64Resource, null, null, null, null);
         printjob.execute().downloadLocally("./downloads/SolarSystem");
     }
 }

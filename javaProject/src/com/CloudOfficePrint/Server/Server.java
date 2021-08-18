@@ -1,6 +1,6 @@
 package com.CloudOfficePrint.Server;
 
-import com.CloudOfficePrint.AOPException;
+import com.CloudOfficePrint.COPException;
 import com.CloudOfficePrint.Response;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -17,8 +17,8 @@ import java.util.Map;
 import java.util.Scanner;
 
 /**
- * Class representing the AOP server to interact with. This class has a verbose
- * mode.
+ * Class representing the Cloud Office Print server to interact with. This class
+ * has a verbose mode.
  */
 public class Server {
 
@@ -79,7 +79,7 @@ public class Server {
     /**
      * Only applicable for service users.
      * 
-     * @return The value of this key is the API key given by APEXOfficePrint.
+     * @return The value of this key is the API key given by Cloud Office Print.
      */
     public String getAPIKey() {
         return APIKey;
@@ -88,15 +88,15 @@ public class Server {
     /**
      * Only applicable for service users.
      * 
-     * @param APIKey given by APEXOfficePrint.
+     * @param APIKey given by Cloud Office Print.
      */
     public void setAPIKey(String APIKey) {
         this.APIKey = APIKey;
     }
 
     /**
-     * When the AOP server is started with --enable_printlog, it will create a file
-     * on the server called server_printjob.log.
+     * When the Cloud Office Print server is started with --enable_printlog, it will
+     * create a file on the server called server_printjob.log.
      * 
      * @return Jsonobject with the extra information you want to be logged in that
      *         file.
@@ -106,10 +106,10 @@ public class Server {
     }
 
     /**
-     * When the AOP server is started with --enable_printlog, it will create a file
-     * on the server called server_printjob.log. You can add additional logging
-     * information next to the one AOP is logging by default, by adding additional
-     * keys and values in the logging object.
+     * When the Cloud Office Print server is started with --enable_printlog, it will
+     * create a file on the server called server_printjob.log. You can add
+     * additional logging information next to the one Cloud Office Print is logging
+     * by default, by adding additional keys and values in the logging object.
      * 
      * @param loginInfo Jsonobject with the information you want to be logged.
      */
@@ -119,49 +119,50 @@ public class Server {
     }
 
     /**
-     * @return URL of the AOP server.
+     * @return URL of the Cloud Office Print server.
      */
     public String getUrl() {
         return url;
     }
 
     /**
-     * @param url of the AOP server.
+     * @param url of the Cloud Office Print server.
      */
     public void setUrl(String url) {
         this.url = url;
     }
 
     /**
-     * AOP supports to print directly to an IP Printer.
+     * Cloud Office Print supports to print directly to an IP Printer.
      * 
-     * @return Printer object containing the required info for the AOP server.
+     * @return Printer object containing the required info for the Cloud Office
+     *         Print server.
      */
     public Printer getPrinter() {
         return printer;
     }
 
     /**
-     * AOP supports to print directly to an IP Printer.
+     * Cloud Office Print supports to print directly to an IP Printer.
      * 
-     * @param printer Printer object containing the required info for the AOP
-     *                server.
+     * @param printer Printer object containing the required info for the Cloud
+     *                Office Print server.
      */
     public void setPrinter(Printer printer) {
         this.printer = printer;
     }
 
     /**
-     * @return Commands object with commands for the AOP server to run before or
-     *         after the post processing.
+     * @return Commands object with commands for the Cloud Office Print server to
+     *         run before or after the post processing.
      */
     public Commands getCommands() {
         return commands;
     }
 
     /**
-     * @param commands Commands object with commands for the AOP server to run
-     *                 before or after the post processing.
+     * @param commands Commands object with commands for the Cloud Office Print
+     *                 server to run before or after the post processing.
      */
     public void setCommands(Commands commands) {
         this.commands = commands;
@@ -199,7 +200,7 @@ public class Server {
      * Most basic constructor of the server. Can be populated more with the set
      * functions.
      * 
-     * @param url of the AOP server.
+     * @param url of the Cloud Office Print server.
      */
     public Server(String url) {
         setUrl(url);
@@ -208,17 +209,18 @@ public class Server {
     /**
      * Use default values if you don't want to specify an argument.
      * 
-     * @param url         of the AOP server
+     * @param url         of the Cloud Office Print server
      * @param APIKey      Only applicable for service users. The value of this key
-     *                    is the API key given by APEXOfficePrint.
-     * @param printer     AOP supports to print directly to an IP Printer. Printer
-     *                    object containing the required info for the AOP server.
-     * @param commands    Commands object with commands for the AOP server to run
-     *                    before or after the post processing.
-     * @param loggingInfo When the AOP server is started with --enable_printlog, it
-     *                    will create a file on the server called
-     *                    server_printjob.log. Jsonobject with the extra information
-     *                    you want to be logged in that file.
+     *                    is the API key given by Cloud Office Print.
+     * @param printer     Cloud Office Print supports to print directly to an IP
+     *                    Printer. Printer object containing the required info for
+     *                    the Cloud Office Print server.
+     * @param commands    Commands object with commands for the Cloud Office Print
+     *                    server to run before or after the post processing.
+     * @param loggingInfo When the Cloud Office Print server is started with
+     *                    --enable_printlog, it will create a file on the server
+     *                    called server_printjob.log. Jsonobject with the extra
+     *                    information you want to be logged in that file.
      * @param proxyIP     IP of the optional proxy. Only HTTP proxies supported.
      * @param proxyPort   Port of the optional proxy. Only HTTP proxies supported.
      */
@@ -234,7 +236,8 @@ public class Server {
     }
 
     /**
-     * @return JSONObject with the tags for the output for the AOP server.
+     * @return JSONObject with the tags for the output for the Cloud Office Print
+     *         server.
      */
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
@@ -289,7 +292,7 @@ public class Server {
     /**
      * Sends a GET request to server-url/supported_template_mimetypes.
      * 
-     * @return json of the mime types of templates that AOP supports.
+     * @return json of the mime types of templates that Cloud Office Print supports.
      */
     public String getMimeTypesSupported() {
         return sendGETRequest(this.url + "/supported_template_mimetypes");
@@ -319,9 +322,9 @@ public class Server {
     /**
      * Sends a GET request to server-url/version.
      * 
-     * @return returns the version of AOP that is run on server.
+     * @return returns the version of Cloud Office Print that is run on server.
      */
-    public String getAOPVersionOnServer() {
+    public String getCOPVersionOnServer() {
         return sendGETRequest(this.url + "/version");
     }
 
@@ -379,7 +382,7 @@ public class Server {
      * Sends a POST request with the given json file as body.
      * 
      * @param postData json to send to the server
-     * @throws AOPException when server response's code is not equal to 200.
+     * @throws COPException when server response's code is not equal to 200.
      * @return Response object containing the file extension and body (in bytes)
      */
     public Response sendPOSTRequest(JsonObject postData) throws Exception {
@@ -402,7 +405,7 @@ public class Server {
         }
         con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
         con.setRequestProperty("Accept", "application/json");
-        con.setRequestProperty("User-Agent", "AOPJavaSDK");
+        con.setRequestProperty("User-Agent", "JavaSDK");
         con.setDoOutput(true);
         con.setRequestMethod("POST");
         OutputStream outputStream = con.getOutputStream();
@@ -440,7 +443,7 @@ public class Server {
                 response.append(inputLine);
             }
             in.close();
-            throw new AOPException(responseCode, response.toString());
+            throw new COPException(responseCode, response.toString());
         }
     }
 

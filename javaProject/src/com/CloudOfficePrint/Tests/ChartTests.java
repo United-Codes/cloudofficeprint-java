@@ -1,7 +1,7 @@
 package com.CloudOfficePrint.Tests;
 
-import com.CloudOfficePrint.RenderElements.AOPChart;
-import com.CloudOfficePrint.RenderElements.AOPChartDateOptions;
+import com.CloudOfficePrint.RenderElements.COPChart;
+import com.CloudOfficePrint.RenderElements.COPChartDateOptions;
 import com.CloudOfficePrint.RenderElements.Charts.ChartAxisOptions;
 import com.CloudOfficePrint.RenderElements.Charts.ChartDateOptions;
 import com.CloudOfficePrint.RenderElements.Charts.ChartOptions;
@@ -16,7 +16,7 @@ import org.junit.Assert;
 import java.util.HashMap;
 
 /**
- * Class containing tests for all the charts (also AOP chart from
+ * Class containing tests for all the charts (also Cloud Office Print chart from
  * RenderElements).
  */
 public class ChartTests {
@@ -244,7 +244,7 @@ public class ChartTests {
 		Assert.assertEquals(jsonCorrect, combinedChart.getJSON());
 	}
 
-	public void testChartAOP() {
+	public void testChartCOP() {
 		JsonArray xdata = new JsonArray();
 		xdata.add("a");
 		xdata.add("b");
@@ -263,12 +263,12 @@ public class ChartTests {
 		HashMap<String, JsonArray> yDatas = new HashMap<>();
 		yDatas.put("series 1", ydata1);
 		yDatas.put("series 2", ydata2);
-		AOPChartDateOptions aopChartDateOptions = new AOPChartDateOptions("d/m/yyyy", "days", 1);
+		COPChartDateOptions copChartDateOptions = new COPChartDateOptions("d/m/yyyy", "days", 1);
 
-		AOPChart chart = new AOPChart("aop_chart", xdata, yDatas, "aop_chart_title", "x-axis", "y-axis", "y2-axis",
-				"x2-axis", aopChartDateOptions);
+		COPChart chart = new COPChart("cop_chart", xdata, yDatas, "cop_chart_title", "x-axis", "y-axis", "y2-axis",
+				"x2-axis", copChartDateOptions);
 
-		String correct = "{'aop_chart': {'xAxis': {'data': ['a', 'b', 'c'], 'title': 'x-axis', 'date': {'format': 'd/m/yyyy', 'unit': 'days', 'step': 1}}, 'yAxis': {'series': [{'name': 'series 1', 'data': ['1', '2', '3']}, {'name': 'series 2', 'data': ['4', '5', '6']}], 'title': 'y-axis'}, 'title': 'aop_chart_title', 'x2Axis': {'title': 'x2-axis'}, 'y2Axis': {'title': 'y2-axis'}}}\n";
+		String correct = "{'cop_chart': {'xAxis': {'data': ['a', 'b', 'c'], 'title': 'x-axis', 'date': {'format': 'd/m/yyyy', 'unit': 'days', 'step': 1}}, 'yAxis': {'series': [{'name': 'series 1', 'data': ['1', '2', '3']}, {'name': 'series 2', 'data': ['4', '5', '6']}], 'title': 'y-axis'}, 'title': 'cop_chart_title', 'x2Axis': {'title': 'x2-axis'}, 'y2Axis': {'title': 'y2-axis'}}}\n";
 		JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
 		// System.out.println(chart.getJSON());
 		// System.out.println(jsonCorrect);

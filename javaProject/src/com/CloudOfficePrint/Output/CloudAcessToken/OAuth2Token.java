@@ -40,7 +40,8 @@ public class OAuth2Token extends CloudAccessToken {
     }
 
     /**
-     * @return JSONObject with the tags for the OAuth2token for the AOP server.
+     * @return JSONObject with the tags for the OAuth2token for the Cloud Office
+     *         Print server.
      */
     @Override
     public JsonObject getJSON() {

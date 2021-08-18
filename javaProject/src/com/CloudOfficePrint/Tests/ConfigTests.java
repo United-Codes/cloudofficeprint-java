@@ -144,8 +144,8 @@ public class ConfigTests {
     }
 
     public void testPrinter() {
-        Printer printer = new Printer("http://10.0.14.223:631/", "1.1", "your name", "AOP");
-        String correct = " {  'location': 'http://10.0.14.223:631/', 'version': '1.1','requester': 'your name', 'job_name': 'AOP' }";
+        Printer printer = new Printer("http://10.0.14.223:631/", "1.1", "your name", "Cloud Office Print");
+        String correct = " {  'location': 'http://10.0.14.223:631/', 'version': '1.1','requester': 'your name', 'job_name': 'Cloud Office Print' }";
         // System.out.println(printer.getJSON());
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);

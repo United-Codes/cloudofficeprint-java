@@ -11,6 +11,7 @@ import com.CloudOfficePrint.RenderElements.Charts.Series.LineSeries;
 import com.CloudOfficePrint.RenderElements.Codes.BarCode;
 import com.CloudOfficePrint.RenderElements.Codes.WifiQRCode;
 import com.CloudOfficePrint.RenderElements.Images.ImageBase64;
+import com.CloudOfficePrint.RenderElements.Images.ImageUrl;
 import com.CloudOfficePrint.RenderElements.Loops.Loop;
 import com.CloudOfficePrint.RenderElements.PDF.PDFImage;
 import com.CloudOfficePrint.RenderElements.PDF.PDFImages;
@@ -35,11 +36,11 @@ public class Examples {
      * Example where the local test.json is read and send to the server. The output
      * is downloaded in downloads and named outputLocalJson.
      * 
-     * @param APIKey Your AOP APIKey.
+     * @param APIKey Your Cloud Office Print APIKey.
      */
     public void localJson(String APIKey) {
         try {
-            Server server = new Server("https://api.apexofficeprint.com/", APIKey, null,
+            Server server = new Server("http://apexofficeprint.com/dev/", APIKey, null,
                     // null,null,"127.0.0.1",8000);
                     null, null, null, null);
             server.setVerbose(true);
@@ -51,7 +52,7 @@ public class Examples {
             Response response = server.sendPOSTRequest(jsonObject);
             response.downloadLocally("./downloads/outputLocalJson");
 
-        } catch (AOPException e) {
+        } catch (COPException e) {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
@@ -59,15 +60,15 @@ public class Examples {
     }
 
     /**
-     * Example without template. AOP will generate the template based on the data.
-     * Output type determines the template type generated. Cannot be PDF in this
-     * case.
+     * Example without template. Cloud Office Print will generate the template based
+     * on the data. Output type determines the template type generated. Cannot be
+     * PDF in this case.
      * 
-     * @param APIKey Your AOP APIKey.
+     * @param APIKey Your Cloud Office Print APIKey.
      */
     public void withoutTemplate(String APIKey) {
         try {
-            Server server = new Server("https://api.apexofficeprint.com/", APIKey, null, null, null, null, null);
+            Server server = new Server("http://apexofficeprint.com/dev/", APIKey, null, null, null, null, null);
             server.setVerbose(true);
             Output output = new Output("docx", "raw", null, null, null, null, null);
 
@@ -110,7 +111,7 @@ public class Examples {
             Response response = printJob.execute();
             response.downloadLocally("./downloads/outputWithoutTemplate");
 
-        } catch (AOPException e) {
+        } catch (COPException e) {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
@@ -122,11 +123,11 @@ public class Examples {
      * as data. A zipfile named outputLocalTemplate will contain 2 outputs files in
      * the downloads folder.
      * 
-     * @param APIKey Your AOP APIKey.
+     * @param APIKey Your Cloud Office Print APIKey.
      */
     public void localTemplate(String APIKey) {
         try {
-            Server server = new Server("https://api.apexofficeprint.com/", APIKey, null, null, null, null, null);
+            Server server = new Server("http://apexofficeprint.com/dev/", APIKey, null, null, null, null, null);
             server.setVerbose(true);
 
             // Set some PDF options for showing purposes.
@@ -200,7 +201,7 @@ public class Examples {
             Response response = printJob.execute();
             response.downloadLocally("./downloads/outputLocalTemplate");
 
-        } catch (AOPException e) {
+        } catch (COPException e) {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
@@ -212,11 +213,11 @@ public class Examples {
      * template, a list of properties and an image as data. A zipfile named
      * outputLocalTemplate will contain 2 outputs files in the downloads folder.
      * 
-     * @param APIKey Your AOP APIKey.
+     * @param APIKey Your Cloud Office Print APIKey.
      */
     public void localTemplateAsync(String APIKey) {
         try {
-            Server server = new Server("https://api.apexofficeprint.com/", APIKey, null, null, null, null, null);
+            Server server = new Server("http://apexofficeprint.com/dev/", APIKey, null, null, null, null, null);
             server.setVerbose(true);
             PDFOptions pdfOptions = new PDFOptions();
             pdfOptions.setReadPassword("hello");
@@ -286,7 +287,7 @@ public class Examples {
             Response response = printJob.getResponse();
             response.downloadLocally("./downloads/outputLocalTemplateAsync");
 
-        } catch (AOPException e) {
+        } catch (COPException e) {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
@@ -297,11 +298,11 @@ public class Examples {
      * In this example 2 nested loops are given in the template. One for the orders
      * and one for the products per order.
      * 
-     * @param APIKey Your AOP APIKey.
+     * @param APIKey Your Cloud Office Print APIKey.
      */
     public void loopExample(String APIKey) {
         try {
-            Server server = new Server("https://api.apexofficeprint.com/", APIKey, null, null, null, null, null);
+            Server server = new Server("http://apexofficeprint.com/dev/", APIKey, null, null, null, null, null);
             server.setVerbose(true);
 
             Output output = new Output("pdf", "raw", null, null, null, null, null);
@@ -325,20 +326,8 @@ public class Examples {
             ElementCollection data = new ElementCollection("data");
 
             // Company information
-            Property companyName = new Property("company_name", "APEXOfficePrint");
-            ImageBase64 companyLogo = new ImageBase64("company_logo");
-
-            // The next line should normally be used by the user in his project but when the
-            // jar is exported the reference to the files don't work anymore, so there is a
-            // replacement code to make it work.
-            // image.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/logoAOP.jpg");
-            // Begin replacement code:
-            resourceAsStream = getClass().getResourceAsStream("logoAOP.jpg");
-            targetArray = new byte[resourceAsStream.available()];
-            resourceAsStream.read(targetArray);
-            encodedString = Base64.getEncoder().encodeToString(targetArray);
-            companyLogo.setValue(encodedString);
-            // End replacement code.
+            Property companyName = new Property("company_name", "United Codes");
+            ImageUrl companyLogo = new ImageUrl("company_logo", "https://united-codes.com/assets/dist/images/logo-united-codes.svg");
 
             companyLogo.setMaxWidth(200);
             companyLogo.setMaxHeight(200);
@@ -452,7 +441,7 @@ public class Examples {
             Response response = printJob.execute();
             response.downloadLocally("./downloads/outputLoop");
 
-        } catch (AOPException e) {
+        } catch (COPException e) {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
@@ -462,11 +451,11 @@ public class Examples {
     /**
      * This example show how to build a line chart.
      * 
-     * @param APIKey Your AOP APIKey.
+     * @param APIKey Your Cloud Office Print APIKey.
      */
     public void chartExample(String APIKey) {
         try {
-            Server server = new Server("https://api.apexofficeprint.com/", APIKey, null, null, null, null, null);
+            Server server = new Server("http://apexofficeprint.com/dev/", APIKey, null, null, null, null, null);
             server.setVerbose(true);
             Output output = new Output("pdf", "raw", null, null, null, null, null);
             Base64Resource base64Resource = new Base64Resource();
@@ -510,7 +499,7 @@ public class Examples {
             Response response = printJob.execute();
             response.downloadLocally("./downloads/outputChartName");
 
-        } catch (AOPException e) {
+        } catch (COPException e) {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
@@ -521,11 +510,11 @@ public class Examples {
     /**
      * This example show how to build a combined chart.
      * 
-     * @param APIKey Your AOP APIKey.
+     * @param APIKey Your Cloud Office Print APIKey.
      */
     public void combinedChartExample(String APIKey) {
         try {
-            Server server = new Server("https://api.apexofficeprint.com/", APIKey, null, null, null, null, null);
+            Server server = new Server("http://apexofficeprint.com/dev/", APIKey, null, null, null, null, null);
             server.setVerbose(true);
             Output output = new Output("pdf", "raw", null, null, null, null, null);
             Base64Resource base64Resource = new Base64Resource();
@@ -577,7 +566,7 @@ public class Examples {
             Response response = printJob.execute();
             response.downloadLocally("./downloads/outputCombinedChartName");
 
-        } catch (AOPException e) {
+        } catch (COPException e) {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
@@ -587,11 +576,11 @@ public class Examples {
     /**
      * This example show how to work with Codes (QR code and barcode).
      * 
-     * @param APIKey Your AOP APIKey.
+     * @param APIKey Your Cloud Office Print APIKey.
      */
     public void qrCodeExample(String APIKey) {
         try {
-            Server server = new Server("https://api.apexofficeprint.com/", APIKey, null, null, null, null, null);
+            Server server = new Server("http://apexofficeprint.com/dev/", APIKey, null, null, null, null, null);
             server.setVerbose(true);
             Output output = new Output("pdf", "raw", null, null, null, null, null);
             Base64Resource base64Resource = new Base64Resource();
@@ -638,7 +627,7 @@ public class Examples {
             Response response = printJob.execute();
             response.downloadLocally("./downloads/outputCodes");
 
-        } catch (AOPException e) {
+        } catch (COPException e) {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
@@ -649,11 +638,11 @@ public class Examples {
      * This example shows you how to prepend/append files and how to use
      * subtemplates in a template. Look in the generalTests to see the code.
      * 
-     * @param APIKey Your AOP APIKey.
+     * @param APIKey Your Cloud Office Print APIKey.
      * @throws Exception Exceptions.
      */
     public void prependAppendSubTemplatesExample(String APIKey) throws Exception {
-        Server server = new Server("https://api.apexofficeprint.com/", APIKey, null, null, null, null, null);
+        Server server = new Server("http://apexofficeprint.com/dev/", APIKey, null, null, null, null, null);
         server.setVerbose(true);
 
         Base64Resource prependFile = new Base64Resource();
@@ -720,11 +709,11 @@ public class Examples {
      * This example shows you how to add text and images on pages of a template
      * without tag. The output format needs to be PDF.
      * 
-     * @param APIKey Your AOP APIKey.
+     * @param APIKey Your Cloud Office Print APIKey.
      */
-    public void AOPPDFTextAndImageExample(String APIKey) {
+    public void COPPDFTextAndImageExample(String APIKey) {
         try {
-            Server server = new Server("https://api.apexofficeprint.com/", APIKey, null, null, null, null, null);
+            Server server = new Server("http://apexofficeprint.com/dev/", APIKey, null, null, null, null, null);
             server.setVerbose(true);
             Output output = new Output("pdf", "raw", null, null, null, null, null);
             Base64Resource base64Resource = new Base64Resource();
@@ -785,18 +774,7 @@ public class Examples {
 
             // Image for on all pages.
             PDFImage pdfImage = new PDFImage(200, 700, 1);
-            // The next line should normally be used by the user in his project but when the
-            // jar is exported the reference to the files don't work anymore, so there is a
-            // replacement code to make it work.
-            // pdfImage.setImageFromLocalFile("./javaProject/src/com/CloudOfficePrint/Examples/GeneralExamples/logoAOP.jpg");
-            // Begin replacement code:
-            resourceAsStream = getClass().getResourceAsStream("logoAOP.jpg");
-            targetArray = new byte[resourceAsStream.available()];
-            resourceAsStream.read(targetArray);
-            encodedString = Base64.getEncoder().encodeToString(targetArray);
-            pdfImage.setImage(encodedString);
-            // End replacement code.
-
+            pdfImage.setImage("https://united-codes.com/assets/dist/images/logo-united-codes.svg");
             pdfImage.setWidth(200);
 
             PDFImages pdfImages = new PDFImages(new PDFImage[] { pdfImage });
@@ -812,9 +790,9 @@ public class Examples {
             PrintJob printJob = new PrintJob(data, server, output, base64Resource, null, null, null, null);
 
             Response response = printJob.execute();
-            response.downloadLocally("./downloads/outputAOPPDFText");
+            response.downloadLocally("./downloads/outputCOPPDFText");
 
-        } catch (AOPException e) {
+        } catch (COPException e) {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
@@ -824,11 +802,11 @@ public class Examples {
     /**
      * Example for a styled property and a watermark.
      * 
-     * @param APIKey Your AOP APIKey.
+     * @param APIKey Your Cloud Office Print APIKey.
      */
     public void waterMarkAndStyledProperty(String APIKey) {
         try {
-            Server server = new Server("https://api.apexofficeprint.com/", APIKey, null, null, null, null, null);
+            Server server = new Server("http://apexofficeprint.com/dev/", APIKey, null, null, null, null, null);
             server.setVerbose(true);
             Output output = new Output("pdf", "raw", null, null, null, null, null);
             Base64Resource base64Resource = new Base64Resource();
@@ -879,7 +857,7 @@ public class Examples {
             Response response = printJob.execute();
             response.downloadLocally("./downloads/outputRenderElements");
 
-        } catch (AOPException e) {
+        } catch (COPException e) {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
@@ -890,11 +868,11 @@ public class Examples {
      * This example show you how to sign a PDF file. (Invisible signature, only to
      * be seen in the options of the file).
      * 
-     * @param APIKey Your AOP APIKey.
+     * @param APIKey Your Cloud Office Print APIKey.
      */
     public void signPDF(String APIKey) {
         try {
-            Server server = new Server("https://api.apexofficeprint.com/", APIKey, null, null, null, null, null);
+            Server server = new Server("http://apexofficeprint.com/dev/", APIKey, null, null, null, null, null);
             server.setVerbose(true);
 
             // Set the sign certificate of the pdf options of the output.
@@ -929,7 +907,7 @@ public class Examples {
             Response response = printJob.execute();
             response.downloadLocally("./downloads/pdfSigned");
 
-        } catch (AOPException e) {
+        } catch (COPException e) {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();

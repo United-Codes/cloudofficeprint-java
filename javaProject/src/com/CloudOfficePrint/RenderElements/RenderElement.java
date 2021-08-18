@@ -42,7 +42,8 @@ public abstract class RenderElement {
     }
 
     /**
-     * @return JSONObject with the tags for this element for the AOP server.
+     * @return JSONObject with the tags for this element for the Cloud Office Print
+     *         server.
      */
     abstract public JsonObject getJSON();
 

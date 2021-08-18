@@ -10,7 +10,7 @@ import java.util.Set;
 
 /**
  * Group of different PDF texts as one RenderElement. There can only be one
- * PDFTexts element in the JSON for AOP.
+ * PDFTexts element in the JSON for Cloud Office Print.
  */
 public class PDFTexts extends RenderElement {
 
@@ -40,7 +40,8 @@ public class PDFTexts extends RenderElement {
     }
 
     /**
-     * @return JSONObject with the tags for this element for the AOP server.
+     * @return JSONObject with the tags for this element for the Cloud Office Print
+     *         server.
      */
     @Override
     public JsonObject getJSON() {
