@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="cloudofficeprint.PrintJobTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-08-18T15:55:21" hostname="jaak-Inspiron-7590" time="0.028">
+<testsuite name="cloudofficeprint.PrintJobTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-08-18T16:15:21" hostname="jaak-Inspiron-7590" time="0.005">
   <properties/>
-  <testcase name="prependAppendSubTemplatesTest()" classname="cloudofficeprint.PrintJobTest" time="0.028"/>
+  <testcase name="prependAppendSubTemplatesTest()" classname="cloudofficeprint.PrintJobTest" time="0.005"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
