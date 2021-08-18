@@ -232,8 +232,8 @@ public class SpaceXExample {
         Base64Resource base64Resource = new Base64Resource();
         if (template.equals("docx")) {
             // The next line should normally be used by the user in his project but when the
-            // jar is exported the reference to the files don't work anymore, so there is a
-            // replacement code to make it work.
+            // jar is exported the reference to the files doesn't work anymore, so there is
+            // a replacement code to make it work.
             // base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/SpaceX/spacex_template.docx");
             // Begin replacement code:
             InputStream resourceAsStream = getClass().getResourceAsStream("spacex_template.docx");
@@ -246,8 +246,8 @@ public class SpaceXExample {
             // End replacement code.
         } else if (template.equals("pptx")) {
             // The next line should normally be used by the user in his project but when the
-            // jar is exported the reference to the files don't work anymore, so there is a
-            // replacement code to make it work.
+            // jar is exported the reference to the files doesn't work anymore, so there is
+            // a replacement code to make it work.
             // base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/SpaceX/spacex_template.pptx");
             // Begin replacement code:
             InputStream resourceAsStream = getClass().getResourceAsStream("spacex_template.pptx");
@@ -260,8 +260,8 @@ public class SpaceXExample {
             // End replacement code.
         } else if (template.equals("xlsx")) {
             // The next line should normally be used by the user in his project but when the
-            // jar is exported the reference to the files don't work anymore, so there is a
-            // replacement code to make it work.
+            // jar is exported the reference to the files doesn't work anymore, so there is
+            // a replacement code to make it work.
             // base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/SpaceX/spacex_template.xlsx");
             // Begin replacement code:
             InputStream resourceAsStream = getClass().getResourceAsStream("spacex_template.xlsx");

@@ -40,7 +40,7 @@ public class Examples {
      */
     public void localJson(String APIKey) {
         try {
-            Server server = new Server("http://apexofficeprint.com/dev/", APIKey, null,
+            Server server = new Server("https://api.cloudofficeprint.com", APIKey, null,
                     // null,null,"127.0.0.1",8000);
                     null, null, null, null);
             server.setVerbose(true);
@@ -68,7 +68,7 @@ public class Examples {
      */
     public void withoutTemplate(String APIKey) {
         try {
-            Server server = new Server("http://apexofficeprint.com/dev/", APIKey, null, null, null, null, null);
+            Server server = new Server("https://api.cloudofficeprint.com", APIKey, null, null, null, null, null);
             server.setVerbose(true);
             Output output = new Output("docx", "raw", null, null, null, null, null);
 
@@ -87,8 +87,8 @@ public class Examples {
             ImageBase64 image = new ImageBase64("imageTag");
 
             // The next line should normally be used by the user in his project but when the
-            // jar is exported the reference to the files don't work anymore, so there is a
-            // replacement code to make it work.
+            // jar is exported the reference to the files doesn't work anymore, so there is
+            // a replacement code to make it work.
             // image.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/test.jpg");
             // Begin replacement code:
             InputStream resourceAsStream = getClass().getResourceAsStream("test.jpg");
@@ -127,7 +127,7 @@ public class Examples {
      */
     public void localTemplate(String APIKey) {
         try {
-            Server server = new Server("http://apexofficeprint.com/dev/", APIKey, null, null, null, null, null);
+            Server server = new Server("https://api.cloudofficeprint.com", APIKey, null, null, null, null, null);
             server.setVerbose(true);
 
             // Set some PDF options for showing purposes.
@@ -140,8 +140,8 @@ public class Examples {
             Base64Resource base64Resource = new Base64Resource();
 
             // The next line should normally be used by the user in his project but when the
-            // jar is exported the reference to the files don't work anymore, so there is a
-            // replacement code to make it work.
+            // jar is exported the reference to the files doesn't work anymore, so there is
+            // a replacement code to make it work.
             // base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/localTemplate.docx");
             // Begin replacement code:
             InputStream resourceAsStream = getClass().getResourceAsStream("localTemplate.docx");
@@ -160,8 +160,8 @@ public class Examples {
             ImageBase64 image = new ImageBase64("imageTag");
 
             // The next line should normally be used by the user in his project but when the
-            // jar is exported the reference to the files don't work anymore, so there is a
-            // replacement code to make it work.
+            // jar is exported the reference to the files doesn't work anymore, so there is
+            // a replacement code to make it work.
             // image.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/test.jpg");
             // Begin replacement code:
             resourceAsStream = getClass().getResourceAsStream("test.jpg");
@@ -217,7 +217,7 @@ public class Examples {
      */
     public void localTemplateAsync(String APIKey) {
         try {
-            Server server = new Server("http://apexofficeprint.com/dev/", APIKey, null, null, null, null, null);
+            Server server = new Server("https://api.cloudofficeprint.com", APIKey, null, null, null, null, null);
             server.setVerbose(true);
             PDFOptions pdfOptions = new PDFOptions();
             pdfOptions.setReadPassword("hello");
@@ -226,8 +226,8 @@ public class Examples {
             Base64Resource base64Resource = new Base64Resource();
 
             // The next line should normally be used by the user in his project but when the
-            // jar is exported the reference to the files don't work anymore, so there is a
-            // replacement code to make it work.
+            // jar is exported the reference to the files doesn't work anymore, so there is
+            // a replacement code to make it work.
             // base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/localTemplate.docx");
             // Begin replacement code:
             InputStream resourceAsStream = getClass().getResourceAsStream("localTemplate.docx");
@@ -244,8 +244,8 @@ public class Examples {
             Property property3 = new Property("city", "Leuven");
             ImageBase64 image = new ImageBase64("imageTag");
             // The next line should normally be used by the user in his project but when the
-            // jar is exported the reference to the files don't work anymore, so there is a
-            // replacement code to make it work.
+            // jar is exported the reference to the files doesn't work anymore, so there is
+            // a replacement code to make it work.
             // image.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/test.jpg");
             // Begin replacement code:
             resourceAsStream = getClass().getResourceAsStream("test.jpg");
@@ -302,15 +302,15 @@ public class Examples {
      */
     public void loopExample(String APIKey) {
         try {
-            Server server = new Server("http://apexofficeprint.com/dev/", APIKey, null, null, null, null, null);
+            Server server = new Server("https://api.cloudofficeprint.com", APIKey, null, null, null, null, null);
             server.setVerbose(true);
 
             Output output = new Output("pdf", "raw", null, null, null, null, null);
             Base64Resource base64Resource = new Base64Resource();
 
             // The next line should normally be used by the user in his project but when the
-            // jar is exported the reference to the files don't work anymore, so there is a
-            // replacement code to make it work.
+            // jar is exported the reference to the files doesn't work anymore, so there is
+            // a replacement code to make it work.
             // base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/orderTemplate.docx");
             // Begin replacement code:
             InputStream resourceAsStream = getClass().getResourceAsStream("orderTemplate.docx");
@@ -327,7 +327,8 @@ public class Examples {
 
             // Company information
             Property companyName = new Property("company_name", "United Codes");
-            ImageUrl companyLogo = new ImageUrl("company_logo", "https://united-codes.com/assets/dist/images/logo-united-codes.svg");
+            ImageUrl companyLogo = new ImageUrl("company_logo",
+                    "https://united-codes.com/assets/dist/images/logo-united-codes.svg");
 
             companyLogo.setMaxWidth(200);
             companyLogo.setMaxHeight(200);
@@ -455,14 +456,14 @@ public class Examples {
      */
     public void chartExample(String APIKey) {
         try {
-            Server server = new Server("http://apexofficeprint.com/dev/", APIKey, null, null, null, null, null);
+            Server server = new Server("https://api.cloudofficeprint.com", APIKey, null, null, null, null, null);
             server.setVerbose(true);
             Output output = new Output("pdf", "raw", null, null, null, null, null);
             Base64Resource base64Resource = new Base64Resource();
 
             // The next line should normally be used by the user in his project but when the
-            // jar is exported the reference to the files don't work anymore, so there is a
-            // replacement code to make it work.
+            // jar is exported the reference to the files doesn't work anymore, so there is
+            // a replacement code to make it work.
             // base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/chartname.docx");
             // Begin replacement code:
             InputStream resourceAsStream = getClass().getResourceAsStream("chartname.docx");
@@ -514,14 +515,14 @@ public class Examples {
      */
     public void combinedChartExample(String APIKey) {
         try {
-            Server server = new Server("http://apexofficeprint.com/dev/", APIKey, null, null, null, null, null);
+            Server server = new Server("https://api.cloudofficeprint.com", APIKey, null, null, null, null, null);
             server.setVerbose(true);
             Output output = new Output("pdf", "raw", null, null, null, null, null);
             Base64Resource base64Resource = new Base64Resource();
 
             // The next line should normally be used by the user in his project but when the
-            // jar is exported the reference to the files don't work anymore, so there is a
-            // replacement code to make it work.
+            // jar is exported the reference to the files doesn't work anymore, so there is
+            // a replacement code to make it work.
             // base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/chartname.docx");
             // Begin replacement code:
             InputStream resourceAsStream = getClass().getResourceAsStream("chartname.docx");
@@ -580,14 +581,14 @@ public class Examples {
      */
     public void qrCodeExample(String APIKey) {
         try {
-            Server server = new Server("http://apexofficeprint.com/dev/", APIKey, null, null, null, null, null);
+            Server server = new Server("https://api.cloudofficeprint.com", APIKey, null, null, null, null, null);
             server.setVerbose(true);
             Output output = new Output("pdf", "raw", null, null, null, null, null);
             Base64Resource base64Resource = new Base64Resource();
 
             // The next line should normally be used by the user in his project but when the
-            // jar is exported the reference to the files don't work anymore, so there is a
-            // replacement code to make it work.
+            // jar is exported the reference to the files doesn't work anymore, so there is
+            // a replacement code to make it work.
             // base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/localTemplate.docx");
             // Begin replacement code:
             InputStream resourceAsStream = getClass().getResourceAsStream("localTemplate.docx");
@@ -642,7 +643,7 @@ public class Examples {
      * @throws Exception Exceptions.
      */
     public void prependAppendSubTemplatesExample(String APIKey) throws Exception {
-        Server server = new Server("http://apexofficeprint.com/dev/", APIKey, null, null, null, null, null);
+        Server server = new Server("https://api.cloudofficeprint.com", APIKey, null, null, null, null, null);
         server.setVerbose(true);
 
         Base64Resource prependFile = new Base64Resource();
@@ -713,14 +714,14 @@ public class Examples {
      */
     public void COPPDFTextAndImageExample(String APIKey) {
         try {
-            Server server = new Server("http://apexofficeprint.com/dev/", APIKey, null, null, null, null, null);
+            Server server = new Server("https://api.cloudofficeprint.com", APIKey, null, null, null, null, null);
             server.setVerbose(true);
-            Output output = new Output("pdf", "raw", null, null, null, null, null);
+            Output output = new Output("pdf", "raw", "libreoffice", null, null, null, null);
             Base64Resource base64Resource = new Base64Resource();
 
             // The next line should normally be used by the user in his project but when the
-            // jar is exported the reference to the files don't work anymore, so there is a
-            // replacement code to make it work.
+            // jar is exported the reference to the files doesn't work anymore, so there is
+            // a replacement code to make it work.
             // base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/localTemplate.docx");
             // //doesn't have importance
             // Begin replacement code:
@@ -774,7 +775,12 @@ public class Examples {
 
             // Image for on all pages.
             PDFImage pdfImage = new PDFImage(200, 700, 1);
-            pdfImage.setImage("https://united-codes.com/assets/dist/images/logo-united-codes.svg");
+            resourceAsStream = getClass().getResourceAsStream("logo-united-codes.jpg");
+            targetArray = new byte[resourceAsStream.available()];
+            resourceAsStream.read(targetArray);
+            encodedString = Base64.getEncoder().encodeToString(targetArray);
+            pdfImage.setImage(encodedString);
+//            pdfImage.setImage("https://united-codes.com/assets/dist/images/logo-united-codes.svg"); // .svg URL not yet supported for AOP_PDF_IMAGES
             pdfImage.setWidth(200);
 
             PDFImages pdfImages = new PDFImages(new PDFImage[] { pdfImage });
@@ -806,14 +812,14 @@ public class Examples {
      */
     public void waterMarkAndStyledProperty(String APIKey) {
         try {
-            Server server = new Server("http://apexofficeprint.com/dev/", APIKey, null, null, null, null, null);
+            Server server = new Server("https://api.cloudofficeprint.com", APIKey, null, null, null, null, null);
             server.setVerbose(true);
             Output output = new Output("pdf", "raw", null, null, null, null, null);
             Base64Resource base64Resource = new Base64Resource();
 
             // The next line should normally be used by the user in his project but when the
-            // jar is exported the reference to the files don't work anymore, so there is a
-            // replacement code to make it work.
+            // jar is exported the reference to the files doesn't work anymore, so there is
+            // a replacement code to make it work.
             // base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/localTemplate.docx");
             // //doesn't have importance
             // Begin replacement code:
@@ -872,7 +878,7 @@ public class Examples {
      */
     public void signPDF(String APIKey) {
         try {
-            Server server = new Server("http://apexofficeprint.com/dev/", APIKey, null, null, null, null, null);
+            Server server = new Server("https://api.cloudofficeprint.com", APIKey, null, null, null, null, null);
             server.setVerbose(true);
 
             // Set the sign certificate of the pdf options of the output.
@@ -884,8 +890,8 @@ public class Examples {
             Base64Resource base64Resource = new Base64Resource();
 
             // The next line should normally be used by the user in his project but when the
-            // jar is exported the reference to the files don't work anymore, so there is a
-            // replacement code to make it work.
+            // jar is exported the reference to the files doesn't work anymore, so there is
+            // a replacement code to make it work.
             // base64Resource.setFileFromLocalFile("./javaProject/src/com/CloudOfficePrint/Examples/GeneralExamples/pdfsignature_template.pdf");
             // Begin replacement code:
             InputStream resourceAsStream = getClass().getResourceAsStream("pdfsignature_template.pdf");

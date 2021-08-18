@@ -35,7 +35,7 @@ public class SolarSystemExample {
     public void main(String APIKey, String templatetype) throws Exception {
 
         // Set-Up Cloud Office Print server
-        Server copServer = new Server("https://api.cloudofficeprint.com/");
+        Server copServer = new Server("https://api.cloudofficeprint.com");
         copServer.setVerbose(true);
         copServer.setAPIKey(APIKey);
 

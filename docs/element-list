@@ -2,8 +2,7 @@ com.CloudOfficePrint
 com.CloudOfficePrint.Examples.GeneralExamples
 com.CloudOfficePrint.Examples.MultipleRequestMerge
 com.CloudOfficePrint.Examples.OrderConfirmation
-com.CloudOfficePrint.Examples.SolarSystem.docx
-com.CloudOfficePrint.Examples.SolarSystem.pptx
+com.CloudOfficePrint.Examples.SolarSystem
 com.CloudOfficePrint.Examples.SpaceX
 com.CloudOfficePrint.Output
 com.CloudOfficePrint.Output.CloudAcessToken

@@ -30,23 +30,22 @@ public class Main {
 //         example.COPPDFTextAndImageExample(args[0]);
 //         example.waterMarkAndStyledProperty(args[0]);
 //         example.signPDF(args[0]);
-        //
-        // SolarSystemExample solarSystemExample = new SolarSystemExample();
-        // solarSystemExample.main(args[0], "docx");
-        // solarSystemExample.main(args[0], "pptx");
-        //
-        // SpaceXExample spaceXExample = new SpaceXExample();
-        // spaceXExample.main(args[0], "pptx");
-        // spaceXExample.main(args[0], "xlsx");
-        // spaceXExample.main(args[0], "docx");
-        //
-        // OrderConfirmationExample orderConfirmationExample = new
-        // OrderConfirmationExample();
-        // orderConfirmationExample.main(args[0]);
-        //
-        // MultipleRequestMergeExample multipleRequestMergeExample = new
-        // MultipleRequestMergeExample();
-        // multipleRequestMergeExample.main(args[0]);
+
+//         SolarSystemExample solarSystemExample = new SolarSystemExample();
+//         solarSystemExample.main(args[0], "docx");
+//         solarSystemExample.main(args[0], "pptx");
+
+//         SpaceXExample spaceXExample = new SpaceXExample();
+//         spaceXExample.main(args[0], "pptx");
+//         spaceXExample.main(args[0], "xlsx");
+//         spaceXExample.main(args[0], "docx");
+//
+//         OrderConfirmationExample orderConfirmationExample = new OrderConfirmationExample();
+//         orderConfirmationExample.main(args[0]);
+
+//         MultipleRequestMergeExample multipleRequestMergeExample = new
+//         MultipleRequestMergeExample();
+//         multipleRequestMergeExample.main(args[0]);
 
         // TESTS
 
