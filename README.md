@@ -193,6 +193,10 @@ sdk install gradle 7.2
 ```bash
 ./gradlew build
 ```
+If you want to clear the generated files from the previous build and then build again, you can use:
+```bash
+./gradlew clean build
+```
 ## Generate .jar file
 ```bash
 ./gradlew jar
