@@ -39,7 +39,7 @@ public class MultipleRequestMergeExample {
 
 		// Load template
 		Base64Resource template = new Base64Resource();
-		InputStream resourceAsStream = getClass().getResourceAsStream("template.docx");
+		InputStream resourceAsStream = getClass().getResourceAsStream("/MultipleRequestMerge/template.docx");
 		byte[] targetArray = new byte[resourceAsStream.available()];
 		resourceAsStream.read(targetArray);
 		String encodedString = Base64.getEncoder().encodeToString(targetArray);

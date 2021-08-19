@@ -45,7 +45,7 @@ public class Examples {
                     null, null, null, null);
             server.setVerbose(true);
 
-            InputStream resourceAsStream = getClass().getResourceAsStream("test.json");
+            InputStream resourceAsStream = getClass().getResourceAsStream("/GeneralExamples/test.json");
             String ret = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8.name());
 
             JsonObject jsonObject = JsonParser.parseString(ret).getAsJsonObject();
@@ -91,7 +91,7 @@ public class Examples {
             // a replacement code to make it work.
             // image.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/test.jpg");
             // Begin replacement code:
-            InputStream resourceAsStream = getClass().getResourceAsStream("test.jpg");
+            InputStream resourceAsStream = getClass().getResourceAsStream("/GeneralExamples/test.jpg");
             byte[] targetArray = new byte[resourceAsStream.available()];
             resourceAsStream.read(targetArray);
             String encodedString = Base64.getEncoder().encodeToString(targetArray);
@@ -144,7 +144,7 @@ public class Examples {
             // a replacement code to make it work.
             // base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/localTemplate.docx");
             // Begin replacement code:
-            InputStream resourceAsStream = getClass().getResourceAsStream("localTemplate.docx");
+            InputStream resourceAsStream = getClass().getResourceAsStream("/GeneralExamples/localTemplate.docx");
             byte[] targetArray = new byte[resourceAsStream.available()];
             resourceAsStream.read(targetArray);
             String encodedString = Base64.getEncoder().encodeToString(targetArray);
@@ -164,7 +164,7 @@ public class Examples {
             // a replacement code to make it work.
             // image.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/test.jpg");
             // Begin replacement code:
-            resourceAsStream = getClass().getResourceAsStream("test.jpg");
+            resourceAsStream = getClass().getResourceAsStream("/GeneralExamples/test.jpg");
             targetArray = new byte[resourceAsStream.available()];
             resourceAsStream.read(targetArray);
             encodedString = Base64.getEncoder().encodeToString(targetArray);
@@ -230,7 +230,7 @@ public class Examples {
             // a replacement code to make it work.
             // base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/localTemplate.docx");
             // Begin replacement code:
-            InputStream resourceAsStream = getClass().getResourceAsStream("localTemplate.docx");
+            InputStream resourceAsStream = getClass().getResourceAsStream("/GeneralExamples/localTemplate.docx");
             byte[] targetArray = new byte[resourceAsStream.available()];
             resourceAsStream.read(targetArray);
             String encodedString = Base64.getEncoder().encodeToString(targetArray);
@@ -248,7 +248,7 @@ public class Examples {
             // a replacement code to make it work.
             // image.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/test.jpg");
             // Begin replacement code:
-            resourceAsStream = getClass().getResourceAsStream("test.jpg");
+            resourceAsStream = getClass().getResourceAsStream("/GeneralExamples/test.jpg");
             targetArray = new byte[resourceAsStream.available()];
             resourceAsStream.read(targetArray);
             encodedString = Base64.getEncoder().encodeToString(targetArray);
@@ -313,7 +313,7 @@ public class Examples {
             // a replacement code to make it work.
             // base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/orderTemplate.docx");
             // Begin replacement code:
-            InputStream resourceAsStream = getClass().getResourceAsStream("orderTemplate.docx");
+            InputStream resourceAsStream = getClass().getResourceAsStream("/GeneralExamples/orderTemplate.docx");
             byte[] targetArray = new byte[resourceAsStream.available()];
             resourceAsStream.read(targetArray);
             String encodedString = Base64.getEncoder().encodeToString(targetArray);
@@ -466,7 +466,7 @@ public class Examples {
             // a replacement code to make it work.
             // base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/chartname.docx");
             // Begin replacement code:
-            InputStream resourceAsStream = getClass().getResourceAsStream("chartname.docx");
+            InputStream resourceAsStream = getClass().getResourceAsStream("/GeneralExamples/chartname.docx");
             byte[] targetArray = new byte[resourceAsStream.available()];
             resourceAsStream.read(targetArray);
             String encodedString = Base64.getEncoder().encodeToString(targetArray);
@@ -525,7 +525,7 @@ public class Examples {
             // a replacement code to make it work.
             // base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/chartname.docx");
             // Begin replacement code:
-            InputStream resourceAsStream = getClass().getResourceAsStream("chartname.docx");
+            InputStream resourceAsStream = getClass().getResourceAsStream("/GeneralExamples/chartname.docx");
             byte[] targetArray = new byte[resourceAsStream.available()];
             resourceAsStream.read(targetArray);
             String encodedString = Base64.getEncoder().encodeToString(targetArray);
@@ -591,7 +591,7 @@ public class Examples {
             // a replacement code to make it work.
             // base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/localTemplate.docx");
             // Begin replacement code:
-            InputStream resourceAsStream = getClass().getResourceAsStream("localTemplate.docx");
+            InputStream resourceAsStream = getClass().getResourceAsStream("/GeneralExamples/localTemplate.docx");
             byte[] targetArray = new byte[resourceAsStream.available()];
             resourceAsStream.read(targetArray);
             String encodedString = Base64.getEncoder().encodeToString(targetArray);
@@ -647,7 +647,7 @@ public class Examples {
         server.setVerbose(true);
 
         Base64Resource prependFile = new Base64Resource();
-        InputStream prependFileAsStream = getClass().getResourceAsStream("subTemplate.docx");
+        InputStream prependFileAsStream = getClass().getResourceAsStream("/GeneralExamples/subTemplate.docx");
         byte[] prependFileTargetArray = new byte[prependFileAsStream.available()];
         prependFileAsStream.read(prependFileTargetArray);
         String prependFileEncodedString = Base64.getEncoder().encodeToString(prependFileTargetArray);
@@ -658,7 +658,7 @@ public class Examples {
         // prependFile.setFileFromLocalFile("./javaProject/src/com/CloudOfficePrint/Examples/GeneralExamples/subTemplate.docx");
 
         Base64Resource template = new Base64Resource();
-        InputStream templateAsStream = getClass().getResourceAsStream("subTemplate.docx");
+        InputStream templateAsStream = getClass().getResourceAsStream("/GeneralExamples/subTemplate.docx");
         byte[] templateTargetArray = new byte[templateAsStream.available()];
         templateAsStream.read(templateTargetArray);
         String templateEncodedString = Base64.getEncoder().encodeToString(templateTargetArray);
@@ -668,7 +668,8 @@ public class Examples {
         // template.setFileFromLocalFile("./javaProject/src/com/CloudOfficePrint/Examples/GeneralExamples/subTemplate.docx");
 
         Base64Resource templateMain = new Base64Resource();
-        InputStream templateMainAsStream = getClass().getResourceAsStream("template_prepend_append_subtemplate.docx");
+        InputStream templateMainAsStream = getClass()
+                .getResourceAsStream("/GeneralExamples/template_prepend_append_subtemplate.docx");
         byte[] templateMainTargetArray = new byte[templateMainAsStream.available()];
         templateMainAsStream.read(templateMainTargetArray);
         String templateMainEncodedString = Base64.getEncoder().encodeToString(templateMainTargetArray);
@@ -681,7 +682,7 @@ public class Examples {
         coll.addElement(new Property("textTag1", "test_text_tag1"));
 
         Base64Resource appendFile = new Base64Resource();
-        InputStream appendFileAsStream = getClass().getResourceAsStream("subTemplate.docx");
+        InputStream appendFileAsStream = getClass().getResourceAsStream("/GeneralExamples/subTemplate.docx");
         byte[] appendFileTargetArray = new byte[appendFileAsStream.available()];
         appendFileAsStream.read(appendFileTargetArray);
         String appendFileEncodedString = Base64.getEncoder().encodeToString(appendFileTargetArray);
@@ -725,7 +726,7 @@ public class Examples {
             // base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/localTemplate.docx");
             // //doesn't have importance
             // Begin replacement code:
-            InputStream resourceAsStream = getClass().getResourceAsStream("localTemplate.docx");
+            InputStream resourceAsStream = getClass().getResourceAsStream("/GeneralExamples/localTemplate.docx");
             byte[] targetArray = new byte[resourceAsStream.available()];
             resourceAsStream.read(targetArray);
             String encodedString = Base64.getEncoder().encodeToString(targetArray);
@@ -775,7 +776,7 @@ public class Examples {
 
             // Image for on all pages.
             PDFImage pdfImage = new PDFImage(200, 700, 1);
-            resourceAsStream = getClass().getResourceAsStream("logo-united-codes.jpg");
+            resourceAsStream = getClass().getResourceAsStream("/GeneralExamples/logo-united-codes.jpg");
             targetArray = new byte[resourceAsStream.available()];
             resourceAsStream.read(targetArray);
             encodedString = Base64.getEncoder().encodeToString(targetArray);
@@ -824,7 +825,7 @@ public class Examples {
             // base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/localTemplate.docx");
             // //doesn't have importance
             // Begin replacement code:
-            InputStream resourceAsStream = getClass().getResourceAsStream("localTemplate.docx");
+            InputStream resourceAsStream = getClass().getResourceAsStream("/GeneralExamples/localTemplate.docx");
             byte[] targetArray = new byte[resourceAsStream.available()];
             resourceAsStream.read(targetArray);
             String encodedString = Base64.getEncoder().encodeToString(targetArray);
@@ -895,7 +896,7 @@ public class Examples {
             // a replacement code to make it work.
             // base64Resource.setFileFromLocalFile("./javaProject/src/com/CloudOfficePrint/Examples/GeneralExamples/pdfsignature_template.pdf");
             // Begin replacement code:
-            InputStream resourceAsStream = getClass().getResourceAsStream("pdfsignature_template.pdf");
+            InputStream resourceAsStream = getClass().getResourceAsStream("/GeneralExamples/pdfsignature_template.pdf");
             byte[] targetArray = new byte[resourceAsStream.available()];
             resourceAsStream.read(targetArray);
             String encodedString = Base64.getEncoder().encodeToString(targetArray);

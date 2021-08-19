@@ -1,0 +1,12 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Main",
+            "request": "launch",
+            "mainClass": "com.cloudofficeprint.Main",
+            "projectName": "cloudofficeprint-cloudofficeprint",
+            "args": "dummy_api",
+        }
+    ]
+}

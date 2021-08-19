@@ -97,9 +97,9 @@ public class SolarSystemExample {
         Base64Resource base64Resource = new Base64Resource();
         InputStream resourceAsStream;
         if (templatetype == "docx") {
-            resourceAsStream = getClass().getResourceAsStream("solar_system_template.docx");
+            resourceAsStream = getClass().getResourceAsStream("/SolarSystem/solar_system_template.docx");
         } else {
-            resourceAsStream = getClass().getResourceAsStream("solar_system_template.pptx");
+            resourceAsStream = getClass().getResourceAsStream("/SolarSystem/solar_system_template.pptx");
         }
         byte[] targetArray = new byte[resourceAsStream.available()];
         resourceAsStream.read(targetArray);

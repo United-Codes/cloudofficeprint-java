@@ -23,7 +23,7 @@ public class OrderConfirmationExample {
 
                 // Load template
                 Base64Resource template = new Base64Resource();
-                InputStream resourceAsStream = getClass().getResourceAsStream("template.docx");
+                InputStream resourceAsStream = getClass().getResourceAsStream("/OrderConfirmation/template.docx");
                 byte[] targetArray = new byte[resourceAsStream.available()];
                 resourceAsStream.read(targetArray);
                 String encodedString = Base64.getEncoder().encodeToString(targetArray);
@@ -176,6 +176,6 @@ public class OrderConfirmationExample {
                 Response response = printJob.execute();
 
                 // Save response to output file
-                response.downloadLocally("./downloads/output");
+                response.downloadLocally("./downloads/orderconfirmation");
         }
 }

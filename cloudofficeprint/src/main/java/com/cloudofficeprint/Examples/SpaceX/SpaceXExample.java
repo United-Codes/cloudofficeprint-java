@@ -236,7 +236,7 @@ public class SpaceXExample {
             // a replacement code to make it work.
             // base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/SpaceX/spacex_template.docx");
             // Begin replacement code:
-            InputStream resourceAsStream = getClass().getResourceAsStream("spacex_template.docx");
+            InputStream resourceAsStream = getClass().getResourceAsStream("/SpaceX/spacex_template.docx");
             byte[] targetArray = new byte[resourceAsStream.available()];
             resourceAsStream.read(targetArray);
             String encodedString = Base64.getEncoder().encodeToString(targetArray);
@@ -250,7 +250,7 @@ public class SpaceXExample {
             // a replacement code to make it work.
             // base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/SpaceX/spacex_template.pptx");
             // Begin replacement code:
-            InputStream resourceAsStream = getClass().getResourceAsStream("spacex_template.pptx");
+            InputStream resourceAsStream = getClass().getResourceAsStream("/SpaceX/spacex_template.pptx");
             byte[] targetArray = new byte[resourceAsStream.available()];
             resourceAsStream.read(targetArray);
             String encodedString = Base64.getEncoder().encodeToString(targetArray);
@@ -264,7 +264,7 @@ public class SpaceXExample {
             // a replacement code to make it work.
             // base64Resource.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/SpaceX/spacex_template.xlsx");
             // Begin replacement code:
-            InputStream resourceAsStream = getClass().getResourceAsStream("spacex_template.xlsx");
+            InputStream resourceAsStream = getClass().getResourceAsStream("/SpaceX/spacex_template.xlsx");
             byte[] targetArray = new byte[resourceAsStream.available()];
             resourceAsStream.read(targetArray);
             String encodedString = Base64.getEncoder().encodeToString(targetArray);
