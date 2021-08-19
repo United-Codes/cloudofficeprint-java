@@ -42,8 +42,14 @@ tasks.named('test') {
 }
 
 tasks.named('jar') {
+    // Do not allow duplicates by ignoring subsequent items to be created at the same path.
+    duplicatesStrategy = 'exclude'
+
     manifest {
         attributes('Implementation-Title': project.name,
                    'Implementation-Version': project.version)
     }
+
+    // Include the imported dependencies in our output .jar file
+    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
 }

@@ -5,7 +5,6 @@ This project provides a Java interface for Cloud Office Print.
 ## .jar
 To install the Cloud Office Print Java package you can download the .jar file of the project and add it to the build path of your project. 
 TODO: upload .jar to website
-TODO: also upload other .jar files
 ## Gradle
 To use the Cloud Office Print Java package in a Gradle project, you can add it as a dependency to your `build.gradle` file. In this file, add the following line to the `dependencies`-object:
 ```gradle
