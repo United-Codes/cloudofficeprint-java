@@ -14,6 +14,7 @@ import com.cloudofficeprint.RenderElements.Loops.Loop;
 import com.cloudofficeprint.RenderElements.RenderElement;
 import com.cloudofficeprint.Resources.Base64Resource;
 import com.cloudofficeprint.Server.Server;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
