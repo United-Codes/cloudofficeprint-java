@@ -4,7 +4,7 @@ There is a limit on how much data can be sent to a cloud Office Print server at 
 # Template
 A simple template will be used since the goal of this example is to show how you can split one big merge request into a few smaller ones. The template will contain one simple tag {test}. Tags are used in a template as placeholders to let the Cloud Office Print server know what needs to be replaced by data. In this case, the simple tag {test} will be replaced by whatever value is given to the Cloud Office Print server for the tag with key 'test'. In this example we use a template with filetype docx, but this can be any of the allowed template types (see [here](https://www.cloudofficeprint.com/docs/#tag-overview)).
 
-<img src="https://raw.githubusercontent.com/United-Codes/cloudofficeprint-java/master/cloudofficeprint/src/main/java/com/cloudofficeprint/Examples/MultipleRequestMerge/template.png" width="600" />
+<img src="https://raw.githubusercontent.com/United-Codes/cloudofficeprint-java/main/cloudofficeprint/src/main/java/com/cloudofficeprint/Examples/MultipleRequestMerge/template.png" width="600" />
 
 # Code (SDK)
 NOTE: For an overview of all the possibilities of this SDK, we refer to the documentation on our [website](https://cloudofficeprint.com/docs).
