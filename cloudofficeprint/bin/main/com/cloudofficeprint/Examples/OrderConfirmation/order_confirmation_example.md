@@ -1,13 +1,13 @@
 # About
 In this example we are going to show you how to use this SDK to generate an order confirmation for buying products from a company. The resulting output file will look like this:
 
-![](https://raw.githubusercontent.com/United-Codes/cloudofficeprint-java/master/cloudofficeprint/src/main/java/com/cloudofficeprint/Examples/MultipleRequestMerge/imgs/output_imgs/output-1.jpg)
-![](https://raw.githubusercontent.com/United-Codes/cloudofficeprint-java/master/cloudofficeprint/src/main/java/com/cloudofficeprint/Examples/MultipleRequestMerge/imgs/output_imgs/output-2.jpg)
+![](https://raw.githubusercontent.com/United-Codes/cloudofficeprint-java/master/cloudofficeprint/src/main/java/com/cloudofficeprint/Examples/OrderConfirmation/imgs/output_imgs/output-1.jpg)
+![](https://raw.githubusercontent.com/United-Codes/cloudofficeprint-java/master/cloudofficeprint/src/main/java/com/cloudofficeprint/Examples/OrderConfirmation/imgs/output_imgs/output-2.jpg)
 
 # Template
 The template we are using is the following:
-![](https://raw.githubusercontent.com/United-Codes/cloudofficeprint-java/master/cloudofficeprint/src/main/java/com/cloudofficeprint/Examples/MultipleRequestMerge/imgs/template_imgs/template-1.jpg)
-![](https://raw.githubusercontent.com/United-Codes/cloudofficeprint-java/master/cloudofficeprint/src/main/java/com/cloudofficeprint/Examples/MultipleRequestMerge/imgs/template_imgs/template-2.jpg)
+![](https://raw.githubusercontent.com/United-Codes/cloudofficeprint-java/master/cloudofficeprint/src/main/java/com/cloudofficeprint/Examples/OrderConfirmation/imgs/template_imgs/template-1.jpg)
+![](https://raw.githubusercontent.com/United-Codes/cloudofficeprint-java/master/cloudofficeprint/src/main/java/com/cloudofficeprint/Examples/OrderConfirmation/imgs/template_imgs/template-2.jpg)
 
 ## Tags
 Tags are used in a template as placeholders to let the Cloud Office Print server know what needs to be replaced by data. The tags used in this example are:
