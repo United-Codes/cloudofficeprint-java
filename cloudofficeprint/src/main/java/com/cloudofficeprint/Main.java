@@ -5,6 +5,7 @@ package com.cloudofficeprint;
 import com.cloudofficeprint.Examples.GeneralExamples.Examples;
 import com.cloudofficeprint.Examples.MultipleRequestMerge.MultipleRequestMergeExample;
 import com.cloudofficeprint.Examples.OrderConfirmation.OrderConfirmationExample;
+import com.cloudofficeprint.Examples.PDFSignature.PDFSignatureExample;
 import com.cloudofficeprint.Examples.SolarSystem.SolarSystemExample;
 import com.cloudofficeprint.Examples.SpaceX.SpaceXExample;
 
@@ -44,5 +45,8 @@ public class Main {
         // MultipleRequestMergeExample multipleRequestMergeExample = new
         // MultipleRequestMergeExample();
         // multipleRequestMergeExample.main(args[0]);
+
+        // PDFSignatureExample pdfSignatureExample = new PDFSignatureExample();
+        // pdfSignatureExample.main(args[0]);
     }
 }

@@ -496,7 +496,35 @@ Now that our template is finished, we have to process the data used by the templ
 The beauty of Cloud Office Print is that the data created by the Java SDK can be used in all templates of different file extensions while using the same tags.
 
 ## Setup
-First make sure the JavaSDK is imported in your Java Project and IDE.
+First make sure the JavaSDK is imported in your Java Project and IDE. Then we can import the Cloud Office Print library in our file:
+```java
+import com.cloudofficeprint.Mimetype;
+import com.cloudofficeprint.Output.Output;
+import com.cloudofficeprint.PrintJob;
+import com.cloudofficeprint.RenderElements.Charts.ChartAxisOptions;
+import com.cloudofficeprint.RenderElements.Charts.ChartOptions;
+import com.cloudofficeprint.RenderElements.Charts.ChartTextStyle;
+import com.cloudofficeprint.RenderElements.Charts.Charts.ColumnChart;
+import com.cloudofficeprint.RenderElements.Charts.Series.ColumnSeries;
+import com.cloudofficeprint.RenderElements.ElementCollection;
+import com.cloudofficeprint.RenderElements.HyperLink;
+import com.cloudofficeprint.RenderElements.Images.ImageUrl;
+import com.cloudofficeprint.RenderElements.Loops.Loop;
+import com.cloudofficeprint.RenderElements.Property;
+import com.cloudofficeprint.RenderElements.RenderElement;
+import com.cloudofficeprint.Resources.Base64Resource;
+import com.cloudofficeprint.Response;
+import com.cloudofficeprint.Server.Server;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Base64;
+import java.util.Hashtable;
+```
 
 Then we need to set up the Cloud Office Print server where we will send our template and data to:
 ```java
