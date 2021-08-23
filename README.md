@@ -15,7 +15,7 @@ TODO: update the command
 # Usage
 1. Create a template (docx, xlsx, pptx, HTML, md, txt, csv), for the possible tags, click [here](http://www.cloudofficeprint.com/docs/#templates).
 2. Create the input data with this Java SDK
-3. Send template and data to an Cloud Office Print server and save the response to a file with this Java SDK
+3. Send template and data to a Cloud Office Print server and save the response to a file with this Java SDK
 
 To see the JSON-data that is sent to the Cloud Office Print server together with some information about the requests and responses, you can turn on verbose-mode by first creating a `Server`-object and then calling `.setVerbose(true)` on that object.
 
@@ -31,7 +31,7 @@ Next, you have to add those .jar files to the classpath of the project. You can 
 Then create your main file by right-clicking the 'src'-folder of your project, clicking 'New > Class', choosing a name for the Class and clicking 'Finish'. In this example, we chose the name 'HelloWorld' as the name for our class where we want to use this Java SDK.
 
 ## Data & print job
-First we add the data needed to fill in the template, which can be seen in the code below. The template and the data need to be sent to an Cloud Office Print server that merges both. This can be done by setting up the configuration for Cloud Office Print server and passing it to the print job instance, which can also be seen in the code below. You can get your API key by signing up at https://www.cloudofficeprint.com.
+First we add the data needed to fill in the template, which can be seen in the code below. The template and the data need to be sent to a Cloud Office Print server that merges both. This can be done by setting up the configuration for Cloud Office Print server and passing it to the print job instance, which can also be seen in the code below. You can get your API key by signing up at https://www.cloudofficeprint.com.
 ```java
 package HelloWorld;
 

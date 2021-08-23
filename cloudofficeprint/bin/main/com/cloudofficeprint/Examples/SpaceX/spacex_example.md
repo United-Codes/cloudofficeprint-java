@@ -3,7 +3,7 @@ In this file we are going to show you how you can use the Cloud Office Print Jav
 
 In this example, we are going to use SpaceX data to fill a template we are going to make. The SpaceX data can be received by sending an HTTP-request to an API. The (non-official) API used in this example is https://docs.spacexdata.com/.
 
-Normally you know the data you will be using to fill in the template, but for this example, we are going to start with a brief overview of the data we will be using. Then we will create a template. Then we will get the data from the spacexdata-API and process this data with this Java SDK. Finally we send the template together with the data to an Cloud Office Print server and save the response into our output file.
+Normally you know the data you will be using to fill in the template, but for this example, we are going to start with a brief overview of the data we will be using. Then we will create a template. Then we will get the data from the spacexdata-API and process this data with this Java SDK. Finally we send the template together with the data to a Cloud Office Print server and save the response into our output file.
 
 # Input data (API)
 The data we use comes from https://docs.spacexdata.com/. More specifically we will use SpaceX data about their company, rockets, dragons, launch pads, landing pads and ships that assist SpaceX launches. Let us have a look at the available data for the different components.
@@ -532,7 +532,7 @@ Server copServer = new Server("http://localhost:8010");
 copServer.setVerbose(true); //This sets the verbose mode on.
 copServer.setAPIKey(APIKey);
 ```
-If you do not have an Cloud Office Print server running on localhost (e.g. on-premise version) and want to use the Cloud Office Print cloud server, replace the local server url by the url of our cloud server: https://api.cloudofficeprint.com/.
+If you do not have a Cloud Office Print server running on localhost (e.g. on-premise version) and want to use the Cloud Office Print cloud server, replace the local server url by the url of our cloud server: https://api.cloudofficeprint.com/.
 
 We also need to create the main element-collection object that contains all our data:
 ```java
@@ -580,7 +580,7 @@ JsonArray ships = JsonParser.parseString(response).getAsJsonArray();
 ```
 
 ## Title slide
-The template title slide contains the title of our presentation and a hyperlink-tag `{*data_source}`. Now we need to add the data for this tag in our Java code by creating an Cloud Office Print element (hyperlink) and adding this to the main data collection:
+The template title slide contains the title of our presentation and a hyperlink-tag `{*data_source}`. Now we need to add the data for this tag in our Java code by creating a Cloud Office Print element (hyperlink) and adding this to the main data collection:
 ```java
 spaceXData.addElement( new HyperLink("data_source","Data source","https://docs.spacexdata.com"));
 ```
@@ -813,7 +813,7 @@ Output output = new Output(null,"raw","libreoffice",null,null,null);
 PrintJob printJob = new PrintJob(data,copServer,output,base64Resource,null,null,null,null);
 ```
 
-Finally we actually send this printjob to an Cloud Office Print server and save the response into our output file:
+Finally we actually send this printjob to a Cloud Office Print server and save the response into our output file:
 ```java
 Response response = printJob.execute();
 response.downloadLocally("./downloads/spaceX");

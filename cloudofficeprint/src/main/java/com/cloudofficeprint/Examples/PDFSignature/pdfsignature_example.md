@@ -31,7 +31,7 @@ Then we set up the Cloud Office Print server:
 Server server = new Server("https://api.cloudofficeprint.com", APIKey, null, null, null, null, null);
 server.setVerbose(true);
 ```
-If you have a cloud Office Print server running on localhost (e.g. on-premise version), replace the server url by the localhost url: http://localhost:8010
+If you have a Cloud Office Print server running on localhost (e.g. on-premise version), replace the server url by the localhost url: http://localhost:8010
 
 We also need to create the main element-collection object that contains all our data:
 ```java
@@ -51,7 +51,7 @@ Output output = new Output("pdf", "raw", null, null, null, pdfOptions, null);
 ```
 
 ## Print job
-Finally, we create a print job to send our template and data to a cloud Office Print server and we save the server response file to our computer:
+Finally, we create a print job to send our template and data to a Cloud Office Print server and we save the server response file to our computer:
 ```java
 Base64Resource base64Resource = new Base64Resource();
 InputStream resourceAsStream = getClass().getResourceAsStream("/PDFSignature/pdfsignature_template.pdf");
