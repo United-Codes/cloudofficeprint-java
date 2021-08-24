@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="cloudofficeprint.LoopsTests" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-08-23T15:13:57" hostname="jaak-Inspiron-7590" time="0.024">
+<testsuite name="cloudofficeprint.LoopsTests" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-08-24T08:05:48" hostname="jaak-Inspiron-7590" time="0.026">
   <properties/>
-  <testcase name="forEach()" classname="cloudofficeprint.LoopsTests" time="0.022"/>
-  <testcase name="testForEachSheet()" classname="cloudofficeprint.LoopsTests" time="0.001"/>
+  <testcase name="forEach()" classname="cloudofficeprint.LoopsTests" time="0.023"/>
+  <testcase name="testForEachSheet()" classname="cloudofficeprint.LoopsTests" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

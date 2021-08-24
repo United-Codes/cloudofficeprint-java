@@ -20,8 +20,21 @@ repositories {
 In the same file, add the following line to the `dependencies`-object:
 ```gradle
 dependencies {
-    implementation group: 'com', name: 'cloudofficeprint', version: '21.2.0'
+    implementation group: 'com.cloudofficeprint', name: 'cloudofficeprint', version: '21.2.0'
 }
+```
+TODO: update the command if uploaded to Maven Central
+
+## Maven
+To use the Cloud Office Print Java package in a Maven project, you can add it as a dependency to your `pom.xml` file. This project is uploaded to Maven Central, so in the `pom.xml` file you have to include the Maven Central repository:
+```xml
+<dependencies>
+    <dependency>
+        <groupId>com.cloudofficeprint</groupId>
+        <artifactId>cloudofficeprint</artifactId>
+        <version>21.2.0</version>
+    </dependency>
+</dependencies>
 ```
 TODO: update the command if uploaded to Maven Central
 
@@ -230,6 +243,7 @@ If you want to clear the generated files from the previous build and then build 
 ```bash
 ./gradlew clean build
 ```
+NOTE: this will also delete the generated licenses so they need to be generated again (see [Generate dependency licenses](#generate-dependency-licenses)).
 ### Generate .jar file
 ```bash
 ./gradlew jar
@@ -242,3 +256,11 @@ If you want to clear the generated files from the previous build and then build 
 ```bash
 ./gradlew javadoc
 ```
+### Generate dependency licenses
+Also see the [licenses section](#licenses).
+```bash
+./gradlew generateLicenseReport
+```
+
+## Licenses
+Because we bundle external dependencies in our .jar file, we add the licenses for all the dependencies to this project. For this we use a [Gradle plugin](https://github.com/jk1/Gradle-License-Report). The licenses can be found in the folder `cloudofficeprint/build/reports/dependency-license`.

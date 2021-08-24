@@ -44,7 +44,7 @@ public class COPException extends Exception {
         URID = splitForUrid[0];
         errorSplit = error.split(URID);
         String[] splitForUserM = errorSplit[1]
-                .split("If you are contacting AOP support please make sure you include the following.");
+            .split("If you are contacting AOP support please make sure you include the following.");
         // TODO: in the future change 'AOP support' to 'Cloud Office Print support'
         userMessage = splitForUserM[0];
         messageForSupport = splitForUserM[1];
