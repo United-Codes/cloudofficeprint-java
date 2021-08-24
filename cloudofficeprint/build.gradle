@@ -10,8 +10,11 @@ plugins {
     // Apply the java-library plugin for API and implementation separation.
     id 'java-library'
     id 'com.github.jk1.dependency-license-report' version '1.17'
+    id 'signing'
+    id 'maven-publish'
 }
 
+group = 'com.unitedcodes'
 version = '21.2.0'
 
 repositories {
@@ -54,3 +57,67 @@ tasks.named('jar') {
     // Include the imported dependencies in our output .jar file
     from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
 }
+
+// java {
+//     withJavadocJar()
+//     withSourcesJar()
+// }
+
+
+// publishing {
+//     publications {
+//         mavenJava(MavenPublication) {
+//             artifactId = 'cloudofficeprint'
+//             from components.java
+//             versionMapping {
+//                 usage('java-api') {
+//                     fromResolutionOf('runtimeClasspath')
+//                 }
+//                 usage('java-runtime') {
+//                     fromResolutionResult()
+//                 }
+//             }
+//             pom {
+//                 name = 'Cloud Office Print'
+//                 description = 'A Java interface for Cloud Office Print'
+//                 url = 'https://github.com/United-Codes/cloudofficeprint-java'
+//                 licenses {
+//                     license {
+//                         name 'GNU General Public License v3.0'
+//                         url 'https://www.gnu.org/licenses/gpl-3.0.txt'
+//                     }
+//                 }
+//                 developers {
+//                     developer {
+//                         id 'unitedcodes'
+//                         name 'United Codes'
+//                         email 'info@united-codes.com'
+//                     }
+//                 }
+//                 scm {
+//                     connection = 'scm:git:git://github.com/United-Codes/cloudofficeprint-java.git'
+//                     developerConnection = 'scm:git:ssh://github.com/United-Codes/cloudofficeprint-java.git'
+//                     url = 'https://github.com/United-Codes/cloudofficeprint-java'
+//                 }
+//             }
+//         }
+//     }
+//     repositories {
+//         maven {
+//             // change URLs to point to your repos, e.g. http://my.org/repo
+//             def releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+//             def snapshotsRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+//             url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+//         }
+//     }
+// }
+
+// signing {
+//     sign publishing.publications.mavenJava
+// }
+
+// javadoc {
+//     if(JavaVersion.current().isJava9Compatible()) {
+//         options.addBooleanOption('html5', true)
+//     }
+// }

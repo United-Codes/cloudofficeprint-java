@@ -264,3 +264,6 @@ Also see the [licenses section](#licenses).
 
 ## Licenses
 Because we bundle external dependencies in our .jar file, we add the licenses for all the dependencies to this project. For this we use a [Gradle plugin](https://github.com/jk1/Gradle-License-Report). The licenses can be found in the folder `cloudofficeprint/build/reports/dependency-license`.
+
+## Publishing
+To publish this SDK, [this guide](https://central.sonatype.org/publish/publish-guide/) is followed.
