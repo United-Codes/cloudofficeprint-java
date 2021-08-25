@@ -28,6 +28,8 @@ public class MultipleRequestMergeExample {
 	 * on how much data can be sent to a Cloud Office Print server, so this is
 	 * useful to split one big request into multiple smaller ones. This example will
 	 * take a minute to run.
+	 * @param APIKey your Cloud Office Print API key
+	 * @throws Exception if something went wrong
 	 */
 
 	public void main(String APIKey) throws Exception {

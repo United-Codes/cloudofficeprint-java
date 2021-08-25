@@ -207,6 +207,8 @@ public class Output {
      *                        : null.
      * @param pdfOptions      Optional PDF options. They are described in the
      *                        PDFOptions class. Default : null.
+     * @param csvOptions      Optional CSV options. They are described in the
+     *                        CsvOptions class. Default : null.
      */
     public Output(String filetype, String encoding, String converter, CloudAccessToken token, String serverDirectory,
             PDFOptions pdfOptions, CsvOptions csvOptions) {

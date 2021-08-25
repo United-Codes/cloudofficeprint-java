@@ -31,7 +31,7 @@ public class SolarSystemExample {
     /**
      * @param APIKey       Your Cloud Office Print API key
      * @param templatetype The type of the template: either "docx" or "pptx"
-     * @throws Exception
+     * @throws Exception   if something went wrong
      */
     public void main(String APIKey, String templatetype) throws Exception {
 
