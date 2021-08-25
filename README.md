@@ -239,11 +239,6 @@ For more information about the installation, see the [official installation guid
 ```bash
 ./gradlew build
 ```
-If you want to clear the generated files from the previous build and then build again, you can use:
-```bash
-./gradlew clean build
-```
-NOTE: this will also delete the generated licenses so they need to be generated again (see [Generate dependency licenses](#generate-dependency-licenses)).
 ### Generate .jar file
 ```bash
 ./gradlew jar
@@ -261,9 +256,19 @@ Also see the [licenses section](#licenses).
 ```bash
 ./gradlew generateLicenseReport
 ```
+### Clear build-folder
+If you want to clear the build-folder:
+```bash
+./gradlew clean
+```
+NOTE: this will delete the whole build-folder, so also the .jar file, documentation, dependency licenses and build-files
 
 ## Licenses
 Because we bundle external dependencies in our .jar file, we add the licenses for all the dependencies to this project. For this we use a [Gradle plugin](https://github.com/jk1/Gradle-License-Report). The licenses can be found in the folder `cloudofficeprint/build/reports/dependency-license`.
 
 ## Publishing
-To publish this SDK, [this guide](https://central.sonatype.org/publish/publish-guide/) is followed.
+To publish this SDK, these guides are followed:
+- https://central.sonatype.org/publish/publish-guide/
+- https://docs.gradle.org/current/userguide/publishing_maven.html
+- https://medium.com/@nmauti/sign-and-publish-on-maven-central-a-project-with-the-new-maven-publish-gradle-plugin-22a72a4bfd4b
+- https://www.albertgao.xyz/2018/01/18/how-to-publish-artifact-to-maven-central-via-gradle/
