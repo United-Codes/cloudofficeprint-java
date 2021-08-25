@@ -267,6 +267,17 @@ NOTE: this will delete the whole build-folder, so also the .jar file, documentat
 Because we bundle external dependencies in our .jar file, we add the licenses for all the dependencies to this project. For this we use a [Gradle plugin](https://github.com/jk1/Gradle-License-Report). The licenses can be found in the folder `cloudofficeprint/build/reports/dependency-license`.
 
 ## Publishing
+For publishing, uncomment the 'publishing'-block in the `build.gradle` file and run in your terminal:
+```bash
+./gradlew publish
+```
+
+If you first want to test locally, type in your terminal:
+```bash
+./gradlew publishToMavenLocal
+```
+The local Maven project can then be found in the folder ~/.m2/repository/com/cloudofficeprint/ (where ~ is your home folder).
+
 To publish this SDK, these guides are followed:
 - https://central.sonatype.org/publish/publish-guide/
 - https://docs.gradle.org/current/userguide/publishing_maven.html
