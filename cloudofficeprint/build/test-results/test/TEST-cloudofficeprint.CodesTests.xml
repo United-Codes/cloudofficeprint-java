@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="cloudofficeprint.CodesTests" tests="11" skipped="0" failures="0" errors="0" timestamp="2021-08-25T12:10:32" hostname="jaak-Inspiron-7590" time="0.031">
+<testsuite name="cloudofficeprint.CodesTests" tests="11" skipped="0" failures="0" errors="0" timestamp="2021-08-25T15:38:43" hostname="Administrators-MacBook-Pro-336.local" time="0.009">
   <properties/>
-  <testcase name="QRGeoTest()" classname="cloudofficeprint.CodesTests" time="0.002"/>
-  <testcase name="QREventTest()" classname="cloudofficeprint.CodesTests" time="0.002"/>
-  <testcase name="QRSMSTest()" classname="cloudofficeprint.CodesTests" time="0.002"/>
-  <testcase name="QRTelephoneTest()" classname="cloudofficeprint.CodesTests" time="0.0"/>
-  <testcase name="QRMeCardTest()" classname="cloudofficeprint.CodesTests" time="0.003"/>
-  <testcase name="QRVCardTest()" classname="cloudofficeprint.CodesTests" time="0.002"/>
-  <testcase name="QROptionsTest()" classname="cloudofficeprint.CodesTests" time="0.004"/>
-  <testcase name="QRURLTest()" classname="cloudofficeprint.CodesTests" time="0.001"/>
-  <testcase name="QREmailTest()" classname="cloudofficeprint.CodesTests" time="0.002"/>
-  <testcase name="barCodeTest()" classname="cloudofficeprint.CodesTests" time="0.002"/>
-  <testcase name="QRWifiTest()" classname="cloudofficeprint.CodesTests" time="0.002"/>
+  <testcase name="QRGeoTest()" classname="cloudofficeprint.CodesTests" time="0.001"/>
+  <testcase name="QREventTest()" classname="cloudofficeprint.CodesTests" time="0.0"/>
+  <testcase name="QRSMSTest()" classname="cloudofficeprint.CodesTests" time="0.001"/>
+  <testcase name="QRTelephoneTest()" classname="cloudofficeprint.CodesTests" time="0.001"/>
+  <testcase name="QRMeCardTest()" classname="cloudofficeprint.CodesTests" time="0.0"/>
+  <testcase name="QRVCardTest()" classname="cloudofficeprint.CodesTests" time="0.0"/>
+  <testcase name="QROptionsTest()" classname="cloudofficeprint.CodesTests" time="0.001"/>
+  <testcase name="QRURLTest()" classname="cloudofficeprint.CodesTests" time="0.0"/>
+  <testcase name="QREmailTest()" classname="cloudofficeprint.CodesTests" time="0.0"/>
+  <testcase name="barCodeTest()" classname="cloudofficeprint.CodesTests" time="0.001"/>
+  <testcase name="QRWifiTest()" classname="cloudofficeprint.CodesTests" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -3,7 +3,7 @@
   "component": {
     "group": "com.cloudofficeprint",
     "module": "cloudofficeprint",
-    "version": "21.2.0",
+    "version": "21.2.1",
     "attributes": {
       "org.gradle.status": "release"
     }
@@ -34,13 +34,13 @@
       ],
       "files": [
         {
-          "name": "cloudofficeprint-21.2.0.jar",
-          "url": "cloudofficeprint-21.2.0.jar",
-          "size": 7745516,
-          "sha512": "c75a6b8d876123368868a65c888fafb9a95d3e0348b4ab4c0939b80096bf8163d543fd8fe77fcb48be518724dea4954b494cd3d4e5d6324832be64412a1fc60e",
-          "sha256": "e05a8cc4322c33152a3f99ba43eb9196e6ac66f94c790dc0efc406428253c3ef",
-          "sha1": "eae15d672240b65be9d77ca4f9c35ff5912cac79",
-          "md5": "70e6e84cc3f23f79b20c8ba6c0ffc647"
+          "name": "cloudofficeprint-21.2.1.jar",
+          "url": "cloudofficeprint-21.2.1.jar",
+          "size": 7947835,
+          "sha512": "265dbbf194537bd4a86e6f30ba4270a63886e77e58fde5e401b1e1f42b38a953bff5e51dfcc61c8ef41718ed5072fc472320ac7d096036eddf1d06ebbb3557fe",
+          "sha256": "5e217a8130891777b7ddea0064997a1ebd59b2d716843df86ef5fb232399c6cb",
+          "sha1": "4a3faea5f0a101baef8d88d73d0e3189360180ca",
+          "md5": "e048102f2871dd6714f6b032fe25c5fe"
         }
       ]
     },
@@ -76,10 +76,24 @@
           }
         },
         {
+          "group": "org.slf4j",
+          "module": "slf4j-api",
+          "version": {
+            "requires": "1.7.32"
+          }
+        },
+        {
+          "group": "org.slf4j",
+          "module": "slf4j-simple",
+          "version": {
+            "requires": "1.7.32"
+          }
+        },
+        {
           "group": "org.apache.tika",
           "module": "tika-core",
           "version": {
-            "requires": "1.13"
+            "requires": "2.1.0"
           }
         },
         {
@@ -92,13 +106,13 @@
       ],
       "files": [
         {
-          "name": "cloudofficeprint-21.2.0.jar",
-          "url": "cloudofficeprint-21.2.0.jar",
-          "size": 7745516,
-          "sha512": "c75a6b8d876123368868a65c888fafb9a95d3e0348b4ab4c0939b80096bf8163d543fd8fe77fcb48be518724dea4954b494cd3d4e5d6324832be64412a1fc60e",
-          "sha256": "e05a8cc4322c33152a3f99ba43eb9196e6ac66f94c790dc0efc406428253c3ef",
-          "sha1": "eae15d672240b65be9d77ca4f9c35ff5912cac79",
-          "md5": "70e6e84cc3f23f79b20c8ba6c0ffc647"
+          "name": "cloudofficeprint-21.2.1.jar",
+          "url": "cloudofficeprint-21.2.1.jar",
+          "size": 7947835,
+          "sha512": "265dbbf194537bd4a86e6f30ba4270a63886e77e58fde5e401b1e1f42b38a953bff5e51dfcc61c8ef41718ed5072fc472320ac7d096036eddf1d06ebbb3557fe",
+          "sha256": "5e217a8130891777b7ddea0064997a1ebd59b2d716843df86ef5fb232399c6cb",
+          "sha1": "4a3faea5f0a101baef8d88d73d0e3189360180ca",
+          "md5": "e048102f2871dd6714f6b032fe25c5fe"
         }
       ]
     },
@@ -112,13 +126,13 @@
       },
       "files": [
         {
-          "name": "cloudofficeprint-21.2.0-javadoc.jar",
-          "url": "cloudofficeprint-21.2.0-javadoc.jar",
-          "size": 488032,
-          "sha512": "5127f07d67435eecbab2ae85df72bcfe33f6f8d076e738eabce271d6c46c6a14a8fb35472f750b7e5e0b194f9d9e1f430102192b76a6852d49cfb3bbe4b53f21",
-          "sha256": "dec2742ee8f681523b1427205152b6233ab27c8db752c785866ea10f6498ac85",
-          "sha1": "1d562b754a83dc9992d06d58369afb62596de4ff",
-          "md5": "2c4c7531ff32788fac62173437158dda"
+          "name": "cloudofficeprint-21.2.1-javadoc.jar",
+          "url": "cloudofficeprint-21.2.1-javadoc.jar",
+          "size": 488087,
+          "sha512": "6836fa8e2f4516f020f63cff955248a6d940590998ee117fdbf2b037828be40a6622e2190f7e698cf5620f05b535a74915440362e296c46edaa7d53262c7e72c",
+          "sha256": "86de9cf49118496ffc8f4de5d404421f8dc9cfd22e6d8ce9ce74730d0dcf2c9a",
+          "sha1": "6f3f201d71a5c6594181f17bc3661f7c0459a250",
+          "md5": "3ccc2f1713220a096fe43c977f55cdf5"
         }
       ]
     },
@@ -132,13 +146,13 @@
       },
       "files": [
         {
-          "name": "cloudofficeprint-21.2.0-sources.jar",
-          "url": "cloudofficeprint-21.2.0-sources.jar",
-          "size": 3130715,
-          "sha512": "49d9429f23b6c851aa43b607f7c5ef1930828ed5c7b97849d21fc66f0ed62a20b4af91a7bfa364fe1e7aee844e815d7de4897521c8d7aab07a52110459f15a53",
-          "sha256": "b936e146ba9095d82488897d7fa202e24b101d6cdb0c47f8986d446bee7c5159",
-          "sha1": "778daabab02f310a053cfaf0cb0ddd58f54c4ee1",
-          "md5": "0c55cdc8cf20d5ec42b21db57a8c3b29"
+          "name": "cloudofficeprint-21.2.1-sources.jar",
+          "url": "cloudofficeprint-21.2.1-sources.jar",
+          "size": 3130786,
+          "sha512": "e8a94dc5d463642cbbaad52a4e876b7a6d33f749a755f5cd9cb48ee2967776686fe1af73dfbff90e6dcd34c2f330dc32570171b8077fd8182ff1ab1240210e1c",
+          "sha256": "571aa6f142d8deb4c5558b559afa0cfd709246f91dec10d38ba640d0570c1354",
+          "sha1": "91fbea766501029b6d31ae416773a492d3fbfb9e",
+          "md5": "6c0a2f9b41ffbaa5e418f8565c5827d4"
         }
       ]
     }
