@@ -55,14 +55,9 @@ tasks.named('jar') {
     from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
 }
 
-task javadocJar(type: Jar) {
-    classifier = 'javadoc'
-    from javadoc
-}
-
-task sourcesJar(type: Jar) {
-    classifier = 'sources'
-    from sourceSets.main.allSource
+java {
+    withJavadocJar()
+    withSourcesJar()
 }
 
 signing {

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="cloudofficeprint.ChartTests" tests="9" skipped="0" failures="0" errors="0" timestamp="2021-08-24T08:05:48" hostname="jaak-Inspiron-7590" time="0.012">
+<testsuite name="cloudofficeprint.ChartTests" tests="9" skipped="0" failures="0" errors="0" timestamp="2021-08-25T09:23:32" hostname="Administrators-MacBook-Pro-336.local" time="0.014">
   <properties/>
-  <testcase name="testChartBar()" classname="cloudofficeprint.ChartTests" time="0.001"/>
+  <testcase name="testChartBar()" classname="cloudofficeprint.ChartTests" time="0.002"/>
   <testcase name="testChartCOP()" classname="cloudofficeprint.ChartTests" time="0.001"/>
   <testcase name="testChartPie()" classname="cloudofficeprint.ChartTests" time="0.001"/>
   <testcase name="testChartArea()" classname="cloudofficeprint.ChartTests" time="0.001"/>
   <testcase name="testChartLine()" classname="cloudofficeprint.ChartTests" time="0.001"/>
   <testcase name="testChartBubble()" classname="cloudofficeprint.ChartTests" time="0.001"/>
-  <testcase name="testCombinedChart()" classname="cloudofficeprint.ChartTests" time="0.002"/>
-  <testcase name="testChartStock()" classname="cloudofficeprint.ChartTests" time="0.002"/>
+  <testcase name="testCombinedChart()" classname="cloudofficeprint.ChartTests" time="0.003"/>
+  <testcase name="testChartStock()" classname="cloudofficeprint.ChartTests" time="0.001"/>
   <testcase name="testChartOptions()" classname="cloudofficeprint.ChartTests" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
