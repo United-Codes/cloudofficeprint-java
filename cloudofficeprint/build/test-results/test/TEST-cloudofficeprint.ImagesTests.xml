@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="cloudofficeprint.ImagesTests" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-08-25T15:53:34" hostname="jaak-Inspiron-7590" time="0.002">
+<testsuite name="cloudofficeprint.ImagesTests" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-08-25T16:28:24" hostname="jaak-Inspiron-7590" time="0.002">
   <properties/>
   <testcase name="imageURL()" classname="cloudofficeprint.ImagesTests" time="0.001"/>
   <testcase name="imageBase64()" classname="cloudofficeprint.ImagesTests" time="0.001"/>
