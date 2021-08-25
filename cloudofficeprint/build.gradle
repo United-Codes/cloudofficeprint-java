@@ -104,6 +104,14 @@ version = '21.2.0'
 //                     url = 'https://github.com/United-Codes/cloudofficeprint-java'
 //                 }
 //             }
+//             pom.withXml {
+//                 Node pomNode = asNode()
+//                 pomNode.dependencies.'*'.findAll() {
+//                     it.groupId.text() == 'org.slf4j'
+//                 }.each() {
+//                     it.parent().remove(it)
+//                 }
+//             }
 //         }
 //     }
 //     repositories {
