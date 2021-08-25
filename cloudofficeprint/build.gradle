@@ -34,13 +34,7 @@ dependencies {
     // https://mvnrepository.com/artifact/commons-io/commons-io
     implementation group: 'commons-io', name: 'commons-io', version: '2.6'
 
-    // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
-    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.32'
-
-    // https://mvnrepository.com/artifact/org.slf4j/slf4j-simple
-    implementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.32'
-
-    implementation group: 'org.apache.tika', name: 'tika-core', version: '2.1.0'
+    implementation group: 'org.apache.tika', name: 'tika-core', version: '1.27'
 }
 
 tasks.named('test') {
@@ -102,15 +96,6 @@ version = '21.2.1'
 //                     connection = 'scm:git:git://github.com/United-Codes/cloudofficeprint-java.git'
 //                     developerConnection = 'scm:git:ssh://github.com/United-Codes/cloudofficeprint-java.git'
 //                     url = 'https://github.com/United-Codes/cloudofficeprint-java'
-//                 }
-//                 // Exclude org.slf4j from dependencies in generated pom.xml file
-//                 withXml {
-//                     Node pomNode = asNode()
-//                     pomNode.dependencies.'*'.findAll() {
-//                         it.groupId.text() == 'org.slf4j'
-//                     }.each() {
-//                         it.parent().remove(it)
-//                     }
 //                 }
 //             }
 
