@@ -4,8 +4,7 @@ import com.cloudofficeprint.COPException;
 import com.cloudofficeprint.Response;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import org.apache.tika.mime.MimeType;
-import org.apache.tika.mime.MimeTypes;
+import com.cloudofficeprint.Mimetype;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -424,16 +423,15 @@ public class Server {
             if (isVerbose() == true) {
                 System.out.println("Server.java : " + "Content-Type : " + con.getHeaderField("Content-Type") + "\n");
             }
-            MimeTypes allTypes = MimeTypes.getDefaultMimeTypes();
-            MimeType type = allTypes.forName(con.getHeaderField("Content-Type"));
-            String ext = type.getExtension();
+            String mime = Mimetype.getMimetypeFromContentType(con.getHeaderField("Content-Type"));
+            String ext = Mimetype.getExtension(con.getHeaderField("Content-Type"));
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             byte[] buffer = new byte[1024];
             int length = 0;
             while ((length = con.getInputStream().read(buffer)) != -1) { // attempt is made to read as many as len bytes
                 baos.write(buffer, 0, length);
             }
-            Response response = new Response(ext, type.toString(), baos.toByteArray());
+            Response response = new Response("." + ext, mime, baos.toByteArray());
             return response;
         } else {
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getErrorStream()));
