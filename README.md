@@ -137,9 +137,9 @@ Going through the other examples is also recommended as this gives you a good id
 - solar system example: SolarSystemExample.java
 - SpaceX example: SpaceXExample.java (the most extensive example)
 
-The examples can be found in the directory 'src/main/java/com/cloudofficeprint/Examples' of the project on [Github](https://github.com/United-Codes/apexofficeprint-java). Each example has a markdown file explaining everything about that example.
+The examples can be found in the directory 'src/main/java/com/cloudofficeprint/Examples' of the project on [Github](https://github.com/United-Codes/cloudofficeprint-java). Each example has a markdown file explaining everything about that example.
 
-The examples can be run from the Main.java file, which can be found in the directory 'src/com/CloudOfficePrint/' of the project on [Github](https://github.com/United-Codes/apexofficeprint-java). In the Main.java file you can uncomment the examples you want to run.
+The examples can be run from the Main.java file, which can be found in the directory 'src/com/CloudOfficePrint/' of the project on [Github](https://github.com/United-Codes/cloudofficeprint-java). In the Main.java file you can uncomment the examples you want to run.
 
 ## Run examples in Eclipse
 See the [quickstart example](#quickstart-hello-world-example) for how to run code in Eclipse. You have to pass your API key as an argument when running the Main.java file. To do this, right-click inside the editor of the Main.java file and select 'Run As > Run Configurations...'. Then open the tab 'Arguments' and enter your API key inside the 'Program arguments' box and click 'Run'.
@@ -164,7 +164,7 @@ where you replace `dummy_api` with your API key.
 
 # Documentation
 
-The documentation for this SDK can be found inside the folder `build/docs/javadoc/` on [Github](https://github.com/United-Codes/apexofficeprint-java).
+The documentation for this SDK can be found inside the folder `build/docs/javadoc/` on [Github](https://github.com/United-Codes/cloudofficeprint-java).
 
 The Cloud Office Print documentation can be found at the [Cloud Office Print docs](https://www.cloudofficeprint.com/docs/).
 
