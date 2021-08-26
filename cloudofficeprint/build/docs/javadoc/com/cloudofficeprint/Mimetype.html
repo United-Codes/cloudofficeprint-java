@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":9};
+var data = {"i0":9,"i1":9,"i2":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -132,6 +132,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">Mimetype</span>
 extends java.lang.Object</pre>
+<div class="block">Own mimetype class (org.apache.tike gives warnings for logging)</div>
 </li>
 </ul>
 </div>
@@ -175,10 +176,23 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getExtension(java.lang.String)">getExtension</a></span>&#8203;(java.lang.String&nbsp;mimetype)</code></th>
+<td class="colLast">
+<div class="block">Return the extension given the mimetype of a file.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getMimeType(java.lang.String)">getMimeType</a></span>&#8203;(java.lang.String&nbsp;extension)</code></th>
 <td class="colLast">
-<div class="block">As the tika library gives two warnings I decided to implement if manually for
- all the supported document formats (not a lot).</div>
+<div class="block">Return the mimetype given the extension of a file.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getMimetypeFromContentType(java.lang.String)">getMimetypeFromContentType</a></span>&#8203;(java.lang.String&nbsp;contentType)</code></th>
+<td class="colLast">
+<div class="block">Extract the mimetype from the Content-Type argument in an HTTP reponse.</div>
 </td>
 </tr>
 </table>
@@ -227,14 +241,12 @@ extends java.lang.Object</pre>
 <a id="getMimeType(java.lang.String)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getMimeType</h4>
 <pre class="methodSignature">public static&nbsp;java.lang.String&nbsp;getMimeType&#8203;(java.lang.String&nbsp;extension)
                                     throws java.lang.Exception</pre>
-<div class="block">As the tika library gives two warnings I decided to implement if manually for
- all the supported document formats (not a lot). I didn't find any better
- option for the moment.</div>
+<div class="block">Return the mimetype given the extension of a file.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>extension</code> - Extension of the file to find the mimetype.</dd>
@@ -243,6 +255,42 @@ extends java.lang.Object</pre>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.lang.Exception</code> - If the file type is not supported (cannot find the
                    mimetype).</dd>
+</dl>
+</li>
+</ul>
+<a id="getExtension(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getExtension</h4>
+<pre class="methodSignature">public static&nbsp;java.lang.String&nbsp;getExtension&#8203;(java.lang.String&nbsp;mimetype)
+                                     throws java.lang.Exception</pre>
+<div class="block">Return the extension given the mimetype of a file.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>mimetype</code> - Mimetype of the file to find the extension.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Extension of the file.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.lang.Exception</code> - If the mimetype is not supported (cannot find the
+                   extension).</dd>
+</dl>
+</li>
+</ul>
+<a id="getMimetypeFromContentType(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getMimetypeFromContentType</h4>
+<pre class="methodSignature">public static&nbsp;java.lang.String&nbsp;getMimetypeFromContentType&#8203;(java.lang.String&nbsp;contentType)</pre>
+<div class="block">Extract the mimetype from the Content-Type argument in an HTTP reponse.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>contentType</code> - The Content-Type argument in an HTTP response</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the mimetype in the Content-Type argument</dd>
 </dl>
 </li>
 </ul>

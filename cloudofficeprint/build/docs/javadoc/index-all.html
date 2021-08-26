@@ -790,6 +790,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/cloudofficeprint/Response.html#getExt()">getExt()</a></span> - Method in class com.cloudofficeprint.<a href="com/cloudofficeprint/Response.html" title="class in com.cloudofficeprint">Response</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/cloudofficeprint/Mimetype.html#getExtension(java.lang.String)">getExtension(String)</a></span> - Static method in class com.cloudofficeprint.<a href="com/cloudofficeprint/Mimetype.html" title="class in com.cloudofficeprint">Mimetype</a></dt>
+<dd>
+<div class="block">Return the extension given the mimetype of a file.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/cloudofficeprint/Resources/Resource.html#getExtension(java.lang.String)">getExtension(String)</a></span> - Method in class com.cloudofficeprint.Resources.<a href="com/cloudofficeprint/Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/cloudofficeprint/PrintJob.html#getExternalResource()">getExternalResource()</a></span> - Method in class com.cloudofficeprint.<a href="com/cloudofficeprint/PrintJob.html" title="class in com.cloudofficeprint">PrintJob</a></dt>
@@ -1181,8 +1185,11 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/cloudofficeprint/Mimetype.html#getMimeType(java.lang.String)">getMimeType(String)</a></span> - Static method in class com.cloudofficeprint.<a href="com/cloudofficeprint/Mimetype.html" title="class in com.cloudofficeprint">Mimetype</a></dt>
 <dd>
-<div class="block">As the tika library gives two warnings I decided to implement if manually for
- all the supported document formats (not a lot).</div>
+<div class="block">Return the mimetype given the extension of a file.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/cloudofficeprint/Mimetype.html#getMimetypeFromContentType(java.lang.String)">getMimetypeFromContentType(String)</a></span> - Static method in class com.cloudofficeprint.<a href="com/cloudofficeprint/Mimetype.html" title="class in com.cloudofficeprint">Mimetype</a></dt>
+<dd>
+<div class="block">Extract the mimetype from the Content-Type argument in an HTTP reponse.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/cloudofficeprint/Server/Server.html#getMimeTypesSupported()">getMimeTypesSupported()</a></span> - Method in class com.cloudofficeprint.Server.<a href="com/cloudofficeprint/Server/Server.html" title="class in com.cloudofficeprint.Server">Server</a></dt>
 <dd>
@@ -1837,7 +1844,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="block">This object represents a VCF or vCard QR Code.</div>
 </dd>
 <dt><a href="com/cloudofficeprint/Mimetype.html" title="class in com.cloudofficeprint"><span class="typeNameLink">Mimetype</span></a> - Class in <a href="com/cloudofficeprint/package-summary.html">com.cloudofficeprint</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Own mimetype class (org.apache.tike gives warnings for logging)</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/cloudofficeprint/Mimetype.html#%3Cinit%3E()">Mimetype()</a></span> - Constructor for class com.cloudofficeprint.<a href="com/cloudofficeprint/Mimetype.html" title="class in com.cloudofficeprint">Mimetype</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/Examples/MultipleRequestMerge/MultipleRequestMergeExample.html" title="class in com.cloudofficeprint.Examples.MultipleRequestMerge"><span class="typeNameLink">MultipleRequestMergeExample</span></a> - Class in <a href="com/cloudofficeprint/Examples/MultipleRequestMerge/package-summary.html">com.cloudofficeprint.Examples.MultipleRequestMerge</a></dt>
