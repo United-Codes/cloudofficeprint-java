@@ -3,8 +3,7 @@ This project provides a Java interface for Cloud Office Print.
 
 # Installation
 ## .jar
-To install the Cloud Office Print Java package you can download the .jar file of the project and add it to the build path of your project. 
-TODO: reference to .jar repository
+To install the Cloud Office Print Java package you can download the .jar file of the project and add it to the build path of your project. The .jar file can be found on the [Maven Central Repository](https://search.maven.org/artifact/com.cloudofficeprint/cloudofficeprint). Select the latest version of Cloud Office Print, select `Downloads` in the top right corner and choose `jar` to download our .jar file.
 ### Eclipse
 In [Eclipse](https://www.eclipse.org/) create a new Java project or use an existing one. After downloading our .jar file, you can add it to the project by creating a 'lib'-folder on the same level as the 'src'-folder and putting the .jar file inside the 'lib'-folder.
 
@@ -17,16 +16,21 @@ repositories {
     mavenCentral()
 }
 ```
-In the same file, add the following line to the `dependencies`-object:
+The entry to put inside the `dependencies`-object in the `build.gradle` file can be found on our [Maven Central Repository](https://search.maven.org/artifact/com.cloudofficeprint/cloudofficeprint) and selecting the latest version. It will look like the following command where the version is changed to the latest version which can be found on our [Maven Central Repository](https://search.maven.org/artifact/com.cloudofficeprint/cloudofficeprint).
+```gradle
+dependencies {
+    implementation 'com.cloudofficeprint:cloudofficeprint:21.2.0'
+}
+```
+or
 ```gradle
 dependencies {
     implementation group: 'com.cloudofficeprint', name: 'cloudofficeprint', version: '21.2.0'
 }
 ```
-TODO: update the command if uploaded to Maven Central
 
 ## Maven
-To use the Cloud Office Print Java package in a Maven project, you can add it as a dependency to your `pom.xml` file. This project is uploaded to Maven Central, so in the `pom.xml` file you have to include the Maven Central repository:
+To use the Cloud Office Print Java package in a Maven project, you can add it as a dependency to your `pom.xml` file. This project is uploaded to Maven Central, so in the `pom.xml` file you have to include the Maven Central repository. The entry to put inside the `pom.xml` file can be found on our our [Maven Central Repository](https://search.maven.org/artifact/com.cloudofficeprint/cloudofficeprint) and selecting the latest version. It will look like the following command where the version is changed to the latest version which can be found on our [Maven Central Repository](https://search.maven.org/artifact/com.cloudofficeprint/cloudofficeprint).
 ```xml
 <dependencies>
     <dependency>
@@ -36,7 +40,6 @@ To use the Cloud Office Print Java package in a Maven project, you can add it as
     </dependency>
 </dependencies>
 ```
-TODO: update the command if uploaded to Maven Central
 
 # Usage
 1. Create a template (docx, xlsx, pptx, HTML, md, txt, csv), for the possible tags, click [here](http://www.cloudofficeprint.com/docs/#templates).
