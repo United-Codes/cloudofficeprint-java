@@ -7,33 +7,81 @@ import com.google.gson.JsonObject;
  */
 public class PDFOptions {
 
+    private Boolean evenPage;
+    private Boolean mergeMakingEven;
+    private String modifyPassword;
     private String readPassword;
+    private Integer passwordProtectionFlag;
     private String watermark;
     private String watermarkColor;
     private String watermarkFont;
     private Integer watermarkOpacity;
     private Integer watermarkSize;
-    private String pageWidth;
-    private String pageHeight;
-    private Boolean evenPage;
-    private Boolean mergeMakingEven;
-    private String modifyPassword;
-    private Integer passwordProtectionFlag;
     private Boolean lockForm;
     private Integer copies;
     private int[] pageMargin;
     private Boolean landscape;
+    private String pageWidth;
+    private String pageHeight;
     private String pageFormat;
     private Boolean merge;
-    private String signCertificate;
-    private Boolean identifyFormFields;
     private Boolean split;
+    private Boolean identifyFormFields;
+    private String signCertificate;
 
     /**
      * Constructor for the PDFOptions object. Set the options with the setters.
      * Uninitialized options won't be included in the JSON.
      */
     public PDFOptions() {
+    }
+
+    /**
+     * @return true if output will have even pages (blank page added if uneven
+     *         amount of pages).
+     */
+    public Boolean getEvenPage() {
+        return evenPage;
+    }
+
+    /**
+     * @param evenPage Whether output has even pages (blank page added if uneven
+     *                 amount of pages).
+     */
+    public void setEvenPage(Boolean evenPage) {
+        this.evenPage = evenPage;
+    }
+
+    /**
+     * @return If Cloud Office Print is going to merge all the append/prepend and
+     *         template files, making sure the output is even-paged (adding a blank
+     *         page if the output is uneven-paged).
+     */
+    public Boolean getMergeMakingEven() {
+        return mergeMakingEven;
+    }
+
+    /**
+     * @param mergeMakingEven Whether you want to merge all the append/prepend and
+     *                        template files, making sure the output is even-paged
+     *                        (adding a blank page if the output is uneven-paged).
+     */
+    public void setMergeMakingEven(Boolean mergeMakingEven) {
+        this.mergeMakingEven = mergeMakingEven;
+    }
+
+    /**
+     * @return The password needed to modify the PDF.
+     */
+    public String getModifyPassword() {
+        return modifyPassword;
+    }
+
+    /**
+     * @param modifyPassword Password needed to modify the PDF.
+     */
+    public void setModifyPassword(String modifyPassword) {
+        this.modifyPassword = modifyPassword;
     }
 
     /**
@@ -48,6 +96,29 @@ public class PDFOptions {
      */
     public void setReadPassword(String readPassword) {
         this.readPassword = readPassword;
+    }
+
+    /**
+     * More info on the flag bits on
+     * https://pdfhummus.com/post/147451287581/hummus-1058-and-pdf-writer-updates-encryption.
+     * 
+     * @return protection flag for the PDF (in addition to the user password). (int
+     *         representation of the 12 flag bits)
+     */
+    public Integer getPasswordProtectionFlag() {
+        return passwordProtectionFlag;
+    }
+
+    /**
+     * More info on the flag bits on
+     * https://pdfhummus.com/post/147451287581/hummus-1058-and-pdf-writer-updates-encryption.
+     * 
+     * @param passwordProtectionFlag protection flag for the PDF (in addition to the
+     *                               user password). (int representation of the 12
+     *                               flag bits)
+     */
+    public void setPasswordProtectionFlag(Integer passwordProtectionFlag) {
+        this.passwordProtectionFlag = passwordProtectionFlag;
     }
 
     /**
@@ -144,117 +215,6 @@ public class PDFOptions {
     }
 
     /**
-     * Only supported when converting HTML to PDF.
-     * 
-     * @return pageWidth width followed by unit : px, mm, cm, in (e.g. : 20 px). No
-     *         unit means px.
-     */
-    public String getPageWidth() {
-        return pageWidth;
-    }
-
-    /**
-     * Only supported when converting HTML to PDF.
-     * 
-     * @param pageWidth width followed by unit : px, mm, cm, in (e.g. : 20 px). No
-     *                  unit means px.
-     */
-    public void setPageWidth(String pageWidth) {
-        this.pageWidth = pageWidth;
-    }
-
-    /**
-     * Only supported when converting HTML to PDF.
-     * 
-     * @return pageHeight height followed by unit : px, mm, cm, in (e.g. : 20 px).
-     *         No unit means px.
-     */
-    public String getPageHeight() {
-        return pageHeight;
-    }
-
-    /**
-     * Only supported when converting HTML to PDF.
-     * 
-     * @param pageHeight eight followed by unit : px, mm, cm, in (e.g. : 20 px). No
-     *                   unit means px.
-     */
-    public void setPageHeight(String pageHeight) {
-        this.pageHeight = pageHeight;
-    }
-
-    /**
-     * @return true if output will have even pages (blank page added if uneven
-     *         amount of pages).
-     */
-    public Boolean getEvenPage() {
-        return evenPage;
-    }
-
-    /**
-     * @param evenPage Whether output has even pages (blank page added if uneven
-     *                 amount of pages).
-     */
-    public void setEvenPage(Boolean evenPage) {
-        this.evenPage = evenPage;
-    }
-
-    /**
-     * @return If Cloud Office Print is going to merge all the append/prepend and
-     *         template files, making sure the output is even-paged (adding a blank
-     *         page if the output is uneven-paged).
-     */
-    public Boolean getMergeMakingEven() {
-        return mergeMakingEven;
-    }
-
-    /**
-     * @param mergeMakingEven Whether you want to merge all the append/prepend and
-     *                        template files, making sure the output is even-paged
-     *                        (adding a blank page if the output is uneven-paged).
-     */
-    public void setMergeMakingEven(Boolean mergeMakingEven) {
-        this.mergeMakingEven = mergeMakingEven;
-    }
-
-    /**
-     * @return The password needed to modify the PDF.
-     */
-    public String getModifyPassword() {
-        return modifyPassword;
-    }
-
-    /**
-     * @param modifyPassword Password needed to modify the PDF.
-     */
-    public void setModifyPassword(String modifyPassword) {
-        this.modifyPassword = modifyPassword;
-    }
-
-    /**
-     * More info on the flag bits on
-     * https://pdfhummus.com/post/147451287581/hummus-1058-and-pdf-writer-updates-encryption.
-     * 
-     * @return protection flag for the PDF (in addition to the user password). (int
-     *         representation of the 12 flag bits)
-     */
-    public Integer getPasswordProtectionFlag() {
-        return passwordProtectionFlag;
-    }
-
-    /**
-     * More info on the flag bits on
-     * https://pdfhummus.com/post/147451287581/hummus-1058-and-pdf-writer-updates-encryption.
-     * 
-     * @param passwordProtectionFlag protection flag for the PDF (in addition to the
-     *                               user password). (int representation of the 12
-     *                               flag bits)
-     */
-    public void setPasswordProtectionFlag(Integer passwordProtectionFlag) {
-        this.passwordProtectionFlag = passwordProtectionFlag;
-    }
-
-    /**
      * @return If the output PDF will be locked/flattened.
      */
     public Boolean getLockForm() {
@@ -335,6 +295,64 @@ public class PDFOptions {
     }
 
     /**
+     * The page orientation, portrait or landscape.
+     * 
+     * @return The page orientation, portrait or landscape.
+     */
+    public String getPageOrientation() {
+        return landscape ? "landscape" : "portrait";
+    }
+
+    /**
+     * The page orientation, portrait or landscape,
+     * 
+     * @param orientation The page orientation, portrait or landscape.
+     */
+    public void setPageOrientation(String orientation) {
+        this.landscape = orientation == "landscape";
+    }
+
+    /**
+     * Only supported when converting HTML to PDF.
+     * 
+     * @return pageWidth width followed by unit : px, mm, cm, in (e.g. : 20 px). No
+     *         unit means px.
+     */
+    public String getPageWidth() {
+        return pageWidth;
+    }
+
+    /**
+     * Only supported when converting HTML to PDF.
+     * 
+     * @param pageWidth width followed by unit : px, mm, cm, in (e.g. : 20 px). No
+     *                  unit means px.
+     */
+    public void setPageWidth(String pageWidth) {
+        this.pageWidth = pageWidth;
+    }
+
+    /**
+     * Only supported when converting HTML to PDF.
+     * 
+     * @return pageHeight height followed by unit : px, mm, cm, in (e.g. : 20 px).
+     *         No unit means px.
+     */
+    public String getPageHeight() {
+        return pageHeight;
+    }
+
+    /**
+     * Only supported when converting HTML to PDF.
+     * 
+     * @param pageHeight eight followed by unit : px, mm, cm, in (e.g. : 20 px). No
+     *                   unit means px.
+     */
+    public void setPageHeight(String pageHeight) {
+        this.pageHeight = pageHeight;
+    }
+
+    /**
      * Only supported when converting HTML to PDF.
      * 
      * @return The page format: "A4" (default used by Cloud Office Print) or
@@ -370,6 +388,38 @@ public class PDFOptions {
     }
 
     /**
+     * @return whether or not the output PDF should be split into one file per page
+     *         in a zip file
+     */
+    public Boolean getSplit() {
+        return split;
+    }
+
+    /**
+     * @param split whether or not the output PDF should be split into one file per
+     *              page in a zip file
+     */
+    public void setSplit(Boolean split) {
+        this.split = split;
+    }
+
+    /**
+     * @return If it is set to true Cloud Office Print tries to identify the form
+     *         fields and fills them in.
+     */
+    public Boolean getIdentifyFormFields() {
+        return identifyFormFields;
+    }
+
+    /**
+     * @param identifyFormFields If it is set to true Cloud Office Print tries to
+     *                           identify the form fields and fills them in.
+     */
+    public void setIdentifyFormFields(Boolean identifyFormFields) {
+        this.identifyFormFields = identifyFormFields;
+    }
+
+    /**
      * It is possible to sign the output PDF if the output pdf has a signature
      * field.
      * 
@@ -391,38 +441,6 @@ public class PDFOptions {
      */
     public void setSignCertificate(String signCertificate) {
         this.signCertificate = signCertificate;
-    }
-
-    /**
-     * @return If it is set to true Cloud Office Print tries to identify the form
-     *         fields and fills them in.
-     */
-    public Boolean getIdentifyFormFields() {
-        return identifyFormFields;
-    }
-
-    /**
-     * @param identifyFormFields If it is set to true Cloud Office Print tries to
-     *                           identify the form fields and fills them in.
-     */
-    public void setIdentifyFormFields(Boolean identifyFormFields) {
-        this.identifyFormFields = identifyFormFields;
-    }
-
-    /**
-     * @return whether or not the output PDF should be split into one file per page
-     *         in a zip file
-     */
-    public Boolean getSplit() {
-        return split;
-    }
-
-    /**
-     * @param split whether or not the output PDF should be split into one file per
-     *              page in a zip file
-     */
-    public void setSplit(Boolean split) {
-        this.split = split;
     }
 
     /**
