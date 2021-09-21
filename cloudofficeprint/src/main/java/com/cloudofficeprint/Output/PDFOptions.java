@@ -2,6 +2,10 @@ package com.cloudofficeprint.Output;
 
 import com.google.gson.JsonObject;
 
+import java.io.*;
+import java.nio.file.Files;
+import java.util.Base64;
+
 /**
  * Class for all the optional PDF output options. Only for
  */
@@ -28,6 +32,7 @@ public class PDFOptions {
     private Boolean split;
     private Boolean identifyFormFields;
     private String signCertificate;
+    private String signCertificatePassword;
 
     /**
      * Constructor for the PDFOptions object. Set the options with the setters.
@@ -444,6 +449,33 @@ public class PDFOptions {
     }
 
     /**
+     * @return The password of the certificate file as a plain string.
+     */
+    public String getSignCertificatePassword() {
+        return signCertificatePassword;
+    }
+
+    /**
+     * @param signCertificatePassword The password of the certificate file as a
+     *                                plain string.
+     */
+    public void setSignCertificatePassword(String signCertificatePassword) {
+        this.signCertificatePassword = signCertificatePassword;
+    }
+
+    public void sign(String localCertificatePath) throws IOException {
+        File file = new File(localCertificatePath);
+        byte[] bytes = Files.readAllBytes(file.toPath());
+        String encodedString = Base64.getEncoder().encodeToString(bytes);
+        this.signCertificate = encodedString;
+    }
+
+    public void sign(String localCertificatePath, String password) throws IOException {
+        sign(localCertificatePath);
+        this.signCertificatePassword = password;
+    }
+
+    /**
      * @return JSON-representation of this object
      */
     public JsonObject getJSON() {
@@ -523,6 +555,9 @@ public class PDFOptions {
         }
         if (getSignCertificate() != null) {
             json.addProperty("output_sign_certificate", getSignCertificate());
+        }
+        if (getSignCertificatePassword() != null) {
+            json.addProperty("output_sign_certificate_password", getSignCertificatePassword());
         }
         if (getIdentifyFormFields() != null) {
             json.addProperty("identify_form_fields", getIdentifyFormFields());
