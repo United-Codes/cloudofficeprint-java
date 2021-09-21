@@ -463,6 +463,12 @@ public class PDFOptions {
         this.signCertificatePassword = signCertificatePassword;
     }
 
+    /**
+     * Sign the output PDF with a local certificate file.
+     * 
+     * @param localCertificatePath path to the local certificate file.
+     * @throws IOException
+     */
     public void sign(String localCertificatePath) throws IOException {
         File file = new File(localCertificatePath);
         byte[] bytes = Files.readAllBytes(file.toPath());
@@ -470,6 +476,13 @@ public class PDFOptions {
         this.signCertificate = encodedString;
     }
 
+    /**
+     * Sign the output PDF with a local certificate file.
+     * 
+     * @param localCertificatePath path to the local certificate file.
+     * @param password             password of the certificate.
+     * @throws IOException
+     */
     public void sign(String localCertificatePath, String password) throws IOException {
         sign(localCertificatePath);
         this.signCertificatePassword = password;
