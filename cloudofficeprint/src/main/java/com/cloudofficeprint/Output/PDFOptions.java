@@ -508,8 +508,23 @@ public class PDFOptions {
      */
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
+        if (getEvenPage() != null) {
+            json.addProperty("output_even_page", getEvenPage());
+        }
+        if (getMergeMakingEven() != null) {
+            json.addProperty("output_merge_making_even", getMergeMakingEven());
+        }
+        if (getRemoveLastPage() != null) {
+            json.addProperty("output_remove_last_page", getRemoveLastPage());
+        }
+        if (getModifyPassword() != null) {
+            json.addProperty("output_modify_password", getModifyPassword());
+        }
         if (getReadPassword() != null) {
             json.addProperty("output_read_password", getReadPassword());
+        }
+        if (getPasswordProtectionFlag() != null) {
+            json.addProperty("output_password_protection_flag", getPasswordProtectionFlag());
         }
         if (getWatermark() != null) {
             json.addProperty("output_watermark", getWatermark());
@@ -525,24 +540,6 @@ public class PDFOptions {
         }
         if (getWatermarkSize() != null) {
             json.addProperty("output_watermark_size", getWatermarkSize());
-        }
-        if (getPageWidth() != null) {
-            json.addProperty("output_page_width", getPageWidth());
-        }
-        if (getPageHeight() != null) {
-            json.addProperty("output_page_height", getPageHeight());
-        }
-        if (getEvenPage() != null) {
-            json.addProperty("output_even_page", getEvenPage());
-        }
-        if (getMergeMakingEven() != null) {
-            json.addProperty("output_merge_making_even", getMergeMakingEven());
-        }
-        if (getModifyPassword() != null) {
-            json.addProperty("output_modify_password", getModifyPassword());
-        }
-        if (getPasswordProtectionFlag() != null) {
-            json.addProperty("output_password_protection_flag", getPasswordProtectionFlag());
         }
         if (getLockForm() != null) {
             json.addProperty("lock_form", getLockForm());
@@ -570,31 +567,34 @@ public class PDFOptions {
             // also be supported as tag name to be consistent with the other namings.
             json.add("page_margin", marginDict);
         }
+        if (getLandscape() != null && getLandscape() == true) {
+            // For Cloud Office Print versions later than 21.1.1, output_page_orientation
+            // will also be supported as tag name to be consistent with the other namings.
+            json.addProperty("page_orientation", "landscape");
+        }
+        if (getPageWidth() != null) {
+            json.addProperty("output_page_width", getPageWidth());
+        }
+        if (getPageHeight() != null) {
+            json.addProperty("output_page_height", getPageHeight());
+        }
         if (getPageFormat() != null) {
             json.addProperty("output_page_format", getPageFormat());
         }
         if (getMerge() != null) {
             json.addProperty("output_merge", getMerge());
         }
-        if (getLandscape() != null && getLandscape() == true) {
-            // For Cloud Office Print versions later than 21.1.1, output_page_orientation
-            // will also be supported as tag name to be consistent with the other namings.
-            json.addProperty("page_orientation", "landscape");
+        if (getSplit() != null) {
+            json.addProperty("output_split", getSplit());
+        }
+        if (getIdentifyFormFields() != null) {
+            json.addProperty("identify_form_fields", getIdentifyFormFields());
         }
         if (getSignCertificate() != null) {
             json.addProperty("output_sign_certificate", getSignCertificate());
         }
         if (getSignCertificatePassword() != null) {
             json.addProperty("output_sign_certificate_password", getSignCertificatePassword());
-        }
-        if (getIdentifyFormFields() != null) {
-            json.addProperty("identify_form_fields", getIdentifyFormFields());
-        }
-        if (getSplit() != null) {
-            json.addProperty("output_split", getSplit());
-        }
-        if (getRemoveLastPage() != null) {
-            json.addProperty("output_remove_last_page", getRemoveLastPage());
         }
         return json;
     }
