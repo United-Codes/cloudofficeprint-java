@@ -13,6 +13,7 @@ public class PDFOptions {
 
     private Boolean evenPage;
     private Boolean mergeMakingEven;
+    private Boolean removeLastPage;
     private String modifyPassword;
     private String readPassword;
     private Integer passwordProtectionFlag;
@@ -73,6 +74,20 @@ public class PDFOptions {
      */
     public void setMergeMakingEven(Boolean mergeMakingEven) {
         this.mergeMakingEven = mergeMakingEven;
+    }
+
+    /**
+     * @return Remove the last page from the given PDF document.
+     */
+    public Boolean getRemoveLastPage() {
+        return removeLastPage;
+    }
+
+    /**
+     * @param removeLastPage Remove the last page from the given PDF document
+     */
+    public void setRemoveLastPage(Boolean removeLastPage) {
+        this.removeLastPage = removeLastPage;
     }
 
     /**
@@ -577,6 +592,9 @@ public class PDFOptions {
         }
         if (getSplit() != null) {
             json.addProperty("output_split", getSplit());
+        }
+        if (getRemoveLastPage() != null) {
+            json.addProperty("output_remove_last_page", getRemoveLastPage());
         }
         return json;
     }
