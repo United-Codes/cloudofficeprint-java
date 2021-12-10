@@ -164,7 +164,17 @@ public class RenderElementsTests {
         // System.out.println(jsonCorrect);
         assertEquals(jsonCorrect, prop.getJSON());
     }
-
+    @Test
+    public void freeze() {
+        Freeze prop = new Freeze("name","C6");
+        String correct = "{'name' : 'C6' }";
+        Freeze prop1 = new Freeze("name",true);
+        String correct1 = "{'name': true }";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        JsonObject jsonCorrect1 = JsonParser.parseString((correct1)).getAsJsonObject();
+        assertEquals(jsonCorrect,prop.getJSON());
+        assertEquals(jsonCorrect1,prop1.getJSON());
+    }
     @Test
     public void elementCollection() {
         ElementCollection data = new ElementCollection("data");

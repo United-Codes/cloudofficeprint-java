@@ -12,10 +12,18 @@ public class RawJsonArray extends RenderElement {
 
     JsonArray jsonArray = new JsonArray();
 
+    /**
+     * To get raw json array.
+     * @return json array
+     */
     public JsonArray getJsonArray() {
         return jsonArray;
     }
 
+    /**
+     * to set Json array
+     * @param jsonArray Json Array
+     */
     public void setJsonArray(JsonArray jsonArray) {
         this.jsonArray = jsonArray;
     }

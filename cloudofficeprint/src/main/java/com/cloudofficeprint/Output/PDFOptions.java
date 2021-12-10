@@ -9,6 +9,10 @@ public class PDFOptions {
 
     private String readPassword;
     private String watermark;
+    private Integer watermarkSize;
+    private Integer watermarkOpacity;
+    private String watermarkColor;
+    private String watermarkFont;
     private String pageWidth;
     private String pageHeight;
     private Boolean evenPage;
@@ -22,8 +26,11 @@ public class PDFOptions {
     private String pageFormat;
     private Boolean merge;
     private String signCertificate;
+    private String signCertificateWithPassword;
     private Boolean identifyFormFields;
     private Boolean split;
+    private Boolean removeLastPage;
+
 
     /**
      * @return password to read the output.
@@ -40,6 +47,8 @@ public class PDFOptions {
     }
 
     /**
+     * It is possible to set your own watermark.
+     *
      * @return diagonal custom watermark on every page in the output file.
      */
     public String getWatermark() {
@@ -47,12 +56,84 @@ public class PDFOptions {
     }
 
     /**
+     * It is possible to set your own watermark.
+     *
      * @param watermark diagonal custom watermark on every page in the output file.
      */
     public void setWatermark(String watermark) {
         this.watermark = watermark;
     }
 
+    /**
+     *  It is possible to set opacity of your watermark.
+     *
+     * @return opacity of watermark.
+     */
+    public Integer getWatermarkOpacity(){
+        return watermarkOpacity;
+    }
+
+    /**
+     *
+     * It is possible to set opacity of your watermark.
+     * @param watermarkOpacity opacity of watermark in percentage.
+     */
+    public void setWatermarkOpacity(Integer watermarkOpacity){
+        this.watermarkOpacity = watermarkOpacity;
+    }
+
+    /**
+     * It is possible to set size of your watermark.
+     *
+     * @return size of watermark.
+     */
+    public Integer getWatermarkSize(){
+        return watermarkSize;
+    }
+
+    /**
+     * It is possible to set size of your watermark.
+     *
+     * @param watermarkSize size of watermark in percentage.
+     */
+    public void setWatermarkSize(Integer watermarkSize){
+        this.watermarkSize = watermarkSize;
+    }
+
+    /**
+     * It is possible to assign color of your watermark.
+     *
+     * @return  color of watermark.
+     */
+    public String getWatermarkColor(){
+        return watermarkColor;
+    }
+
+    /**
+     *
+     * It is possible to assign color of your watermark.
+     * @param watermarkColor color of watermark. Default is black
+     */
+    public void setWatermarkColor(String watermarkColor){
+        this.watermarkColor = watermarkColor;
+    }
+
+    /**
+     * It is possible to assign font to your watermark.
+     * @return font of watermark.
+     */
+    public String getWatermarkFont(){
+        return watermarkFont;
+    }
+
+    /**
+     * It is possible to assign font to your watermark.
+     *
+     * @param watermarkFont font of watermark.
+     */
+    public void setWatermarkFont(String watermarkFont){
+        this.watermarkFont = watermarkFont;
+    }
     /**
      * Only supported when converting HTML to PDF.
      * 
@@ -217,7 +298,7 @@ public class PDFOptions {
 
     /**
      * Only supported when converting HTML to PDF.
-     * 
+     *
      * @param pageMargin Margin (same for all sides).
      */
     public void setPageMargin(int pageMargin) {
@@ -264,7 +345,9 @@ public class PDFOptions {
     }
 
     /**
-     * @return True if instead of returning back a zip file for multiple outputs,
+     * It is possible to set whether to return a zip file of multiple output.
+     *
+     * @return True if instead of returning a zip file for multiple outputs,
      *         they will be merged in one output.
      */
     public Boolean getMerge() {
@@ -304,37 +387,75 @@ public class PDFOptions {
     }
 
     /**
-     * @return If it is set to true Cloud Office Print tries to identify the form
-     *         fields and fills them in.
+     * It is possible to sign certificate with password.
+     *
+     * @return password protected signature
+     */
+    public String getSignCertificateWithPassword(){
+        return signCertificateWithPassword;
+    }
+
+    /**
+     * It is possible to sign certificate with password.
+     *
+     * @param signCertificateWithPassword value for the password of signature.
+     */
+    public void setSignCertificateWithPassword(String signCertificateWithPassword){
+        this.signCertificateWithPassword = signCertificateWithPassword;
+    }
+    /**
+     * If it is set to true Cloud Office Print tries to identify the for
+     * fields and fills them in.
+     * @return whether to get identityFormFields.
      */
     public Boolean getIdentifyFormFields() {
         return identifyFormFields;
     }
 
     /**
-     * @param identifyFormFields If it is set to true Cloud Office Print tries to
-     *                           identify the form fields and fills them in.
+     * If it is set to true Cloud Office Print tries to identify the form fields and fills them in.
+     *
+     * @param identifyFormFields value for identify form fields.
      */
     public void setIdentifyFormFields(Boolean identifyFormFields) {
         this.identifyFormFields = identifyFormFields;
     }
 
     /**
-     * @return whether or not the output PDF should be split into one file per page
-     *         in a zip file
+     * the output PDF should be split into one file per page in a zip file.
+     *
+     * @return split whether to split or not.
      */
     public Boolean getSplit() {
         return split;
     }
 
     /**
-     * @param split whether or not the output PDF should be split into one file per
-     *              page in a zip file
+     * whether the output PDF should be split into one file per page in a zip file
+     *
+     * @param split   whether to split or not.
      */
     public void setSplit(Boolean split) {
         this.split = split;
     }
 
+    /**
+     * It is possible to remove last page from output. It is useful when the last page of output is blank.
+     *
+     * @return whether to remove last page or not
+     */
+    public Boolean getRemoveLastPage(){
+        return removeLastPage;
+    }
+
+    /**
+     * It is possible to remove last page from output. It is useful when the last page of output is blank.
+     *
+     * @param removeLastPage whether to remove last page
+     */
+    public void setRemoveLastPage(Boolean removeLastPage){
+        this.removeLastPage = removeLastPage;
+    }
     /**
      * Constructor for the PDFOptions object. Set the options with the setters.
      * Uninitialized options won't be included in the JSON.
@@ -352,6 +473,18 @@ public class PDFOptions {
         }
         if (getWatermark() != null) {
             json.addProperty("output_watermark", getWatermark());
+        }
+        if (getWatermarkColor() != null) {
+            json.addProperty("output_watermark_color",getWatermarkColor());
+        }
+        if (getWatermarkSize() != null) {
+            json.addProperty("output_watermark_size",getWatermarkSize());
+        }
+        if (getWatermarkFont() != null) {
+            json.addProperty("output_watermark_font",getWatermarkFont());
+        }
+        if (getWatermarkOpacity() != null) {
+            json.addProperty("output_watermark_opacity",getWatermarkOpacity());
         }
         if (getPageWidth() != null) {
             json.addProperty("output_page_width", getPageWidth());
@@ -403,7 +536,7 @@ public class PDFOptions {
         if (getMerge() != null) {
             json.addProperty("output_merge", getMerge());
         }
-        if (getLandscape() != null && getLandscape() == true) {
+        if (getLandscape() != null && getLandscape()) {
             json.addProperty("page_orientation", "landscape"); // For Cloud Office Print versions later than 21.1.1,
                                                                // output_page_orientation will also be supported as tag
                                                                // name to be consistent with the other namings.
@@ -411,11 +544,17 @@ public class PDFOptions {
         if (getSignCertificate() != null) {
             json.addProperty("output_sign_certificate", getSignCertificate());
         }
+        if (getSignCertificateWithPassword() != null){
+            json.addProperty("output_sign_certificate_password",getSignCertificateWithPassword());
+        }
         if (getIdentifyFormFields() != null) {
             json.addProperty("identify_form_fields", getIdentifyFormFields());
         }
         if (getSplit() != null) {
             json.addProperty("output_split", getSplit());
+        }
+        if (getRemoveLastPage()){
+            json.addProperty("output_remove_last_page",getRemoveLastPage());
         }
         return json;
     }

@@ -2,6 +2,7 @@ package com.cloudofficeprint.Server;
 
 import com.cloudofficeprint.COPException;
 import com.cloudofficeprint.Response;
+import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.cloudofficeprint.Mimetype;
@@ -269,6 +270,21 @@ public class Server {
         return response.equals("polo");
     }
 
+    /**
+     * Sends a Get request to check the status of ipp-printer provided with location and version of url
+     *
+     * @return whether the printer is reachable or not.
+     */
+    public boolean isIppPrinterReachable() {
+        try {
+            String response = sendGETRequest(this.url + "ipp_check?ipp_url=" + this.printer.getLocation() + "&version=" + this.printer.getVersion());
+            JsonObject json = new Gson().fromJson(response, JsonObject.class);
+            return (json.get("statusCode").toString()).contains("successful-ok");
+        }catch(Exception e){
+            return false;
+        }
+
+    }
     /**
      * Sends a GET request to server-url/soffice.
      * 

@@ -24,6 +24,10 @@ public class ConfigTests {
         PDFOptions pdfOptions = new PDFOptions();
         pdfOptions.setReadPassword("test_pw");
         pdfOptions.setWatermark("test_watermark");
+        pdfOptions.setWatermarkColor("blue");
+        pdfOptions.setWatermarkFont("Aerial");
+        pdfOptions.setWatermarkOpacity(60);
+        pdfOptions.setWatermarkSize(30);
         pdfOptions.setPageWidth("500");
         pdfOptions.setPageHeight("500");
         pdfOptions.setEvenPage(true);
@@ -37,9 +41,11 @@ public class ConfigTests {
         pdfOptions.setMerge(false);
         pdfOptions.setPageFormat("test_page_format");
         pdfOptions.setSignCertificate("test_sign_certificate");
+        pdfOptions.setSignCertificateWithPassword("Base64 certificate with password");
         pdfOptions.setLandscape(false);
         pdfOptions.setIdentifyFormFields(true);
         pdfOptions.setSplit(false);
+        pdfOptions.setRemoveLastPage(true);
 
         Output output = new Output("pdf", "raw", "libreoffice", null, null, pdfOptions, null);
 
@@ -150,8 +156,8 @@ public class ConfigTests {
 
     @Test
     public void testPrinter() {
-        Printer printer = new Printer("http://10.0.14.223:631/", "1.1", "your name", "Cloud Office Print");
-        String correct = " {  'location': 'http://10.0.14.223:631/', 'version': '1.1','requester': 'your name', 'job_name': 'Cloud Office Print' }";
+        Printer printer = new Printer("http://10.0.14.223:631/", "1.1", "your name", "Cloud Office Print",true);
+        String correct = " {  'location': 'http://10.0.14.223:631/', 'version': '1.1','requester': 'your name', 'job_name': 'Cloud Office Print','return_output':true }";
         // System.out.println(printer.getJSON());
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
