@@ -27,7 +27,7 @@ public class ConfigTests {
         pdfOptions.setWatermarkColor("blue");
         pdfOptions.setWatermarkFont("Aerial");
         pdfOptions.setWatermarkOpacity(60);
-        pdfOptions.setWatermarkSize(30);
+        pdfOptions.setWatermarkFontSize(30);
         pdfOptions.setPageWidth("500");
         pdfOptions.setPageHeight("500");
         pdfOptions.setEvenPage(true);
@@ -41,7 +41,7 @@ public class ConfigTests {
         pdfOptions.setMerge(false);
         pdfOptions.setPageFormat("test_page_format");
         pdfOptions.setSignCertificate("test_sign_certificate");
-        pdfOptions.setSignCertificateWithPassword("Base64 certificate with password");
+        pdfOptions.setSignCertificatePassword("Base64 certificate with password");
         pdfOptions.setLandscape(false);
         pdfOptions.setIdentifyFormFields(true);
         pdfOptions.setSplit(false);
