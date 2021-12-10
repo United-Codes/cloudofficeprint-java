@@ -78,7 +78,7 @@ public class Server {
 
     /**
      * Only applicable for service users.
-     * 
+     *
      * @return The value of this key is the API key given by Cloud Office Print.
      */
     public String getAPIKey() {
@@ -87,7 +87,7 @@ public class Server {
 
     /**
      * Only applicable for service users.
-     * 
+     *
      * @param APIKey given by Cloud Office Print.
      */
     public void setAPIKey(String APIKey) {
@@ -97,9 +97,9 @@ public class Server {
     /**
      * When the Cloud Office Print server is started with --enable_printlog, it will
      * create a file on the server called server_printjob.log.
-     * 
+     *
      * @return Jsonobject with the extra information you want to be logged in that
-     *         file.
+     * file.
      */
     public JsonObject getLoggingInfo() {
         return loggingInfo;
@@ -110,11 +110,11 @@ public class Server {
      * create a file on the server called server_printjob.log. You can add
      * additional logging information next to the one Cloud Office Print is logging
      * by default, by adding additional keys and values in the logging object.
-     * 
+     *
      * @param loginInfo Jsonobject with the information you want to be logged.
      */
     public void setLoggingInfo(JsonObject loginInfo) { // Need to change this to appart function maybe but need info :
-                                                       // Sunil
+        // Sunil
         this.loggingInfo = loginInfo;
     }
 
@@ -134,9 +134,9 @@ public class Server {
 
     /**
      * Cloud Office Print supports to print directly to an IP Printer.
-     * 
+     *
      * @return Printer object containing the required info for the Cloud Office
-     *         Print server.
+     * Print server.
      */
     public Printer getPrinter() {
         return printer;
@@ -144,7 +144,7 @@ public class Server {
 
     /**
      * Cloud Office Print supports to print directly to an IP Printer.
-     * 
+     *
      * @param printer Printer object containing the required info for the Cloud
      *                Office Print server.
      */
@@ -154,7 +154,7 @@ public class Server {
 
     /**
      * @return Commands object with commands for the Cloud Office Print server to
-     *         run before or after the post processing.
+     * run before or after the post processing.
      */
     public Commands getCommands() {
         return commands;
@@ -199,7 +199,7 @@ public class Server {
     /**
      * Most basic constructor of the server. Can be populated more with the set
      * functions.
-     * 
+     *
      * @param url of the Cloud Office Print server.
      */
     public Server(String url) {
@@ -208,7 +208,7 @@ public class Server {
 
     /**
      * Use default values if you don't want to specify an argument.
-     * 
+     *
      * @param url         of the Cloud Office Print server
      * @param APIKey      Only applicable for service users. The value of this key
      *                    is the API key given by Cloud Office Print.
@@ -225,7 +225,7 @@ public class Server {
      * @param proxyPort   Port of the optional proxy. Only HTTP proxies supported.
      */
     public Server(String url, String APIKey, Printer printer, Commands commands, JsonObject loggingInfo, String proxyIP,
-            Integer proxyPort) {
+                  Integer proxyPort) {
         setUrl(url);
         setAPIKey(APIKey);
         setPrinter(printer);
@@ -237,7 +237,7 @@ public class Server {
 
     /**
      * @return JSONObject with the tags for the output for the Cloud Office Print
-     *         server.
+     * server.
      */
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
@@ -262,7 +262,7 @@ public class Server {
 
     /**
      * Sends a GET request to server-url/marco and checks if the answer is polo.
-     * 
+     *
      * @return true if the server is reachable.
      */
     public boolean isReachable() {
@@ -279,15 +279,15 @@ public class Server {
         try {
             String response = sendGETRequest(this.url + "ipp_check?ipp_url=" + this.printer.getLocation() + "&version=" + this.printer.getVersion());
             JsonObject json = new Gson().fromJson(response, JsonObject.class);
-            return (json.get("statusCode").toString()).contains("successful-ok");
-        }catch(Exception e){
+            return json.get("statusCode").toString().contains("successful-ok");
+        } catch (Exception e) {
             return false;
         }
-
     }
+
     /**
      * Sends a GET request to server-url/soffice.
-     * 
+     *
      * @return current version of Libreoffice installed on the server.
      */
     public String getSofficeVersionServer() {
@@ -296,9 +296,9 @@ public class Server {
 
     /**
      * Sends a GET request to server-url/officetopdf.
-     * 
+     *
      * @return current version of OfficeToPdf installed on the server. (Only
-     *         available if the server runs in Windows environment).
+     * available if the server runs in Windows environment).
      */
     public String getOfficeToPdfVersion() {
         return sendGETRequest(this.url + "/officetopdf");
@@ -306,7 +306,7 @@ public class Server {
 
     /**
      * Sends a GET request to server-url/supported_template_mimetypes.
-     * 
+     *
      * @return json of the mime types of templates that Cloud Office Print supports.
      */
     public String getMimeTypesSupported() {
@@ -317,7 +317,7 @@ public class Server {
      * Sends a GET request to
      * server-url/supported_output_mimetypes?template=extension. Note: You will get
      * empty json if the template extension isn't supported.
-     * 
+     *
      * @param extension Template extension.
      * @return The supported output types for the given template extension.
      */
@@ -327,7 +327,7 @@ public class Server {
 
     /**
      * Sends a GET request to server-url/supported_prepend_mimetypes.
-     * 
+     *
      * @return returns the supported prepend file mime types in JSON format.
      */
     public String getPrependMimeTypesSupported() {
@@ -336,7 +336,7 @@ public class Server {
 
     /**
      * Sends a GET request to server-url/version.
-     * 
+     *
      * @return returns the version of Cloud Office Print that is run on server.
      */
     public String getCOPVersionOnServer() {
@@ -345,7 +345,7 @@ public class Server {
 
     /**
      * Sends a GET request to the url.
-     * 
+     *
      * @param urlToJoin URL to send the GET request to.
      * @return body of the response of the request.
      */
@@ -395,10 +395,10 @@ public class Server {
 
     /**
      * Sends a POST request with the given json file as body.
-     * 
+     *
      * @param postData json to send to the server
-     * @throws COPException when server response's code is not equal to 200.
      * @return Response object containing the file extension and body (in bytes)
+     * @throws COPException when server response's code is not equal to 200.
      */
     public Response sendPOSTRequest(JsonObject postData) throws Exception {
 
@@ -463,7 +463,7 @@ public class Server {
 
     /**
      * Function to read a local JSON file.
-     * 
+     *
      * @param path Local path of the file.
      * @return String of the json.
      * @throws FileNotFoundException If the file is not found.
