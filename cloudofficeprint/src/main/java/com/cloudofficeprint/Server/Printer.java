@@ -11,7 +11,6 @@ import com.google.gson.JsonObject;
  * binary pdftops is on PATH variable. You can download executables from
  * cloudofficeprint.com to check whether or not your IPP printer supports
  * PDF/postscript.
- * <p>
  * This class represents an IP-enabled printer to use with the Cloud Office
  * Print server.
  */

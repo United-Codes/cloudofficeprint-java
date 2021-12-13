@@ -236,7 +236,6 @@ public class PDFOptions {
 
     /**
      * Sets the protection flag for the PDF.
-     * <p>
      * More info on the flag bits on
      * https://pdfhummus.com/post/147451287581/hummus-1058-and-pdf-writer-updates-encryption.
      *
@@ -266,7 +265,7 @@ public class PDFOptions {
     }
 
     /**
-     * Useful when user need multiple number of output copies
+     * Useful when user needs multiple number of output copies
      *
      * @return Number of times the output need to be repeated.
      */
@@ -275,7 +274,7 @@ public class PDFOptions {
     }
 
     /**
-     * Sets the  Number of times the output will be repeated. Useful when user need multiple number of output copies
+     * Sets the  Number of times the output will be repeated. Useful when user needs multiple number of output copies
      *
      * @param copies Number of times the output need to be repeated.
      */
@@ -294,7 +293,6 @@ public class PDFOptions {
 
     /**
      * Sets top bottom left right margin in pixels.
-     * <p>
      * Only supported when converting HTML to PDF.
      *
      * @param pageMargins top bottom left right margin in pixels .
@@ -309,7 +307,6 @@ public class PDFOptions {
 
     /**
      * Sets same pageMargin for top, bottom, left and right.
-     * <p>
      * Only supported when converting HTML to PDF.
      *
      * @param pageMargin Margin (same for all sides).

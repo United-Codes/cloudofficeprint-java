@@ -113,8 +113,7 @@ public class Server {
      *
      * @param loginInfo Jsonobject with the information you want to be logged.
      */
-    public void setLoggingInfo(JsonObject loginInfo) { // Need to change this to appart function maybe but need info :
-        // Sunil
+    public void setLoggingInfo(JsonObject loginInfo) { // Need to change this to apart function maybe but need info :
         this.loggingInfo = loginInfo;
     }
 
