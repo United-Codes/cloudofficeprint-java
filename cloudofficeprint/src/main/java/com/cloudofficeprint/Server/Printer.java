@@ -122,6 +122,29 @@ public class Printer {
     }
 
     /**
+     * Cloud Office Print supports to print directly to an IP Printer. If your IPP
+     * printer supports PDF files, your documents will be converter to PDF and sent
+     * to IPP printer. If your printer does not support PDF and supports Postscript
+     * then the PDF generated is converter to PDF using pdftops. You need download
+     * xpdf tools from: https://www.xpdfreader.com/download.html. Make sure that the
+     * binary pdftops is on PATH variable. You can download executables from
+     * cloudofficeprint.com to check whether or not your IPP printer supports
+     * PDF/postscript. This Pritner object represents an IP-enabled printer to use
+     * with the Cloud Office Print server.
+     *
+     * @param location     HTTP adress of the printer.
+     * @param version      Version of the IPP protocol.
+     * @param requester    Name of the requester for the printer (often just your
+     *                     name).
+     * @param jobName      Name of the job for the printer.
+     */
+    public Printer(String location, String version, String requester, String jobName) {
+        setLocation(location);
+        setVersion(version);
+        setRequester(requester);
+        setJobName(jobName);
+    }
+    /**
      * @return JSONObject with the tags for the printer for the Cloud Office Print
      * server.
      */
