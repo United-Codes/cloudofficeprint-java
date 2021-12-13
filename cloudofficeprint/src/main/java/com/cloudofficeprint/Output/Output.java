@@ -40,6 +40,10 @@ public class Output {
     private String converter = "libreoffice";
 
     /**
+     * If you want to prepend/append file after each page of output you can set it to true.
+     */
+    private Boolean appendPerPage = null;
+    /**
      * If you want to store the output on a cloud based service, a specific
      * CloudAccessToken object needs to be specified. Default : null.
      */
@@ -75,6 +79,13 @@ public class Output {
      */
     public String getType() {
         return type;
+    }
+
+    /**
+     * @return whether you want to prepend/append file after each page of output.
+     */
+    public Boolean getAppendPerPage() {
+        return appendPerPage;
     }
 
     /**
@@ -114,7 +125,7 @@ public class Output {
 
     /**
      * Sets the file type (extension) of the output to type.
-     * 
+     *
      * @param type extension for the output
      */
     public void setType(String type) {
@@ -122,9 +133,18 @@ public class Output {
     }
 
     /**
+     * Sets appendPerPage to true if you want to prepend/append file after each page of output and false otherwise.
+     *
+     * @param appendPerPage whether to prepend/append file after each page of output.
+     */
+    public void setAppendPerPage(Boolean appendPerPage) {
+        this.appendPerPage = appendPerPage;
+    }
+
+    /**
      * Sets the access token object of the output, if you want to store the output
      * on a cloud based service.
-     * 
+     *
      * @param accessToken for the output
      */
     public void setAccessToken(CloudAccessToken accessToken) {
@@ -178,7 +198,56 @@ public class Output {
     /**
      * Constructor to create a populated output object. If you don't need to
      * instantiate some variables, use their default value as argument.
-     * 
+     *
+     * @param filetype        This states what kind of output file type is required.
+     *                        It can be either the same as template_type ("docx",
+     *                        "pptx", "xlsx", "html", "md"), "pdf" or any other
+     *                        output file supported by libreoffice/openoffice.
+     *                        Special output type: "onepagepdf", this will cause the
+     *                        output to be converted to pdf and all the pages will
+     *                        be merged into one single page. Default : null (the
+     *                        type of the template will be used).
+     * @param encoding        This states what kind of output encoding is wished for
+     *                        the output file. It must be either "raw" (bytes) or
+     *                        "base64". Default : raw.
+     * @param converter       This states which software the server should use to
+     *                        convert the output to pdf. The Cloud Office Print
+     *                        server uses LibreOffice. If you are running the on
+     *                        premise version then the available values are :
+     *                        "officetopdf" (only when server runs on Windows ) or
+     *                        "libreoffice" (Windows, Linux, OSX)
+     *                        "libreoffice-standalone" or any other custom defined
+     *                        converters in the aop_config.json file. Default :
+     *                        libreoffice.
+     * @param appendPerPage   if you want to prepend/append file after each page of output
+     *                        set appendPerPage to true and false otherwise.
+     * @param token           If you want to store the output on a cloud based
+     *                        service, a specific CloudAccessToken object needs to
+     *                        be specified. Default : null.
+     * @param serverDirectory If you want to save the output on the server a
+     *                        directory on the server needs to be specified. Default
+     *                        : null.
+     * @param pdfOptions      Optional PDF options. They are described in the
+     *                        PDFOptions class. Default : null.
+     * @param csvOptions      Optional CSV options. They are described in the
+     *                        CsvOptions class. Default : null.
+     */
+    public Output(String filetype, String encoding, String converter, Boolean appendPerPage, CloudAccessToken token, String serverDirectory,
+                  PDFOptions pdfOptions, CsvOptions csvOptions) {
+        setType(filetype);
+        setEncoding(encoding);
+        setConverter(converter);
+        setAppendPerPage(appendPerPage);
+        setAccessToken(token);
+        setServerDirectory(serverDirectory);
+        setPDFOptions(pdfOptions);
+        setCsvOptions(csvOptions);
+    }
+
+    /**
+     * Constructor to create a populated output object. If you don't need to
+     * instantiate some variables, use their default value as argument.
+     *
      * @param filetype        This states what kind of output file type is required.
      *                        It can be either the same as template_type ("docx",
      *                        "pptx", "xlsx", "html", "md"), "pdf" or any other
@@ -210,8 +279,9 @@ public class Output {
      * @param csvOptions      Optional CSV options. They are described in the
      *                        CsvOptions class. Default : null.
      */
+
     public Output(String filetype, String encoding, String converter, CloudAccessToken token, String serverDirectory,
-            PDFOptions pdfOptions, CsvOptions csvOptions) {
+                  PDFOptions pdfOptions, CsvOptions csvOptions) {
         setType(filetype);
         setEncoding(encoding);
         setConverter(converter);
@@ -223,7 +293,7 @@ public class Output {
 
     /**
      * @return JSONObject with the tags for the output for the Cloud Office Print
-     *         server.
+     * server.
      */
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
@@ -235,6 +305,9 @@ public class Output {
         }
         if (getConverter() != null) {
             json.addProperty("output_converter", getConverter());
+        }
+        if (getAppendPerPage() != null) {
+            json.addProperty("output_append_per_page", getAppendPerPage());
         }
         if (getAccessToken() != null) {
             for (Map.Entry<String, JsonElement> tag : getAccessToken().getJSON().entrySet()) {
@@ -256,5 +329,4 @@ public class Output {
         }
         return json;
     }
-
 }
