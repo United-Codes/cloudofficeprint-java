@@ -271,9 +271,9 @@ public class Server {
     }
 
     /**
-     * Sends a Get request to check the status of ipp-printer provided with location and version of url
+     * Sends a Get request to check the status of ipp-printer provided with location and version of url.
      *
-     * @return whether the printer is reachable or not.
+     * @return whether the ipp printer is reachable or not.
      */
     public boolean isIppPrinterReachable() {
         try {

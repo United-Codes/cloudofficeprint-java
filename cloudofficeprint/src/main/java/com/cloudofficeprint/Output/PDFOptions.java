@@ -32,13 +32,15 @@ public class PDFOptions {
     private Boolean removeLastPage;
 
     /**
-     * @return password to read the output.
+     * @return the password which is used to read the output.
      */
     public String getReadPassword() {
         return readPassword;
     }
 
     /**
+     * Sets the password for reading the output.
+     *
      * @param readPassword password to read the output.
      */
     public void setReadPassword(String readPassword) {
@@ -46,26 +48,22 @@ public class PDFOptions {
     }
 
     /**
-     * It is possible to set your own watermark.
-     *
-     * @return diagonal custom watermark on every page in the output file.
+     * @return the watermark which is shown diagonally on every page in output file.
      */
     public String getWatermark() {
         return watermark;
     }
 
     /**
-     * It is possible to set your own watermark.
+     * Sets the watermark which is shown diagonally on every page in output file.
      *
-     * @param watermark diagonal custom watermark on every page in the output file.
+     * @param watermark diagonal custom watermark
      */
     public void setWatermark(String watermark) {
         this.watermark = watermark;
     }
 
     /**
-     * It is possible to set opacity of your watermark in percentage.
-     *
      * @return opacity of watermark in percentage.
      */
     public Integer getWatermarkOpacity() {
@@ -73,25 +71,23 @@ public class PDFOptions {
     }
 
     /**
-     * It is possible to set opacity of your watermark in percentage.
+     * Sets opacity of your watermark in percentage (ex 60).
      *
-     * @param watermarkOpacity opacity of watermark in percentage.
+     * @param watermarkOpacity opacity of watermark.
      */
     public void setWatermarkOpacity(Integer watermarkOpacity) {
         this.watermarkOpacity = watermarkOpacity;
     }
 
     /**
-     * It is possible to set size of your watermark.
-     *
-     * @return size of watermark.
+     * @return the font size of your watermark.
      */
     public Integer getWatermarkFontSize() {
         return watermarkSize;
     }
 
     /**
-     * It is possible to set font size of your watermark.
+     * Sets the font size of your watermark.
      *
      * @param watermarkSize Font size of watermark.
      */
@@ -100,38 +96,36 @@ public class PDFOptions {
     }
 
     /**
-     * It is possible to assign color of your watermark. It accepts css font.
-     * Default is "black".
+     * Returns the color of your watermark. It accepts css fonts.
+     * Default font is "black".
      *
-     * @return font color of watermark.
+     * @return font color of your watermark.
      */
     public String getWatermarkColor() {
         return watermarkColor;
     }
 
     /**
-     * It is possible to assign color of your watermark. It accepts css font.
-     * Default is "black"
+     * Sets the color of your watermark. It accepts css fonts.
+     * Default font is "black"
      *
-     * @param watermarkColor color of watermark. Default is black
+     * @param watermarkColor color of watermark.
      */
     public void setWatermarkColor(String watermarkColor) {
         this.watermarkColor = watermarkColor;
     }
 
     /**
-     * It is possible to assign font to your watermark. Default is "Aerial".
-     *
-     * @return font of watermark. Default is "Aerial"
+     * @return the font of watermark. Default font is "Aerial".
      */
     public String getWatermarkFont() {
         return watermarkFont;
     }
 
     /**
-     * It is possible to assign font to your watermark. Default is "Aerial".
+     * Sets the font to your watermark. Default is "Aerial".
      *
-     * @param watermarkFont font of watermark. Default is "Aerial".
+     * @param watermarkFont font of watermark.
      */
     public void setWatermarkFont(String watermarkFont) {
         this.watermarkFont = watermarkFont;
@@ -141,13 +135,14 @@ public class PDFOptions {
      * Only supported when converting HTML to PDF.
      *
      * @return pageWidth width followed by unit : px, mm, cm, in (e.g. : 20 px). No
-     *         unit means px.
+     * unit means px.
      */
     public String getPageWidth() {
         return pageWidth;
     }
 
     /**
+     * Sets the pageWidth.
      * Only supported when converting HTML to PDF.
      *
      * @param pageWidth width followed by unit : px, mm, cm, in (e.g. : 20 px). No
@@ -161,17 +156,17 @@ public class PDFOptions {
      * Only supported when converting HTML to PDF.
      *
      * @return pageHeight height followed by unit : px, mm, cm, in (e.g. : 20 px).
-     *         No unit means px.
+     * No unit means px.
      */
     public String getPageHeight() {
         return pageHeight;
     }
 
     /**
+     * Sets the  pageHeight.
      * Only supported when converting HTML to PDF.
      *
-     * @param pageHeight eight followed by unit : px, mm, cm, in (e.g. : 20 px). No
-     *                   unit means px.
+     * @param pageHeight height followed by unit : px, mm, cm, in (e.g. : 20 px). No unit means px.
      */
     public void setPageHeight(String pageHeight) {
         this.pageHeight = pageHeight;
@@ -179,33 +174,34 @@ public class PDFOptions {
 
     /**
      * @return true if output will have even pages (blank page added if uneven
-     *         amount of pages).
+     * amount of pages).
      */
     public Boolean getEvenPage() {
         return evenPage;
     }
 
     /**
-     * @param evenPage Whether output has even pages (blank page added if uneven
-     *                 amount of pages).
+     * Sets whether the output will have even pages.(blank page added if uneven amount of pages).
+     *
+     * @param evenPage ture if the output should have even page.
      */
     public void setEvenPage(Boolean evenPage) {
         this.evenPage = evenPage;
     }
 
     /**
-     * @return If Cloud Office Print is going to merge all the append/prepend and
-     *         template files, making sure the output is even-paged (adding a blank
-     *         page if the output is uneven-paged).
+     * @return whether Cloud Office Print is going to merge all the append/prepend and
+     * template files, making sure the output is even-paged (adding a blank page if the output is uneven-paged).
      */
     public Boolean getMergeMakingEven() {
         return mergeMakingEven;
     }
 
     /**
-     * @param mergeMakingEven Whether you want to merge all the append/prepend and
-     *                        template files, making sure the output is even-paged
-     *                        (adding a blank page if the output is uneven-paged).
+     * Sets whether Cloud Office Print is going to merge all the append/prepend and
+     * template files, making sure the output is even-paged (adding a blank page if the output is uneven-paged).
+     *
+     * @param mergeMakingEven true if you want to merge.
      */
     public void setMergeMakingEven(Boolean mergeMakingEven) {
         this.mergeMakingEven = mergeMakingEven;
@@ -219,6 +215,8 @@ public class PDFOptions {
     }
 
     /**
+     * Sets the value of password needed to modify the PDF.
+     *
      * @param modifyPassword Password needed to modify the PDF.
      */
     public void setModifyPassword(String modifyPassword) {
@@ -230,13 +228,15 @@ public class PDFOptions {
      * https://pdfhummus.com/post/147451287581/hummus-1058-and-pdf-writer-updates-encryption.
      *
      * @return protection flag for the PDF (in addition to the user password). (int
-     *         representation of the 12 flag bits)
+     * representation of the 12 flag bits)
      */
     public Integer getPasswordProtectionFlag() {
         return passwordProtectionFlag;
     }
 
     /**
+     * Sets the protection flag for the PDF.
+     * <p>
      * More info on the flag bits on
      * https://pdfhummus.com/post/147451287581/hummus-1058-and-pdf-writer-updates-encryption.
      *
@@ -256,6 +256,8 @@ public class PDFOptions {
     }
 
     /**
+     * Sets if the  output PDF will be locked/flattened.
+     *
      * @param lockForm Set to true if you want the output PDF to be
      *                 locked/flattened.
      */
@@ -264,14 +266,18 @@ public class PDFOptions {
     }
 
     /**
-     * @return Number of times the output will be repeated.
+     * Useful when user need multiple number of output copies
+     *
+     * @return Number of times the output need to be repeated.
      */
     public Integer getCopies() {
         return copies;
     }
 
     /**
-     * @param copies Amount of times the output will be repeated.
+     * Sets the  Number of times the output will be repeated. Useful when user need multiple number of output copies
+     *
+     * @param copies Number of times the output need to be repeated.
      */
     public void setCopies(Integer copies) {
         this.copies = copies;
@@ -287,6 +293,8 @@ public class PDFOptions {
     }
 
     /**
+     * Sets top bottom left right margin in pixels.
+     * <p>
      * Only supported when converting HTML to PDF.
      *
      * @param pageMargins top bottom left right margin in pixels .
@@ -300,25 +308,29 @@ public class PDFOptions {
     }
 
     /**
+     * Sets same pageMargin for top, bottom, left and right.
+     * <p>
      * Only supported when converting HTML to PDF.
      *
      * @param pageMargin Margin (same for all sides).
      */
     public void setPageMargin(int pageMargin) {
-        this.pageMargin = new int[] { pageMargin, pageMargin, pageMargin, pageMargin };
+        this.pageMargin = new int[]{pageMargin, pageMargin, pageMargin, pageMargin};
     }
 
     /**
+     * Returns whether to output PDF will have landscape orientation or not.
      * Only supported when converting HTML to PDF.
      *
      * @return True if orientation is landscape, false if orientation is portrait
-     *         (default used by server).
+     * (default used by server).
      */
     public Boolean getLandscape() {
         return landscape;
     }
 
     /**
+     * Sets whether to output PDF will have landscape orientation or not.
      * Only supported when converting HTML to PDF.
      *
      * @param landscape Set to true if you want the orientation of the output to be
@@ -329,16 +341,15 @@ public class PDFOptions {
     }
 
     /**
-     * Only supported when converting HTML to PDF.
-     *
      * @return The page format: "A4" (default used by Cloud Office Print) or
-     *         "letter".
+     * "letter".
      */
     public String getPageFormat() {
         return pageFormat;
     }
 
     /**
+     * Sets the output(PDF) page format. ex "A4".
      * Only supported when converting HTML to PDF.
      *
      * @param pageFormat The page format: "A4" or "letter".
@@ -348,17 +359,17 @@ public class PDFOptions {
     }
 
     /**
-     * It is possible to set whether to return a zip file of multiple output.
-     *
      * @return True if instead of returning a zip file for multiple outputs,
-     *         they will be merged in one output.
+     * they will be merged in one output.
      */
     public Boolean getMerge() {
         return merge;
     }
 
     /**
-     * @param merge Set to true if you want to instead of returning back a zip file
+     * Sets whether to return a zip file of multiple output.
+     *
+     * @param merge Set to true if you want to instead of returning a zip file
      *              for multiple outputs, they will be merged in one output.
      */
     public void setMerge(Boolean merge) {
@@ -366,19 +377,16 @@ public class PDFOptions {
     }
 
     /**
-     * It is possible to sign the output PDF if the output pdf has a signature
-     * field.
-     *
      * @return The certificate (pkcs #12 .p12/.pfx) in a base64 encoded format (this
-     *         can also be a URL, FTP location or a location in the file system of
-     *         the server).
+     * can also be a URL, FTP location or a location in the file system of
+     * the server). If the output pdf has a signature.
      */
     public String getSignCertificate() {
         return signCertificate;
     }
 
     /**
-     * It is possible to sign the output PDF if the output pdf has a signature
+     * Sets the signature value of output PDF if the output pdf has a signature
      * field.
      *
      * @param signCertificate The certificate (pkcs #12 .p12/.pfx) in a base64
@@ -390,8 +398,6 @@ public class PDFOptions {
     }
 
     /**
-     * It is possible to sign certificate with password.
-     *
      * @return password of certificate.
      */
     public String getSignCertificatePassword() {
@@ -399,7 +405,7 @@ public class PDFOptions {
     }
 
     /**
-     * It is possible to sign certificate with password.
+     * Sets the password for certificate.
      *
      * @param signCertificatePassword password of signature.
      */
@@ -408,15 +414,16 @@ public class PDFOptions {
     }
 
     /**
-     *
      * @return whether to get identityFormFields. If it is set to true Cloud Office
-     *         Print tries to identify the for fields and fills them in.
+     * Print tries to identify the for fields and fills them in.
      */
     public Boolean getIdentifyFormFields() {
         return identifyFormFields;
     }
 
     /**
+     * Sets whether to get identityFormFields. If it is set to true Cloud Office.
+     * Print tries to identify the for fields and fills them in.
      *
      * @param identifyFormFields value for identify form fields.If it is set to true
      *                           Cloud Office Print tries to identify the form
@@ -427,15 +434,17 @@ public class PDFOptions {
     }
 
     /**
+     * Returns whether to split or not. The output PDF should be split into one file per page in a zip file.
      *
      * @return whether to split or not. The output PDF should be split into one file
-     *         per page in a zip file.
+     * per page in a zip file.
      */
     public Boolean getSplit() {
         return split;
     }
 
     /**
+     * Sets whether to split or not. The output PDF should be split into one file per page in a zip file.
      *
      * @param split whether to split or not. The output PDF should be split into one
      *              file per page in a zip file.
@@ -445,7 +454,7 @@ public class PDFOptions {
     }
 
     /**
-     * It is possible to remove last page from output. It is useful when the last
+     * Returns whether to remove last page from output. It is useful when the last
      * page of output is blank.
      *
      * @return whether to remove last page or not
@@ -455,7 +464,7 @@ public class PDFOptions {
     }
 
     /**
-     * It is possible to remove last page from output. It is useful when the last
+     * Sets whether to remove last page from output. It is useful when the last
      * page of output is blank.
      *
      * @param removeLastPage whether to remove last page
