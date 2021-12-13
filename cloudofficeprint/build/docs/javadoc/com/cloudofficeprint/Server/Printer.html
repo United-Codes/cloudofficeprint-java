@@ -110,6 +110,15 @@ extends java.lang.Object</pre>
 </thead>
 <tbody>
 <tr class="alt-color">
+<th class="col-constructor-name" scope="row"><code><span class="member-name-link"><a href="#%3Cinit%3E(java.lang.String,java.lang.String,java.lang.String,java.lang.String)">Printer</a></span>&#8203;(java.lang.String&nbsp;location,
+java.lang.String&nbsp;version,
+java.lang.String&nbsp;requester,
+java.lang.String&nbsp;jobName)</code></th>
+<td class="col-last">
+<div class="block">Cloud Office Print supports to print directly to an IP Printer.</div>
+</td>
+</tr>
+<tr class="row-color">
 <th class="col-constructor-name" scope="row"><code><span class="member-name-link"><a href="#%3Cinit%3E(java.lang.String,java.lang.String,java.lang.String,java.lang.String,boolean)">Printer</a></span>&#8203;(java.lang.String&nbsp;location,
 java.lang.String&nbsp;version,
 java.lang.String&nbsp;requester,
@@ -242,6 +251,32 @@ boolean&nbsp;returnOutput)</span></div>
                      name).</dd>
 <dd><code>jobName</code> - Name of the job for the printer.</dd>
 <dd><code>returnOutput</code> - Whether to return the response from AOP server.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="&lt;init&gt;(java.lang.String,java.lang.String,java.lang.String,java.lang.String)">
+<h3>Printer</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="member-name">Printer</span>&#8203;(<span class="parameters">java.lang.String&nbsp;location,
+java.lang.String&nbsp;version,
+java.lang.String&nbsp;requester,
+java.lang.String&nbsp;jobName)</span></div>
+<div class="block">Cloud Office Print supports to print directly to an IP Printer. If your IPP
+ printer supports PDF files, your documents will be converter to PDF and sent
+ to IPP printer. If your printer does not support PDF and supports Postscript
+ then the PDF generated is converter to PDF using pdftops. You need download
+ xpdf tools from: https://www.xpdfreader.com/download.html. Make sure that the
+ binary pdftops is on PATH variable. You can download executables from
+ cloudofficeprint.com to check whether or not your IPP printer supports
+ PDF/postscript. This Pritner object represents an IP-enabled printer to use
+ with the Cloud Office Print server.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>location</code> - HTTP adress of the printer.</dd>
+<dd><code>version</code> - Version of the IPP protocol.</dd>
+<dd><code>requester</code> - Name of the requester for the printer (often just your
+                     name).</dd>
+<dd><code>jobName</code> - Name of the job for the printer.</dd>
 </dl>
 </section>
 </li>
