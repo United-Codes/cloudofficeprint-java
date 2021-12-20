@@ -9,6 +9,7 @@ import com.cloudofficeprint.RenderElements.Loops.Loop;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RenderElementsTests {
@@ -166,6 +167,14 @@ public class RenderElementsTests {
     }
 
     @Test
+    public void insert() {
+        Insert insert = new Insert("doc", "Base64 encoded file");
+        String correct = "{'doc':'Base64 encoded file'}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, insert.getJSON());
+    }
+
+    @Test
     public void elementCollection() {
         ElementCollection data = new ElementCollection("data");
         ImageUrl element1 = new ImageUrl("image1", "url");
@@ -174,7 +183,7 @@ public class RenderElementsTests {
 
         Property prop1 = new Property("prop", "value1");
         Property prop2 = new Property("prop", "value2");
-        Loop element2 = new Loop("loop", new Property[] { prop1, prop2 });
+        Loop element2 = new Loop("loop", new Property[]{prop1, prop2});
 
         data.addElement(element2);
 
