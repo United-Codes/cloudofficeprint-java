@@ -73,6 +73,16 @@ public class RenderElementsTests {
     }
 
     @Test
+    public void autoLink() {
+        AutoLink cell = new AutoLink("autoLink", "sample text with multiple hyperlinks");
+        String correct = "{'autoLink': 'sample text with multiple hyperlinks'}";
+        // System.out.println(cell.getJSON());
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        // System.out.println(jsonCorrect);
+        assertEquals(jsonCorrect, cell.getJSON());
+    }
+
+    @Test
     public void hyperLink() {
         HyperLink cell = new HyperLink("hyperlink", "hyperlink_text", "url");
         String correct = "{'hyperlink': 'url', 'hyperlink_text': 'hyperlink_text'}";
