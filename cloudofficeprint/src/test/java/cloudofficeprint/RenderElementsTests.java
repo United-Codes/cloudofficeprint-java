@@ -9,6 +9,7 @@ import com.cloudofficeprint.RenderElements.Loops.Loop;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RenderElementsTests {
@@ -65,6 +66,16 @@ public class RenderElementsTests {
         cellStyle.setTextRotation(45);
         TableCell cell = new TableCell("name", "value", cellStyle);
         String correct = "{'name': 'value', 'name_cell_locked': True, 'name_cell_hidden': False, 'name_cell_background': '#ff0000', 'name_font_name': 'Arial', 'name_font_size': '12', 'name_font_color': '#ff0000', 'name_font_italic': True, 'name_font_bold': False, 'name_font_strike': False, 'name_font_underline': True, 'name_font_superscript': False, 'name_font_subscript': True, 'name_border_top': 'medium', 'name_border_top_color': '#ff0000', 'name_border_bottom': 'mediumDashed', 'name_border_bottom_color': '#ff0000', 'name_border_left': 'mediumDashDot', 'name_border_left_color': '#ff0000', 'name_border_right': 'mediumDashDotDot', 'name_border_right_color': '#ff0000', 'name_border_diagonal': 'thick', 'name_border_diagonal_direction': 'up-wards', 'name_border_diagonal_color': '#ff0000', 'name_text_h_alignment': 'center', 'name_text_v_alignment': 'justify', 'name_text_rotation': '45'}";
+        // System.out.println(cell.getJSON());
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        // System.out.println(jsonCorrect);
+        assertEquals(jsonCorrect, cell.getJSON());
+    }
+
+    @Test
+    public void autoLink() {
+        AutoLink cell = new AutoLink("autoLink", "sample text with multiple hyperlinks");
+        String correct = "{'autoLink': 'sample text with multiple hyperlinks'}";
         // System.out.println(cell.getJSON());
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
@@ -166,6 +177,26 @@ public class RenderElementsTests {
     }
 
     @Test
+    public void freeze() {
+        Freeze prop = new Freeze("name", "C6");
+        String correct = "{'name' : 'C6' }";
+        Freeze prop1 = new Freeze("name", true);
+        String correct1 = "{'name': true }";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        JsonObject jsonCorrect1 = JsonParser.parseString((correct1)).getAsJsonObject();
+        assertEquals(jsonCorrect, prop.getJSON());
+        assertEquals(jsonCorrect1, prop1.getJSON());
+    }
+
+    @Test
+    public void insert() {
+        Insert insert = new Insert("doc", "Base64 encoded file");
+        String correct = "{'doc':'Base64 encoded file'}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, insert.getJSON());
+    }
+
+    @Test
     public void elementCollection() {
         ElementCollection data = new ElementCollection("data");
         ImageUrl element1 = new ImageUrl("image1", "url");
@@ -174,7 +205,7 @@ public class RenderElementsTests {
 
         Property prop1 = new Property("prop", "value1");
         Property prop2 = new Property("prop", "value2");
-        Loop element2 = new Loop("loop", new Property[] { prop1, prop2 });
+        Loop element2 = new Loop("loop", new Property[]{prop1, prop2});
 
         data.addElement(element2);
 

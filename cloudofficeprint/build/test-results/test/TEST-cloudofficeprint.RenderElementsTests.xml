@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="cloudofficeprint.RenderElementsTests" tests="11" skipped="0" failures="0" errors="0" timestamp="2021-08-26T08:50:04" hostname="jaak-Inspiron-7590" time="0.032">
+<testsuite name="cloudofficeprint.RenderElementsTests" tests="13" skipped="0" failures="0" errors="0" timestamp="2021-12-20T13:22:17" hostname="DESKTOP-4Q9HSUB" time="0.039">
   <properties/>
-  <testcase name="elementCollection()" classname="cloudofficeprint.RenderElementsTests" time="0.001"/>
-  <testcase name="tableOfContent()" classname="cloudofficeprint.RenderElementsTests" time="0.001"/>
+  <testcase name="elementCollection()" classname="cloudofficeprint.RenderElementsTests" time="0.002"/>
+  <testcase name="tableOfContent()" classname="cloudofficeprint.RenderElementsTests" time="0.005"/>
   <testcase name="textBox()" classname="cloudofficeprint.RenderElementsTests" time="0.003"/>
+  <testcase name="freeze()" classname="cloudofficeprint.RenderElementsTests" time="0.002"/>
+  <testcase name="insert()" classname="cloudofficeprint.RenderElementsTests" time="0.002"/>
   <testcase name="Property()" classname="cloudofficeprint.RenderElementsTests" time="0.001"/>
-  <testcase name="CellSpan()" classname="cloudofficeprint.RenderElementsTests" time="0.001"/>
-  <testcase name="waterMark()" classname="cloudofficeprint.RenderElementsTests" time="0.002"/>
-  <testcase name="cellStylePropertyDocx()" classname="cloudofficeprint.RenderElementsTests" time="0.013"/>
+  <testcase name="CellSpan()" classname="cloudofficeprint.RenderElementsTests" time="0.002"/>
+  <testcase name="waterMark()" classname="cloudofficeprint.RenderElementsTests" time="0.003"/>
+  <testcase name="cellStylePropertyDocx()" classname="cloudofficeprint.RenderElementsTests" time="0.004"/>
   <testcase name="cellStylePropertyXlsx()" classname="cloudofficeprint.RenderElementsTests" time="0.002"/>
   <testcase name="styledProp()" classname="cloudofficeprint.RenderElementsTests" time="0.002"/>
-  <testcase name="hyperLink()" classname="cloudofficeprint.RenderElementsTests" time="0.001"/>
-  <testcase name="D3Code()" classname="cloudofficeprint.RenderElementsTests" time="0.001"/>
+  <testcase name="hyperLink()" classname="cloudofficeprint.RenderElementsTests" time="0.002"/>
+  <testcase name="D3Code()" classname="cloudofficeprint.RenderElementsTests" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

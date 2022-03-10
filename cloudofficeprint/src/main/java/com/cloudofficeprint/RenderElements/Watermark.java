@@ -6,6 +6,9 @@ import com.google.gson.JsonObject;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * It is possible to use your own Watermark with font, size, opacity, color, width, height and rotation.
+ */
 public class Watermark extends RenderElement {
 
     private String font;
