@@ -105,4 +105,117 @@ public class PDFTests {
         // System.out.println(jsonCorrect);
         assertEquals(jsonCorrect, pdfFormData.getJSON());
     }
+
+    @Test
+    public void PDFFormTextBox(){
+        PDFFormTextBox textbox = new PDFFormTextBox("surname");
+        textbox.setValue("Apex R&D");
+        textbox.setWidth(100);
+        textbox.setHeight(20);
+
+        String correct = "{'surname': {\n" +
+                    "    'type': 'text',\n" +
+                    "    'value': 'Apex R&D',\n" +
+                    "    'name': 'surname',\n" +
+                    "    'height': 20,\n" +
+                    "    'width': 100\n" +
+                    "}" +
+                "}";
+        // System.out.println(textbox.getJSON());
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        // System.out.println(jsonCorrect);
+        assertEquals(jsonCorrect, textbox.getJSON());
+    }
+
+    @Test
+    public void PDFFormCheckBox(){
+        PDFFormCheckBox checkbox = new PDFFormCheckBox("Checkbox");
+        checkbox.setCheck(true);
+        checkbox.setHeight(20);
+        checkbox.setWidth(200);
+        checkbox.setText("Check?");
+
+        String correct = "{" +
+                    "'Checkbox': {\n" +
+                    "    'type': 'checkbox',\n" +
+                    "    'name': 'Checkbox',\n" +
+                    "    'value': true,\n" +
+                    "    'height': 20,\n" +
+                    "    'width': 200,\n" +
+                    "    'text': 'Check?'\n" +
+                    "}" +
+                "}";
+        // System.out.println(checkbox.getJSON());
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        // System.out.println(jsonCorrect);
+        assertEquals(jsonCorrect, checkbox.getJSON());
+    }
+
+    @Test
+    public void PDFFormRadioButton(){
+        PDFFormRadioButton radio = new PDFFormRadioButton("a");
+        radio.setGroup("Radio");
+        radio.setValue("A");
+        radio.setHeight(20);
+        radio.setWidth(200);
+        radio.setText("Option A");
+
+        String correct = "{" +
+                    "'a': {\n" +
+                    "'type': 'radio',\n" +
+                    "'name': 'Radio',\n" +
+                    "'value': 'A',\n" +
+                    "'height': 20,\n" +
+                    "'width': 200,\n" +
+                    "'text': 'Option A'\n" +
+                    "}" +
+                "}";
+        // System.out.println(radio.getJSON());
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        // System.out.println(jsonCorrect);
+        assertEquals(jsonCorrect, radio.getJSON());
+    }
+
+    @Test
+    public void PDFFormSignature(){
+        PDFFormSignature signature = new PDFFormSignature("text1");
+        signature.setWidth(150);
+        signature.setHeight(50);
+
+        String correct = "{" +
+                    "'text1': {\n" +
+                    "'type': 'signaturefieldunsigned',\n" +
+                    "'name': 'text1',\n" +
+                    "'width': 150,\n" +
+                    "'height': 50\n" +
+                    "}" +
+                "}";
+        // System.out.println(signature.getJSON());
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        // System.out.println(jsonCorrect);
+        assertEquals(jsonCorrect, signature.getJSON());
+    }
+
+    @Test
+    public void PDFFormSignatureSigned(){
+        PDFFormSignatureSigned signature = new PDFFormSignatureSigned("text2", "base64 encoded certificate");
+        signature.setSize("md");
+        signature.setPassword("certificate password");
+        signature.setBackgroundImage("base64 encoded image");
+
+        String correct = "{" +
+                "\"text2\": {\n" +
+                    "\"type\": \"signaturefieldsigned\",\n" +
+                    "\"name\": \"text2\",\n" +
+                    "\"size\": \"md\",\n" +
+                    "\"value\": \"base64 encoded certificate\",\n" +
+                    "\"background_image\": \"base64 encoded image\",\n" +
+                    "\"password\": \"certificate password\"\n" +
+                    "}" +
+                "}";
+        // System.out.println(signature.getJSON());
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        // System.out.println(jsonCorrect);
+        assertEquals(jsonCorrect, signature.getJSON());
+    }
 }
