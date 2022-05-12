@@ -11,7 +11,7 @@ public abstract class Image extends RenderElement {
 
     private Integer width;
     private Integer height;
-    private boolean maintainAspectRatio;
+    private Boolean maintainAspectRatio;
     private Integer maxWidth;
     private Integer maxHeight;
     private String altText;
@@ -51,14 +51,14 @@ public abstract class Image extends RenderElement {
     /**
      * @return Whether the aspect ratio is maintained.
      */
-    public boolean getMaintainAspectRatio() {
+    public Boolean getMaintainAspectRatio() {
         return maintainAspectRatio;
     }
 
     /**
      * @param maintainAspectRatio whether to maintain the aspect ratio, the width has be set for this option to work.
      */
-    public void setMaintainAspectRatio(boolean maintainAspectRatio) {
+    public void setMaintainAspectRatio(Boolean maintainAspectRatio) {
         this.maintainAspectRatio = maintainAspectRatio;
     }
 
@@ -199,7 +199,7 @@ public abstract class Image extends RenderElement {
         if (getHeight() != null) {
             json.addProperty(getName() + "_height", getHeight());
         }
-        if (getMaintainAspectRatio()) {
+        if (getMaintainAspectRatio() != null) {
             json.addProperty(getName() + "_maintain_aspect_ratio", getMaintainAspectRatio());
         }
         if (getWrapText() != null) {
