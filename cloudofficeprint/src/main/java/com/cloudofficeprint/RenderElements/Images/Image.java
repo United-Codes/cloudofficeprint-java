@@ -11,6 +11,7 @@ public abstract class Image extends RenderElement {
 
     private Integer width;
     private Integer height;
+    private boolean maintainAspectRatio;
     private Integer maxWidth;
     private Integer maxHeight;
     private String altText;
@@ -45,6 +46,20 @@ public abstract class Image extends RenderElement {
      */
     public void setHeight(Integer height) {
         this.height = height;
+    }
+
+    /**
+     * @return Whether the aspect ratio is maintained.
+     */
+    public boolean getMaintainAspectRatio() {
+        return maintainAspectRatio;
+    }
+
+    /**
+     * @param maintainAspectRatio whether to maintain the aspect ratio, the width has be set for this option to work.
+     */
+    public void setMaintainAspectRatio(boolean maintainAspectRatio) {
+        this.maintainAspectRatio = maintainAspectRatio;
     }
 
     /**
@@ -97,7 +112,7 @@ public abstract class Image extends RenderElement {
      * wrap option should be "top-bottom". Behind Text : In order to use this
      * property, wrap option should be "behind". In Front of Text : In order to use
      * this property, wrap option should be "front".
-     * 
+     *
      * @return The wrapping mode of the text around the image.
      */
     public String getWrapText() {
@@ -112,7 +127,7 @@ public abstract class Image extends RenderElement {
      * wrap option should be "top-bottom". Behind Text : In order to use this
      * property, wrap option should be "behind". In Front of Text : In order to use
      * this property, wrap option should be "front".
-     * 
+     *
      * @param wrapText The wrapping mode of the text around the image.
      */
     public void setWrapText(String wrapText) {
@@ -183,6 +198,9 @@ public abstract class Image extends RenderElement {
         }
         if (getHeight() != null) {
             json.addProperty(getName() + "_height", getHeight());
+        }
+        if (getMaintainAspectRatio()) {
+            json.addProperty(getName() + "_maintain_aspect_ratio", getMaintainAspectRatio());
         }
         if (getWrapText() != null) {
             json.addProperty(getName() + "_wrap_text", getWrapText());
