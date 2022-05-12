@@ -193,4 +193,14 @@ public class RenderElementsTests {
         assertEquals(jsonCorrect, data.getJSON());
     }
 
+    @Test
+    public void autoLink() {
+        AutoLink prop = new AutoLink("text", "This is a sample with multiple hyperlinks with url like https://www.apexofficeprint.com mails like support@apexofficeprint.com and other test case of test@gmail.com and http://www.test.com/");
+
+        String correct = "{\"text\":\"This is a sample with multiple hyperlinks with url like https://www.apexofficeprint.com mails like support@apexofficeprint.com and other test case of test@gmail.com and http://www.test.com/\"}";
+        // System.out.println(prop.getJSON());
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        // System.out.println(jsonCorrect);
+        assertEquals(jsonCorrect, prop.getJSON());
+    }
 }
