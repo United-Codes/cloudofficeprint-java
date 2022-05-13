@@ -70,6 +70,17 @@ public class Output {
     private RequestOption requestOption;
 
     /**
+     * If true, the Cloud Office Print server will generate a unique link for each request which can be used later to
+     * download the output file.
+     */
+    private Boolean polling;
+
+    /**
+     * Used when polling is true. An optional secret key to encrypt the file stored on the server.
+     */
+    private String secretKey;
+
+    /**
      * @return the encoding to use for the output.
      */
     public String getEncoding() {
@@ -196,6 +207,38 @@ public class Output {
     }
 
     /**
+     * @return whether polling is enabled.
+     */
+    public Boolean getPolling() {
+        return polling;
+    }
+
+    /**
+     * @param polling whether polling is enabled.
+     */
+    public void setPolling(Boolean polling) {
+        this.polling = polling;
+    }
+
+    /**
+     * @return secret key used to encrypt the polled print job.
+     */
+    public String getSecretKey() {
+        return secretKey;
+    }
+
+    /**
+     * @param secretKey secret key used to encrypt the polled print job.
+     */
+    public void setSecretKey(String secretKey) {
+        this.secretKey = secretKey;
+    }
+
+    public Output(){
+
+    }
+
+    /**
      * Constructor to create a populated output object. If you don't need to
      * instantiate some variables, use their default value as argument.
      *
@@ -276,6 +319,12 @@ public class Output {
         }
         if (getRequestOption() != null) {
             json.add("request_option", getRequestOption().getJSON());
+        }
+        if (getPolling() != null) {
+            json.addProperty("output_polling", getPolling());
+        }
+        if (getSecretKey() != null) {
+            json.addProperty("secret_key", getSecretKey());
         }
 
         return json;
