@@ -113,12 +113,12 @@ public class PDFTests {
         textbox.setWidth(100);
         textbox.setHeight(20);
 
-        String correct = "{'surname': {\n" +
-                    "    'type': 'text',\n" +
-                    "    'value': 'Apex R&D',\n" +
-                    "    'name': 'surname',\n" +
-                    "    'height': 20,\n" +
-                    "    'width': 100\n" +
+        String correct = "{'surname': {" +
+                        "'type': 'text'," +
+                        "'value': 'Apex R&D'," +
+                        "'name': 'surname'," +
+                        "'height': 20," +
+                        "'width': 100" +
                     "}" +
                 "}";
         // System.out.println(textbox.getJSON());
@@ -136,13 +136,13 @@ public class PDFTests {
         checkbox.setText("Check?");
 
         String correct = "{" +
-                    "'Checkbox': {\n" +
-                    "    'type': 'checkbox',\n" +
-                    "    'name': 'Checkbox',\n" +
-                    "    'value': true,\n" +
-                    "    'height': 20,\n" +
-                    "    'width': 200,\n" +
-                    "    'text': 'Check?'\n" +
+                    "'Checkbox': {" +
+                        "'type': 'checkbox'," +
+                        "'name': 'Checkbox'," +
+                        "'value': true," +
+                        "'height': 20," +
+                        "'width': 200," +
+                        "'text': 'Check?'" +
                     "}" +
                 "}";
         // System.out.println(checkbox.getJSON());
@@ -159,15 +159,17 @@ public class PDFTests {
         radio.setHeight(20);
         radio.setWidth(200);
         radio.setText("Option A");
+        radio.setSelected(true);
 
         String correct = "{" +
-                    "'a': {\n" +
-                    "'type': 'radio',\n" +
-                    "'name': 'Radio',\n" +
-                    "'value': 'A',\n" +
-                    "'height': 20,\n" +
-                    "'width': 200,\n" +
-                    "'text': 'Option A'\n" +
+                    "'a': {" +
+                        "'type': 'radio'," +
+                        "'name': 'Radio'," +
+                        "'value': 'A'," +
+                        "'height': 20," +
+                        "'width': 200," +
+                        "'text': 'Option A'," +
+                        "'selected': true" +
                     "}" +
                 "}";
         // System.out.println(radio.getJSON());
@@ -183,11 +185,11 @@ public class PDFTests {
         signature.setHeight(50);
 
         String correct = "{" +
-                    "'text1': {\n" +
-                    "'type': 'signaturefieldunsigned',\n" +
-                    "'name': 'text1',\n" +
-                    "'width': 150,\n" +
-                    "'height': 50\n" +
+                    "'text1': {" +
+                    "'type': 'signaturefieldunsigned'," +
+                    "'name': 'text1'," +
+                    "'width': 150," +
+                    "'height': 50" +
                     "}" +
                 "}";
         // System.out.println(signature.getJSON());
@@ -204,13 +206,13 @@ public class PDFTests {
         signature.setBackgroundImage("base64 encoded image");
 
         String correct = "{" +
-                "\"text2\": {\n" +
-                    "\"type\": \"signaturefieldsigned\",\n" +
-                    "\"name\": \"text2\",\n" +
-                    "\"size\": \"md\",\n" +
-                    "\"value\": \"base64 encoded certificate\",\n" +
-                    "\"background_image\": \"base64 encoded image\",\n" +
-                    "\"password\": \"certificate password\"\n" +
+                "'text2': {" +
+                    "'type': 'signaturefieldsigned'," +
+                    "'name': 'text2'," +
+                    "'size': 'md'," +
+                    "'value': 'base64 encoded certificate'," +
+                    "'background_image': 'base64 encoded image'," +
+                    "'password': 'certificate password'" +
                     "}" +
                 "}";
         // System.out.println(signature.getJSON());
