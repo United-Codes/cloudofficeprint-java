@@ -17,7 +17,6 @@ public class PDFOptions {
     private Integer passwordProtectionFlag;
     private Boolean lockForm;
     private Boolean lockFormExceptSignatureFields;
-
     private Integer copies;
     private int[] pageMargin;
     private Boolean landscape;
