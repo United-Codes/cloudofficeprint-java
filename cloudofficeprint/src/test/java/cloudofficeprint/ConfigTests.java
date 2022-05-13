@@ -6,12 +6,14 @@ import com.cloudofficeprint.Output.CloudAcessToken.OAuth2Token;
 import com.cloudofficeprint.Output.CsvOptions;
 import com.cloudofficeprint.Output.Output;
 import com.cloudofficeprint.Output.PDFOptions;
+import com.cloudofficeprint.Output.RequestOption;
 import com.cloudofficeprint.Server.Command;
 import com.cloudofficeprint.Server.Commands;
 import com.cloudofficeprint.Server.Printer;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ConfigTests {
@@ -162,5 +164,25 @@ public class ConfigTests {
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
         assertEquals(jsonCorrect, printer.getJSON());
+    }
+
+    @Test
+    public void testRequestOption(){
+        RequestOption request = new RequestOption("https://www.apexofficeprint.com/post/");
+        request.getExtraHeader().put("file_id", "Any file id like FILE_123");
+        request.getExtraHeader().put("access_token", "Access Token for above hostname (if any)");
+
+        String correct = "{" +
+                    "'url': 'https://www.apexofficeprint.com/post/'," +
+                    "'extra_headers': {" +
+                        "'file_id' : 'Any file id like FILE_123'," +
+                        "'access_token': 'Access Token for above hostname (if any)'" +
+                    "}" +
+                "}";
+
+        // System.out.println(request.getJSON());
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        // System.out.println(jsonCorrect);
+        assertEquals(jsonCorrect, request.getJSON());
     }
 }

@@ -64,6 +64,12 @@ public class Output {
     private CsvOptions CsvOptions = null;
 
     /**
+     * Optional request option. If specified then the Cloud Office Print server makes a call to the given option
+     * with response of the current print job.
+     */
+    private RequestOption requestOption;
+
+    /**
      * @return the encoding to use for the output.
      */
     public String getEncoding() {
@@ -114,7 +120,7 @@ public class Output {
 
     /**
      * Sets the file type (extension) of the output to type.
-     * 
+     *
      * @param type extension for the output
      */
     public void setType(String type) {
@@ -124,7 +130,7 @@ public class Output {
     /**
      * Sets the access token object of the output, if you want to store the output
      * on a cloud based service.
-     * 
+     *
      * @param accessToken for the output
      */
     public void setAccessToken(CloudAccessToken accessToken) {
@@ -176,9 +182,23 @@ public class Output {
     }
 
     /**
+     * @return request option object for this output.
+     */
+    public RequestOption getRequestOption() {
+        return requestOption;
+    }
+
+    /**
+     * @param requestOption request option object for this output.
+     */
+    public void setRequestOption(RequestOption requestOption) {
+        this.requestOption = requestOption;
+    }
+
+    /**
      * Constructor to create a populated output object. If you don't need to
      * instantiate some variables, use their default value as argument.
-     * 
+     *
      * @param filetype        This states what kind of output file type is required.
      *                        It can be either the same as template_type ("docx",
      *                        "pptx", "xlsx", "html", "md"), "pdf" or any other
@@ -254,6 +274,10 @@ public class Output {
                 json.add(tag.getKey(), tag.getValue()); // these tags need to be at output level
             }
         }
+        if (getRequestOption() != null) {
+            json.add("request_option", getRequestOption().getJSON());
+        }
+
         return json;
     }
 
