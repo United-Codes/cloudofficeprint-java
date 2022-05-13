@@ -7,10 +7,7 @@ import com.google.gson.JsonObject;
 import com.cloudofficeprint.Mimetype;
 
 import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.InetSocketAddress;
-import java.net.Proxy;
-import java.net.URL;
+import java.net.*;
 import java.util.Base64;
 import java.util.Map;
 import java.util.Scanner;
@@ -77,7 +74,7 @@ public class Server {
 
     /**
      * Only applicable for service users.
-     * 
+     *
      * @return The value of this key is the API key given by Cloud Office Print.
      */
     public String getAPIKey() {
@@ -86,7 +83,7 @@ public class Server {
 
     /**
      * Only applicable for service users.
-     * 
+     *
      * @param APIKey given by Cloud Office Print.
      */
     public void setAPIKey(String APIKey) {
@@ -96,7 +93,7 @@ public class Server {
     /**
      * When the Cloud Office Print server is started with --enable_printlog, it will
      * create a file on the server called server_printjob.log.
-     * 
+     *
      * @return Jsonobject with the extra information you want to be logged in that
      *         file.
      */
@@ -109,7 +106,7 @@ public class Server {
      * create a file on the server called server_printjob.log. You can add
      * additional logging information next to the one Cloud Office Print is logging
      * by default, by adding additional keys and values in the logging object.
-     * 
+     *
      * @param loginInfo Jsonobject with the information you want to be logged.
      */
     public void setLoggingInfo(JsonObject loginInfo) { // Need to change this to appart function maybe but need info :
@@ -133,7 +130,7 @@ public class Server {
 
     /**
      * Cloud Office Print supports to print directly to an IP Printer.
-     * 
+     *
      * @return Printer object containing the required info for the Cloud Office
      *         Print server.
      */
@@ -143,7 +140,7 @@ public class Server {
 
     /**
      * Cloud Office Print supports to print directly to an IP Printer.
-     * 
+     *
      * @param printer Printer object containing the required info for the Cloud
      *                Office Print server.
      */
@@ -198,7 +195,7 @@ public class Server {
     /**
      * Most basic constructor of the server. Can be populated more with the set
      * functions.
-     * 
+     *
      * @param url of the Cloud Office Print server.
      */
     public Server(String url) {
@@ -207,7 +204,7 @@ public class Server {
 
     /**
      * Use default values if you don't want to specify an argument.
-     * 
+     *
      * @param url         of the Cloud Office Print server
      * @param APIKey      Only applicable for service users. The value of this key
      *                    is the API key given by Cloud Office Print.
@@ -261,7 +258,7 @@ public class Server {
 
     /**
      * Sends a GET request to server-url/marco and checks if the answer is polo.
-     * 
+     *
      * @return true if the server is reachable.
      */
     public boolean isReachable() {
@@ -271,7 +268,7 @@ public class Server {
 
     /**
      * Sends a GET request to server-url/soffice.
-     * 
+     *
      * @return current version of Libreoffice installed on the server.
      */
     public String getSofficeVersionServer() {
@@ -280,7 +277,7 @@ public class Server {
 
     /**
      * Sends a GET request to server-url/officetopdf.
-     * 
+     *
      * @return current version of OfficeToPdf installed on the server. (Only
      *         available if the server runs in Windows environment).
      */
@@ -290,7 +287,7 @@ public class Server {
 
     /**
      * Sends a GET request to server-url/supported_template_mimetypes.
-     * 
+     *
      * @return json of the mime types of templates that Cloud Office Print supports.
      */
     public String getMimeTypesSupported() {
@@ -301,7 +298,7 @@ public class Server {
      * Sends a GET request to
      * server-url/supported_output_mimetypes?template=extension. Note: You will get
      * empty json if the template extension isn't supported.
-     * 
+     *
      * @param extension Template extension.
      * @return The supported output types for the given template extension.
      */
@@ -311,7 +308,7 @@ public class Server {
 
     /**
      * Sends a GET request to server-url/supported_prepend_mimetypes.
-     * 
+     *
      * @return returns the supported prepend file mime types in JSON format.
      */
     public String getPrependMimeTypesSupported() {
@@ -320,7 +317,7 @@ public class Server {
 
     /**
      * Sends a GET request to server-url/version.
-     * 
+     *
      * @return returns the version of Cloud Office Print that is run on server.
      */
     public String getCOPVersionOnServer() {
@@ -328,8 +325,117 @@ public class Server {
     }
 
     /**
+     * Sends a GET request to server-url/ipp_check?ipp_url=location&version=version.
+     * @param location url of the ipp printer.
+     * @param version of the ipp printer.
+     * @return the status of the ipp printer.
+     */
+    public String checkIPP(String location, String version){
+        return sendGETRequest(this.url + String.format("/ipp_check?ipp_url=%s&version=%s", location, version));
+    }
+
+    /**
+     * Sends a GET request to server-url/verify_template_hash?hash=hash.
+     * @param hash hashcode of a template.
+     * @return status of the hashed template with the given hashcode.
+     */
+    public String verifyTemplateHash(String hash){
+        return sendGETRequest(this.url + String.format("/verify_template_hash?hash=%s", hash));
+    }
+
+    /**
+     * Sends a GET request to server-url/renew_template_hash?hash=hash.
+     * @param hash hashcode of a template.
+     * @return status of the renewed hashed template with the given hashcode.
+     */
+    public String renewTemplateHash(String hash){
+        return sendGETRequest(this.url + String.format("/renew_template_hash?hash=%s", hash));
+    }
+
+    /**
+     * Sends a GET request to server-url/invalidate_template_hash?hash=hash.
+     * @param hash hashcode of a template.
+     * @return status of the invalidated hashed template with the given hashcode.
+     */
+    public String invalidateTemplateHash(String hash){
+        return sendGETRequest(this.url + String.format("/invalidate_template_hash?hash=%s", hash));
+    }
+
+    /**
+     * Sends a GET request to server-url/stats.
+     * @param accessToken access token. If not used, give null.
+     * @return json of the current statistics of the Cloud Office Print server.
+     */
+    public String statistics(String accessToken) throws URISyntaxException {
+        URI uri = new URI(this.url + "/stats");
+
+        if (accessToken != null){
+            uri = appendUri(uri.toString(), "access_token=" + accessToken);
+        }
+
+        return sendGETRequest(uri.toString());
+    }
+
+    /**
+     * Sends a GET request to server-url/server_errors.
+     * @param accessToken access token. If not used, give null.
+     * @param latest the number of the latest lines of the log file you want. If not used, give null.
+     * @return errors of the Cloud Office Print server in log file format.
+     */
+    public String errors(String accessToken, Integer latest) throws URISyntaxException {
+        URI uri = new URI(this.url + "/server_errors");
+
+        if (accessToken != null){
+            uri = appendUri(uri.toString(), "access_token=" + accessToken);
+        }
+        if (latest != null){
+            uri = appendUri(uri.toString(), "latest=" + latest);
+        }
+
+        return sendGETRequest(uri.toString());
+    }
+
+    /**
+     * Sends a GET request to server-url/server_printjobs.
+     * @param accessToken access token. If not used, give null.
+     * @param date the date of the print jobs you want. If not used, give null.
+     * @return print jobs of the Cloud Office Print server in log file format.
+     */
+    public String printJobs(String accessToken, String date) throws URISyntaxException {
+        URI uri = new URI(this.url + "/server_printjobs");
+
+        if (accessToken != null){
+            uri = appendUri(uri.toString(), "access_token=" + accessToken);
+        }
+        if (date != null){
+            uri = appendUri(uri.toString(), "date=" + date);
+        }
+
+        return sendGETRequest(uri.toString());
+    }
+
+    /**
+     * Sends a GET request to server-url/network_logs.
+     * @param accessToken access token. If not used, give null.
+     * @param date the date of the network logs you want. If not used, give null.
+     * @return network logs of the Cloud Office Print server in log file format.
+     */
+    public String networkLogs(String accessToken, String date) throws URISyntaxException {
+        URI uri = new URI(this.url + "/network_logs");
+
+        if (accessToken != null){
+            uri = appendUri(uri.toString(), "access_token=" + accessToken);
+        }
+        if (date != null){
+            uri = appendUri(uri.toString(), "date=" + date);
+        }
+
+        return sendGETRequest(uri.toString());
+    }
+
+    /**
      * Sends a GET request to the url.
-     * 
+     *
      * @param urlToJoin URL to send the GET request to.
      * @return body of the response of the request.
      */
@@ -379,7 +485,7 @@ public class Server {
 
     /**
      * Sends a POST request with the given json file as body.
-     * 
+     *
      * @param postData json to send to the server
      * @throws COPException when server response's code is not equal to 200.
      * @return Response object containing the file extension and body (in bytes)
@@ -447,7 +553,7 @@ public class Server {
 
     /**
      * Function to read a local JSON file.
-     * 
+     *
      * @param path Local path of the file.
      * @return String of the json.
      * @throws FileNotFoundException If the file is not found.
@@ -468,5 +574,19 @@ public class Server {
             e.printStackTrace();
         }
         return dataString.toString();
+    }
+
+    private static URI appendUri(String uri, String appendQuery) throws URISyntaxException {
+        URI oldUri = new URI(uri);
+
+        String newQuery = oldUri.getQuery();
+        if (newQuery == null) {
+            newQuery = appendQuery;
+        }
+        else {
+            newQuery += "&" + appendQuery;
+        }
+
+        return new URI(oldUri.getScheme(), oldUri.getAuthority(), oldUri.getPath(), newQuery, oldUri.getFragment());
     }
 }
