@@ -16,6 +16,8 @@ public class PDFOptions {
     private String modifyPassword;
     private Integer passwordProtectionFlag;
     private Boolean lockForm;
+    private Boolean lockFormExceptSignatureFields;
+
     private Integer copies;
     private int[] pageMargin;
     private Boolean landscape;
@@ -180,6 +182,20 @@ public class PDFOptions {
      */
     public void setLockForm(Boolean lockForm) {
         this.lockForm = lockForm;
+    }
+
+    /**
+     * @return If the output PDF will be locked/flattened except for the signature fields.
+     */
+    public Boolean getLockFormExceptSignatureFields() {
+        return lockFormExceptSignatureFields;
+    }
+
+    /**
+     * @param lockFormExceptSignatureFields Set to true if you want the output PDF to be locked/flattened except for the signature fields.
+     */
+    public void setLockFormExceptSignatureFields(Boolean lockFormExceptSignatureFields) {
+        this.lockFormExceptSignatureFields = lockFormExceptSignatureFields;
     }
 
     /**
@@ -418,6 +434,9 @@ public class PDFOptions {
         }
         if (getLockForm() != null) {
             json.addProperty("lock_form", getLockForm());
+        }
+        if (getLockFormExceptSignatureFields() != null) {
+            json.addProperty("lock_form_except_signaturefield", getLockFormExceptSignatureFields());
         }
         if (getCopies() != null) {
             json.addProperty("output_copies", getCopies());
