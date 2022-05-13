@@ -7,29 +7,50 @@ import com.google.gson.JsonObject;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Abstract super class for PDF form elements.
+ */
 public abstract class PDFFormElement extends RenderElement {
 
     private Integer width;
     private Integer height;
 
+    /**
+     * @return the type of this PDF form element.
+     */
     public abstract String getType();
 
+    /**
+     * @return width of this PDF form element.
+     */
     public Integer getWidth() {
         return width;
     }
 
+    /**
+     * @param width of this PDF form element
+     */
     public void setWidth(Integer width) {
         this.width = width;
     }
 
+    /**
+     * @return height of this PDF form element.
+     */
     public Integer getHeight() {
         return height;
     }
 
+    /**
+     * @param height of this PDF form element
+     */
     public void setHeight(Integer height) {
         this.height = height;
     }
 
+    /**
+     * @param name of this element.
+     */
     public PDFFormElement(String name) {
         setName(name);
     }
