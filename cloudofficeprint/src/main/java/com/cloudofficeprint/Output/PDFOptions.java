@@ -21,9 +21,12 @@ public class PDFOptions {
     private Boolean landscape;
     private String pageFormat;
     private Boolean merge;
-    private String signCertificate;
-    private Boolean identifyFormFields;
     private Boolean split;
+    private Boolean identifyFormFields;
+    private String signCertificate;
+    private String signCertificatePassword;
+    private String signCertificateField;
+    private String signCertificateBackgroundImage;
 
     /**
      * @return password to read the output.
@@ -55,7 +58,7 @@ public class PDFOptions {
 
     /**
      * Only supported when converting HTML to PDF.
-     * 
+     *
      * @return pageWidth width followed by unit : px, mm, cm, in (e.g. : 20 px). No
      *         unit means px.
      */
@@ -65,7 +68,7 @@ public class PDFOptions {
 
     /**
      * Only supported when converting HTML to PDF.
-     * 
+     *
      * @param pageWidth width followed by unit : px, mm, cm, in (e.g. : 20 px). No
      *                  unit means px.
      */
@@ -75,7 +78,7 @@ public class PDFOptions {
 
     /**
      * Only supported when converting HTML to PDF.
-     * 
+     *
      * @return pageHeight height followed by unit : px, mm, cm, in (e.g. : 20 px).
      *         No unit means px.
      */
@@ -85,7 +88,7 @@ public class PDFOptions {
 
     /**
      * Only supported when converting HTML to PDF.
-     * 
+     *
      * @param pageHeight eight followed by unit : px, mm, cm, in (e.g. : 20 px). No
      *                   unit means px.
      */
@@ -144,7 +147,7 @@ public class PDFOptions {
     /**
      * More info on the flag bits on
      * https://pdfhummus.com/post/147451287581/hummus-1058-and-pdf-writer-updates-encryption.
-     * 
+     *
      * @return protection flag for the PDF (in addition to the user password). (int
      *         representation of the 12 flag bits)
      */
@@ -155,7 +158,7 @@ public class PDFOptions {
     /**
      * More info on the flag bits on
      * https://pdfhummus.com/post/147451287581/hummus-1058-and-pdf-writer-updates-encryption.
-     * 
+     *
      * @param passwordProtectionFlag protection flag for the PDF (in addition to the
      *                               user password). (int representation of the 12
      *                               flag bits)
@@ -195,7 +198,7 @@ public class PDFOptions {
 
     /**
      * Only supported when converting HTML to PDF.
-     * 
+     *
      * @return top bottom left right margin in pixels .
      */
     public int[] getPageMargin() {
@@ -204,7 +207,7 @@ public class PDFOptions {
 
     /**
      * Only supported when converting HTML to PDF.
-     * 
+     *
      * @param pageMargins top bottom left right margin in pixels .
      * @throws Exception If not exact 4 margins are given.
      */
@@ -217,7 +220,7 @@ public class PDFOptions {
 
     /**
      * Only supported when converting HTML to PDF.
-     * 
+     *
      * @param pageMargin Margin (same for all sides).
      */
     public void setPageMargin(int pageMargin) {
@@ -226,7 +229,7 @@ public class PDFOptions {
 
     /**
      * Only supported when converting HTML to PDF.
-     * 
+     *
      * @return True if orientation is landscape, false if orientation is portrait
      *         (default used by server).
      */
@@ -236,7 +239,7 @@ public class PDFOptions {
 
     /**
      * Only supported when converting HTML to PDF.
-     * 
+     *
      * @param landscape Set to true if you want the orientation of the output to be
      *                  landscape, false for portrait (default used by server).
      */
@@ -246,7 +249,7 @@ public class PDFOptions {
 
     /**
      * Only supported when converting HTML to PDF.
-     * 
+     *
      * @return The page format: "A4" (default used by Cloud Office Print) or
      *         "letter".
      */
@@ -256,7 +259,7 @@ public class PDFOptions {
 
     /**
      * Only supported when converting HTML to PDF.
-     * 
+     *
      * @param pageFormat The page format: "A4" or "letter".
      */
     public void setPageFormat(String pageFormat) {
@@ -282,7 +285,7 @@ public class PDFOptions {
     /**
      * It is possible to sign the output PDF if the output pdf has a signature
      * field.
-     * 
+     *
      * @return The certificate (pkcs #12 .p12/.pfx) in a base64 encoded format (this
      *         can also be a URL, FTP location or a location in the file system of
      *         the server).
@@ -294,7 +297,7 @@ public class PDFOptions {
     /**
      * It is possible to sign the output PDF if the output pdf has a signature
      * field.
-     * 
+     *
      * @param signCertificate The certificate (pkcs #12 .p12/.pfx) in a base64
      *                        encoded format (this can also be a URL, FTP location
      *                        or a location in the file system of the server).
@@ -333,6 +336,48 @@ public class PDFOptions {
      */
     public void setSplit(Boolean split) {
         this.split = split;
+    }
+
+    /**
+     * @return password for if the signing certificate is protected.
+     */
+    public String getSignCertificatePassword() {
+        return signCertificatePassword;
+    }
+
+    /**
+     * @param signCertificatePassword password for if the signing certificate is protected.
+     */
+    public void setSignCertificatePassword(String signCertificatePassword) {
+        this.signCertificatePassword = signCertificatePassword;
+    }
+
+    /**
+     * @return name of the already existing certificate field that you want to sign.
+     */
+    public String getSignCertificateField() {
+        return signCertificateField;
+    }
+
+    /**
+     * @param signCertificateField name of the already existing certificate field that you want to sign.
+     */
+    public void setSignCertificateField(String signCertificateField) {
+        this.signCertificateField = signCertificateField;
+    }
+
+    /**
+     * @return certificate background image as a base64 string, URL, FTP location or a server path.
+     */
+    public String getSignCertificateBackgroundImage() {
+        return signCertificateBackgroundImage;
+    }
+
+    /**
+     * @param signCertificateBackgroundImage certificate background image as a base64 string, URL, FTP location or a server path.
+     */
+    public void setSignCertificateBackgroundImage(String signCertificateBackgroundImage) {
+        this.signCertificateBackgroundImage = signCertificateBackgroundImage;
     }
 
     /**
@@ -403,20 +448,30 @@ public class PDFOptions {
         if (getMerge() != null) {
             json.addProperty("output_merge", getMerge());
         }
+        if (getSplit() != null) {
+            json.addProperty("output_split", getSplit());
+        }
         if (getLandscape() != null && getLandscape() == true) {
             json.addProperty("page_orientation", "landscape"); // For Cloud Office Print versions later than 21.1.1,
                                                                // output_page_orientation will also be supported as tag
                                                                // name to be consistent with the other namings.
         }
-        if (getSignCertificate() != null) {
-            json.addProperty("output_sign_certificate", getSignCertificate());
-        }
         if (getIdentifyFormFields() != null) {
             json.addProperty("identify_form_fields", getIdentifyFormFields());
         }
-        if (getSplit() != null) {
-            json.addProperty("output_split", getSplit());
+        if (getSignCertificate() != null) {
+            json.addProperty("output_sign_certificate", getSignCertificate());
         }
+        if (getSignCertificateField() != null) {
+            json.addProperty("output_sign_certificate_field", getSignCertificateField());
+        }
+        if (getSignCertificatePassword() != null) {
+            json.addProperty("output_sign_certificate_password", getSignCertificatePassword());
+        }
+        if (getSignCertificateBackgroundImage() != null) {
+            json.addProperty("output_sign_certificate_background_image", getSignCertificateBackgroundImage());
+        }
+
         return json;
     }
 }
