@@ -44,10 +44,12 @@ public class ConfigTests {
         pdfOptions.setSignCertificateField("field_name");
         pdfOptions.setSignCertificateBackgroundImage("base64 encoded image");
         pdfOptions.setSignCertificatePassword("certificate password");
+        pdfOptions.setPrependPerPage(false);
+        pdfOptions.setAppendPerPage(true);
 
         Output output = new Output("pdf", "raw", "libreoffice", null, null, pdfOptions, null);
 
-        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'output_read_password': 'test_pw', 'output_watermark': 'test_watermark', 'output_page_width': '500', 'output_page_height': '500', 'output_even_page': True, 'output_merge_making_even': False, 'output_modify_password': 'test_modify_password', 'output_password_protection_flag': 0, 'lock_form': True, 'lock_form_except_signaturefield': false, 'output_copies': 3, 'page_margin': {'top': 5, 'bottom': 5, 'left': 5, 'right': 5}, 'output_page_format': 'test_page_format', 'output_merge': False, 'output_sign_certificate': 'test_sign_certificate', 'identify_form_fields': True, 'output_split': False, 'output_sign_certificate_field': 'field_name', 'output_sign_certificate_background_image': 'base64 encoded image', 'output_sign_certificate_password': 'certificate password'}";
+        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'output_read_password': 'test_pw', 'output_watermark': 'test_watermark', 'output_page_width': '500', 'output_page_height': '500', 'output_even_page': True, 'output_merge_making_even': False, 'output_modify_password': 'test_modify_password', 'output_password_protection_flag': 0, 'lock_form': True, 'lock_form_except_signaturefield': false, 'output_copies': 3, 'page_margin': {'top': 5, 'bottom': 5, 'left': 5, 'right': 5}, 'output_page_format': 'test_page_format', 'output_merge': False, 'output_sign_certificate': 'test_sign_certificate', 'identify_form_fields': True, 'output_split': False, 'output_sign_certificate_field': 'field_name', 'output_sign_certificate_background_image': 'base64 encoded image', 'output_sign_certificate_password': 'certificate password', 'output_prepend_per_page': false, 'output_append_per_page': true}";
         // System.out.println(output.getJSON());
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);

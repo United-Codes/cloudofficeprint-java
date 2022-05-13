@@ -28,6 +28,8 @@ public class PDFOptions {
     private String signCertificatePassword;
     private String signCertificateField;
     private String signCertificateBackgroundImage;
+    private Boolean prependPerPage;
+    private Boolean appendPerPage;
 
     /**
      * @return password to read the output.
@@ -396,6 +398,34 @@ public class PDFOptions {
     }
 
     /**
+     * @return whether the prepend files should be prepended for every page.
+     */
+    public Boolean getPrependPerPage() {
+        return prependPerPage;
+    }
+
+    /**
+     * @param prependPerPage whether the prepend files should be prepended for every page.
+     */
+    public void setPrependPerPage(Boolean prependPerPage) {
+        this.prependPerPage = prependPerPage;
+    }
+
+    /**
+     * @return whether the append files should be appended for every page.
+     */
+    public Boolean getAppendPerPage() {
+        return appendPerPage;
+    }
+
+    /**
+     * @param appendPerPage whether the append files should be appended for every page.
+     */
+    public void setAppendPerPage(Boolean appendPerPage) {
+        this.appendPerPage = appendPerPage;
+    }
+
+    /**
      * Constructor for the PDFOptions object. Set the options with the setters.
      * Uninitialized options won't be included in the JSON.
      */
@@ -488,6 +518,12 @@ public class PDFOptions {
         }
         if (getSignCertificateBackgroundImage() != null) {
             json.addProperty("output_sign_certificate_background_image", getSignCertificateBackgroundImage());
+        }
+        if (getPrependPerPage() != null) {
+            json.addProperty("output_prepend_per_page", getPrependPerPage());
+        }
+        if (getAppendPerPage() != null) {
+            json.addProperty("output_append_per_page", getAppendPerPage());
         }
 
         return json;
