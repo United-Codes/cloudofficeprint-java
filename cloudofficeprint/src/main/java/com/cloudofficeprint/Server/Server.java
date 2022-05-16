@@ -5,6 +5,7 @@ import com.cloudofficeprint.Response;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.cloudofficeprint.Mimetype;
+import com.google.gson.JsonParser;
 
 import java.io.*;
 import java.net.*;
@@ -431,6 +432,55 @@ public class Server {
         }
 
         return sendGETRequest(uri.toString());
+    }
+
+    public Response download(String id, String secretKey, Boolean delete) throws Exception {
+        URI uri = new URI(this.url + "/download/" + id);
+
+        if (secretKey != null){
+            uri = appendUri(uri.toString(), "secretkey=" + secretKey);
+        }
+        if (delete != null){
+            uri = appendUri(uri.toString(), "delete_after_download=" + delete);
+        }
+
+        URL obj = new URL(uri.toString());
+        HttpURLConnection con;
+        if (getProxyPort() != null) {
+            Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(getProxyIP(), getProxyPort()));
+            con = (HttpURLConnection) obj.openConnection(proxy);
+        } else {
+            con = (HttpURLConnection) obj.openConnection();
+        }
+        if (getUsername() != null && getPassword() != null) {
+            String uspw = getUsername() + ':' + getPassword();
+            String encodedString = Base64.getEncoder().encodeToString(uspw.getBytes());
+            con.setRequestProperty("Proxy-Authorization", "Basic " + encodedString);
+        }
+        con.setDoOutput(true);
+        con.setRequestMethod("GET");
+        int responseCode = con.getResponseCode();
+        if (responseCode == 200) {
+            String mime = Mimetype.getMimetypeFromContentType(con.getHeaderField("Content-Type"));
+            String ext = Mimetype.getExtension(con.getHeaderField("Content-Type"));
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            byte[] buffer = new byte[1024];
+            int length = 0;
+            while ((length = con.getInputStream().read(buffer)) != -1) { // attempt is made to read as many as len bytes
+                baos.write(buffer, 0, length);
+            }
+            Response response = new Response("." + ext, mime, baos.toByteArray());
+            return response;
+        } else {
+            BufferedReader in = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+            throw new COPException(responseCode, response.toString());
+        }
     }
 
     /**
