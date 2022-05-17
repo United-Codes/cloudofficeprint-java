@@ -434,6 +434,13 @@ public class Server {
         return sendGETRequest(uri.toString());
     }
 
+    /**
+     * Sends a GET request to server-url/download/id.
+     * @param id unique identifier of the polled print job.
+     * @param secretKey used to encrypt the polled print job.
+     * @param delete whether to delete the polled print job after download.
+     * @return The Response of the polled print job with id.
+     */
     public Response download(String id, String secretKey, Boolean delete) throws Exception {
         URI uri = new URI(this.url + "/download/" + id);
 
