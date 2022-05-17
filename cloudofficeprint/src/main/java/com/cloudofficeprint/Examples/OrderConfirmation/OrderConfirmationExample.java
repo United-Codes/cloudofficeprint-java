@@ -4,6 +4,7 @@ import java.io.InputStream;
 import java.util.Base64;
 import java.util.Hashtable;
 
+import com.cloudofficeprint.IResponse;
 import com.cloudofficeprint.Mimetype;
 import com.cloudofficeprint.PrintJob;
 import com.cloudofficeprint.Response;
@@ -173,7 +174,7 @@ public class OrderConfirmationExample {
                 dataTable.put("data", data);
                 PrintJob printJob = new PrintJob(dataTable, copServer, conf, template, null, null, null, null);
 
-                Response response = printJob.execute();
+                IResponse response = printJob.execute();
 
                 // Save response to output file
                 response.downloadLocally("./downloads/orderconfirmation");

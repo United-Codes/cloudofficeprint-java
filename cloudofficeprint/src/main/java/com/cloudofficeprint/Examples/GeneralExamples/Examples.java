@@ -35,7 +35,7 @@ public class Examples {
     /**
      * Example where the local test.json is read and send to the server. The output
      * is downloaded in downloads and named outputLocalJson.
-     * 
+     *
      * @param APIKey Your Cloud Office Print APIKey.
      */
     public void localJson(String APIKey) {
@@ -49,7 +49,7 @@ public class Examples {
             String ret = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8.name());
 
             JsonObject jsonObject = JsonParser.parseString(ret).getAsJsonObject();
-            Response response = server.sendPOSTRequest(jsonObject);
+            IResponse response = server.sendPOSTRequest(jsonObject);
             response.downloadLocally("./downloads/outputLocalJson");
 
         } catch (COPException e) {
@@ -63,7 +63,7 @@ public class Examples {
      * Example without template. Cloud Office Print will generate the template based
      * on the data. Output type determines the template type generated. Cannot be
      * PDF in this case.
-     * 
+     *
      * @param APIKey Your Cloud Office Print APIKey.
      */
     public void withoutTemplate(String APIKey) {
@@ -108,7 +108,7 @@ public class Examples {
 
             PrintJob printJob = new PrintJob(data, server, output, null, null, null, null, null);
 
-            Response response = printJob.execute();
+            IResponse response = printJob.execute();
             response.downloadLocally("./downloads/outputWithoutTemplate");
 
         } catch (COPException e) {
@@ -122,7 +122,7 @@ public class Examples {
      * Example with templateTest.docx as template, a list of properties and an image
      * as data. A zipfile named outputLocalTemplate will contain 2 outputs files in
      * the downloads folder.
-     * 
+     *
      * @param APIKey Your Cloud Office Print APIKey.
      */
     public void localTemplate(String APIKey) {
@@ -198,7 +198,7 @@ public class Examples {
 
             PrintJob printJob = new PrintJob(data, server, output, base64Resource, null, null, null, null);
 
-            Response response = printJob.execute();
+            IResponse response = printJob.execute();
             response.downloadLocally("./downloads/outputLocalTemplate");
 
         } catch (COPException e) {
@@ -212,7 +212,7 @@ public class Examples {
      * Asynchronous version of the above example. Example with templateTest.docx as
      * template, a list of properties and an image as data. A zipfile named
      * outputLocalTemplate will contain 2 outputs files in the downloads folder.
-     * 
+     *
      * @param APIKey Your Cloud Office Print APIKey.
      */
     public void localTemplateAsync(String APIKey) {
@@ -284,7 +284,7 @@ public class Examples {
             // System.out.println("in between");
             thread.join();
             // System.out.println("after");
-            Response response = printJob.getResponse();
+            IResponse response = printJob.getResponse();
             response.downloadLocally("./downloads/outputLocalTemplateAsync");
 
         } catch (COPException e) {
@@ -297,7 +297,7 @@ public class Examples {
     /**
      * In this example 2 nested loops are given in the template. One for the orders
      * and one for the products per order.
-     * 
+     *
      * @param APIKey Your Cloud Office Print APIKey.
      */
     public void loopExample(String APIKey) {
@@ -439,7 +439,7 @@ public class Examples {
             // Create the printjob
             PrintJob printJob = new PrintJob(file, server, output, base64Resource, null, null, null, null);
 
-            Response response = printJob.execute();
+            IResponse response = printJob.execute();
             response.downloadLocally("./downloads/outputLoop");
 
         } catch (COPException e) {
@@ -451,7 +451,7 @@ public class Examples {
 
     /**
      * This example show how to build a line chart.
-     * 
+     *
      * @param APIKey Your Cloud Office Print APIKey.
      */
     public void chartExample(String APIKey) {
@@ -497,7 +497,7 @@ public class Examples {
 
             PrintJob printJob = new PrintJob(data, server, output, base64Resource, null, null, null, null);
 
-            Response response = printJob.execute();
+            IResponse response = printJob.execute();
             response.downloadLocally("./downloads/outputChartName");
 
         } catch (COPException e) {
@@ -510,7 +510,7 @@ public class Examples {
 
     /**
      * This example show how to build a combined chart.
-     * 
+     *
      * @param APIKey Your Cloud Office Print APIKey.
      */
     public void combinedChartExample(String APIKey) {
@@ -564,7 +564,7 @@ public class Examples {
 
             PrintJob printJob = new PrintJob(data, server, output, base64Resource, null, null, null, null);
 
-            Response response = printJob.execute();
+            IResponse response = printJob.execute();
             response.downloadLocally("./downloads/outputCombinedChartName");
 
         } catch (COPException e) {
@@ -576,7 +576,7 @@ public class Examples {
 
     /**
      * This example show how to work with Codes (QR code and barcode).
-     * 
+     *
      * @param APIKey Your Cloud Office Print APIKey.
      */
     public void qrCodeExample(String APIKey) {
@@ -625,7 +625,7 @@ public class Examples {
 
             PrintJob printJob = new PrintJob(data, server, output, base64Resource, null, null, null, null);
 
-            Response response = printJob.execute();
+            IResponse response = printJob.execute();
             response.downloadLocally("./downloads/outputCodes");
 
         } catch (COPException e) {
@@ -638,7 +638,7 @@ public class Examples {
     /**
      * This example shows you how to prepend/append files and how to use
      * subtemplates in a template. Look in the generalTests to see the code.
-     * 
+     *
      * @param APIKey Your Cloud Office Print APIKey.
      * @throws Exception Exceptions.
      */
@@ -710,7 +710,7 @@ public class Examples {
     /**
      * This example shows you how to add text and images on pages of a template
      * without tag. The output format needs to be PDF.
-     * 
+     *
      * @param APIKey Your Cloud Office Print APIKey.
      */
     public void COPPDFTextAndImageExample(String APIKey) {
@@ -797,7 +797,7 @@ public class Examples {
 
             PrintJob printJob = new PrintJob(data, server, output, base64Resource, null, null, null, null);
 
-            Response response = printJob.execute();
+            IResponse response = printJob.execute();
             response.downloadLocally("./downloads/outputCOPPDFText");
 
         } catch (COPException e) {
@@ -809,7 +809,7 @@ public class Examples {
 
     /**
      * Example for a styled property and a watermark.
-     * 
+     *
      * @param APIKey Your Cloud Office Print APIKey.
      */
     public void waterMarkAndStyledProperty(String APIKey) {
@@ -862,7 +862,7 @@ public class Examples {
 
             PrintJob printJob = new PrintJob(data, server, output, base64Resource, null, null, null, null);
 
-            Response response = printJob.execute();
+            IResponse response = printJob.execute();
             response.downloadLocally("./downloads/outputRenderElements");
 
         } catch (COPException e) {
@@ -875,7 +875,7 @@ public class Examples {
     /**
      * This example show you how to sign a PDF file. (Invisible signature, only to
      * be seen in the options of the file).
-     * 
+     *
      * @param APIKey Your Cloud Office Print APIKey.
      */
     public void signPDF(String APIKey) {
@@ -912,7 +912,7 @@ public class Examples {
 
             PrintJob printJob = new PrintJob(data, server, output, base64Resource, null, null, null, null);
 
-            Response response = printJob.execute();
+            IResponse response = printJob.execute();
             response.downloadLocally("./downloads/pdfSigned");
 
         } catch (COPException e) {

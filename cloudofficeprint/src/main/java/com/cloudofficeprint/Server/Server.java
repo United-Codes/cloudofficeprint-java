@@ -1,17 +1,18 @@
 package com.cloudofficeprint.Server;
 
-import com.cloudofficeprint.COPException;
-import com.cloudofficeprint.Response;
+import com.cloudofficeprint.*;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.cloudofficeprint.Mimetype;
 import com.google.gson.JsonParser;
 
 import java.io.*;
 import java.net.*;
+import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Class representing the Cloud Office Print server to interact with. This class
@@ -469,7 +470,7 @@ public class Server {
         int responseCode = con.getResponseCode();
         if (responseCode == 200) {
             String mime = Mimetype.getMimetypeFromContentType(con.getHeaderField("Content-Type"));
-            String ext = Mimetype.getExtension(con.getHeaderField("Content-Type"));
+            String ext = Mimetype.getExtension(mime);
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             byte[] buffer = new byte[1024];
             int length = 0;
@@ -547,7 +548,7 @@ public class Server {
      * @throws COPException when server response's code is not equal to 200.
      * @return Response object containing the file extension and body (in bytes)
      */
-    public Response sendPOSTRequest(JsonObject postData) throws Exception {
+    public IResponse sendPOSTRequest(JsonObject postData) throws Exception {
 
         if (isVerbose() == true) {
             System.out.println("Server.java : " + "Json for server : " + postData.toString() + "\n");
@@ -587,15 +588,38 @@ public class Server {
                 System.out.println("Server.java : " + "Content-Type : " + con.getHeaderField("Content-Type") + "\n");
             }
             String mime = Mimetype.getMimetypeFromContentType(con.getHeaderField("Content-Type"));
-            String ext = Mimetype.getExtension(con.getHeaderField("Content-Type"));
+            String ext = Mimetype.getExtension(mime);
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             byte[] buffer = new byte[1024];
             int length = 0;
             while ((length = con.getInputStream().read(buffer)) != -1) { // attempt is made to read as many as len bytes
                 baos.write(buffer, 0, length);
             }
-            Response response = new Response("." + ext, mime, baos.toByteArray());
-            return response;
+
+            JsonObject output = postData.getAsJsonObject("output");
+            if (output.has("output_polling") && output.get("output_polling").getAsBoolean()){
+                String responseString = baos.toString(StandardCharsets.UTF_8);
+                String url = JsonParser.parseString(responseString).getAsJsonObject().get("url").getAsString();
+
+                Pattern pattern = Pattern.compile("/download/([a-zA-Z0-9]*)");
+                Matcher matcher = pattern.matcher(url);
+
+                String id;
+                if (matcher.find()){
+                    id = matcher.group(1);
+                }
+                else throw new Exception("Id was not found in the response json of the Cloud Office Print server.");
+
+                String secretKey = null;
+                if (output.has("secret_key")){
+                    secretKey = output.get("secret_key").getAsString();
+                }
+
+                ResponsePolling response = new ResponsePolling(this, id);
+                response.setSecretKey(secretKey);
+                return response;
+            }
+            return new Response("." + ext, mime, baos.toByteArray());
         } else {
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getErrorStream()));
             String inputLine;

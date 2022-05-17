@@ -10,7 +10,7 @@ import java.nio.charset.StandardCharsets;
  * Class for dealing with the Cloud Office Print server's response to a printjob
  * request.
  */
-public class Response {
+public class Response implements IResponse{
 
     private String ext;
     private String mimetype;
@@ -19,6 +19,7 @@ public class Response {
     /**
      * @return mimetype of the file in the body.
      */
+    @Override
     public String getMimetype() {
         return mimetype;
     }
@@ -33,6 +34,7 @@ public class Response {
     /**
      * @return body (file base64) of the response.
      */
+    @Override
     public byte[] getBody() {
         return body;
     }
@@ -47,6 +49,7 @@ public class Response {
     /**
      * @return extension of the file in the body.
      */
+    @Override
     public String getExt() {
         return ext;
     }
@@ -72,10 +75,11 @@ public class Response {
     /**
      * Return the string representation of this Response. Useful if the server
      * returns a JSON (e.g. for output_type 'count_tags').
-     * 
+     *
      * @return string representation of this Response
      * @throws Exception if the byte-array cannot be decoded
      */
+    @Override
     public String asString() throws Exception {
         try {
             return new String(this.body, StandardCharsets.UTF_8);
@@ -89,10 +93,11 @@ public class Response {
      * Downloads the file locally to the given path, filename needs to be specified
      * at the end of the path, not the extension. Creates the file at given path if
      * it doesn't exist yet, overwrites it otherwise.
-     * 
+     *
      * @param path local path ending
      * @throws IOException If the file is not found.
      */
+    @Override
     public void downloadLocally(String path) throws IOException {
         path = path + ext;
         FileUtils.writeByteArrayToFile(new File(path), getBody());

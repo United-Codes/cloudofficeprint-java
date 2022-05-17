@@ -27,7 +27,7 @@ public class PrintJob implements Runnable {
     private ExternalResource externalResource;
     private Boolean copRemoteDebug;
 
-    private volatile Response response; // for asynchronous calls
+    private volatile IResponse response; // for asynchronous calls
 
     /**
      * @return Server to user for this printjob.
@@ -102,7 +102,7 @@ public class PrintJob implements Runnable {
     /**
      * Subtemplates are only accessible (in docx). They will replace the `{?include
      * subtemplate_dict_key}` tag in the docx.
-     * 
+     *
      * @return Subtemplates for this print job. Hashtable(key, subTemplate).
      */
     public Hashtable<String, Resource> getSubTemplates() {
@@ -112,7 +112,7 @@ public class PrintJob implements Runnable {
     /**
      * Subtemplates are only accessible (in docx). They will replace the `{?include
      * subtemplate_dict_key}` tag in the docx.
-     * 
+     *
      * @param subTemplates for this print job. Hashtable(key, subTemplate).
      */
     public void setSubTemplates(Hashtable<String, Resource> subTemplates) {
@@ -123,7 +123,7 @@ public class PrintJob implements Runnable {
      * Renderelements will replace their corresponding tag in the template. Multiple
      * output files will be produced if the hashtable has more then one element, the
      * Cloud Office Print server will return a zip file containing all of them.
-     * 
+     *
      * @return Hashtable(filename, RenderElement)
      */
     public Hashtable<String, RenderElement> getData() {
@@ -134,7 +134,7 @@ public class PrintJob implements Runnable {
      * Renderelements will replace their corresponding tag in the template. Multiple
      * output files will be produced if the hashtable has more then one element, the
      * Cloud Office Print server will return a zip file containing all of them.
-     * 
+     *
      * @param data Hashtable(filename, RenderElement)
      */
     public void setData(Hashtable<String, RenderElement> data) {
@@ -176,20 +176,20 @@ public class PrintJob implements Runnable {
     /**
      * For getting to response after asynchronous execution. To used after run() has
      * been called and the thread joined.
-     * 
+     *
      * @return Response of the request to Cloud Office Print.
      */
-    public Response getResponse() {
+    public IResponse getResponse() {
         return response;
     }
 
     /**
      * For setting to response after asynchronous execution. Call getResponse()
      * after run() has been called and the thread joined to get the response.
-     * 
+     *
      * @param response Response of the request to Cloud Office Print.
      */
-    public void setResponse(Response response) {
+    public void setResponse(IResponse response) {
         this.response = response;
     }
 
@@ -197,7 +197,7 @@ public class PrintJob implements Runnable {
      * A print job for the Cloud Office Print server containing all the necessary
      * information to generate the adequate JSON for the Cloud Office Print server.
      * If you don't want to instantiate a variable, use null for this argument.
-     * 
+     *
      * @param data           Hashtable of (filename, RenderElement) elements.
      *                       Multiple output files will be produced if the hashtable
      *                       has more then one element, the Cloud Office Print
@@ -233,7 +233,7 @@ public class PrintJob implements Runnable {
      * A print job for the Cloud Office Print server containing all the necessary
      * information to generate the adequate JSON for the Cloud Office Print server.
      * If you don't want to instantiate a variable, use null for this argument.
-     * 
+     *
      * @param externalResource External resource for the data (REST or graphQL).
      * @param server           Server to user for this printjob.
      * @param output           object containing the output configuration for this
@@ -343,12 +343,12 @@ public class PrintJob implements Runnable {
 
     /**
      * Creates the adequate JSON and sends it to the Cloud Office Print server.
-     * 
+     *
      * @return The response of the Cloud Office Print server.
      * @throws Exception    If the server is not reachable.
      * @throws COPException If the server response doesn't have a 200 code.
      */
-    public Response execute() throws Exception {
+    public IResponse execute() throws Exception {
         JsonObject JSONForServer = getJSON();
         return server.sendPOSTRequest(JSONForServer);
     }

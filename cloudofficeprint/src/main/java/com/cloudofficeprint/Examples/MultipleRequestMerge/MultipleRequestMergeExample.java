@@ -9,6 +9,7 @@ import java.util.Set;
 
 import java.util.Arrays;
 
+import com.cloudofficeprint.IResponse;
 import com.cloudofficeprint.Mimetype;
 import com.cloudofficeprint.PrintJob;
 import com.cloudofficeprint.Response;
@@ -71,7 +72,7 @@ public class MultipleRequestMergeExample {
 		// so we need to split our data into multiple requests.
 		// Let's use 10 requests with each 10 elements in the data (a total of 100 data
 		// elements).
-		Response[] outputFiles = new Response[10];
+		IResponse[] outputFiles = new com.cloudofficeprint.IResponse[10];
 		Set<Map.Entry<String, RenderElement>> dataEntries = data.entrySet();
 		Iterable<List<Map.Entry<String, RenderElement>>> slicedDataEntries = Iterables.partition(dataEntries, 10);
 		int index = 0;

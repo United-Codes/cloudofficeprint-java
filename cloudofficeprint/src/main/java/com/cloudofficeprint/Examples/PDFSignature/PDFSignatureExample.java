@@ -4,10 +4,7 @@ import java.io.InputStream;
 import java.util.Base64;
 import java.util.Hashtable;
 
-import com.cloudofficeprint.COPException;
-import com.cloudofficeprint.Mimetype;
-import com.cloudofficeprint.PrintJob;
-import com.cloudofficeprint.Response;
+import com.cloudofficeprint.*;
 import com.cloudofficeprint.Output.Output;
 import com.cloudofficeprint.Output.PDFOptions;
 import com.cloudofficeprint.RenderElements.ElementCollection;
@@ -50,7 +47,7 @@ public class PDFSignatureExample {
 
             PrintJob printJob = new PrintJob(data, server, output, base64Resource, null, null, null, null);
 
-            Response response = printJob.execute();
+            IResponse response = printJob.execute();
             response.downloadLocally("./downloads/pdfSigned");
 
         } catch (COPException e) {
