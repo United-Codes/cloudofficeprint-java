@@ -1,5 +1,6 @@
 package com.cloudofficeprint;
 
+import com.cloudofficeprint.Output.Globalization;
 import com.cloudofficeprint.Output.Output;
 import com.cloudofficeprint.RenderElements.RenderElement;
 import com.cloudofficeprint.Resources.ExternalResource;
@@ -25,6 +26,7 @@ public class PrintJob implements Runnable {
     private Hashtable<String, Resource> subTemplates = new Hashtable<String, Resource>();
     private Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
     private ExternalResource externalResource;
+    private Globalization globalization;
     private Boolean copRemoteDebug;
 
     private volatile IResponse response; // for asynchronous calls
@@ -194,6 +196,20 @@ public class PrintJob implements Runnable {
     }
 
     /**
+     * @return the globalization options for this print job.
+     */
+    public Globalization getGlobalization() {
+        return globalization;
+    }
+
+    /**
+     * @param globalization the globalization options for this print job.
+     */
+    public void setGlobalization(Globalization globalization) {
+        this.globalization = globalization;
+    }
+
+    /**
      * A print job for the Cloud Office Print server containing all the necessary
      * information to generate the adequate JSON for the Cloud Office Print server.
      * If you don't want to instantiate a variable, use null for this argument.
@@ -212,13 +228,14 @@ public class PrintJob implements Runnable {
      *                       the docx.
      * @param prependFiles   Files to prepend to the output.
      * @param appendFiles    Files to append to the output.
+     * @param globalization  Globalization options used for this print job.
      * @param copRemoteDebug If set to true the Cloud Office Print server will log
      *                       your JSON into out database and you can see it when you
      *                       log into cloudofficeprint.com.
      */
     public PrintJob(Hashtable<String, RenderElement> data, Server server, Output output, Resource template,
-            Hashtable<String, Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles,
-            Boolean copRemoteDebug) {
+                    Hashtable<String, Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles,
+                    Globalization globalization,Boolean copRemoteDebug) {
         setData(data);
         setServer(server);
         setOutput(output);
@@ -226,6 +243,7 @@ public class PrintJob implements Runnable {
         setSubTemplates(subTemplates);
         setPrependFiles(prependFiles);
         setAppendFiles(appendFiles);
+        setGlobalization(globalization);
         setCopRemoteDebug(copRemoteDebug);
     }
 
@@ -248,13 +266,14 @@ public class PrintJob implements Runnable {
      *                         the docx.
      * @param prependFiles     Files to prepend to the output.
      * @param appendFiles      Files to append to the output.
+     * @param globalization  Globalization options used for this print job.
      * @param copRemoteDebug   If set to true the Cloud Office Print server will log
      *                         your JSON into out database and you can see it when
      *                         you log into cloudofficeprint.com.
      */
     public PrintJob(ExternalResource externalResource, Server server, Output output, Resource template,
-            Hashtable<String, Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles,
-            Boolean copRemoteDebug) {
+                    Hashtable<String, Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles,
+                    Globalization globalization, Boolean copRemoteDebug) {
         setExternalResource(externalResource);
         setServer(server);
         setOutput(output);
@@ -262,6 +281,7 @@ public class PrintJob implements Runnable {
         setSubTemplates(subTemplates);
         setPrependFiles(prependFiles);
         setAppendFiles(appendFiles);
+        setGlobalization(globalization);
         setCopRemoteDebug(copRemoteDebug);
     }
 
@@ -336,6 +356,12 @@ public class PrintJob implements Runnable {
                 prependFiles.add(prependFile.getJSONForSecondaryFile());
             }
             jsonForServer.add("prepend_files", prependFiles);
+        }
+
+        if (getGlobalization() != null){
+            JsonArray globalization = new JsonArray();
+            globalization.add(getGlobalization().getJSON());
+            jsonForServer.add("globalization", globalization);
         }
 
         return jsonForServer;

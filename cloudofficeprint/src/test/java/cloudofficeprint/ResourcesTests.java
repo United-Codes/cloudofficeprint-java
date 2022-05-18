@@ -93,7 +93,7 @@ public class ResourcesTests {
         Output output = new Output("docx", "raw", "libreoffice", null, null, null, null);
         Base64Resource base64Resource = new Base64Resource("docx", "test_base64");
 
-        PrintJob printJob = new PrintJob(restResource, server, output, base64Resource, null, null, null, null);
+        PrintJob printJob = new PrintJob(restResource, server, output, base64Resource, null, null, null, null, null);
 
         String correct = "{'tool': 'java_sdk', 'java_sdk_version': '21.2.0', 'api_key': '1C511A58ECC73874E0530100007FD01A', 'output': {'output_converter': 'libreoffice', 'output_encoding': 'raw', 'output_type': 'docx'}, 'template': {'template_type': 'docx', 'file': 'test_base64'}, 'files': [{'filename': 'output_file', 'datasource': 'rest', 'method': 'GET', 'body': '', 'endpoint': 'endpoint_url', 'headers': [{'Content-Type': 'application/json'}], 'auth': 'username:password'}]}";
         // System.out.println(printJob.getJSON());

@@ -81,7 +81,7 @@ public class MultipleRequestMergeExample {
 			for (Map.Entry<String, RenderElement> el : i) {
 				d.put(el.getKey(), el.getValue());
 			}
-			PrintJob printjob = new PrintJob(d, copServer, conf, template, null, null, null, null);
+			PrintJob printjob = new PrintJob(d, copServer, conf, template, null, null, null, null, null);
 			outputFiles[index] = printjob.execute();
 			index++;
 		}
@@ -105,7 +105,7 @@ public class MultipleRequestMergeExample {
 		data = new Hashtable<String, RenderElement>();
 		data.put("not_used", new Property("not", "used"));
 		Output conf2 = new Output("pdf", "raw", "libreoffice", null, null, null, null);
-		PrintJob printjob = new PrintJob(data, copServer, conf2, resources[0], null, null, splitResources, null);
+		PrintJob printjob = new PrintJob(data, copServer, conf2, resources[0], null, null, splitResources, null, null);
 
 		printjob.execute().downloadLocally("./downloads/multiple_request_merge");
 	}

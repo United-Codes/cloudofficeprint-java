@@ -118,7 +118,7 @@ public class SolarSystemExample {
         Output output = new Output("pdf", "raw", "libreoffice", null, null, null, null);
         Hashtable<String, RenderElement> dataTable = new Hashtable<String, RenderElement>();
         dataTable.put("data", data);
-        PrintJob printjob = new PrintJob(dataTable, copServer, output, base64Resource, null, null, null, null);
+        PrintJob printjob = new PrintJob(dataTable, copServer, output, base64Resource, null, null, null, null, null);
         printjob.execute().downloadLocally("./downloads/SolarSystem");
     }
 }

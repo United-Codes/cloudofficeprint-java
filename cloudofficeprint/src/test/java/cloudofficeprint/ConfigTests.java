@@ -1,12 +1,9 @@
 package cloudofficeprint;
 
+import com.cloudofficeprint.Output.*;
 import com.cloudofficeprint.Output.CloudAcessToken.AWSToken;
 import com.cloudofficeprint.Output.CloudAcessToken.FTPToken;
 import com.cloudofficeprint.Output.CloudAcessToken.OAuth2Token;
-import com.cloudofficeprint.Output.CsvOptions;
-import com.cloudofficeprint.Output.Output;
-import com.cloudofficeprint.Output.PDFOptions;
-import com.cloudofficeprint.Output.RequestOption;
 import com.cloudofficeprint.Server.Command;
 import com.cloudofficeprint.Server.Commands;
 import com.cloudofficeprint.Server.Printer;
@@ -184,5 +181,30 @@ public class ConfigTests {
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
         assertEquals(jsonCorrect, request.getJSON());
+    }
+
+    @Test
+    public void testGlobalization(){
+        Globalization globalization = new Globalization("DD-MON-YYYY", "DD-MON-YYYY HH24:MI", "DD-MON-YYYY", "DD-MON-YYYY", "BINARY", "BINARY", ".,", "$", "AMERICA", "AMERICAN", "ltr", "en");
+
+        String correct = "{" +
+                            "'date_format': 'DD-MON-YYYY'," +
+                            "'date_time_format': 'DD-MON-YYYY HH24:MI'," +
+                            "'timestamp_format': 'DD-MON-YYYY'," +
+                            "'timestamp_tz_format': 'DD-MON-YYYY'," +
+                            "'nls_sort': 'BINARY'," +
+                            "'nls_comp': 'BINARY'," +
+                            "'nls_numeric_characters_dec_grp': '.,'," +
+                            "'nls_currency': '$'," +
+                            "'nls_territory': 'AMERICA'," +
+                            "'nls_language': 'AMERICAN'," +
+                            "'direction': 'ltr'," +
+                            "'application_primary_language': 'en'" +
+                        "}";
+
+        // System.out.println(globalization.getJSON());
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        // System.out.println(jsonCorrect);
+        assertEquals(jsonCorrect, globalization.getJSON());
     }
 }
