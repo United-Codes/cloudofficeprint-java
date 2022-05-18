@@ -171,7 +171,22 @@ public class Template extends Resource{
      */
     @Override
     public JsonObject getJSONForTemplate() {
-        return resource.getJSONForTemplate();
+        JsonObject json = resource.getJSONForTemplate();
+
+        if (getStartDelimiter() != null){
+            json.addProperty("start_delimiter", getStartDelimiter());
+        }
+        if (getEndDelimiter() != null){
+            json.addProperty("end_delimiter", getEndDelimiter());
+        }
+        if (getShouldHash() != null){
+            json.addProperty("should_hash", getShouldHash());
+        }
+        if (getHash() != null){
+            json.addProperty("template_hash", getHash());
+        }
+
+        return json;
     }
 
     /**
