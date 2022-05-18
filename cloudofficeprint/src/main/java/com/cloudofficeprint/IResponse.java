@@ -2,6 +2,9 @@ package com.cloudofficeprint;
 
 import java.io.IOException;
 
+/**
+ * Interface for dealing with the Cloud Office Print server's response to a printjob request.
+ */
 public interface IResponse {
     /**
      * @return mimetype of the file in the body.
