@@ -275,7 +275,9 @@ public class SpaceXExample {
             // End replacement code.
         }
 
-        Output output = new Output(null, "raw", "libreoffice", null, null, null, null);
+        Output output = new Output();
+        output.setEncoding("raw");
+        output.setConverter("libreoffice");
         PrintJob printJob = new PrintJob(data, copServer, output, base64Resource, null, null, null, null, null);
 
         IResponse res = printJob.execute();

@@ -40,6 +40,16 @@ public class Output {
     private String converter = "libreoffice";
 
     /**
+     * If you want to prepend file after each page of output you can set it to true.
+     */
+    private Boolean prependPerPage = null;
+
+    /**
+     * If you want to append file after each page of output you can set it to true.
+     */
+    private Boolean appendPerPage = null;
+
+    /**
      * If you want to store the output on a cloud based service, a specific
      * CloudAccessToken object needs to be specified. Default : null.
      */
@@ -95,6 +105,20 @@ public class Output {
     }
 
     /**
+     * @return whether you want to prepend file after each page of output.
+     */
+    public Boolean getPrependPerPage() {
+        return prependPerPage;
+    }
+
+    /**
+     * @return whether you want to prepend/append file after each page of output.
+     */
+    public Boolean getAppendPerPage() {
+        return appendPerPage;
+    }
+
+    /**
      * @return the accesstoken object of this output.
      */
     public CloudAccessToken getAccessToken() {
@@ -136,6 +160,24 @@ public class Output {
      */
     public void setType(String type) {
         this.type = type;
+    }
+
+    /**
+     * Sets prependPerPage to true if you want to prepend file after each page of output and false otherwise.
+     *
+     * @param prependPerPage whether to prepend file after each page of output.
+     */
+    public void setPrependPerPage(Boolean prependPerPage) {
+        this.prependPerPage = prependPerPage;
+    }
+
+    /**
+     * Sets appendPerPage to true if you want to prepend/append file after each page of output and false otherwise.
+     *
+     * @param appendPerPage whether to prepend/append file after each page of output.
+     */
+    public void setAppendPerPage(Boolean appendPerPage) {
+        this.appendPerPage = appendPerPage;
     }
 
     /**
@@ -262,6 +304,9 @@ public class Output {
      *                        "libreoffice-standalone" or any other custom defined
      *                        converters in the aop_config.json file. Default :
      *                        libreoffice.
+     * @param appendPerPage   If you want to append file after each page of output
+     * @param prependPerPage  If you want to prepend file after each page of output
+     *                        set appendPerPage to true and false otherwise.
      * @param token           If you want to store the output on a cloud based
      *                        service, a specific CloudAccessToken object needs to
      *                        be specified. Default : null.
@@ -272,16 +317,24 @@ public class Output {
      *                        PDFOptions class. Default : null.
      * @param csvOptions      Optional CSV options. They are described in the
      *                        CsvOptions class. Default : null.
+     * @param requestOption   Request option object for this output. Default : null.
+     * @param polling         Whether polling is enabled. Default : null.
+     * @param secretKey       Secret key used to encrypt the polled print job. Default : null.
      */
-    public Output(String filetype, String encoding, String converter, CloudAccessToken token, String serverDirectory,
-            PDFOptions pdfOptions, CsvOptions csvOptions) {
+    public Output(String filetype, String encoding, String converter, Boolean prependPerPage, Boolean appendPerPage, CloudAccessToken token, String serverDirectory,
+                  PDFOptions pdfOptions, CsvOptions csvOptions, RequestOption requestOption, Boolean polling, String secretKey) {
         setType(filetype);
         setEncoding(encoding);
         setConverter(converter);
+        setPrependPerPage(prependPerPage);
+        setAppendPerPage(appendPerPage);
         setAccessToken(token);
         setServerDirectory(serverDirectory);
         setPDFOptions(pdfOptions);
         setCsvOptions(csvOptions);
+        setRequestOption(requestOption);
+        setPolling(polling);
+        setSecretKey(secretKey);
     }
 
     /**
@@ -298,6 +351,12 @@ public class Output {
         }
         if (getConverter() != null) {
             json.addProperty("output_converter", getConverter());
+        }
+        if (getPrependPerPage() != null) {
+            json.addProperty("output_prepend_per_page", getPrependPerPage());
+        }
+        if (getAppendPerPage() != null) {
+            json.addProperty("output_append_per_page", getAppendPerPage());
         }
         if (getAccessToken() != null) {
             for (Map.Entry<String, JsonElement> tag : getAccessToken().getJSON().entrySet()) {
