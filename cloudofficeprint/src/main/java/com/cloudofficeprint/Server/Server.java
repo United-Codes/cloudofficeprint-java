@@ -341,8 +341,8 @@ public class Server {
      * @param hash hashcode of a template.
      * @return status of the hashed template with the given hashcode.
      */
-    public String verifyTemplateHash(String hash){
-        return sendGETRequest(this.url + String.format("/verify_template_hash?hash=%s", hash));
+    public ResponseTemplateHash verifyTemplateHash(String hash){
+        return new ResponseTemplateHash(sendGETRequest(this.url + String.format("/verify_template_hash?hash=%s", hash)));
     }
 
     /**
@@ -350,8 +350,8 @@ public class Server {
      * @param hash hashcode of a template.
      * @return status of the renewed hashed template with the given hashcode.
      */
-    public String renewTemplateHash(String hash){
-        return sendGETRequest(this.url + String.format("/renew_template_hash?hash=%s", hash));
+    public ResponseTemplateHash renewTemplateHash(String hash){
+        return new ResponseTemplateHash(sendGETRequest(this.url + String.format("/renew_template_hash?hash=%s", hash)));
     }
 
     /**
@@ -359,8 +359,8 @@ public class Server {
      * @param hash hashcode of a template.
      * @return status of the invalidated hashed template with the given hashcode.
      */
-    public String invalidateTemplateHash(String hash){
-        return sendGETRequest(this.url + String.format("/invalidate_template_hash?hash=%s", hash));
+    public ResponseTemplateHash invalidateTemplateHash(String hash){
+        return new ResponseTemplateHash(sendGETRequest(this.url + String.format("/invalidate_template_hash?hash=%s", hash)));
     }
 
     /**
