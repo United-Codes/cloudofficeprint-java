@@ -15,6 +15,23 @@ public class Response implements IResponse{
     private String ext;
     private String mimetype;
     private byte[] body;
+    private String templateHash;
+
+    /**
+     * Contains value of the HTTP response header named "Template-Hash" given by the Cloud Office Print server.
+     * @return hash of the template of the print job.
+     */
+    @Override
+    public String getTemplateHash() {
+        return templateHash;
+    }
+
+    /**
+     * @param templateHash hash of the template of the print job.
+     */
+    public void setTemplateHash(String templateHash) {
+        this.templateHash = templateHash;
+    }
 
     /**
      * @return mimetype of the file in the body.
@@ -66,10 +83,11 @@ public class Response implements IResponse{
      * @param body     (file base64) of the response.
      * @param mimetype Mimetype of the file in the body.
      */
-    public Response(String ext, String mimetype, byte[] body) {
+    public Response(String ext, String mimetype, byte[] body, String templateHash) {
         setExt(ext);
         setMimetype(mimetype);
         setBody(body);
+        setTemplateHash(templateHash);
     }
 
     /**

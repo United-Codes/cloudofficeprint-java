@@ -39,4 +39,10 @@ public interface IResponse {
      * @throws IOException If the file is not found.
      */
     void downloadLocally(String path) throws IOException;
+
+    /**
+     * Contains value of the HTTP response header named "Template-Hash" given by the Cloud Office Print server.
+     * @return hash of the template of the print job.
+     */
+    String getTemplateHash();
 }

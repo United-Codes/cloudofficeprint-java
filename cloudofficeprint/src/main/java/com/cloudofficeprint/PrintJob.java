@@ -5,6 +5,7 @@ import com.cloudofficeprint.Output.Output;
 import com.cloudofficeprint.RenderElements.RenderElement;
 import com.cloudofficeprint.Resources.ExternalResource;
 import com.cloudofficeprint.Resources.Resource;
+import com.cloudofficeprint.Resources.Template;
 import com.cloudofficeprint.Server.Server;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -376,7 +377,11 @@ public class PrintJob implements Runnable {
      */
     public IResponse execute() throws Exception {
         JsonObject JSONForServer = getJSON();
-        return server.sendPOSTRequest(JSONForServer);
+        IResponse response = server.sendPOSTRequest(JSONForServer);
+        if (response.getTemplateHash() != null && getTemplate() instanceof Template){
+            ((Template) getTemplate()).updateHash(response.getTemplateHash());
+        }
+        return response;
     }
 
     /**

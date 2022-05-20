@@ -14,6 +14,23 @@ public class ResponsePolling implements IResponse {
     private Server server;
     private String id;
     private String secretKey;
+    private String templateHash;
+
+    /**
+     * Contains value of the HTTP response header named "Template-Hash" given by the Cloud Office Print server.
+     * @return hash of the template of the print job.
+     */
+    @Override
+    public String getTemplateHash() {
+        return templateHash;
+    }
+
+    /**
+     * @param templateHash hash of the template of the print job.
+     */
+    public void setTemplateHash(String templateHash) {
+        this.templateHash = templateHash;
+    }
 
     /**
      * @return Response of the polled print job.
@@ -79,9 +96,10 @@ public class ResponsePolling implements IResponse {
      * @param server The Cloud Office Print server.
      * @param id unique identifier of the polled print job.
      */
-    public ResponsePolling(Server server, String id){
+    public ResponsePolling(Server server, String id, String templateHash){
         setServer(server);
         setId(id);
+        setTemplateHash(templateHash);
     }
 
     /**

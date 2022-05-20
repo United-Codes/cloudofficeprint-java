@@ -477,7 +477,8 @@ public class Server {
             while ((length = con.getInputStream().read(buffer)) != -1) { // attempt is made to read as many as len bytes
                 baos.write(buffer, 0, length);
             }
-            Response response = new Response("." + ext, mime, baos.toByteArray());
+            String templateHash = Mimetype.getMimetypeFromContentType(con.getHeaderField("Template-Hash"));
+            Response response = new Response("." + ext, mime, baos.toByteArray(), templateHash);
             return response;
         } else {
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getErrorStream()));
@@ -596,6 +597,8 @@ public class Server {
                 baos.write(buffer, 0, length);
             }
 
+            String templateHash = Mimetype.getMimetypeFromContentType(con.getHeaderField("Template-Hash"));
+
             JsonObject output = postData.getAsJsonObject("output");
             if (output.has("output_polling") && output.get("output_polling").getAsBoolean()){
                 String responseString = baos.toString(StandardCharsets.UTF_8);
@@ -615,11 +618,11 @@ public class Server {
                     secretKey = output.get("secret_key").getAsString();
                 }
 
-                ResponsePolling response = new ResponsePolling(this, id);
+                ResponsePolling response = new ResponsePolling(this, id, templateHash);
                 response.setSecretKey(secretKey);
                 return response;
             }
-            return new Response("." + ext, mime, baos.toByteArray());
+            return new Response("." + ext, mime, baos.toByteArray(), templateHash);
         } else {
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getErrorStream()));
             String inputLine;
