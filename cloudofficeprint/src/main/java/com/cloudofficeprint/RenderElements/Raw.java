@@ -11,15 +11,14 @@ import java.util.Set;
  * Renderelement in HTML or in MD, it will escape any special characters like
  * "_". By using the Raw Renderelement, nothing will be escaped.
  */
-public class Raw extends RenderElement {
+public class Raw extends Property {
 
     /**
      * @param name  Name of this element for the tag.
      * @param value Value of this element to replace the tag with.
      */
     public Raw(String name, String value) {
-        setName(name);
-        setValue(value);
+        super(name, value);
     }
 
     /**

@@ -29,14 +29,13 @@ public class BarStackedChart extends Chart {
 
     /**
      * Represents a stacked bar chart.
-     * 
+     *
      * @param name             Name of the chart (for the tag).
      * @param options          Options of the chart.
      * @param barStackedSeries Series with the data for the chart.
      */
     public BarStackedChart(String name, ChartOptions options, BarStackedSeries... barStackedSeries) {
-        setName(name);
-        setOptions(options);
+        super(name, options);
         for (BarStackedSeries barStackedSerie : lineseries) {
             getBarStackedSeries().add(barStackedSerie);
         }

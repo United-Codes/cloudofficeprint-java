@@ -1,5 +1,6 @@
 package com.cloudofficeprint.RenderElements.Images;
 
+import com.cloudofficeprint.RenderElements.Property;
 import com.cloudofficeprint.RenderElements.RenderElement;
 import com.google.common.collect.ImmutableSet;
 import com.google.gson.JsonObject;
@@ -7,7 +8,7 @@ import com.google.gson.JsonObject;
 import java.util.HashSet;
 import java.util.Set;
 
-public abstract class Image extends RenderElement {
+public abstract class Image extends Property {
 
     private Integer width;
     private Integer height;
@@ -174,6 +175,10 @@ public abstract class Image extends RenderElement {
      */
     public void setTargetUrl(String targetUrl) {
         TargetUrl = targetUrl;
+    }
+
+    public Image(String name, String value){
+        super(name, value);
     }
 
     /**

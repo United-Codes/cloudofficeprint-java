@@ -11,7 +11,7 @@ import java.util.Set;
  * specify the columns and rows to span for this cell. The tag in the cell of
  * the template will be replaced by the value.
  */
-public class CellSpan extends RenderElement {
+public class CellSpan extends Property {
 
     private int columns;
     private int rows;
@@ -51,8 +51,7 @@ public class CellSpan extends RenderElement {
      * @param rows    Number of rows to span.
      */
     public CellSpan(String name, String value, int columns, int rows) {
-        setName(name);
-        setValue(value);
+        super(name, value);
         setColumns(columns);
         setRows(rows);
     }

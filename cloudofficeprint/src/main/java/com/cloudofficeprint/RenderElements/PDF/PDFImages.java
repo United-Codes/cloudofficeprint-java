@@ -36,7 +36,7 @@ public class PDFImages extends RenderElement {
      *               Print.
      */
     public PDFImages(PDFImage[] images) {
-        setName("AOP_PDF_IMAGES");
+        super("AOP_PDF_IMAGES");
         setImages(images);
     }
 

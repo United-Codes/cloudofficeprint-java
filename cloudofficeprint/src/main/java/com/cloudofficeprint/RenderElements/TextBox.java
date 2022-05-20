@@ -10,7 +10,7 @@ import java.util.Set;
  * This tag will allow you to insert a text box starting in the cell containing
  * the tag in Excel.
  */
-public class TextBox extends RenderElement {
+public class TextBox extends Property {
 
     private String font;
     private String fontColor;
@@ -107,13 +107,12 @@ public class TextBox extends RenderElement {
     /**
      * This object represents a text box starting in the cell containing the tag in
      * Excel. Options of the text can be set with the setter functions.
-     * 
+     *
      * @param name Name for the tag.
      * @param text Text of the textbox.
      */
     public TextBox(String name, String text) {
-        setName(name);
-        setValue(text);
+        super(name, text);
     }
 
     /**

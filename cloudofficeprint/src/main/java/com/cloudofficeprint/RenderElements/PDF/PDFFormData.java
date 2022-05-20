@@ -38,12 +38,12 @@ public class PDFFormData extends RenderElement {
      * It is possible to fill in the forms using Cloud Office Print. The data object
      * inside the files array should contain an object with the key
      * aop_pdf_form_data.
-     * 
+     *
      * @param formData Hashmap of the fieldname and value to fill in. Two options :
      *                 inputfieldname : value and radio/checkbox : true/false.
      */
     public PDFFormData(HashMap<String, String> formData) {
-        setName("AOP_PDF_IMAGES");
+        super("AOP_PDF_IMAGES");
         setFormData(formData);
     }
 

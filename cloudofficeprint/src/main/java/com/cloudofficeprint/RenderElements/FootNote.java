@@ -10,17 +10,16 @@ import java.util.Set;
  * Only supported in Word and Excel templates. Element to insert a footnote in a
  * template.
  */
-public class FootNote extends RenderElement {
+public class FootNote extends Property {
 
     /**
      * Element to insert a footnote in a template.
-     * 
+     *
      * @param name  Name of this footnote for the tag.
      * @param value Value to replace the tag with.
      */
     public FootNote(String name, String value) {
-        setName(name);
-        setValue(String.valueOf(value));
+        super(name, value);
     }
 
     /**

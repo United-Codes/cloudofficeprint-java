@@ -29,14 +29,13 @@ public class BubbleChart extends Chart {
 
     /**
      * Represents a bubble chart.
-     * 
+     *
      * @param name    Name of the chart (for the tag).
      * @param options Options of the chart.
      * @param series  Series with the data for the chart.
      */
     public BubbleChart(String name, ChartOptions options, BubbleSeries... series) {
-        setName(name);
-        setOptions(options);
+        super(name, options);
         for (BubbleSeries serie : series) {
             getSeries().add(serie);
         }

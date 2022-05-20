@@ -10,7 +10,7 @@ import java.util.Set;
  * With Word/Excel/PowerPoint documents, it's possible to let Cloud Office Print
  * execute some JavaScript code to generate a D3 image (Data Driven Documents).
  */
-public class D3Code extends RenderElement {
+public class D3Code extends Property {
 
     private String data;
 
@@ -32,15 +32,14 @@ public class D3Code extends RenderElement {
 
     /**
      * Represents an D3 image.
-     * 
+     *
      * @param name Name of the D3 for the tag.
      * @param code Code to generate the image.
      * @param data Global data the code has access to. Optional : use null if you
      *             don't want to specify it.
      */
     public D3Code(String name, String code, String data) {
-        setName(name);
-        setValue(code);
+        super(name, code);
         setData(data);
     }
 

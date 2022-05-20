@@ -29,14 +29,13 @@ public class AreaChart extends Chart {
 
     /**
      * Represents an area chart.
-     * 
+     *
      * @param name    Name of the chart (for the tag).
      * @param options Options of the chart.
      * @param series  Series with the data for the chart.
      */
     public AreaChart(String name, ChartOptions options, AreaSeries... series) {
-        setName(name);
-        setOptions(options);
+        super(name, options);
         for (AreaSeries serie : series) {
             getSeries().add(serie);
         }

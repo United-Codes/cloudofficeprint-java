@@ -6,7 +6,7 @@ import com.google.gson.JsonObject;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Watermark extends RenderElement {
+public class Watermark extends Property {
 
     private String font;
     private String color;
@@ -24,7 +24,7 @@ public class Watermark extends RenderElement {
 
     /**
      * Default : Calibri.
-     * 
+     *
      * @param font Font of the text.
      */
     public void setFont(String font) {
@@ -40,7 +40,7 @@ public class Watermark extends RenderElement {
 
     /**
      * Default :"silver".
-     * 
+     *
      * @param color Color of the text, in CSS format.
      */
     public void setColor(String color) {
@@ -56,7 +56,7 @@ public class Watermark extends RenderElement {
 
     /**
      * Default : automatically determined by Cloud Office Print.
-     * 
+     *
      * @param width Width + unit (px, pt, in, cm or em) e.g. : 10 cm.
      */
     public void setWidth(String width) {
@@ -72,7 +72,7 @@ public class Watermark extends RenderElement {
 
     /**
      * Default : automatically determined by Cloud Office Print.
-     * 
+     *
      * @param height Height + unit (px, pt, in, cm or em) e.g. : 10 cm.
      */
     public void setHeight(String height) {
@@ -88,7 +88,7 @@ public class Watermark extends RenderElement {
 
     /**
      * Default: 1.
-     * 
+     *
      * @param opacity Opacity of the watermark text. Decimal between 0 and 1.
      */
     public void setOpacity(Float opacity) {
@@ -105,7 +105,7 @@ public class Watermark extends RenderElement {
 
     /**
      * Default : calculated to lie along the bottom-left to top-right diagonal.
-     * 
+     *
      * @param rotation Rotation of the watermark text (integer to be interpreted in
      *                 degrees).
      */
@@ -116,13 +116,12 @@ public class Watermark extends RenderElement {
     /**
      * Represents a watermark. Set the style and options of the watermark with the
      * set functions.
-     * 
+     *
      * @param name Name of the watermark for the tag.
      * @param text Text of the watermark.
      */
     public Watermark(String name, String text) {
-        setName(name);
-        setValue(text);
+        super(name, text);
     }
 
     /**

@@ -6,6 +6,7 @@ import com.cloudofficeprint.RenderElements.Cells.CellStyleXlsx;
 import com.cloudofficeprint.RenderElements.Cells.TableCell;
 import com.cloudofficeprint.RenderElements.Images.ImageUrl;
 import com.cloudofficeprint.RenderElements.Loops.Loop;
+import com.cloudofficeprint.Resources.Base64Resource;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.junit.jupiter.api.Test;
@@ -167,7 +168,7 @@ public class RenderElementsTests {
     }
 
     @Test
-    public void insert() {
+    public void insert() throws Exception {
         Insert insert = new Insert("doc", "Base64 encoded file");
         String correct = "{'doc':'Base64 encoded file'}";
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();

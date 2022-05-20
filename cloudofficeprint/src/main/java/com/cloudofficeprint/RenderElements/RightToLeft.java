@@ -13,20 +13,19 @@ import java.util.Set;
  * language. If the substituting content does not contain any right to left
  * language character, then it will behave as a regular substitution tag.
  */
-public class RightToLeft extends RenderElement {
+public class RightToLeft extends Property {
 
     /**
      * When substituting the content in a language written in right to left, like
      * Arabic, this object can be used to properly format the language. If the
      * substituting content does not contain any right to left language character,
      * then it will behave as a regular substitution tag.
-     * 
+     *
      * @param name  Name of this element for the tag.
      * @param value Value to replace the tag with.
      */
     public RightToLeft(String name, String value) {
-        setName(name);
-        setValue(String.valueOf(value));
+        super(name, value);
     }
 
     /**

@@ -29,14 +29,13 @@ public class RadarChart extends Chart {
 
     /**
      * Represents a radar chart.
-     * 
+     *
      * @param name    Name of the chart (for the tag).
      * @param options Options of the chart.
      * @param series  Series with the data for the chart.
      */
     public RadarChart(String name, ChartOptions options, RadarSeries... series) {
-        setName(name);
-        setOptions(options);
+        super(name, options);
         for (RadarSeries serie : series) {
             getSeries().add(serie);
         }

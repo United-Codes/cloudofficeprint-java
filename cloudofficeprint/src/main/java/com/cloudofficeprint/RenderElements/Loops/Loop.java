@@ -39,23 +39,23 @@ public class Loop extends RenderElement {
 
     /**
      * Loop elements for a template.
-     * 
+     *
      * @param name     Name of this loop for the tag.
      * @param elements Elements to replace the tag with.
      */
     public Loop(String name, ArrayList<RenderElement> elements) {
-        setName(name);
+        super(name);
         setElements(elements);
     }
 
     /**
      * Loop elements for a template.
-     * 
+     *
      * @param name     Name of this loop for the tag.
      * @param elements Elements to replace the tag with.
      */
     public Loop(String name, RenderElement[] elements) {
-        setName(name);
+        super(name);
         for (RenderElement element : elements) {
             addElement(element);
         }
@@ -63,11 +63,11 @@ public class Loop extends RenderElement {
 
     /**
      * Loop elements for a template.
-     * 
+     *
      * @param name Name of this loop for the tag.
      */
     public Loop(String name) {
-        setName(name);
+        super(name);
     }
 
     /**

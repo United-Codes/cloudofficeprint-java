@@ -30,15 +30,14 @@ public class BarStackedPercentChart extends Chart {
 
     /**
      * Represents a stacked bar chart.
-     * 
+     *
      * @param name                    Name of the chart (for the tag).
      * @param options                 Options of the chart.
      * @param barStackedPercentSeries Series with the data for the chart.
      */
     public BarStackedPercentChart(String name, ChartOptions options,
             BarStackedPercentSeries... barStackedPercentSeries) {
-        setName(name);
-        setOptions(options);
+        super(name, options);
         for (BarStackedPercentSeries barStackedPercentSerie : barStackedPercentSeries) {
             getBarStackedPercentSeries().add(barStackedPercentSerie);
         }

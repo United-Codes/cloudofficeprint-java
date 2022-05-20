@@ -10,18 +10,17 @@ import java.util.Set;
  * Only supported in Excel. This class represents an Excel formula. Note that no
  * validation is performed on this formula.
  */
-public class Formula extends RenderElement {
+public class Formula extends Property {
 
     /**
      * Represents an Excel formula. Note that no validation is performed on this
      * formula.
-     * 
+     *
      * @param name    Name of the formula for the tag.
      * @param formula Excel formula to replace the tag with.
      */
     public Formula(String name, String formula) {
-        setName(name);
-        setValue(formula);
+        super(name, formula);
     }
 
     /**

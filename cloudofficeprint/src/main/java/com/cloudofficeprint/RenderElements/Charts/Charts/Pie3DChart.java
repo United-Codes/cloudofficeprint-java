@@ -29,14 +29,13 @@ public class Pie3DChart extends Chart {
 
     /**
      * Represents a 3D pie chart.
-     * 
+     *
      * @param name      Name of the chart (for the tag).
      * @param options   Options of the chart.
      * @param pieSeries Series with the data for the chart.
      */
     public Pie3DChart(String name, ChartOptions options, PieSeries... pieSeries) {
-        setName(name);
-        setOptions(options);
+        super(name, options);
         for (PieSeries serie : pieSeries) {
             getPieSeries().add(serie);
         }

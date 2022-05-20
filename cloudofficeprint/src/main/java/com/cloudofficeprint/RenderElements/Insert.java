@@ -1,5 +1,6 @@
 package com.cloudofficeprint.RenderElements;
 
+import com.cloudofficeprint.Resources.Resource;
 import com.google.common.collect.ImmutableSet;
 import com.google.gson.JsonObject;
 
@@ -10,14 +11,13 @@ import java.util.Set;
  * Inside Word and PowerPoint documents, the tag {?insert fileToInsert} can be used to
  * insert files like Word, Excel, PowerPoint and PDF documents.
  */
-public class Insert extends RenderElement {
+public class Insert extends Property {
     /**
      * @param name  the name of insert tag
      * @param value base64 encoded file(docx, pptx, xlsx, pdf etc) to be added in output file.
      */
     public Insert(String name, String value) {
-        setName(name);
-        setValue(value);
+        super(name, value);
     }
 
     /**
@@ -27,7 +27,7 @@ public class Insert extends RenderElement {
     @Override
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
-        json.addProperty(getName(), getValue());
+        json.addProperty(getName(), getValue().toString());
         return json;
     }
 

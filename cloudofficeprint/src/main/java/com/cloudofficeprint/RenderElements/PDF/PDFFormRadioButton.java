@@ -10,6 +10,21 @@ public class PDFFormRadioButton extends PDFFormElement {
     private String group;
     private String text;
     private Boolean selected;
+    private String value;
+
+    /**
+     * @return Value of this pdf form radio button.
+     */
+    public String getValue() {
+        return value;
+    }
+
+    /**
+     * @param value Value of this pdf form radio button.
+     */
+    public void setValue(String value) {
+        this.value = value;
+    }
 
     /**
      * @return the type of this PDF form element. For this class it is always "radio".

@@ -10,6 +10,21 @@ public class PDFFormSignatureSigned extends PDFFormSignature {
     private String password;
     private String size;
     private String backgroundImage;
+    private String value;
+
+    /**
+     * @return the signing certificate as a base64 string, URL, FTP location or a server path.
+     */
+    public String getValue() {
+        return value;
+    }
+
+    /**
+     * @param value the signing certificate as a base64 string, URL, FTP location or a server path.
+     */
+    public void setValue(String value) {
+        this.value = value;
+    }
 
     /**
      * @return the type of this PDF form element. For this class it is always "signaturefieldsigned".

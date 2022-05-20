@@ -52,7 +52,7 @@ public abstract class PDFFormElement extends RenderElement {
      * @param name of this element.
      */
     public PDFFormElement(String name) {
-        setName(name);
+        super(name);
     }
 
     /**

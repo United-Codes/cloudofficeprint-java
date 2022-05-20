@@ -35,7 +35,7 @@ public class PDFTexts extends RenderElement {
      *              only be one PDFTexts element in the JSON for AOP.
      */
     public PDFTexts(PDFText[] texts) {
-        setName("AOP_PDF_TEXTS");
+        super("AOP_PDF_TEXTS");
         setTexts(texts);
     }
 

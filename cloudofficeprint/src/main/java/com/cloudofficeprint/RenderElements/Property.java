@@ -12,27 +12,43 @@ import java.util.Set;
  */
 public class Property extends RenderElement {
 
+    private String value;
+
     /**
-     * The most basic RenderElement. It simply consists of a name and a value. In a
-     * template the tag '{name}' will be replaced by 'value'.
-     * 
-     * @param name  Name of this property for the tag.
-     * @param value Value of this element to replace the tag with.
+     * @return Value of this element.
      */
-    public Property(String name, String value) {
-        setName(name);
-        setValue(value);
+    public String getValue() {
+        return value;
+    }
+
+    /**
+     * @param value Value of this property.
+     */
+    public void setValue(String value) {
+        this.value = value;
     }
 
     /**
      * The most basic RenderElement. It simply consists of a name and a value. In a
      * template the tag '{name}' will be replaced by 'value'.
-     * 
+     *
+     * @param name  Name of this property for the tag.
+     * @param value Value of this element to replace the tag with.
+     */
+    public Property(String name, String value) {
+        super(name);
+        setValue(String.valueOf(value));
+    }
+
+    /**
+     * The most basic RenderElement. It simply consists of a name and a value. In a
+     * template the tag '{name}' will be replaced by 'value'.
+     *
      * @param name  Name of this property for the tag.
      * @param value Value of this property to replace the tag with.
      */
     public Property(String name, int value) {
-        setName(name);
+        super(name);
         setValue(String.valueOf(value));
     }
 

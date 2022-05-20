@@ -29,14 +29,13 @@ public class DoughnutChart extends Chart {
 
     /**
      * Represents a doughnut chart.
-     * 
+     *
      * @param name      Name of the chart (for the tag).
      * @param options   Options of the chart.
      * @param pieSeries Series with the data for the chart.
      */
     public DoughnutChart(String name, ChartOptions options, PieSeries... pieSeries) {
-        setName(name);
-        setOptions(options);
+        super(name, options);
         for (PieSeries serie : pieSeries) {
             getPieSeries().add(serie);
         }

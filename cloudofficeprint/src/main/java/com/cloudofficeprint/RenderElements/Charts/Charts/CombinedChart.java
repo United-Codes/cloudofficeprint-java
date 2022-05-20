@@ -48,15 +48,14 @@ public class CombinedChart extends Chart {
     /**
      * Represents a combined chart. Multiple chart types can be combined (but there
      * can be maximum 2 y-axis).
-     * 
+     *
      * @param name            Name of the chart (for the tag).
      * @param options         Options of the chart.
      * @param charts          Charts for the first y-axis.
      * @param secondaryCharts Charts for the second y-axis.
      */
     public CombinedChart(String name, ChartOptions options, Chart[] charts, Chart[] secondaryCharts) {
-        setName(name);
-        setOptions(options);
+        super(name, options);
         for (Chart chart : charts) {
             getCharts().add(chart);
         }
@@ -68,7 +67,7 @@ public class CombinedChart extends Chart {
     /**
      * Replaces all the occurrences of oldKey in the json with the newKey. Objects
      * with key "options" will not be modified (y-axis stays y-axis).
-     * 
+     *
      * @param jsonOld Json to be modified.
      * @param oldKey  Old keys to be replaced.
      * @param newKey  New key to replace the old key.

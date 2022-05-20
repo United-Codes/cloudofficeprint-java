@@ -1,5 +1,6 @@
 package com.cloudofficeprint.RenderElements.Codes;
 
+import com.cloudofficeprint.RenderElements.Property;
 import com.cloudofficeprint.RenderElements.RenderElement;
 import com.google.common.collect.ImmutableSet;
 
@@ -9,7 +10,7 @@ import java.util.Set;
 /**
  * Superclass for QR and BarCodes.
  */
-public abstract class Code extends RenderElement {
+public abstract class Code extends Property {
 
     private String type;
 
@@ -32,16 +33,15 @@ public abstract class Code extends RenderElement {
     /**
      * This class represents codes (barcode or QR codes) (created using the data of
      * the key) for a template.
-     * 
+     *
      * @param name  Name of this code for the tag.
      * @param type  Type of code required. The options can be found on:
      *              http://www.cloudofficeprint.com/docs/#barcode-qrcode-tags
      * @param value Data to create the code from.
      */
     public Code(String name, String type, String value) {
-        setName(name);
+        super(name, value);
         setType(type);
-        setValue(String.valueOf(value));
     }
 
     /**

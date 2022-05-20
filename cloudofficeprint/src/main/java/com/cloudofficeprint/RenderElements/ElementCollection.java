@@ -59,13 +59,13 @@ public class ElementCollection extends RenderElement {
 
     /**
      * A collection used to group multiple RenderElements together.
-     * 
+     *
      * @param name     The name is used as a key name when the collection is nested,
      *                 but ignored when it's the outer object.
      * @param elements List of nested RenderElements.
      */
     public ElementCollection(String name, ArrayList<RenderElement> elements) {
-        setName(name);
+        super(name);
         setElements(elements);
     }
 
@@ -73,18 +73,18 @@ public class ElementCollection extends RenderElement {
      * A collection used to group multiple RenderElements together. The arrayList of
      * elements isn't initialised in this constructor so setFromDict should be
      * called.
-     * 
+     *
      * @param name The name is used as a key name when the collection is nested, but
      *             ignored when it's the outer object.
      */
     public ElementCollection(String name) {
-        setName(name);
+        super(name);
         setElements(elements);
     }
 
     /**
      * Adds the list of properties from a mapping.
-     * 
+     *
      * @param properties Hashtable of (propertyName,propertyValue).
      */
     public void addFromDict(Hashtable<String, String> properties) {
@@ -96,7 +96,7 @@ public class ElementCollection extends RenderElement {
 
     /**
      * Parses a JsonArray to an elementcollection.
-     * 
+     *
      * @param name Name of the elementcollection.
      * @param json Json to parse.
      * @return Elementcollection of the parsed json.
@@ -134,7 +134,7 @@ public class ElementCollection extends RenderElement {
     /**
      * Adds all the elements from the elementcollection to the elements of this
      * collection.
-     * 
+     *
      * @param collection Elementcollection.
      */
     public void addAllRenderElements(ElementCollection collection) {

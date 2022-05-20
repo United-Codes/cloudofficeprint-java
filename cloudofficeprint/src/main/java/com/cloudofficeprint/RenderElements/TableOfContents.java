@@ -10,7 +10,7 @@ import java.util.Set;
  * Only supported in Word templates. Class representing a table of content for
  * templates.
  */
-public class TableOfContents extends RenderElement {
+public class TableOfContents extends Property {
 
     private int depth = 3;
     private String tabLeader = "dot";
@@ -50,7 +50,7 @@ public class TableOfContents extends RenderElement {
      * template the tag '{name}' will be replaced by 'value'. If you don't want to
      * mention an optional parameter and use the default value, put null (or O for
      * an int) as argument.
-     * 
+     *
      * @param name      Name of this property.
      * @param title     Title of the table of content.
      * @param depth     The depth of heading to be shown. (Optional, default : 3)
@@ -59,8 +59,7 @@ public class TableOfContents extends RenderElement {
      *                  default : "dot")
      */
     public TableOfContents(String name, String title, int depth, String tabLeader) {
-        setName(name);
-        setValue(title);
+        super(name, title);
         setDepth(depth);
         setTabLeader(tabLeader);
     }

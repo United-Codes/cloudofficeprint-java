@@ -29,14 +29,13 @@ public class BarChart extends Chart {
 
     /**
      * Represents a bar chart.
-     * 
+     *
      * @param name      Name of the chart (for the tag).
      * @param options   Options of the chart.
      * @param barSeries Series with the data for the chart.
      */
     public BarChart(String name, ChartOptions options, BarSeries... barSeries) {
-        setName(name);
-        setOptions(options);
+        super(name, options);
         for (BarSeries barSerie : barSeries) {
             getBarSeries().add(barSerie);
         }

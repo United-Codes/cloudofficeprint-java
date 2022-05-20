@@ -29,14 +29,13 @@ public class ColumnChart extends Chart {
 
     /**
      * Represents a column chart.
-     * 
+     *
      * @param name         Name of the chart (for the tag).
      * @param options      Options of the chart.
      * @param columnSeries Series with the data for the chart.
      */
     public ColumnChart(String name, ChartOptions options, ColumnSeries... columnSeries) {
-        setName(name);
-        setOptions(options);
+        super(name, options);
         for (ColumnSeries columnSerie : columnSeries) {
             getColumnSeries().add(columnSerie);
         }

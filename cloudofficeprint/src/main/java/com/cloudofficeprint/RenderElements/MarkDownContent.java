@@ -10,17 +10,16 @@ import java.util.Set;
  * Only supported in Word. Represents an MarkDown content to insert in a
  * template.
  */
-public class MarkDownContent extends RenderElement {
+public class MarkDownContent extends Property {
 
     /**
      * Represents an object that indicates to put a break in the template or not.
-     * 
+     *
      * @param name  Name of this Markdown content for the tag.
      * @param value The Markdown content
      */
     public MarkDownContent(String name, String value) {
-        setName(name);
-        setValue(String.valueOf(value));
+        super(name, value);
     }
 
     /**

@@ -22,12 +22,12 @@ public class RawJsonArray extends RenderElement {
 
     /**
      * Element to insert a footnote in a template.
-     * 
+     *
      * @param name  Name for the tag.
      * @param array JsonArray containing the data.
      */
     public RawJsonArray(String name, JsonArray array) {
-        setName(name);
+        super(name);
         setJsonArray(array);
     }
 

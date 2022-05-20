@@ -28,6 +28,11 @@ public abstract class Chart extends RenderElement {
         this.options = options;
     }
 
+    public Chart(String name, ChartOptions options){
+        super(name);
+        setOptions(options);
+    }
+
     /**
      * @return An immutable set containing all available template tags this element
      *         can replace.

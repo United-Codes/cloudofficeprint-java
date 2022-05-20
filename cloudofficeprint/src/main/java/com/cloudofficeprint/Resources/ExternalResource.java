@@ -91,7 +91,7 @@ public abstract class ExternalResource extends RenderElement {
 
     /**
      * Abstract base class for external resources.
-     * 
+     *
      * @param dataSource Type of request: graphql or rest.
      * @param endpoint   URL of the data source from where the JSON needs to be
      *                   read.

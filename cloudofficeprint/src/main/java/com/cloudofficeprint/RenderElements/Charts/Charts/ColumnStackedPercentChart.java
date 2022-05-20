@@ -31,15 +31,14 @@ public class ColumnStackedPercentChart extends Chart {
     /**
      * Represents a stacked column chart where the y-axis is expressed in
      * percentage.
-     * 
+     *
      * @param name                          Name of the chart (for the tag).
      * @param options                       Options of the chart.
      * @param columnStackedPercentageSeries Series with the data for the chart.
      */
     public ColumnStackedPercentChart(String name, ChartOptions options,
             ColumnStackedPercentSeries... columnStackedPercentageSeries) {
-        setName(name);
-        setOptions(options);
+        super(name, options);
         for (ColumnStackedPercentSeries columnStackedPercentSerie : columnStackedPercentageSeries) {
             getColumnStackedPercentageSeries().add(columnStackedPercentSerie);
         }

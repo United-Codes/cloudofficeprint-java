@@ -30,14 +30,13 @@ public class LineChart extends Chart {
 
     /**
      * Represents a line chart.
-     * 
+     *
      * @param name       Name of the chart (for the tag).
      * @param options    Options of the chart.
      * @param lineseries Series with the data for the chart.
      */
     public LineChart(String name, ChartOptions options, LineSeries... lineseries) {
-        setName(name);
-        setOptions(options);
+        super(name, options);
         for (LineSeries lineserie : lineseries) {
             getLineseries().add(lineserie);
         }

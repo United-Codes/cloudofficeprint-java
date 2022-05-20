@@ -7,6 +7,22 @@ import com.google.gson.JsonObject;
  */
 public class PDFFormTextBox extends PDFFormElement {
 
+    private String value;
+
+    /**
+     * @return Default value.
+     */
+    public String getValue() {
+        return value;
+    }
+
+    /**
+     * @param value Default value.
+     */
+    public void setValue(String value) {
+        this.value = value;
+    }
+
     /**
      * @return the type of this PDF form element. For this class it is always "text".
      */

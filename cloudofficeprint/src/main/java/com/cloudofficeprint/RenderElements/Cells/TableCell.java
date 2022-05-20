@@ -1,5 +1,6 @@
 package com.cloudofficeprint.RenderElements.Cells;
 
+import com.cloudofficeprint.RenderElements.Property;
 import com.cloudofficeprint.RenderElements.RenderElement;
 import com.google.common.collect.ImmutableSet;
 import com.google.gson.JsonElement;
@@ -14,7 +15,7 @@ import java.util.Set;
  * with cells). Represents a cell element. It includes the name for the tag, the
  * value and optionally the cell background color and width.
  */
-public class TableCell extends RenderElement {
+public class TableCell extends Property {
 
     private CellStyle cellStyle;
 
@@ -35,14 +36,13 @@ public class TableCell extends RenderElement {
     /**
      * Represents a cell element. It includes the name for the tag, the value and
      * optionally the cell style.
-     * 
+     *
      * @param name      Name of this element (for the tempalteTag).
      * @param value     Value that will replace the tag.
      * @param cellStyle The style of the cell. (optional)
      */
     public TableCell(String name, String value, CellStyle cellStyle) {
-        setName(name);
-        setValue(value);
+        super(name, value);
         setCellStyle(cellStyle);
     }
 

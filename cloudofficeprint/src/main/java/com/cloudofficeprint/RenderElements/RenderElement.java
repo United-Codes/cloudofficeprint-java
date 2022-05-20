@@ -11,7 +11,6 @@ import java.util.Set;
 public abstract class RenderElement {
 
     private String name;
-    private String value;
 
     /**
      * @return Name of this element for the tag.
@@ -27,18 +26,13 @@ public abstract class RenderElement {
         this.name = name;
     }
 
-    /**
-     * @return Value of this element.
-     */
-    public String getValue() {
-        return value;
-    }
+    public RenderElement(){}
 
     /**
-     * @param value Value of this property.
+     * @param name Name of this element for the tag.
      */
-    public void setValue(String value) {
-        this.value = value;
+    public RenderElement(String name){
+        setName(name);
     }
 
     /**

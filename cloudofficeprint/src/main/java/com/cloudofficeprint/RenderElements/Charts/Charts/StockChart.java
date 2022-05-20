@@ -29,14 +29,13 @@ public class StockChart extends Chart {
 
     /**
      * Represents a stock chart.
-     * 
+     *
      * @param name    Name of the chart (for the tag).
      * @param options Options of the chart.
      * @param series  Series with the data for the chart.
      */
     public StockChart(String name, ChartOptions options, StockSeries... series) {
-        setName(name);
-        setOptions(options);
+        super(name, options);
         for (StockSeries serie : series) {
             getSeries().add(serie);
         }

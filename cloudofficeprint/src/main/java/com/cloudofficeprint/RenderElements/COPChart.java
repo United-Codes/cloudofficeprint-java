@@ -148,7 +148,7 @@ public class COPChart extends RenderElement {
     /**
      * Represent a Cloud Office Print chart (including data and style). If you don't
      * want te specify some parameters, use null as argument.
-     * 
+     *
      * @param name                Name of the chart for the tag.
      * @param xData               ArrayList(String) of the data of the x-axis.
      *                            Format : ["day 1", "day 2", "day 3", "day 4", "day
@@ -166,7 +166,7 @@ public class COPChart extends RenderElement {
      */
     public COPChart(String name, JsonArray xData, HashMap<String, JsonArray> yData, String title, String xTitle,
             String yTitle, String y2Title, String x2Title, COPChartDateOptions copChartDateOptions) {
-        setName(name);
+        super(name);
         setXData(xData);
         setYData(yData);
         setTitle(title);

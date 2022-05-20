@@ -86,18 +86,18 @@ public class Examples {
             data1.addElement(property3);
 
             // Create an image.
-            ImageBase64 image = new ImageBase64("imageTag");
 
             // The next line should normally be used by the user in his project but when the
             // jar is exported the reference to the files doesn't work anymore, so there is
             // a replacement code to make it work.
-            // image.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/test.jpg");
+            // image.fromLocalFile("imageTag", "./src/com/CloudOfficePrint/Examples/GeneralExamples/test.jpg");
             // Begin replacement code:
             InputStream resourceAsStream = getClass().getResourceAsStream("/GeneralExamples/test.jpg");
             byte[] targetArray = new byte[resourceAsStream.available()];
             resourceAsStream.read(targetArray);
             String encodedString = Base64.getEncoder().encodeToString(targetArray);
-            image.setValue(encodedString);
+            ImageBase64 image = new ImageBase64("imageTag", encodedString);
+
             // End replacement code.
 
             image.setMaxWidth(500);
@@ -162,18 +162,20 @@ public class Examples {
             Property property1 = new Property("first_name", "Quent");
             Property property2 = new Property("last_name", "Stroob");
             Property property3 = new Property("city", "Leuven");
-            ImageBase64 image = new ImageBase64("imageTag");
+
+            // Create an image.
 
             // The next line should normally be used by the user in his project but when the
             // jar is exported the reference to the files doesn't work anymore, so there is
             // a replacement code to make it work.
-            // image.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/test.jpg");
+            // image.fromLocalFile("imageTag", "./src/com/CloudOfficePrint/Examples/GeneralExamples/test.jpg");
             // Begin replacement code:
             resourceAsStream = getClass().getResourceAsStream("/GeneralExamples/test.jpg");
             targetArray = new byte[resourceAsStream.available()];
             resourceAsStream.read(targetArray);
             encodedString = Base64.getEncoder().encodeToString(targetArray);
-            image.setValue(encodedString);
+            ImageBase64 image = new ImageBase64("imageTag", encodedString);
+
             // End replacement code.
 
             image.setMaxWidth(500);
@@ -250,17 +252,20 @@ public class Examples {
             Property property1 = new Property("first_name", "Quent");
             Property property2 = new Property("last_name", "Stroob");
             Property property3 = new Property("city", "Leuven");
-            ImageBase64 image = new ImageBase64("imageTag");
+
+            // Create an image.
+
             // The next line should normally be used by the user in his project but when the
             // jar is exported the reference to the files doesn't work anymore, so there is
             // a replacement code to make it work.
-            // image.setFileFromLocalFile("./src/com/CloudOfficePrint/Examples/GeneralExamples/test.jpg");
+            // image.fromLocalFile("imageTag", "./src/com/CloudOfficePrint/Examples/GeneralExamples/test.jpg");
             // Begin replacement code:
             resourceAsStream = getClass().getResourceAsStream("/GeneralExamples/test.jpg");
             targetArray = new byte[resourceAsStream.available()];
             resourceAsStream.read(targetArray);
             encodedString = Base64.getEncoder().encodeToString(targetArray);
-            image.setValue(encodedString);
+            ImageBase64 image = new ImageBase64("imageTag", encodedString);
+
             // End replacement code.
 
             image.setMaxWidth(500);

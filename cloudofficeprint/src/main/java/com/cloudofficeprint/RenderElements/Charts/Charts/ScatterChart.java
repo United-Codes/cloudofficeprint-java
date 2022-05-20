@@ -29,14 +29,13 @@ public class ScatterChart extends Chart {
 
     /**
      * Represents an area chart.
-     * 
+     *
      * @param name    Name of the chart (for the tag).
      * @param options Options of the chart.
      * @param series  Series with the data for the chart.
      */
     public ScatterChart(String name, ChartOptions options, ScatterSeries... series) {
-        setName(name);
-        setOptions(options);
+        super(name, options);
         for (ScatterSeries serie : series) {
             getSeries().add(serie);
         }

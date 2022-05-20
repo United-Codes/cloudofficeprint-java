@@ -10,7 +10,7 @@ import java.util.Set;
  * Only supported in Word and Powerpoint templates. This {style } tag allows
  * user to style their text.
  */
-public class StyledProperty extends RenderElement {
+public class StyledProperty extends Property {
 
     private String font;
     private String fontSize;
@@ -135,13 +135,12 @@ public class StyledProperty extends RenderElement {
 
     /**
      * Represents styled text. Set the style with the set functions.
-     * 
+     *
      * @param name  Name of the property for the tag.
      * @param value Value to replace the tag with.
      */
     public StyledProperty(String name, String value) {
-        setName(name);
-        setValue(value);
+        super(name, value);
     }
 
     /**

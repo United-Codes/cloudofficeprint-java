@@ -29,14 +29,13 @@ public class ColumnStackedChart extends Chart {
 
     /**
      * Represents a stacked column chart.
-     * 
+     *
      * @param name                Name of the chart (for the tag).
      * @param options             Options of the chart.
      * @param stackedColumnSeries Series with the data for the chart.
      */
     public ColumnStackedChart(String name, ChartOptions options, ColumnStackedSeries... stackedColumnSeries) {
-        setName(name);
-        setOptions(options);
+        super(name, options);
         for (ColumnStackedSeries columnSerie : stackedColumnSeries) {
             getStackedColumnSeries().add(columnSerie);
         }

@@ -8,6 +8,7 @@ import com.google.gson.JsonObject;
 public class PDFFormCheckBox extends PDFFormElement {
 
     private String text;
+    private Boolean check;
 
     /**
      * @return the type of this PDF form element. For this class it is always "checkbox".
@@ -21,14 +22,14 @@ public class PDFFormCheckBox extends PDFFormElement {
      * @return whether the checkbox is checked.
      */
     public Boolean getCheck() {
-        return getValue() == null ? null :  Boolean.valueOf(getValue());
+        return check;
     }
 
     /**
      * @param check whether the checkbox is checked.
      */
     public void setCheck(Boolean check) {
-        setValue(check == null ? null : String.valueOf(check));
+        this.check = check;
     }
 
     /**
