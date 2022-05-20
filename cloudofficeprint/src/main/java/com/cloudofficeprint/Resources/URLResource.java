@@ -16,7 +16,7 @@ public class URLResource extends Resource {
     /**
      * Constructor for this class. For a URL resource you have to specify the
      * filetype (extension) and mimetype because it can't be deduced.
-     * 
+     *
      * @param URL      of the resource
      * @param filetype extension of the resource
      * @param mimeType of the resource
@@ -36,7 +36,7 @@ public class URLResource extends Resource {
 
     /**
      * Sets the URL of the resource to given URL.
-     * 
+     *
      * @param URL of the resource.
      */
     public void setURL(String URL) {
@@ -70,4 +70,8 @@ public class URLResource extends Resource {
         return jsonResource;
     }
 
+    @Override
+    public String toString() {
+        return getURL();
+    }
 }

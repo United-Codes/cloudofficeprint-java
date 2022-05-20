@@ -169,7 +169,7 @@ public class RenderElementsTests {
 
     @Test
     public void insert() throws Exception {
-        Insert insert = new Insert("doc", "Base64 encoded file");
+        Insert insert = new Insert("doc", new Base64Resource("docx", "Base64 encoded file"));
         String correct = "{'doc':'Base64 encoded file'}";
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         assertEquals(jsonCorrect, insert.getJSON());

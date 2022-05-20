@@ -28,7 +28,7 @@ public class Base64Resource extends Resource {
     /**
      * Constructor for creating an object of this class where the database64 can be
      * supplied as a string.
-     * 
+     *
      * @param filetype   Type (extension) of the resource e.g. : docx (not docx. !).
      * @param database64 Data of the resource base64 encoded.
      * @throws Exception If the mimetype is not found.
@@ -48,7 +48,7 @@ public class Base64Resource extends Resource {
 
     /**
      * Sets the data of the resource to the given parameter.
-     * 
+     *
      * @param fileBase64 base64 encoded version of the file.
      */
     public void setFileBase64(String fileBase64) {
@@ -88,7 +88,7 @@ public class Base64Resource extends Resource {
      * Sets the filetype of this resource to the extension of the file, sets the
      * mimetype as well. Reads all bytes of the file, coverts them to base64 and
      * stores them in this.fileBase64.
-     * 
+     *
      * @param filePath Path of the local file.
      * @throws IOException If file not found.
      * @throws Exception   If the extension of the file is not found.
@@ -110,4 +110,8 @@ public class Base64Resource extends Resource {
         // System.out.println(s); //only works for txt or json not office files
     }
 
+    @Override
+    public String toString() {
+        return getFileBase64();
+    }
 }

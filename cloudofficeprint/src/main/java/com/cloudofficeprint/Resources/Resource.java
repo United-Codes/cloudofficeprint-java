@@ -34,7 +34,7 @@ public abstract class Resource {
 
     /**
      * Sets the mimetype of the resource to the given mimetype.
-     * 
+     *
      * @param mimeType The resource's mimetype.
      */
     public void setMimeType(String mimeType) {
@@ -43,7 +43,7 @@ public abstract class Resource {
 
     /**
      * Sets the filetype (extension) of the resource to the given filetype.
-     * 
+     *
      * @param filetype extension of the resource.
      */
     public void setFiletype(String filetype) {
@@ -52,7 +52,7 @@ public abstract class Resource {
 
     /**
      * Needs to be called to get the JSON of a resource for a template.
-     * 
+     *
      * @return JsonObject to add in the JSON for the server.
      */
     public abstract JsonObject getJSONForTemplate();
@@ -61,7 +61,7 @@ public abstract class Resource {
      * Needs to be used to get the JSON of a resource for a secondary file (file to
      * prepend, to append, to insert or subtemplate), because their JSON has a
      * different format then for a template.
-     * 
+     *
      * @return JsonObject to add in the JSON for the server.
      */
     public abstract JsonObject getJSONForSecondaryFile();
@@ -81,4 +81,7 @@ public abstract class Resource {
             throw new Exception("No extension found.");
         }
     }
+
+    @Override
+    public abstract String toString();
 }

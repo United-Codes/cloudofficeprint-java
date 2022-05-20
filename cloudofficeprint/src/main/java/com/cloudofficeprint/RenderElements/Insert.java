@@ -11,13 +11,25 @@ import java.util.Set;
  * Inside Word and PowerPoint documents, the tag {?insert fileToInsert} can be used to
  * insert files like Word, Excel, PowerPoint and PDF documents.
  */
-public class Insert extends Property {
+public class Insert extends RenderElement {
+
+    private Resource resource;
+
+    public Resource getResource() {
+        return resource;
+    }
+
+    public void setResource(Resource resource) {
+        this.resource = resource;
+    }
+
     /**
      * @param name  the name of insert tag
-     * @param value base64 encoded file(docx, pptx, xlsx, pdf etc) to be added in output file.
+     * @param resource base64 encoded file(docx, pptx, xlsx, pdf etc) to be added in output file.
      */
-    public Insert(String name, String value) {
-        super(name, value);
+    public Insert(String name, Resource resource) {
+        super(name);
+        setResource(resource);
     }
 
     /**
@@ -27,7 +39,7 @@ public class Insert extends Property {
     @Override
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
-        json.addProperty(getName(), getValue().toString());
+        json.addProperty(getName(), resource.toString());
         return json;
     }
 

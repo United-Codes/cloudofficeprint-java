@@ -20,7 +20,7 @@ public class HTMLResource extends Resource {
 
     /**
      * Constructor for this class. Instantiates the HTML data to given argument.
-     * 
+     *
      * @param HTML data for this resource.
      */
     HTMLResource(String HTML) {
@@ -31,7 +31,7 @@ public class HTMLResource extends Resource {
      * Constructor for this class. Instantiates the HTML data to the HTML argument
      * and the landscape option to landscape. Landscape option will be neglected for
      * secondary files (not templates).
-     * 
+     *
      * @param HTML      data for this resource.
      * @param landscape Whether the HTML should be rendered as landscape-oriented
      *                  page (default :false)
@@ -86,4 +86,8 @@ public class HTMLResource extends Resource {
         return jsonResource;
     }
 
+    @Override
+    public String toString() {
+        return getHTML();
+    }
 }

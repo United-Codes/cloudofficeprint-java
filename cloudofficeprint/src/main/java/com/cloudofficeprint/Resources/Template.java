@@ -216,6 +216,11 @@ public class Template extends Resource{
         return new Template(new Base64Resource(filetype, database64), startDelimiter, endDelimiter, shouldHash, hash);
     }
 
+    @Override
+    public String toString() {
+        return getResource().toString();
+    }
+
     /**
      * Create a new instance of a Template from a local file.
      * @param filePath Path of the local file.

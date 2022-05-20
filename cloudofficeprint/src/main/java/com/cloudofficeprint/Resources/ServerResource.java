@@ -24,7 +24,7 @@ public class ServerResource extends Resource {
 
     /**
      * Sets the path of the resource.
-     * 
+     *
      * @param path path of the resource on the Cloud Office Print server.
      */
     public void setPath(String path) {
@@ -34,7 +34,7 @@ public class ServerResource extends Resource {
     /**
      * Creates a resource with given path. Mimetype and filetype (extension) are
      * deduced from the path.
-     * 
+     *
      * @param path     Path of the file on the Cloud Office Print server.
      * @param mimeType Mimetype of the file on the Cloud Office Print server.
      * @throws IOException if mimetype can't be deduced.
@@ -70,5 +70,10 @@ public class ServerResource extends Resource {
         jsonResource.addProperty("file", path);
         jsonResource.addProperty("file_source", "file");
         return jsonResource;
+    }
+
+    @Override
+    public String toString() {
+        return getPath();
     }
 }
