@@ -108,21 +108,21 @@ public class ResourcesTests {
     @Test
     public void TemplateTest() throws Exception {
 
-        Template base64Template = Template.fromBase64("docx", "dummy", null, null, null, null);
+        Template base64Template = Template.fromBase64("docx", "dummy");
         String correct = "{'file': 'dummy', 'template_type': 'docx'}";
         // System.out.println(base64Template.getJSON());
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
         assertEquals(jsonCorrect, base64Template.getJSONForTemplate());
 
-        Template serverTemplate = Template.fromServerPath("dummy/path.docx", null, null, null, null, null);
+        Template serverTemplate = Template.fromServerPath("dummy/path.docx", null);
         correct = "{'filename': 'dummy/path.docx', 'template_type': 'docx'}";
         // System.out.println(serverTemplate.getJSONForTemplate());
         jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
         assertEquals(jsonCorrect, serverTemplate.getJSONForTemplate());
 
-        Template urlTemplate = Template.fromURL("dummy_url", "docx", null, null, null, null, null);
+        Template urlTemplate = Template.fromURL("dummy_url", "docx", null);
         correct = "{'template_type': 'docx', 'url': 'dummy_url'}";
         // System.out.println(urlTemplate.getJSONForTemplate());
         jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
@@ -132,7 +132,7 @@ public class ResourcesTests {
         String htmlString = "\n" + "     <!DOCTYPE html>\n" + "    <html>\n" + "    <body>\n" + "\n"
                 + "    <h1>My First Heading</h1>\n" + "    <p>My first paragraph.</p>\n" + "\n" + "    </body>\n"
                 + "    </html>\n";
-        Template htmlTemplate = Template.fromHTML(htmlString, true, null, null, null, null);
+        Template htmlTemplate = Template.fromHTML(htmlString, true);
         correct = "{'template_type': 'html', 'orientation': 'landscape', 'html_template_content': '\n     <!DOCTYPE html>\n    <html>\n    <body>\n\n    <h1>My First Heading</h1>\n    <p>My first paragraph.</p>\n\n    </body>\n    </html>\n'}";
         // System.out.println(htmlTemplate.getJSONForTemplate());
         jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
@@ -140,7 +140,11 @@ public class ResourcesTests {
         assertEquals(jsonCorrect, htmlTemplate.getJSONForTemplate());
 
 
-        Template template = Template.fromBase64("docx", "dummy", "{", "}", true, "1234");
+        Template template = Template.fromBase64("docx", "dummy");
+        template.setStartDelimiter("{");
+        template.setEndDelimiter("}");
+        template.setShouldHash(true);
+        template.setHash("1234");
         correct = "{'file': 'dummy', 'template_type': 'docx', 'start_delimiter': '{', 'end_delimiter': '}', 'should_hash': true, 'template_hash': '1234'}";
         // System.out.println(template.getJSON());
         jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();

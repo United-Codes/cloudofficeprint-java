@@ -122,19 +122,10 @@ public class Template extends Resource{
     }
 
     /**
-     *
      * @param resource of this template.
-     * @param startDelimiter the starting delimiter used in the template.
-     * @param endDelimiter the ending delimiter used in the template.
-     * @param shouldHash whether the template should be hashed on the Cloud Office Print server.
-     * @param hash of the template.
      */
-    public Template(Resource resource, String startDelimiter, String endDelimiter, Boolean shouldHash, String hash) {
+    public Template(Resource resource) {
         setResource(resource);
-        setStartDelimiter(startDelimiter);
-        setEndDelimiter(endDelimiter);
-        setShouldHash(shouldHash);
-        setHash(hash);
     }
 
     /**
@@ -201,72 +192,56 @@ public class Template extends Resource{
         return resource.getJSONForSecondaryFile();
     }
 
-    /**
-     * Create a new instance of a Template from base64.
-     * @param filetype Type (extension) of the template e.g. : docx (not docx. !).
-     * @param database64 Data of the template base64 encoded.
-     * @param startDelimiter the starting delimiter used in the template.
-     * @param endDelimiter the ending delimiter used in the template.
-     * @param shouldHash whether the template should be hashed on the Cloud Office Print server.
-     * @param hash of the template.
-     * @return Template created from base64.
-     * @throws Exception If the mimetype is not found.
-     */
-    public static Template fromBase64(String filetype, String database64, String startDelimiter, String endDelimiter, Boolean shouldHash, String hash) throws Exception {
-        return new Template(new Base64Resource(filetype, database64), startDelimiter, endDelimiter, shouldHash, hash);
-    }
-
     @Override
     public String toString() {
         return getResource().toString();
     }
 
     /**
+     * Create a new instance of a Template from base64.
+     * @param filetype Type (extension) of the template e.g. : docx (not docx. !).
+     * @param database64 Data of the template base64 encoded.
+     * @return Template created from base64.
+     * @throws Exception If the mimetype is not found.
+     */
+    public static Template fromBase64(String filetype, String database64) throws Exception {
+        return new Template(new Base64Resource(filetype, database64));
+    }
+
+    /**
      * Create a new instance of a Template from a local file.
      * @param filePath Path of the local file.
-     * @param startDelimiter the starting delimiter used in the template.
-     * @param endDelimiter the ending delimiter used in the template.
-     * @param shouldHash whether the template should be hashed on the Cloud Office Print server.
-     * @param hash of the template.
      * @return Template created from a local file
      * @throws IOException If file not found.
      * @throws Exception If the extension of the file is not found.
      * @throws Exception If the mimetype is not found.
      */
-    public static Template fromLocalFile(String filePath, String startDelimiter, String endDelimiter, Boolean shouldHash, String hash) throws Exception {
+    public static Template fromLocalFile(String filePath) throws Exception {
         Base64Resource resource = new Base64Resource();
         resource.setFileFromLocalFile(filePath);
-        return new Template(resource, startDelimiter, endDelimiter, shouldHash, hash);
+        return new Template(resource);
     }
 
     /**
      * Create a new instance of a Template from HTML.
      * @param HTML data for this template.
      * @param landscape Whether the HTML should be rendered as landscape-oriented page (default :false)
-     * @param startDelimiter the starting delimiter used in the template.
-     * @param endDelimiter the ending delimiter used in the template.
-     * @param shouldHash whether the template should be hashed on the Cloud Office Print server.
-     * @param hash of the template.
      * @return Template created from HTML.
      */
-    public static Template fromHTML(String HTML, Boolean landscape, String startDelimiter, String endDelimiter, Boolean shouldHash, String hash) {
-        return new Template(new HTMLResource(HTML, landscape), startDelimiter, endDelimiter, shouldHash, hash);
+    public static Template fromHTML(String HTML, Boolean landscape) {
+        return new Template(new HTMLResource(HTML, landscape));
     }
 
     /**
      * Create a new instance of a Template from a path on the Cloud Office Print server.
      * @param path Path of the file on the Cloud Office Print server.
      * @param mimeType Mimetype of the file on the Cloud Office Print server.
-     * @param startDelimiter the starting delimiter used in the template.
-     * @param endDelimiter the ending delimiter used in the template.
-     * @param shouldHash whether the template should be hashed on the Cloud Office Print server.
-     * @param hash of the template.
      * @return Template created from a path on the Cloud Office Print server.
      * @throws IOException if mimetype can't be deduced.
      * @throws Exception if extension can't be deduced.
      */
-    public static Template fromServerPath(String path, String mimeType, String startDelimiter, String endDelimiter, Boolean shouldHash, String hash) throws Exception {
-        return new Template(new ServerResource(path, mimeType), startDelimiter, endDelimiter, shouldHash, hash);
+    public static Template fromServerPath(String path, String mimeType) throws Exception {
+        return new Template(new ServerResource(path, mimeType));
     }
 
     /**
@@ -274,13 +249,9 @@ public class Template extends Resource{
      * @param URL of the template.
      * @param filetype extension of the template.
      * @param mimeType of the template.
-     * @param startDelimiter the starting delimiter used in the template.
-     * @param endDelimiter the ending delimiter used in the template.
-     * @param shouldHash whether the template should be hashed on the Cloud Office Print server.
-     * @param hash of the template.
      * @return Template created from a URL.
      */
-    public static Template fromURL(String URL, String filetype, String mimeType, String startDelimiter, String endDelimiter, Boolean shouldHash, String hash) {
-        return new Template(new URLResource(URL, filetype, mimeType), startDelimiter, endDelimiter, shouldHash, hash);
+    public static Template fromURL(String URL, String filetype, String mimeType) {
+        return new Template(new URLResource(URL, filetype, mimeType));
     }
 }
