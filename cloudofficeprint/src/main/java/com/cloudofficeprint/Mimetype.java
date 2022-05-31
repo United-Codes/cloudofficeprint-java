@@ -7,7 +7,7 @@ public class Mimetype {
 
     /**
      * Return the mimetype given the extension of a file.
-     * 
+     *
      * @param extension Extension of the file to find the mimetype.
      * @return Mimetype of the file.
      * @throws Exception If the file type is not supported (cannot find the
@@ -124,10 +124,10 @@ public class Mimetype {
         } else
             throw new Exception("File type not supported, so cannot find the mimetype");
     }
-    
+
     /**
      * Return the extension given the mimetype of a file.
-     * 
+     *
      * @param mimetype Mimetype of the file to find the extension.
      * @return Extension of the file.
      * @throws Exception If the mimetype is not supported (cannot find the
@@ -220,7 +220,11 @@ public class Mimetype {
         }
         if (mimetype.equals("application/vnd.oasis.opendocument.presentation")) {
             return "odp";
-        } else
+        }
+        if (mimetype.equals("application/json")){
+            return "json";
+        }
+        else
             throw new Exception("Mime type not supported, so cannot find the mimetype");
     }
 

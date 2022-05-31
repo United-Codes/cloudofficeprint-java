@@ -127,6 +127,9 @@ public class Server {
      * @param url of the Cloud Office Print server.
      */
     public void setUrl(String url) {
+        if (!url.endsWith("/")){
+            url += "/";
+        }
         this.url = url;
     }
 
@@ -264,7 +267,7 @@ public class Server {
      * @return true if the server is reachable.
      */
     public boolean isReachable() {
-        String response = sendGETRequest(this.url + "/marco");
+        String response = sendGETRequest(this.url + "marco");
         return response.equals("polo");
     }
 
@@ -274,7 +277,7 @@ public class Server {
      * @return current version of Libreoffice installed on the server.
      */
     public String getSofficeVersionServer() {
-        return sendGETRequest(this.url + "/soffice");
+        return sendGETRequest(this.url + "soffice");
     }
 
     /**
@@ -284,7 +287,7 @@ public class Server {
      *         available if the server runs in Windows environment).
      */
     public String getOfficeToPdfVersion() {
-        return sendGETRequest(this.url + "/officetopdf");
+        return sendGETRequest(this.url + "officetopdf");
     }
 
     /**
@@ -293,7 +296,7 @@ public class Server {
      * @return json of the mime types of templates that Cloud Office Print supports.
      */
     public String getMimeTypesSupported() {
-        return sendGETRequest(this.url + "/supported_template_mimetypes");
+        return sendGETRequest(this.url + "supported_template_mimetypes");
     }
 
     /**
@@ -305,7 +308,7 @@ public class Server {
      * @return The supported output types for the given template extension.
      */
     public String getOutputMimeTypesSupported(String extension) {
-        return sendGETRequest(this.url + "/supported_output_mimetypes?template=" + extension);
+        return sendGETRequest(this.url + "supported_output_mimetypes?template=" + extension);
     }
 
     /**
@@ -314,7 +317,7 @@ public class Server {
      * @return returns the supported prepend file mime types in JSON format.
      */
     public String getPrependMimeTypesSupported() {
-        return sendGETRequest(this.url + "/supported_prepend_mimetypes");
+        return sendGETRequest(this.url + "supported_prepend_mimetypes");
     }
 
     /**
@@ -323,7 +326,7 @@ public class Server {
      * @return returns the version of Cloud Office Print that is run on server.
      */
     public String getCOPVersionOnServer() {
-        return sendGETRequest(this.url + "/version");
+        return sendGETRequest(this.url + "version");
     }
 
     /**
@@ -333,7 +336,7 @@ public class Server {
      * @return the status of the ipp printer.
      */
     public String checkIPP(String location, String version){
-        return sendGETRequest(this.url + String.format("/ipp_check?ipp_url=%s&version=%s", location, version));
+        return sendGETRequest(this.url + String.format("ipp_check?ipp_url=%s&version=%s", location, version));
     }
 
     /**
@@ -342,7 +345,7 @@ public class Server {
      * @return status of the hashed template with the given hashcode.
      */
     public ResponseTemplateHash verifyTemplateHash(String hash){
-        return new ResponseTemplateHash(sendGETRequest(this.url + String.format("/verify_template_hash?hash=%s", hash)));
+        return new ResponseTemplateHash(sendGETRequest(this.url + String.format("verify_template_hash?hash=%s", hash)));
     }
 
     /**
@@ -351,7 +354,7 @@ public class Server {
      * @return status of the renewed hashed template with the given hashcode.
      */
     public ResponseTemplateHash renewTemplateHash(String hash){
-        return new ResponseTemplateHash(sendGETRequest(this.url + String.format("/renew_template_hash?hash=%s", hash)));
+        return new ResponseTemplateHash(sendGETRequest(this.url + String.format("renew_template_hash?hash=%s", hash)));
     }
 
     /**
@@ -360,7 +363,7 @@ public class Server {
      * @return status of the invalidated hashed template with the given hashcode.
      */
     public ResponseTemplateHash invalidateTemplateHash(String hash){
-        return new ResponseTemplateHash(sendGETRequest(this.url + String.format("/invalidate_template_hash?hash=%s", hash)));
+        return new ResponseTemplateHash(sendGETRequest(this.url + String.format("invalidate_template_hash?hash=%s", hash)));
     }
 
     /**
@@ -368,8 +371,8 @@ public class Server {
      * @param accessToken access token. If not used, give null.
      * @return json of the current statistics of the Cloud Office Print server.
      */
-    public String statistics(String accessToken) throws URISyntaxException {
-        URI uri = new URI(this.url + "/stats");
+    public String getStatistics(String accessToken) throws URISyntaxException {
+        URI uri = new URI(this.url + "stats");
 
         if (accessToken != null){
             uri = appendUri(uri.toString(), "access_token=" + accessToken);
@@ -384,8 +387,8 @@ public class Server {
      * @param latest the number of the latest lines of the log file you want. If not used, give null.
      * @return errors of the Cloud Office Print server in log file format.
      */
-    public String errors(String accessToken, Integer latest) throws URISyntaxException {
-        URI uri = new URI(this.url + "/server_errors");
+    public String getErrors(String accessToken, Integer latest) throws URISyntaxException {
+        URI uri = new URI(this.url + "server_errors");
 
         if (accessToken != null){
             uri = appendUri(uri.toString(), "access_token=" + accessToken);
@@ -403,8 +406,8 @@ public class Server {
      * @param date the date of the print jobs you want. If not used, give null.
      * @return print jobs of the Cloud Office Print server in log file format.
      */
-    public String printJobs(String accessToken, String date) throws URISyntaxException {
-        URI uri = new URI(this.url + "/server_printjobs");
+    public String getPrintJobs(String accessToken, String date) throws URISyntaxException {
+        URI uri = new URI(this.url + "server_printjobs");
 
         if (accessToken != null){
             uri = appendUri(uri.toString(), "access_token=" + accessToken);
@@ -422,8 +425,8 @@ public class Server {
      * @param date the date of the network logs you want. If not used, give null.
      * @return network logs of the Cloud Office Print server in log file format.
      */
-    public String networkLogs(String accessToken, String date) throws URISyntaxException {
-        URI uri = new URI(this.url + "/network_logs");
+    public String getNetworkLogs(String accessToken, String date) throws URISyntaxException {
+        URI uri = new URI(this.url + "network_logs");
 
         if (accessToken != null){
             uri = appendUri(uri.toString(), "access_token=" + accessToken);
@@ -443,7 +446,7 @@ public class Server {
      * @return The Response of the polled print job with id.
      */
     public Response download(String id, String secretKey, Boolean delete) throws Exception {
-        URI uri = new URI(this.url + "/download/" + id);
+        URI uri = new URI(this.url + "download/" + id);
 
         if (secretKey != null){
             uri = appendUri(uri.toString(), "secretkey=" + secretKey);
@@ -477,9 +480,14 @@ public class Server {
             while ((length = con.getInputStream().read(buffer)) != -1) { // attempt is made to read as many as len bytes
                 baos.write(buffer, 0, length);
             }
-            String templateHash = Mimetype.getMimetypeFromContentType(con.getHeaderField("Template-Hash"));
-            Response response = new Response("." + ext, mime, baos.toByteArray(), templateHash);
-            return response;
+
+            if (ext.equals("json")){
+                String responseString = baos.toString(String.valueOf(StandardCharsets.UTF_8));
+                throw new RuntimeException("The Cloud Office Print server responded with the following json:\n" + responseString);
+            }
+
+            String templateHash = con.getHeaderField("Template-Hash");
+            return new Response("." + ext, mime, baos.toByteArray(), templateHash);
         } else {
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getErrorStream()));
             String inputLine;
@@ -597,11 +605,11 @@ public class Server {
                 baos.write(buffer, 0, length);
             }
 
-            String templateHash = Mimetype.getMimetypeFromContentType(con.getHeaderField("Template-Hash"));
+            String templateHash = con.getHeaderField("Template-Hash");
 
             JsonObject output = postData.getAsJsonObject("output");
             if (output.has("output_polling") && output.get("output_polling").getAsBoolean()){
-                String responseString = baos.toString(StandardCharsets.UTF_8);
+                String responseString = baos.toString(String.valueOf(StandardCharsets.UTF_8));
                 String url = JsonParser.parseString(responseString).getAsJsonObject().get("url").getAsString();
 
                 Pattern pattern = Pattern.compile("/download/([a-zA-Z0-9]*)");
