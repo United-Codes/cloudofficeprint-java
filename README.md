@@ -164,7 +164,7 @@ where you replace `dummy_api` with your API key.
 
 # Documentation
 
-The documentation for this SDK can be found inside the folder `build/docs/javadoc/` on [Github](https://github.com/United-Codes/cloudofficeprint-java).
+The documentation for this SDK can be found inside the folder `documentation/` on [Github](https://github.com/United-Codes/cloudofficeprint-java).
 
 The Cloud Office Print documentation can be found at the [Cloud Office Print docs](https://www.cloudofficeprint.com/docs/).
 
