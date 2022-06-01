@@ -294,7 +294,7 @@ public class PrintJob implements Runnable {
         JsonObject jsonForServer = new JsonObject();
 
         jsonForServer.addProperty("tool", "java_sdk");
-        jsonForServer.addProperty("java_sdk_version", "21.2.0");
+        jsonForServer.addProperty("java_sdk_version", "22.1.0");
 
         for (Map.Entry<String, JsonElement> tag : getServer().getJSON().entrySet()) {
             jsonForServer.add(tag.getKey(), tag.getValue()); // these tags for the server need to be at the upper level
