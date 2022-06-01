@@ -26,7 +26,9 @@ public class ImageBase64 extends Image {
     /**
      * Creates a new instance of an ImageBas64 from a local file path.
      *
+     * @param name the name of this element
      * @param filePath Path of the local file.
+     * @return a new instance of an ImageBase64 containing the content of the local file.
      * @throws IOException If file not found.
      */
     public static ImageBase64 fromLocalFile(String name, String filePath) throws IOException {

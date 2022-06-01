@@ -82,6 +82,7 @@ public class Response implements IResponse{
      * @param ext      Extension of the file in the body.
      * @param body     (file base64) of the response.
      * @param mimetype Mimetype of the file in the body.
+     * @param templateHash the template hash that is in the header "Template-Hash" of the HTTP response of the Cloud Office Print server. Null if the HTTP response has no header "Template-Hash".
      */
     public Response(String ext, String mimetype, byte[] body, String templateHash) {
         setExt(ext);

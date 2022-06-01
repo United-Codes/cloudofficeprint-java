@@ -95,6 +95,7 @@ public class ResponsePolling implements IResponse {
     /**
      * @param server The Cloud Office Print server.
      * @param id unique identifier of the polled print job.
+     * @param templateHash the template hash that is in the header "Template-Hash" of the HTTP response of the Cloud Office Print server. Null if the HTTP response has no header "Template-Hash".
      */
     public ResponsePolling(Server server, String id, String templateHash){
         setServer(server);

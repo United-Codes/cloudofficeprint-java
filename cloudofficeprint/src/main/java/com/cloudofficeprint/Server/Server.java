@@ -330,7 +330,7 @@ public class Server {
     }
 
     /**
-     * Sends a GET request to server-url/ipp_check?ipp_url=location&version=version.
+     * Sends a GET request to server-url/ipp_check?ipp_url=location&amp;version=version.
      * @param location url of the ipp printer.
      * @param version of the ipp printer.
      * @return the status of the ipp printer.
@@ -370,6 +370,7 @@ public class Server {
      * Sends a GET request to server-url/stats.
      * @param accessToken access token. If not used, give null.
      * @return json of the current statistics of the Cloud Office Print server.
+     * @throws URISyntaxException when the server url has a syntax error.
      */
     public String getStatistics(String accessToken) throws URISyntaxException {
         URI uri = new URI(this.url + "stats");
@@ -386,6 +387,7 @@ public class Server {
      * @param accessToken access token. If not used, give null.
      * @param latest the number of the latest lines of the log file you want. If not used, give null.
      * @return errors of the Cloud Office Print server in log file format.
+     * @throws URISyntaxException when the server url has a syntax error.
      */
     public String getErrors(String accessToken, Integer latest) throws URISyntaxException {
         URI uri = new URI(this.url + "server_errors");
@@ -405,6 +407,7 @@ public class Server {
      * @param accessToken access token. If not used, give null.
      * @param date the date of the print jobs you want. If not used, give null.
      * @return print jobs of the Cloud Office Print server in log file format.
+     * @throws URISyntaxException when the server url has a syntax error.
      */
     public String getPrintJobs(String accessToken, String date) throws URISyntaxException {
         URI uri = new URI(this.url + "server_printjobs");
@@ -424,6 +427,7 @@ public class Server {
      * @param accessToken access token. If not used, give null.
      * @param date the date of the network logs you want. If not used, give null.
      * @return network logs of the Cloud Office Print server in log file format.
+     * @throws URISyntaxException when the server url has a syntax error.
      */
     public String getNetworkLogs(String accessToken, String date) throws URISyntaxException {
         URI uri = new URI(this.url + "network_logs");
@@ -444,6 +448,7 @@ public class Server {
      * @param secretKey used to encrypt the polled print job.
      * @param delete whether to delete the polled print job after download.
      * @return The Response of the polled print job with id.
+     * @throws Exception when something goes wrong trying to download a response. This can be a connection error, file is not processed yet, incorrect parameters, ...
      */
     public Response download(String id, String secretKey, Boolean delete) throws Exception {
         URI uri = new URI(this.url + "download/" + id);
