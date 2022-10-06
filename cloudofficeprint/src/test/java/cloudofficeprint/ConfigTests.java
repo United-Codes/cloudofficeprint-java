@@ -6,6 +6,7 @@ import com.cloudofficeprint.Output.CloudAcessToken.OAuth2Token;
 import com.cloudofficeprint.Output.CsvOptions;
 import com.cloudofficeprint.Output.Output;
 import com.cloudofficeprint.Output.PDFOptions;
+import com.cloudofficeprint.Output.RequestOption;
 import com.cloudofficeprint.Server.Command;
 import com.cloudofficeprint.Server.Commands;
 import com.cloudofficeprint.Server.Printer;
@@ -166,5 +167,19 @@ public class ConfigTests {
         // System.out.println(jsonCorrect);
         assertEquals(jsonCorrect, printer.getJSON());
         assertEquals(jsonCorrect1,printer1.getJSON());
+    }
+
+    @Test
+    public void testRequestOptionAndOutputPolling(){
+        String extraHeader =  "{'file_id' : 'Any file id like FILE_123','access_token': 'Access Token for above hostname (if any) '}";
+        JsonObject extraHeaders = JsonParser.parseString((extraHeader)).getAsJsonObject();
+        RequestOption requestOption = new RequestOption();
+        requestOption.setUrl("https://www.apexofficeprint.com/post/");
+        requestOption.setExtraHeaders(extraHeaders);
+        String secretKey = "AOPSecretKey";
+        Output output = new Output("pdf", "raw", "libreoffice", null, null, null, null,secretKey,true,requestOption);
+        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'secret_key':'AOPSecretKey', 'output_polling': true,'request_option':{'url': 'https://www.apexofficeprint.com/post/','extra_headers': {'file_id' : 'Any file id like FILE_123','access_token': 'Access Token for above hostname (if any) '}} }";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect,output.getJSON());
     }
 }
