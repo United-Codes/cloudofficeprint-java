@@ -18,6 +18,8 @@ public abstract class Image extends RenderElement {
     private String Transparency;
     private Integer rotation;
     private String TargetUrl;
+    private Boolean MaintainAspectRatio;
+    private Boolean IgnoreError;
 
     /**
      * @return Width of the image (for non-proportionally scaling).
@@ -161,6 +163,18 @@ public abstract class Image extends RenderElement {
         TargetUrl = targetUrl;
     }
 
+    public void setIgnoreError(Boolean ignoreError){
+        IgnoreError = ignoreError;
+    }
+    public Boolean getIgnoreError(){
+        return IgnoreError;
+    }
+    public void setMaintainAspectRatio(Boolean maintainAspectRatio) {
+        MaintainAspectRatio = maintainAspectRatio;
+    }
+    public Boolean getMaintainAspectRatio(){
+        return MaintainAspectRatio;
+    }
     /**
      * @return JSONObject with the tags for this element for the Cloud Office Print
      *         server.
@@ -195,6 +209,12 @@ public abstract class Image extends RenderElement {
         }
         if (getTransparency() != null) {
             json.addProperty(getName() + "_transparency", getTransparency());
+        }
+        if (getIgnoreError() != null) {
+            json.addProperty(getName()+"_ignore_error",getIgnoreError());
+        }
+        if (getMaintainAspectRatio() != null) {
+            json.addProperty(getName()+"_maintain_aspect_ratio",getMaintainAspectRatio());
         }
         return json;
     }
