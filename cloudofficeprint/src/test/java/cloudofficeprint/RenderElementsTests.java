@@ -224,4 +224,29 @@ public class RenderElementsTests {
         assertEquals(jsonCorrect, data.getJSON());
     }
 
+    @Test
+    public void protectSheet(){
+        ProtectSheet prop = new ProtectSheet("sheet1");
+        prop.setPassword("password");
+        prop.setAutoFilter(true);
+        prop.setDeleteColumns(false);
+        prop.setDeleteRows(true);
+        prop.setFormatCells(false);
+        prop.setFormatColumns(true);
+        prop.setFormatRows(false);
+        prop.setInsertColumns(true);
+        prop.setInsertHyperlinks(false);
+        prop.setInsertColumns(true);
+        prop.setInsertRows(false);
+        prop.setPivotTables(true);
+        prop.setSelectLockedCells(false);
+        prop.setSelectUnlockedCells(true);
+        prop.setSort(false);
+
+        String correct = "{ 'sheet1_allow_auto_filter': true,'sheet1_allow_delete_columns': false,'sheet1_allow_delete_rows': true,'sheet1_allow_format_cells': false,'sheet1_allow_format_columns': true,'sheet1_allow_format_rows': false,'sheet1_allow_insert_columns': true,'sheet1_allow_insert_hyperlinks': false,'sheet1_allow_insert_rows': false,'sheet1_password': 'password','sheet1_allow_pivot_tables': true,'sheet1_allow_select_locked_cells': false,'sheet1_allow_select_unlocked_cells': true,'sheet1_allow_sort': false}";
+        // System.out.println(prop.getJSON());
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        // System.out.println(jsonCorrect);
+        assertEquals(jsonCorrect, prop.getJSON());
+    }
 }
