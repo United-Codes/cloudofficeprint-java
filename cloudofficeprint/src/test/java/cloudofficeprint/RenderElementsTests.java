@@ -249,4 +249,30 @@ public class RenderElementsTests {
         // System.out.println(jsonCorrect);
         assertEquals(jsonCorrect, prop.getJSON());
     }
+
+    @Test
+    public void ExcelInsert(){
+        ExcelInsert excelInsert = new ExcelInsert("fileToInsert","base64EncodedValue");
+        excelInsert.setPreview(true);
+        excelInsert.setIcon("base64icon");
+        excelInsert.setFromRow("2");
+        excelInsert.setFromCol("C5");
+        excelInsert.setToCol("C5");
+        excelInsert.setFromRowOff("2px");
+        excelInsert.setFromColOff("2px");
+        excelInsert.setToRow("5");
+        excelInsert.setToRowOff("2px");
+        excelInsert.setToColOff("2px");
+        String correct = "{ 'fileToInsert':'base64EncodedValue','fileToInsert_isPreview': true,'fileToInsert_icon':'base64icon','fileToInsert_fromRow':'2','fileToInsert_fromCol':'C5','fileToInsert_fromRowOff':'2px','fileToInsert_fromColOff':'2px','fileToInsert_toRow':'5','fileToInsert_toCol':'C5','fileToInsert_toRowOff':'2px','fileToInsert_toColOff':'2px'}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect,excelInsert.getJSON());
+    }
+    
+    @Test
+    public void Embed(){
+        Embed embed = new Embed("fileToInsert","base64EncodedFile");
+        String correct = "{'fileToInsert':'base64EncodedFile'}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect,embed.getJSON());
+    }
 }
