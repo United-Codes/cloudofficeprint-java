@@ -40,9 +40,13 @@ public class Output {
     private String converter = "libreoffice";
 
     /**
-     * If you want to prepend/append file after each page of output you can set it to true.
+     * If you want to append file after each page of output you can set it to true.
      */
     private Boolean appendPerPage = null;
+    /**
+     * If you want to prepend file after each page of output you can set it to true.
+     */
+    private Boolean prependPerPage = null;
     /**
      * If you want to store the output on a cloud based service, a specific
      * CloudAccessToken object needs to be specified. Default : null.
@@ -94,12 +98,18 @@ public class Output {
     }
 
     /**
-     * @return whether you want to prepend/append file after each page of output.
+     * @return whether you want to append file after each page of output.
      */
     public Boolean getAppendPerPage() {
         return appendPerPage;
     }
 
+    /**
+     * @return whether you want to prepend file after each page of output.
+     */
+    public Boolean getPrependPerPage() {
+        return prependPerPage;
+    }
     /**
      * @return the accesstoken object of this output.
      */
@@ -145,14 +155,22 @@ public class Output {
     }
 
     /**
-     * Sets appendPerPage to true if you want to prepend/append file after each page of output and false otherwise.
+     * Sets appendPerPage to true if you want to append file after each page of output and false otherwise.
      *
-     * @param appendPerPage whether to prepend/append file after each page of output.
+     * @param appendPerPage whether to append file after each page of output.
      */
     public void setAppendPerPage(Boolean appendPerPage) {
         this.appendPerPage = appendPerPage;
     }
 
+    /**
+     * Sets prependPerPage to true if you want to prepend file after each page of output and false otherwise.
+     *
+     * @param prependPerPage whether to prepend file after each page of output.
+     */
+    public void setPrependPerPage(Boolean prependPerPage) {
+        this.prependPerPage = prependPerPage;
+    }
     /**
      * Sets the access token object of the output, if you want to store the output
      * on a cloud based service.
@@ -279,8 +297,10 @@ public class Output {
      *                        "libreoffice-standalone" or any other custom defined
      *                        converters in the aop_config.json file. Default :
      *                        libreoffice.
-     * @param appendPerPage   if you want to prepend/append file after each page of output
+     * @param appendPerPage   if you want to append file after each page of output
      *                        set appendPerPage to true and false otherwise.
+     * @param prependPerPage  f you want to prepend file after each page of output
+     *                        set prependPerPage to true and false otherwise.
      * @param token           If you want to store the output on a cloud based
      *                        service, a specific CloudAccessToken object needs to
      *                        be specified. Default : null.
@@ -292,12 +312,13 @@ public class Output {
      * @param csvOptions      Optional CSV options. They are described in the
      *                        CsvOptions class. Default : null.
      */
-    public Output(String filetype, String encoding, String converter, Boolean appendPerPage, CloudAccessToken token, String serverDirectory,
+    public Output(String filetype, String encoding, String converter, Boolean appendPerPage, Boolean prependPerPage, CloudAccessToken token, String serverDirectory,
                   PDFOptions pdfOptions, CsvOptions csvOptions) {
         setType(filetype);
         setEncoding(encoding);
         setConverter(converter);
         setAppendPerPage(appendPerPage);
+        setPrependPerPage(prependPerPage);
         setAccessToken(token);
         setServerDirectory(serverDirectory);
         setPDFOptions(pdfOptions);
@@ -423,6 +444,9 @@ public class Output {
         }
         if (getAppendPerPage() != null) {
             json.addProperty("output_append_per_page", getAppendPerPage());
+        }
+        if (getPrependPerPage() != null) {
+            json.addProperty("output_prepend_per_page", getPrependPerPage());
         }
         if (getAccessToken() != null) {
             for (Map.Entry<String, JsonElement> tag : getAccessToken().getJSON().entrySet()) {
