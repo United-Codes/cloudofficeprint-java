@@ -9,10 +9,9 @@ import java.util.Set;
 /**
  * Inside Excel, it is possible to insert word, PowerPoint, excel and pdf file using AOP tag {?insert fileToInsert}.
  * Options available are:  you can provide dynamic icon and icon position.
- *                         you can preview the document in Excel.
  */
 public class ExcelInsert extends RenderElement{
-    private Boolean isPreview;
+//    private Boolean isPreview;
     private String icon;
     private String fromRow;
     private String fromCol;
@@ -23,23 +22,23 @@ public class ExcelInsert extends RenderElement{
     private String toRowOff;
     private String toColOff;
 
-    /**
-     *  Allows you to see the preview of the document.
-     *  Set it to true for preview. Defaults to false.
-     * @return value for isPreview.
-     */
-    public Boolean getPreview() {
-        return isPreview;
-    }
-
-    /**
-     * Allows you to see the preview of the document.
-     * Set it to true for preview. Defaults to false.
-     * @param preview value for isPreview
-     */
-    public void setPreview(Boolean preview) {
-        isPreview = preview;
-    }
+//    /**
+//     *  Allows you to see the preview of the document.
+//     *  Set it to true for preview. Defaults to false.
+//     * @return value for isPreview.
+//     */
+//    public Boolean getPreview() {
+//        return isPreview;
+//    }
+//
+//    /**
+//     * Allows you to see the preview of the document.
+//     * Set it to true for preview. Defaults to false.
+//     * @param preview value for isPreview
+//     */
+//    public void setPreview(Boolean preview) {
+//        isPreview = preview;
+//    }
 
     /**
      * Icon to be showed as the document, when clicked on it, redirects it to file. Default icon is taken if not provided.
@@ -205,9 +204,9 @@ public class ExcelInsert extends RenderElement{
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         json.addProperty(getName(),getValue());
-        if (getPreview() != null){
-            json.addProperty(getName() + "_isPreview",getPreview());
-        }
+//        if (getPreview() != null){
+//            json.addProperty(getName() + "_isPreview",getPreview());
+//        }
         if (getIcon() != null){
             json.addProperty(getName()+"_icon",getIcon());
         }
