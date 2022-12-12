@@ -7,243 +7,240 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ProtectSheet extends RenderElement{
-    private Boolean AutoFilter;
-    private Boolean DeleteColumns;
-    private Boolean DeleteRows;
-    private Boolean FormatCells;
-    private Boolean FormatColumns;
-    private Boolean FormatRows;
-    private Boolean InsertColumns;
-    private Boolean InsertHyperlinks;
-    private Boolean InsertRows;
-    private String Password;
-    private Boolean PivotTables;
-    private Boolean SelectLockedCells;
-    private Boolean SelectUnlockedCells;
-    private Boolean Sort;
+    private Boolean autoFilter;
+    private Boolean deleteColumns;
+    private Boolean deleteRows;
+    private Boolean formatCells;
+    private Boolean formatColumns;
+    private Boolean formatRows;
+    private Boolean insertColumns;
+    private Boolean insertHyperlinks;
+    private Boolean insertRows;
+    private String password;
+    private Boolean pivotTables;
+    private Boolean selectLockedCells;
+    private Boolean selectUnlockedCells;
+    private Boolean sort;
 
     /**
-     * Value to determine whether to lock AutoFilter or not.
-     * @return autoFilter lock auto filter
+     * Returns value to determine whether to lock autoFilter or not.
      */
     public Boolean getAutoFilter() {
-        return AutoFilter;
+        return this.autoFilter;
     }
 
     /**
-     * Sets value for AutoFilter
+     * Sets value for autoFilter
      * @param autoFilter lock auto filter.
      */
     public void setAutoFilter(Boolean autoFilter) {
-        AutoFilter = autoFilter;
+        this.autoFilter = autoFilter;
     }
 
     /**
-     * Value to determine whether to lock DeleteColumns or not.
-     * @return lock delete columns
+     * Returns value to determine whether to lock deleteColumns or not.
      */
     public Boolean getDeleteColumns() {
-        return DeleteColumns;
+        return this.deleteColumns;
     }
 
     /**
-     * Sets value for DeleteColumns
+     * Sets value for deleteColumns
      * @param deleteColumns lock delete columns
      */
     public void setDeleteColumns(Boolean deleteColumns) {
-        DeleteColumns = deleteColumns;
+        this.deleteColumns = deleteColumns;
     }
 
     /**
-     * Value to determine whether to lock DeleteRows or not.
-     * @return lock delete rows.
+     * Returns value to determine whether to lock deleteRows or not.
+
      */
     public Boolean getDeleteRows() {
-        return DeleteRows;
+        return this.deleteRows;
     }
 
     /**
-     * Sets value for DeleteRows
+     * Sets value for deleteRows
      * @param deleteRows lock delete rows.
      */
     public void setDeleteRows(Boolean deleteRows) {
-        DeleteRows = deleteRows;
+        this.deleteRows = deleteRows;
     }
 
     /**
-     * Value to determine whether to lock FormatCells or not.
-     * @return lock format cells.
+     * Returns value to determine whether to lock formatCells or not.
+
      */
     public Boolean getFormatCells() {
-        return FormatCells;
+        return this.formatCells;
     }
 
     /**
-     * Sets value for FormatCells
+     * Sets value for formatCells
      * @param formatCells lock format cells.
      */
     public void setFormatCells(Boolean formatCells) {
-        FormatCells = formatCells;
+        this.formatCells = formatCells;
     }
 
     /**
-     * Value to determine whether to lock FormatColumns or not.
-     * @return lock format columns.
+     * Returns value to determine whether to lock formatColumns or not.
+
      */
     public Boolean getFormatColumns() {
-        return FormatColumns;
+        return this.formatColumns;
     }
 
     /**
-     * Sets value for FormatColumns
+     * Sets value for formatColumns
      * @param formatColumns lock format columns.
      */
     public void setFormatColumns(Boolean formatColumns) {
-        FormatColumns = formatColumns;
+        this.formatColumns = formatColumns;
     }
 
     /**
-     * Value to determine whether to lock FormatRows or not.
-     * @return lock format columns.
+     * Returns value to determine whether to lock formatRows or not.
+
      */
     public Boolean getFormatRows() {
-        return FormatRows;
+        return this.formatRows;
     }
 
     /**
-     * Sets value for FormatRows
+     * Sets value for formatRows
      * @param formatRows lock format rows.
      */
     public void setFormatRows(Boolean formatRows) {
-        FormatRows = formatRows;
+        this.formatRows = formatRows;
     }
 
     /**
-     * Value to determine whether to lock InsertColumns or not.
-     * @return lock insert columns.
+     * Returns value to determine whether to lock insertColumns or not.
+
      */
     public Boolean getInsertColumns() {
-        return InsertColumns;
+        return this.insertColumns;
     }
 
     /**
-     * Sets value for InsertColumns
+     * Sets value for insertColumns
      * @param insertColumns lock insert columns.
      */
     public void setInsertColumns(Boolean insertColumns) {
-        InsertColumns = insertColumns;
+        this.insertColumns = insertColumns;
     }
 
     /**
-     * Value to determine whether to lock InsertHyperlinks or not.
-     * @return lock insert hyperlinks.
+     * Returns value to determine whether to lock insertHyperlinks or not.
+
      */
     public Boolean getInsertHyperlinks() {
-        return InsertHyperlinks;
+        return this.insertHyperlinks;
     }
 
     /**
-     * Sets value for InsertHyperlinks
+     * Sets value for insertHyperlinks
      * @param insertHyperlinks lock insert hyperlinks.
      */
     public void setInsertHyperlinks(Boolean insertHyperlinks) {
-        InsertHyperlinks = insertHyperlinks;
+        this.insertHyperlinks = insertHyperlinks;
     }
 
     /**
-     * Value to determine whether to lock InsertRows or not.
-     * @return lock insert rows.
+     * Returns value to determine whether to lock insertRows or not.
+
      */
     public Boolean getInsertRows() {
-        return InsertRows;
+        return this.insertRows;
     }
 
     /**
-     * Sets value for InsertRows
+     * Sets value for insertRows
      * @param insertRows lock insert rows.
      */
     public void setInsertRows(Boolean insertRows) {
-        InsertRows = insertRows;
+        this.insertRows = insertRows;
     }
 
     /**
-     *
-     * @return password to lock with.
+     * Returns value to protect sheet with.
      */
     public String getPassword() {
-        return Password;
+        return this.password;
     }
 
     /**
-     * Sets value for Password
+     * Sets value for password
      * @param password password to lock with.
      */
     public void setPassword(String password) {
-        Password = password;
+        this.password = password;
     }
 
     /**
-     * Value to determine whether to lock PivotTables or not.
-     * @return lock pivot tables.
+     * Returns value to determine whether to lock pivotTables or not.
+
      */
     public Boolean getPivotTables() {
-        return PivotTables;
+        return this.pivotTables;
     }
 
     /**
-     * Sets value for PivotTables
+     * Sets value for pivotTables
      * @param pivotTables lock pivot tables.
      */
     public void setPivotTables(Boolean pivotTables) {
-        PivotTables = pivotTables;
+        this.pivotTables = pivotTables;
     }
 
     /**
-     * Value to determine whether to lock SelectLockedCells or not.
-     * @return lock select locked cells.
+     * Returns value to determine whether to lock selectLockedCells or not.
+
      */
     public Boolean getSelectLockedCells() {
-        return SelectLockedCells;
+        return this.selectLockedCells;
     }
 
     /**
-     * Sets value for SelectLockedCells
+     * Sets value for selectLockedCells
      * @param selectLockedCells lock select locked cells.
      */
     public void setSelectLockedCells(Boolean selectLockedCells) {
-        SelectLockedCells = selectLockedCells;
+        this.selectLockedCells = selectLockedCells;
     }
 
     /**
-     * Value to determine whether to lock SelectUnlockedCells or not.
-     * @return lock select unlocked cells.
+     * Returns value to determine whether to lock selectUnlockedCells or not.
+
      */
     public Boolean getSelectUnlockedCells() {
-        return SelectUnlockedCells;
+        return this.selectUnlockedCells;
     }
 
     /**
-     * Sets value for SelectUnlockedCells
+     * Sets value for selectUnlockedCells
      * @param selectUnlockedCells select unlocked cells.
      */
     public void setSelectUnlockedCells(Boolean selectUnlockedCells) {
-        SelectUnlockedCells = selectUnlockedCells;
+        this.selectUnlockedCells = selectUnlockedCells;
     }
 
     /**
-     * Value to determine whether to lock Sort or not.
-     * @return lock sort.
+     * Returns value to determine whether to lock sort or not.
+
      */
     public Boolean getSort() {
-        return Sort;
+        return this.sort;
     }
 
     /**
-     * Sets value for Sort
+     * Sets value for sort
      * @param sort lock sort.
      */
     public void setSort(Boolean sort) {
-        Sort = sort;
+        sort = this.sort;
     }
 
     /**
