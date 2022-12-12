@@ -23,7 +23,7 @@ public class ProtectSheet extends RenderElement{
     private Boolean Sort;
 
     /**
-     *
+     * Value to determine whether to lock AutoFilter or not.
      * @return autoFilter lock auto filter
      */
     public Boolean getAutoFilter() {
@@ -31,7 +31,7 @@ public class ProtectSheet extends RenderElement{
     }
 
     /**
-     *
+     * Sets value for AutoFilter
      * @param autoFilter lock auto filter.
      */
     public void setAutoFilter(Boolean autoFilter) {
@@ -39,7 +39,7 @@ public class ProtectSheet extends RenderElement{
     }
 
     /**
-     *
+     * Value to determine whether to lock DeleteColumns or not.
      * @return lock delete columns
      */
     public Boolean getDeleteColumns() {
@@ -47,7 +47,7 @@ public class ProtectSheet extends RenderElement{
     }
 
     /**
-     *
+     * Sets value for DeleteColumns
      * @param deleteColumns lock delete columns
      */
     public void setDeleteColumns(Boolean deleteColumns) {
@@ -55,7 +55,7 @@ public class ProtectSheet extends RenderElement{
     }
 
     /**
-     *
+     * Value to determine whether to lock DeleteRows or not.
      * @return lock delete rows.
      */
     public Boolean getDeleteRows() {
@@ -63,7 +63,7 @@ public class ProtectSheet extends RenderElement{
     }
 
     /**
-     *
+     * Sets value for DeleteRows
      * @param deleteRows lock delete rows.
      */
     public void setDeleteRows(Boolean deleteRows) {
@@ -71,7 +71,7 @@ public class ProtectSheet extends RenderElement{
     }
 
     /**
-     *
+     * Value to determine whether to lock FormatCells or not.
      * @return lock format cells.
      */
     public Boolean getFormatCells() {
@@ -79,7 +79,7 @@ public class ProtectSheet extends RenderElement{
     }
 
     /**
-     *
+     * Sets value for FormatCells
      * @param formatCells lock format cells.
      */
     public void setFormatCells(Boolean formatCells) {
@@ -87,7 +87,7 @@ public class ProtectSheet extends RenderElement{
     }
 
     /**
-     *
+     * Value to determine whether to lock FormatColumns or not.
      * @return lock format columns.
      */
     public Boolean getFormatColumns() {
@@ -95,7 +95,7 @@ public class ProtectSheet extends RenderElement{
     }
 
     /**
-     *
+     * Sets value for FormatColumns
      * @param formatColumns lock format columns.
      */
     public void setFormatColumns(Boolean formatColumns) {
@@ -103,7 +103,7 @@ public class ProtectSheet extends RenderElement{
     }
 
     /**
-     *
+     * Value to determine whether to lock FormatRows or not.
      * @return lock format columns.
      */
     public Boolean getFormatRows() {
@@ -111,7 +111,7 @@ public class ProtectSheet extends RenderElement{
     }
 
     /**
-     *
+     * Sets value for FormatRows
      * @param formatRows lock format rows.
      */
     public void setFormatRows(Boolean formatRows) {
@@ -119,7 +119,7 @@ public class ProtectSheet extends RenderElement{
     }
 
     /**
-     *
+     * Value to determine whether to lock InsertColumns or not.
      * @return lock insert columns.
      */
     public Boolean getInsertColumns() {
@@ -127,7 +127,7 @@ public class ProtectSheet extends RenderElement{
     }
 
     /**
-     *
+     * Sets value for InsertColumns
      * @param insertColumns lock insert columns.
      */
     public void setInsertColumns(Boolean insertColumns) {
@@ -135,7 +135,7 @@ public class ProtectSheet extends RenderElement{
     }
 
     /**
-     *
+     * Value to determine whether to lock InsertHyperlinks or not.
      * @return lock insert hyperlinks.
      */
     public Boolean getInsertHyperlinks() {
@@ -143,7 +143,7 @@ public class ProtectSheet extends RenderElement{
     }
 
     /**
-     *
+     * Sets value for InsertHyperlinks
      * @param insertHyperlinks lock insert hyperlinks.
      */
     public void setInsertHyperlinks(Boolean insertHyperlinks) {
@@ -151,7 +151,7 @@ public class ProtectSheet extends RenderElement{
     }
 
     /**
-     *
+     * Value to determine whether to lock InsertRows or not.
      * @return lock insert rows.
      */
     public Boolean getInsertRows() {
@@ -159,7 +159,7 @@ public class ProtectSheet extends RenderElement{
     }
 
     /**
-     *
+     * Sets value for InsertRows
      * @param insertRows lock insert rows.
      */
     public void setInsertRows(Boolean insertRows) {
@@ -175,7 +175,7 @@ public class ProtectSheet extends RenderElement{
     }
 
     /**
-     *
+     * Sets value for Password
      * @param password password to lock with.
      */
     public void setPassword(String password) {
@@ -183,7 +183,7 @@ public class ProtectSheet extends RenderElement{
     }
 
     /**
-     *
+     * Value to determine whether to lock PivotTables or not.
      * @return lock pivot tables.
      */
     public Boolean getPivotTables() {
@@ -191,7 +191,7 @@ public class ProtectSheet extends RenderElement{
     }
 
     /**
-     *
+     * Sets value for PivotTables
      * @param pivotTables lock pivot tables.
      */
     public void setPivotTables(Boolean pivotTables) {
@@ -199,7 +199,7 @@ public class ProtectSheet extends RenderElement{
     }
 
     /**
-     *
+     * Value to determine whether to lock SelectLockedCells or not.
      * @return lock select locked cells.
      */
     public Boolean getSelectLockedCells() {
@@ -207,7 +207,7 @@ public class ProtectSheet extends RenderElement{
     }
 
     /**
-     *
+     * Sets value for SelectLockedCells
      * @param selectLockedCells lock select locked cells.
      */
     public void setSelectLockedCells(Boolean selectLockedCells) {
@@ -215,7 +215,7 @@ public class ProtectSheet extends RenderElement{
     }
 
     /**
-     *
+     * Value to determine whether to lock SelectUnlockedCells or not.
      * @return lock select unlocked cells.
      */
     public Boolean getSelectUnlockedCells() {
@@ -223,7 +223,7 @@ public class ProtectSheet extends RenderElement{
     }
 
     /**
-     *
+     * Sets value for SelectUnlockedCells
      * @param selectUnlockedCells select unlocked cells.
      */
     public void setSelectUnlockedCells(Boolean selectUnlockedCells) {
@@ -231,7 +231,7 @@ public class ProtectSheet extends RenderElement{
     }
 
     /**
-     *
+     * Value to determine whether to lock Sort or not.
      * @return lock sort.
      */
     public Boolean getSort() {
@@ -239,7 +239,7 @@ public class ProtectSheet extends RenderElement{
     }
 
     /**
-     *
+     * Sets value for Sort
      * @param sort lock sort.
      */
     public void setSort(Boolean sort) {
