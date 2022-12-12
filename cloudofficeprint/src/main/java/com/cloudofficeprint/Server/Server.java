@@ -365,11 +365,11 @@ public class Server {
                 con.setRequestProperty("Proxy-Authorization", "Basic " + encodedString);
             }
             con.setRequestMethod("GET");
-            if (isVerbose() == true) {
+            if (isVerbose()) {
                 System.out.println("Server.java : " + "Sending 'GET' request to URL : " + url);
             }
             int responseCode = con.getResponseCode();
-            if (isVerbose() == true) {
+            if (isVerbose()) {
                 System.out.println("Server.java : " + "Response Code : " + responseCode);
             }
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
@@ -379,7 +379,7 @@ public class Server {
                 response.append(inputLine);
             }
             in.close();
-            if (isVerbose() == true) {
+            if (isVerbose()) {
                 System.out.println("Server.java : " + "server's response is : " + response);
                 System.out.println();
             }
@@ -401,7 +401,7 @@ public class Server {
      */
     public Response sendPOSTRequest(JsonObject postData) throws Exception {
 
-        if (isVerbose() == true) {
+        if (isVerbose()) {
             System.out.println("Server.java : " + "Json for server : " + postData.toString() + "\n");
         }
         URL obj = new URL(this.url);
@@ -427,15 +427,15 @@ public class Server {
         outputStream.write(bytes, 0, bytes.length);
         outputStream.flush();
         outputStream.close();
-        if (isVerbose() == true) {
+        if (isVerbose()) {
             System.out.println("Server.java : " + "Sending 'POST' request to URL : " + url);
         }
         int responseCode = con.getResponseCode();
-        if (isVerbose() == true) {
+        if (isVerbose()) {
             System.out.println("Server.java : " + "Response Code : " + responseCode);
         }
         if (responseCode == 200) {
-            if (isVerbose() == true) {
+            if (isVerbose()) {
                 System.out.println("Server.java : " + "Content-Type : " + con.getHeaderField("Content-Type") + "\n");
             }
             String mime = Mimetype.getMimetypeFromContentType(con.getHeaderField("Content-Type"));
