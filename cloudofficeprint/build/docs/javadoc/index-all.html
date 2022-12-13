@@ -264,6 +264,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Contains the styling options for the text of the chart.</div>
 </dd>
+<dt><a href="com/cloudofficeprint/Server/Server.html#checkIPP(java.lang.String,java.lang.String)" class="member-name-link">checkIPP(String, String)</a> - Method in class com.cloudofficeprint.Server.<a href="com/cloudofficeprint/Server/Server.html" title="class in com.cloudofficeprint.Server">Server</a></dt>
+<dd>
+<div class="block">Sends a GET request to server-url/ipp_check?ipp_url=ippUR&amp;version=version.</div>
+</dd>
 <dt><a href="com/cloudofficeprint/Output/CloudAcessToken/CloudAccessToken.html" class="type-name-link" title="class in com.cloudofficeprint.Output.CloudAcessToken">CloudAccessToken</a> - Class in <a href="com/cloudofficeprint/Output/CloudAcessToken/package-summary.html">com.cloudofficeprint.Output.CloudAcessToken</a></dt>
 <dd>
 <div class="block">CloudAccessToken is an abstract class for all the different cloud access
@@ -548,15 +552,12 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Freeze.html" class="type-name-link" title="class in com.cloudofficeprint.RenderElements">Freeze</a> - Class in <a href="com/cloudofficeprint/RenderElements/package-summary.html">com.cloudofficeprint.RenderElements</a></dt>
 <dd>
-<div class="block">This tag will allow you to utilize freeze pane property of the Excel.Three options are available.</div>
-</dd>
-<dt><a href="com/cloudofficeprint/RenderElements/Freeze.html#%3Cinit%3E(java.lang.String,boolean)" class="member-name-link">Freeze(String, boolean)</a> - Constructor for class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/Freeze.html" title="class in com.cloudofficeprint.RenderElements">Freeze</a></dt>
-<dd>
-<div class="block">This tag will allow you to use freeze pane property of Excel.</div>
+<div class="block">Only supported in Excel.</div>
 </dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Freeze.html#%3Cinit%3E(java.lang.String,java.lang.String)" class="member-name-link">Freeze(String, String)</a> - Constructor for class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/Freeze.html" title="class in com.cloudofficeprint.RenderElements">Freeze</a></dt>
 <dd>
-<div class="block">This tag will allow you to use freeze pane property of Excel.</div>
+<div class="block">Represents an object that indicates to put a freeze pane in the excel
+ template.</div>
 </dd>
 <dt><a href="com/cloudofficeprint/Output/CloudAcessToken/FTPToken.html" class="type-name-link" title="class in com.cloudofficeprint.Output.CloudAcessToken">FTPToken</a> - Class in <a href="com/cloudofficeprint/Output/CloudAcessToken/package-summary.html">com.cloudofficeprint.Output.CloudAcessToken</a></dt>
 <dd>
@@ -603,7 +604,9 @@ loadScripts(document, 'script');</script>
 <dt><a href="com/cloudofficeprint/RenderElements/Codes/QRCode.html#getAutoColorLight()" class="member-name-link">getAutoColorLight()</a> - Method in class com.cloudofficeprint.RenderElements.Codes.<a href="com/cloudofficeprint/RenderElements/Codes/QRCode.html" title="class in com.cloudofficeprint.RenderElements.Codes">QRCode</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/ProtectSheet.html#getAutoFilter()" class="member-name-link">getAutoFilter()</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/ProtectSheet.html" title="class in com.cloudofficeprint.RenderElements">ProtectSheet</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns value to determine whether to lock autoFilter or not.</div>
+</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Cells/CellStyleDocxPpt.html#getBackgroundColor()" class="member-name-link">getBackgroundColor()</a> - Method in class com.cloudofficeprint.RenderElements.Cells.<a href="com/cloudofficeprint/RenderElements/Cells/CellStyleDocxPpt.html" title="class in com.cloudofficeprint.RenderElements.Cells">CellStyleDocxPpt</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Charts/ChartOptions.html#getBackgroundColor()" class="member-name-link">getBackgroundColor()</a> - Method in class com.cloudofficeprint.RenderElements.Charts.<a href="com/cloudofficeprint/RenderElements/Charts/ChartOptions.html" title="class in com.cloudofficeprint.RenderElements.Charts">ChartOptions</a></dt>
@@ -645,8 +648,6 @@ loadScripts(document, 'script');</script>
 <dt><a href="com/cloudofficeprint/RenderElements/PDF/PDFText.html#getBold()" class="member-name-link">getBold()</a> - Method in class com.cloudofficeprint.RenderElements.PDF.<a href="com/cloudofficeprint/RenderElements/PDF/PDFText.html" title="class in com.cloudofficeprint.RenderElements.PDF">PDFText</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/StyledProperty.html#getBold()" class="member-name-link">getBold()</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/StyledProperty.html" title="class in com.cloudofficeprint.RenderElements">StyledProperty</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="com/cloudofficeprint/RenderElements/Freeze.html#getBooleanValue()" class="member-name-link">getBooleanValue()</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/Freeze.html" title="class in com.cloudofficeprint.RenderElements">Freeze</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Charts/ChartOptions.html#getBorder()" class="member-name-link">getBorder()</a> - Method in class com.cloudofficeprint.RenderElements.Charts.<a href="com/cloudofficeprint/RenderElements/Charts/ChartOptions.html" title="class in com.cloudofficeprint.RenderElements.Charts">ChartOptions</a></dt>
 <dd>&nbsp;</dd>
@@ -749,9 +750,13 @@ loadScripts(document, 'script');</script>
 <dt><a href="com/cloudofficeprint/RenderElements/Charts/ChartAxisOptions.html#getDate()" class="member-name-link">getDate()</a> - Method in class com.cloudofficeprint.RenderElements.Charts.<a href="com/cloudofficeprint/RenderElements/Charts/ChartAxisOptions.html" title="class in com.cloudofficeprint.RenderElements.Charts">ChartAxisOptions</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/ProtectSheet.html#getDeleteColumns()" class="member-name-link">getDeleteColumns()</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/ProtectSheet.html" title="class in com.cloudofficeprint.RenderElements">ProtectSheet</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns value to determine whether to lock deleteColumns or not.</div>
+</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/ProtectSheet.html#getDeleteRows()" class="member-name-link">getDeleteRows()</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/ProtectSheet.html" title="class in com.cloudofficeprint.RenderElements">ProtectSheet</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns value to determine whether to lock deleteRows or not.</div>
+</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/TableOfContents.html#getDepth()" class="member-name-link">getDepth()</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/TableOfContents.html" title="class in com.cloudofficeprint.RenderElements">TableOfContents</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Codes/QRCode.html#getDotScale()" class="member-name-link">getDotScale()</a> - Method in class com.cloudofficeprint.RenderElements.Codes.<a href="com/cloudofficeprint/RenderElements/Codes/QRCode.html" title="class in com.cloudofficeprint.RenderElements.Codes">QRCode</a></dt>
@@ -770,6 +775,10 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Codes/EventQRCode.html#getEndDate()" class="member-name-link">getEndDate()</a> - Method in class com.cloudofficeprint.RenderElements.Codes.<a href="com/cloudofficeprint/RenderElements/Codes/EventQRCode.html" title="class in com.cloudofficeprint.RenderElements.Codes">EventQRCode</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="com/cloudofficeprint/Resources/Template.html#getEndDelimiter()" class="member-name-link">getEndDelimiter()</a> - Method in class com.cloudofficeprint.Resources.<a href="com/cloudofficeprint/Resources/Template.html" title="class in com.cloudofficeprint.Resources">Template</a></dt>
+<dd>
+<div class="block">Get the ending delimiter of the Template.</div>
+</dd>
 <dt><a href="com/cloudofficeprint/Resources/ExternalResource.html#getEndpoint()" class="member-name-link">getEndpoint()</a> - Method in class com.cloudofficeprint.Resources.<a href="com/cloudofficeprint/Resources/ExternalResource.html" title="class in com.cloudofficeprint.Resources">ExternalResource</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/Output/PDFOptions.html#getEvenPage()" class="member-name-link">getEvenPage()</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
@@ -849,13 +858,19 @@ loadScripts(document, 'script');</script>
 <dt><a href="com/cloudofficeprint/RenderElements/COPChartDateOptions.html#getFormat()" class="member-name-link">getFormat()</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/COPChartDateOptions.html" title="class in com.cloudofficeprint.RenderElements">COPChartDateOptions</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/ProtectSheet.html#getFormatCells()" class="member-name-link">getFormatCells()</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/ProtectSheet.html" title="class in com.cloudofficeprint.RenderElements">ProtectSheet</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns value to determine whether to lock formatCells or not.</div>
+</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Charts/ChartAxisOptions.html#getFormatCode()" class="member-name-link">getFormatCode()</a> - Method in class com.cloudofficeprint.RenderElements.Charts.<a href="com/cloudofficeprint/RenderElements/Charts/ChartAxisOptions.html" title="class in com.cloudofficeprint.RenderElements.Charts">ChartAxisOptions</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/ProtectSheet.html#getFormatColumns()" class="member-name-link">getFormatColumns()</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/ProtectSheet.html" title="class in com.cloudofficeprint.RenderElements">ProtectSheet</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns value to determine whether to lock formatColumns or not.</div>
+</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/ProtectSheet.html#getFormatRows()" class="member-name-link">getFormatRows()</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/ProtectSheet.html" title="class in com.cloudofficeprint.RenderElements">ProtectSheet</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns value to determine whether to lock formatRows or not.</div>
+</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/PDF/PDFFormData.html#getFormData()" class="member-name-link">getFormData()</a> - Method in class com.cloudofficeprint.RenderElements.PDF.<a href="com/cloudofficeprint/RenderElements/PDF/PDFFormData.html" title="class in com.cloudofficeprint.RenderElements.PDF">PDFFormData</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/ExcelInsert.html#getFromCol()" class="member-name-link">getFromCol()</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/ExcelInsert.html" title="class in com.cloudofficeprint.RenderElements">ExcelInsert</a></dt>
@@ -919,11 +934,17 @@ loadScripts(document, 'script');</script>
 <dt><a href="com/cloudofficeprint/RenderElements/PDF/PDFImages.html#getImages()" class="member-name-link">getImages()</a> - Method in class com.cloudofficeprint.RenderElements.PDF.<a href="com/cloudofficeprint/RenderElements/PDF/PDFImages.html" title="class in com.cloudofficeprint.RenderElements.PDF">PDFImages</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/ProtectSheet.html#getInsertColumns()" class="member-name-link">getInsertColumns()</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/ProtectSheet.html" title="class in com.cloudofficeprint.RenderElements">ProtectSheet</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns value to determine whether to lock insertColumns or not.</div>
+</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/ProtectSheet.html#getInsertHyperlinks()" class="member-name-link">getInsertHyperlinks()</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/ProtectSheet.html" title="class in com.cloudofficeprint.RenderElements">ProtectSheet</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns value to determine whether to lock insertHyperlinks or not.</div>
+</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/ProtectSheet.html#getInsertRows()" class="member-name-link">getInsertRows()</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/ProtectSheet.html" title="class in com.cloudofficeprint.RenderElements">ProtectSheet</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns value to determine whether to lock insertRows or not.</div>
+</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Charts/ChartTextStyle.html#getItalic()" class="member-name-link">getItalic()</a> - Method in class com.cloudofficeprint.RenderElements.Charts.<a href="com/cloudofficeprint/RenderElements/Charts/ChartTextStyle.html" title="class in com.cloudofficeprint.RenderElements.Charts">ChartTextStyle</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/PDF/PDFText.html#getItalic()" class="member-name-link">getItalic()</a> - Method in class com.cloudofficeprint.RenderElements.PDF.<a href="com/cloudofficeprint/RenderElements/PDF/PDFText.html" title="class in com.cloudofficeprint.RenderElements.PDF">PDFText</a></dt>
@@ -1068,6 +1089,8 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Insert.html#getJSON()" class="member-name-link">getJSON()</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/Insert.html" title="class in com.cloudofficeprint.RenderElements">Insert</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="com/cloudofficeprint/RenderElements/Link.html#getJSON()" class="member-name-link">getJSON()</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/Link.html" title="class in com.cloudofficeprint.RenderElements">Link</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Loops/Loop.html#getJSON()" class="member-name-link">getJSON()</a> - Method in class com.cloudofficeprint.RenderElements.Loops.<a href="com/cloudofficeprint/RenderElements/Loops/Loop.html" title="class in com.cloudofficeprint.RenderElements.Loops">Loop</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Loops/SheetLoop.html#getJSON()" class="member-name-link">getJSON()</a> - Method in class com.cloudofficeprint.RenderElements.Loops.<a href="com/cloudofficeprint/RenderElements/Loops/SheetLoop.html" title="class in com.cloudofficeprint.RenderElements.Loops">SheetLoop</a></dt>
@@ -1158,6 +1181,10 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="com/cloudofficeprint/Resources/ServerResource.html#getJSONForTemplate()" class="member-name-link">getJSONForTemplate()</a> - Method in class com.cloudofficeprint.Resources.<a href="com/cloudofficeprint/Resources/ServerResource.html" title="class in com.cloudofficeprint.Resources">ServerResource</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="com/cloudofficeprint/Resources/Template.html#getJSONForTemplate()" class="member-name-link">getJSONForTemplate()</a> - Method in class com.cloudofficeprint.Resources.<a href="com/cloudofficeprint/Resources/Template.html" title="class in com.cloudofficeprint.Resources">Template</a></dt>
+<dd>
+<div class="block">Get the JSON object for the Template.</div>
+</dd>
 <dt><a href="com/cloudofficeprint/Resources/URLResource.html#getJSONForTemplate()" class="member-name-link">getJSONForTemplate()</a> - Method in class com.cloudofficeprint.Resources.<a href="com/cloudofficeprint/Resources/URLResource.html" title="class in com.cloudofficeprint.Resources">URLResource</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/Output/CloudAcessToken/AWSToken.html#getKeyID()" class="member-name-link">getKeyID()</a> - Method in class com.cloudofficeprint.Output.CloudAcessToken.<a href="com/cloudofficeprint/Output/CloudAcessToken/AWSToken.html" title="class in com.cloudofficeprint.Output.CloudAcessToken">AWSToken</a></dt>
@@ -1289,7 +1316,9 @@ loadScripts(document, 'script');</script>
 <dt><a href="com/cloudofficeprint/RenderElements/Codes/BarCode.html#getPaddingWidth()" class="member-name-link">getPaddingWidth()</a> - Method in class com.cloudofficeprint.RenderElements.Codes.<a href="com/cloudofficeprint/RenderElements/Codes/BarCode.html" title="class in com.cloudofficeprint.RenderElements.Codes">BarCode</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/Output/PDFOptions.html#getPageFormat()" class="member-name-link">getPageFormat()</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Only supported when converting HTML to PDF.</div>
+</dd>
 <dt><a href="com/cloudofficeprint/Output/PDFOptions.html#getPageHeight()" class="member-name-link">getPageHeight()</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
 <dd>
 <div class="block">Only supported when converting HTML to PDF.</div>
@@ -1300,6 +1329,10 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="com/cloudofficeprint/RenderElements/PDF/PDFInsertObject.html#getPageNumber()" class="member-name-link">getPageNumber()</a> - Method in class com.cloudofficeprint.RenderElements.PDF.<a href="com/cloudofficeprint/RenderElements/PDF/PDFInsertObject.html" title="class in com.cloudofficeprint.RenderElements.PDF">PDFInsertObject</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="com/cloudofficeprint/Output/PDFOptions.html#getPageOrientation()" class="member-name-link">getPageOrientation()</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
+<dd>
+<div class="block">The page orientation, portrait or landscape.</div>
+</dd>
 <dt><a href="com/cloudofficeprint/Output/PDFOptions.html#getPageWidth()" class="member-name-link">getPageWidth()</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
 <dd>
 <div class="block">Only supported when converting HTML to PDF.</div>
@@ -1309,7 +1342,9 @@ loadScripts(document, 'script');</script>
 <dt><a href="com/cloudofficeprint/RenderElements/Codes/WifiQRCode.html#getPassword()" class="member-name-link">getPassword()</a> - Method in class com.cloudofficeprint.RenderElements.Codes.<a href="com/cloudofficeprint/RenderElements/Codes/WifiQRCode.html" title="class in com.cloudofficeprint.RenderElements.Codes">WifiQRCode</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/ProtectSheet.html#getPassword()" class="member-name-link">getPassword()</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/ProtectSheet.html" title="class in com.cloudofficeprint.RenderElements">ProtectSheet</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns value to protect sheet with.</div>
+</dd>
 <dt><a href="com/cloudofficeprint/Server/Server.html#getPassword()" class="member-name-link">getPassword()</a> - Method in class com.cloudofficeprint.Server.<a href="com/cloudofficeprint/Server/Server.html" title="class in com.cloudofficeprint.Server">Server</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/Output/PDFOptions.html#getPasswordProtectionFlag()" class="member-name-link">getPasswordProtectionFlag()</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
@@ -1336,7 +1371,9 @@ loadScripts(document, 'script');</script>
 <dt><a href="com/cloudofficeprint/RenderElements/Codes/QRCode.html#getPiTRColor()" class="member-name-link">getPiTRColor()</a> - Method in class com.cloudofficeprint.RenderElements.Codes.<a href="com/cloudofficeprint/RenderElements/Codes/QRCode.html" title="class in com.cloudofficeprint.RenderElements.Codes">QRCode</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/ProtectSheet.html#getPivotTables()" class="member-name-link">getPivotTables()</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/ProtectSheet.html" title="class in com.cloudofficeprint.RenderElements">ProtectSheet</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns value to determine whether to lock pivotTables or not.</div>
+</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Codes/QRCode.html#getPoBLColor()" class="member-name-link">getPoBLColor()</a> - Method in class com.cloudofficeprint.RenderElements.Codes.<a href="com/cloudofficeprint/RenderElements/Codes/QRCode.html" title="class in com.cloudofficeprint.RenderElements.Codes">QRCode</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Codes/QRCode.html#getPoColor()" class="member-name-link">getPoColor()</a> - Method in class com.cloudofficeprint.RenderElements.Codes.<a href="com/cloudofficeprint/RenderElements/Codes/QRCode.html" title="class in com.cloudofficeprint.RenderElements.Codes">QRCode</a></dt>
@@ -1398,14 +1435,16 @@ loadScripts(document, 'script');</script>
 <dt><a href="com/cloudofficeprint/Output/PDFOptions.html#getReadPassword()" class="member-name-link">getReadPassword()</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/Output/PDFOptions.html#getRemoveLastPage()" class="member-name-link">getRemoveLastPage()</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
-<dd>
-<div class="block">Returns whether to remove last page from output.</div>
-</dd>
+<dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/Server/Printer.html#getRequester()" class="member-name-link">getRequester()</a> - Method in class com.cloudofficeprint.Server.<a href="com/cloudofficeprint/Server/Printer.html" title="class in com.cloudofficeprint.Server">Printer</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/Output/Output.html#getRequestOption()" class="member-name-link">getRequestOption()</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/Output.html" title="class in com.cloudofficeprint.Output">Output</a></dt>
 <dd>
 <div class="block">Returns option to which AOP makes a call to the given option with response/output of the current request.</div>
+</dd>
+<dt><a href="com/cloudofficeprint/Resources/Template.html#getResource()" class="member-name-link">getResource()</a> - Method in class com.cloudofficeprint.Resources.<a href="com/cloudofficeprint/Resources/Template.html" title="class in com.cloudofficeprint.Resources">Template</a></dt>
+<dd>
+<div class="block">Get the Resource of the Template.</div>
 </dd>
 <dt><a href="com/cloudofficeprint/PrintJob.html#getResponse()" class="member-name-link">getResponse()</a> - Method in class com.cloudofficeprint.<a href="com/cloudofficeprint/PrintJob.html" title="class in com.cloudofficeprint">PrintJob</a></dt>
 <dd>
@@ -1440,9 +1479,13 @@ loadScripts(document, 'script');</script>
 <div class="block">Returns a secret key can be specified to encrypt the file stored on the server (used with output polling).</div>
 </dd>
 <dt><a href="com/cloudofficeprint/RenderElements/ProtectSheet.html#getSelectLockedCells()" class="member-name-link">getSelectLockedCells()</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/ProtectSheet.html" title="class in com.cloudofficeprint.RenderElements">ProtectSheet</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns value to determine whether to lock selectLockedCells or not.</div>
+</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/ProtectSheet.html#getSelectUnlockedCells()" class="member-name-link">getSelectUnlockedCells()</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/ProtectSheet.html" title="class in com.cloudofficeprint.RenderElements">ProtectSheet</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns value to determine whether to lock selectUnlockedCells or not.</div>
+</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Charts/ChartOptions.html#getSeparator()" class="member-name-link">getSeparator()</a> - Method in class com.cloudofficeprint.RenderElements.Charts.<a href="com/cloudofficeprint/RenderElements/Charts/ChartOptions.html" title="class in com.cloudofficeprint.RenderElements.Charts">ChartOptions</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Charts/Charts/AreaChart.html#getSeries()" class="member-name-link">getSeries()</a> - Method in class com.cloudofficeprint.RenderElements.Charts.Charts.<a href="com/cloudofficeprint/RenderElements/Charts/Charts/AreaChart.html" title="class in com.cloudofficeprint.RenderElements.Charts.Charts">AreaChart</a></dt>
@@ -1463,6 +1506,10 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Loops/SheetLoop.html#getSheetNames()" class="member-name-link">getSheetNames()</a> - Method in class com.cloudofficeprint.RenderElements.Loops.<a href="com/cloudofficeprint/RenderElements/Loops/SheetLoop.html" title="class in com.cloudofficeprint.RenderElements.Loops">SheetLoop</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="com/cloudofficeprint/Resources/Template.html#getShouldHash()" class="member-name-link">getShouldHash()</a> - Method in class com.cloudofficeprint.Resources.<a href="com/cloudofficeprint/Resources/Template.html" title="class in com.cloudofficeprint.Resources">Template</a></dt>
+<dd>
+<div class="block">Get the shouldHash value of the Template.</div>
+</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Charts/ChartOptions.html#getShowCategoryName()" class="member-name-link">getShowCategoryName()</a> - Method in class com.cloudofficeprint.RenderElements.Charts.<a href="com/cloudofficeprint/RenderElements/Charts/ChartOptions.html" title="class in com.cloudofficeprint.RenderElements.Charts">ChartOptions</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Charts/ChartOptions.html#getShowDataLabels()" class="member-name-link">getShowDataLabels()</a> - Method in class com.cloudofficeprint.RenderElements.Charts.<a href="com/cloudofficeprint/RenderElements/Charts/ChartOptions.html" title="class in com.cloudofficeprint.RenderElements.Charts">ChartOptions</a></dt>
@@ -1480,7 +1527,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="com/cloudofficeprint/RenderElements/Charts/ChartOptions.html#getShowValue()" class="member-name-link">getShowValue()</a> - Method in class com.cloudofficeprint.RenderElements.Charts.<a href="com/cloudofficeprint/RenderElements/Charts/ChartOptions.html" title="class in com.cloudofficeprint.RenderElements.Charts">ChartOptions</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/Output/PDFOptions.html#getSignCertificate()" class="member-name-link">getSignCertificate()</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">It is possible to sign the output PDF if the output pdf has a signature
+ field.</div>
+</dd>
 <dt><a href="com/cloudofficeprint/Output/PDFOptions.html#getSignCertificatePassword()" class="member-name-link">getSignCertificatePassword()</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Charts/Series/BubbleSeries.html#getSizes()" class="member-name-link">getSizes()</a> - Method in class com.cloudofficeprint.RenderElements.Charts.Series.<a href="com/cloudofficeprint/RenderElements/Charts/Series/BubbleSeries.html" title="class in com.cloudofficeprint.RenderElements.Charts.Series">BubbleSeries</a></dt>
@@ -1492,15 +1542,19 @@ loadScripts(document, 'script');</script>
 <div class="block">Sends a GET request to server-url/soffice.</div>
 </dd>
 <dt><a href="com/cloudofficeprint/RenderElements/ProtectSheet.html#getSort()" class="member-name-link">getSort()</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/ProtectSheet.html" title="class in com.cloudofficeprint.RenderElements">ProtectSheet</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="com/cloudofficeprint/Output/PDFOptions.html#getSplit()" class="member-name-link">getSplit()</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
 <dd>
-<div class="block">Returns whether to split or not.</div>
+<div class="block">Returns value to determine whether to lock sort or not.</div>
 </dd>
+<dt><a href="com/cloudofficeprint/Output/PDFOptions.html#getSplit()" class="member-name-link">getSplit()</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Charts/Charts/ColumnStackedChart.html#getStackedColumnSeries()" class="member-name-link">getStackedColumnSeries()</a> - Method in class com.cloudofficeprint.RenderElements.Charts.Charts.<a href="com/cloudofficeprint/RenderElements/Charts/Charts/ColumnStackedChart.html" title="class in com.cloudofficeprint.RenderElements.Charts.Charts">ColumnStackedChart</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Codes/EventQRCode.html#getStartDate()" class="member-name-link">getStartDate()</a> - Method in class com.cloudofficeprint.RenderElements.Codes.<a href="com/cloudofficeprint/RenderElements/Codes/EventQRCode.html" title="class in com.cloudofficeprint.RenderElements.Codes">EventQRCode</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="com/cloudofficeprint/Resources/Template.html#getStartDelimiter()" class="member-name-link">getStartDelimiter()</a> - Method in class com.cloudofficeprint.Resources.<a href="com/cloudofficeprint/Resources/Template.html" title="class in com.cloudofficeprint.Resources">Template</a></dt>
+<dd>
+<div class="block">Get the starting delimiter of the Template.</div>
+</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Charts/ChartDateOptions.html#getStep()" class="member-name-link">getStep()</a> - Method in class com.cloudofficeprint.RenderElements.Charts.<a href="com/cloudofficeprint/RenderElements/Charts/ChartDateOptions.html" title="class in com.cloudofficeprint.RenderElements.Charts">ChartDateOptions</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/COPChartDateOptions.html#getStep()" class="member-name-link">getStep()</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/COPChartDateOptions.html" title="class in com.cloudofficeprint.RenderElements">COPChartDateOptions</a></dt>
@@ -1523,6 +1577,10 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/PrintJob.html#getTemplate()" class="member-name-link">getTemplate()</a> - Method in class com.cloudofficeprint.<a href="com/cloudofficeprint/PrintJob.html" title="class in com.cloudofficeprint">PrintJob</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="com/cloudofficeprint/Resources/Template.html#getTemplateHash()" class="member-name-link">getTemplateHash()</a> - Method in class com.cloudofficeprint.Resources.<a href="com/cloudofficeprint/Resources/Template.html" title="class in com.cloudofficeprint.Resources">Template</a></dt>
+<dd>
+<div class="block">Get the hash of the template.</div>
+</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/AutoLink.html#getTemplateTags()" class="member-name-link">getTemplateTags()</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/AutoLink.html" title="class in com.cloudofficeprint.RenderElements">AutoLink</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Cells/TableCell.html#getTemplateTags()" class="member-name-link">getTemplateTags()</a> - Method in class com.cloudofficeprint.RenderElements.Cells.<a href="com/cloudofficeprint/RenderElements/Cells/TableCell.html" title="class in com.cloudofficeprint.RenderElements.Cells">TableCell</a></dt>
@@ -1556,6 +1614,8 @@ loadScripts(document, 'script');</script>
 <dt><a href="com/cloudofficeprint/RenderElements/Images/Image.html#getTemplateTags()" class="member-name-link">getTemplateTags()</a> - Method in class com.cloudofficeprint.RenderElements.Images.<a href="com/cloudofficeprint/RenderElements/Images/Image.html" title="class in com.cloudofficeprint.RenderElements.Images">Image</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Insert.html#getTemplateTags()" class="member-name-link">getTemplateTags()</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/Insert.html" title="class in com.cloudofficeprint.RenderElements">Insert</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/cloudofficeprint/RenderElements/Link.html#getTemplateTags()" class="member-name-link">getTemplateTags()</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/Link.html" title="class in com.cloudofficeprint.RenderElements">Link</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Loops/InlineDataLoop.html#getTemplateTags()" class="member-name-link">getTemplateTags()</a> - Method in class com.cloudofficeprint.RenderElements.Loops.<a href="com/cloudofficeprint/RenderElements/Loops/InlineDataLoop.html" title="class in com.cloudofficeprint.RenderElements.Loops">InlineDataLoop</a></dt>
 <dd>&nbsp;</dd>
@@ -1665,6 +1725,10 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Codes/Code.html#getType()" class="member-name-link">getType()</a> - Method in class com.cloudofficeprint.RenderElements.Codes.<a href="com/cloudofficeprint/RenderElements/Codes/Code.html" title="class in com.cloudofficeprint.RenderElements.Codes">Code</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="com/cloudofficeprint/RenderElements/Link.html#getUidName()" class="member-name-link">getUidName()</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/Link.html" title="class in com.cloudofficeprint.RenderElements">Link</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/cloudofficeprint/RenderElements/Link.html#getUidValue()" class="member-name-link">getUidValue()</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/Link.html" title="class in com.cloudofficeprint.RenderElements">Link</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/StyledProperty.html#getUnderline()" class="member-name-link">getUnderline()</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/StyledProperty.html" title="class in com.cloudofficeprint.RenderElements">StyledProperty</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Charts/ChartDateOptions.html#getUnit()" class="member-name-link">getUnit()</a> - Method in class com.cloudofficeprint.RenderElements.Charts.<a href="com/cloudofficeprint/RenderElements/Charts/ChartDateOptions.html" title="class in com.cloudofficeprint.RenderElements.Charts">ChartDateOptions</a></dt>
@@ -1704,14 +1768,12 @@ loadScripts(document, 'script');</script>
 <dt><a href="com/cloudofficeprint/Output/PDFOptions.html#getWatermark()" class="member-name-link">getWatermark()</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/Output/PDFOptions.html#getWatermarkColor()" class="member-name-link">getWatermarkColor()</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
-<dd>
-<div class="block">Returns the color of your watermark.</div>
-</dd>
+<dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/Output/PDFOptions.html#getWatermarkFont()" class="member-name-link">getWatermarkFont()</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="com/cloudofficeprint/Output/PDFOptions.html#getWatermarkFontSize()" class="member-name-link">getWatermarkFontSize()</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
-<dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/Output/PDFOptions.html#getWatermarkOpacity()" class="member-name-link">getWatermarkOpacity()</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/cloudofficeprint/Output/PDFOptions.html#getWatermarkSize()" class="member-name-link">getWatermarkSize()</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Codes/MECardQRCode.html#getWebsite()" class="member-name-link">getWebsite()</a> - Method in class com.cloudofficeprint.RenderElements.Codes.<a href="com/cloudofficeprint/RenderElements/Codes/MECardQRCode.html" title="class in com.cloudofficeprint.RenderElements.Codes">MECardQRCode</a></dt>
 <dd>&nbsp;</dd>
@@ -1886,6 +1948,18 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">This object represents series for a line chart (where data-points are
  connected with lines).</div>
+</dd>
+<dt><a href="com/cloudofficeprint/RenderElements/Link.html" class="type-name-link" title="class in com.cloudofficeprint.RenderElements">Link</a> - Class in <a href="com/cloudofficeprint/RenderElements/package-summary.html">com.cloudofficeprint.RenderElements</a></dt>
+<dd>
+<div class="block">The class for the link/target tags.</div>
+</dd>
+<dt><a href="com/cloudofficeprint/RenderElements/Link.html#%3Cinit%3E(java.lang.String,java.lang.String)" class="member-name-link">Link(String, String)</a> - Constructor for class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/Link.html" title="class in com.cloudofficeprint.RenderElements">Link</a></dt>
+<dd>
+<div class="block">Create a new link/target tag pair.</div>
+</dd>
+<dt><a href="com/cloudofficeprint/RenderElements/Link.html#%3Cinit%3E(java.lang.String,java.lang.String,java.lang.String,java.lang.String)" class="member-name-link">Link(String, String, String, String)</a> - Constructor for class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/Link.html" title="class in com.cloudofficeprint.RenderElements">Link</a></dt>
+<dd>
+<div class="block">Create a new link/target tag pair.</div>
 </dd>
 <dt><a href="com/cloudofficeprint/Examples/GeneralExamples/Examples.html#localJson(java.lang.String)" class="member-name-link">localJson(String)</a> - Method in class com.cloudofficeprint.Examples.GeneralExamples.<a href="com/cloudofficeprint/Examples/GeneralExamples/Examples.html" title="class in com.cloudofficeprint.Examples.GeneralExamples">Examples</a></dt>
 <dd>
@@ -2235,6 +2309,14 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Constructor for the requestOption object.</div>
 </dd>
+<dt><a href="com/cloudofficeprint/Resources/Template.html#resetHash()" class="member-name-link">resetHash()</a> - Method in class com.cloudofficeprint.Resources.<a href="com/cloudofficeprint/Resources/Template.html" title="class in com.cloudofficeprint.Resources">Template</a></dt>
+<dd>
+<div class="block">Reset the stored hash of the template.</div>
+</dd>
+<dt><a href="com/cloudofficeprint/Resources/Template.html#resetHash(java.lang.Boolean)" class="member-name-link">resetHash(Boolean)</a> - Method in class com.cloudofficeprint.Resources.<a href="com/cloudofficeprint/Resources/Template.html" title="class in com.cloudofficeprint.Resources">Template</a></dt>
+<dd>
+<div class="block">Reset the stored hash of the template.</div>
+</dd>
 <dt><a href="com/cloudofficeprint/Resources/Resource.html" class="type-name-link" title="class in com.cloudofficeprint.Resources">Resource</a> - Class in <a href="com/cloudofficeprint/Resources/package-summary.html">com.cloudofficeprint.Resources</a></dt>
 <dd>
 <div class="block">Resource is an abstract class for all the different resource types for the
@@ -2349,7 +2431,9 @@ loadScripts(document, 'script');</script>
 <dt><a href="com/cloudofficeprint/RenderElements/Codes/QRCode.html#setAutoColorLight(java.lang.String)" class="member-name-link">setAutoColorLight(String)</a> - Method in class com.cloudofficeprint.RenderElements.Codes.<a href="com/cloudofficeprint/RenderElements/Codes/QRCode.html" title="class in com.cloudofficeprint.RenderElements.Codes">QRCode</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/ProtectSheet.html#setAutoFilter(java.lang.Boolean)" class="member-name-link">setAutoFilter(Boolean)</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/ProtectSheet.html" title="class in com.cloudofficeprint.RenderElements">ProtectSheet</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Sets value for autoFilter</div>
+</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Cells/CellStyleDocxPpt.html#setBackgroundColor(java.lang.String)" class="member-name-link">setBackgroundColor(String)</a> - Method in class com.cloudofficeprint.RenderElements.Cells.<a href="com/cloudofficeprint/RenderElements/Cells/CellStyleDocxPpt.html" title="class in com.cloudofficeprint.RenderElements.Cells">CellStyleDocxPpt</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Charts/ChartOptions.html#setBackgroundColor(java.lang.String)" class="member-name-link">setBackgroundColor(String)</a> - Method in class com.cloudofficeprint.RenderElements.Charts.<a href="com/cloudofficeprint/RenderElements/Charts/ChartOptions.html" title="class in com.cloudofficeprint.RenderElements.Charts">ChartOptions</a></dt>
@@ -2395,8 +2479,6 @@ loadScripts(document, 'script');</script>
 <dt><a href="com/cloudofficeprint/RenderElements/PDF/PDFText.html#setBold(java.lang.Boolean)" class="member-name-link">setBold(Boolean)</a> - Method in class com.cloudofficeprint.RenderElements.PDF.<a href="com/cloudofficeprint/RenderElements/PDF/PDFText.html" title="class in com.cloudofficeprint.RenderElements.PDF">PDFText</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/StyledProperty.html#setBold(java.lang.Boolean)" class="member-name-link">setBold(Boolean)</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/StyledProperty.html" title="class in com.cloudofficeprint.RenderElements">StyledProperty</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="com/cloudofficeprint/RenderElements/Freeze.html#setBooleanValue(boolean)" class="member-name-link">setBooleanValue(boolean)</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/Freeze.html" title="class in com.cloudofficeprint.RenderElements">Freeze</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Charts/ChartOptions.html#setBorder(java.lang.Boolean)" class="member-name-link">setBorder(Boolean)</a> - Method in class com.cloudofficeprint.RenderElements.Charts.<a href="com/cloudofficeprint/RenderElements/Charts/ChartOptions.html" title="class in com.cloudofficeprint.RenderElements.Charts">ChartOptions</a></dt>
 <dd>&nbsp;</dd>
@@ -2501,9 +2583,17 @@ loadScripts(document, 'script');</script>
 <dt><a href="com/cloudofficeprint/RenderElements/Charts/ChartAxisOptions.html#setDateOptions(com.cloudofficeprint.RenderElements.Charts.ChartDateOptions)" class="member-name-link">setDateOptions(ChartDateOptions)</a> - Method in class com.cloudofficeprint.RenderElements.Charts.<a href="com/cloudofficeprint/RenderElements/Charts/ChartAxisOptions.html" title="class in com.cloudofficeprint.RenderElements.Charts">ChartAxisOptions</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/ProtectSheet.html#setDeleteColumns(java.lang.Boolean)" class="member-name-link">setDeleteColumns(Boolean)</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/ProtectSheet.html" title="class in com.cloudofficeprint.RenderElements">ProtectSheet</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Sets value for deleteColumns</div>
+</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/ProtectSheet.html#setDeleteRows(java.lang.Boolean)" class="member-name-link">setDeleteRows(Boolean)</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/ProtectSheet.html" title="class in com.cloudofficeprint.RenderElements">ProtectSheet</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Sets value for deleteRows</div>
+</dd>
+<dt><a href="com/cloudofficeprint/Resources/Template.html#setDelimiter(java.lang.String,java.lang.String)" class="member-name-link">setDelimiter(String, String)</a> - Method in class com.cloudofficeprint.Resources.<a href="com/cloudofficeprint/Resources/Template.html" title="class in com.cloudofficeprint.Resources">Template</a></dt>
+<dd>
+<div class="block">Set both starting and ending delimiters.</div>
+</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/TableOfContents.html#setDepth(int)" class="member-name-link">setDepth(int)</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/TableOfContents.html" title="class in com.cloudofficeprint.RenderElements">TableOfContents</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Codes/QRCode.html#setDotScale(java.lang.Integer)" class="member-name-link">setDotScale(Integer)</a> - Method in class com.cloudofficeprint.RenderElements.Codes.<a href="com/cloudofficeprint/RenderElements/Codes/QRCode.html" title="class in com.cloudofficeprint.RenderElements.Codes">QRCode</a></dt>
@@ -2522,6 +2612,10 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Codes/EventQRCode.html#setEndDate(java.lang.String)" class="member-name-link">setEndDate(String)</a> - Method in class com.cloudofficeprint.RenderElements.Codes.<a href="com/cloudofficeprint/RenderElements/Codes/EventQRCode.html" title="class in com.cloudofficeprint.RenderElements.Codes">EventQRCode</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="com/cloudofficeprint/Resources/Template.html#setEndDelimiter(java.lang.String)" class="member-name-link">setEndDelimiter(String)</a> - Method in class com.cloudofficeprint.Resources.<a href="com/cloudofficeprint/Resources/Template.html" title="class in com.cloudofficeprint.Resources">Template</a></dt>
+<dd>
+<div class="block">Set the ending delimiter of the Template.</div>
+</dd>
 <dt><a href="com/cloudofficeprint/Resources/ExternalResource.html#setEndpoint(java.lang.String)" class="member-name-link">setEndpoint(String)</a> - Method in class com.cloudofficeprint.Resources.<a href="com/cloudofficeprint/Resources/ExternalResource.html" title="class in com.cloudofficeprint.Resources">ExternalResource</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/Output/PDFOptions.html#setEvenPage(java.lang.Boolean)" class="member-name-link">setEvenPage(Boolean)</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
@@ -2613,13 +2707,19 @@ loadScripts(document, 'script');</script>
 <dt><a href="com/cloudofficeprint/RenderElements/COPChartDateOptions.html#setFormat(java.lang.String)" class="member-name-link">setFormat(String)</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/COPChartDateOptions.html" title="class in com.cloudofficeprint.RenderElements">COPChartDateOptions</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/ProtectSheet.html#setFormatCells(java.lang.Boolean)" class="member-name-link">setFormatCells(Boolean)</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/ProtectSheet.html" title="class in com.cloudofficeprint.RenderElements">ProtectSheet</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Sets value for formatCells</div>
+</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Charts/ChartAxisOptions.html#setFormatCode(java.lang.String)" class="member-name-link">setFormatCode(String)</a> - Method in class com.cloudofficeprint.RenderElements.Charts.<a href="com/cloudofficeprint/RenderElements/Charts/ChartAxisOptions.html" title="class in com.cloudofficeprint.RenderElements.Charts">ChartAxisOptions</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/ProtectSheet.html#setFormatColumns(java.lang.Boolean)" class="member-name-link">setFormatColumns(Boolean)</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/ProtectSheet.html" title="class in com.cloudofficeprint.RenderElements">ProtectSheet</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Sets value for formatColumns</div>
+</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/ProtectSheet.html#setFormatRows(java.lang.Boolean)" class="member-name-link">setFormatRows(Boolean)</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/ProtectSheet.html" title="class in com.cloudofficeprint.RenderElements">ProtectSheet</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Sets value for formatRows</div>
+</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/PDF/PDFFormData.html#setFormData(java.util.HashMap)" class="member-name-link">setFormData(HashMap&lt;String, String&gt;)</a> - Method in class com.cloudofficeprint.RenderElements.PDF.<a href="com/cloudofficeprint/RenderElements/PDF/PDFFormData.html" title="class in com.cloudofficeprint.RenderElements.PDF">PDFFormData</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/ExcelInsert.html#setFromCol(java.lang.String)" class="member-name-link">setFromCol(String)</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/ExcelInsert.html" title="class in com.cloudofficeprint.RenderElements">ExcelInsert</a></dt>
@@ -2669,9 +2769,7 @@ loadScripts(document, 'script');</script>
 <div class="block">Icon to be showed as the document, when clicked on it, redirects it to file.</div>
 </dd>
 <dt><a href="com/cloudofficeprint/Output/PDFOptions.html#setIdentifyFormFields(java.lang.Boolean)" class="member-name-link">setIdentifyFormFields(Boolean)</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
-<dd>
-<div class="block">Sets whether to get identityFormFields.</div>
-</dd>
+<dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Images/Image.html#setIgnoreError(java.lang.Boolean)" class="member-name-link">setIgnoreError(Boolean)</a> - Method in class com.cloudofficeprint.RenderElements.Images.<a href="com/cloudofficeprint/RenderElements/Images/Image.html" title="class in com.cloudofficeprint.RenderElements.Images">Image</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/PDF/PDFImage.html#setImage(java.lang.String)" class="member-name-link">setImage(String)</a> - Method in class com.cloudofficeprint.RenderElements.PDF.<a href="com/cloudofficeprint/RenderElements/PDF/PDFImage.html" title="class in com.cloudofficeprint.RenderElements.PDF">PDFImage</a></dt>
@@ -2683,11 +2781,17 @@ loadScripts(document, 'script');</script>
 <dt><a href="com/cloudofficeprint/RenderElements/PDF/PDFImages.html#setImages(com.cloudofficeprint.RenderElements.PDF.PDFImage%5B%5D)" class="member-name-link">setImages(PDFImage[])</a> - Method in class com.cloudofficeprint.RenderElements.PDF.<a href="com/cloudofficeprint/RenderElements/PDF/PDFImages.html" title="class in com.cloudofficeprint.RenderElements.PDF">PDFImages</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/ProtectSheet.html#setInsertColumns(java.lang.Boolean)" class="member-name-link">setInsertColumns(Boolean)</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/ProtectSheet.html" title="class in com.cloudofficeprint.RenderElements">ProtectSheet</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Sets value for insertColumns</div>
+</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/ProtectSheet.html#setInsertHyperlinks(java.lang.Boolean)" class="member-name-link">setInsertHyperlinks(Boolean)</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/ProtectSheet.html" title="class in com.cloudofficeprint.RenderElements">ProtectSheet</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Sets value for insertHyperlinks</div>
+</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/ProtectSheet.html#setInsertRows(java.lang.Boolean)" class="member-name-link">setInsertRows(Boolean)</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/ProtectSheet.html" title="class in com.cloudofficeprint.RenderElements">ProtectSheet</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Sets value for insertRows</div>
+</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Charts/ChartTextStyle.html#setItalic(java.lang.Boolean)" class="member-name-link">setItalic(Boolean)</a> - Method in class com.cloudofficeprint.RenderElements.Charts.<a href="com/cloudofficeprint/RenderElements/Charts/ChartTextStyle.html" title="class in com.cloudofficeprint.RenderElements.Charts">ChartTextStyle</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/PDF/PDFText.html#setItalic(java.lang.Boolean)" class="member-name-link">setItalic(Boolean)</a> - Method in class com.cloudofficeprint.RenderElements.PDF.<a href="com/cloudofficeprint/RenderElements/PDF/PDFText.html" title="class in com.cloudofficeprint.RenderElements.PDF">PDFText</a></dt>
@@ -2824,7 +2928,7 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="com/cloudofficeprint/Output/PDFOptions.html#setPageHeight(java.lang.String)" class="member-name-link">setPageHeight(String)</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
 <dd>
-<div class="block">Sets the  pageHeight.</div>
+<div class="block">Only supported when converting HTML to PDF.</div>
 </dd>
 <dt><a href="com/cloudofficeprint/Output/PDFOptions.html#setPageMargin(int)" class="member-name-link">setPageMargin(int)</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
 <dd>
@@ -2836,16 +2940,22 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="com/cloudofficeprint/RenderElements/PDF/PDFInsertObject.html#setPageNumber(java.lang.Integer)" class="member-name-link">setPageNumber(Integer)</a> - Method in class com.cloudofficeprint.RenderElements.PDF.<a href="com/cloudofficeprint/RenderElements/PDF/PDFInsertObject.html" title="class in com.cloudofficeprint.RenderElements.PDF">PDFInsertObject</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="com/cloudofficeprint/Output/PDFOptions.html#setPageOrientation(java.lang.String)" class="member-name-link">setPageOrientation(String)</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
+<dd>
+<div class="block">The page orientation, portrait or landscape,</div>
+</dd>
 <dt><a href="com/cloudofficeprint/Output/PDFOptions.html#setPageWidth(java.lang.String)" class="member-name-link">setPageWidth(String)</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
 <dd>
-<div class="block">Sets the pageWidth.</div>
+<div class="block">Only supported when converting HTML to PDF.</div>
 </dd>
 <dt><a href="com/cloudofficeprint/Output/CloudAcessToken/FTPToken.html#setPassword(java.lang.String)" class="member-name-link">setPassword(String)</a> - Method in class com.cloudofficeprint.Output.CloudAcessToken.<a href="com/cloudofficeprint/Output/CloudAcessToken/FTPToken.html" title="class in com.cloudofficeprint.Output.CloudAcessToken">FTPToken</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Codes/WifiQRCode.html#setPassword(java.lang.String)" class="member-name-link">setPassword(String)</a> - Method in class com.cloudofficeprint.RenderElements.Codes.<a href="com/cloudofficeprint/RenderElements/Codes/WifiQRCode.html" title="class in com.cloudofficeprint.RenderElements.Codes">WifiQRCode</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/ProtectSheet.html#setPassword(java.lang.String)" class="member-name-link">setPassword(String)</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/ProtectSheet.html" title="class in com.cloudofficeprint.RenderElements">ProtectSheet</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Sets value for password</div>
+</dd>
 <dt><a href="com/cloudofficeprint/Server/Server.html#setPassword(java.lang.String)" class="member-name-link">setPassword(String)</a> - Method in class com.cloudofficeprint.Server.<a href="com/cloudofficeprint/Server/Server.html" title="class in com.cloudofficeprint.Server">Server</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/Output/PDFOptions.html#setPasswordProtectionFlag(java.lang.Integer)" class="member-name-link">setPasswordProtectionFlag(Integer)</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
@@ -2873,7 +2983,9 @@ loadScripts(document, 'script');</script>
 <dt><a href="com/cloudofficeprint/RenderElements/Codes/QRCode.html#setPiTRColor(java.lang.String)" class="member-name-link">setPiTRColor(String)</a> - Method in class com.cloudofficeprint.RenderElements.Codes.<a href="com/cloudofficeprint/RenderElements/Codes/QRCode.html" title="class in com.cloudofficeprint.RenderElements.Codes">QRCode</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/ProtectSheet.html#setPivotTables(java.lang.Boolean)" class="member-name-link">setPivotTables(Boolean)</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/ProtectSheet.html" title="class in com.cloudofficeprint.RenderElements">ProtectSheet</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Sets value for pivotTables</div>
+</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Codes/QRCode.html#setPoBLColor(java.lang.String)" class="member-name-link">setPoBLColor(String)</a> - Method in class com.cloudofficeprint.RenderElements.Codes.<a href="com/cloudofficeprint/RenderElements/Codes/QRCode.html" title="class in com.cloudofficeprint.RenderElements.Codes">QRCode</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Codes/QRCode.html#setPoColor(java.lang.String)" class="member-name-link">setPoColor(String)</a> - Method in class com.cloudofficeprint.RenderElements.Codes.<a href="com/cloudofficeprint/RenderElements/Codes/QRCode.html" title="class in com.cloudofficeprint.RenderElements.Codes">QRCode</a></dt>
@@ -2924,18 +3036,18 @@ loadScripts(document, 'script');</script>
 <dt><a href="com/cloudofficeprint/RenderElements/Codes/QRCode.html#setQuietZoneColor(java.lang.String)" class="member-name-link">setQuietZoneColor(String)</a> - Method in class com.cloudofficeprint.RenderElements.Codes.<a href="com/cloudofficeprint/RenderElements/Codes/QRCode.html" title="class in com.cloudofficeprint.RenderElements.Codes">QRCode</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/Output/PDFOptions.html#setReadPassword(java.lang.String)" class="member-name-link">setReadPassword(String)</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
-<dd>
-<div class="block">Sets the password for reading the output.</div>
-</dd>
+<dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/Output/PDFOptions.html#setRemoveLastPage(java.lang.Boolean)" class="member-name-link">setRemoveLastPage(Boolean)</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
-<dd>
-<div class="block">Sets whether to remove last page from output.</div>
-</dd>
+<dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/Server/Printer.html#setRequester(java.lang.String)" class="member-name-link">setRequester(String)</a> - Method in class com.cloudofficeprint.Server.<a href="com/cloudofficeprint/Server/Printer.html" title="class in com.cloudofficeprint.Server">Printer</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/Output/Output.html#setRequestOption(com.cloudofficeprint.Output.RequestOption)" class="member-name-link">setRequestOption(RequestOption)</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/Output.html" title="class in com.cloudofficeprint.Output">Output</a></dt>
 <dd>
 <div class="block">Sets option to which AOP makes a call to the given option with response/output of the current request.</div>
+</dd>
+<dt><a href="com/cloudofficeprint/Resources/Template.html#setResource(com.cloudofficeprint.Resources.Resource)" class="member-name-link">setResource(Resource)</a> - Method in class com.cloudofficeprint.Resources.<a href="com/cloudofficeprint/Resources/Template.html" title="class in com.cloudofficeprint.Resources">Template</a></dt>
+<dd>
+<div class="block">Set the Resource of the Template.</div>
 </dd>
 <dt><a href="com/cloudofficeprint/PrintJob.html#setResponse(com.cloudofficeprint.Response)" class="member-name-link">setResponse(Response)</a> - Method in class com.cloudofficeprint.<a href="com/cloudofficeprint/PrintJob.html" title="class in com.cloudofficeprint">PrintJob</a></dt>
 <dd>
@@ -2970,9 +3082,13 @@ loadScripts(document, 'script');</script>
 <div class="block">Sets a secret key can be specified to encrypt the file stored on the server (used with output polling).</div>
 </dd>
 <dt><a href="com/cloudofficeprint/RenderElements/ProtectSheet.html#setSelectLockedCells(java.lang.Boolean)" class="member-name-link">setSelectLockedCells(Boolean)</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/ProtectSheet.html" title="class in com.cloudofficeprint.RenderElements">ProtectSheet</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Sets value for selectLockedCells</div>
+</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/ProtectSheet.html#setSelectUnlockedCells(java.lang.Boolean)" class="member-name-link">setSelectUnlockedCells(Boolean)</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/ProtectSheet.html" title="class in com.cloudofficeprint.RenderElements">ProtectSheet</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Sets value for selectUnlockedCells</div>
+</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Charts/Charts/AreaChart.html#setSeries(java.util.ArrayList)" class="member-name-link">setSeries(ArrayList&lt;AreaSeries&gt;)</a> - Method in class com.cloudofficeprint.RenderElements.Charts.Charts.<a href="com/cloudofficeprint/RenderElements/Charts/Charts/AreaChart.html" title="class in com.cloudofficeprint.RenderElements.Charts.Charts">AreaChart</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Charts/Charts/BubbleChart.html#setSeries(java.util.ArrayList)" class="member-name-link">setSeries(ArrayList&lt;BubbleSeries&gt;)</a> - Method in class com.cloudofficeprint.RenderElements.Charts.Charts.<a href="com/cloudofficeprint/RenderElements/Charts/Charts/BubbleChart.html" title="class in com.cloudofficeprint.RenderElements.Charts.Charts">BubbleChart</a></dt>
@@ -2991,15 +3107,17 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Loops/SheetLoop.html#setSheetNames(java.util.ArrayList)" class="member-name-link">setSheetNames(ArrayList&lt;String&gt;)</a> - Method in class com.cloudofficeprint.RenderElements.Loops.<a href="com/cloudofficeprint/RenderElements/Loops/SheetLoop.html" title="class in com.cloudofficeprint.RenderElements.Loops">SheetLoop</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="com/cloudofficeprint/Resources/Template.html#setShouldHash(java.lang.Boolean)" class="member-name-link">setShouldHash(Boolean)</a> - Method in class com.cloudofficeprint.Resources.<a href="com/cloudofficeprint/Resources/Template.html" title="class in com.cloudofficeprint.Resources">Template</a></dt>
+<dd>
+<div class="block">Set the shouldHash value of the Template.</div>
+</dd>
 <dt><a href="com/cloudofficeprint/Output/PDFOptions.html#setSignCertificate(java.lang.String)" class="member-name-link">setSignCertificate(String)</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
 <dd>
 <div class="block">Sets the signature value of output PDF if the output pdf has a signature
  field.</div>
 </dd>
 <dt><a href="com/cloudofficeprint/Output/PDFOptions.html#setSignCertificatePassword(java.lang.String)" class="member-name-link">setSignCertificatePassword(String)</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
-<dd>
-<div class="block">Sets the password for certificate.</div>
-</dd>
+<dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Charts/Series/BubbleSeries.html#setSizes(java.lang.Integer%5B%5D)" class="member-name-link">setSizes(Integer[])</a> - Method in class com.cloudofficeprint.RenderElements.Charts.Series.<a href="com/cloudofficeprint/RenderElements/Charts/Series/BubbleSeries.html" title="class in com.cloudofficeprint.RenderElements.Charts.Series">BubbleSeries</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Charts/Series/LineSeries.html#setSmooth(java.lang.Boolean)" class="member-name-link">setSmooth(Boolean)</a> - Method in class com.cloudofficeprint.RenderElements.Charts.Series.<a href="com/cloudofficeprint/RenderElements/Charts/Series/LineSeries.html" title="class in com.cloudofficeprint.RenderElements.Charts.Series">LineSeries</a></dt>
@@ -3007,15 +3125,19 @@ loadScripts(document, 'script');</script>
 <div class="block">-</div>
 </dd>
 <dt><a href="com/cloudofficeprint/RenderElements/ProtectSheet.html#setSort(java.lang.Boolean)" class="member-name-link">setSort(Boolean)</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/ProtectSheet.html" title="class in com.cloudofficeprint.RenderElements">ProtectSheet</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="com/cloudofficeprint/Output/PDFOptions.html#setSplit(java.lang.Boolean)" class="member-name-link">setSplit(Boolean)</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
 <dd>
-<div class="block">Sets whether to split or not.</div>
+<div class="block">Sets value for sort</div>
 </dd>
+<dt><a href="com/cloudofficeprint/Output/PDFOptions.html#setSplit(java.lang.Boolean)" class="member-name-link">setSplit(Boolean)</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Charts/Charts/ColumnStackedChart.html#setStackedColumnSeries(java.util.ArrayList)" class="member-name-link">setStackedColumnSeries(ArrayList&lt;ColumnStackedSeries&gt;)</a> - Method in class com.cloudofficeprint.RenderElements.Charts.Charts.<a href="com/cloudofficeprint/RenderElements/Charts/Charts/ColumnStackedChart.html" title="class in com.cloudofficeprint.RenderElements.Charts.Charts">ColumnStackedChart</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Codes/EventQRCode.html#setStartDate(java.lang.String)" class="member-name-link">setStartDate(String)</a> - Method in class com.cloudofficeprint.RenderElements.Codes.<a href="com/cloudofficeprint/RenderElements/Codes/EventQRCode.html" title="class in com.cloudofficeprint.RenderElements.Codes">EventQRCode</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="com/cloudofficeprint/Resources/Template.html#setStartDelimiter(java.lang.String)" class="member-name-link">setStartDelimiter(String)</a> - Method in class com.cloudofficeprint.Resources.<a href="com/cloudofficeprint/Resources/Template.html" title="class in com.cloudofficeprint.Resources">Template</a></dt>
+<dd>
+<div class="block">Set the starting delimiter of the Template.</div>
+</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Charts/ChartDateOptions.html#setStep(java.lang.Integer)" class="member-name-link">setStep(Integer)</a> - Method in class com.cloudofficeprint.RenderElements.Charts.<a href="com/cloudofficeprint/RenderElements/Charts/ChartDateOptions.html" title="class in com.cloudofficeprint.RenderElements.Charts">ChartDateOptions</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/COPChartDateOptions.html#setStep(java.lang.Integer)" class="member-name-link">setStep(Integer)</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/COPChartDateOptions.html" title="class in com.cloudofficeprint.RenderElements">COPChartDateOptions</a></dt>
@@ -3038,6 +3160,10 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/PrintJob.html#setTemplate(com.cloudofficeprint.Resources.Resource)" class="member-name-link">setTemplate(Resource)</a> - Method in class com.cloudofficeprint.<a href="com/cloudofficeprint/PrintJob.html" title="class in com.cloudofficeprint">PrintJob</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="com/cloudofficeprint/Resources/Template.html#setTemplateHash(java.lang.String)" class="member-name-link">setTemplateHash(String)</a> - Method in class com.cloudofficeprint.Resources.<a href="com/cloudofficeprint/Resources/Template.html" title="class in com.cloudofficeprint.Resources">Template</a></dt>
+<dd>
+<div class="block">Set the hash of the template.</div>
+</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/PDF/PDFText.html#setText(java.lang.String)" class="member-name-link">setText(String)</a> - Method in class com.cloudofficeprint.RenderElements.PDF.<a href="com/cloudofficeprint/RenderElements/PDF/PDFText.html" title="class in com.cloudofficeprint.RenderElements.PDF">PDFText</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/Output/CsvOptions.html#setTextDelimiter(java.lang.String)" class="member-name-link">setTextDelimiter(String)</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/CsvOptions.html" title="class in com.cloudofficeprint.Output">CsvOptions</a></dt>
@@ -3096,6 +3222,10 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Codes/Code.html#setType(java.lang.String)" class="member-name-link">setType(String)</a> - Method in class com.cloudofficeprint.RenderElements.Codes.<a href="com/cloudofficeprint/RenderElements/Codes/Code.html" title="class in com.cloudofficeprint.RenderElements.Codes">Code</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="com/cloudofficeprint/RenderElements/Link.html#setUidName(java.lang.String)" class="member-name-link">setUidName(String)</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/Link.html" title="class in com.cloudofficeprint.RenderElements">Link</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/cloudofficeprint/RenderElements/Link.html#setUidValue(java.lang.String)" class="member-name-link">setUidValue(String)</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/Link.html" title="class in com.cloudofficeprint.RenderElements">Link</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/StyledProperty.html#setUnderline(java.lang.Boolean)" class="member-name-link">setUnderline(Boolean)</a> - Method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/StyledProperty.html" title="class in com.cloudofficeprint.RenderElements">StyledProperty</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Charts/ChartDateOptions.html#setUnit(java.lang.String)" class="member-name-link">setUnit(String)</a> - Method in class com.cloudofficeprint.RenderElements.Charts.<a href="com/cloudofficeprint/RenderElements/Charts/ChartDateOptions.html" title="class in com.cloudofficeprint.RenderElements.Charts">ChartDateOptions</a></dt>
@@ -3133,25 +3263,20 @@ loadScripts(document, 'script');</script>
 <dt><a href="com/cloudofficeprint/RenderElements/Charts/Series/StockSeries.html#setVolume(java.lang.Integer%5B%5D)" class="member-name-link">setVolume(Integer[])</a> - Method in class com.cloudofficeprint.RenderElements.Charts.Series.<a href="com/cloudofficeprint/RenderElements/Charts/Series/StockSeries.html" title="class in com.cloudofficeprint.RenderElements.Charts.Series">StockSeries</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/Output/PDFOptions.html#setWatermark(java.lang.String)" class="member-name-link">setWatermark(String)</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/cloudofficeprint/Output/PDFOptions.html#setWatermark(java.lang.String,java.lang.String,java.lang.String,java.lang.Integer,java.lang.Integer)" class="member-name-link">setWatermark(String, String, String, Integer, Integer)</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
 <dd>
-<div class="block">Sets the watermark which is shown diagonally on every page in output file.</div>
+<div class="block">Set a diagonal custom watermark on every page in the PDF file with a specific
+ text, color, font, opacity and size.</div>
 </dd>
 <dt><a href="com/cloudofficeprint/Output/PDFOptions.html#setWatermarkColor(java.lang.String)" class="member-name-link">setWatermarkColor(String)</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
-<dd>
-<div class="block">Sets the color of your watermark.</div>
-</dd>
+<dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/Output/PDFOptions.html#setWatermarkFont(java.lang.String)" class="member-name-link">setWatermarkFont(String)</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
-<dd>
-<div class="block">Sets the font to your watermark.</div>
-</dd>
-<dt><a href="com/cloudofficeprint/Output/PDFOptions.html#setWatermarkFontSize(java.lang.Integer)" class="member-name-link">setWatermarkFontSize(Integer)</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
-<dd>
-<div class="block">Sets the font size of your watermark.</div>
-</dd>
+<dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/Output/PDFOptions.html#setWatermarkOpacity(java.lang.Integer)" class="member-name-link">setWatermarkOpacity(Integer)</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
-<dd>
-<div class="block">Sets opacity of your watermark in percentage (ex 60).</div>
-</dd>
+<dd>&nbsp;</dd>
+<dt><a href="com/cloudofficeprint/Output/PDFOptions.html#setWatermarkSize(java.lang.Integer)" class="member-name-link">setWatermarkSize(Integer)</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Codes/MECardQRCode.html#setWebsite(java.lang.String)" class="member-name-link">setWebsite(String)</a> - Method in class com.cloudofficeprint.RenderElements.Codes.<a href="com/cloudofficeprint/RenderElements/Codes/MECardQRCode.html" title="class in com.cloudofficeprint.RenderElements.Codes">MECardQRCode</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Codes/VCardQRCode.html#setWebsite(java.lang.String)" class="member-name-link">setWebsite(String)</a> - Method in class com.cloudofficeprint.RenderElements.Codes.<a href="com/cloudofficeprint/RenderElements/Codes/VCardQRCode.html" title="class in com.cloudofficeprint.RenderElements.Codes">VCardQRCode</a></dt>
@@ -3226,6 +3351,14 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="com/cloudofficeprint/Examples/SpaceX/SpaceXExample.html#shortenDescription(java.lang.String)" class="member-name-link">shortenDescription(String)</a> - Method in class com.cloudofficeprint.Examples.SpaceX.<a href="com/cloudofficeprint/Examples/SpaceX/SpaceXExample.html" title="class in com.cloudofficeprint.Examples.SpaceX">SpaceXExample</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="com/cloudofficeprint/Output/PDFOptions.html#sign(java.lang.String)" class="member-name-link">sign(String)</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
+<dd>
+<div class="block">Sign the output PDF with a local certificate file.</div>
+</dd>
+<dt><a href="com/cloudofficeprint/Output/PDFOptions.html#sign(java.lang.String,java.lang.String)" class="member-name-link">sign(String, String)</a> - Method in class com.cloudofficeprint.Output.<a href="com/cloudofficeprint/Output/PDFOptions.html" title="class in com.cloudofficeprint.Output">PDFOptions</a></dt>
+<dd>
+<div class="block">Sign the output PDF with a local certificate file.</div>
+</dd>
 <dt><a href="com/cloudofficeprint/Examples/GeneralExamples/Examples.html#signPDF(java.lang.String)" class="member-name-link">signPDF(String)</a> - Method in class com.cloudofficeprint.Examples.GeneralExamples.<a href="com/cloudofficeprint/Examples/GeneralExamples/Examples.html" title="class in com.cloudofficeprint.Examples.GeneralExamples">Examples</a></dt>
 <dd>
 <div class="block">This example show you how to sign a PDF file.</div>
@@ -3318,6 +3451,20 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">This object represents a telephone number QR-code.</div>
 </dd>
+<dt><a href="com/cloudofficeprint/Resources/Template.html" class="type-name-link" title="class in com.cloudofficeprint.Resources">Template</a> - Class in <a href="com/cloudofficeprint/Resources/package-summary.html">com.cloudofficeprint.Resources</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/cloudofficeprint/Resources/Template.html#%3Cinit%3E(com.cloudofficeprint.Resources.Resource)" class="member-name-link">Template(Resource)</a> - Constructor for class com.cloudofficeprint.Resources.<a href="com/cloudofficeprint/Resources/Template.html" title="class in com.cloudofficeprint.Resources">Template</a></dt>
+<dd>
+<div class="block">Create a new Template.</div>
+</dd>
+<dt><a href="com/cloudofficeprint/Resources/Template.html#%3Cinit%3E(com.cloudofficeprint.Resources.Resource,java.lang.String,java.lang.String)" class="member-name-link">Template(Resource, String, String)</a> - Constructor for class com.cloudofficeprint.Resources.<a href="com/cloudofficeprint/Resources/Template.html" title="class in com.cloudofficeprint.Resources">Template</a></dt>
+<dd>
+<div class="block">Create a new Template.</div>
+</dd>
+<dt><a href="com/cloudofficeprint/Resources/Template.html#%3Cinit%3E(com.cloudofficeprint.Resources.Resource,java.lang.String,java.lang.String,java.lang.Boolean,java.lang.String)" class="member-name-link">Template(Resource, String, String, Boolean, String)</a> - Constructor for class com.cloudofficeprint.Resources.<a href="com/cloudofficeprint/Resources/Template.html" title="class in com.cloudofficeprint.Resources">Template</a></dt>
+<dd>
+<div class="block">Create a new Template.</div>
+</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/TextBox.html" class="type-name-link" title="class in com.cloudofficeprint.RenderElements">TextBox</a> - Class in <a href="com/cloudofficeprint/RenderElements/package-summary.html">com.cloudofficeprint.RenderElements</a></dt>
 <dd>
 <div class="block">This tag will allow you to insert a text box starting in the cell containing
@@ -3333,6 +3480,10 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:U">U</h2>
 <dl class="index">
+<dt><a href="com/cloudofficeprint/Resources/Template.html#updateHash(java.lang.String)" class="member-name-link">updateHash(String)</a> - Method in class com.cloudofficeprint.Resources.<a href="com/cloudofficeprint/Resources/Template.html" title="class in com.cloudofficeprint.Resources">Template</a></dt>
+<dd>
+<div class="block">Update the Template to store a hash.</div>
+</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/ElementCollection.html#updateJson1WithJson2(com.google.gson.JsonObject,com.google.gson.JsonObject)" class="member-name-link">updateJson1WithJson2(JsonObject, JsonObject)</a> - Static method in class com.cloudofficeprint.RenderElements.<a href="com/cloudofficeprint/RenderElements/ElementCollection.html" title="class in com.cloudofficeprint.RenderElements">ElementCollection</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/cloudofficeprint/RenderElements/Codes/URLQRCode.html" class="type-name-link" title="class in com.cloudofficeprint.RenderElements.Codes">URLQRCode</a> - Class in <a href="com/cloudofficeprint/RenderElements/Codes/package-summary.html">com.cloudofficeprint.RenderElements.Codes</a></dt>
@@ -3371,6 +3522,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="com/cloudofficeprint/RenderElements/Codes/VCardQRCode.html#%3Cinit%3E(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)" class="member-name-link">VCardQRCode(String, String, String, String, String)</a> - Constructor for class com.cloudofficeprint.RenderElements.Codes.<a href="com/cloudofficeprint/RenderElements/Codes/VCardQRCode.html" title="class in com.cloudofficeprint.RenderElements.Codes">VCardQRCode</a></dt>
 <dd>
 <div class="block">This object represents a VCF or vCard QR Code.</div>
+</dd>
+<dt><a href="com/cloudofficeprint/Server/Server.html#verifyTemplateHash(java.lang.String)" class="member-name-link">verifyTemplateHash(String)</a> - Method in class com.cloudofficeprint.Server.<a href="com/cloudofficeprint/Server/Server.html" title="class in com.cloudofficeprint.Server">Server</a></dt>
+<dd>
+<div class="block">Sends a GET request to server-url/verify_template_hash?hash=hashcode</div>
 </dd>
 </dl>
 <h2 class="title" id="I:W">W</h2>
