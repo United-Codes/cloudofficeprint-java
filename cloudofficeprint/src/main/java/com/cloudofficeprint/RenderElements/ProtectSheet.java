@@ -240,7 +240,7 @@ public class ProtectSheet extends RenderElement{
      * @param sort lock sort.
      */
     public void setSort(Boolean sort) {
-        sort = this.sort;
+        this.sort = sort;
     }
 
     /**
