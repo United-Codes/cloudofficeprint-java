@@ -28,7 +28,7 @@ public class ConfigTests {
         pdfOptions.setWatermarkColor("blue");
         pdfOptions.setWatermarkFont("Aerial");
         pdfOptions.setWatermarkOpacity(60);
-        pdfOptions.setWatermarkFontSize(30);
+        pdfOptions.setWatermarkSize(30);
         pdfOptions.setPageWidth("500");
         pdfOptions.setPageHeight("500");
         pdfOptions.setEvenPage(true);
