@@ -2,174 +2,44 @@ package com.cloudofficeprint.Output;
 
 import com.google.gson.JsonObject;
 
+import java.io.*;
+import java.nio.file.Files;
+import java.util.Base64;
+
 /**
  * Class for all the optional PDF output options. Only for
  */
 public class PDFOptions {
 
-    private String readPassword;
-    private String watermark;
-    private Integer watermarkSize;
-    private Integer watermarkOpacity;
-    private String watermarkColor;
-    private String watermarkFont;
-    private String pageWidth;
-    private String pageHeight;
     private Boolean evenPage;
     private Boolean mergeMakingEven;
+    private Boolean removeLastPage;
     private String modifyPassword;
+    private String readPassword;
     private Integer passwordProtectionFlag;
+    private String watermark;
+    private String watermarkColor;
+    private String watermarkFont;
+    private Integer watermarkOpacity;
+    private Integer watermarkSize;
     private Boolean lockForm;
     private Integer copies;
     private int[] pageMargin;
     private Boolean landscape;
+    private String pageWidth;
+    private String pageHeight;
     private String pageFormat;
     private Boolean merge;
+    private Boolean split;
+    private Boolean identifyFormFields;
     private String signCertificate;
     private String signCertificatePassword;
-    private Boolean identifyFormFields;
-    private Boolean split;
-    private Boolean removeLastPage;
 
     /**
-     * @return the password which is used to read the output.
+     * Constructor for the PDFOptions object. Set the options with the setters.
+     * Uninitialized options won't be included in the JSON.
      */
-    public String getReadPassword() {
-        return readPassword;
-    }
-
-    /**
-     * Sets the password for reading the output.
-     *
-     * @param readPassword password to read the output.
-     */
-    public void setReadPassword(String readPassword) {
-        this.readPassword = readPassword;
-    }
-
-    /**
-     * @return the watermark which is shown diagonally on every page in output file.
-     */
-    public String getWatermark() {
-        return watermark;
-    }
-
-    /**
-     * Sets the watermark which is shown diagonally on every page in output file.
-     *
-     * @param watermark diagonal custom watermark
-     */
-    public void setWatermark(String watermark) {
-        this.watermark = watermark;
-    }
-
-    /**
-     * @return opacity of watermark in percentage.
-     */
-    public Integer getWatermarkOpacity() {
-        return watermarkOpacity;
-    }
-
-    /**
-     * Sets opacity of your watermark in percentage (ex 60).
-     *
-     * @param watermarkOpacity opacity of watermark.
-     */
-    public void setWatermarkOpacity(Integer watermarkOpacity) {
-        this.watermarkOpacity = watermarkOpacity;
-    }
-
-    /**
-     * @return the font size of your watermark.
-     */
-    public Integer getWatermarkFontSize() {
-        return watermarkSize;
-    }
-
-    /**
-     * Sets the font size of your watermark.
-     *
-     * @param watermarkSize Font size of watermark.
-     */
-    public void setWatermarkFontSize(Integer watermarkSize) {
-        this.watermarkSize = watermarkSize;
-    }
-
-    /**
-     * Returns the color of your watermark. It accepts css fonts.
-     * Default font is "black".
-     *
-     * @return font color of your watermark.
-     */
-    public String getWatermarkColor() {
-        return watermarkColor;
-    }
-
-    /**
-     * Sets the color of your watermark. It accepts css fonts.
-     * Default font is "black"
-     *
-     * @param watermarkColor color of watermark.
-     */
-    public void setWatermarkColor(String watermarkColor) {
-        this.watermarkColor = watermarkColor;
-    }
-
-    /**
-     * @return the font of watermark. Default font is "Aerial".
-     */
-    public String getWatermarkFont() {
-        return watermarkFont;
-    }
-
-    /**
-     * Sets the font to your watermark. Default is "Aerial".
-     *
-     * @param watermarkFont font of watermark.
-     */
-    public void setWatermarkFont(String watermarkFont) {
-        this.watermarkFont = watermarkFont;
-    }
-
-    /**
-     * Only supported when converting HTML to PDF.
-     *
-     * @return pageWidth width followed by unit : px, mm, cm, in (e.g. : 20 px). No
-     * unit means px.
-     */
-    public String getPageWidth() {
-        return pageWidth;
-    }
-
-    /**
-     * Sets the pageWidth.
-     * Only supported when converting HTML to PDF.
-     *
-     * @param pageWidth width followed by unit : px, mm, cm, in (e.g. : 20 px). No
-     *                  unit means px.
-     */
-    public void setPageWidth(String pageWidth) {
-        this.pageWidth = pageWidth;
-    }
-
-    /**
-     * Only supported when converting HTML to PDF.
-     *
-     * @return pageHeight height followed by unit : px, mm, cm, in (e.g. : 20 px).
-     * No unit means px.
-     */
-    public String getPageHeight() {
-        return pageHeight;
-    }
-
-    /**
-     * Sets the  pageHeight.
-     * Only supported when converting HTML to PDF.
-     *
-     * @param pageHeight height followed by unit : px, mm, cm, in (e.g. : 20 px). No unit means px.
-     */
-    public void setPageHeight(String pageHeight) {
-        this.pageHeight = pageHeight;
+    public PDFOptions() {
     }
 
     /**
@@ -208,6 +78,20 @@ public class PDFOptions {
     }
 
     /**
+     * @return Remove the last page from the given PDF document.
+     */
+    public Boolean getRemoveLastPage() {
+        return removeLastPage;
+    }
+
+    /**
+     * @param removeLastPage Remove the last page from the given PDF document
+     */
+    public void setRemoveLastPage(Boolean removeLastPage) {
+        this.removeLastPage = removeLastPage;
+    }
+
+    /**
      * @return The password needed to modify the PDF.
      */
     public String getModifyPassword() {
@@ -221,6 +105,20 @@ public class PDFOptions {
      */
     public void setModifyPassword(String modifyPassword) {
         this.modifyPassword = modifyPassword;
+    }
+
+    /**
+     * @return password to read the output.
+     */
+    public String getReadPassword() {
+        return readPassword;
+    }
+
+    /**
+     * @param readPassword password to read the output.
+     */
+    public void setReadPassword(String readPassword) {
+        this.readPassword = readPassword;
     }
 
     /**
@@ -245,6 +143,99 @@ public class PDFOptions {
      */
     public void setPasswordProtectionFlag(Integer passwordProtectionFlag) {
         this.passwordProtectionFlag = passwordProtectionFlag;
+    }
+
+    /**
+     * @return diagonal custom watermark on every page in the output file.
+     */
+    public String getWatermark() {
+        return watermark;
+    }
+
+    /**
+     * @param watermark diagonal custom watermark on every page in the output file.
+     */
+    public void setWatermark(String watermark) {
+        this.watermark = watermark;
+    }
+
+    /**
+     * Set a diagonal custom watermark on every page in the PDF file with a specific
+     * text, color, font, opacity and size. Setting all to null will remove the
+     * watermark.
+     * 
+     * @param text    specifies the text of the watermark.
+     * @param color   specifies the color of the watermark, with a default of
+     *                "black".
+     * @param font    specifies the font of the watermark, with a default of
+     *                "Arial".
+     * @param opacity specifies the opacity of the watermark, should be as a
+     *                percentage, i.e. 45.
+     * @param size    specifies the size of the watermark, should be as a number in
+     *                px, i.e. 45.
+     */
+    public void setWatermark(String text, String color, String font, Integer opacity, Integer size) {
+        this.watermark = text;
+        this.watermarkColor = color;
+        this.watermarkFont = font;
+        this.watermarkOpacity = opacity;
+        this.watermarkSize = size;
+    }
+
+    /**
+     * @return color of the watermark, defaults to "black".
+     */
+    public String getWatermarkColor() {
+        return watermarkColor;
+    }
+
+    /**
+     * @param watermarkColor color of the watermark, defaults to "black".
+     */
+    public void setWatermarkColor(String watermarkColor) {
+        this.watermarkColor = watermarkColor;
+    }
+
+    /**
+     * @return font of the watermark, defaults to "Arial".
+     */
+    public String getWatermarkFont() {
+        return watermarkFont;
+    }
+
+    /**
+     * @param watermarkFont font of the watermark, defaults to "Arial".
+     */
+    public void setWatermarkFont(String watermarkFont) {
+        this.watermarkFont = watermarkFont;
+    }
+
+    /**
+     * @return opacity of the watermark, as a percentage, i.e. 45.
+     */
+    public Integer getWatermarkOpacity() {
+        return watermarkOpacity;
+    }
+
+    /**
+     * @param watermarkOpacity opacity of the watermark, as a percentage, i.e. 45.
+     */
+    public void setWatermarkOpacity(Integer watermarkOpacity) {
+        this.watermarkOpacity = watermarkOpacity;
+    }
+
+    /**
+     * @return size of the watermark, as a number in px, i.e. 45.
+     */
+    public Integer getWatermarkSize() {
+        return watermarkSize;
+    }
+
+    /**
+     * @param watermarkSize size of the watermark, as a number in px, i.e. 45.
+     */
+    public void setWatermarkSize(Integer watermarkSize) {
+        this.watermarkSize = watermarkSize;
     }
 
     /**
@@ -338,6 +329,66 @@ public class PDFOptions {
     }
 
     /**
+     * The page orientation, portrait or landscape.
+     * 
+     * @return The page orientation, portrait or landscape.
+     */
+    public String getPageOrientation() {
+        return landscape ? "landscape" : "portrait";
+    }
+
+    /**
+     * The page orientation, portrait or landscape,
+     * 
+     * @param orientation The page orientation, portrait or landscape.
+     */
+    public void setPageOrientation(String orientation) {
+        this.landscape = orientation == "landscape";
+    }
+
+    /**
+     * Only supported when converting HTML to PDF.
+     * 
+     * @return pageWidth width followed by unit : px, mm, cm, in (e.g. : 20 px). No
+     *         unit means px.
+     */
+    public String getPageWidth() {
+        return pageWidth;
+    }
+
+    /**
+     * Only supported when converting HTML to PDF.
+     * 
+     * @param pageWidth width followed by unit : px, mm, cm, in (e.g. : 20 px). No
+     *                  unit means px.
+     */
+    public void setPageWidth(String pageWidth) {
+        this.pageWidth = pageWidth;
+    }
+
+    /**
+     * Only supported when converting HTML to PDF.
+     * 
+     * @return pageHeight height followed by unit : px, mm, cm, in (e.g. : 20 px).
+     *         No unit means px.
+     */
+    public String getPageHeight() {
+        return pageHeight;
+    }
+
+    /**
+     * Only supported when converting HTML to PDF.
+     * 
+     * @param pageHeight eight followed by unit : px, mm, cm, in (e.g. : 20 px). No
+     *                   unit means px.
+     */
+    public void setPageHeight(String pageHeight) {
+        this.pageHeight = pageHeight;
+    }
+
+    /**
+     * Only supported when converting HTML to PDF.
+     * 
      * @return The page format: "A4" (default used by Cloud Office Print) or
      * "letter".
      */
@@ -374,6 +425,41 @@ public class PDFOptions {
     }
 
     /**
+     * @return whether or not the output PDF should be split into one file per page
+     *         in a zip file
+     */
+    public Boolean getSplit() {
+        return split;
+    }
+
+    /**
+     * @param split whether or not the output PDF should be split into one file per
+     *              page in a zip file
+     */
+    public void setSplit(Boolean split) {
+        this.split = split;
+    }
+
+    /**
+     * @return If it is set to true Cloud Office Print tries to identify the form
+     *         fields and fills them in.
+     */
+    public Boolean getIdentifyFormFields() {
+        return identifyFormFields;
+    }
+
+    /**
+     * @param identifyFormFields If it is set to true Cloud Office Print tries to
+     *                           identify the form fields and fills them in.
+     */
+    public void setIdentifyFormFields(Boolean identifyFormFields) {
+        this.identifyFormFields = identifyFormFields;
+    }
+
+    /**
+     * It is possible to sign the output PDF if the output pdf has a signature
+     * field.
+     * 
      * @return The certificate (pkcs #12 .p12/.pfx) in a base64 encoded format (this
      * can also be a URL, FTP location or a location in the file system of
      * the server). If the output pdf has a signature.
@@ -395,86 +481,43 @@ public class PDFOptions {
     }
 
     /**
-     * @return password of certificate.
+     * @return The password of the certificate file as a plain string.
      */
     public String getSignCertificatePassword() {
         return signCertificatePassword;
     }
 
     /**
-     * Sets the password for certificate.
-     *
-     * @param signCertificatePassword password of signature.
+     * @param signCertificatePassword The password of the certificate file as a
+     *                                plain string.
      */
     public void setSignCertificatePassword(String signCertificatePassword) {
         this.signCertificatePassword = signCertificatePassword;
     }
 
     /**
-     * @return whether to get identityFormFields. If it is set to true Cloud Office
-     * Print tries to identify the for fields and fills them in.
+     * Sign the output PDF with a local certificate file.
+     * 
+     * @param localCertificatePath path to the local certificate file.
+     * @throws IOException
      */
-    public Boolean getIdentifyFormFields() {
-        return identifyFormFields;
+    public void sign(String localCertificatePath) throws IOException {
+        File file = new File(localCertificatePath);
+        byte[] bytes = Files.readAllBytes(file.toPath());
+        String encodedString = Base64.getEncoder().encodeToString(bytes);
+        this.signCertificate = encodedString;
     }
 
     /**
-     * Sets whether to get identityFormFields. If it is set to true Cloud Office.
-     * Print tries to identify the for fields and fills them in.
-     *
-     * @param identifyFormFields value for identify form fields.If it is set to true
-     *                           Cloud Office Print tries to identify the form
-     *                           fields and fills them in.
+     * Sign the output PDF with a local certificate file.
+     * 
+     * @param localCertificatePath path to the local certificate file.
+     * @param password             password of the certificate.
+     * @throws IOException
      */
-    public void setIdentifyFormFields(Boolean identifyFormFields) {
-        this.identifyFormFields = identifyFormFields;
-    }
-
-    /**
-     * Returns whether to split or not. The output PDF should be split into one file per page in a zip file.
-     *
-     * @return whether to split or not. The output PDF should be split into one file
-     * per page in a zip file.
-     */
-    public Boolean getSplit() {
-        return split;
-    }
-
-    /**
-     * Sets whether to split or not. The output PDF should be split into one file per page in a zip file.
-     *
-     * @param split whether to split or not. The output PDF should be split into one
-     *              file per page in a zip file.
-     */
-    public void setSplit(Boolean split) {
-        this.split = split;
-    }
-
-    /**
-     * Returns whether to remove last page from output. It is useful when the last
-     * page of output is blank.
-     *
-     * @return whether to remove last page or not
-     */
-    public Boolean getRemoveLastPage() {
-        return removeLastPage;
-    }
-
-    /**
-     * Sets whether to remove last page from output. It is useful when the last
-     * page of output is blank.
-     *
-     * @param removeLastPage whether to remove last page
-     */
-    public void setRemoveLastPage(Boolean removeLastPage) {
-        this.removeLastPage = removeLastPage;
-    }
-
-    /**
-     * Constructor for the PDFOptions object. Set the options with the setters.
-     * Uninitialized options won't be included in the JSON.
-     */
-    public PDFOptions() {
+    public void sign(String localCertificatePath, String password) throws IOException {
+        sign(localCertificatePath);
+        this.signCertificatePassword = password;
     }
 
     /**
@@ -482,8 +525,23 @@ public class PDFOptions {
      */
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
+        if (getEvenPage() != null) {
+            json.addProperty("output_even_page", getEvenPage());
+        }
+        if (getMergeMakingEven() != null) {
+            json.addProperty("output_merge_making_even", getMergeMakingEven());
+        }
+        if (getRemoveLastPage() != null) {
+            json.addProperty("output_remove_last_page", getRemoveLastPage());
+        }
+        if (getModifyPassword() != null) {
+            json.addProperty("output_modify_password", getModifyPassword());
+        }
         if (getReadPassword() != null) {
             json.addProperty("output_read_password", getReadPassword());
+        }
+        if (getPasswordProtectionFlag() != null) {
+            json.addProperty("output_password_protection_flag", getPasswordProtectionFlag());
         }
         if (getWatermark() != null) {
             json.addProperty("output_watermark", getWatermark());
@@ -491,32 +549,14 @@ public class PDFOptions {
         if (getWatermarkColor() != null) {
             json.addProperty("output_watermark_color", getWatermarkColor());
         }
-        if (getWatermarkFontSize() != null) {
-            json.addProperty("output_watermark_size", getWatermarkFontSize());
-        }
         if (getWatermarkFont() != null) {
             json.addProperty("output_watermark_font", getWatermarkFont());
         }
         if (getWatermarkOpacity() != null) {
             json.addProperty("output_watermark_opacity", getWatermarkOpacity());
         }
-        if (getPageWidth() != null) {
-            json.addProperty("output_page_width", getPageWidth());
-        }
-        if (getPageHeight() != null) {
-            json.addProperty("output_page_height", getPageHeight());
-        }
-        if (getEvenPage() != null) {
-            json.addProperty("output_even_page", getEvenPage());
-        }
-        if (getMergeMakingEven() != null) {
-            json.addProperty("output_merge_making_even", getMergeMakingEven());
-        }
-        if (getModifyPassword() != null) {
-            json.addProperty("output_modify_password", getModifyPassword());
-        }
-        if (getPasswordProtectionFlag() != null) {
-            json.addProperty("output_password_protection_flag", getPasswordProtectionFlag());
+        if (getWatermarkSize() != null) {
+            json.addProperty("output_watermark_size", getWatermarkSize());
         }
         if (getLockForm() != null) {
             json.addProperty("lock_form", getLockForm());
@@ -540,9 +580,20 @@ public class PDFOptions {
                     marginDict.addProperty("right", getPageMargin()[3]);
                 }
             }
-            json.add("page_margin", marginDict); // For Cloud Office Print versions later than 21.1.1,
-            // output_page_margin will also be
-            // supported as tag name to be consistent with the other namings.
+            // For Cloud Office Print versions later than 21.1.1, output_page_margin will
+            // also be supported as tag name to be consistent with the other namings.
+            json.add("page_margin", marginDict);
+        }
+        if (getLandscape() != null && getLandscape() == true) {
+            // For Cloud Office Print versions later than 21.1.1, output_page_orientation
+            // will also be supported as tag name to be consistent with the other namings.
+            json.addProperty("page_orientation", "landscape");
+        }
+        if (getPageWidth() != null) {
+            json.addProperty("output_page_width", getPageWidth());
+        }
+        if (getPageHeight() != null) {
+            json.addProperty("output_page_height", getPageHeight());
         }
         if (getPageFormat() != null) {
             json.addProperty("output_page_format", getPageFormat());
@@ -550,13 +601,8 @@ public class PDFOptions {
         if (getMerge() != null) {
             json.addProperty("output_merge", getMerge());
         }
-        if (getLandscape() != null && getLandscape()) {
-            json.addProperty("page_orientation", "landscape"); // For Cloud Office Print versions later than 21.1.1,
-            // output_page_orientation will also be supported as tag
-            // name to be consistent with the other namings.
-        }
-        if (getSignCertificate() != null) {
-            json.addProperty("output_sign_certificate", getSignCertificate());
+        if (getSplit() != null) {
+            json.addProperty("output_split", getSplit());
         }
         if (getSignCertificatePassword() != null) {
             json.addProperty("output_sign_certificate_password", getSignCertificatePassword());
@@ -564,8 +610,11 @@ public class PDFOptions {
         if (getIdentifyFormFields() != null) {
             json.addProperty("identify_form_fields", getIdentifyFormFields());
         }
-        if (getSplit() != null) {
-            json.addProperty("output_split", getSplit());
+        if (getSignCertificate() != null) {
+            json.addProperty("output_sign_certificate", getSignCertificate());
+        }
+        if (getSignCertificatePassword() != null) {
+            json.addProperty("output_sign_certificate_password", getSignCertificatePassword());
         }
         if (getRemoveLastPage() != null) {
             json.addProperty("output_remove_last_page", getRemoveLastPage());

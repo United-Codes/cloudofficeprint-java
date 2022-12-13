@@ -334,12 +334,33 @@ public class Server {
     }
 
     /**
+     * Sends a GET request to server-url/verify_template_hash?hash=hashcode
+     * 
+     * @param hashcode md5 hash of file.
+     * @return whether the hash is valid and present in cache.
+     */
+    public String verifyTemplateHash(String hashcode) {
+        return sendGETRequest(this.url + "/verify_template_hash?hash=" + hashcode);
+    }
+
+    /**
      * Sends a GET request to server-url/version.
      *
      * @return returns the version of Cloud Office Print that is run on server.
      */
     public String getCOPVersionOnServer() {
         return sendGETRequest(this.url + "/version");
+    }
+
+    /**
+     * Sends a GET request to server-url/ipp_check?ipp_url=ippURL&version=version.
+     * 
+     * @param ippURL  the URL of the IPP printer.
+     * @param version the version of the IPP printer.
+     * @return the status of the IPP printer.
+     */
+    public String checkIPP(String ippURL, String version) {
+        return sendGETRequest(this.url + "/ipp_check?ipp_url=" + ippURL + "&version=" + version);
     }
 
     /**
