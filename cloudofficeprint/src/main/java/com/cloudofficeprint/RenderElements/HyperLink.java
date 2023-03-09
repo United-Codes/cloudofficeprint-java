@@ -14,9 +14,9 @@ public class HyperLink extends RenderElement {
     private String url;
 
     /**
-     * Note : In Excel you can hyperlink to a cell. The URLshould then be of
+     * Note : In Excel you can hyperlink to a cell. The URL should then be of
      * structure: "SheetName!Cell".
-     * 
+     *
      * @return URL to hyperlink to.
      */
     public String getUrl() {
@@ -24,9 +24,9 @@ public class HyperLink extends RenderElement {
     }
 
     /**
-     * Note : In Excel you can hyperlink to a cell. The URLshould then be of
+     * Note : In Excel you can hyperlink to a cell. The URL should then be of
      * structure: "SheetName!Cell".
-     * 
+     *
      * @param url URL to hyperlink to.
      */
     public void setUrl(String url) {
@@ -35,12 +35,12 @@ public class HyperLink extends RenderElement {
 
     /**
      * Element to insert a footnote in a template.
-     * 
+     *
      * @param name Name of this footnote for the tag.
      * @param text Text of the hyperlink (will replace the tag in the template).
      *             (Optional: if null the URL will replace the tag)
      * @param url  URL to hyperlink to. Note : In Excel you can hyperlink to a cell.
-     *             The URLshould then be of structure: "SheetName!Cell".
+     *             The URL should then be of structure: "SheetName!Cell".
      */
     public HyperLink(String name, String text, String url) {
         setName(name);
@@ -50,7 +50,7 @@ public class HyperLink extends RenderElement {
 
     /**
      * @return JSONObject with the tags for this element for the Cloud Office Print
-     *         server.
+     * server.
      */
     @Override
     public JsonObject getJSON() {
@@ -64,7 +64,7 @@ public class HyperLink extends RenderElement {
 
     /**
      * @return An immutable set containing all available template tags this element
-     *         can replace.
+     * can replace.
      */
     @Override
     public Set<String> getTemplateTags() {
