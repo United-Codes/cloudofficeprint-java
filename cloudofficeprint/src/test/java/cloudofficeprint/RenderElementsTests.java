@@ -225,7 +225,7 @@ public class RenderElementsTests {
     }
 
     @Test
-    public void protectSheet(){
+    public void protectSheet() {
         ProtectSheet prop = new ProtectSheet("sheet1");
         prop.setPassword("password");
         prop.setAutoFilter(true);
@@ -251,8 +251,8 @@ public class RenderElementsTests {
     }
 
     @Test
-    public void ExcelInsert(){
-        ExcelInsert excelInsert = new ExcelInsert("fileToInsert","base64EncodedValue");
+    public void ExcelInsert() {
+        ExcelInsert excelInsert = new ExcelInsert("fileToInsert", "base64EncodedValue");
 //        excelInsert.setPreview(true);
         excelInsert.setIcon("base64icon");
         excelInsert.setFromRow("2");
@@ -265,14 +265,35 @@ public class RenderElementsTests {
         excelInsert.setToColOff("2px");
         String correct = "{ 'fileToInsert':'base64EncodedValue','fileToInsert_icon':'base64icon','fileToInsert_fromRow':'2','fileToInsert_fromCol':'C5','fileToInsert_fromRowOff':'2px','fileToInsert_fromColOff':'2px','fileToInsert_toRow':'5','fileToInsert_toCol':'C5','fileToInsert_toRowOff':'2px','fileToInsert_toColOff':'2px'}";
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
-        assertEquals(jsonCorrect,excelInsert.getJSON());
+        assertEquals(jsonCorrect, excelInsert.getJSON());
     }
-    
+
     @Test
-    public void Embed(){
-        Embed embed = new Embed("fileToInsert","base64EncodedFile");
+    public void Embed() {
+        Embed embed = new Embed("fileToInsert", "base64EncodedFile");
         String correct = "{'fileToInsert':'base64EncodedFile'}";
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
-        assertEquals(jsonCorrect,embed.getJSON());
+        assertEquals(jsonCorrect, embed.getJSON());
+    }
+
+    @Test
+    public void ValidateCell() {
+        ValidateCell validate = new ValidateCell("tagName");
+        validate.setIgnoreBlank(true);
+        validate.setAllow("whole");
+        validate.setValue1("0");
+        validate.setValue2("100");
+        validate.setInCellDropdown(false);
+        validate.setData("between");
+        validate.setShowInputMessage(true);
+        validate.setInputTitle("Instructions");
+        validate.setInputMessage("Insert number between 0 and 100");
+        validate.setShowErrorAlert(true);
+        validate.setErrorStyle("warning");
+        validate.setErrorTitle("Error");
+        validate.setErrorMessage("Number out of bound.");
+        String correct = "{'tagName_ignore_blank':true,'tagName_allow':'whole','tagName_value1':'0','tagName_value2':'100','tagName_in_cell_dropdown':false,'tagName_data':'between','tagName_show_input_message':true,'tagName_input_title':'Instructions','tagName_input_message':'Insert number between 0 and 100','tagName_show_error_alert':true,'tagName_error_style':'warning','tagName_error_title':'Error','tagName_error_message':'Number out of bound.'}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, validate.getJSON());
     }
 }
