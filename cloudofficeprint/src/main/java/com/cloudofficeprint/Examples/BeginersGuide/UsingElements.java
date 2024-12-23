@@ -47,7 +47,7 @@ public class UsingElements {
         data.addElement(text);
 
         //cellStyle Property Docx
-        CellStyleDocxPpt cellStyle = new CellStyleDocxPpt("#eb4034", "10");
+        CellStyleDocxPpt cellStyle = new CellStyleDocxPpt("#eb4034", "10", "true", "double", "double", "dotted", "triple", "wave", "single", "thick", "red", "#0000ff", "00ff00", "#ffff00", "#800080", "#ffa500", "#ffc0cb", "10", "4", "4", "20", "38", "15", "18", "3", "4", "10", "10", "8", "15", "3");
         TableCell cell = new TableCell("cellStyle", "lets See", cellStyle);
 //        data.addElement(cell);
 

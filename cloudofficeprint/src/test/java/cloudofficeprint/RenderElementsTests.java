@@ -26,9 +26,9 @@ public class RenderElementsTests {
 
     @Test
     public void cellStylePropertyDocx() {
-        CellStyleDocxPpt cellStyle = new CellStyleDocxPpt("#eb4034", "10");
+        CellStyleDocxPpt cellStyle = new CellStyleDocxPpt("#eb4034", "10", "true","double", "double", "dotted", "triple", "wave", "single", "thick", "red", "#0000ff", "00ff00", "#ffff00", "#800080", "#ffa500", "#ffc0cb", "10", "4", "4", "20", "38", "15", "18", "3", "4", "10", "10", "8", "15", "3");
         TableCell cell = new TableCell("name", "value", cellStyle);
-        String correct = "{'name': 'value', 'name_cell_background_color': '#eb4034', 'name_width': '10'}";
+        String correct = "{'name': 'value', 'name_cell_background_color': '#eb4034', 'name_width': '10', 'name_preserve_total_width_of_table': true,'name_border': 'double', 'name_border_top': 'double', 'name_border_bottom': 'dotted', 'name_border_left': 'triple', 'name_border_right': 'wave', 'name_border_diagonal_down': 'single', 'name_border_diagonal_up': 'thick', 'name_border_color': 'red', 'name_border_top_color': '#0000ff', 'name_border_bottom_color': '00ff00', 'name_border_left_color': '#ffff00', 'name_border_right_color': '#800080', 'name_border_diagonal_up_color': '#ffa500', 'name_border_diagonal_down_color': '#ffc0cb', 'name_border_size': '10', 'name_border_top_size': '4', 'name_border_bottom_size': '4', 'name_border_left_size': '20', 'name_border_right_size': '38', 'name_border_diagonal_up_size': '15', 'name_border_diagonal_down_size': '18', 'name_border_space': '3', 'name_border_top_space': '4', 'name_border_bottom_space': '10', 'name_border_left_space': '10', 'name_border_right_space': '8', 'name_border_diagonal_up_space': '15', 'name_border_diagonal_down_space': '3'}";
         // System.out.println(cell.getJSON());
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
