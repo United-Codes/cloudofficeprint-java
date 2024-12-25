@@ -197,6 +197,14 @@ public class RenderElementsTests {
     }
 
     @Test
+    public void remove() {
+        Remove remove = new Remove("remove", "false");
+        String correct = "{'remove':false}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, remove.getJSON());
+    }
+
+    @Test
     public void elementCollection() {
         ElementCollection data = new ElementCollection("data");
         ImageUrl element1 = new ImageUrl("image1", "url");
