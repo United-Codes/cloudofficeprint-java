@@ -34,6 +34,7 @@ public class PDFOptions {
     private Boolean identifyFormFields;
     private String signCertificate;
     private String signCertificatePassword;
+    private String convertToPdfa;
 
     /**
      * Constructor for the PDFOptions object. Set the options with the setters.
@@ -496,6 +497,18 @@ public class PDFOptions {
     }
 
     /**
+     * @return whether the output pdf should be converted to pdf/a format
+     */
+    public String getConvertToPdfa() { return convertToPdfa; }
+
+    /**
+     * @param convertToPdfa the variants of PDF/A specification (e.g., 1a, 2b).
+     */
+    public void setConvertToPdfa(String convertToPdfa) {
+        this.convertToPdfa = convertToPdfa;
+    }
+
+    /**
      * Sign the output PDF with a local certificate file.
      * 
      * @param localCertificatePath path to the local certificate file.
@@ -618,6 +631,9 @@ public class PDFOptions {
         }
         if (getRemoveLastPage() != null) {
             json.addProperty("output_remove_last_page", getRemoveLastPage());
+        }
+        if (getConvertToPdfa() != null) {
+            json.addProperty("output_convert_to_pdfa", getConvertToPdfa());
         }
         return json;
     }
