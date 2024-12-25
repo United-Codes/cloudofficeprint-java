@@ -34,6 +34,7 @@ public class PDFOptions {
     private Boolean identifyFormFields;
     private String signCertificate;
     private String signCertificatePassword;
+    private String signCertificateTxt;
     private String convertToPdfa;
 
     /**
@@ -497,6 +498,19 @@ public class PDFOptions {
     }
 
     /**
+     * @return Custom text to add in signature field
+     */
+    public String getSignCertificateTxt() { return  signCertificateTxt; }
+
+    /**
+     *
+     * @param signCertificateTxt The text to add
+     */
+    public void setSignCertificateTxt(String signCertificateTxt) {
+        this.signCertificateTxt = signCertificateTxt;
+    }
+
+    /**
      * @return whether the output pdf should be converted to pdf/a format
      */
     public String getConvertToPdfa() { return convertToPdfa; }
@@ -628,6 +642,9 @@ public class PDFOptions {
         }
         if (getSignCertificatePassword() != null) {
             json.addProperty("output_sign_certificate_password", getSignCertificatePassword());
+        }
+        if (getSignCertificateTxt() != null) {
+            json.addProperty("output_sign_certificate_txt", getSignCertificateTxt());
         }
         if (getRemoveLastPage() != null) {
             json.addProperty("output_remove_last_page", getRemoveLastPage());
