@@ -29,6 +29,7 @@ public class ConfigTests {
         pdfOptions.setWatermarkFont("Aerial");
         pdfOptions.setWatermarkOpacity(60);
         pdfOptions.setWatermarkSize(30);
+        pdfOptions.setWatermarkRotation(45);
         pdfOptions.setPageWidth("500");
         pdfOptions.setPageHeight("500");
         pdfOptions.setEvenPage(true);
@@ -52,7 +53,7 @@ public class ConfigTests {
 
         Output output = new Output("pdf", "raw", "libreoffice", null, null, pdfOptions, null);
 
-        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'output_read_password': 'test_pw', 'output_watermark': 'test_watermark','output_watermark_color':'blue','output_watermark_font':'Aerial','output_watermark_opacity': 60, 'output_watermark_size':30, 'output_page_width': '500', 'output_page_height': '500', 'output_even_page': True, 'output_merge_making_even': False, 'output_modify_password': 'test_modify_password', 'output_password_protection_flag': 0, 'lock_form': True, 'output_copies': 3, 'page_margin': {'top': 5, 'bottom': 5, 'left': 5, 'right': 5}, 'output_page_format': 'test_page_format', 'output_merge': False, 'output_sign_certificate': 'test_sign_certificate','output_sign_certificate_password':'Base64 certificate with password', 'output_sign_certificate_txt':'text in english', 'identify_form_fields': True, 'output_split': False,'output_remove_last_page':true, 'output_convert_to_pdfa':'1b'}";
+        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'output_read_password': 'test_pw', 'output_watermark': 'test_watermark','output_watermark_color':'blue','output_watermark_font':'Aerial','output_watermark_opacity': 60, 'output_watermark_size':30, 'output_watermark_rotation':45, 'output_page_width': '500', 'output_page_height': '500', 'output_even_page': True, 'output_merge_making_even': False, 'output_modify_password': 'test_modify_password', 'output_password_protection_flag': 0, 'lock_form': True, 'output_copies': 3, 'page_margin': {'top': 5, 'bottom': 5, 'left': 5, 'right': 5}, 'output_page_format': 'test_page_format', 'output_merge': False, 'output_sign_certificate': 'test_sign_certificate','output_sign_certificate_password':'Base64 certificate with password', 'output_sign_certificate_txt':'text in english', 'identify_form_fields': True, 'output_split': False,'output_remove_last_page':true, 'output_convert_to_pdfa':'1b'}";
         // System.out.println(output.getJSON());
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);

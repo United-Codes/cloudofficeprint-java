@@ -22,6 +22,7 @@ public class PDFOptions {
     private String watermarkFont;
     private Integer watermarkOpacity;
     private Integer watermarkSize;
+    private Integer watermarkRotation;
     private Boolean lockForm;
     private Integer copies;
     private int[] pageMargin;
@@ -166,22 +167,25 @@ public class PDFOptions {
      * text, color, font, opacity and size. Setting all to null will remove the
      * watermark.
      * 
-     * @param text    specifies the text of the watermark.
-     * @param color   specifies the color of the watermark, with a default of
-     *                "black".
-     * @param font    specifies the font of the watermark, with a default of
-     *                "Arial".
-     * @param opacity specifies the opacity of the watermark, should be as a
-     *                percentage, i.e. 45.
-     * @param size    specifies the size of the watermark, should be as a number in
-     *                px, i.e. 45.
+     * @param text     specifies the text of the watermark.
+     * @param color    specifies the color of the watermark, with a default of
+     *                 "black".
+     * @param font     specifies the font of the watermark, with a default of
+     *                 "Arial".
+     * @param opacity  specifies the opacity of the watermark, should be as a
+     *                 percentage, i.e. 45.
+     * @param size     specifies the size of the watermark, should be as a number in
+     *                 px, i.e. 45.
+     * @param rotation specifies the angle to rotate the watermark, should be as a number in
+     *                 px i.e. 45.
      */
-    public void setWatermark(String text, String color, String font, Integer opacity, Integer size) {
+    public void setWatermark(String text, String color, String font, Integer opacity, Integer size, Integer rotation) {
         this.watermark = text;
         this.watermarkColor = color;
         this.watermarkFont = font;
         this.watermarkOpacity = opacity;
         this.watermarkSize = size;
+        this.watermarkRotation = rotation;
     }
 
     /**
@@ -238,6 +242,19 @@ public class PDFOptions {
      */
     public void setWatermarkSize(Integer watermarkSize) {
         this.watermarkSize = watermarkSize;
+    }
+
+    /**
+     *
+     * @return angle to rotate the watermark
+     */
+    public Integer getWatermarkRotation() { return watermarkRotation; }
+
+    /**
+     * @param watermarkRotation angle to rotate the watermark, as a number in px, i.e. 45.
+     */
+    public void setWatermarkRotation(Integer watermarkRotation) {
+        this.watermarkRotation = watermarkRotation;
     }
 
     /**
@@ -584,6 +601,9 @@ public class PDFOptions {
         }
         if (getWatermarkSize() != null) {
             json.addProperty("output_watermark_size", getWatermarkSize());
+        }
+        if (getWatermarkRotation() != null) {
+            json.addProperty("output_watermark_rotation", getWatermarkRotation());
         }
         if (getLockForm() != null) {
             json.addProperty("lock_form", getLockForm());
