@@ -51,9 +51,9 @@ public class ConfigTests {
         pdfOptions.setRemoveLastPage(true);
         pdfOptions.setConvertToPdfa("1b");
 
-        Output output = new Output("pdf", "raw", "libreoffice", null, null, pdfOptions, null);
+        Output output = new Output("pdf", "raw", "libreoffice", null, null, "5", pdfOptions, null);
 
-        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'output_read_password': 'test_pw', 'output_watermark': 'test_watermark','output_watermark_color':'blue','output_watermark_font':'Aerial','output_watermark_opacity': 60, 'output_watermark_size':30, 'output_watermark_rotation':45, 'output_page_width': '500', 'output_page_height': '500', 'output_even_page': True, 'output_merge_making_even': False, 'output_modify_password': 'test_modify_password', 'output_password_protection_flag': 0, 'lock_form': True, 'output_copies': 3, 'page_margin': {'top': 5, 'bottom': 5, 'left': 5, 'right': 5}, 'output_page_format': 'test_page_format', 'output_merge': False, 'output_sign_certificate': 'test_sign_certificate','output_sign_certificate_password':'Base64 certificate with password', 'output_sign_certificate_txt':'text in english', 'identify_form_fields': True, 'output_split': False,'output_remove_last_page':true, 'output_convert_to_pdfa':'1b'}";
+        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'output_page_number_start_at': '5', 'output_read_password': 'test_pw', 'output_watermark': 'test_watermark','output_watermark_color':'blue','output_watermark_font':'Aerial','output_watermark_opacity': 60, 'output_watermark_size':30, 'output_watermark_rotation':45, 'output_page_width': '500', 'output_page_height': '500', 'output_even_page': True, 'output_merge_making_even': False, 'output_modify_password': 'test_modify_password', 'output_password_protection_flag': 0, 'lock_form': True, 'output_copies': 3, 'page_margin': {'top': 5, 'bottom': 5, 'left': 5, 'right': 5}, 'output_page_format': 'test_page_format', 'output_merge': False, 'output_sign_certificate': 'test_sign_certificate','output_sign_certificate_password':'Base64 certificate with password', 'output_sign_certificate_txt':'text in english', 'identify_form_fields': True, 'output_split': False,'output_remove_last_page':true, 'output_convert_to_pdfa':'1b'}";
         // System.out.println(output.getJSON());
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
@@ -67,7 +67,7 @@ public class ConfigTests {
         csvOptions.setFieldSeparator("fieldSep");
         csvOptions.setTextDelimiter("textDelim");
 
-        Output output = new Output("pdf", "raw", "libreoffice", null, null, null, csvOptions);
+        Output output = new Output("pdf", "raw", "libreoffice", null, null, null, null, csvOptions);
 
         String correct = "{'output_type':'pdf','output_encoding':'raw','output_converter':'libreoffice', 'output_field_separator': 'fieldSep', 'output_text_delimiter': 'textDelim', 'output_character_set': 5}";
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
@@ -180,7 +180,7 @@ public class ConfigTests {
         requestOption.setUrl("https://www.apexofficeprint.com/post/");
         requestOption.setExtraHeaders(extraHeaders);
         String secretKey = "AOPSecretKey";
-        Output output = new Output("pdf", "raw", "libreoffice", null, null, null, null,secretKey,true,requestOption);
+        Output output = new Output("pdf", "raw", "libreoffice", null, null, null, null,null,  secretKey,true,requestOption);
         String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'secret_key':'AOPSecretKey', 'output_polling': true,'request_option':{'url': 'https://www.apexofficeprint.com/post/','extra_headers': {'file_id' : 'Any file id like FILE_123','access_token': 'Access Token for above hostname (if any) '}} }";
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         assertEquals(jsonCorrect,output.getJSON());

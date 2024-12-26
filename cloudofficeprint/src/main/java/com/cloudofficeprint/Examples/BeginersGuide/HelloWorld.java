@@ -42,7 +42,7 @@ public class HelloWorld {
         data.addElement(title);
         data.addElement(text);
 
-        Output conf = new Output("docx", "raw", "libreoffice", null, null, null, null);
+        Output conf = new Output("docx", "raw", "libreoffice", null, null, null, null, null);
         Hashtable<String, RenderElement> dataTable = new Hashtable<String, RenderElement>();
         dataTable.put("data", data);
         PrintJob printJob = new PrintJob(dataTable, copServer, conf, template, null, null, null, null);

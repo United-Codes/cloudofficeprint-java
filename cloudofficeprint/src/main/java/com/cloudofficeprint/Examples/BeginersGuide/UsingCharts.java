@@ -105,7 +105,7 @@ public class UsingCharts {
         data.addElement(combinedChart);
 
         //Output configuration
-        Output conf = new Output("docx", "raw", "libreoffice", null, null, null, null);
+        Output conf = new Output("docx", "raw", "libreoffice", null, null, null, null,  null);
 
         Hashtable<String, RenderElement> dataTable = new Hashtable<String, RenderElement>();
         dataTable.put("data", data);
