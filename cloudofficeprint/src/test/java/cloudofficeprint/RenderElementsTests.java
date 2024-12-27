@@ -205,6 +205,14 @@ public class RenderElementsTests {
     }
 
     @Test
+    public void hideSlide() {
+        HideSlide hide = new HideSlide("product", "true");
+        String correct = "{'product_hide':true}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, hide.getJSON());
+    }
+
+    @Test
     public void elementCollection() {
         ElementCollection data = new ElementCollection("data");
         ImageUrl element1 = new ImageUrl("image1", "url");
