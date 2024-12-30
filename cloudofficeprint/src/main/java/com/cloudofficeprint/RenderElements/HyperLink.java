@@ -12,6 +12,8 @@ import java.util.Set;
 public class HyperLink extends RenderElement {
 
     private String url;
+    private String fontColor;
+    private String underlineColor;
 
     /**
      * Note : In Excel you can hyperlink to a cell. The URL should then be of
@@ -34,6 +36,36 @@ public class HyperLink extends RenderElement {
     }
 
     /**
+     *
+     * @return font color of text for hyperlink
+     */
+    public String getFontColor() { return fontColor; }
+
+    /**
+     *
+     * @param fontColor sets the font color of text for hyperlink
+     */
+    public void setFontColor(String fontColor) {
+        this.fontColor = fontColor;
+    }
+
+    /**
+     *
+     * @return  underline color of text for hyperlink
+     */
+    public String getUnderlineColor() {
+        return underlineColor;
+    }
+
+    /**
+     *
+     * @param underlineColor  sets the underline color of text for hyperlink
+     */
+    public void setUnderlineColor(String underlineColor) {
+        this.underlineColor = underlineColor;
+    }
+
+    /**
      * Element to insert a footnote in a template.
      *
      * @param name Name of this footnote for the tag.
@@ -42,10 +74,12 @@ public class HyperLink extends RenderElement {
      * @param url  URL to hyperlink to. Note : In Excel you can hyperlink to a cell.
      *             The URL should then be of structure: "SheetName!Cell".
      */
-    public HyperLink(String name, String text, String url) {
+    public HyperLink(String name, String text, String url, String fontColor, String underlineColor) {
         setName(name);
         setValue(text);
         setUrl(url);
+        setFontColor(fontColor);
+        setUnderlineColor(underlineColor);
     }
 
     /**
@@ -58,6 +92,12 @@ public class HyperLink extends RenderElement {
         json.addProperty(getName(), getUrl());
         if (getValue() != null) { // getValue() gives back the url in this class.
             json.addProperty(getName() + "_text", getValue());
+        }
+        if (getValue() != null && getFontColor() != null) {
+            json.addProperty(getValue() + "_font_color", getFontColor());
+        }
+        if (getValue() != null && getUnderlineColor() != null) {
+            json.addProperty(getValue() + "_underline_color", getUnderlineColor());
         }
         return json;
     }

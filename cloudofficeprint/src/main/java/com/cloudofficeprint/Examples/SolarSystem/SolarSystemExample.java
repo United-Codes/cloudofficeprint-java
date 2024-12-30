@@ -47,7 +47,7 @@ public class SolarSystemExample {
         data.addElement(new Property("main_title", "The solar system"));
 
         // Add the source for the data
-        data.addElement(new HyperLink("data_source", "Data source", "https://api.le-systeme-solaire.net/rest/bodies/"));
+        data.addElement(new HyperLink("data_source", "Data source", "https://api.le-systeme-solaire.net/rest/bodies/", null, null));
 
         // Process data: we only want planets
         // Get solar system data
