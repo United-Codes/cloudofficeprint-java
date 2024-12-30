@@ -213,6 +213,13 @@ public class RenderElementsTests {
     }
 
     @Test
+    public void distribute () {
+        Distribute distribute = new Distribute("product_b", "true");
+        String correct = "{'product_b_distribute':true}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, distribute.getJSON());
+    }
+    @Test
     public void elementCollection() {
         ElementCollection data = new ElementCollection("data");
         ImageUrl element1 = new ImageUrl("image1", "url");
