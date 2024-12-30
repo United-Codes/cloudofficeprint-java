@@ -171,7 +171,7 @@ public class OrderConfirmationExample {
                 Output conf = new Output("pdf", "raw", "libreoffice", null, null, null, null, null);
                 Hashtable<String, RenderElement> dataTable = new Hashtable<String, RenderElement>();
                 dataTable.put("data", data);
-                PrintJob printJob = new PrintJob(dataTable, copServer, conf, template, null, null, null, null);
+                PrintJob printJob = new PrintJob(dataTable, copServer, conf, template, null, null, null, null, null);
 
                 Response response = printJob.execute();
 

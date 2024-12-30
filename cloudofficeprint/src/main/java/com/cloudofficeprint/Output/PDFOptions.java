@@ -37,6 +37,8 @@ public class PDFOptions {
     private String signCertificatePassword;
     private String signCertificateTxt;
     private String convertToPdfa;
+    private String attachmentName;
+    private Boolean convertAttachmentToJson;
 
     /**
      * Constructor for the PDFOptions object. Set the options with the setters.
@@ -540,6 +542,30 @@ public class PDFOptions {
     }
 
     /**
+     * @return  retrieve specific attachment. output_type must be 'get_attachments'.
+     */
+    public String getAttachmentName() { return attachmentName; }
+
+    /**
+     * @param attachmentName name of attachment
+     */
+    public void setAttachmentName(String attachmentName) {
+        this.attachmentName = attachmentName;
+    }
+
+    /**
+     * @return retrieve data of the XML attachment as a JSON. output_type must be 'get_attachments'.
+     */
+    public Boolean getConvertAttachmentToJson() { return convertAttachmentToJson; }
+
+    /**
+     * @param convertAttachmentToJson true or false
+     */
+    public void setConvertAttachmentToJson(Boolean convertAttachmentToJson) {
+        this.convertAttachmentToJson = convertAttachmentToJson;
+    }
+
+    /**
      * Sign the output PDF with a local certificate file.
      * 
      * @param localCertificatePath path to the local certificate file.
@@ -672,6 +698,13 @@ public class PDFOptions {
         if (getConvertToPdfa() != null) {
             json.addProperty("output_convert_to_pdfa", getConvertToPdfa());
         }
+        if (getAttachmentName() != null) {
+            json.addProperty("output_attachment_name", getAttachmentName());
+        }
+        if (getConvertAttachmentToJson() != null) {
+            json.addProperty("output_convert_attachment_to_json", getConvertAttachmentToJson());
+        }
+
         return json;
     }
 }

@@ -22,6 +22,7 @@ public class PrintJob implements Runnable {
     private Resource template;
     private Resource[] prependFiles;
     private Resource[] appendFiles;
+    private Resource[] attachments;
     private Hashtable<String, Resource> subTemplates = new Hashtable<String, Resource>();
     private Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
     private ExternalResource externalResource;
@@ -97,6 +98,20 @@ public class PrintJob implements Runnable {
      */
     public void setAppendFiles(Resource[] appendFiles) {
         this.appendFiles = appendFiles;
+    }
+
+    /**
+     * @return Files to attach to the PDF.
+     */
+    public Resource[] getAttachments() {
+        return attachments;
+    }
+
+    /**
+     * @param attachments Files to attach to the PDF file.
+     */
+    public void setAttachments(Resource[] attachments) {
+        this.attachments = attachments;
     }
 
     /**
@@ -212,13 +227,14 @@ public class PrintJob implements Runnable {
      *                       the docx.
      * @param prependFiles   Files to prepend to the output.
      * @param appendFiles    Files to append to the output.
+     * @param attachments   Files to attach to the PDF file.
      * @param copRemoteDebug If set to true the Cloud Office Print server will log
      *                       your JSON into out database and you can see it when you
      *                       log into cloudofficeprint.com.
      */
     public PrintJob(Hashtable<String, RenderElement> data, Server server, Output output, Resource template,
             Hashtable<String, Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles,
-            Boolean copRemoteDebug) {
+            Resource[] attachments, Boolean copRemoteDebug) {
         setData(data);
         setServer(server);
         setOutput(output);
@@ -226,6 +242,7 @@ public class PrintJob implements Runnable {
         setSubTemplates(subTemplates);
         setPrependFiles(prependFiles);
         setAppendFiles(appendFiles);
+        setAttachments(attachments);
         setCopRemoteDebug(copRemoteDebug);
     }
 
@@ -248,13 +265,14 @@ public class PrintJob implements Runnable {
      *                         the docx.
      * @param prependFiles     Files to prepend to the output.
      * @param appendFiles      Files to append to the output.
+     * @param attachments   Files to attach to the PDF file.
      * @param copRemoteDebug   If set to true the Cloud Office Print server will log
-     *                         your JSON into out database and you can see it when
+     *                         your JSON into out database, and you can see it when
      *                         you log into cloudofficeprint.com.
      */
     public PrintJob(ExternalResource externalResource, Server server, Output output, Resource template,
             Hashtable<String, Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles,
-            Boolean copRemoteDebug) {
+            Resource[] attachments, Boolean copRemoteDebug) {
         setExternalResource(externalResource);
         setServer(server);
         setOutput(output);
@@ -262,6 +280,7 @@ public class PrintJob implements Runnable {
         setSubTemplates(subTemplates);
         setPrependFiles(prependFiles);
         setAppendFiles(appendFiles);
+        setAttachments(attachments);
         setCopRemoteDebug(copRemoteDebug);
     }
 
@@ -312,6 +331,14 @@ public class PrintJob implements Runnable {
                 appendFiles.add(appendFile.getJSONForSecondaryFile());
             }
             jsonForServer.add("append_files", appendFiles);
+        }
+
+        if (getAttachments() != null && getAttachments().length > 0) {
+            JsonArray attachments = new JsonArray();
+            for (Resource attachment : getAttachments()) {
+                attachments.add(attachment.getJSONForSecondaryFile());
+            }
+            jsonForServer.add("attachments", attachments);
         }
 
         JsonArray files = new JsonArray();
