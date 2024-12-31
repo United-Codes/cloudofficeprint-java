@@ -74,8 +74,8 @@ public class RenderElementsTests {
 
     @Test
     public void autoLink() {
-        AutoLink cell = new AutoLink("autoLink", "sample text with multiple hyperlinks", "red", "#ffffff");
-        String correct = "{'autoLink': 'sample text with multiple hyperlinks', 'autoLink_font_color': 'red', 'autoLink_underline_color': '#ffffff'}";
+        AutoLink cell = new AutoLink("autoLink", "sample text with multiple hyperlinks", "red", "#ffffff", true);
+        String correct = "{'autoLink': 'sample text with multiple hyperlinks', 'autoLink_font_color': 'red', 'autoLink_underline_color': '#ffffff', 'autoLink_preserve_tag_style': true}";
         // System.out.println(cell.getJSON());
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
@@ -84,8 +84,8 @@ public class RenderElementsTests {
 
     @Test
     public void hyperLink() {
-        HyperLink cell = new HyperLink("hyperlink", "hyperlink_text", "url",  "red", "#ffffff");
-        String correct = "{'hyperlink': 'url', 'hyperlink_text': 'hyperlink_text', 'hyperlink_text_font_color': 'red', 'hyperlink_text_underline_color': '#ffffff'}";
+        HyperLink cell = new HyperLink("hyperlink", "hyperlink_text", "url",  "red", "#ffffff", true);
+        String correct = "{'hyperlink': 'url', 'hyperlink_text': 'hyperlink_text', 'hyperlink_text_font_color': 'red', 'hyperlink_text_underline_color': '#ffffff', 'hyperLink': true}";
         // System.out.println(cell.getJSON());
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);

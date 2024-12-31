@@ -52,11 +52,11 @@ public class UsingElements {
         data.addElement(cell);
 
         //AutoLink
-        AutoLink autoLink = new AutoLink("autoLink", "AutoLink including hyperlinks like https://www.cloudofficeprint.com and other mail like info@cloudofficeprint.com and text combined", null, null);
+        AutoLink autoLink = new AutoLink("autoLink", "AutoLink including hyperlinks like https://www.cloudofficeprint.com and other mail like info@cloudofficeprint.com and text combined", null, null, null);
         data.addElement(autoLink);
 
         //HyperLink
-        HyperLink hyperLink = new HyperLink("COP_link", "Visit COP", "https://www.cloudofficeprint.com/index.html", null, null);
+        HyperLink hyperLink = new HyperLink("COP_link", "Visit COP", "https://www.cloudofficeprint.com/index.html", null, null,null);
         data.addElement(hyperLink);
 
         //Styled Property
