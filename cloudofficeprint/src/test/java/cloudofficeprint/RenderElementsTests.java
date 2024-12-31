@@ -64,11 +64,16 @@ public class RenderElementsTests {
         cellStyle.setTextHAlignment("center");
         cellStyle.setTextVAlignment("justify");
         cellStyle.setTextRotation(45);
+        cellStyle.setWrapText(true);
+        cellStyle.setWidth("30");
+        cellStyle.setHeight("auto");
+        cellStyle.setMaxCharacters("60");
+        cellStyle.setHeightScaling("0.75");
         TableCell cell = new TableCell("name", "value", cellStyle);
-        String correct = "{'name': 'value', 'name_cell_locked': True, 'name_cell_hidden': False, 'name_cell_background': '#ff0000', 'name_font_name': 'Arial', 'name_font_size': '12', 'name_font_color': '#ff0000', 'name_font_italic': True, 'name_font_bold': False, 'name_font_strike': False, 'name_font_underline': True, 'name_font_superscript': False, 'name_font_subscript': True, 'name_border_top': 'medium', 'name_border_top_color': '#ff0000', 'name_border_bottom': 'mediumDashed', 'name_border_bottom_color': '#ff0000', 'name_border_left': 'mediumDashDot', 'name_border_left_color': '#ff0000', 'name_border_right': 'mediumDashDotDot', 'name_border_right_color': '#ff0000', 'name_border_diagonal': 'thick', 'name_border_diagonal_direction': 'up-wards', 'name_border_diagonal_color': '#ff0000', 'name_text_h_alignment': 'center', 'name_text_v_alignment': 'justify', 'name_text_rotation': '45'}";
+        String correct = "{'name': 'value', 'name_cell_locked': True, 'name_cell_hidden': False, 'name_cell_background': '#ff0000', 'name_font_name': 'Arial', 'name_font_size': '12', 'name_font_color': '#ff0000', 'name_font_italic': True, 'name_font_bold': False, 'name_font_strike': False, 'name_font_underline': True, 'name_font_superscript': False, 'name_font_subscript': True, 'name_border_top': 'medium', 'name_border_top_color': '#ff0000', 'name_border_bottom': 'mediumDashed', 'name_border_bottom_color': '#ff0000', 'name_border_left': 'mediumDashDot', 'name_border_left_color': '#ff0000', 'name_border_right': 'mediumDashDotDot', 'name_border_right_color': '#ff0000', 'name_border_diagonal': 'thick', 'name_border_diagonal_direction': 'up-wards', 'name_border_diagonal_color': '#ff0000', 'name_text_h_alignment': 'center', 'name_text_v_alignment': 'justify', 'name_text_rotation': '45', 'name_wrap_text': True, 'name_width': '30', 'name_height': 'auto', 'name_max_characters': '60', 'name_height_scaling': '0.75'}";
         // System.out.println(cell.getJSON());
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
-        // System.out.println(jsonCorrect);
+         System.out.println(jsonCorrect);
         assertEquals(jsonCorrect, cell.getJSON());
     }
 
