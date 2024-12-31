@@ -25,6 +25,16 @@ public class RenderElementsTests {
     }
 
     @Test
+    public void Html() {
+        HTML html = new HTML("name", "<!DOCTYPE html> <html> <body> <h2>An ordered HTML list</h2> <ol> <li value=\\\"2\\\">Coffee</li> <li>Tea</li> <li>Milk</li> </ol> </body> </html>", "CustomTableAOP", "1", "2", false, true, false);
+        String correct = "{'name': '<!DOCTYPE html> <html> <body> <h2>An ordered HTML list</h2> <ol> <li value=\\\\\\\"2\\\\\\\">Coffee</li> <li>Tea</li> <li>Milk</li> </ol> </body> </html>', 'name_custom_table_style': 'CustomTableAOP', 'name_unordered_list_style': '1', 'name_ordered_list_style': '2', 'name_use_tag_style': false, 'name_ignore_cell_margin': true, 'name_ignore_empty_p': false}";
+        // System.out.println(property.getJSON());
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        // System.out.println(jsonCorrect);
+        assertEquals(jsonCorrect, html.getJSON());
+    }
+
+    @Test
     public void cellStylePropertyDocx() {
         CellStyleDocxPpt cellStyle = new CellStyleDocxPpt("#eb4034", "10", "true","double", "double", "dotted", "triple", "wave", "single", "thick", "red", "#0000ff", "00ff00", "#ffff00", "#800080", "#ffa500", "#ffc0cb", "10", "4", "4", "20", "38", "15", "18", "3", "4", "10", "10", "8", "15", "3");
         TableCell cell = new TableCell("name", "value", cellStyle);
