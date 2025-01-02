@@ -64,7 +64,7 @@ public class MultipleRequestMergeExample {
 		// Create output configuration: merge PDF
 		PDFOptions pdfOpts = new PDFOptions();
 		pdfOpts.setMerge(true);
-		Output conf = new Output("pdf", "raw", "libreoffice", null, null, null, pdfOpts, null);
+		Output conf = new Output("pdf", "raw", "libreoffice", null, null, null, null, pdfOpts, null);
 
 		// Let's assume that the Cloud Office Print server can't handle all the data at
 		// once,
@@ -103,7 +103,7 @@ public class MultipleRequestMergeExample {
 		Base64Resource[] splitResources = Arrays.copyOfRange(resources, 1, resources.length);
 		data = new Hashtable<String, RenderElement>();
 		data.put("not_used", new Property("not", "used"));
-		Output conf2 = new Output("pdf", "raw", "libreoffice", null, null, null, null, null);
+		Output conf2 = new Output("pdf", "raw", "libreoffice", null, null, null, null, null, null);
 		PrintJob printjob = new PrintJob(data, copServer, conf2, resources[0], null, null, splitResources, null, null);
 
 		printjob.execute().downloadLocally("./downloads/multiple_request_merge");

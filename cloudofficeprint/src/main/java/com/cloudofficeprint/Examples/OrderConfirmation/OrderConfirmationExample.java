@@ -168,7 +168,7 @@ public class OrderConfirmationExample {
                 data.addElement(orders);
 
                 // Merge template and data to generate the output file
-                Output conf = new Output("pdf", "raw", "libreoffice", null, null, null, null, null);
+                Output conf = new Output("pdf", "raw", "libreoffice", null, null, null, null, null, null);
                 Hashtable<String, RenderElement> dataTable = new Hashtable<String, RenderElement>();
                 dataTable.put("data", data);
                 PrintJob printJob = new PrintJob(dataTable, copServer, conf, template, null, null, null, null, null);

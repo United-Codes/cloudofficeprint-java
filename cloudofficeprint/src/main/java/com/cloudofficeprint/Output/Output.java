@@ -83,6 +83,12 @@ public class Output {
      * Specifies the start of the page number
      */
     private String PageNumberStartAt = null;
+
+    /**
+     * Update table of contents of Word document..
+     */
+    private Boolean UpdateToc = null;
+
     /**
      *  AOP makes a call to the given option with response/output of the current request.
      */
@@ -276,6 +282,20 @@ public class Output {
     }
 
     /**
+     * Returns updated table of content
+     * @return Boolean
+     */
+    public Boolean getUpdateToc() { return UpdateToc; }
+
+    /**
+     *
+     * @param updateToc Boolean
+     */
+    public void setUpdateToc(Boolean updateToc) {
+        this.UpdateToc = updateToc;
+    }
+
+    /**
      * Returns option to which AOP makes a call to the given option with response/output of the current request.
      * @return requestOption as json object.
      */
@@ -326,13 +346,14 @@ public class Output {
      *                          directory on the server needs to be specified. Default
      *                          : null.
      * @param pageNumberStartAt Option to provide start of the page number
+     * @param updateToc         Option to update table of content for docx
      * @param pdfOptions        Optional PDF options. They are described in the
      *                          PDFOptions class. Default : null.
      * @param csvOptions        Optional CSV options. They are described in the
      *                          CsvOptions class. Default : null.
      */
     public Output(String filetype, String encoding, String converter, Boolean appendPerPage, Boolean prependPerPage, CloudAccessToken token, String serverDirectory,
-                  String pageNumberStartAt, PDFOptions pdfOptions, CsvOptions csvOptions) {
+                  String pageNumberStartAt, Boolean updateToc, PDFOptions pdfOptions, CsvOptions csvOptions) {
         setType(filetype);
         setEncoding(encoding);
         setConverter(converter);
@@ -341,6 +362,7 @@ public class Output {
         setAccessToken(token);
         setServerDirectory(serverDirectory);
         setPageNumberStartAt(pageNumberStartAt);
+        setUpdateToc(updateToc);
         setPDFOptions(pdfOptions);
         setCsvOptions(csvOptions);
     }
@@ -376,6 +398,7 @@ public class Output {
      *                        directory on the server needs to be specified. Default
      *                        : null.
      * @param pageNumberStartAt Option to provide start of the page number
+     * @param updateToc         Option to update table of content for docx
      * @param pdfOptions      Optional PDF options. They are described in the
      *                        PDFOptions class. Default : null.
      * @param csvOptions      Optional CSV options. They are described in the
@@ -383,13 +406,14 @@ public class Output {
      */
 
     public Output(String filetype, String encoding, String converter, CloudAccessToken token, String serverDirectory,
-                  String pageNumberStartAt, PDFOptions pdfOptions, CsvOptions csvOptions) {
+                  String pageNumberStartAt, Boolean updateToc, PDFOptions pdfOptions, CsvOptions csvOptions) {
         setType(filetype);
         setEncoding(encoding);
         setConverter(converter);
         setAccessToken(token);
         setServerDirectory(serverDirectory);
         setPageNumberStartAt(pageNumberStartAt);
+        setUpdateToc(updateToc);
         setPDFOptions(pdfOptions);
         setCsvOptions(csvOptions);
     }
@@ -425,6 +449,7 @@ public class Output {
      *                        directory on the server needs to be specified. Default
      *                        : null.
      * @param pageNumberStartAt Option to provide start of the page number
+     * @param updateToc        Option to update table of content for docx
      * @param pdfOptions      Optional PDF options. They are described in the
      *                        PDFOptions class. Default : null.
      * @param csvOptions      Optional CSV options. They are described in the
@@ -438,13 +463,14 @@ public class Output {
      */
 
     public Output(String filetype, String encoding, String converter, CloudAccessToken token, String serverDirectory,
-                  String pageNumberStartAt, PDFOptions pdfOptions, CsvOptions csvOptions,String secretKey, Boolean outputPolling, RequestOption requestOption) {
+                  String pageNumberStartAt, Boolean updateToc, PDFOptions pdfOptions, CsvOptions csvOptions,String secretKey, Boolean outputPolling, RequestOption requestOption) {
         setType(filetype);
         setEncoding(encoding);
         setConverter(converter);
         setAccessToken(token);
         setServerDirectory(serverDirectory);
         setPageNumberStartAt(pageNumberStartAt);
+        setUpdateToc(updateToc);
         setPDFOptions(pdfOptions);
         setCsvOptions(csvOptions);
         setSecretKey(secretKey);
@@ -482,6 +508,9 @@ public class Output {
         }
         if (getPageNumberStartAt() != null) {
             json.addProperty("output_page_number_start_at", getPageNumberStartAt());
+        }
+        if (getUpdateToc() != null) {
+            json.addProperty("update_toc", getUpdateToc());
         }
         if (getPDFOptions() != null) {
             for (Map.Entry<String, JsonElement> tag : getPDFOptions().getJSON().entrySet()) {

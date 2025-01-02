@@ -92,7 +92,7 @@ public class UsingElements {
         Insert insert = new Insert("doc", base64EncodedDoc);
         data.addElement(insert);
 
-        Output conf = new Output("docx", "raw", "libreoffice", null, null, null, null, null);
+        Output conf = new Output("docx", "raw", "libreoffice", null, null, null, null, null, null);
         Hashtable<String, RenderElement> dataTable = new Hashtable<String, RenderElement>();
         dataTable.put("data", data);
         PrintJob printJob = new PrintJob(dataTable, copServer, conf, template, null, null, null, null, null);
