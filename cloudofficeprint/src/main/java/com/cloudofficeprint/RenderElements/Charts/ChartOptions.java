@@ -14,6 +14,7 @@ public class ChartOptions {
     Boolean border;
     Integer firstSliceAngle;
     Integer holeSize;
+    Boolean enableAreaTransparency;
     Boolean grid;
     Boolean roundedCorners;
     String backgroundColor;
@@ -140,7 +141,17 @@ public class ChartOptions {
      *
      * @param holeSize hole size for Doughnut Chart
      */
-    public void setHoleSize(Integer holeSize) { this.holeSize = holeSize; }
+    public void setHoleSize(Integer holeSize) { this.holeSize = holeSize; } /**
+     *
+     * @return  whether to make Area Chart transparent.
+     */
+    public Boolean getEnableAreaTransparency() { return enableAreaTransparency; }
+
+    /**
+     *
+     * @param enableAreaTransparency whether to make Area Chart transparent.
+     */
+    public void setEnableAreaTransparency(Boolean enableAreaTransparency) { this.enableAreaTransparency = enableAreaTransparency; }
 
     /**
      * @return Whether the chart should have rounded borders.
@@ -434,6 +445,9 @@ public class ChartOptions {
         }
         if (getHoleSize() != null) {
             json.addProperty("holeSize", getHoleSize());
+        }
+        if (getEnableAreaTransparency() != null) {
+            json.addProperty("enableAreaTransparency", getEnableAreaTransparency());
         }
         if (getRoundedCorners() != null) {
             json.addProperty("roundedCorners", getRoundedCorners());
