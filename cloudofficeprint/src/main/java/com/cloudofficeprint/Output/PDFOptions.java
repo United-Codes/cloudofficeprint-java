@@ -39,6 +39,7 @@ public class PDFOptions {
     private String convertToPdfa;
     private String attachmentName;
     private Boolean convertAttachmentToJson;
+    private Boolean insertBarcode;
 
     /**
      * Constructor for the PDFOptions object. Set the options with the setters.
@@ -566,6 +567,18 @@ public class PDFOptions {
     }
 
     /**
+     *
+     * @return whether to insert barcode in pdf
+     */
+    public Boolean getInsertBarcode() { return insertBarcode; }
+
+    /**
+     *
+     * @param insertBarcode true or false
+     */
+    public void setInsertBarcode(Boolean insertBarcode) { this.insertBarcode = insertBarcode; }
+
+    /**
      * Sign the output PDF with a local certificate file.
      * 
      * @param localCertificatePath path to the local certificate file.
@@ -703,6 +716,9 @@ public class PDFOptions {
         }
         if (getConvertAttachmentToJson() != null) {
             json.addProperty("output_convert_attachment_to_json", getConvertAttachmentToJson());
+        }
+        if (getInsertBarcode() != null) {
+            json.addProperty("output_insert_barcode", getInsertBarcode());
         }
 
         return json;
