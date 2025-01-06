@@ -104,6 +104,9 @@ public class UsingCharts {
                 new Chart[]{columnChart1, lineChart1}, new Chart[]{BarChart});
         data.addElement(combinedChart);
 
+        // For stacked charts create new instance of those charts
+        // Example:  BarStackedChart chart = new BarStackedChart("bar_chart", null, Bar1, Bar2);
+
         //Output configuration
         Output conf = new Output("docx", "raw", "libreoffice", null, null, null, null, null,  null);
 
