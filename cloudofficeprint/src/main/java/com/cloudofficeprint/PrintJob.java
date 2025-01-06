@@ -262,10 +262,10 @@ public class PrintJob implements Runnable {
      *                       the docx.
      * @param prependFiles   Files to prepend to the output.
      * @param appendFiles    Files to append to the output.
-     * @param attachments   Files to attach to the PDF file.
      * @param copRemoteDebug If set to true the Cloud Office Print server will log
      *                       your JSON into out database and you can see it when you
      *                       log into cloudofficeprint.com.
+     * @param attachments   Files to attach to the PDF file.
      */
     public PrintJob(Hashtable<String, RenderElement> data, Server server, Output output, Resource template,
                     Hashtable<String, Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles,
@@ -277,8 +277,8 @@ public class PrintJob implements Runnable {
         setSubTemplates(subTemplates);
         setPrependFiles(prependFiles);
         setAppendFiles(appendFiles);
-        setAttachments(attachments);
         setCopRemoteDebug(copRemoteDebug);
+        setAttachments(attachments);
     }
 
     /**
@@ -336,14 +336,14 @@ public class PrintJob implements Runnable {
      *                         the docx.
      * @param prependFiles     Files to prepend to the output.
      * @param appendFiles      Files to append to the output.
-     * @param attachments   Files to attach to the PDF file.
      * @param copRemoteDebug   If set to true the Cloud Office Print server will log
      *                         your JSON into out database, and you can see it when
      *                         you log into cloudofficeprint.com.
+     * @param attachments   Files to attach to the PDF file.
      */
     public PrintJob(ExternalResource externalResource, Server server, Output output, Resource template,
                     Hashtable<String, Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles,
-                    Resource[] attachments, Boolean copRemoteDebug) {
+                    Boolean copRemoteDebug,   Resource[] attachments) {
         setExternalResource(externalResource);
         setServer(server);
         setOutput(output);
@@ -351,8 +351,8 @@ public class PrintJob implements Runnable {
         setSubTemplates(subTemplates);
         setPrependFiles(prependFiles);
         setAppendFiles(appendFiles);
-        setAttachments(attachments);
         setCopRemoteDebug(copRemoteDebug);
+        setAttachments(attachments);
     }
 
     /**
