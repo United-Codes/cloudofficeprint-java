@@ -109,28 +109,52 @@ implements <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(com.cloudofficeprint.Resources.ExternalResource,com.cloudofficeprint.Server.Server,com.cloudofficeprint.Output.Output,com.cloudofficeprint.Resources.Resource,java.util.Hashtable,com.cloudofficeprint.Resources.Resource%5B%5D,com.cloudofficeprint.Resources.Resource%5B%5D,com.cloudofficeprint.Resources.Resource%5B%5D,java.lang.Boolean)" class="member-name-link">PrintJob</a><wbr>(<a href="Resources/ExternalResource.html" title="class in com.cloudofficeprint.Resources">ExternalResource</a>&nbsp;externalResource,
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(com.cloudofficeprint.Resources.ExternalResource,com.cloudofficeprint.Server.Server,com.cloudofficeprint.Output.Output,com.cloudofficeprint.Resources.Resource,java.util.Hashtable,com.cloudofficeprint.Resources.Resource%5B%5D,com.cloudofficeprint.Resources.Resource%5B%5D,java.lang.Boolean)" class="member-name-link">PrintJob</a><wbr>(<a href="Resources/ExternalResource.html" title="class in com.cloudofficeprint.Resources">ExternalResource</a>&nbsp;externalResource,
  <a href="Server/Server.html" title="class in com.cloudofficeprint.Server">Server</a>&nbsp;server,
  <a href="Output/Output.html" title="class in com.cloudofficeprint.Output">Output</a>&nbsp;output,
  <a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>&nbsp;template,
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Hashtable.html" title="class or interface in java.util" class="external-link">Hashtable</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>&gt;&nbsp;subTemplates,
  <a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>[]&nbsp;prependFiles,
  <a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>[]&nbsp;appendFiles,
- <a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>[]&nbsp;attachments,
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Boolean.html" title="class or interface in java.lang" class="external-link">Boolean</a>&nbsp;copRemoteDebug)</code></div>
 <div class="col-last even-row-color">
 <div class="block">A print job for the Cloud Office Print server containing all the necessary
  information to generate the adequate JSON for the Cloud Office Print server.</div>
 </div>
-<div class="col-constructor-name odd-row-color"><code><a href="#%3Cinit%3E(java.util.Hashtable,com.cloudofficeprint.Server.Server,com.cloudofficeprint.Output.Output,com.cloudofficeprint.Resources.Resource,java.util.Hashtable,com.cloudofficeprint.Resources.Resource%5B%5D,com.cloudofficeprint.Resources.Resource%5B%5D,com.cloudofficeprint.Resources.Resource%5B%5D,java.lang.Boolean)" class="member-name-link">PrintJob</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Hashtable.html" title="class or interface in java.util" class="external-link">Hashtable</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="RenderElements/RenderElement.html" title="class in com.cloudofficeprint.RenderElements">RenderElement</a>&gt;&nbsp;data,
+<div class="col-constructor-name odd-row-color"><code><a href="#%3Cinit%3E(com.cloudofficeprint.Resources.ExternalResource,com.cloudofficeprint.Server.Server,com.cloudofficeprint.Output.Output,com.cloudofficeprint.Resources.Resource,java.util.Hashtable,com.cloudofficeprint.Resources.Resource%5B%5D,com.cloudofficeprint.Resources.Resource%5B%5D,java.lang.Boolean,com.cloudofficeprint.Resources.Resource%5B%5D)" class="member-name-link">PrintJob</a><wbr>(<a href="Resources/ExternalResource.html" title="class in com.cloudofficeprint.Resources">ExternalResource</a>&nbsp;externalResource,
  <a href="Server/Server.html" title="class in com.cloudofficeprint.Server">Server</a>&nbsp;server,
  <a href="Output/Output.html" title="class in com.cloudofficeprint.Output">Output</a>&nbsp;output,
  <a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>&nbsp;template,
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Hashtable.html" title="class or interface in java.util" class="external-link">Hashtable</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>&gt;&nbsp;subTemplates,
  <a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>[]&nbsp;prependFiles,
  <a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>[]&nbsp;appendFiles,
- <a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>[]&nbsp;attachments,
+ <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Boolean.html" title="class or interface in java.lang" class="external-link">Boolean</a>&nbsp;copRemoteDebug,
+ <a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>[]&nbsp;attachments)</code></div>
+<div class="col-last odd-row-color">
+<div class="block">A print job for the Cloud Office Print server containing all the necessary
+ information to generate the adequate JSON for the Cloud Office Print server.</div>
+</div>
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(java.util.Hashtable,com.cloudofficeprint.Server.Server,com.cloudofficeprint.Output.Output,com.cloudofficeprint.Resources.Resource,java.util.Hashtable,com.cloudofficeprint.Resources.Resource%5B%5D,com.cloudofficeprint.Resources.Resource%5B%5D,java.lang.Boolean)" class="member-name-link">PrintJob</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Hashtable.html" title="class or interface in java.util" class="external-link">Hashtable</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="RenderElements/RenderElement.html" title="class in com.cloudofficeprint.RenderElements">RenderElement</a>&gt;&nbsp;data,
+ <a href="Server/Server.html" title="class in com.cloudofficeprint.Server">Server</a>&nbsp;server,
+ <a href="Output/Output.html" title="class in com.cloudofficeprint.Output">Output</a>&nbsp;output,
+ <a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>&nbsp;template,
+ <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Hashtable.html" title="class or interface in java.util" class="external-link">Hashtable</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>&gt;&nbsp;subTemplates,
+ <a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>[]&nbsp;prependFiles,
+ <a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>[]&nbsp;appendFiles,
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Boolean.html" title="class or interface in java.lang" class="external-link">Boolean</a>&nbsp;copRemoteDebug)</code></div>
+<div class="col-last even-row-color">
+<div class="block">A print job for the Cloud Office Print server containing all the necessary
+ information to generate the adequate JSON for the Cloud Office Print server.</div>
+</div>
+<div class="col-constructor-name odd-row-color"><code><a href="#%3Cinit%3E(java.util.Hashtable,com.cloudofficeprint.Server.Server,com.cloudofficeprint.Output.Output,com.cloudofficeprint.Resources.Resource,java.util.Hashtable,com.cloudofficeprint.Resources.Resource%5B%5D,com.cloudofficeprint.Resources.Resource%5B%5D,java.lang.Boolean,com.cloudofficeprint.Resources.Resource%5B%5D)" class="member-name-link">PrintJob</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Hashtable.html" title="class or interface in java.util" class="external-link">Hashtable</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="RenderElements/RenderElement.html" title="class in com.cloudofficeprint.RenderElements">RenderElement</a>&gt;&nbsp;data,
+ <a href="Server/Server.html" title="class in com.cloudofficeprint.Server">Server</a>&nbsp;server,
+ <a href="Output/Output.html" title="class in com.cloudofficeprint.Output">Output</a>&nbsp;output,
+ <a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>&nbsp;template,
+ <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Hashtable.html" title="class or interface in java.util" class="external-link">Hashtable</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>&gt;&nbsp;subTemplates,
+ <a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>[]&nbsp;prependFiles,
+ <a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>[]&nbsp;appendFiles,
+ <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Boolean.html" title="class or interface in java.lang" class="external-link">Boolean</a>&nbsp;copRemoteDebug,
+ <a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>[]&nbsp;attachments)</code></div>
 <div class="col-last odd-row-color">
 <div class="block">A print job for the Cloud Office Print server containing all the necessary
  information to generate the adequate JSON for the Cloud Office Print server.</div>
@@ -258,7 +282,7 @@ implements <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(java.util.Hashtable,com.cloudofficeprint.Server.Server,com.cloudofficeprint.Output.Output,com.cloudofficeprint.Resources.Resource,java.util.Hashtable,com.cloudofficeprint.Resources.Resource[],com.cloudofficeprint.Resources.Resource[],com.cloudofficeprint.Resources.Resource[],java.lang.Boolean)">
+<section class="detail" id="&lt;init&gt;(java.util.Hashtable,com.cloudofficeprint.Server.Server,com.cloudofficeprint.Output.Output,com.cloudofficeprint.Resources.Resource,java.util.Hashtable,com.cloudofficeprint.Resources.Resource[],com.cloudofficeprint.Resources.Resource[],java.lang.Boolean)">
 <h3>PrintJob</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">PrintJob</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Hashtable.html" title="class or interface in java.util" class="external-link">Hashtable</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="RenderElements/RenderElement.html" title="class in com.cloudofficeprint.RenderElements">RenderElement</a>&gt;&nbsp;data,
  <a href="Server/Server.html" title="class in com.cloudofficeprint.Server">Server</a>&nbsp;server,
@@ -267,7 +291,6 @@ implements <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Hashtable.html" title="class or interface in java.util" class="external-link">Hashtable</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>&gt;&nbsp;subTemplates,
  <a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>[]&nbsp;prependFiles,
  <a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>[]&nbsp;appendFiles,
- <a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>[]&nbsp;attachments,
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Boolean.html" title="class or interface in java.lang" class="external-link">Boolean</a>&nbsp;copRemoteDebug)</span></div>
 <div class="block">A print job for the Cloud Office Print server containing all the necessary
  information to generate the adequate JSON for the Cloud Office Print server.
@@ -288,7 +311,6 @@ implements <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base
                        the docx.</dd>
 <dd><code>prependFiles</code> - Files to prepend to the output.</dd>
 <dd><code>appendFiles</code> - Files to append to the output.</dd>
-<dd><code>attachments</code> - Files to attach to the PDF file.</dd>
 <dd><code>copRemoteDebug</code> - If set to true the Cloud Office Print server will log
                        your JSON into out database and you can see it when you
                        log into cloudofficeprint.com.</dd>
@@ -296,7 +318,45 @@ implements <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base
 </section>
 </li>
 <li>
-<section class="detail" id="&lt;init&gt;(com.cloudofficeprint.Resources.ExternalResource,com.cloudofficeprint.Server.Server,com.cloudofficeprint.Output.Output,com.cloudofficeprint.Resources.Resource,java.util.Hashtable,com.cloudofficeprint.Resources.Resource[],com.cloudofficeprint.Resources.Resource[],com.cloudofficeprint.Resources.Resource[],java.lang.Boolean)">
+<section class="detail" id="&lt;init&gt;(java.util.Hashtable,com.cloudofficeprint.Server.Server,com.cloudofficeprint.Output.Output,com.cloudofficeprint.Resources.Resource,java.util.Hashtable,com.cloudofficeprint.Resources.Resource[],com.cloudofficeprint.Resources.Resource[],java.lang.Boolean,com.cloudofficeprint.Resources.Resource[])">
+<h3>PrintJob</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">PrintJob</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Hashtable.html" title="class or interface in java.util" class="external-link">Hashtable</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="RenderElements/RenderElement.html" title="class in com.cloudofficeprint.RenderElements">RenderElement</a>&gt;&nbsp;data,
+ <a href="Server/Server.html" title="class in com.cloudofficeprint.Server">Server</a>&nbsp;server,
+ <a href="Output/Output.html" title="class in com.cloudofficeprint.Output">Output</a>&nbsp;output,
+ <a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>&nbsp;template,
+ <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Hashtable.html" title="class or interface in java.util" class="external-link">Hashtable</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>&gt;&nbsp;subTemplates,
+ <a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>[]&nbsp;prependFiles,
+ <a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>[]&nbsp;appendFiles,
+ <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Boolean.html" title="class or interface in java.lang" class="external-link">Boolean</a>&nbsp;copRemoteDebug,
+ <a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>[]&nbsp;attachments)</span></div>
+<div class="block">A print job for the Cloud Office Print server containing all the necessary
+ information to generate the adequate JSON for the Cloud Office Print server.
+ If you don't want to instantiate a variable, use null for this argument.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>data</code> - Hashtable of (filename, RenderElement) elements.
+                       Multiple output files will be produced if the hashtable
+                       has more then one element, the Cloud Office Print
+                       server will return a zip file containing all of them.</dd>
+<dd><code>server</code> - Server to user for this printjob.</dd>
+<dd><code>output</code> - object containing the output configuration for this
+                       printjob.</dd>
+<dd><code>template</code> - for this printjob.</dd>
+<dd><code>subTemplates</code> - for this print job. Hashtable(key, subTemplate)
+                       Subtemplates are only accessible (in docx). They will
+                       replace the `{?include subtemplate_dict_key}` tag in
+                       the docx.</dd>
+<dd><code>prependFiles</code> - Files to prepend to the output.</dd>
+<dd><code>appendFiles</code> - Files to append to the output.</dd>
+<dd><code>copRemoteDebug</code> - If set to true the Cloud Office Print server will log
+                       your JSON into out database and you can see it when you
+                       log into cloudofficeprint.com.</dd>
+<dd><code>attachments</code> - Files to attach to the PDF file.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="&lt;init&gt;(com.cloudofficeprint.Resources.ExternalResource,com.cloudofficeprint.Server.Server,com.cloudofficeprint.Output.Output,com.cloudofficeprint.Resources.Resource,java.util.Hashtable,com.cloudofficeprint.Resources.Resource[],com.cloudofficeprint.Resources.Resource[],java.lang.Boolean)">
 <h3>PrintJob</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">PrintJob</span><wbr><span class="parameters">(<a href="Resources/ExternalResource.html" title="class in com.cloudofficeprint.Resources">ExternalResource</a>&nbsp;externalResource,
  <a href="Server/Server.html" title="class in com.cloudofficeprint.Server">Server</a>&nbsp;server,
@@ -305,7 +365,6 @@ implements <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Hashtable.html" title="class or interface in java.util" class="external-link">Hashtable</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>&gt;&nbsp;subTemplates,
  <a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>[]&nbsp;prependFiles,
  <a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>[]&nbsp;appendFiles,
- <a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>[]&nbsp;attachments,
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Boolean.html" title="class or interface in java.lang" class="external-link">Boolean</a>&nbsp;copRemoteDebug)</span></div>
 <div class="block">A print job for the Cloud Office Print server containing all the necessary
  information to generate the adequate JSON for the Cloud Office Print server.
@@ -326,10 +385,47 @@ implements <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base
                          the docx.</dd>
 <dd><code>prependFiles</code> - Files to prepend to the output.</dd>
 <dd><code>appendFiles</code> - Files to append to the output.</dd>
-<dd><code>attachments</code> - Files to attach to the PDF file.</dd>
 <dd><code>copRemoteDebug</code> - If set to true the Cloud Office Print server will log
                          your JSON into out database, and you can see it when
                          you log into cloudofficeprint.com.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="&lt;init&gt;(com.cloudofficeprint.Resources.ExternalResource,com.cloudofficeprint.Server.Server,com.cloudofficeprint.Output.Output,com.cloudofficeprint.Resources.Resource,java.util.Hashtable,com.cloudofficeprint.Resources.Resource[],com.cloudofficeprint.Resources.Resource[],java.lang.Boolean,com.cloudofficeprint.Resources.Resource[])">
+<h3>PrintJob</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">PrintJob</span><wbr><span class="parameters">(<a href="Resources/ExternalResource.html" title="class in com.cloudofficeprint.Resources">ExternalResource</a>&nbsp;externalResource,
+ <a href="Server/Server.html" title="class in com.cloudofficeprint.Server">Server</a>&nbsp;server,
+ <a href="Output/Output.html" title="class in com.cloudofficeprint.Output">Output</a>&nbsp;output,
+ <a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>&nbsp;template,
+ <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Hashtable.html" title="class or interface in java.util" class="external-link">Hashtable</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>&gt;&nbsp;subTemplates,
+ <a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>[]&nbsp;prependFiles,
+ <a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>[]&nbsp;appendFiles,
+ <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Boolean.html" title="class or interface in java.lang" class="external-link">Boolean</a>&nbsp;copRemoteDebug,
+ <a href="Resources/Resource.html" title="class in com.cloudofficeprint.Resources">Resource</a>[]&nbsp;attachments)</span></div>
+<div class="block">A print job for the Cloud Office Print server containing all the necessary
+ information to generate the adequate JSON for the Cloud Office Print server.
+ If you don't want to instantiate a variable, use null for this argument.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>externalResource</code> - External resource for the data (REST or graphQL).</dd>
+<dd><code>server</code> - Server to user for this printjob.</dd>
+<dd><code>output</code> - object containing the output configuration for this
+                         printjob.</dd>
+<dd><code>template</code> - Template for this printjob. If no template is
+                         specified Cloud Office Print will generate a template
+                         based on the data. Output type determines the
+                         template type generated. Cannot be PDF in this case.</dd>
+<dd><code>subTemplates</code> - for this print job. Hashtable(key, subTemplate)
+                         Subtemplates are only accessible (in docx). They will
+                         replace the `{?include subtemplate_dict_key}` tag in
+                         the docx.</dd>
+<dd><code>prependFiles</code> - Files to prepend to the output.</dd>
+<dd><code>appendFiles</code> - Files to append to the output.</dd>
+<dd><code>copRemoteDebug</code> - If set to true the Cloud Office Print server will log
+                         your JSON into out database, and you can see it when
+                         you log into cloudofficeprint.com.</dd>
+<dd><code>attachments</code> - Files to attach to the PDF file.</dd>
 </dl>
 </section>
 </li>
