@@ -40,6 +40,7 @@ public class PDFOptions {
     private String attachmentName;
     private Boolean convertAttachmentToJson;
     private Boolean insertBarcode;
+    private String pageNumberStartAt;
 
     /**
      * Constructor for the PDFOptions object. Set the options with the setters.
@@ -163,6 +164,25 @@ public class PDFOptions {
      */
     public void setWatermark(String watermark) {
         this.watermark = watermark;
+    }
+
+    /**
+     * Set a diagonal custom watermark on every page in the PDF file with a specific
+     * text, color, font, opacity and size. Setting all to null will remove the
+     * watermark.
+     *
+     * @param text     specifies the text of the watermark.
+     * @param color    specifies the color of the watermark, with a default of
+     *                 "black".
+     * @param font     specifies the font of the watermark, with a default of
+     *                 "Arial".
+     * @param opacity  specifies the opacity of the watermark, should be as a
+     *                 percentage, i.e. 45.
+     * @param size     specifies the size of the watermark, should be as a number in
+     *                 px, i.e. 45.
+     */
+    public void setWatermark(String text, String color, String font, Integer opacity, Integer size) {
+        setWatermark(text, color, font, opacity, size, null);
     }
 
     /**
@@ -579,6 +599,20 @@ public class PDFOptions {
     public void setInsertBarcode(Boolean insertBarcode) { this.insertBarcode = insertBarcode; }
 
     /**
+     * Returns start page number
+     * @return String
+     */
+    public String getPageNumberStartAt() { return pageNumberStartAt; }
+
+    /**
+     *
+     * @param pageNumberStartAt String
+     */
+    public void setPageNumberStartAt(String pageNumberStartAt) {
+        this.pageNumberStartAt = pageNumberStartAt;
+    }
+
+    /**
      * Sign the output PDF with a local certificate file.
      * 
      * @param localCertificatePath path to the local certificate file.
@@ -720,7 +754,9 @@ public class PDFOptions {
         if (getInsertBarcode() != null) {
             json.addProperty("output_insert_barcode", getInsertBarcode());
         }
-
+        if (getPageNumberStartAt() != null) {
+            json.addProperty("output_page_number_start_at", getPageNumberStartAt());
+        }
         return json;
     }
 }

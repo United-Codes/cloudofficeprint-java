@@ -52,11 +52,11 @@ public class UsingElements {
         data.addElement(cell);
 
         //AutoLink
-        AutoLink autoLink = new AutoLink("autoLink", "AutoLink including hyperlinks like https://www.cloudofficeprint.com and other mail like info@cloudofficeprint.com and text combined", null, null, null);
+        AutoLink autoLink = new AutoLink("autoLink", "AutoLink including hyperlinks like https://www.cloudofficeprint.com and other mail like info@cloudofficeprint.com and text combined");
         data.addElement(autoLink);
 
         //HyperLink
-        HyperLink hyperLink = new HyperLink("COP_link", "Visit COP", "https://www.cloudofficeprint.com/index.html", null, null,null);
+        HyperLink hyperLink = new HyperLink("COP_link", "Visit COP", "https://www.cloudofficeprint.com/index.html");
         data.addElement(hyperLink);
 
         //Styled Property
@@ -92,10 +92,10 @@ public class UsingElements {
         Insert insert = new Insert("doc", base64EncodedDoc);
         data.addElement(insert);
 
-        Output conf = new Output("docx", "raw", "libreoffice", null, null, null, null, null, null);
+        Output conf = new Output("docx", "raw", "libreoffice", null, null, null, null);
         Hashtable<String, RenderElement> dataTable = new Hashtable<String, RenderElement>();
         dataTable.put("data", data);
-        PrintJob printJob = new PrintJob(dataTable, copServer, conf, template, null, null, null, null, null);
+        PrintJob printJob = new PrintJob(dataTable, copServer, conf, template, null, null, null, null);
         Response response = printJob.execute();
 
         //Save response to file.

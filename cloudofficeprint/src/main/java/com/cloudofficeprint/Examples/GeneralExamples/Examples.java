@@ -70,7 +70,7 @@ public class Examples {
         try {
             Server server = new Server("https://api.cloudofficeprint.com", APIKey, null, null, null, null, null);
             server.setVerbose(true);
-            Output output = new Output("docx", "raw", null, null, null, null, null, null, null);
+            Output output = new Output("docx", "raw", null, null, null, null, null, null);
 
             // Main collection that holds all the data elements.
             ElementCollection data1 = new ElementCollection("data");
@@ -106,7 +106,7 @@ public class Examples {
             Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
             data.put("output1", data1);
 
-            PrintJob printJob = new PrintJob(data, server, output, null, null, null, null, null, null);
+            PrintJob printJob = new PrintJob(data, server, output, null, null, null, null, null);
 
             Response response = printJob.execute();
             response.downloadLocally("./downloads/outputWithoutTemplate");
@@ -222,7 +222,7 @@ public class Examples {
             PDFOptions pdfOptions = new PDFOptions();
             pdfOptions.setReadPassword("hello");
             pdfOptions.setLandscape(true);
-            Output output = new Output("pdf", "raw", null, null, null, null, null, pdfOptions, null);
+            Output output = new Output("docx", "raw", null, null, null, null, null);
             Base64Resource base64Resource = new Base64Resource();
 
             // The next line should normally be used by the user in his project but when the

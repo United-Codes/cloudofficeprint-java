@@ -108,13 +108,13 @@ public class UsingCharts {
         // Example:  BarStackedChart chart = new BarStackedChart("bar_chart", null, Bar1, Bar2);
 
         //Output configuration
-        Output conf = new Output("docx", "raw", "libreoffice", null, null, null, null, null,  null);
+        Output conf = new Output("docx", "raw", "libreoffice", null, null, null, null);
 
         Hashtable<String, RenderElement> dataTable = new Hashtable<String, RenderElement>();
         dataTable.put("data", data);
 
 
-        PrintJob printJob = new PrintJob(dataTable, copServer, conf, template, null, null, null, null, null);
+        PrintJob printJob = new PrintJob(dataTable, copServer, conf, template, null, null, null, null);
 
         Response response = printJob.execute();
 

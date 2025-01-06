@@ -68,6 +68,18 @@ public class AutoLink extends RenderElement {
      *
      * @param name      Name of this footnote for the tag.
      * @param value     Value for the autoLink (will replace the tag in the template).
+  */
+    public AutoLink(String name, String value) {
+        setName(name);
+        setValue(value);
+    }
+
+
+    /**
+     * Element to insert a footnote in a template.
+     *
+     * @param name      Name of this footnote for the tag.
+     * @param value     Value for the autoLink (will replace the tag in the template).
      *                  This may or may not have hyperlinks.
      * @param fontColor font color of autolink.
      * @param underlineColor underline color of autolink

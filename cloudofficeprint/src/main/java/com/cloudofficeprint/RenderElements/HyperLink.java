@@ -90,6 +90,21 @@ public class HyperLink extends RenderElement {
      *             (Optional: if null the URL will replace the tag)
      * @param url  URL to hyperlink to. Note : In Excel you can hyperlink to a cell.
      *             The URL should then be of structure: "SheetName!Cell".
+     */
+    public HyperLink(String name, String text, String url) {
+        setName(name);
+        setValue(text);
+        setUrl(url);
+    }
+
+    /**
+     * Element to insert a footnote in a template.
+     *
+     * @param name Name of this footnote for the tag.
+     * @param text Text of the hyperlink (will replace the tag in the template).
+     *             (Optional: if null the URL will replace the tag)
+     * @param url  URL to hyperlink to. Note : In Excel you can hyperlink to a cell.
+     *             The URL should then be of structure: "SheetName!Cell".
      * @param fontColor font color of autolink.
      * @param underlineColor underline color of autolink
      * @param preserveTagStyle whether to preserve the styling of hyperlink text defined in the template (blue and underlined by default)

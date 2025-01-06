@@ -78,6 +78,17 @@ public class HTML extends RenderElement {
         setValue(String.valueOf(HTMLText));
     }
 
+    /**
+     *
+     * @param name  Name of this html element for the tag.
+     * @param HTMLText HTML text.
+     * @param customTableStyle
+     * @param unorderedListStyle
+     * @param orderedListStyle
+     * @param useTagStyle
+     * @param ignoreCellMargin
+     * @param ignoreEmptyP
+     */
     public HTML(String name, String HTMLText, String customTableStyle, String unorderedListStyle, String orderedListStyle, Boolean useTagStyle, Boolean ignoreCellMargin, Boolean ignoreEmptyP) {
         setName(name);
         setValue(String.valueOf(HTMLText));

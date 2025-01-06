@@ -79,10 +79,6 @@ public class Output {
      * If it is set to true a unique link is sent back for each request which can be used later to download the output file.
      */
     private Boolean OutputPolling = null;
-    /**
-     * Specifies the start of the page number
-     */
-    private String PageNumberStartAt = null;
 
     /**
      * Update table of contents of Word document..
@@ -268,20 +264,6 @@ public class Output {
     }
 
     /**
-     * Returns start page number
-     * @return String
-     */
-    public String getPageNumberStartAt() { return PageNumberStartAt; }
-
-    /**
-     *
-     * @param pageNumberStartAt String
-     */
-    public void setPageNumberStartAt(String pageNumberStartAt) {
-        this.PageNumberStartAt = pageNumberStartAt;
-    }
-
-    /**
      * Returns updated table of content
      * @return Boolean
      */
@@ -345,15 +327,13 @@ public class Output {
      * @param serverDirectory   If you want to save the output on the server a
      *                          directory on the server needs to be specified. Default
      *                          : null.
-     * @param pageNumberStartAt Option to provide start of the page number
-     * @param updateToc         Option to update table of content for docx
      * @param pdfOptions        Optional PDF options. They are described in the
      *                          PDFOptions class. Default : null.
      * @param csvOptions        Optional CSV options. They are described in the
      *                          CsvOptions class. Default : null.
      */
     public Output(String filetype, String encoding, String converter, Boolean appendPerPage, Boolean prependPerPage, CloudAccessToken token, String serverDirectory,
-                  String pageNumberStartAt, Boolean updateToc, PDFOptions pdfOptions, CsvOptions csvOptions) {
+                 PDFOptions pdfOptions, CsvOptions csvOptions) {
         setType(filetype);
         setEncoding(encoding);
         setConverter(converter);
@@ -361,10 +341,62 @@ public class Output {
         setPrependPerPage(prependPerPage);
         setAccessToken(token);
         setServerDirectory(serverDirectory);
-        setPageNumberStartAt(pageNumberStartAt);
-        setUpdateToc(updateToc);
         setPDFOptions(pdfOptions);
         setCsvOptions(csvOptions);
+    }
+
+    /**
+     * Constructor to create a populated output object. If you don't need to
+     * instantiate some variables, use their default value as argument.
+     *
+     * @param filetype          This states what kind of output file type is required.
+     *                          It can be either the same as template_type ("docx",
+     *                          "pptx", "xlsx", "html", "md"), "pdf" or any other
+     *                          output file supported by libreoffice/openoffice.
+     *                          Special output type: "onepagepdf", this will cause the
+     *                          output to be converted to pdf and all the pages will
+     *                          be merged into one single page. Default : null (the
+     *                          type of the template will be used).
+     * @param encoding          This states what kind of output encoding is wished for
+     *                          the output file. It must be either "raw" (bytes) or
+     *                          "base64". Default : raw.
+     * @param converter         This states which software the server should use to
+     *                          convert the output to pdf. The Cloud Office Print
+     *                          server uses LibreOffice. If you are running the on
+     *                          premise version then the available values are :
+     *                          "officetopdf" (only when server runs on Windows ) or
+     *                          "libreoffice" (Windows, Linux, OSX)
+     *                          "libreoffice-standalone" or any other custom defined
+     *                          converters in the aop_config.json file. Default :
+     *                          libreoffice.
+     * @param appendPerPage     if you want to append file after each page of output
+     *                          set appendPerPage to true and false otherwise.
+     * @param prependPerPage    if you want to prepend file after each page of output
+     *                          set prependPerPage to true and false otherwise.
+     * @param token             If you want to store the output on a cloud based
+     *                          service, a specific CloudAccessToken object needs to
+     *                          be specified. Default : null.
+     * @param serverDirectory   If you want to save the output on the server a
+     *                          directory on the server needs to be specified. Default
+     *                          : null.
+     * @param pdfOptions        Optional PDF options. They are described in the
+     *                          PDFOptions class. Default : null.
+     * @param csvOptions        Optional CSV options. They are described in the
+     *                          CsvOptions class. Default : null.
+     * @param updateToc         Option to update table of content for docx
+     */
+    public Output(String filetype, String encoding, String converter, Boolean appendPerPage, Boolean prependPerPage, CloudAccessToken token, String serverDirectory,
+                  PDFOptions pdfOptions, CsvOptions csvOptions, Boolean updateToc) {
+        setType(filetype);
+        setEncoding(encoding);
+        setConverter(converter);
+        setAppendPerPage(appendPerPage);
+        setPrependPerPage(prependPerPage);
+        setAccessToken(token);
+        setServerDirectory(serverDirectory);
+        setPDFOptions(pdfOptions);
+        setCsvOptions(csvOptions);
+        setUpdateToc(updateToc);
     }
 
     /**
@@ -397,8 +429,6 @@ public class Output {
      * @param serverDirectory If you want to save the output on the server a
      *                        directory on the server needs to be specified. Default
      *                        : null.
-     * @param pageNumberStartAt Option to provide start of the page number
-     * @param updateToc         Option to update table of content for docx
      * @param pdfOptions      Optional PDF options. They are described in the
      *                        PDFOptions class. Default : null.
      * @param csvOptions      Optional CSV options. They are described in the
@@ -406,14 +436,12 @@ public class Output {
      */
 
     public Output(String filetype, String encoding, String converter, CloudAccessToken token, String serverDirectory,
-                  String pageNumberStartAt, Boolean updateToc, PDFOptions pdfOptions, CsvOptions csvOptions) {
+                 PDFOptions pdfOptions, CsvOptions csvOptions) {
         setType(filetype);
         setEncoding(encoding);
         setConverter(converter);
         setAccessToken(token);
         setServerDirectory(serverDirectory);
-        setPageNumberStartAt(pageNumberStartAt);
-        setUpdateToc(updateToc);
         setPDFOptions(pdfOptions);
         setCsvOptions(csvOptions);
     }
@@ -448,8 +476,55 @@ public class Output {
      * @param serverDirectory If you want to save the output on the server a
      *                        directory on the server needs to be specified. Default
      *                        : null.
-     * @param pageNumberStartAt Option to provide start of the page number
-     * @param updateToc        Option to update table of content for docx
+     * @param pdfOptions      Optional PDF options. They are described in the
+     *                        PDFOptions class. Default : null.
+     * @param csvOptions      Optional CSV options. They are described in the
+     *                        CsvOptions class. Default : null.
+     * @param updateToc         Option to update table of content for docx
+     */
+
+    public Output(String filetype, String encoding, String converter, CloudAccessToken token, String serverDirectory,
+                  PDFOptions pdfOptions, CsvOptions csvOptions, Boolean updateToc) {
+        setType(filetype);
+        setEncoding(encoding);
+        setConverter(converter);
+        setAccessToken(token);
+        setServerDirectory(serverDirectory);
+        setPDFOptions(pdfOptions);
+        setCsvOptions(csvOptions);
+        setUpdateToc(updateToc);
+    }
+
+    /**
+     * Constructor to create a populated output object. If you don't need to
+     * instantiate some variables, use their default value as argument.
+     *
+     * @param filetype        This states what kind of output file type is required.
+     *                        It can be either the same as template_type ("docx",
+     *                        "pptx", "xlsx", "html", "md"), "pdf" or any other
+     *                        output file supported by libreoffice/openoffice.
+     *                        Special output type: "onepagepdf", this will cause the
+     *                        output to be converted to pdf and all the pages will
+     *                        be merged into one single page. Default : null (the
+     *                        type of the template will be used).
+     * @param encoding        This states what kind of output encoding is wished for
+     *                        the output file. It must be either "raw" (bytes) or
+     *                        "base64". Default : raw.
+     * @param converter       This states which software the server should use to
+     *                        convert the output to pdf. The Cloud Office Print
+     *                        server uses LibreOffice. If you are running the on
+     *                        premise version then the available values are :
+     *                        "officetopdf" (only when server runs on Windows ) or
+     *                        "libreoffice" (Windows, Linux, OSX)
+     *                        "libreoffice-standalone" or any other custom defined
+     *                        converters in the aop_config.json file. Default :
+     *                        libreoffice.
+     * @param token           If you want to store the output on a cloud based
+     *                        service, a specific CloudAccessToken object needs to
+     *                        be specified. Default : null.
+     * @param serverDirectory If you want to save the output on the server a
+     *                        directory on the server needs to be specified. Default
+     *                        : null.
      * @param pdfOptions      Optional PDF options. They are described in the
      *                        PDFOptions class. Default : null.
      * @param csvOptions      Optional CSV options. They are described in the
@@ -463,19 +538,76 @@ public class Output {
      */
 
     public Output(String filetype, String encoding, String converter, CloudAccessToken token, String serverDirectory,
-                  String pageNumberStartAt, Boolean updateToc, PDFOptions pdfOptions, CsvOptions csvOptions,String secretKey, Boolean outputPolling, RequestOption requestOption) {
+                 PDFOptions pdfOptions, CsvOptions csvOptions,String secretKey, Boolean outputPolling, RequestOption requestOption) {
         setType(filetype);
         setEncoding(encoding);
         setConverter(converter);
         setAccessToken(token);
         setServerDirectory(serverDirectory);
-        setPageNumberStartAt(pageNumberStartAt);
-        setUpdateToc(updateToc);
         setPDFOptions(pdfOptions);
         setCsvOptions(csvOptions);
         setSecretKey(secretKey);
         setOutputPolling(outputPolling);
         setRequestOption(requestOption);
+    }
+
+    /**
+     * Constructor to create a populated output object. If you don't need to
+     * instantiate some variables, use their default value as argument.
+     *
+     * @param filetype        This states what kind of output file type is required.
+     *                        It can be either the same as template_type ("docx",
+     *                        "pptx", "xlsx", "html", "md"), "pdf" or any other
+     *                        output file supported by libreoffice/openoffice.
+     *                        Special output type: "onepagepdf", this will cause the
+     *                        output to be converted to pdf and all the pages will
+     *                        be merged into one single page. Default : null (the
+     *                        type of the template will be used).
+     * @param encoding        This states what kind of output encoding is wished for
+     *                        the output file. It must be either "raw" (bytes) or
+     *                        "base64". Default : raw.
+     * @param converter       This states which software the server should use to
+     *                        convert the output to pdf. The Cloud Office Print
+     *                        server uses LibreOffice. If you are running the on
+     *                        premise version then the available values are :
+     *                        "officetopdf" (only when server runs on Windows ) or
+     *                        "libreoffice" (Windows, Linux, OSX)
+     *                        "libreoffice-standalone" or any other custom defined
+     *                        converters in the aop_config.json file. Default :
+     *                        libreoffice.
+     * @param token           If you want to store the output on a cloud based
+     *                        service, a specific CloudAccessToken object needs to
+     *                        be specified. Default : null.
+     * @param serverDirectory If you want to save the output on the server a
+     *                        directory on the server needs to be specified. Default
+     *                        : null.
+     * @param pdfOptions      Optional PDF options. They are described in the
+     *                        PDFOptions class. Default : null.
+     * @param csvOptions      Optional CSV options. They are described in the
+     *                        CsvOptions class. Default : null.
+     * @param secretKey       a secret key can be specified to encrypt the file
+     *                        stored on the server (used with output polling).
+     * @param outputPolling   a unique link for each request that is sent back,
+     *                        which can be used later to download the output file.
+     * @param requestOption    AOP makes a call to the given option with response/output of the current request.
+     * @param updateToc        Option to update table of content for docx
+     *
+     */
+
+    public Output(String filetype, String encoding, String converter, CloudAccessToken token, String serverDirectory,
+                  PDFOptions pdfOptions, CsvOptions csvOptions,String secretKey, Boolean outputPolling, RequestOption requestOption,
+                  Boolean updateToc) {
+        setType(filetype);
+        setEncoding(encoding);
+        setConverter(converter);
+        setAccessToken(token);
+        setServerDirectory(serverDirectory);
+        setPDFOptions(pdfOptions);
+        setCsvOptions(csvOptions);
+        setSecretKey(secretKey);
+        setOutputPolling(outputPolling);
+        setRequestOption(requestOption);
+        setUpdateToc(updateToc);
     }
     /**
      * @return JSONObject with the tags for the output for the Cloud Office Print
@@ -505,9 +637,6 @@ public class Output {
         }
         if (getServerDirectory() != null) {
             json.addProperty("output_directory", getServerDirectory());
-        }
-        if (getPageNumberStartAt() != null) {
-            json.addProperty("output_page_number_start_at", getPageNumberStartAt());
         }
         if (getUpdateToc() != null) {
             json.addProperty("update_toc", getUpdateToc());

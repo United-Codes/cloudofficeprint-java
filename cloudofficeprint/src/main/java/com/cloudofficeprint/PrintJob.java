@@ -227,14 +227,49 @@ public class PrintJob implements Runnable {
      *                       the docx.
      * @param prependFiles   Files to prepend to the output.
      * @param appendFiles    Files to append to the output.
+     * @param copRemoteDebug If set to true the Cloud Office Print server will log
+     *                       your JSON into out database and you can see it when you
+     *                       log into cloudofficeprint.com.
+     */
+    public PrintJob(Hashtable<String, RenderElement> data, Server server, Output output, Resource template,
+            Hashtable<String, Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles, Boolean copRemoteDebug) {
+        setData(data);
+        setServer(server);
+        setOutput(output);
+        setTemplate(template);
+        setSubTemplates(subTemplates);
+        setPrependFiles(prependFiles);
+        setAppendFiles(appendFiles);
+        setCopRemoteDebug(copRemoteDebug);
+    }
+
+    /**
+     * A print job for the Cloud Office Print server containing all the necessary
+     * information to generate the adequate JSON for the Cloud Office Print server.
+     * If you don't want to instantiate a variable, use null for this argument.
+     *
+     * @param data           Hashtable of (filename, RenderElement) elements.
+     *                       Multiple output files will be produced if the hashtable
+     *                       has more then one element, the Cloud Office Print
+     *                       server will return a zip file containing all of them.
+     * @param server         Server to user for this printjob.
+     * @param output         object containing the output configuration for this
+     *                       printjob.
+     * @param template       for this printjob.
+     * @param subTemplates   for this print job. Hashtable(key, subTemplate)
+     *                       Subtemplates are only accessible (in docx). They will
+     *                       replace the `{?include subtemplate_dict_key}` tag in
+     *                       the docx.
+     * @param prependFiles   Files to prepend to the output.
+     * @param appendFiles    Files to append to the output.
      * @param attachments   Files to attach to the PDF file.
      * @param copRemoteDebug If set to true the Cloud Office Print server will log
      *                       your JSON into out database and you can see it when you
      *                       log into cloudofficeprint.com.
      */
     public PrintJob(Hashtable<String, RenderElement> data, Server server, Output output, Resource template,
-            Hashtable<String, Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles,
-            Resource[] attachments, Boolean copRemoteDebug) {
+                    Hashtable<String, Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles,
+                    Boolean copRemoteDebug, Resource[] attachments) {
         setData(data);
         setServer(server);
         setOutput(output);
@@ -265,14 +300,50 @@ public class PrintJob implements Runnable {
      *                         the docx.
      * @param prependFiles     Files to prepend to the output.
      * @param appendFiles      Files to append to the output.
-     * @param attachments   Files to attach to the PDF file.
      * @param copRemoteDebug   If set to true the Cloud Office Print server will log
      *                         your JSON into out database, and you can see it when
      *                         you log into cloudofficeprint.com.
      */
     public PrintJob(ExternalResource externalResource, Server server, Output output, Resource template,
             Hashtable<String, Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles,
-            Resource[] attachments, Boolean copRemoteDebug) {
+                    Boolean copRemoteDebug) {
+        setExternalResource(externalResource);
+        setServer(server);
+        setOutput(output);
+        setTemplate(template);
+        setSubTemplates(subTemplates);
+        setPrependFiles(prependFiles);
+        setAppendFiles(appendFiles);
+        setCopRemoteDebug(copRemoteDebug);
+    }
+
+    /**
+     * A print job for the Cloud Office Print server containing all the necessary
+     * information to generate the adequate JSON for the Cloud Office Print server.
+     * If you don't want to instantiate a variable, use null for this argument.
+     *
+     * @param externalResource External resource for the data (REST or graphQL).
+     * @param server           Server to user for this printjob.
+     * @param output           object containing the output configuration for this
+     *                         printjob.
+     * @param template         Template for this printjob. If no template is
+     *                         specified Cloud Office Print will generate a template
+     *                         based on the data. Output type determines the
+     *                         template type generated. Cannot be PDF in this case.
+     * @param subTemplates     for this print job. Hashtable(key, subTemplate)
+     *                         Subtemplates are only accessible (in docx). They will
+     *                         replace the `{?include subtemplate_dict_key}` tag in
+     *                         the docx.
+     * @param prependFiles     Files to prepend to the output.
+     * @param appendFiles      Files to append to the output.
+     * @param attachments   Files to attach to the PDF file.
+     * @param copRemoteDebug   If set to true the Cloud Office Print server will log
+     *                         your JSON into out database, and you can see it when
+     *                         you log into cloudofficeprint.com.
+     */
+    public PrintJob(ExternalResource externalResource, Server server, Output output, Resource template,
+                    Hashtable<String, Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles,
+                    Resource[] attachments, Boolean copRemoteDebug) {
         setExternalResource(externalResource);
         setServer(server);
         setOutput(output);

@@ -87,8 +87,8 @@ public class SpaceXExample {
         spaceXData.addAllRenderElements(ElementCollection.makeCollectionFromJson("info", info));
 
         spaceXData.addElement(new HyperLink("spacex_website", "Website",
-                info.get("links").getAsJsonObject().get("website").getAsString(), null, null,null));
-        spaceXData.addElement(new HyperLink("data_source", "Data source", "https://docs.spacexdata.com", null, null,null));
+                info.get("links").getAsJsonObject().get("website").getAsString()));
+        spaceXData.addElement(new HyperLink("data_source", "Data source", "https://docs.spacexdata.com"));
         spaceXData.addElement(new Property("rockets_description", "Data about the rockets built by SpaceX"));
         spaceXData.addElement(new Property("dragons_description", "Data about the dragon capsules of SpaceX"));
         spaceXData.addElement(new Property("launch_pads_description", "Data about SpaceX's launch pads"));
@@ -111,7 +111,7 @@ public class SpaceXExample {
                                                                                                                        // the
                                                                                                                        // older
                                                                                                                        // one
-            coll.addElement(new HyperLink("wikipedia", "Wikipedia", rocket.get("wikipedia").getAsString(), null, null,null));
+            coll.addElement(new HyperLink("wikipedia", "Wikipedia", rocket.get("wikipedia").getAsString()));
             rocketLoop.addElement(coll);
         }
         spaceXData.addElement(rocketLoop);
@@ -162,7 +162,7 @@ public class SpaceXExample {
             ElementCollection coll = ElementCollection.makeCollectionFromJson("dragon", dragon);
             coll.addElement(img);
             coll.addElement(new Property("description", shortenDescription(dragon.get("description").getAsString())));
-            coll.addElement(new HyperLink("wikipedia", "Wikipedia", dragon.get("wikipedia").getAsString(), null, null, null));
+            coll.addElement(new HyperLink("wikipedia", "Wikipedia", dragon.get("wikipedia").getAsString()));
             dragonLoop.addElement(coll);
         }
         spaceXData.addElement(dragonLoop);
@@ -193,7 +193,7 @@ public class SpaceXExample {
             ElementCollection coll = ElementCollection.makeCollectionFromJson("landingpad", landingpad);
             coll.addElement(img);
             coll.addElement(new Property("details", shortenDescription(landingpad.get("details").getAsString())));
-            coll.addElement(new HyperLink("wikipedia", "Wikipedia", landingpad.get("wikipedia").getAsString(), null, null,null));
+            coll.addElement(new HyperLink("wikipedia", "Wikipedia", landingpad.get("wikipedia").getAsString()));
             landingpadLoop.addElement(coll);
         }
         spaceXData.addElement(landingpadLoop);
@@ -213,9 +213,9 @@ public class SpaceXExample {
             ElementCollection coll = ElementCollection.makeCollectionFromJson("ship", ship);
             coll.addElement(img);
             if (ship.get("link").isJsonNull() == false) {
-                coll.addElement(new HyperLink("website", "Website", ship.get("link").getAsString(), null, null,null));
+                coll.addElement(new HyperLink("website", "Website", ship.get("link").getAsString()));
             } else {
-                coll.addElement(new HyperLink("website", "Website", null, null, null, null));
+                coll.addElement(new HyperLink("website", "Website", null));
             }
             shipLoop.addElement(coll);
         }
@@ -274,8 +274,8 @@ public class SpaceXExample {
             // End replacement code.
         }
 
-        Output output = new Output(null, "raw", "libreoffice", null, null, null, null, null, null);
-        PrintJob printJob = new PrintJob(data, copServer, output, base64Resource, null, null, null, null, null);
+        Output output = new Output(null, "raw", "libreoffice", null, null, null, null);
+        PrintJob printJob = new PrintJob(data, copServer, output, base64Resource, null, null, null, null);
 
         Response res = printJob.execute();
         res.downloadLocally("./downloads/spaceX");

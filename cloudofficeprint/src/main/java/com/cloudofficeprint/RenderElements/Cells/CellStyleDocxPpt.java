@@ -480,6 +480,24 @@ public class CellStyleDocxPpt extends CellStyle {
     public void setBorderDiagonalDownSpace(String borderDiagonalDownSpace) {
         this.borderDiagonalDownSpace = borderDiagonalDownSpace;
     }
+
+    /**
+     * Represents the style of a Word/PowerPoint cell element. Use default value if
+     * you don't want to specify an optional argument.
+     *
+     * @param backgroundColor The background color of the cell (hex format).
+     *                        (Optional)
+     * @param width           The width of the cell + unit ( in, cm, px, pt, em and
+     *                        % (% is in respect to the initial width of the
+     *                        table)). Giving a width of 0 will remove the whole
+     *                        column.
+     */
+    public CellStyleDocxPpt(String backgroundColor, String width)
+    {
+        setBackgroundColor(backgroundColor);
+        setWidth(width);
+    }
+
     /**
      * Represents the style of a Word/PowerPoint cell element. Use default value if
      * you don't want to specify an optional argument.
