@@ -23,6 +23,7 @@ public class PrintJob implements Runnable {
     private Resource[] prependFiles;
     private Resource[] appendFiles;
     private Resource[] attachments;
+    private Resource[] compareFiles;
     private Hashtable<String, Resource> subTemplates = new Hashtable<String, Resource>();
     private Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
     private ExternalResource externalResource;
@@ -114,6 +115,20 @@ public class PrintJob implements Runnable {
         this.attachments = attachments;
     }
 
+
+    /**
+     * @return Files to compare to the PDF.
+     */
+    public Resource[] getCompareFiles() {
+        return compareFiles;
+    }
+
+    /**
+     * @param compareFiles Files to attach to the PDF file.
+     */
+    public void setCompareFiles(Resource[] compareFiles) {
+        this.compareFiles = compareFiles;
+    }
     /**
      * Subtemplates are only accessible (in docx). They will replace the `{?include
      * subtemplate_dict_key}` tag in the docx.
@@ -228,11 +243,13 @@ public class PrintJob implements Runnable {
      * @param prependFiles   Files to prepend to the output.
      * @param appendFiles    Files to append to the output.
      * @param copRemoteDebug If set to true the Cloud Office Print server will log
-     *                       your JSON into out database and you can see it when you
+     *                       your JSON into out database, and you can see it when you
      *                       log into cloudofficeprint.com.
+     * @param compareFiles    Files to compare to the output.
      */
     public PrintJob(Hashtable<String, RenderElement> data, Server server, Output output, Resource template,
-            Hashtable<String, Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles, Boolean copRemoteDebug) {
+            Hashtable<String, Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles, Boolean copRemoteDebug
+    , Resource[] compareFiles) {
         setData(data);
         setServer(server);
         setOutput(output);
@@ -240,6 +257,7 @@ public class PrintJob implements Runnable {
         setSubTemplates(subTemplates);
         setPrependFiles(prependFiles);
         setAppendFiles(appendFiles);
+        setCompareFiles(compareFiles);
         setCopRemoteDebug(copRemoteDebug);
     }
 
@@ -263,13 +281,14 @@ public class PrintJob implements Runnable {
      * @param prependFiles   Files to prepend to the output.
      * @param appendFiles    Files to append to the output.
      * @param copRemoteDebug If set to true the Cloud Office Print server will log
-     *                       your JSON into out database and you can see it when you
+     *                       your JSON into out database, and you can see it when you
      *                       log into cloudofficeprint.com.
      * @param attachments   Files to attach to the PDF file.
+     * @param compareFiles  Files to compare to the PDF file.
      */
     public PrintJob(Hashtable<String, RenderElement> data, Server server, Output output, Resource template,
                     Hashtable<String, Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles,
-                    Boolean copRemoteDebug, Resource[] attachments) {
+                    Boolean copRemoteDebug, Resource[] attachments , Resource[]compareFiles) {
         setData(data);
         setServer(server);
         setOutput(output);
@@ -279,6 +298,7 @@ public class PrintJob implements Runnable {
         setAppendFiles(appendFiles);
         setCopRemoteDebug(copRemoteDebug);
         setAttachments(attachments);
+        setCompareFiles(compareFiles);
     }
 
     /**
@@ -303,10 +323,11 @@ public class PrintJob implements Runnable {
      * @param copRemoteDebug   If set to true the Cloud Office Print server will log
      *                         your JSON into out database, and you can see it when
      *                         you log into cloudofficeprint.com.
+     * @param compareFiles     Files to compare to the output.
      */
     public PrintJob(ExternalResource externalResource, Server server, Output output, Resource template,
             Hashtable<String, Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles,
-                    Boolean copRemoteDebug) {
+                    Boolean copRemoteDebug, Resource[] compareFiles) {
         setExternalResource(externalResource);
         setServer(server);
         setOutput(output);
@@ -315,6 +336,7 @@ public class PrintJob implements Runnable {
         setPrependFiles(prependFiles);
         setAppendFiles(appendFiles);
         setCopRemoteDebug(copRemoteDebug);
+        setCompareFiles(compareFiles);
     }
 
     /**
@@ -340,10 +362,11 @@ public class PrintJob implements Runnable {
      *                         your JSON into out database, and you can see it when
      *                         you log into cloudofficeprint.com.
      * @param attachments   Files to attach to the PDF file.
+     * @param compareFiles  Files to compare to the PDF file.
      */
     public PrintJob(ExternalResource externalResource, Server server, Output output, Resource template,
                     Hashtable<String, Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles,
-                    Boolean copRemoteDebug,   Resource[] attachments) {
+                    Boolean copRemoteDebug,   Resource[] attachments, Resource[]compareFiles) {
         setExternalResource(externalResource);
         setServer(server);
         setOutput(output);
@@ -353,6 +376,7 @@ public class PrintJob implements Runnable {
         setAppendFiles(appendFiles);
         setCopRemoteDebug(copRemoteDebug);
         setAttachments(attachments);
+        setCompareFiles(compareFiles);
     }
 
     /**
@@ -410,6 +434,13 @@ public class PrintJob implements Runnable {
                 attachments.add(attachment.getJSONForSecondaryFile());
             }
             jsonForServer.add("attachments", attachments);
+        }
+        if (getCompareFiles() != null && getCompareFiles().length > 0) {
+            JsonArray compareFiles = new JsonArray();
+            for (Resource compareFile : getCompareFiles()) {
+                compareFiles.add(compareFile.getJSONForSecondaryFile());
+            }
+            jsonForServer.add("compare_files", compareFiles);
         }
 
         JsonArray files = new JsonArray();
