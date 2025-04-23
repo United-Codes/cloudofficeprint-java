@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="10f63217-419f-438e-93c3-33eef9bacb11" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/COPException.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/COPException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Examples/GeneralExamples/Examples.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Examples/GeneralExamples/Examples.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Examples/MultipleRequestMerge/MultipleRequestMergeExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Examples/MultipleRequestMerge/MultipleRequestMergeExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Examples/OrderConfirmation/OrderConfirmationExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Examples/OrderConfirmation/OrderConfirmationExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Examples/PDFSignature/PDFSignatureExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Examples/PDFSignature/PDFSignatureExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Examples/SolarSystem/SolarSystemExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Examples/SolarSystem/SolarSystemExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Examples/SpaceX/SpaceXExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Examples/SpaceX/SpaceXExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Mimetype.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Mimetype.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Output/CloudAcessToken/AWSToken.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Output/CloudAcessToken/AWSToken.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Output/CloudAcessToken/CloudAccessToken.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Output/CloudAcessToken/CloudAccessToken.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Output/CloudAcessToken/FTPToken.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Output/CloudAcessToken/FTPToken.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Output/CloudAcessToken/OAuth2Token.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Output/CloudAcessToken/OAuth2Token.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Output/CsvOptions.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Output/CsvOptions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Output/Output.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Output/Output.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Output/PDFOptions.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Output/PDFOptions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/PrintJob.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/PrintJob.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/COPChart.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/COPChart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/COPChartDateOptions.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/COPChartDateOptions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/CellSpan.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/CellSpan.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Cells/CellStyle.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Cells/CellStyle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Cells/CellStyleDocxPpt.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Cells/CellStyleDocxPpt.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Cells/CellStyleXlsx.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Cells/CellStyleXlsx.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Cells/TableCell.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Cells/TableCell.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/ChartAxisOptions.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/ChartAxisOptions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/ChartDateOptions.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/ChartDateOptions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/ChartOptions.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/ChartOptions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/ChartTextStyle.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/ChartTextStyle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/AreaChart.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/AreaChart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/BarChart.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/BarChart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/BarStackedChart.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/BarStackedChart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/BarStackedPercentChart.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/BarStackedPercentChart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/BubbleChart.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/BubbleChart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/Chart.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/Chart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/ColumnChart.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/ColumnChart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/ColumnStackedChart.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/ColumnStackedChart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/ColumnStackedPercentChart.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/ColumnStackedPercentChart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/CombinedChart.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/CombinedChart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/DoughnutChart.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/DoughnutChart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/LineChart.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/LineChart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/Pie3DChart.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/Pie3DChart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/PieChart.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/PieChart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/RadarChart.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/RadarChart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/ScatterChart.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/ScatterChart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/StockChart.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Charts/StockChart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Series/AreaSeries.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Series/AreaSeries.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Series/BarSeries.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Series/BarSeries.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Series/BarStackedPercentSeries.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Series/BarStackedPercentSeries.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Series/BarStackedSeries.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Series/BarStackedSeries.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Series/BubbleSeries.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Series/BubbleSeries.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Series/ColumnSeries.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Series/ColumnSeries.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Series/ColumnStackedPercentSeries.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Series/ColumnStackedPercentSeries.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Series/ColumnStackedSeries.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Series/ColumnStackedSeries.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Series/LineSeries.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Series/LineSeries.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Series/PieSeries.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Series/PieSeries.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Series/RadarSeries.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Series/RadarSeries.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Series/ScatterSeries.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Series/ScatterSeries.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Series/StockSeries.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Series/StockSeries.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Series/XYSeries.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Charts/Series/XYSeries.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Codes/BarCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Codes/BarCode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Codes/Code.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Codes/Code.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Codes/EmailQRCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Codes/EmailQRCode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Codes/EventQRCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Codes/EventQRCode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Codes/GeolocationQRCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Codes/GeolocationQRCode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Codes/MECardQRCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Codes/MECardQRCode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Codes/QRCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Codes/QRCode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Codes/SMSQRCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Codes/SMSQRCode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Codes/TelephoneNumberQRCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Codes/TelephoneNumberQRCode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Codes/URLQRCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Codes/URLQRCode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Codes/VCardQRCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Codes/VCardQRCode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Codes/WifiQRCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Codes/WifiQRCode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/D3Code.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/D3Code.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/ElementCollection.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/ElementCollection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/FootNote.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/FootNote.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Formula.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Formula.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/HTML.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/HTML.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/HyperLink.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/HyperLink.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Images/Image.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Images/Image.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Images/ImageBase64.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Images/ImageBase64.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Images/ImageUrl.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Images/ImageUrl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Loops/InlineDataLoop.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Loops/InlineDataLoop.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Loops/Labels.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Loops/Labels.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Loops/Loop.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Loops/Loop.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Loops/SheetLoop.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Loops/SheetLoop.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Loops/SlideLoop.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Loops/SlideLoop.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Loops/TableRowLoop.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Loops/TableRowLoop.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/MarkDownContent.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/MarkDownContent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/PDF/PDFFormData.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/PDF/PDFFormData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/PDF/PDFImage.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/PDF/PDFImage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/PDF/PDFImages.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/PDF/PDFImages.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/PDF/PDFInsertObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/PDF/PDFInsertObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/PDF/PDFText.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/PDF/PDFText.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/PDF/PDFTexts.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/PDF/PDFTexts.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/PageBreak.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/PageBreak.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Property.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Property.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Raw.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Raw.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/RawJsonArray.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/RawJsonArray.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/RenderElement.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/RenderElement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/RightToLeft.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/RightToLeft.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/StyledProperty.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/StyledProperty.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/TableOfContents.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/TableOfContents.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/TextBox.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/TextBox.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Watermark.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/RenderElements/Watermark.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Resources/Base64Resource.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Resources/Base64Resource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Resources/ExternalResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Resources/ExternalResource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Resources/GraphQLResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Resources/GraphQLResource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Resources/HTMLResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Resources/HTMLResource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Resources/RESTResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Resources/RESTResource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Resources/Resource.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Resources/Resource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Resources/ServerResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Resources/ServerResource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Resources/URLResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Resources/URLResource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Response.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Response.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Server/Command.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Server/Command.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Server/Commands.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Server/Commands.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Server/Printer.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Server/Printer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Server/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/main/com/cloudofficeprint/Server/Server.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/test/cloudofficeprint/ChartTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/test/cloudofficeprint/ChartTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/test/cloudofficeprint/CodesTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/test/cloudofficeprint/CodesTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/test/cloudofficeprint/ConfigTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/test/cloudofficeprint/ConfigTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/test/cloudofficeprint/ImagesTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/test/cloudofficeprint/ImagesTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/test/cloudofficeprint/LoopsTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/test/cloudofficeprint/LoopsTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/test/cloudofficeprint/PDFTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/test/cloudofficeprint/PDFTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/test/cloudofficeprint/PrintJobTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/test/cloudofficeprint/PrintJobTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/test/cloudofficeprint/RenderElementsTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/test/cloudofficeprint/RenderElementsTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/test/cloudofficeprint/ResourcesTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/classes/java/test/cloudofficeprint/ResourcesTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/reports/tests/test/classes/cloudofficeprint.ChartTests.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/reports/tests/test/classes/cloudofficeprint.CodesTests.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/reports/tests/test/classes/cloudofficeprint.ConfigTests.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/reports/tests/test/classes/cloudofficeprint.ImagesTests.html" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/reports/tests/test/classes/cloudofficeprint.ImagesTests.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/reports/tests/test/classes/cloudofficeprint.LoopsTests.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/reports/tests/test/classes/cloudofficeprint.PDFTests.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/reports/tests/test/classes/cloudofficeprint.PrintJobTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/reports/tests/test/classes/cloudofficeprint.RenderElementsTests.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/reports/tests/test/classes/cloudofficeprint.ResourcesTests.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/reports/tests/test/css/base-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/reports/tests/test/css/base-style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/reports/tests/test/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/reports/tests/test/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/reports/tests/test/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/reports/tests/test/js/report.js" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/reports/tests/test/js/report.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/reports/tests/test/packages/cloudofficeprint.html" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/reports/tests/test/packages/cloudofficeprint.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/test-results/test/TEST-cloudofficeprint.ChartTests.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/test-results/test/TEST-cloudofficeprint.CodesTests.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/test-results/test/TEST-cloudofficeprint.ConfigTests.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/test-results/test/TEST-cloudofficeprint.ImagesTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/test-results/test/TEST-cloudofficeprint.ImagesTests.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/test-results/test/TEST-cloudofficeprint.LoopsTests.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/test-results/test/TEST-cloudofficeprint.PDFTests.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/test-results/test/TEST-cloudofficeprint.PrintJobTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/test-results/test/TEST-cloudofficeprint.RenderElementsTests.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/test-results/test/TEST-cloudofficeprint.ResourcesTests.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/test-results/test/binary/results.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloudofficeprint/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cloudofficeprint/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "prabinbessie"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/United-Codes/cloudofficeprint-java",
+    "accountId": "e8173aa7-5444-4444-9e09-49205aba4fbf"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
+  <component name="ProjectId" id="2w7DOX9yxNl3wNRtvY8xqLtjlLz" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Gradle.ImagesTests.executor": "Run",
+    "JUnit.PDFTests.executor": "Run",
+    "JUnit.RenderElementsTests.executor": "Run",
+    "JUnit.RenderElementsTests.hyperLink.executor": "Run",
+    "JUnit.RenderElementsTests.include.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="JUnit.RenderElementsTests.include">
+    <configuration name="RenderElementsTests.hyperLink" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cloudofficeprint.cloudofficeprint.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cloudofficeprint.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cloudofficeprint" />
+      <option name="MAIN_CLASS_NAME" value="cloudofficeprint.RenderElementsTests" />
+      <option name="METHOD_NAME" value="hyperLink" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RenderElementsTests.include" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cloudofficeprint.cloudofficeprint.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cloudofficeprint.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cloudofficeprint" />
+      <option name="MAIN_CLASS_NAME" value="cloudofficeprint.RenderElementsTests" />
+      <option name="METHOD_NAME" value="include" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.RenderElementsTests.include" />
+        <item itemvalue="JUnit.RenderElementsTests.hyperLink" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="10f63217-419f-438e-93c3-33eef9bacb11" name="Changes" comment="" />
+      <created>1745383686965</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1745383686965</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/cloudofficeprint/src/test/java/cloudofficeprint/RenderElementsTests.java</url>
+          <line>214</line>
+          <properties class="cloudofficeprint.RenderElementsTests" method="include">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

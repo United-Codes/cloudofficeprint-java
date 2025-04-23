@@ -212,6 +212,14 @@ public class RenderElementsTests {
     }
 
     @Test
+    public void include() {
+        Include include = new Include("doc", "Base64 encoded file");
+        String correct = "{'doc':'Base64 encoded file'}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, include.getJSON());
+    }
+
+    @Test
     public void remove() {
         Remove remove = new Remove("remove", "false");
         String correct = "{'remove':false}";
