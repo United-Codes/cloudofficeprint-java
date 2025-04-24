@@ -23,6 +23,7 @@ public class PrintJob implements Runnable {
     private Resource[] prependFiles;
     private Resource[] appendFiles;
     private Resource[] attachments;
+    private Resource[] compareFiles;
     private Hashtable<String, Resource> subTemplates = new Hashtable<String, Resource>();
     private Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
     private ExternalResource externalResource;
@@ -114,6 +115,19 @@ public class PrintJob implements Runnable {
         this.attachments = attachments;
     }
 
+    /**
+     * @return Files to compare to the PDF.
+     */
+    public Resource[] getCompareFiles() {
+        return compareFiles;
+    }
+
+    /**
+     * @param compareFiles Files to attach to the PDF file.
+     */
+    public void setCompareFiles(Resource[] compareFiles) {
+        this.compareFiles = compareFiles;
+    }
     /**
      * Subtemplates are only accessible (in docx). They will replace the `{?include
      * subtemplate_dict_key}` tag in the docx.
@@ -354,6 +368,29 @@ public class PrintJob implements Runnable {
         setCopRemoteDebug(copRemoteDebug);
         setAttachments(attachments);
     }
+    /**
+     * A print job for the Cloud Office Print server containing all the necessary
+     * information to generate the adequate JSON for the Cloud Office Print server.
+     * If you don't want to instantiate a variable, use null for this argument.
+     *
+     * @param data         Hashtable of (filename, RenderElement) elements.
+     *                     Multiple output files will be produced if the hashtable
+     *                     has more than one element. The Cloud Office Print
+     *                     server will return a zip file containing all of them.
+     * @param server       Server to use for this print job.
+     * @param output       Object containing the output configuration for this
+     *                     print job.
+     * @param compareFiles Files to compare .
+     */
+
+    public PrintJob(Hashtable<String, RenderElement> data, Server server, Output output, Resource[] compareFiles) {
+        setData(data);
+        setServer(server);
+        setOutput(output);
+        setCompareFiles(compareFiles);
+    }
+
+
 
     /**
      * @return Jsonobject containing all the info about the printjob, for the POST
@@ -410,6 +447,13 @@ public class PrintJob implements Runnable {
                 attachments.add(attachment.getJSONForSecondaryFile());
             }
             jsonForServer.add("attachments", attachments);
+        }
+        if (getCompareFiles() != null && getCompareFiles().length > 0) {
+            JsonArray compareFiles = new JsonArray();
+            for (Resource compareFile : getCompareFiles()) {
+                compareFiles.add(compareFile.getJSONForSecondaryFile());
+            }
+            jsonForServer.add("compare_files", compareFiles);
         }
 
         JsonArray files = new JsonArray();
