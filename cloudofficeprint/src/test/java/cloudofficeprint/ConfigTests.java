@@ -190,20 +190,4 @@ public class ConfigTests {
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         assertEquals(jsonCorrect,output.getJSON());
     }
-
-//    @Test
-//    public void testOutputLocaleOption() {
-//        ConfigTests config = new ConfigTests();
-//        config.setOutputEncoding("raw");
-//        config.setOutputConverter("libreoffice");
-//        config.setOutputLocale("nepali");
-//
-//        Map<String, Object> expectedConfig = new java.util.HashMap<>();
-//        expectedConfig.put("output_locale", "nepali");
-//        expectedConfig.put("output_encoding", "raw");
-//        expectedConfig.put("output_converter", "libreoffice");
-//
-//
-//        assertEquals(expectedConfig, config.toMap());
-//    }
 }
