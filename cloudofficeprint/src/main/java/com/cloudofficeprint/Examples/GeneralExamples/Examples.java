@@ -106,7 +106,7 @@ public class Examples {
             Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
             data.put("output1", data1);
 
-            PrintJob printJob = new PrintJob(data, server, output, null, null, null, null, null,null);
+            PrintJob printJob = new PrintJob(data, server, output, null, null, null, null, null);
 
             Response response = printJob.execute();
             response.downloadLocally("./downloads/outputWithoutTemplate");
@@ -196,7 +196,7 @@ public class Examples {
             data.put("output1", data1);
             data.put("output2", data2);
 
-            PrintJob printJob = new PrintJob(data, server, output, base64Resource, null, null, null, null,null);
+            PrintJob printJob = new PrintJob(data, server, output, base64Resource, null, null, null, null);
 
             Response response = printJob.execute();
             response.downloadLocally("./downloads/outputLocalTemplate");
@@ -276,7 +276,7 @@ public class Examples {
             data.put("output1", data1);
             data.put("output2", data2);
 
-            PrintJob printJob = new PrintJob(data, server, output, base64Resource, null, null, null, null,null);
+            PrintJob printJob = new PrintJob(data, server, output, base64Resource, null, null, null, null);
 
             Thread thread = new Thread(printJob); // This is how to run send the POST request asynchronously (because it
                                                   // can sometimes take a few seconds before getting back the response).
@@ -437,7 +437,7 @@ public class Examples {
             file.put("output", data);
 
             // Create the printjob
-            PrintJob printJob = new PrintJob(file, server, output, base64Resource, null, null, null, null, null);
+            PrintJob printJob = new PrintJob(file, server, output, base64Resource, null, null, null, null);
             Response response = printJob.execute();
             response.downloadLocally("./downloads/outputLoop");
 
@@ -494,7 +494,7 @@ public class Examples {
             Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
             data.put("output1", lineChart);
 
-            PrintJob printJob = new PrintJob(data, server, output, base64Resource, null, null, null, null, null);
+            PrintJob printJob = new PrintJob(data, server, output, base64Resource, null, null, null, null);
             Response response = printJob.execute();
             response.downloadLocally("./downloads/outputChartName");
 
@@ -560,7 +560,7 @@ public class Examples {
             Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
             data.put("output1", combinedChart);
 
-            PrintJob printJob = new PrintJob(data, server, output, base64Resource, null, null, null, null,null);
+            PrintJob printJob = new PrintJob(data, server, output, base64Resource, null, null, null, null);
 
             Response response = printJob.execute();
             response.downloadLocally("./downloads/outputCombinedChartName");
@@ -621,7 +621,7 @@ public class Examples {
             Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
             data.put("output1", codes);
 
-            PrintJob printJob = new PrintJob(data, server, output, base64Resource, null, null, null, null, null);
+            PrintJob printJob = new PrintJob(data, server, output, base64Resource, null, null, null, null);
 
             Response response = printJob.execute();
             response.downloadLocally("./downloads/outputCodes");
@@ -699,7 +699,7 @@ public class Examples {
         data.put("output1", coll);
 
         PrintJob printJob = new PrintJob(data, server, output, templateMain, subTemplates,
-                new Resource[] { prependFile }, new Resource[] { appendFile }, null,null);
+                new Resource[] { prependFile }, new Resource[] { appendFile }, null);
 
         printJob.execute().downloadLocally("./downloads/prependAppendSubtemplates");
 
@@ -793,7 +793,7 @@ public class Examples {
             Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
             data.put("output1", texts);
 
-            PrintJob printJob = new PrintJob(data, server, output, base64Resource, null, null, null, null,null);
+            PrintJob printJob = new PrintJob(data, server, output, base64Resource, null, null, null, null);
 
             Response response = printJob.execute();
             response.downloadLocally("./downloads/outputCOPPDFText");
@@ -858,7 +858,7 @@ public class Examples {
             Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
             data.put("output1", collection);
 
-            PrintJob printJob = new PrintJob(data, server, output, base64Resource, null, null, null, null,null);
+            PrintJob printJob = new PrintJob(data, server, output, base64Resource, null, null, null, null);
 
             Response response = printJob.execute();
             response.downloadLocally("./downloads/outputRenderElements");
@@ -908,7 +908,7 @@ public class Examples {
             Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
             data.put("output1", collection);
 
-            PrintJob printJob = new PrintJob(data, server, output, base64Resource, null, null, null, null,null);
+            PrintJob printJob = new PrintJob(data, server, output, base64Resource, null, null, null, null);
 
             Response response = printJob.execute();
             response.downloadLocally("./downloads/pdfSigned");

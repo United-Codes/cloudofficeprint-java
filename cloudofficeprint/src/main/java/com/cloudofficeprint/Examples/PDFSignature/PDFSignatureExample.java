@@ -48,7 +48,7 @@ public class PDFSignatureExample {
             Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
             data.put("output1", collection);
 
-            PrintJob printJob = new PrintJob(data, server, output, base64Resource, null, null, null, null, null);
+            PrintJob printJob = new PrintJob(data, server, output, base64Resource, null, null, null, null);
 
             Response response = printJob.execute();
             response.downloadLocally("./downloads/pdfSigned");
