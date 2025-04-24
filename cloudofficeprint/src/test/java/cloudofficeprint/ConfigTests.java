@@ -13,6 +13,9 @@ import com.cloudofficeprint.Server.Printer;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.junit.jupiter.api.Test;
+
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ConfigTests {
@@ -182,9 +185,25 @@ public class ConfigTests {
         requestOption.setUrl("https://www.apexofficeprint.com/post/");
         requestOption.setExtraHeaders(extraHeaders);
         String secretKey = "AOPSecretKey";
-        Output output = new Output("pdf", "raw", "libreoffice", null, null, null, null, secretKey,true,requestOption);
-        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'secret_key':'AOPSecretKey', 'output_polling': true,'request_option':{'url': 'https://www.apexofficeprint.com/post/','extra_headers': {'file_id' : 'Any file id like FILE_123','access_token': 'Access Token for above hostname (if any) '}} }";
+        Output output = new Output("pdf", "raw", "libreoffice", null, null, null, null, secretKey,true,requestOption, null, "nepali");
+        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'secret_key':'AOPSecretKey', 'output_polling': true,'request_option':{'url': 'https://www.apexofficeprint.com/post/','extra_headers': {'file_id' : 'Any file id like FILE_123','access_token': 'Access Token for above hostname (if any) '}}, 'output_locale': 'nepali'}";
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         assertEquals(jsonCorrect,output.getJSON());
     }
+
+//    @Test
+//    public void testOutputLocaleOption() {
+//        ConfigTests config = new ConfigTests();
+//        config.setOutputEncoding("raw");
+//        config.setOutputConverter("libreoffice");
+//        config.setOutputLocale("nepali");
+//
+//        Map<String, Object> expectedConfig = new java.util.HashMap<>();
+//        expectedConfig.put("output_locale", "nepali");
+//        expectedConfig.put("output_encoding", "raw");
+//        expectedConfig.put("output_converter", "libreoffice");
+//
+//
+//        assertEquals(expectedConfig, config.toMap());
+//    }
 }
