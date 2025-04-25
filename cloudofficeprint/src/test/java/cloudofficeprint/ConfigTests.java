@@ -165,7 +165,7 @@ public class ConfigTests {
 
     @Test
     public void testPrinter() {
-        Printer printer = new Printer("http://10.0.14.223:631/", "1.1", "your name", "Cloud Office Print",true);
+        Printer printer = new Printer("http://10.0.14.223:631/", "1.1", "your name", "Cloud Office Print", true);
         Printer printer1 = new Printer("http://10.0.14.223:631/", "1.1", "your name", "Cloud Office Print");
         String correct = " {  'location': 'http://10.0.14.223:631/', 'version': '1.1','requester': 'your name', 'job_name': 'Cloud Office Print','return_output':true }";
         String correct1 = " {  'location': 'http://10.0.14.223:631/', 'version': '1.1','requester': 'your name', 'job_name': 'Cloud Office Print','return_output':False }";
@@ -174,20 +174,32 @@ public class ConfigTests {
         JsonObject jsonCorrect1 = JsonParser.parseString(correct1).getAsJsonObject();
         // System.out.println(jsonCorrect);
         assertEquals(jsonCorrect, printer.getJSON());
-        assertEquals(jsonCorrect1,printer1.getJSON());
+        assertEquals(jsonCorrect1, printer1.getJSON());
     }
 
     @Test
-    public void testRequestOptionAndOutputPolling(){
-        String extraHeader =  "{'file_id' : 'Any file id like FILE_123','access_token': 'Access Token for above hostname (if any) '}";
+    public void testRequestOptionAndOutputPolling() {
+        String extraHeader = "{'file_id' : 'Any file id like FILE_123','access_token': 'Access Token for above hostname (if any) '}";
         JsonObject extraHeaders = JsonParser.parseString((extraHeader)).getAsJsonObject();
         RequestOption requestOption = new RequestOption();
         requestOption.setUrl("https://www.apexofficeprint.com/post/");
         requestOption.setExtraHeaders(extraHeaders);
         String secretKey = "AOPSecretKey";
-        Output output = new Output("pdf", "raw", "libreoffice", null, null, null, null, secretKey,true,requestOption, null, "nepali");
+        Output output = new Output("pdf", "raw", "libreoffice", null, null, null, null, secretKey, true, requestOption, null, "nepali");
         String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'secret_key':'AOPSecretKey', 'output_polling': true,'request_option':{'url': 'https://www.apexofficeprint.com/post/','extra_headers': {'file_id' : 'Any file id like FILE_123','access_token': 'Access Token for above hostname (if any) '}}, 'output_locale': 'nepali'}";
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
-        assertEquals(jsonCorrect,output.getJSON());
+        assertEquals(jsonCorrect, output.getJSON());
+    }
+
+    @Test
+    public void testOutputReadPassword() {
+        Output output = new Output("pdf", "raw", "libreoffice",
+                null, null, null, null,
+                null, null, null,
+                true, null);
+        output.setOutputReadPassword("aop_pass");
+        String correct = "{\"output_type\": \"pdf\", \"output_encoding\": \"raw\", \"output_converter\": \"libreoffice\", \"update_toc\": true, \"output_read_password\": \"aop_pass\"}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, output.getJSON());
     }
 }

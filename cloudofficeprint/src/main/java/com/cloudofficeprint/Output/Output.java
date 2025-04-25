@@ -82,6 +82,11 @@ public class Output {
      */
     private String OutputLocale = null;
     /**
+     * Specifies the locale to be used for the output document (e.g., "nepali", "english").
+     * Helps applications like MS Office or LibreOffice interpret the document correctly.
+     */
+    private String OutputReadPassword = null;
+    /**
      * If it is set to true a unique link is sent back for each request which can be used later to download the output file.
      */
     private Boolean OutputPolling = null;
@@ -262,6 +267,20 @@ public class Output {
      * @param outputLocale the output locale as a string.
      */
     public void setOutputLocale(String outputLocale) {this.OutputLocale= outputLocale; }
+    /**
+     * Returns the password required to read the output document.
+     * @return the output read password as a string.
+     */
+    public String getOutputReadPassword() {
+        return OutputReadPassword;
+    }
+    /**
+     * Sets the password required to read the output document.
+     * @param outputReadPassword the output read password as a string.
+     */
+    public void setOutputReadPassword(String outputReadPassword) {
+        this.OutputReadPassword = outputReadPassword;
+    }
 
     /**
      * Returns a unique link for each request is sent back which can be used later to download the output file.
@@ -706,6 +725,9 @@ public class Output {
         }
         if (getOutputLocale() != null) {
             json.addProperty("output_locale", getOutputLocale());
+        }
+        if (getOutputReadPassword() != null) {
+            json.addProperty("output_read_password", getOutputReadPassword());
         }
         if (getAppendPerPage() != null) {
             json.addProperty("output_append_per_page", getAppendPerPage());
