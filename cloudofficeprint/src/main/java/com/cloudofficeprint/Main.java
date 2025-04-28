@@ -2,6 +2,7 @@ package com.cloudofficeprint;
 
 //https://www.jetbrains.com/help/idea/creating-and-running-your-first-java-application.html#run_jar_artifact will be usefull to build the JAR
 
+import com.cloudofficeprint.Examples.BeginersGuide.MergeCellsExample;
 import com.cloudofficeprint.Examples.BeginersGuide.UsingElements;
 import com.cloudofficeprint.Examples.GeneralExamples.Examples;
 import com.cloudofficeprint.Examples.MultipleRequestMerge.MultipleRequestMergeExample;
@@ -15,6 +16,8 @@ public class Main {
 //     First argument should be your API key
     public static void main(String[] args) throws Exception {
 //         BeginerGuide
+        MergeCellsExample merge = new MergeCellsExample();
+           merge.main();
 //         UsingElements
 //         UsingElements ele = new UsingElements();
 //         ele.main();

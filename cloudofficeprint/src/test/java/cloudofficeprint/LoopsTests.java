@@ -2,6 +2,7 @@ package cloudofficeprint;
 
 import com.cloudofficeprint.RenderElements.ElementCollection;
 import com.cloudofficeprint.RenderElements.Loops.Loop;
+import com.cloudofficeprint.RenderElements.Loops.MergeCellsLoop;
 import com.cloudofficeprint.RenderElements.Loops.SheetLoop;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -157,5 +158,105 @@ public class LoopsTests {
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
         assertEquals(jsonCorrect, sheetLoop.getJSON());
+    }
+
+    @Test
+    public void testForEachMergeCells() {
+        ElementCollection dept1 = new ElementCollection("element1");
+        Hashtable<String,String> dept1Info = new Hashtable<>();
+        dept1Info.put("department", "Engineering");
+        dept1.addFromDict(dept1Info);
+        ElementCollection e1 = new ElementCollection("emp");
+        Hashtable<String,String> e1Info = new Hashtable<>();
+        e1Info.put("name", "John Smith");
+        e1Info.put("project", "Website Redesign");
+        e1Info.put("status", "In Progress");
+        e1.addFromDict(e1Info);
+
+        ElementCollection e2 = new ElementCollection("emp");
+        Hashtable<String,String> e2Info = new Hashtable<>();
+        e2Info.put("name", "Emily Johnson");
+        e2Info.put("project", "API Development");
+        e2Info.put("status", "Completed");
+        e2.addFromDict(e2Info);
+
+        ElementCollection e3 = new ElementCollection("emp");
+        Hashtable<String,String> e3Info = new Hashtable<>();
+        e3Info.put("name", "Michael Brown");
+        e3Info.put("project", "Mobile App");
+        e3Info.put("status", "Planning");
+        e3.addFromDict(e3Info);
+
+        Loop employees1 = new Loop("employees", new ElementCollection[]{ e1, e2, e3 });
+        dept1.addElement(employees1);
+        ElementCollection dept2 = new ElementCollection("element2");
+        Hashtable<String,String> dept2Info = new Hashtable<>();
+        dept2Info.put("department", "Marketing");
+        dept2.addFromDict(dept2Info);
+
+        ElementCollection m1 = new ElementCollection("emp");
+        Hashtable<String,String> m1Info = new Hashtable<>();
+        m1Info.put("name", "Sarah Wilson");
+        m1Info.put("project", "Brand Campaign");
+        m1Info.put("status", "In Progress");
+        m1.addFromDict(m1Info);
+
+        ElementCollection m2 = new ElementCollection("emp");
+        Hashtable<String,String> m2Info = new Hashtable<>();
+        m2Info.put("name", "David Thompson");
+        m2Info.put("project", "Market Research");
+        m2Info.put("status", "Not Started");
+        m2.addFromDict(m2Info);
+
+        Loop employees2 = new Loop("employees", new ElementCollection[]{ m1, m2 });
+        dept2.addElement(employees2);
+        MergeCellsLoop mergeLoop = new MergeCellsLoop(
+                "departments",
+                new ElementCollection[]{ dept1, dept2 }
+        );
+
+        String correct =
+                "{\n" +
+                        "  \"departments\": [\n" +
+                        "    {\n" +
+                        "      \"department\": \"Engineering\",\n" +
+                        "      \"employees\": [\n" +
+                        "        {\n" +
+                        "          \"name\": \"John Smith\",\n" +
+                        "          \"project\": \"Website Redesign\",\n" +
+                        "          \"status\": \"In Progress\"\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "          \"name\": \"Emily Johnson\",\n" +
+                        "          \"project\": \"API Development\",\n" +
+                        "          \"status\": \"Completed\"\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "          \"name\": \"Michael Brown\",\n" +
+                        "          \"project\": \"Mobile App\",\n" +
+                        "          \"status\": \"Planning\"\n" +
+                        "        }\n" +
+                        "      ]\n" +
+                        "    },\n" +
+                        "    {\n" +
+                        "      \"department\": \"Marketing\",\n" +
+                        "      \"employees\": [\n" +
+                        "        {\n" +
+                        "          \"name\": \"Sarah Wilson\",\n" +
+                        "          \"project\": \"Brand Campaign\",\n" +
+                        "          \"status\": \"In Progress\"\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "          \"name\": \"David Thompson\",\n" +
+                        "          \"project\": \"Market Research\",\n" +
+                        "          \"status\": \"Not Started\"\n" +
+                        "        }\n" +
+                        "      ]\n" +
+                        "    }\n" +
+                        "  ]\n" +
+                        "}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+
+        assertEquals(jsonCorrect, mergeLoop.getJSON());
     }
 }
