@@ -4,6 +4,7 @@ package com.cloudofficeprint;
 
 import com.cloudofficeprint.Examples.BeginersGuide.MergeCellsExample;
 import com.cloudofficeprint.Examples.BeginersGuide.UsingElements;
+import com.cloudofficeprint.Examples.BeginersGuide.UsingFormsExample;
 import com.cloudofficeprint.Examples.GeneralExamples.Examples;
 import com.cloudofficeprint.Examples.MultipleRequestMerge.MultipleRequestMergeExample;
 import com.cloudofficeprint.Examples.OrderConfirmation.OrderConfirmationExample;
@@ -16,9 +17,10 @@ public class Main {
 //     First argument should be your API key
     public static void main(String[] args) throws Exception {
 //         BeginerGuide
-        MergeCellsExample merge = new MergeCellsExample();
-           merge.main();
-//         UsingElements
+//        MergeCellsExample merge = new MergeCellsExample();
+//           merge.main();
+        UsingFormsExample forms = new UsingFormsExample();
+         forms.main();
 //         UsingElements ele = new UsingElements();
 //         ele.main();
 //
