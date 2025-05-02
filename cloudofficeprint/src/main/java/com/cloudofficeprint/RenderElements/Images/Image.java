@@ -11,6 +11,7 @@ public abstract class Image extends RenderElement {
 
     private Integer width;
     private Integer height;
+    private Integer density;
     private Integer maxWidth;
     private Integer maxHeight;
     private String altText;
@@ -89,6 +90,24 @@ public abstract class Image extends RenderElement {
      */
     public void setAltText(String altText) {
         this.altText = altText;
+    }
+
+    /**
+     * @return The density of the image in DPI.
+     */
+    public Integer getDensity() {
+        return density;
+    }
+    /**
+     * @param density The density of the image in DPI.
+     */
+    public void setDensity(Integer density) {
+        if ( density != null && density > 1200) {
+            this.density = 1200;
+        }
+        else {
+            this.density = density;
+        }
     }
 
     /**
@@ -215,6 +234,9 @@ public abstract class Image extends RenderElement {
         }
         if (getMaintainAspectRatio() != null) {
             json.addProperty(getName()+"_maintain_aspect_ratio",getMaintainAspectRatio());
+        }
+        if (getDensity() != null) {
+            json.addProperty(getName() + "_density", getDensity());
         }
         return json;
     }
