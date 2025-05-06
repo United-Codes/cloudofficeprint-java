@@ -101,6 +101,10 @@ public class Output {
      */
     private RequestOption RequestOption = null;
     /**
+     * Controls whether to both save files to server directory and return them in the response.
+     */
+    private Boolean ReturnOutput = null;
+    /**
      * @return the encoding to use for the output.
      */
     public String getEncoding() {
@@ -318,6 +322,21 @@ public class Output {
      */
     public RequestOption getRequestOption(){
         return RequestOption;
+    }
+
+    /**
+     * Gets whether the output should be both saved to directory and returned.
+     * When true, files are saved to server directory and also returned in the response.
+     * @return Boolean indicating if output should be returned along with directory save
+     */
+    public Boolean getReturnOutput() { return ReturnOutput; }
+
+    /**
+     * Sets whether the output should be both saved to directory and returned.
+     * @param returnOutput When true, files are saved to server directory and also returned in the response
+     */
+    public void setReturnOutput(Boolean returnOutput) {
+        this.ReturnOutput = returnOutput;
     }
 
     /**
@@ -712,6 +731,27 @@ public class Output {
      * @return JSONObject with the tags for the output for the Cloud Office Print
      * server.
      */
+    public Output(String filetype, String encoding, String converter, CloudAccessToken token, String serverDirectory,
+                  PDFOptions pdfOptions, CsvOptions csvOptions,String secretKey, Boolean outputPolling, RequestOption requestOption,
+                  Boolean updateToc, String outputLocale,Boolean returnOutput) {
+        setType(filetype);
+        setEncoding(encoding);
+        setConverter(converter);
+        setOutputLocale(outputLocale);
+        setAccessToken(token);
+        setServerDirectory(serverDirectory);
+        setPDFOptions(pdfOptions);
+        setCsvOptions(csvOptions);
+        setSecretKey(secretKey);
+        setOutputPolling(outputPolling);
+        setRequestOption(requestOption);
+        setUpdateToc(updateToc);
+        setReturnOutput(returnOutput);
+    }
+    /**
+     * @return JSONObject with the tags for the output for the Cloud Office Print
+     * server.
+     */
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         if (getType() != null) {
@@ -768,6 +808,9 @@ public class Output {
                 reqOption.add(tag.getKey(),tag.getValue());
             }
             json.add("request_option",reqOption);
+        }
+        if (getReturnOutput() != null) {
+            json.addProperty("return_output", getReturnOutput());
         }
         return json;
     }
