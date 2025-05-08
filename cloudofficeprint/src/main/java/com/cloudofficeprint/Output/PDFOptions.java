@@ -41,6 +41,9 @@ public class PDFOptions {
     private Boolean convertAttachmentToJson;
     private Boolean insertBarcode;
     private String pageNumberStartAt;
+    private String batchSelector;
+    private Integer batchSize;
+    private String batchCondition;
 
     /**
      * Constructor for the PDFOptions object. Set the options with the setters.
@@ -164,6 +167,36 @@ public class PDFOptions {
      */
     public void setWatermark(String watermark) {
         this.watermark = watermark;
+    }
+    /**
+     * @return The batch selector path as a string.
+     */
+    public  String getBatchSelector() { return batchSelector;}
+    /**
+     * @param batchSelector The JSON path to the array (e.g., "orders:products").
+     */
+    public void setBatchSelector(String batchSelector) {
+        this.batchSelector = batchSelector;
+    }
+    /**
+     * @return The batch size as an integer.
+     */
+    public  Integer getBatchSize() { return batchSize;}
+    /**
+     * @param batchSize The number per batch
+     */
+    public void setBatchSize(Integer batchSize) {
+        this.batchSize = batchSize;
+    }
+    /**
+     * @return The batch condition as a string
+     */
+    public  String getBatchCondition() { return batchCondition;}
+    /**
+     * @param batchCondition The condition (e.g., "unit_price > 100").
+     */
+    public void setBatchCondition(String batchCondition) {
+        this.batchCondition = batchCondition;
     }
 
     /**
@@ -756,6 +789,15 @@ public class PDFOptions {
         }
         if (getPageNumberStartAt() != null) {
             json.addProperty("output_page_number_start_at", getPageNumberStartAt());
+        }
+        if (getBatchSelector() != null){
+            json.addProperty("batch_selector",getBatchSelector());
+        }
+        if (getBatchSize() != null){
+            json.addProperty("batch_size",getBatchSize());
+        }
+        if (getBatchCondition() != null){
+            json.addProperty("batch_condition", getBatchCondition());
         }
         return json;
     }

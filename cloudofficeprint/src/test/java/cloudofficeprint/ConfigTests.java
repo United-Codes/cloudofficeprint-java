@@ -202,4 +202,17 @@ public class ConfigTests {
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         assertEquals(jsonCorrect, output.getJSON());
     }
+    @Test
+    public void testPdfBatching() {
+        PDFOptions pdfOption = new PDFOptions();
+        pdfOption .setMerge(true);
+        pdfOption .setBatchSelector("orders:products");
+        pdfOption .setBatchSize(3);
+        pdfOption .setBatchCondition("unit_price > 110 ? \"Expensive\" : unit_price < 80 ? \"Cheap\" : \"Medium\"");
+
+        Output output = new Output("pdf", "raw", "libreoffice", null, null, pdfOption,null);
+        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'output_merge': true, 'batch_selector': 'orders:products', 'batch_size': 3, 'batch_condition': 'unit_price > 110 ? \"Expensive\" : unit_price < 80 ? \"Cheap\" : \"Medium\"'}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, output.getJSON());
+    }
 }
