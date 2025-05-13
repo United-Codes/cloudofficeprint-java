@@ -398,28 +398,6 @@ public class PrintJob implements Runnable {
         setOutput(output);
         setCompareFiles(compareFiles);
     }
-    /**
-     * A print job for the Cloud Office Print server containing all the necessary
-     * information to generate the adequate JSON for the Cloud Office Print server.
-     * If you don't want to instantiate a variable, use null for this argument.
-     *
-     * @param data                  Hashtable of (filename, RenderElement) elements.
-     *                             Multiple output files will be produced if the hashtable
-     *                             has more than one element. The Cloud Office Print
-     *                             server will return a zip file containing all of them.
-     * @param server               Server to use for this print job.
-     * @param output              Object containing the output configuration for this
-     *                           print job.
-     * @param transformationFunction JavaScript function to transform data before rendering.
-     */
-    public PrintJob(Hashtable<String, RenderElement> data, Server server, Output output,
-                    TransformationFunction transformationFunction) {
-        setData(data);
-        setServer(server);
-        setOutput(output);
-        setTransformationFunction(transformationFunction);
-    }
-
 
     /**
      * @return Jsonobject containing all the info about the printjob, for the POST
