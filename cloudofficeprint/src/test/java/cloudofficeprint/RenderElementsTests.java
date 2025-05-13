@@ -80,7 +80,10 @@ public class RenderElementsTests {
 
     @Test
     public void autoLink() {
-        PptxAutoLink cell = new PptxAutoLink("autoLink", "sample text with multiple hyperlinks", "red", "#ffffff", true);
+        PptxAutoLink cell = new PptxAutoLink("autoLink", "sample text with multiple hyperlinks");
+        cell.setFontColor("red");
+        cell.setUnderlineColor("#ffffff");
+        cell.setPreserveTagStyle(true);
         String correct = "{'autoLink': 'sample text with multiple hyperlinks', 'autoLink_font_color': 'red', 'autoLink_underline_color': '#ffffff', 'autoLink_preserve_tag_style': true}";
         // System.out.println(cell.getJSON());
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();

@@ -7,7 +7,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Class representing an autoLink for templates.
+ * Class representing an AutoLink element for templates.
+ * This element can replace a tag in a template with a hyperlink or plain text.
  */
 public class PptxAutoLink extends RenderElement {
 
@@ -17,100 +18,99 @@ public class PptxAutoLink extends RenderElement {
 
     /**
      *
-     * @return font color of AutoLink
+     * @param name  The name of the tag in the template.
+     * @param value The text (which may contain hyperlinks) to replace the tag.
+     */
+    public PptxAutoLink(String name, String value) {
+        setName(name);
+        setValue(value);
+    }
+
+    /**
+     * Gets the font color for the hyperlink text.
+     *
+     * @return The font color as a hex string (e.g., "#FF0000") or null if not set.
      */
     public String getFontColor() {
         return fontColor;
     }
 
     /**
+     * Sets the font color for the hyperlink text.
      *
-     * @param fontColor set the value of font color
+     * @param fontColor A hex string representing the desired font color (e.g., "#0000FF").
      */
     public void setFontColor(String fontColor) {
         this.fontColor = fontColor;
     }
 
     /**
+     * Gets the underline color for the hyperlink text.
      *
-     * @return underline color of AutoLink
+     * @return The underline color as a hex string (e.g., "#00FF00") or null if not set.
      */
     public String getUnderlineColor() {
         return underlineColor;
     }
 
     /**
+     * Sets the underline color for the hyperlink text.
      *
-     * @param underlineColor  set the value of underline color
+     * @param underlineColor A hex string representing the underline color (e.g., "#00FF00").
      */
     public void setUnderlineColor(String underlineColor) {
         this.underlineColor = underlineColor;
     }
 
     /**
+     * Gets whether to preserve the default tag style.
      *
-     * @return whether to preserve the styling of hyperlink text defined in the template (blue and underlined by default)
+     * @return true to preserve default styling; false or null to override it.
      */
     public Boolean getPreserveTagStyle() {
         return preserveTagStyle;
     }
 
     /**
+     * Sets whether to preserve the tag's original style from the template.
      *
-     * @param preserveTagStyle true (to preserve) or false
+     * @param preserveTagStyle true to preserve styling; false to override it.
      */
     public void setPreserveTagStyle(Boolean preserveTagStyle) {
         this.preserveTagStyle = preserveTagStyle;
     }
 
     /**
-     * Element to insert a footnote in a template.
      *
-     * @param name      Name of this footnote for the tag.
-     * @param value     Value for the autoLink (will replace the tag in the template).
-     *                  This may or may not have hyperlinks.
-     * @param fontColor font color of autolink.
-     * @param underlineColor underline color of autolink
-     * @param preserveTagStyle whether to preserve the styling of hyperlink text defined in the template (blue and underlined by default)
-     */
-    public PptxAutoLink(String name, String value, String fontColor, String underlineColor, Boolean preserveTagStyle) {
-        setName(name);
-        setValue(value);
-        setFontColor(fontColor);
-        setUnderlineColor(underlineColor);
-        setPreserveTagStyle(preserveTagStyle);
-    }
-
-    /**
-     * @return JSONObject with the tags for this element for the Cloud Office Print
-     * server.
+     * @return A {@link JsonObject} containing tag name, value, and any optional styling if set.
      */
     @Override
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
         json.addProperty(getName(), getValue());
 
-        if (getFontColor() != null) {
-            json.addProperty(getName() + "_font_color", getFontColor());
+        if (fontColor != null) {
+            json.addProperty(getName() + "_font_color", fontColor);
         }
-        if (getUnderlineColor() != null) {
-            json.addProperty(getName() + "_underline_color", getUnderlineColor());
+        if (underlineColor != null) {
+            json.addProperty(getName() + "_underline_color", underlineColor);
         }
-        if (getPreserveTagStyle() != null) {
-            json.addProperty(getName() + "_preserve_tag_style", getPreserveTagStyle());
+        if (preserveTagStyle != null) {
+            json.addProperty(getName() + "_preserve_tag_style", preserveTagStyle);
         }
 
         return json;
     }
 
     /**
-     * @return An immutable set containing all available template tags this element
-     * can replace.
+     * Returns the template tag(s) this element can replace.
+     *
+     * @return A set of template tags this AutoLink can match.
      */
     @Override
     public Set<String> getTemplateTags() {
-        Set<String> hash_Set = new HashSet<String>();
-        hash_Set.add("{*auto " + getName() + "}");
-        return ImmutableSet.copyOf(hash_Set);
+        Set<String> tags = new HashSet<>();
+        tags.add("{*auto " + getName() + "}");
+        return ImmutableSet.copyOf(tags);
     }
 }
