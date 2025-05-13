@@ -1,26 +1,21 @@
 package com.cloudofficeprint.RenderElements;
 
 import com.google.common.collect.ImmutableSet;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
 /**
- * Inside PowerPoint, the tag {name?} can be used
- * to remove an entire shape if the associated tag evaluates to false.
- For example, if a template slide includes a text box with the tag {toShow?}
- and the value of toShow is false or undefined, the entire shape will be removed from the slide.
+ * Used to remove a PowerPoint shape if the tag value is "false" or not defined.
+ * Tag format in template: {tagName?}
  */
-public class Remove extends RenderElement {
+public class PptxShapeRemove extends RenderElement {
     /**
      * @param name  the name of insert tag
      * @param value (string): 'false' (to remove the shape / text-box) or any other string.
      */
-    public Remove(String name, String value) {
+    public PptxShapeRemove(String name, String value) {
         setName(name);
         setValue(value);
     }

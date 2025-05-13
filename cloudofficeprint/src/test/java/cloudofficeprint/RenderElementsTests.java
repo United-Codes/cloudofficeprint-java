@@ -214,7 +214,7 @@ public class RenderElementsTests {
 
     @Test
     public void remove() {
-        Remove remove = new Remove("remove", "false");
+        PptxShapeRemove remove = new PptxShapeRemove("remove", "false");
         String correct = "{'remove':false}";
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         assertEquals(jsonCorrect, remove.getJSON());
