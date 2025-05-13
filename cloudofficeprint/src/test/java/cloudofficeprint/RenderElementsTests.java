@@ -93,8 +93,12 @@ public class RenderElementsTests {
 
     @Test
     public void hyperLink() {
-        PptxHyperLink cell = new PptxHyperLink("hyperlink", "hyperlink_text", "url",  "red", "#ffffff", true);
-        String correct = "{'hyperlink': 'url', 'hyperlink_text': 'hyperlink_text', 'hyperlink_text_font_color': 'red', 'hyperlink_text_underline_color': '#ffffff', 'hyperlink_preserve_tag_style': true}";
+        PptxHyperLink cell = new PptxHyperLink("hyperlink", "url");
+        cell.setValue("hyperlink_text");
+        cell.setFontColor("red");
+        cell.setUnderlineColor("#ffffff");
+        cell.setPreserveTagStyle(true);
+        String correct = "{'hyperlink': 'url', 'hyperlink_text': 'hyperlink_text', 'hyperlink_font_color': 'red', 'hyperlink_underline_color': '#ffffff', 'hyperlink_preserve_tag_style': true}";
         // System.out.println(cell.getJSON());
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
