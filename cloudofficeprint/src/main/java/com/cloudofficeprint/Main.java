@@ -5,6 +5,7 @@ package com.cloudofficeprint;
 import com.cloudofficeprint.Examples.BeginersGuide.MergeCellsExample;
 import com.cloudofficeprint.Examples.BeginersGuide.UsingElements;
 import com.cloudofficeprint.Examples.BeginersGuide.UsingFormsExample;
+import com.cloudofficeprint.Examples.BeginersGuide.UsingTransformation;
 import com.cloudofficeprint.Examples.GeneralExamples.Examples;
 import com.cloudofficeprint.Examples.MultipleRequestMerge.MultipleRequestMergeExample;
 import com.cloudofficeprint.Examples.OrderConfirmation.OrderConfirmationExample;
@@ -19,8 +20,10 @@ public class Main {
 //         BeginerGuide
 //        MergeCellsExample merge = new MergeCellsExample();
 //           merge.main();
-        UsingFormsExample forms = new UsingFormsExample();
-         forms.main();
+//        UsingFormsExample forms = new UsingFormsExample();
+//         forms.main();
+        UsingTransformation tf = new UsingTransformation();
+        tf.runExample();
 //         UsingElements ele = new UsingElements();
 //         ele.main();
 //

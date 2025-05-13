@@ -28,9 +28,11 @@ public class PrintJob implements Runnable {
     private Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
     private ExternalResource externalResource;
     private Boolean copRemoteDebug;
+    private TransformationFunction transformationFunction;
 
     private volatile Response response; // for asynchronous calls
 
+    /**
     /**
      * @return Server to user for this printjob.
      */
@@ -201,7 +203,6 @@ public class PrintJob implements Runnable {
     public void setExternalResource(ExternalResource externalResource) {
         this.externalResource = externalResource;
     }
-
     /**
      * For getting to response after asynchronous execution. To used after run() has
      * been called and the thread joined.
@@ -219,7 +220,15 @@ public class PrintJob implements Runnable {
      * @param response Response of the request to Cloud Office Print.
      */
     public void setResponse(Response response) {
+
         this.response = response;
+    }
+    public TransformationFunction getTransformationFunction() {
+        return transformationFunction;
+    }
+
+    public void setTransformationFunction(TransformationFunction transformationFunction) {
+        this.transformationFunction = transformationFunction;
     }
 
     /**
@@ -389,7 +398,27 @@ public class PrintJob implements Runnable {
         setOutput(output);
         setCompareFiles(compareFiles);
     }
-
+    /**
+     * A print job for the Cloud Office Print server containing all the necessary
+     * information to generate the adequate JSON for the Cloud Office Print server.
+     * If you don't want to instantiate a variable, use null for this argument.
+     *
+     * @param data                  Hashtable of (filename, RenderElement) elements.
+     *                             Multiple output files will be produced if the hashtable
+     *                             has more than one element. The Cloud Office Print
+     *                             server will return a zip file containing all of them.
+     * @param server               Server to use for this print job.
+     * @param output              Object containing the output configuration for this
+     *                           print job.
+     * @param transformationFunction JavaScript function to transform data before rendering.
+     */
+    public PrintJob(Hashtable<String, RenderElement> data, Server server, Output output,
+                    TransformationFunction transformationFunction) {
+        setData(data);
+        setServer(server);
+        setOutput(output);
+        setTransformationFunction(transformationFunction);
+    }
 
 
     /**
@@ -478,6 +507,9 @@ public class PrintJob implements Runnable {
                 prependFiles.add(prependFile.getJSONForSecondaryFile());
             }
             jsonForServer.add("prepend_files", prependFiles);
+        }
+        if (getTransformationFunction()!= null ){
+            jsonForServer .add("transformation_function",getTransformationFunction().getJSON());
         }
 
         return jsonForServer;
