@@ -93,13 +93,13 @@ public abstract class Image extends RenderElement {
     }
 
     /**
-     * @return The density of the image in DPI.
+     * @return The density to use for svg to png conversion.
      */
     public Integer getDensity() {
         return density;
     }
     /**
-     * @param density The density of the image in DPI.
+     * @param density The density to use for svg to png conversion.
      */
     public void setDensity(Integer density) {
         if ( density != null && density > 1200) {
