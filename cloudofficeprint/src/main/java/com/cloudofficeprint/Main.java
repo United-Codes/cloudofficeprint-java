@@ -2,10 +2,7 @@ package com.cloudofficeprint;
 
 //https://www.jetbrains.com/help/idea/creating-and-running-your-first-java-application.html#run_jar_artifact will be usefull to build the JAR
 
-import com.cloudofficeprint.Examples.BeginersGuide.MergeCellsExample;
-import com.cloudofficeprint.Examples.BeginersGuide.UsingElements;
-import com.cloudofficeprint.Examples.BeginersGuide.UsingFormsExample;
-import com.cloudofficeprint.Examples.BeginersGuide.UsingTransformation;
+import com.cloudofficeprint.Examples.BeginersGuide.*;
 import com.cloudofficeprint.Examples.GeneralExamples.Examples;
 import com.cloudofficeprint.Examples.MultipleRequestMerge.MultipleRequestMergeExample;
 import com.cloudofficeprint.Examples.OrderConfirmation.OrderConfirmationExample;
@@ -22,8 +19,10 @@ public class Main {
 //           merge.main();
 //        UsingFormsExample forms = new UsingFormsExample();
 //         forms.main();
-        UsingTransformation tf = new UsingTransformation();
-        tf.runExample();
+//        UsingTransformation tf = new UsingTransformation();
+//        tf.runExample();
+        UsingDistribute ds = new UsingDistribute();
+        ds.main();
 //         UsingElements ele = new UsingElements();
 //         ele.main();
 //
