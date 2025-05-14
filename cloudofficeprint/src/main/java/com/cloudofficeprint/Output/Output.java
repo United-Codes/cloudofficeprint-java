@@ -423,9 +423,6 @@ public class Output {
      *                          "libreoffice-standalone" or any other custom defined
      *                          converters in the aop_config.json file. Default :
      *                          libreoffice.
-     * @param appendPerPage     if you want to append file after each page of output
-     *                          set appendPerPage to true and false otherwise.
-     * @param prependPerPage    if you want to prepend file after each page of output
      *                          set prependPerPage to true and false otherwise.
      * @param token             If you want to store the output on a cloud based
      *                          service, a specific CloudAccessToken object needs to
@@ -439,13 +436,11 @@ public class Output {
      *                          CsvOptions class. Default : null.
      * @param updateToc         Option to update table of content for docx
      */
-    public Output(String filetype, String encoding, String converter, Boolean appendPerPage, Boolean prependPerPage, CloudAccessToken token, String serverDirectory,
+    public Output(String filetype, String encoding, String converter,CloudAccessToken token, String serverDirectory,
                   PDFOptions pdfOptions, CsvOptions csvOptions, Boolean updateToc) {
         setType(filetype);
         setEncoding(encoding);
         setConverter(converter);
-        setAppendPerPage(appendPerPage);
-        setPrependPerPage(prependPerPage);
         setAccessToken(token);
         setServerDirectory(serverDirectory);
         setPDFOptions(pdfOptions);
@@ -524,6 +519,10 @@ public class Output {
      *                        "libreoffice-standalone" or any other custom defined
      *                        converters in the aop_config.json file. Default :
      *                        libreoffice.
+     * @param appendPerPage   if you want to append file after each page of output
+     *                                set appendPerPage to true and false otherwise.
+     * @param prependPerPage  f you want to prepend file after each page of output
+     *                           set prependPerPage to true and false otherwise.
      * @param token           If you want to store the output on a cloud based
      *                        service, a specific CloudAccessToken object needs to
      *                        be specified. Default : null.
@@ -537,11 +536,13 @@ public class Output {
      * @param updateToc         Option to update table of content for docx
      */
 
-    public Output(String filetype, String encoding, String converter, CloudAccessToken token, String serverDirectory,
+    public Output(String filetype, String encoding, String converter, Boolean appendPerPage, Boolean prependPerPage, CloudAccessToken token, String serverDirectory,
                   PDFOptions pdfOptions, CsvOptions csvOptions, Boolean updateToc) {
         setType(filetype);
         setEncoding(encoding);
         setConverter(converter);
+        setAppendPerPage(appendPerPage);
+        setPrependPerPage(prependPerPage);
         setAccessToken(token);
         setServerDirectory(serverDirectory);
         setPDFOptions(pdfOptions);
