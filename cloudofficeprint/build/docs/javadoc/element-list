@@ -14,6 +14,7 @@ com.cloudofficeprint.RenderElements.Charts
 com.cloudofficeprint.RenderElements.Charts.Charts
 com.cloudofficeprint.RenderElements.Charts.Series
 com.cloudofficeprint.RenderElements.Codes
+com.cloudofficeprint.RenderElements.Form
 com.cloudofficeprint.RenderElements.Images
 com.cloudofficeprint.RenderElements.Loops
 com.cloudofficeprint.RenderElements.PDF
