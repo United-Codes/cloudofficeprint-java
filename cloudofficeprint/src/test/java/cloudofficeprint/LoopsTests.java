@@ -1,6 +1,7 @@
 package cloudofficeprint;
 
 import com.cloudofficeprint.RenderElements.ElementCollection;
+import com.cloudofficeprint.RenderElements.Loops.InlineDataLoop;
 import com.cloudofficeprint.RenderElements.Loops.Loop;
 import com.cloudofficeprint.RenderElements.Loops.MergeCellsLoop;
 import com.cloudofficeprint.RenderElements.Loops.SheetLoop;
@@ -9,7 +10,9 @@ import com.google.gson.JsonParser;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.Set;
 
 public class LoopsTests {
 
@@ -258,5 +261,12 @@ public class LoopsTests {
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
 
         assertEquals(jsonCorrect, mergeLoop.getJSON());
+    }
+    @Test
+    public void distributeInTemplateTags() {
+        InlineDataLoop loop = new InlineDataLoop("product_b", new ArrayList<>());
+        loop.setDistribute(true);
+        Set<String> tags = loop.getTemplateTags();
+        assertTrue(tags.contains("product_b_distribute:true"));
     }
 }
