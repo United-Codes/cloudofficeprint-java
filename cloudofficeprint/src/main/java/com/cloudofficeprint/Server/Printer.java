@@ -154,7 +154,9 @@ public class Printer {
         json.addProperty("version", getVersion());
         json.addProperty("requester", getRequester());
         json.addProperty("job_name", getJobName());
-        json.addProperty("return_output", getReturnOutput());
+        if (getReturnOutput()) {
+            json.addProperty("return_output", getReturnOutput());
+        }
         return json;
     }
 }

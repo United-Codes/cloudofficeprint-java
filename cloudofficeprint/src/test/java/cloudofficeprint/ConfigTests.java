@@ -168,7 +168,7 @@ public class ConfigTests {
         Printer printer = new Printer("http://10.0.14.223:631/", "1.1", "your name", "Cloud Office Print", true);
         Printer printer1 = new Printer("http://10.0.14.223:631/", "1.1", "your name", "Cloud Office Print");
         String correct = " {  'location': 'http://10.0.14.223:631/', 'version': '1.1','requester': 'your name', 'job_name': 'Cloud Office Print','return_output':true }";
-        String correct1 = " {  'location': 'http://10.0.14.223:631/', 'version': '1.1','requester': 'your name', 'job_name': 'Cloud Office Print','return_output':False }";
+        String correct1 = " {  'location': 'http://10.0.14.223:631/', 'version': '1.1','requester': 'your name', 'job_name': 'Cloud Office Print' }";
 //         System.out.println(printer1.getJSON());
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         JsonObject jsonCorrect1 = JsonParser.parseString(correct1).getAsJsonObject();
