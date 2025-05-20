@@ -93,7 +93,7 @@ public class RenderElementsTests {
 
     @Test
     public void hyperLink() {
-        PptxHyperLink cell = new PptxHyperLink("hyperlink", "url");
+        HyperLink cell = new HyperLink("hyperlink"," hyperlink_text", "url");
         cell.setValue("hyperlink_text");
         cell.setFontColor("red");
         cell.setUnderlineColor("#ffffff");
