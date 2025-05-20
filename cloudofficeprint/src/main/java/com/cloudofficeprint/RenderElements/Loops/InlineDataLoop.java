@@ -57,7 +57,9 @@ public class InlineDataLoop extends Loop {
             for (String tag : element.getTemplateTags())
                 hash_Set.add(tag);
         }
-        hash_Set.add(getName() + "_distribute:" + distribute);
+        if (distribute) {
+            hash_Set.add(getName() + "_distribute:" + distribute);
+        }
         return ImmutableSet.copyOf(hash_Set);
     }
 }
