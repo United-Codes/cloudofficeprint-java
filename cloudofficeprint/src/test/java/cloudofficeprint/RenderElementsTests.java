@@ -80,7 +80,7 @@ public class RenderElementsTests {
 
     @Test
     public void autoLink() {
-        PptxAutoLink cell = new PptxAutoLink("autoLink", "sample text with multiple hyperlinks");
+        AutoLink cell = new AutoLink("autoLink", "sample text with multiple hyperlinks");
         cell.setFontColor("red");
         cell.setUnderlineColor("#ffffff");
         cell.setPreserveTagStyle(true);
