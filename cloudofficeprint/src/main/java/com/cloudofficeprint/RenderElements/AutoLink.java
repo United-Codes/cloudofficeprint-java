@@ -63,7 +63,7 @@ public class AutoLink extends RenderElement {
     }
 
     /**
-     * Checks if tag style preservation is enabled (PPTX only).
+     * Checks if tag style preservation is enabled (PPTX and Word).
      *
      * @return true preserves original template styling, false/null uses hyperlink formatting.
      */
@@ -72,7 +72,7 @@ public class AutoLink extends RenderElement {
     }
 
     /**
-     * Sets whether to preserve template styling (PPTX only).
+     * Sets whether to preserve template styling (PPTX and Word).
      *
      * @param preserveTagStyle true keeps template styling, false applies hyperlink formatting.
      */
