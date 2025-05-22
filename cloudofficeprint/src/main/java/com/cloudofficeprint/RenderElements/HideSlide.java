@@ -1,53 +1,50 @@
 package com.cloudofficeprint.RenderElements;
 
 import com.google.common.collect.ImmutableSet;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import java.util.HashSet;
-import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
+import java.util.Objects;
 
 /**
- * Inside PowerPoint, the tag {name?} can be used
- * to remove an entire shape if the associated tag evaluates to false.
- For example, if a template slide includes a text box with the tag {toShow?}
- and the value of toShow is false or undefined, the entire shape will be removed from the slide.
+ * HideSlide allows conditional hiding of PowerPoint slides based on a specified condition.
+ * It can be used to dynamically show/hide slides in a presentation using tags.
  */
 public class HideSlide extends RenderElement {
     /**
-     * @param name  The name of slide to hide.
-     * @param value (String): 'true' (to hide) or 'false'
+     * Creates a new HideSlide element.
      *
+     * @param name      The identifier of the slide to hide
+     * @param condition String expression that determines when to hide the slide.
      */
-    public HideSlide(String name, String value) {
+    public HideSlide(String name, String condition) {
         setName(name);
-        setValue(value);
+        setCondition(condition);
     }
 
     /**
-     * @return JSONObject with the tags for this element for the Cloud Office Print
-     * server.
+     * @return JsonObject containing the hide condition.
      */
     @Override
     public JsonObject getJSON() {
         JsonObject json = new JsonObject();
-        if (Objects.equals(getValue(), "null")) {
-            json.add(getName() + "_hide", null);
-        } else if (Objects.equals(getValue(), "false")) {
-            json.addProperty(getName() + "_hide", false);
-        } else if (Objects.equals(getValue(), "true")) {
-            json.addProperty(getName()+ "_hide", true);
+        if (Objects.equals(getCondition(), "null")) {
+            json.add(getName(), null);
         } else {
-            json.addProperty(getName() + "_hide", getValue());
+            json.addProperty(getName(), getCondition());
         }
         return json;
     }
 
+    /**
+     * @return An immutable set containing all available template tags this element
+     * can replace.
+     */
     @Override
     public Set<String> getTemplateTags() {
-        return Set.of();
+        Set<String> hash_Set = new HashSet<>();
+        hash_Set.add("{hide " + getName() + "}");
+        return ImmutableSet.copyOf(hash_Set);
     }
-
 }

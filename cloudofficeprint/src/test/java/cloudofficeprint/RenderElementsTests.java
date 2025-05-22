@@ -226,8 +226,8 @@ public class RenderElementsTests {
 
     @Test
     public void hideSlide() {
-        HideSlide hide = new HideSlide("product", "true");
-        String correct = "{'product_hide':true}";
+        HideSlide hide = new HideSlide("slide1", "someCondition");
+        String correct = "{'slide1': 'someCondition'}";
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         assertEquals(jsonCorrect, hide.getJSON());
     }

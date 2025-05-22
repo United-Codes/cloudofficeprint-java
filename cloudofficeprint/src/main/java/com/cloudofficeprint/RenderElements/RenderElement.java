@@ -12,6 +12,7 @@ public abstract class RenderElement {
 
     private String name;
     private String value;
+    private String condition;
 
     /**
      * @return Name of this element for the tag.
@@ -39,6 +40,18 @@ public abstract class RenderElement {
      */
     public void setValue(String value) {
         this.value = value;
+    }
+    /**
+     * @return Condition of this element.
+     */
+    public String getCondition() {
+        return condition;
+    }
+    /**
+     * @param condition Condition of this property.
+     */
+    public void setCondition(String condition) {
+        this.condition = condition;
     }
 
     /**
