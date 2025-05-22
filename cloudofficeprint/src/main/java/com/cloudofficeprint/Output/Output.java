@@ -665,10 +665,6 @@ public class Output {
         setUpdateToc(updateToc);
     }
     /**
-     * @return JSONObject with the tags for the output for the Cloud Office Print
-     * server.
-     */
-    /**
      * Constructor to create a populated output object. If you don't need to
      * instantiate some variables, use their default value as argument.
      *
@@ -729,25 +725,11 @@ public class Output {
         setUpdateToc(updateToc);
     }
     /**
-     * @return JSONObject with the tags for the output for the Cloud Office Print
-     * server.
+     *  Creates a new Output configuration for Cloud Office Print.
      */
-    public Output(String filetype, String encoding, String converter, CloudAccessToken token, String serverDirectory,
-                  PDFOptions pdfOptions, CsvOptions csvOptions,String secretKey, Boolean outputPolling, RequestOption requestOption,
-                  Boolean updateToc, String outputLocale,Boolean returnOutput) {
+    public Output(String filetype, String encoding) {
         setType(filetype);
         setEncoding(encoding);
-        setConverter(converter);
-        setOutputLocale(outputLocale);
-        setAccessToken(token);
-        setServerDirectory(serverDirectory);
-        setPDFOptions(pdfOptions);
-        setCsvOptions(csvOptions);
-        setSecretKey(secretKey);
-        setOutputPolling(outputPolling);
-        setRequestOption(requestOption);
-        setUpdateToc(updateToc);
-        setReturnOutput(returnOutput);
     }
     /**
      * @return JSONObject with the tags for the output for the Cloud Office Print
