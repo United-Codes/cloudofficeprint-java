@@ -104,6 +104,46 @@ public class UsingCharts {
                 new Chart[]{columnChart1, lineChart1}, new Chart[]{BarChart});
         data.addElement(combinedChart);
 
+        //LineStacked
+        LineStackedSeries stackedLine1 = new LineStackedSeries("line1",
+                new String[]{"Albert Lambert", "Edward Logan", "Eugene Bradley", "Fiorello LaGuardia",
+                        "Frank OHare", "John Dulles", "William Hartsfield"},
+                new String[]{"950", "2420", "2760", "1090", "1060", "2380", "2370"},
+                "blue", true, "square", "10px", "0.2cm", "sysDashDotDot"
+        );
+
+        LineStackedSeries stackedLine2 = new LineStackedSeries("line2",
+                new String[]{"Albert Lambert", "Edward Logan", "Eugene Bradley", "Fiorello LaGuardia",
+                        "Frank OHare", "John Dulles", "William Hartsfield"},
+                new String[]{"1020", "2300", "2630", "980", "1130", "2200", "2440"},
+                "red", true, "circle", "10px", "0.2cm", "solid"
+        );
+        LineStackedChart stackedChart = new LineStackedChart("line_stacked_chart",
+                null,
+                stackedLine1, stackedLine2);
+        data.addElement(stackedChart);
+
+        //areaStacked
+        AreaStackedSeries stackedArea1 = new AreaStackedSeries("area1",
+                new String[]{"Albert Lambert", "Edward Logan", "Eugene Bradley"},
+                new String[]{"950", "2420", "2760"},
+                "blue",
+                50F
+        );
+
+        AreaStackedSeries stackedArea2 = new AreaStackedSeries("area2",
+                new String[]{"Albert Lambert", "Edward Logan", "Eugene Bradley"},
+                new String[]{"1020", "2300", "2630"},
+                "red",
+                80F
+        );
+        AreaStackedChart stackedAreaChart = new AreaStackedChart("area_stacked_chart",
+                null,
+                stackedArea1,
+                stackedArea2
+        );
+        data.addElement(stackedAreaChart);
+
         // For stacked charts create new instance of those charts
         // Example:  BarStackedChart chart = new BarStackedChart("bar_chart", null, Bar1, Bar2);
 

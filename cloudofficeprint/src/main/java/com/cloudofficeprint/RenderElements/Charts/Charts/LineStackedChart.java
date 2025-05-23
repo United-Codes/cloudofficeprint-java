@@ -59,7 +59,7 @@ public class LineStackedChart extends Chart {
             lines.add(lineserie.getJSON());
         }
         result.add("lines", lines);
-        result.addProperty("type", "line");
+        result.addProperty("type", "lineStacked");
         json.add(getName(), result);
         return json;
     }

@@ -21,11 +21,13 @@ public class Main {
 //         forms.main();
 //        UsingTransformation tf = new UsingTransformation();
 //        tf.runExample();
-        UsingDistribute ds = new UsingDistribute();
-        ds.main();
+//        UsingDistribute ds = new UsingDistribute();
+//        ds.main();
 //         UsingElements ele = new UsingElements();
 //         ele.main();
 //
+        UsingCharts charts = new UsingCharts();
+        charts.main();
 //         EXAMPLES
 //
 //         Examples example = new Examples();
