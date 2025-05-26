@@ -26,8 +26,14 @@ public class Main {
 //         UsingElements ele = new UsingElements();
 //         ele.main();
 //
-        UsingCharts charts = new UsingCharts();
-        charts.main();
+//        UsingCharts charts = new UsingCharts();
+//        charts.main();
+//        UsingImageTag imageTag = new UsingImageTag();
+//        imageTag.main();
+
+        UsingHtml html = new UsingHtml();
+        html.main();
+
 //         EXAMPLES
 //
 //         Examples example = new Examples();
