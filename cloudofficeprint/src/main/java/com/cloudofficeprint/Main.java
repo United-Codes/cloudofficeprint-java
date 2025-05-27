@@ -31,9 +31,16 @@ public class Main {
 //        UsingImageTag imageTag = new UsingImageTag();
 //        imageTag.main();
 
-        UsingHtml html = new UsingHtml();
-        html.main();
+//            UsingHtml html = new UsingHtml();
+//            html.main();
 
+//            UsingPageBreak usingPageBreak = new UsingPageBreak();
+//        usingPageBreak.main();
+
+//         UsingMarkdown markdown = new UsingMarkdown();
+//         markdown.main();
+        UsingTOC toc = new UsingTOC();
+         toc.main();
 //         EXAMPLES
 //
 //         Examples example = new Examples();
