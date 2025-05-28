@@ -39,8 +39,15 @@ public class Main {
 
 //         UsingMarkdown markdown = new UsingMarkdown();
 //         markdown.main();
-        UsingTOC toc = new UsingTOC();
-         toc.main();
+//        UsingTOC toc = new UsingTOC();
+//         toc.main();
+
+//         UsingAttachAndEmbed attachAndEmbed = new UsingAttachAndEmbed();
+//         attachAndEmbed.main();
+
+         UsingEncryption encryption = new UsingEncryption();
+         encryption.main();
+
 //         EXAMPLES
 //
 //         Examples example = new Examples();
