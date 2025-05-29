@@ -45,8 +45,14 @@ public class Main {
 //         UsingAttachAndEmbed attachAndEmbed = new UsingAttachAndEmbed();
 //         attachAndEmbed.main();
 
-         UsingEncryption encryption = new UsingEncryption();
-         encryption.main();
+//         UsingEncryption encryption = new UsingEncryption();
+//         encryption.main();
+//
+//         UsingLoop loop = new UsingLoop();
+//         loop.main();
+
+         UsingSlideLoop slideLoop = new UsingSlideLoop();
+         slideLoop.main();
 
 //         EXAMPLES
 //
