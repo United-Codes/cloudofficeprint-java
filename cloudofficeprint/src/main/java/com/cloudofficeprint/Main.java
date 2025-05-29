@@ -53,8 +53,11 @@ public class Main {
 
 //         UsingSlideLoop slideLoop = new UsingSlideLoop();
 //         slideLoop.main();
-         UsingSheetLoop sheetLoop = new UsingSheetLoop();
-         sheetLoop.main();
+//         UsingSheetLoop sheetLoop = new UsingSheetLoop();
+//         sheetLoop.main();
+
+         UsingLabel label = new UsingLabel();
+         label.main();
 
 //         EXAMPLES
 //
