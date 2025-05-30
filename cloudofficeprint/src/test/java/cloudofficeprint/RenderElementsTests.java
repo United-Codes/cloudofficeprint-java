@@ -231,7 +231,13 @@ public class RenderElementsTests {
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         assertEquals(jsonCorrect, hide.getJSON());
     }
-
+    @Test
+    public void hideSheet() {
+        HideSheet hide = new HideSheet("sheet1", "someCondition");
+        String correct = "{'sheet1': 'someCondition'}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, hide.getJSON());
+    }
     @Test
     public void elementCollection() {
         ElementCollection data = new ElementCollection("data");
