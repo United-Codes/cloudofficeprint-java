@@ -56,8 +56,14 @@ public class Main {
 //         UsingSheetLoop sheetLoop = new UsingSheetLoop();
 //         sheetLoop.main();
 
-         UsingLabel label = new UsingLabel();
-         label.main();
+//         UsingLabel label = new UsingLabel();
+//         label.main();
+
+//         UsingSpan span = new UsingSpan();
+//         span.main();
+        UsingShapeRemove shapeRemove = new UsingShapeRemove();
+        shapeRemove.main();
+
 
 //         EXAMPLES
 //
