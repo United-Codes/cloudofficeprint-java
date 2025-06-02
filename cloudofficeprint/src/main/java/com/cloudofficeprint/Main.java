@@ -53,6 +53,7 @@ public class Main {
 
 //         UsingSlideLoop slideLoop = new UsingSlideLoop();
 //         slideLoop.main();
+
 //         UsingSheetLoop sheetLoop = new UsingSheetLoop();
 //         sheetLoop.main();
 
@@ -61,9 +62,13 @@ public class Main {
 
 //         UsingSpan span = new UsingSpan();
 //         span.main();
-        UsingShapeRemove shapeRemove = new UsingShapeRemove();
-        shapeRemove.main();
+//        UsingShapeRemove shapeRemove = new UsingShapeRemove();
+//        shapeRemove.main();
+//        UsingElements usingElements = new UsingElements();
+//        usingElements.main();
 
+         UsingHideSlide usingHideSlide = new UsingHideSlide();
+         usingHideSlide.main();
 
 //         EXAMPLES
 //
