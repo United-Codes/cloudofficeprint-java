@@ -67,8 +67,11 @@ public class Main {
 //        UsingElements usingElements = new UsingElements();
 //        usingElements.main();
 
-         UsingHideSlide usingHideSlide = new UsingHideSlide();
-         usingHideSlide.main();
+//         UsingHideSlide usingHideSlide = new UsingHideSlide();
+//         usingHideSlide.main();
+
+        UsingSheetProtection usingSheetProtection = new UsingSheetProtection();
+        usingSheetProtection.main();
 
 //         EXAMPLES
 //
