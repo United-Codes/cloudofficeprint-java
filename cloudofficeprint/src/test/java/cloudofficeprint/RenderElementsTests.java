@@ -210,8 +210,8 @@ public class RenderElementsTests {
     }
     @Test
     public void include() {
-        PdfInclude include = new PdfInclude("doc", "Base64 encoded file");
-        String correct = "{\"doc\":\"Base64 encoded file\"}";
+        PdfInclude include = new PdfInclude("doc", "" , "filename.pdf", "application/pdf", "Base64 encoded file", "base64");
+        String correct = "{\"doc\":{\"name\":\"filename.pdf\",\"mimeType\":\"application/pdf\",\"fileContent\":\"Base64 encoded file\",\"fileSource\":\"base64\"}}";
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         assertEquals(jsonCorrect, include.getJSON());
     }
