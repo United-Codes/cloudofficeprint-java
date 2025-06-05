@@ -47,9 +47,9 @@ public class UsingElements {
         data.addElement(text);
 
         //cellStyle Property Docx
-        CellStyleDocxPpt cellStyle = new CellStyleDocxPpt("#eb4034", "10");
+        CellStyleDocxPpt cellStyle = new CellStyleDocxPpt("#eb4034", "10", "true", "double", null, null, null, null, "single", null, "red", null, null, null, null, "#ffa500", null, "10", null, null, null, null, null, null, null, null, null, null, null, null, null);
         TableCell cell = new TableCell("cellStyle", "lets See", cellStyle);
-//        data.addElement(cell);
+        data.addElement(cell);
 
         //AutoLink
         AutoLink autoLink = new AutoLink("autoLink", "AutoLink including hyperlinks like https://www.cloudofficeprint.com and other mail like info@cloudofficeprint.com and text combined");

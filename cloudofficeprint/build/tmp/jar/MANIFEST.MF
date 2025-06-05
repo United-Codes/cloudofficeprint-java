@@ -1,4 +1,0 @@
-Manifest-Version: 1.0
-Implementation-Title: cloudofficeprint
-Implementation-Version: 21.2.1
-

@@ -24,11 +24,12 @@ public class RenderElementsTests {
         assertEquals(jsonCorrect, property.getJSON());
     }
 
+
     @Test
     public void cellStylePropertyDocx() {
-        CellStyleDocxPpt cellStyle = new CellStyleDocxPpt("#eb4034", "10");
+        CellStyleDocxPpt cellStyle = new CellStyleDocxPpt("#eb4034", "10", "true","double", "double", "dotted", "triple", "wave", "single", "thick", "red", "#0000ff", "00ff00", "#ffff00", "#800080", "#ffa500", "#ffc0cb", "10", "4", "4", "20", "38", "15", "18", "3", "4", "10", "10", "8", "15", "3");
         TableCell cell = new TableCell("name", "value", cellStyle);
-        String correct = "{'name': 'value', 'name_cell_background_color': '#eb4034', 'name_width': '10'}";
+        String correct = "{'name': 'value', 'name_cell_background_color': '#eb4034', 'name_width': '10', 'name_preserve_total_width_of_table': true,'name_border': 'double', 'name_border_top': 'double', 'name_border_bottom': 'dotted', 'name_border_left': 'triple', 'name_border_right': 'wave', 'name_border_diagonal_down': 'single', 'name_border_diagonal_up': 'thick', 'name_border_color': 'red', 'name_border_top_color': '#0000ff', 'name_border_bottom_color': '00ff00', 'name_border_left_color': '#ffff00', 'name_border_right_color': '#800080', 'name_border_diagonal_up_color': '#ffa500', 'name_border_diagonal_down_color': '#ffc0cb', 'name_border_size': '10', 'name_border_top_size': '4', 'name_border_bottom_size': '4', 'name_border_left_size': '20', 'name_border_right_size': '38', 'name_border_diagonal_up_size': '15', 'name_border_diagonal_down_size': '18', 'name_border_space': '3', 'name_border_top_space': '4', 'name_border_bottom_space': '10', 'name_border_left_space': '10', 'name_border_right_space': '8', 'name_border_diagonal_up_space': '15', 'name_border_diagonal_down_space': '3'}";
         // System.out.println(cell.getJSON());
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
@@ -64,18 +65,26 @@ public class RenderElementsTests {
         cellStyle.setTextHAlignment("center");
         cellStyle.setTextVAlignment("justify");
         cellStyle.setTextRotation(45);
+        cellStyle.setWrapText(true);
+        cellStyle.setWidth("30");
+        cellStyle.setHeight("auto");
+        cellStyle.setMaxCharacters("60");
+        cellStyle.setHeightScaling("0.75");
         TableCell cell = new TableCell("name", "value", cellStyle);
-        String correct = "{'name': 'value', 'name_cell_locked': True, 'name_cell_hidden': False, 'name_cell_background': '#ff0000', 'name_font_name': 'Arial', 'name_font_size': '12', 'name_font_color': '#ff0000', 'name_font_italic': True, 'name_font_bold': False, 'name_font_strike': False, 'name_font_underline': True, 'name_font_superscript': False, 'name_font_subscript': True, 'name_border_top': 'medium', 'name_border_top_color': '#ff0000', 'name_border_bottom': 'mediumDashed', 'name_border_bottom_color': '#ff0000', 'name_border_left': 'mediumDashDot', 'name_border_left_color': '#ff0000', 'name_border_right': 'mediumDashDotDot', 'name_border_right_color': '#ff0000', 'name_border_diagonal': 'thick', 'name_border_diagonal_direction': 'up-wards', 'name_border_diagonal_color': '#ff0000', 'name_text_h_alignment': 'center', 'name_text_v_alignment': 'justify', 'name_text_rotation': '45'}";
+        String correct = "{'name': 'value', 'name_cell_locked': True, 'name_cell_hidden': False, 'name_cell_background': '#ff0000', 'name_font_name': 'Arial', 'name_font_size': '12', 'name_font_color': '#ff0000', 'name_font_italic': True, 'name_font_bold': False, 'name_font_strike': False, 'name_font_underline': True, 'name_font_superscript': False, 'name_font_subscript': True, 'name_border_top': 'medium', 'name_border_top_color': '#ff0000', 'name_border_bottom': 'mediumDashed', 'name_border_bottom_color': '#ff0000', 'name_border_left': 'mediumDashDot', 'name_border_left_color': '#ff0000', 'name_border_right': 'mediumDashDotDot', 'name_border_right_color': '#ff0000', 'name_border_diagonal': 'thick', 'name_border_diagonal_direction': 'up-wards', 'name_border_diagonal_color': '#ff0000', 'name_text_h_alignment': 'center', 'name_text_v_alignment': 'justify', 'name_text_rotation': '45', 'name_wrap_text': True, 'name_width': '30', 'name_height': 'auto', 'name_max_characters': '60', 'name_height_scaling': '0.75'}";
         // System.out.println(cell.getJSON());
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
-        // System.out.println(jsonCorrect);
+         System.out.println(jsonCorrect);
         assertEquals(jsonCorrect, cell.getJSON());
     }
 
     @Test
     public void autoLink() {
         AutoLink cell = new AutoLink("autoLink", "sample text with multiple hyperlinks");
-        String correct = "{'autoLink': 'sample text with multiple hyperlinks'}";
+        cell.setFontColor("red");
+        cell.setUnderlineColor("#ffffff");
+        cell.setPreserveTagStyle(true);
+        String correct = "{'autoLink': 'sample text with multiple hyperlinks', 'autoLink_font_color': 'red', 'autoLink_underline_color': '#ffffff', 'autoLink_preserve_tag_style': true}";
         // System.out.println(cell.getJSON());
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
@@ -84,8 +93,12 @@ public class RenderElementsTests {
 
     @Test
     public void hyperLink() {
-        HyperLink cell = new HyperLink("hyperlink", "hyperlink_text", "url");
-        String correct = "{'hyperlink': 'url', 'hyperlink_text': 'hyperlink_text'}";
+        HyperLink cell = new HyperLink("hyperlink"," hyperlink_text", "url");
+        cell.setValue("hyperlink_text");
+        cell.setFontColor("red");
+        cell.setUnderlineColor("#ffffff");
+        cell.setPreserveTagStyle(true);
+        String correct = "{'hyperlink': 'url', 'hyperlink_text': 'hyperlink_text', 'hyperlink_font_color': 'red', 'hyperlink_underline_color': '#ffffff', 'hyperlink_preserve_tag_style': true}";
         // System.out.println(cell.getJSON());
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
@@ -195,7 +208,36 @@ public class RenderElementsTests {
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         assertEquals(jsonCorrect, insert.getJSON());
     }
+    @Test
+    public void include() {
+        PdfInclude include = new PdfInclude("doc", "" , "filename.pdf", "application/pdf", "Base64 encoded file", "base64");
+        String correct = "{\"doc\":{\"name\":\"filename.pdf\",\"mime_type\":\"application/pdf\",\"file_content\":\"Base64 encoded file\",\"file_source\":\"base64\"}}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, include.getJSON());
+    }
 
+    @Test
+    public void remove() {
+        PptxShapeRemove remove = new PptxShapeRemove("remove", "false");
+        String correct = "{'remove':false}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, remove.getJSON());
+    }
+
+    @Test
+    public void hideSlide() {
+        HideSlide hide = new HideSlide("slide1", "someCondition");
+        String correct = "{'slide1': 'someCondition'}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, hide.getJSON());
+    }
+    @Test
+    public void hideSheet() {
+        HideSheet hide = new HideSheet("sheet1", "someCondition");
+        String correct = "{'sheet1': 'someCondition'}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, hide.getJSON());
+    }
     @Test
     public void elementCollection() {
         ElementCollection data = new ElementCollection("data");
@@ -296,4 +338,6 @@ public class RenderElementsTests {
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         assertEquals(jsonCorrect, validate.getJSON());
     }
+
+
 }

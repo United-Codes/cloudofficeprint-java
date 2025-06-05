@@ -105,4 +105,35 @@ public class PDFTests {
         // System.out.println(jsonCorrect);
         assertEquals(jsonCorrect, pdfFormData.getJSON());
     }
+    @Test
+    public void  COPPDFCommentsTest(){
+        PDFComment pdfComment1_1 = new PDFComment(50, 60, 3, "test1_1");
+        pdfComment1_1.setHeight(50);
+        pdfComment1_1.setWidth(50);
+        pdfComment1_1.setFont("Arial");
+        pdfComment1_1.setFontColor("blue");
+        pdfComment1_1.setFontSize(12);
+
+        PDFComment pdfComment1_2 = new PDFComment(20, 30, 3, "test1_2");
+        pdfComment1_2.setHeight(50);
+        pdfComment1_2.setWidth(50);
+        pdfComment1_2.setFont("Arial");
+        pdfComment1_2.setFontColor("red");
+        pdfComment1_2.setFontSize(10);
+
+        PDFComment pdfComment2 = new PDFComment(60, 70, 5, "test2");
+        pdfComment2.setHeight(50);
+        pdfComment2.setWidth(50);
+        pdfComment2.setFont("Times new roman");
+        pdfComment2.setFontColor("#FF00FF");
+        pdfComment2.setFontSize(15);
+
+        PDFComments pdfComments = new PDFComments(new PDFComment[] {pdfComment1_1,pdfComment1_2,pdfComment2});
+
+        String correct = "{\"AOP_PDF_COMMENTS\":[{\"3\":[{\"text\":\"test1_1\",\"x\":50,\"y\":60,\"height\":50,\"width\":50,\"font\":\"Arial\",\"font_color\":\"blue\",\"font_size\":12},{\"text\":\"test1_2\",\"x\":20,\"y\":30,\"height\":50,\"width\":50,\"font\":\"Arial\",\"font_color\":\"red\",\"font_size\":10}],\"5\":[{\"text\":\"test2\",\"x\":60,\"y\":70,\"height\":50,\"width\":50,\"font\":\"Times new roman\",\"font_color\":\"#FF00FF\",\"font_size\":15}]}]}";
+
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        //System.out.println(jsonCorrect);
+        assertEquals(jsonCorrect, pdfComments.getJSON());
+    }
 }

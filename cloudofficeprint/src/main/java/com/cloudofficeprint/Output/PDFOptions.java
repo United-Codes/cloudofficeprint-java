@@ -22,6 +22,7 @@ public class PDFOptions {
     private String watermarkFont;
     private Integer watermarkOpacity;
     private Integer watermarkSize;
+    private Integer watermarkRotation;
     private Boolean lockForm;
     private Integer copies;
     private int[] pageMargin;
@@ -34,6 +35,15 @@ public class PDFOptions {
     private Boolean identifyFormFields;
     private String signCertificate;
     private String signCertificatePassword;
+    private String signCertificateTxt;
+    private String convertToPdfa;
+    private String attachmentName;
+    private Boolean convertAttachmentToJson;
+    private Boolean insertBarcode;
+    private String pageNumberStartAt;
+    private String batchSelector;
+    private Integer batchSize;
+    private String batchCondition;
 
     /**
      * Constructor for the PDFOptions object. Set the options with the setters.
@@ -158,28 +168,80 @@ public class PDFOptions {
     public void setWatermark(String watermark) {
         this.watermark = watermark;
     }
+    /**
+     * @return The batch selector path as a string.
+     */
+    public  String getBatchSelector() { return batchSelector;}
+    /**
+     * @param batchSelector The JSON path to the array (e.g., "orders:products").
+     */
+    public void setBatchSelector(String batchSelector) {
+        this.batchSelector = batchSelector;
+    }
+    /**
+     * @return The batch size as an integer.
+     */
+    public  Integer getBatchSize() { return batchSize;}
+    /**
+     * @param batchSize The number per batch
+     */
+    public void setBatchSize(Integer batchSize) {
+        this.batchSize = batchSize;
+    }
+    /**
+     * @return The batch condition as a string
+     */
+    public  String getBatchCondition() { return batchCondition;}
+    /**
+     * @param batchCondition The condition (e.g., "unit_price > 100").
+     */
+    public void setBatchCondition(String batchCondition) {
+        this.batchCondition = batchCondition;
+    }
+
+    /**
+     * Set a diagonal custom watermark on every page in the PDF file with a specific
+     * text, color, font, opacity and size. Setting all to null will remove the
+     * watermark.
+     *
+     * @param text     specifies the text of the watermark.
+     * @param color    specifies the color of the watermark, with a default of
+     *                 "black".
+     * @param font     specifies the font of the watermark, with a default of
+     *                 "Arial".
+     * @param opacity  specifies the opacity of the watermark, should be as a
+     *                 percentage, i.e. 45.
+     * @param size     specifies the size of the watermark, should be as a number in
+     *                 px, i.e. 45.
+     */
+    public void setWatermark(String text, String color, String font, Integer opacity, Integer size) {
+        setWatermark(text, color, font, opacity, size, null);
+    }
 
     /**
      * Set a diagonal custom watermark on every page in the PDF file with a specific
      * text, color, font, opacity and size. Setting all to null will remove the
      * watermark.
      * 
-     * @param text    specifies the text of the watermark.
-     * @param color   specifies the color of the watermark, with a default of
-     *                "black".
-     * @param font    specifies the font of the watermark, with a default of
-     *                "Arial".
-     * @param opacity specifies the opacity of the watermark, should be as a
-     *                percentage, i.e. 45.
-     * @param size    specifies the size of the watermark, should be as a number in
-     *                px, i.e. 45.
+     * @param text     specifies the text of the watermark.
+     * @param color    specifies the color of the watermark, with a default of
+     *                 "black".
+     * @param font     specifies the font of the watermark, with a default of
+     *                 "Arial".
+     * @param opacity  specifies the opacity of the watermark, should be as a
+     *                 percentage, i.e. 45.
+     * @param size     specifies the size of the watermark, should be as a number in
+     *                 px, i.e. 45.
+     * @param rotation specifies the angle to rotate the watermark, should be as a number in
+     *                 px i.e. 45.
      */
-    public void setWatermark(String text, String color, String font, Integer opacity, Integer size) {
+    public void setWatermark(String text, String color, String font, Integer opacity, Integer size, Integer rotation) {
         this.watermark = text;
         this.watermarkColor = color;
         this.watermarkFont = font;
         this.watermarkOpacity = opacity;
         this.watermarkSize = size;
+        this.watermarkRotation = rotation;
     }
 
     /**
@@ -236,6 +298,19 @@ public class PDFOptions {
      */
     public void setWatermarkSize(Integer watermarkSize) {
         this.watermarkSize = watermarkSize;
+    }
+
+    /**
+     *
+     * @return angle to rotate the watermark
+     */
+    public Integer getWatermarkRotation() { return watermarkRotation; }
+
+    /**
+     * @param watermarkRotation angle to rotate the watermark, as a number in px, i.e. 45.
+     */
+    public void setWatermarkRotation(Integer watermarkRotation) {
+        this.watermarkRotation = watermarkRotation;
     }
 
     /**
@@ -496,6 +571,81 @@ public class PDFOptions {
     }
 
     /**
+     * @return Custom text to add in signature field
+     */
+    public String getSignCertificateTxt() { return  signCertificateTxt; }
+
+    /**
+     *
+     * @param signCertificateTxt The text to add
+     */
+    public void setSignCertificateTxt(String signCertificateTxt) {
+        this.signCertificateTxt = signCertificateTxt;
+    }
+
+    /**
+     * @return whether the output pdf should be converted to pdf/a format
+     */
+    public String getConvertToPdfa() { return convertToPdfa; }
+
+    /**
+     * @param convertToPdfa the variants of PDF/A specification (e.g., 1a, 2b).
+     */
+    public void setConvertToPdfa(String convertToPdfa) {
+        this.convertToPdfa = convertToPdfa;
+    }
+
+    /**
+     * @return  retrieve specific attachment. output_type must be 'get_attachments'.
+     */
+    public String getAttachmentName() { return attachmentName; }
+
+    /**
+     * @param attachmentName name of attachment
+     */
+    public void setAttachmentName(String attachmentName) {
+        this.attachmentName = attachmentName;
+    }
+
+    /**
+     * @return retrieve data of the XML attachment as a JSON. output_type must be 'get_attachments'.
+     */
+    public Boolean getConvertAttachmentToJson() { return convertAttachmentToJson; }
+
+    /**
+     * @param convertAttachmentToJson true or false
+     */
+    public void setConvertAttachmentToJson(Boolean convertAttachmentToJson) {
+        this.convertAttachmentToJson = convertAttachmentToJson;
+    }
+
+    /**
+     *
+     * @return whether to insert barcode in pdf
+     */
+    public Boolean getInsertBarcode() { return insertBarcode; }
+
+    /**
+     *
+     * @param insertBarcode true or false
+     */
+    public void setInsertBarcode(Boolean insertBarcode) { this.insertBarcode = insertBarcode; }
+
+    /**
+     * Returns start page number
+     * @return String
+     */
+    public String getPageNumberStartAt() { return pageNumberStartAt; }
+
+    /**
+     *
+     * @param pageNumberStartAt String
+     */
+    public void setPageNumberStartAt(String pageNumberStartAt) {
+        this.pageNumberStartAt = pageNumberStartAt;
+    }
+
+    /**
      * Sign the output PDF with a local certificate file.
      * 
      * @param localCertificatePath path to the local certificate file.
@@ -558,6 +708,9 @@ public class PDFOptions {
         if (getWatermarkSize() != null) {
             json.addProperty("output_watermark_size", getWatermarkSize());
         }
+        if (getWatermarkRotation() != null) {
+            json.addProperty("output_watermark_rotation", getWatermarkRotation());
+        }
         if (getLockForm() != null) {
             json.addProperty("lock_form", getLockForm());
         }
@@ -616,8 +769,35 @@ public class PDFOptions {
         if (getSignCertificatePassword() != null) {
             json.addProperty("output_sign_certificate_password", getSignCertificatePassword());
         }
+        if (getSignCertificateTxt() != null) {
+            json.addProperty("output_sign_certificate_txt", getSignCertificateTxt());
+        }
         if (getRemoveLastPage() != null) {
             json.addProperty("output_remove_last_page", getRemoveLastPage());
+        }
+        if (getConvertToPdfa() != null) {
+            json.addProperty("output_convert_to_pdfa", getConvertToPdfa());
+        }
+        if (getAttachmentName() != null) {
+            json.addProperty("output_attachment_name", getAttachmentName());
+        }
+        if (getConvertAttachmentToJson() != null) {
+            json.addProperty("output_convert_attachment_to_json", getConvertAttachmentToJson());
+        }
+        if (getInsertBarcode() != null) {
+            json.addProperty("output_insert_barcode", getInsertBarcode());
+        }
+        if (getPageNumberStartAt() != null) {
+            json.addProperty("output_page_number_start_at", getPageNumberStartAt());
+        }
+        if (getBatchSelector() != null){
+            json.addProperty("batch_selector",getBatchSelector());
+        }
+        if (getBatchSize() != null){
+            json.addProperty("batch_size",getBatchSize());
+        }
+        if (getBatchCondition() != null){
+            json.addProperty("batch_condition", getBatchCondition());
         }
         return json;
     }

@@ -12,6 +12,9 @@ public class ChartOptions {
     Integer width;
     Integer height;
     Boolean border;
+    Integer firstSliceAngle;
+    Integer holeSize;
+    Boolean enableAreaTransparency;
     Boolean grid;
     Boolean roundedCorners;
     String backgroundColor;
@@ -115,6 +118,40 @@ public class ChartOptions {
     public void setBorder(Boolean border) {
         this.border = border;
     }
+
+    /**
+     *
+     * @return angle of first slice for Doughnut Chart
+     */
+    public Integer getFirstSliceAngle() { return firstSliceAngle; }
+
+    /**
+     *
+     * @param firstSliceAngle angle of first slice for Doughnut Chart
+     */
+    public void setFirstSliceAngle(Integer firstSliceAngle) { this.firstSliceAngle = firstSliceAngle; }
+
+    /**
+     *
+     * @return hole size for Doughnut Chart
+     */
+    public Integer getHoleSize() { return holeSize; }
+
+    /**
+     *
+     * @param holeSize hole size for Doughnut Chart
+     */
+    public void setHoleSize(Integer holeSize) { this.holeSize = holeSize; } /**
+     *
+     * @return  whether to make Area Chart transparent.
+     */
+    public Boolean getEnableAreaTransparency() { return enableAreaTransparency; }
+
+    /**
+     *
+     * @param enableAreaTransparency whether to make Area Chart transparent.
+     */
+    public void setEnableAreaTransparency(Boolean enableAreaTransparency) { this.enableAreaTransparency = enableAreaTransparency; }
 
     /**
      * @return Whether the chart should have rounded borders.
@@ -402,6 +439,15 @@ public class ChartOptions {
         }
         if (getBorder() != null) {
             json.addProperty("border", getBorder());
+        }
+        if (getFirstSliceAngle() != null) {
+            json.addProperty("firstSliceAngle", getFirstSliceAngle());
+        }
+        if (getHoleSize() != null) {
+            json.addProperty("holeSize", getHoleSize());
+        }
+        if (getEnableAreaTransparency() != null) {
+            json.addProperty("enableAreaTransparency", getEnableAreaTransparency());
         }
         if (getRoundedCorners() != null) {
             json.addProperty("roundedCorners", getRoundedCorners());

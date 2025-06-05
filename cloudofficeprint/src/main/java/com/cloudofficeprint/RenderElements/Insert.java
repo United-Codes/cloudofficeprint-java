@@ -38,7 +38,7 @@ public class Insert extends RenderElement {
     @Override
     public Set<String> getTemplateTags() {
         Set<String> hash_Set = new HashSet<>();
-        hash_Set.add("?insert " + getName() + "}");
+        hash_Set.add("{?insert " + getName() + "}");
         return ImmutableSet.copyOf(hash_Set);
     }
 }

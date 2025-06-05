@@ -353,12 +353,15 @@ public class Server {
     }
 
     /**
-     * Sends a GET request to server-url/ipp_check?ipp_url=ippURL&version=version.
-     * 
-     * @param ippURL  the URL of the IPP printer.
-     * @param version the version of the IPP printer.
-     * @return the status of the IPP printer.
+     * Sends a GET request to the specified server URL to check the IPP status.
+     *
+     * @param ippURL    The IPP URL to be checked.
+     * @param version   The version of the IPP being used.
+     * @return Response from the server.
+     * Example:
+     * Sends a GET request to `server-url/ipp_check?ipp_url=ippURL&amp;version=version`.
      */
+
     public String checkIPP(String ippURL, String version) {
         return sendGETRequest(this.url + "/ipp_check?ipp_url=" + ippURL + "&version=" + version);
     }

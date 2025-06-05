@@ -13,6 +13,7 @@ import com.cloudofficeprint.Server.Printer;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ConfigTests {
@@ -29,6 +30,7 @@ public class ConfigTests {
         pdfOptions.setWatermarkFont("Aerial");
         pdfOptions.setWatermarkOpacity(60);
         pdfOptions.setWatermarkSize(30);
+        pdfOptions.setWatermarkRotation(45);
         pdfOptions.setPageWidth("500");
         pdfOptions.setPageHeight("500");
         pdfOptions.setEvenPage(true);
@@ -43,14 +45,18 @@ public class ConfigTests {
         pdfOptions.setPageFormat("test_page_format");
         pdfOptions.setSignCertificate("test_sign_certificate");
         pdfOptions.setSignCertificatePassword("Base64 certificate with password");
+        pdfOptions.setSignCertificateTxt("text in english");
         pdfOptions.setLandscape(false);
         pdfOptions.setIdentifyFormFields(true);
         pdfOptions.setSplit(false);
         pdfOptions.setRemoveLastPage(true);
+        pdfOptions.setConvertToPdfa("1b");
+        pdfOptions.setAttachmentName("sample_attachment_file.pdf");
+        pdfOptions.setInsertBarcode(true);
 
-        Output output = new Output("pdf", "raw", "libreoffice", null, null, pdfOptions, null);
+        Output output = new Output("pdf", "raw", "libreoffice", null, null, pdfOptions, null, true);
 
-        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'output_read_password': 'test_pw', 'output_watermark': 'test_watermark','output_watermark_color':'blue','output_watermark_font':'Aerial','output_watermark_opacity': 60, 'output_watermark_size':30, 'output_page_width': '500', 'output_page_height': '500', 'output_even_page': True, 'output_merge_making_even': False, 'output_modify_password': 'test_modify_password', 'output_password_protection_flag': 0, 'lock_form': True, 'output_copies': 3, 'page_margin': {'top': 5, 'bottom': 5, 'left': 5, 'right': 5}, 'output_page_format': 'test_page_format', 'output_merge': False, 'output_sign_certificate': 'test_sign_certificate','output_sign_certificate_password':'Base64 certificate with password', 'identify_form_fields': True, 'output_split': False,'output_remove_last_page':true}";
+        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'update_toc': true, 'output_read_password': 'test_pw', 'output_watermark': 'test_watermark','output_watermark_color':'blue','output_watermark_font':'Aerial','output_watermark_opacity': 60, 'output_watermark_size':30, 'output_watermark_rotation':45, 'output_page_width': '500', 'output_page_height': '500', 'output_even_page': True, 'output_merge_making_even': False, 'output_modify_password': 'test_modify_password', 'output_password_protection_flag': 0, 'lock_form': True, 'output_copies': 3, 'page_margin': {'top': 5, 'bottom': 5, 'left': 5, 'right': 5}, 'output_page_format': 'test_page_format', 'output_merge': False, 'output_sign_certificate': 'test_sign_certificate','output_sign_certificate_password':'Base64 certificate with password', 'output_sign_certificate_txt':'text in english', 'identify_form_fields': True, 'output_split': False,'output_remove_last_page':true, 'output_convert_to_pdfa':'1b', 'output_attachment_name':'sample_attachment_file.pdf', 'output_insert_barcode':true}";
         // System.out.println(output.getJSON());
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
@@ -157,29 +163,54 @@ public class ConfigTests {
 
     @Test
     public void testPrinter() {
-        Printer printer = new Printer("http://10.0.14.223:631/", "1.1", "your name", "Cloud Office Print",true);
+        Printer printer = new Printer("http://10.0.14.223:631/", "1.1", "your name", "Cloud Office Print", true);
         Printer printer1 = new Printer("http://10.0.14.223:631/", "1.1", "your name", "Cloud Office Print");
         String correct = " {  'location': 'http://10.0.14.223:631/', 'version': '1.1','requester': 'your name', 'job_name': 'Cloud Office Print','return_output':true }";
-        String correct1 = " {  'location': 'http://10.0.14.223:631/', 'version': '1.1','requester': 'your name', 'job_name': 'Cloud Office Print','return_output':False }";
+        String correct1 = " {  'location': 'http://10.0.14.223:631/', 'version': '1.1','requester': 'your name', 'job_name': 'Cloud Office Print' }";
 //         System.out.println(printer1.getJSON());
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         JsonObject jsonCorrect1 = JsonParser.parseString(correct1).getAsJsonObject();
         // System.out.println(jsonCorrect);
         assertEquals(jsonCorrect, printer.getJSON());
-        assertEquals(jsonCorrect1,printer1.getJSON());
+        assertEquals(jsonCorrect1, printer1.getJSON());
     }
 
     @Test
-    public void testRequestOptionAndOutputPolling(){
-        String extraHeader =  "{'file_id' : 'Any file id like FILE_123','access_token': 'Access Token for above hostname (if any) '}";
+    public void testRequestOptionAndOutputPolling() {
+        String extraHeader = "{'file_id' : 'Any file id like FILE_123','access_token': 'Access Token for above hostname (if any) '}";
         JsonObject extraHeaders = JsonParser.parseString((extraHeader)).getAsJsonObject();
         RequestOption requestOption = new RequestOption();
         requestOption.setUrl("https://www.apexofficeprint.com/post/");
         requestOption.setExtraHeaders(extraHeaders);
         String secretKey = "AOPSecretKey";
-        Output output = new Output("pdf", "raw", "libreoffice", null, null, null, null,secretKey,true,requestOption);
-        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'secret_key':'AOPSecretKey', 'output_polling': true,'request_option':{'url': 'https://www.apexofficeprint.com/post/','extra_headers': {'file_id' : 'Any file id like FILE_123','access_token': 'Access Token for above hostname (if any) '}} }";
+        Output output = new Output("pdf", "raw", "libreoffice", null, null, null, null, secretKey, true, requestOption, null, "nepali" );
+        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'secret_key':'AOPSecretKey', 'output_polling': true,'request_option':{'url': 'https://www.apexofficeprint.com/post/','extra_headers': {'file_id' : 'Any file id like FILE_123','access_token': 'Access Token for above hostname (if any) '}}, 'output_locale': 'nepali' }";
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
-        assertEquals(jsonCorrect,output.getJSON());
+        assertEquals(jsonCorrect, output.getJSON());
+    }
+
+    @Test
+    public void testOutputReadPassword() {
+        Output output = new Output("pdf", "raw", "libreoffice",
+                null, null, null, null,
+                null, null, null,
+                true, null);
+        output.setOutputReadPassword("aop_pass");
+        String correct = "{\"output_type\": \"pdf\", \"output_encoding\": \"raw\", \"output_converter\": \"libreoffice\", \"update_toc\": true, \"output_read_password\": \"aop_pass\"}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, output.getJSON());
+    }
+    @Test
+    public void testPdfBatching() {
+        PDFOptions pdfOption = new PDFOptions();
+        pdfOption .setMerge(true);
+        pdfOption .setBatchSelector("orders:products");
+        pdfOption .setBatchSize(3);
+        pdfOption .setBatchCondition("unit_price > 110 ? \"Expensive\" : unit_price < 80 ? \"Cheap\" : \"Medium\"");
+
+        Output output = new Output("pdf", "raw", "libreoffice", null, null, pdfOption,null);
+        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'output_merge': true, 'batch_selector': 'orders:products', 'batch_size': 3, 'batch_condition': 'unit_price > 110 ? \"Expensive\" : unit_price < 80 ? \"Cheap\" : \"Medium\"'}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, output.getJSON());
     }
 }
