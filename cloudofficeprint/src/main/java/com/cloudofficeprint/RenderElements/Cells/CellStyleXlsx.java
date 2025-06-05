@@ -33,6 +33,11 @@ public class CellStyleXlsx extends CellStyle {
     private String textHAlignment;
     private String textVAlignment;
     private Integer textRotation;
+    private Boolean wrapText;
+    private String width;
+    private String height;
+    private String maxCharacters;
+    private String heightScaling;
 
     /**
      * @return Whether the cell is locked.
@@ -422,6 +427,66 @@ public class CellStyleXlsx extends CellStyle {
     }
 
     /**
+     *
+     * @return wrapped text if true
+     */
+    public Boolean getWrapText() { return wrapText; }
+
+    /**
+     *
+     * @param wrapText  wrapped text if true
+     */
+    public void setWrapText(Boolean wrapText) { this.wrapText = wrapText; }
+
+    /**
+     *
+     * @return a custom width to the cell. Supported units: inch, cm, px, pt, em, Excel Units(eu)
+     */
+    public String getWidth() { return width; }
+
+    /**
+     *
+     * @param width  a custom width to the cell. Supported units: inch, cm, px, pt, em, Excel Units(eu)
+     */
+    public void setWidth(String width) { this.width = width; }
+
+    /**
+     *
+     * @return  a custom height to the cell. Supported units: inch, cm, px, pt, em, Excel Units(eu)
+     */
+    public String getHeight() { return height; }
+
+    /**
+     *
+     * @param height  a custom height to the cell. Supported units: inch, cm, px, pt, em, Excel Units(eu)
+     */
+    public void setHeight(String height) { this.height = height; }
+
+    /**
+     *
+     * @return  width for the cell.
+     */
+    public String getMaxCharacters() { return maxCharacters; }
+
+    /**
+     *
+     * @param maxCharacters  provide width for the cell.
+     */
+    public void setMaxCharacters(String maxCharacters) { this.maxCharacters = maxCharacters; }
+
+    /**
+     *
+     * @return  adjusted cell height for consistent rendering.
+     */
+    public String getHeightScaling() { return heightScaling; }
+
+    /**
+     *
+     * @param heightScaling adjusted cell height for consistent rendering.
+     */
+    public void setHeightScaling(String heightScaling) { this.heightScaling = heightScaling; }
+
+    /**
      * Represents the style of an Excell cell element. The options can be set with
      * the setter functions.
      */
@@ -512,6 +577,21 @@ public class CellStyleXlsx extends CellStyle {
         }
         if (getTextRotation() != null) {
             json.addProperty("_text_rotation", getTextRotation());
+        }
+        if (getWrapText() != null) {
+            json.addProperty("_wrap_text", getWrapText());
+        }
+        if (getWidth() != null) {
+            json.addProperty("_width", getWidth());
+        }
+        if (getHeight() != null) {
+            json.addProperty("_height", getHeight());
+        }
+        if (getMaxCharacters() != null) {
+            json.addProperty("_max_characters", getMaxCharacters());
+        }
+        if (getHeightScaling() != null) {
+            json.addProperty("_height_scaling", getHeightScaling());
         }
         return json;
     }

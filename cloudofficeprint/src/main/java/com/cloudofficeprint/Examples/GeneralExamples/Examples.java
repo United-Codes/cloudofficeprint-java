@@ -438,7 +438,6 @@ public class Examples {
 
             // Create the printjob
             PrintJob printJob = new PrintJob(file, server, output, base64Resource, null, null, null, null);
-
             Response response = printJob.execute();
             response.downloadLocally("./downloads/outputLoop");
 
@@ -496,7 +495,6 @@ public class Examples {
             data.put("output1", lineChart);
 
             PrintJob printJob = new PrintJob(data, server, output, base64Resource, null, null, null, null);
-
             Response response = printJob.execute();
             response.downloadLocally("./downloads/outputChartName");
 

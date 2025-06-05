@@ -11,6 +11,7 @@ public abstract class Image extends RenderElement {
 
     private Integer width;
     private Integer height;
+    private Integer density;
     private Integer maxWidth;
     private Integer maxHeight;
     private String altText;
@@ -18,6 +19,8 @@ public abstract class Image extends RenderElement {
     private String Transparency;
     private Integer rotation;
     private String TargetUrl;
+    private Boolean MaintainAspectRatio;
+    private Boolean IgnoreError;
 
     /**
      * @return Width of the image (for non-proportionally scaling).
@@ -87,6 +90,24 @@ public abstract class Image extends RenderElement {
      */
     public void setAltText(String altText) {
         this.altText = altText;
+    }
+
+    /**
+     * @return The density to use for svg to png conversion.
+     */
+    public Integer getDensity() {
+        return density;
+    }
+    /**
+     * @param density The density to use for svg to png conversion.
+     */
+    public void setDensity(Integer density) {
+        if ( density != null && density > 1200) {
+            this.density = 1200;
+        }
+        else {
+            this.density = density;
+        }
     }
 
     /**
@@ -161,6 +182,18 @@ public abstract class Image extends RenderElement {
         TargetUrl = targetUrl;
     }
 
+    public void setIgnoreError(Boolean ignoreError){
+        IgnoreError = ignoreError;
+    }
+    public Boolean getIgnoreError(){
+        return IgnoreError;
+    }
+    public void setMaintainAspectRatio(Boolean maintainAspectRatio) {
+        MaintainAspectRatio = maintainAspectRatio;
+    }
+    public Boolean getMaintainAspectRatio(){
+        return MaintainAspectRatio;
+    }
     /**
      * @return JSONObject with the tags for this element for the Cloud Office Print
      *         server.
@@ -195,6 +228,15 @@ public abstract class Image extends RenderElement {
         }
         if (getTransparency() != null) {
             json.addProperty(getName() + "_transparency", getTransparency());
+        }
+        if (getIgnoreError() != null) {
+            json.addProperty(getName()+"_ignore_error",getIgnoreError());
+        }
+        if (getMaintainAspectRatio() != null) {
+            json.addProperty(getName()+"_maintain_aspect_ratio",getMaintainAspectRatio());
+        }
+        if (getDensity() != null) {
+            json.addProperty(getName() + "_density", getDensity());
         }
         return json;
     }

@@ -22,13 +22,17 @@ public class PrintJob implements Runnable {
     private Resource template;
     private Resource[] prependFiles;
     private Resource[] appendFiles;
+    private Resource[] attachments;
+    private Resource[] compareFiles;
     private Hashtable<String, Resource> subTemplates = new Hashtable<String, Resource>();
     private Hashtable<String, RenderElement> data = new Hashtable<String, RenderElement>();
     private ExternalResource externalResource;
     private Boolean copRemoteDebug;
+    private TransformationFunction transformationFunction;
 
     private volatile Response response; // for asynchronous calls
 
+    /**
     /**
      * @return Server to user for this printjob.
      */
@@ -99,6 +103,33 @@ public class PrintJob implements Runnable {
         this.appendFiles = appendFiles;
     }
 
+    /**
+     * @return Files to attach to the PDF.
+     */
+    public Resource[] getAttachments() {
+        return attachments;
+    }
+
+    /**
+     * @param attachments Files to attach to the PDF file.
+     */
+    public void setAttachments(Resource[] attachments) {
+        this.attachments = attachments;
+    }
+
+    /**
+     * @return Files to compare to the PDF.
+     */
+    public Resource[] getCompareFiles() {
+        return compareFiles;
+    }
+
+    /**
+     * @param compareFiles Files to attach to the PDF file.
+     */
+    public void setCompareFiles(Resource[] compareFiles) {
+        this.compareFiles = compareFiles;
+    }
     /**
      * Subtemplates are only accessible (in docx). They will replace the `{?include
      * subtemplate_dict_key}` tag in the docx.
@@ -172,7 +203,6 @@ public class PrintJob implements Runnable {
     public void setExternalResource(ExternalResource externalResource) {
         this.externalResource = externalResource;
     }
-
     /**
      * For getting to response after asynchronous execution. To used after run() has
      * been called and the thread joined.
@@ -190,7 +220,15 @@ public class PrintJob implements Runnable {
      * @param response Response of the request to Cloud Office Print.
      */
     public void setResponse(Response response) {
+
         this.response = response;
+    }
+    public TransformationFunction getTransformationFunction() {
+        return transformationFunction;
+    }
+
+    public void setTransformationFunction(TransformationFunction transformationFunction) {
+        this.transformationFunction = transformationFunction;
     }
 
     /**
@@ -217,8 +255,7 @@ public class PrintJob implements Runnable {
      *                       log into cloudofficeprint.com.
      */
     public PrintJob(Hashtable<String, RenderElement> data, Server server, Output output, Resource template,
-            Hashtable<String, Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles,
-            Boolean copRemoteDebug) {
+            Hashtable<String, Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles, Boolean copRemoteDebug) {
         setData(data);
         setServer(server);
         setOutput(output);
@@ -227,6 +264,44 @@ public class PrintJob implements Runnable {
         setPrependFiles(prependFiles);
         setAppendFiles(appendFiles);
         setCopRemoteDebug(copRemoteDebug);
+    }
+
+    /**
+     * A print job for the Cloud Office Print server containing all the necessary
+     * information to generate the adequate JSON for the Cloud Office Print server.
+     * If you don't want to instantiate a variable, use null for this argument.
+     *
+     * @param data           Hashtable of (filename, RenderElement) elements.
+     *                       Multiple output files will be produced if the hashtable
+     *                       has more then one element, the Cloud Office Print
+     *                       server will return a zip file containing all of them.
+     * @param server         Server to user for this printjob.
+     * @param output         object containing the output configuration for this
+     *                       printjob.
+     * @param template       for this printjob.
+     * @param subTemplates   for this print job. Hashtable(key, subTemplate)
+     *                       Subtemplates are only accessible (in docx). They will
+     *                       replace the `{?include subtemplate_dict_key}` tag in
+     *                       the docx.
+     * @param prependFiles   Files to prepend to the output.
+     * @param appendFiles    Files to append to the output.
+     * @param copRemoteDebug If set to true the Cloud Office Print server will log
+     *                       your JSON into out database and you can see it when you
+     *                       log into cloudofficeprint.com.
+     * @param attachments   Files to attach to the PDF file.
+     */
+    public PrintJob(Hashtable<String, RenderElement> data, Server server, Output output, Resource template,
+                    Hashtable<String, Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles,
+                    Boolean copRemoteDebug, Resource[] attachments) {
+        setData(data);
+        setServer(server);
+        setOutput(output);
+        setTemplate(template);
+        setSubTemplates(subTemplates);
+        setPrependFiles(prependFiles);
+        setAppendFiles(appendFiles);
+        setCopRemoteDebug(copRemoteDebug);
+        setAttachments(attachments);
     }
 
     /**
@@ -249,12 +324,12 @@ public class PrintJob implements Runnable {
      * @param prependFiles     Files to prepend to the output.
      * @param appendFiles      Files to append to the output.
      * @param copRemoteDebug   If set to true the Cloud Office Print server will log
-     *                         your JSON into out database and you can see it when
+     *                         your JSON into out database, and you can see it when
      *                         you log into cloudofficeprint.com.
      */
     public PrintJob(ExternalResource externalResource, Server server, Output output, Resource template,
             Hashtable<String, Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles,
-            Boolean copRemoteDebug) {
+                    Boolean copRemoteDebug) {
         setExternalResource(externalResource);
         setServer(server);
         setOutput(output);
@@ -263,6 +338,65 @@ public class PrintJob implements Runnable {
         setPrependFiles(prependFiles);
         setAppendFiles(appendFiles);
         setCopRemoteDebug(copRemoteDebug);
+    }
+
+    /**
+     * A print job for the Cloud Office Print server containing all the necessary
+     * information to generate the adequate JSON for the Cloud Office Print server.
+     * If you don't want to instantiate a variable, use null for this argument.
+     *
+     * @param externalResource External resource for the data (REST or graphQL).
+     * @param server           Server to user for this printjob.
+     * @param output           object containing the output configuration for this
+     *                         printjob.
+     * @param template         Template for this printjob. If no template is
+     *                         specified Cloud Office Print will generate a template
+     *                         based on the data. Output type determines the
+     *                         template type generated. Cannot be PDF in this case.
+     * @param subTemplates     for this print job. Hashtable(key, subTemplate)
+     *                         Subtemplates are only accessible (in docx). They will
+     *                         replace the `{?include subtemplate_dict_key}` tag in
+     *                         the docx.
+     * @param prependFiles     Files to prepend to the output.
+     * @param appendFiles      Files to append to the output.
+     * @param copRemoteDebug   If set to true the Cloud Office Print server will log
+     *                         your JSON into out database, and you can see it when
+     *                         you log into cloudofficeprint.com.
+     * @param attachments   Files to attach to the PDF file.
+     */
+    public PrintJob(ExternalResource externalResource, Server server, Output output, Resource template,
+                    Hashtable<String, Resource> subTemplates, Resource[] prependFiles, Resource[] appendFiles,
+                    Boolean copRemoteDebug,   Resource[] attachments) {
+        setExternalResource(externalResource);
+        setServer(server);
+        setOutput(output);
+        setTemplate(template);
+        setSubTemplates(subTemplates);
+        setPrependFiles(prependFiles);
+        setAppendFiles(appendFiles);
+        setCopRemoteDebug(copRemoteDebug);
+        setAttachments(attachments);
+    }
+    /**
+     * A print job for the Cloud Office Print server containing all the necessary
+     * information to generate the adequate JSON for the Cloud Office Print server.
+     * If you don't want to instantiate a variable, use null for this argument.
+     *
+     * @param data         Hashtable of (filename, RenderElement) elements.
+     *                     Multiple output files will be produced if the hashtable
+     *                     has more than one element. The Cloud Office Print
+     *                     server will return a zip file containing all of them.
+     * @param server       Server to use for this print job.
+     * @param output       Object containing the output configuration for this
+     *                     print job.
+     * @param compareFiles Files to compare .
+     */
+
+    public PrintJob(Hashtable<String, RenderElement> data, Server server, Output output, Resource[] compareFiles) {
+        setData(data);
+        setServer(server);
+        setOutput(output);
+        setCompareFiles(compareFiles);
     }
 
     /**
@@ -314,6 +448,21 @@ public class PrintJob implements Runnable {
             jsonForServer.add("append_files", appendFiles);
         }
 
+        if (getAttachments() != null && getAttachments().length > 0) {
+            JsonArray attachments = new JsonArray();
+            for (Resource attachment : getAttachments()) {
+                attachments.add(attachment.getJSONForSecondaryFile());
+            }
+            jsonForServer.add("attachments", attachments);
+        }
+        if (getCompareFiles() != null && getCompareFiles().length > 0) {
+            JsonArray compareFiles = new JsonArray();
+            for (Resource compareFile : getCompareFiles()) {
+                compareFiles.add(compareFile.getJSONForSecondaryFile());
+            }
+            jsonForServer.add("compare_files", compareFiles);
+        }
+
         JsonArray files = new JsonArray();
         if (getExternalResource() == null) {
             for (Map.Entry<String, RenderElement> data : getData().entrySet()) {
@@ -336,6 +485,9 @@ public class PrintJob implements Runnable {
                 prependFiles.add(prependFile.getJSONForSecondaryFile());
             }
             jsonForServer.add("prepend_files", prependFiles);
+        }
+        if (getTransformationFunction()!= null ){
+            jsonForServer .add("transformation_function",getTransformationFunction().getJSON());
         }
 
         return jsonForServer;

@@ -22,8 +22,11 @@ public class ImagesTests {
         imageBase64.setTargetUrl("url");
         imageBase64.setWidth(30);
         imageBase64.setHeight(25);
+        imageBase64.setIgnoreError(false);
+        imageBase64.setMaintainAspectRatio(true);
+        imageBase64.setDensity(1500);
 
-        String correct = "{'image1': 'base64str', 'image1_max_width': 50, 'image1_max_height': 45, 'image1_alt_text': 'alt_text', 'image1_wrap_text': 'wrap_text', 'image1_rotation': 45, 'image1_transparency': '50%', 'image1_url': 'url', 'image1_width': 30, 'image1_height': 25}";
+        String correct = "{'image1': 'base64str', 'image1_max_width': 50, 'image1_max_height': 45, 'image1_alt_text': 'alt_text', 'image1_wrap_text': 'wrap_text', 'image1_rotation': 45, 'image1_transparency': '50%', 'image1_url': 'url', 'image1_width': 30, 'image1_height': 25,'image1_ignore_error':false,'image1_maintain_aspect_ratio':true,'image1_density': 1200}";
         // System.out.println(imageBase64.getJSON());
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
@@ -43,8 +46,9 @@ public class ImagesTests {
         imageUrl.setTargetUrl("url");
         imageUrl.setWidth(30);
         imageUrl.setHeight(25);
+        imageUrl.setDensity(500);
 
-        String correct = "{'image1': 'url', 'image1_max_width': 50, 'image1_max_height': 45, 'image1_alt_text': 'alt_text', 'image1_wrap_text': 'wrap_text', 'image1_rotation': 45, 'image1_transparency': '50%', 'image1_url': 'url', 'image1_width': 30, 'image1_height': 25}";
+        String correct = "{'image1': 'url', 'image1_max_width': 50, 'image1_max_height': 45, 'image1_alt_text': 'alt_text', 'image1_wrap_text': 'wrap_text', 'image1_rotation': 45, 'image1_transparency': '50%', 'image1_url': 'url', 'image1_width': 30, 'image1_height': 25,'image1_density': 500}";
         // System.out.println(imageUrl.getJSON());
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);

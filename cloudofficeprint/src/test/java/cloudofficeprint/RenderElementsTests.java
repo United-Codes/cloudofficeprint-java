@@ -9,6 +9,7 @@ import com.cloudofficeprint.RenderElements.Loops.Loop;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RenderElementsTests {
@@ -23,11 +24,12 @@ public class RenderElementsTests {
         assertEquals(jsonCorrect, property.getJSON());
     }
 
+
     @Test
     public void cellStylePropertyDocx() {
-        CellStyleDocxPpt cellStyle = new CellStyleDocxPpt("#eb4034", "10");
+        CellStyleDocxPpt cellStyle = new CellStyleDocxPpt("#eb4034", "10", "true","double", "double", "dotted", "triple", "wave", "single", "thick", "red", "#0000ff", "00ff00", "#ffff00", "#800080", "#ffa500", "#ffc0cb", "10", "4", "4", "20", "38", "15", "18", "3", "4", "10", "10", "8", "15", "3");
         TableCell cell = new TableCell("name", "value", cellStyle);
-        String correct = "{'name': 'value', 'name_cell_background_color': '#eb4034', 'name_width': '10'}";
+        String correct = "{'name': 'value', 'name_cell_background_color': '#eb4034', 'name_width': '10', 'name_preserve_total_width_of_table': true,'name_border': 'double', 'name_border_top': 'double', 'name_border_bottom': 'dotted', 'name_border_left': 'triple', 'name_border_right': 'wave', 'name_border_diagonal_down': 'single', 'name_border_diagonal_up': 'thick', 'name_border_color': 'red', 'name_border_top_color': '#0000ff', 'name_border_bottom_color': '00ff00', 'name_border_left_color': '#ffff00', 'name_border_right_color': '#800080', 'name_border_diagonal_up_color': '#ffa500', 'name_border_diagonal_down_color': '#ffc0cb', 'name_border_size': '10', 'name_border_top_size': '4', 'name_border_bottom_size': '4', 'name_border_left_size': '20', 'name_border_right_size': '38', 'name_border_diagonal_up_size': '15', 'name_border_diagonal_down_size': '18', 'name_border_space': '3', 'name_border_top_space': '4', 'name_border_bottom_space': '10', 'name_border_left_space': '10', 'name_border_right_space': '8', 'name_border_diagonal_up_space': '15', 'name_border_diagonal_down_space': '3'}";
         // System.out.println(cell.getJSON());
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
@@ -63,8 +65,26 @@ public class RenderElementsTests {
         cellStyle.setTextHAlignment("center");
         cellStyle.setTextVAlignment("justify");
         cellStyle.setTextRotation(45);
+        cellStyle.setWrapText(true);
+        cellStyle.setWidth("30");
+        cellStyle.setHeight("auto");
+        cellStyle.setMaxCharacters("60");
+        cellStyle.setHeightScaling("0.75");
         TableCell cell = new TableCell("name", "value", cellStyle);
-        String correct = "{'name': 'value', 'name_cell_locked': True, 'name_cell_hidden': False, 'name_cell_background': '#ff0000', 'name_font_name': 'Arial', 'name_font_size': '12', 'name_font_color': '#ff0000', 'name_font_italic': True, 'name_font_bold': False, 'name_font_strike': False, 'name_font_underline': True, 'name_font_superscript': False, 'name_font_subscript': True, 'name_border_top': 'medium', 'name_border_top_color': '#ff0000', 'name_border_bottom': 'mediumDashed', 'name_border_bottom_color': '#ff0000', 'name_border_left': 'mediumDashDot', 'name_border_left_color': '#ff0000', 'name_border_right': 'mediumDashDotDot', 'name_border_right_color': '#ff0000', 'name_border_diagonal': 'thick', 'name_border_diagonal_direction': 'up-wards', 'name_border_diagonal_color': '#ff0000', 'name_text_h_alignment': 'center', 'name_text_v_alignment': 'justify', 'name_text_rotation': '45'}";
+        String correct = "{'name': 'value', 'name_cell_locked': True, 'name_cell_hidden': False, 'name_cell_background': '#ff0000', 'name_font_name': 'Arial', 'name_font_size': '12', 'name_font_color': '#ff0000', 'name_font_italic': True, 'name_font_bold': False, 'name_font_strike': False, 'name_font_underline': True, 'name_font_superscript': False, 'name_font_subscript': True, 'name_border_top': 'medium', 'name_border_top_color': '#ff0000', 'name_border_bottom': 'mediumDashed', 'name_border_bottom_color': '#ff0000', 'name_border_left': 'mediumDashDot', 'name_border_left_color': '#ff0000', 'name_border_right': 'mediumDashDotDot', 'name_border_right_color': '#ff0000', 'name_border_diagonal': 'thick', 'name_border_diagonal_direction': 'up-wards', 'name_border_diagonal_color': '#ff0000', 'name_text_h_alignment': 'center', 'name_text_v_alignment': 'justify', 'name_text_rotation': '45', 'name_wrap_text': True, 'name_width': '30', 'name_height': 'auto', 'name_max_characters': '60', 'name_height_scaling': '0.75'}";
+        // System.out.println(cell.getJSON());
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+         System.out.println(jsonCorrect);
+        assertEquals(jsonCorrect, cell.getJSON());
+    }
+
+    @Test
+    public void autoLink() {
+        AutoLink cell = new AutoLink("autoLink", "sample text with multiple hyperlinks");
+        cell.setFontColor("red");
+        cell.setUnderlineColor("#ffffff");
+        cell.setPreserveTagStyle(true);
+        String correct = "{'autoLink': 'sample text with multiple hyperlinks', 'autoLink_font_color': 'red', 'autoLink_underline_color': '#ffffff', 'autoLink_preserve_tag_style': true}";
         // System.out.println(cell.getJSON());
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
@@ -73,8 +93,12 @@ public class RenderElementsTests {
 
     @Test
     public void hyperLink() {
-        HyperLink cell = new HyperLink("hyperlink", "hyperlink_text", "url");
-        String correct = "{'hyperlink': 'url', 'hyperlink_text': 'hyperlink_text'}";
+        HyperLink cell = new HyperLink("hyperlink"," hyperlink_text", "url");
+        cell.setValue("hyperlink_text");
+        cell.setFontColor("red");
+        cell.setUnderlineColor("#ffffff");
+        cell.setPreserveTagStyle(true);
+        String correct = "{'hyperlink': 'url', 'hyperlink_text': 'hyperlink_text', 'hyperlink_font_color': 'red', 'hyperlink_underline_color': '#ffffff', 'hyperlink_preserve_tag_style': true}";
         // System.out.println(cell.getJSON());
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
@@ -166,6 +190,55 @@ public class RenderElementsTests {
     }
 
     @Test
+    public void freeze() {
+        Freeze prop = new Freeze("name", "C6");
+        String correct = "{'name' : 'C6' }";
+        Freeze prop1 = new Freeze("name", "true");
+        String correct1 = "{'name': 'true' }";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        JsonObject jsonCorrect1 = JsonParser.parseString((correct1)).getAsJsonObject();
+        assertEquals(jsonCorrect, prop.getJSON());
+        assertEquals(jsonCorrect1, prop1.getJSON());
+    }
+
+    @Test
+    public void insert() {
+        Insert insert = new Insert("doc", "Base64 encoded file");
+        String correct = "{'doc':'Base64 encoded file'}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, insert.getJSON());
+    }
+    @Test
+    public void include() {
+        PdfInclude include = new PdfInclude("doc", "" , "filename.pdf", "application/pdf", "Base64 encoded file", "base64");
+        String correct = "{\"doc\":{\"name\":\"filename.pdf\",\"mime_type\":\"application/pdf\",\"file_content\":\"Base64 encoded file\",\"file_source\":\"base64\"}}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, include.getJSON());
+    }
+
+    @Test
+    public void remove() {
+        PptxShapeRemove remove = new PptxShapeRemove("remove", "false");
+        String correct = "{'remove':false}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, remove.getJSON());
+    }
+
+    @Test
+    public void hideSlide() {
+        HideSlide hide = new HideSlide("slide1", "someCondition");
+        String correct = "{'slide1': 'someCondition'}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, hide.getJSON());
+    }
+    @Test
+    public void hideSheet() {
+        HideSheet hide = new HideSheet("sheet1", "someCondition");
+        String correct = "{'sheet1': 'someCondition'}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, hide.getJSON());
+    }
+    @Test
     public void elementCollection() {
         ElementCollection data = new ElementCollection("data");
         ImageUrl element1 = new ImageUrl("image1", "url");
@@ -174,7 +247,7 @@ public class RenderElementsTests {
 
         Property prop1 = new Property("prop", "value1");
         Property prop2 = new Property("prop", "value2");
-        Loop element2 = new Loop("loop", new Property[] { prop1, prop2 });
+        Loop element2 = new Loop("loop", new Property[]{prop1, prop2});
 
         data.addElement(element2);
 
@@ -192,5 +265,79 @@ public class RenderElementsTests {
         // System.out.println(jsonCorrect);
         assertEquals(jsonCorrect, data.getJSON());
     }
+
+    @Test
+    public void protectSheet() {
+        ProtectSheet prop = new ProtectSheet("sheet1");
+        prop.setPassword("password");
+        prop.setAutoFilter(true);
+        prop.setDeleteColumns(false);
+        prop.setDeleteRows(true);
+        prop.setFormatCells(false);
+        prop.setFormatColumns(true);
+        prop.setFormatRows(false);
+        prop.setInsertColumns(true);
+        prop.setInsertHyperlinks(false);
+        prop.setInsertColumns(true);
+        prop.setInsertRows(false);
+        prop.setPivotTables(true);
+        prop.setSelectLockedCells(false);
+        prop.setSelectUnlockedCells(true);
+        prop.setSort(false);
+
+        String correct = "{ 'sheet1_allow_auto_filter': true,'sheet1_allow_delete_columns': false,'sheet1_allow_delete_rows': true,'sheet1_allow_format_cells': false,'sheet1_allow_format_columns': true,'sheet1_allow_format_rows': false,'sheet1_allow_insert_columns': true,'sheet1_allow_insert_hyperlinks': false,'sheet1_allow_insert_rows': false,'sheet1_password': 'password','sheet1_allow_pivot_tables': true,'sheet1_allow_select_locked_cells': false,'sheet1_allow_select_unlocked_cells': true,'sheet1_allow_sort': false}";
+        // System.out.println(prop.getJSON());
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        // System.out.println(jsonCorrect);
+        assertEquals(jsonCorrect, prop.getJSON());
+    }
+
+    @Test
+    public void ExcelInsert() {
+        ExcelInsert excelInsert = new ExcelInsert("fileToInsert", "base64EncodedValue");
+//        excelInsert.setPreview(true);
+        excelInsert.setIcon("base64icon");
+        excelInsert.setFromRow("2");
+        excelInsert.setFromCol("C5");
+        excelInsert.setToCol("C5");
+        excelInsert.setFromRowOff("2px");
+        excelInsert.setFromColOff("2px");
+        excelInsert.setToRow("5");
+        excelInsert.setToRowOff("2px");
+        excelInsert.setToColOff("2px");
+        String correct = "{ 'fileToInsert':'base64EncodedValue','fileToInsert_icon':'base64icon','fileToInsert_fromRow':'2','fileToInsert_fromCol':'C5','fileToInsert_fromRowOff':'2px','fileToInsert_fromColOff':'2px','fileToInsert_toRow':'5','fileToInsert_toCol':'C5','fileToInsert_toRowOff':'2px','fileToInsert_toColOff':'2px'}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, excelInsert.getJSON());
+    }
+
+    @Test
+    public void Embed() {
+        Embed embed = new Embed("fileToInsert", "base64EncodedFile");
+        String correct = "{'fileToInsert':'base64EncodedFile'}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, embed.getJSON());
+    }
+
+    @Test
+    public void ValidateCell() {
+        ValidateCell validate = new ValidateCell("tagName");
+        validate.setIgnoreBlank(true);
+        validate.setAllow("whole");
+        validate.setValue1("0");
+        validate.setValue2("100");
+        validate.setInCellDropdown(false);
+        validate.setData("between");
+        validate.setShowInputMessage(true);
+        validate.setInputTitle("Instructions");
+        validate.setInputMessage("Insert number between 0 and 100");
+        validate.setShowErrorAlert(true);
+        validate.setErrorStyle("warning");
+        validate.setErrorTitle("Error");
+        validate.setErrorMessage("Number out of bound.");
+        String correct = "{'tagName_ignore_blank':true,'tagName_allow':'whole','tagName_value1':'0','tagName_value2':'100','tagName_in_cell_dropdown':false,'tagName_data':'between','tagName_show_input_message':true,'tagName_input_title':'Instructions','tagName_input_message':'Insert number between 0 and 100','tagName_show_error_alert':true,'tagName_error_style':'warning','tagName_error_title':'Error','tagName_error_message':'Number out of bound.'}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, validate.getJSON());
+    }
+
 
 }
