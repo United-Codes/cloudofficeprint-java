@@ -78,6 +78,16 @@ public class ConfigTests {
     }
 
     @Test
+    public void testOutputExportSheets() {
+        Output output = new Output("xlsx", "raw");
+        output.setOutputExportSheets(new String[] { "Sheet1", "Sheet3" });
+
+        String correct = "{'output_type': 'xlsx', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'output_export_sheets': ['Sheet1', 'Sheet3']}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, output.getJSON());
+    }
+
+    @Test
     public void testCloudAccessTokens() {
         OAuth2Token oAuth2Token = new OAuth2Token("dropbox", "dummy_token");
         String correct = "{'output_location': 'dropbox', 'cloud_access_token': 'dummy_token'}";
