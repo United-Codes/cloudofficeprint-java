@@ -88,6 +88,18 @@ public class ConfigTests {
     }
 
     @Test
+    public void testImageWatermark() {
+        PDFOptions pdfOptions = new PDFOptions();
+        pdfOptions.setImageWatermark("logo_base64", 50, 45, 100, 80);
+
+        Output output = new Output("pdf", "raw", "libreoffice", null, null, pdfOptions, null);
+
+        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'output_watermark_image': 'logo_base64', 'output_watermark_image_opacity': 50, 'output_watermark_image_rotation': 45, 'output_watermark_image_width': 100, 'output_watermark_image_height': 80}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, output.getJSON());
+    }
+
+    @Test
     public void testCloudAccessTokens() {
         OAuth2Token oAuth2Token = new OAuth2Token("dropbox", "dummy_token");
         String correct = "{'output_location': 'dropbox', 'cloud_access_token': 'dummy_token'}";
