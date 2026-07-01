@@ -23,6 +23,11 @@ public class PDFOptions {
     private Integer watermarkOpacity;
     private Integer watermarkSize;
     private Integer watermarkRotation;
+    private String imageWatermark;
+    private Integer imageWatermarkOpacity;
+    private Integer imageWatermarkRotation;
+    private Integer imageWatermarkWidth;
+    private Integer imageWatermarkHeight;
     private Boolean lockForm;
     private Integer copies;
     private int[] pageMargin;
@@ -242,6 +247,93 @@ public class PDFOptions {
         this.watermarkOpacity = opacity;
         this.watermarkSize = size;
         this.watermarkRotation = rotation;
+    }
+
+    /**
+     * @return the image watermark
+     */
+    public String getImageWatermark() {
+        return imageWatermark;
+    }
+
+    /**
+     * @param imageWatermark the image watermark
+     */
+    public void setImageWatermark(String imageWatermark) {
+        this.imageWatermark = imageWatermark;
+    }
+
+    /**
+     * @return opacity of the image watermark, as a percentage, i.e. 45.
+     */
+    public Integer getImageWatermarkOpacity() {
+        return imageWatermarkOpacity;
+    }
+
+    /**
+     * @param imageWatermarkOpacity opacity of the image watermark, as a percentage, i.e. 45.
+     */
+    public void setImageWatermarkOpacity(Integer imageWatermarkOpacity) {
+        this.imageWatermarkOpacity = imageWatermarkOpacity;
+    }
+
+    /**
+     * @return angle to rotate the image watermark, in degrees.
+     */
+    public Integer getImageWatermarkRotation() {
+        return imageWatermarkRotation;
+    }
+
+    /**
+     * @param imageWatermarkRotation angle to rotate the image watermark, in degrees.
+     */
+    public void setImageWatermarkRotation(Integer imageWatermarkRotation) {
+        this.imageWatermarkRotation = imageWatermarkRotation;
+    }
+
+    /**
+     * @return width of the image watermark in px.
+     */
+    public Integer getImageWatermarkWidth() {
+        return imageWatermarkWidth;
+    }
+
+    /**
+     * @param imageWatermarkWidth width of the image watermark in px.
+     */
+    public void setImageWatermarkWidth(Integer imageWatermarkWidth) {
+        this.imageWatermarkWidth = imageWatermarkWidth;
+    }
+
+    /**
+     * @return height of the image watermark in px.
+     */
+    public Integer getImageWatermarkHeight() {
+        return imageWatermarkHeight;
+    }
+
+    /**
+     * @param imageWatermarkHeight height of the image watermark in px.
+     */
+    public void setImageWatermarkHeight(Integer imageWatermarkHeight) {
+        this.imageWatermarkHeight = imageWatermarkHeight;
+    }
+
+    /**
+     * Set an image watermark on every page in the PDF file. Only for PDF output.
+     *
+     * @param image    the image as a  WaterMark
+     * @param opacity  opacity of the image watermark, as a percentage, i.e. 45.
+     * @param rotation angle to rotate the image watermark, in degrees.
+     * @param width    width of the image watermark in px.
+     * @param height   height of the image watermark in px.
+     */
+    public void setImageWatermark(String image, Integer opacity, Integer rotation, Integer width, Integer height) {
+        this.imageWatermark = image;
+        this.imageWatermarkOpacity = opacity;
+        this.imageWatermarkRotation = rotation;
+        this.imageWatermarkWidth = width;
+        this.imageWatermarkHeight = height;
     }
 
     /**
@@ -710,6 +802,21 @@ public class PDFOptions {
         }
         if (getWatermarkRotation() != null) {
             json.addProperty("output_watermark_rotation", getWatermarkRotation());
+        }
+        if (getImageWatermark() != null) {
+            json.addProperty("output_watermark_image", getImageWatermark());
+        }
+        if (getImageWatermarkOpacity() != null) {
+            json.addProperty("output_watermark_image_opacity", getImageWatermarkOpacity());
+        }
+        if (getImageWatermarkRotation() != null) {
+            json.addProperty("output_watermark_image_rotation", getImageWatermarkRotation());
+        }
+        if (getImageWatermarkWidth() != null) {
+            json.addProperty("output_watermark_image_width", getImageWatermarkWidth());
+        }
+        if (getImageWatermarkHeight() != null) {
+            json.addProperty("output_watermark_image_height", getImageWatermarkHeight());
         }
         if (getLockForm() != null) {
             json.addProperty("lock_form", getLockForm());

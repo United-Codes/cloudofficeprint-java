@@ -79,8 +79,11 @@ public class Main {
 //         UsingCodesXlsx usingCodesXlsx = new UsingCodesXlsx();
 //         usingCodesXlsx.main();
 
-         UsingExportSheets usingExportSheets = new UsingExportSheets();
-         usingExportSheets.main();
+//         UsingExportSheets usingExportSheets = new UsingExportSheets();
+//         usingExportSheets.main();
+
+         UsingImageWatermark usingImageWatermark = new UsingImageWatermark();
+         usingImageWatermark.main();
 
 //         EXAMPLES
 //
