@@ -28,6 +28,7 @@ public class PDFOptions {
     private Integer imageWatermarkRotation;
     private Integer imageWatermarkWidth;
     private Integer imageWatermarkHeight;
+    private Boolean compressPdf;
     private Boolean lockForm;
     private Integer copies;
     private int[] pageMargin;
@@ -317,6 +318,20 @@ public class PDFOptions {
      */
     public void setImageWatermarkHeight(Integer imageWatermarkHeight) {
         this.imageWatermarkHeight = imageWatermarkHeight;
+    }
+
+    /**
+     * @return whether the PDF file size is compressed.
+     */
+    public Boolean getCompressPdf() {
+        return compressPdf;
+    }
+
+    /**
+     * @param compressPdf compresses the file size of the PDF. Only for PDF output.
+     */
+    public void setCompressPdf(Boolean compressPdf) {
+        this.compressPdf = compressPdf;
     }
 
     /**
@@ -884,6 +899,9 @@ public class PDFOptions {
         }
         if (getConvertToPdfa() != null) {
             json.addProperty("output_convert_to_pdfa", getConvertToPdfa());
+        }
+        if (getCompressPdf() != null) {
+            json.addProperty("output_compress_pdf", getCompressPdf());
         }
         if (getAttachmentName() != null) {
             json.addProperty("output_attachment_name", getAttachmentName());

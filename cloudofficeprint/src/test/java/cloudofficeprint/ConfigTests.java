@@ -100,6 +100,18 @@ public class ConfigTests {
     }
 
     @Test
+    public void testCompressPdf() {
+        PDFOptions pdfOptions = new PDFOptions();
+        pdfOptions.setCompressPdf(true);
+
+        Output output = new Output("pdf", "raw", "libreoffice", null, null, pdfOptions, null);
+
+        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'output_compress_pdf': true}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, output.getJSON());
+    }
+
+    @Test
     public void testCloudAccessTokens() {
         OAuth2Token oAuth2Token = new OAuth2Token("dropbox", "dummy_token");
         String correct = "{'output_location': 'dropbox', 'cloud_access_token': 'dummy_token'}";
