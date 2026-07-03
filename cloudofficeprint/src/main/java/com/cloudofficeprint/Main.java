@@ -87,6 +87,9 @@ public class Main {
         UsingCompressPdf usingCompressPdf = new UsingCompressPdf();
         usingCompressPdf.main();
 
+//         UsingSplitPdf usingSplitPdf = new UsingSplitPdf();
+//         usingSplitPdf.main();
+
 //         EXAMPLES
 //
 //         Examples example = new Examples();

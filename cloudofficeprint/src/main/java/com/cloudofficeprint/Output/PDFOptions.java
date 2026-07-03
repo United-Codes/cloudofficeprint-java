@@ -29,6 +29,9 @@ public class PDFOptions {
     private Integer imageWatermarkWidth;
     private Integer imageWatermarkHeight;
     private Boolean compressPdf;
+    private Integer splitByPage;
+    private String splitByString;
+    private Boolean splitAfterString;
     private Boolean lockForm;
     private Integer copies;
     private int[] pageMargin;
@@ -332,6 +335,48 @@ public class PDFOptions {
      */
     public void setCompressPdf(Boolean compressPdf) {
         this.compressPdf = compressPdf;
+    }
+
+    /**
+     * @return the number of pages per split output file.
+     */
+    public Integer getSplitByPage() {
+        return splitByPage;
+    }
+
+    /**
+     * @param splitByPage splits the output into a file per given number of pages. Only for PDF output.
+     */
+    public void setSplitByPage(Integer splitByPage) {
+        this.splitByPage = splitByPage;
+    }
+
+    /**
+     * @return the string that the output is split on.
+     */
+    public String getSplitByString() {
+        return splitByString;
+    }
+
+    /**
+     * @param splitByString splits the output into a separate file on each page where the given string is found. Only for PDF output.
+     */
+    public void setSplitByString(String splitByString) {
+        this.splitByString = splitByString;
+    }
+
+    /**
+     * @return whether to split after the matching page instead of before it.
+     */
+    public Boolean getSplitAfterString() {
+        return splitAfterString;
+    }
+
+    /**
+     * @param splitAfterString when using splitByString, split after the matching page instead of before it.
+     */
+    public void setSplitAfterString(Boolean splitAfterString) {
+        this.splitAfterString = splitAfterString;
     }
 
     /**
@@ -902,6 +947,15 @@ public class PDFOptions {
         }
         if (getCompressPdf() != null) {
             json.addProperty("output_compress_pdf", getCompressPdf());
+        }
+        if (getSplitByPage() != null) {
+            json.addProperty("output_split_by_page", getSplitByPage());
+        }
+        if (getSplitByString() != null) {
+            json.addProperty("output_split_by_string", getSplitByString());
+        }
+        if (getSplitAfterString() != null) {
+            json.addProperty("output_split_after_string", getSplitAfterString());
         }
         if (getAttachmentName() != null) {
             json.addProperty("output_attachment_name", getAttachmentName());
