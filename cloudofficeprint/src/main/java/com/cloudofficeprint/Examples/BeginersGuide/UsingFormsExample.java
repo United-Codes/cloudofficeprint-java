@@ -6,6 +6,12 @@ import com.cloudofficeprint.RenderElements.ElementCollection;
 import com.cloudofficeprint.RenderElements.Form.Checkbox;
 import com.cloudofficeprint.RenderElements.Form.RadioButton;
 import com.cloudofficeprint.RenderElements.Form.Textbox;
+import com.cloudofficeprint.RenderElements.Form.Dropdown;
+import com.cloudofficeprint.RenderElements.Form.ComboBox;
+import com.cloudofficeprint.RenderElements.Form.ListBox;
+import com.cloudofficeprint.RenderElements.Form.PushButton;
+import com.cloudofficeprint.RenderElements.Form.Password;
+import com.cloudofficeprint.RenderElements.Form.ChoiceOption;
 import com.cloudofficeprint.RenderElements.RenderElement;
 import com.cloudofficeprint.Resources.Base64Resource;
 import com.cloudofficeprint.Response;
@@ -49,6 +55,23 @@ public class UsingFormsExample {
         // Checkbox
         Checkbox agreement = new Checkbox("checkbox", true, "Agree to terms");
 
+        // Dropdown and ComboBox
+        Dropdown country = new Dropdown("country",
+                new ChoiceOption[]{ new ChoiceOption("US", "United States"), new ChoiceOption("BE", "Belgium"), new ChoiceOption("NP", "Nepal") },
+                "BE", 20, 200, null);
+        ComboBox city = new ComboBox("city",
+                new ChoiceOption[]{ new ChoiceOption("Ghent"), new ChoiceOption("Kathmandu") },
+                "Pokhara", 20, 200, null);
+
+        // ListBox
+        ListBox roles = new ListBox("roles",
+                new ChoiceOption[]{ new ChoiceOption("admin", "Admin"), new ChoiceOption("user", "User"), new ChoiceOption("guest", "Guest") },
+                new String[]{ "admin", "user" }, true, 80, 200, null);
+
+        // Push button and password field
+        PushButton submit = new PushButton("submit", "Submit form", 24, 120, null);
+        Password pw = new Password("pw", "s3cret", 20, 200, null);
+
         // Add elements to collection
         data.addElement(firstName);
         data.addElement(lastName);
@@ -56,6 +79,11 @@ public class UsingFormsExample {
             data.addElement(radio);
         }
         data.addElement(agreement);
+        data.addElement(country);
+        data.addElement(city);
+        data.addElement(roles);
+        data.addElement(submit);
+        data.addElement(pw);
 
         // Configure output
         Output conf = new Output("pdf", "raw", "libreoffice", null, null, null, null);
