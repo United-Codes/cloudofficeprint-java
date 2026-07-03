@@ -45,6 +45,6 @@ public class RadioButton extends FormElement {
         if (getText() != null)
             props.addProperty("text", getText());
         if (getSelected() != null)
-            props.addProperty("selected", getSelected() ? 1 : 0);
+            props.addProperty("selected", getSelected());
     }
 }

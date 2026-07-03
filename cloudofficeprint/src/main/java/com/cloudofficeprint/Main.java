@@ -17,8 +17,8 @@ public class Main {
 //         BeginerGuide
 //        MergeCellsExample merge = new MergeCellsExample();
 //           merge.main();
-//        UsingFormsExample forms = new UsingFormsExample();
-//         forms.main();
+        UsingFormsExample forms = new UsingFormsExample();
+         forms.main();
 //        UsingTransformation tf = new UsingTransformation();
 //        tf.runExample();
 //        UsingDistribute ds = new UsingDistribute();
@@ -82,8 +82,8 @@ public class Main {
 //         UsingExportSheets usingExportSheets = new UsingExportSheets();
 //         usingExportSheets.main();
 
-         UsingImageWatermark usingImageWatermark = new UsingImageWatermark();
-         usingImageWatermark.main();
+//         UsingImageWatermark usingImageWatermark = new UsingImageWatermark();
+//         usingImageWatermark.main();
 
 //         EXAMPLES
 //
