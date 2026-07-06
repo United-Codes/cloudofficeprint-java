@@ -112,6 +112,20 @@ public class ConfigTests {
     }
 
     @Test
+    public void testPdfSplitOptions() {
+        PDFOptions pdfOptions = new PDFOptions();
+        pdfOptions.setSplitByPage(2);
+        pdfOptions.setSplitByString("Invoice No");
+        pdfOptions.setSplitAfterString(true);
+
+        Output output = new Output("pdf", "raw", "libreoffice", null, null, pdfOptions, null);
+
+        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'output_split_by_page': 2, 'output_split_by_string': 'Invoice No', 'output_split_after_string': true}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, output.getJSON());
+    }
+
+    @Test
     public void testCloudAccessTokens() {
         OAuth2Token oAuth2Token = new OAuth2Token("dropbox", "dummy_token");
         String correct = "{'output_location': 'dropbox', 'cloud_access_token': 'dummy_token'}";
