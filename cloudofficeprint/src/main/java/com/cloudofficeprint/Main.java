@@ -84,11 +84,17 @@ public class Main {
 
 //         UsingImageWatermark usingImageWatermark = new UsingImageWatermark();
 //         usingImageWatermark.main();
-        UsingCompressPdf usingCompressPdf = new UsingCompressPdf();
-        usingCompressPdf.main();
+//        UsingCompressPdf usingCompressPdf = new UsingCompressPdf();
+//        usingCompressPdf.main();
 
 //         UsingSplitPdf usingSplitPdf = new UsingSplitPdf();
 //         usingSplitPdf.main();
+
+//         UsingPdfaCompliance usingPdfaCompliance = new UsingPdfaCompliance();
+//         usingPdfaCompliance.main();
+
+//         UsingExtractMetadata usingExtractMetadata = new UsingExtractMetadata();
+//         usingExtractMetadata.main();
 
 //         EXAMPLES
 //

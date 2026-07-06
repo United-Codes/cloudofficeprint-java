@@ -32,6 +32,7 @@ public class PDFOptions {
     private Integer splitByPage;
     private String splitByString;
     private Boolean splitAfterString;
+    private String pdfProducer;
     private Boolean lockForm;
     private Integer copies;
     private int[] pageMargin;
@@ -46,6 +47,9 @@ public class PDFOptions {
     private String signCertificatePassword;
     private String signCertificateTxt;
     private String convertToPdfa;
+    private String complyPdfaLevel;
+    private String validatePdfaLevel;
+    private String uaCompliantPdf;
     private String attachmentName;
     private Boolean convertAttachmentToJson;
     private Boolean insertBarcode;
@@ -377,6 +381,20 @@ public class PDFOptions {
      */
     public void setSplitAfterString(Boolean splitAfterString) {
         this.splitAfterString = splitAfterString;
+    }
+
+    /**
+     * @return the producer metadata tag of the PDF.
+     */
+    public String getPdfProducer() {
+        return pdfProducer;
+    }
+
+    /**
+     * @param pdfProducer sets the producer metadata tag of the PDF. Only for PDF output.
+     */
+    public void setPdfProducer(String pdfProducer) {
+        this.pdfProducer = pdfProducer;
     }
 
     /**
@@ -746,6 +764,47 @@ public class PDFOptions {
     public void setConvertToPdfa(String convertToPdfa) {
         this.convertToPdfa = convertToPdfa;
     }
+    /**
+     * @return the PDF/A compliance level (e.g. pdfa1a, pdfa1b, pdfa2b, ...)
+     */
+    public String getComplyPdfaLevel() {
+        return complyPdfaLevel;
+    }
+
+    /**
+     * @param complyPdfaLevel the PDF/A standard to comply to (e.g. pdfa1a, pdfa1b, pdfa2a)
+     */
+    public void setComplyPdfaLevel(String complyPdfaLevel) {
+        this.complyPdfaLevel = complyPdfaLevel;
+    }
+
+    /**
+     * @return the PDF/A level to validate against.
+     */
+    public String getValidatePdfaLevel() {
+        return validatePdfaLevel;
+    }
+
+    /**
+     * @param validatePdfaLevel the PDF/A standard to validate against (e.g. pdfa1a, pdfa1b, pdfa2a,)
+     */
+    public void setValidatePdfaLevel(String validatePdfaLevel) {
+        this.validatePdfaLevel = validatePdfaLevel;
+    }
+
+    /**
+     * @return whether the output is generated as a UA compliant PDF.
+     */
+    public String getUaCompliantPdf() {
+        return uaCompliantPdf;
+    }
+
+    /**
+     * @param uaCompliantPdf generate a UA  compliant PDF.
+     */
+    public void setUaCompliantPdf(String uaCompliantPdf) {
+        this.uaCompliantPdf = uaCompliantPdf;
+    }
 
     /**
      * @return  retrieve specific attachment. output_type must be 'get_attachments'.
@@ -945,6 +1004,15 @@ public class PDFOptions {
         if (getConvertToPdfa() != null) {
             json.addProperty("output_convert_to_pdfa", getConvertToPdfa());
         }
+        if (getComplyPdfaLevel() != null) {
+            json.addProperty("output_comply_pdfa_level", getComplyPdfaLevel());
+        }
+        if (getValidatePdfaLevel() != null) {
+            json.addProperty("output_validate_pdfa_level", getValidatePdfaLevel());
+        }
+        if (getUaCompliantPdf() != null) {
+            json.addProperty("output_ua_compliant_pdf", getUaCompliantPdf());
+        }
         if (getCompressPdf() != null) {
             json.addProperty("output_compress_pdf", getCompressPdf());
         }
@@ -956,6 +1024,9 @@ public class PDFOptions {
         }
         if (getSplitAfterString() != null) {
             json.addProperty("output_split_after_string", getSplitAfterString());
+        }
+        if (getPdfProducer() != null) {
+            json.addProperty("output_pdf_producer", getPdfProducer());
         }
         if (getAttachmentName() != null) {
             json.addProperty("output_attachment_name", getAttachmentName());

@@ -126,6 +126,32 @@ public class ConfigTests {
     }
 
     @Test
+    public void testPdfaCompliance() {
+        PDFOptions pdfOptions = new PDFOptions();
+        pdfOptions.setComplyPdfaLevel("pdfa1b");
+        pdfOptions.setValidatePdfaLevel("pdfa1b");
+        pdfOptions.setUaCompliantPdf("true");
+
+        Output output = new Output("pdf", "raw", "libreoffice", null, null, pdfOptions, null);
+
+        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'output_comply_pdfa_level': 'pdfa1b', 'output_validate_pdfa_level': 'pdfa1b', 'output_ua_compliant_pdf': 'true'}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, output.getJSON());
+    }
+
+    @Test
+    public void testPdfProducer() {
+        PDFOptions pdfOptions = new PDFOptions();
+        pdfOptions.setPdfProducer("Cloud Office Print-COP");
+
+        Output output = new Output("pdf", "raw", "libreoffice", null, null, pdfOptions, null);
+
+        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'output_pdf_producer': 'Cloud Office Print-COP'}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, output.getJSON());
+    }
+
+    @Test
     public void testCloudAccessTokens() {
         OAuth2Token oAuth2Token = new OAuth2Token("dropbox", "dummy_token");
         String correct = "{'output_location': 'dropbox', 'cloud_access_token': 'dummy_token'}";
