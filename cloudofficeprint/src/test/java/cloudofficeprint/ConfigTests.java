@@ -134,7 +134,7 @@ public class ConfigTests {
 
         Output output = new Output("pdf", "raw", "libreoffice", null, null, pdfOptions, null);
 
-        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'output_comply_pdfa_level': 'pdfa1b', 'output_validate_pdfa_level': 'pdfa1b', 'output_ua_compliant_pdf': 'true'}";
+        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'output_comply_pdfa_level': 'pdfa1b', 'output_validate_pdfa_level': 'pdfa1b', 'output_ua_compliant': 'true'}";
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         assertEquals(jsonCorrect, output.getJSON());
     }
@@ -147,6 +147,20 @@ public class ConfigTests {
         Output output = new Output("pdf", "raw", "libreoffice", null, null, pdfOptions, null);
 
         String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'output_pdf_producer': 'Cloud Office Print-COP'}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, output.getJSON());
+    }
+
+    @Test
+    public void testPdfMetadataDatesAndIgnoreErrors() {
+        PDFOptions pdfOptions = new PDFOptions();
+        pdfOptions.setCreatedDate("2022-02-07T12:55:12");
+        pdfOptions.setModifiedDate("2022-02-08T09:33:00");
+        pdfOptions.setIgnoreConversionErrors(true);
+
+        Output output = new Output("pdf", "raw", "libreoffice", null, null, pdfOptions, null);
+
+        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'output_created_date': '2022-02-07T12:55:12', 'output_modified_date': '2022-02-08T09:33:00', 'output_ignore_conversion_errors': true}";
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         assertEquals(jsonCorrect, output.getJSON());
     }

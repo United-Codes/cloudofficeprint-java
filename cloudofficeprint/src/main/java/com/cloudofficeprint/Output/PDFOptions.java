@@ -33,6 +33,9 @@ public class PDFOptions {
     private String splitByString;
     private Boolean splitAfterString;
     private String pdfProducer;
+    private String createdDate;
+    private String modifiedDate;
+    private Boolean ignoreConversionErrors;
     private Boolean lockForm;
     private Integer copies;
     private int[] pageMargin;
@@ -395,6 +398,48 @@ public class PDFOptions {
      */
     public void setPdfProducer(String pdfProducer) {
         this.pdfProducer = pdfProducer;
+    }
+
+    /**
+     * @return the created date metadata of the output document.
+     */
+    public String getCreatedDate() {
+        return createdDate;
+    }
+
+    /**
+     * @param createdDate sets the created date metadata of the output document. Must be in ISO format (e.g. "2022-02-07T12:55:12").
+     */
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    /**
+     * @return the modified date metadata of the output document.
+     */
+    public String getModifiedDate() {
+        return modifiedDate;
+    }
+
+    /**
+     * @param modifiedDate sets the modified date metadata of the output document. Must be in ISO format (e.g. "2022-02-07T12:55:12").
+     */
+    public void setModifiedDate(String modifiedDate) {
+        this.modifiedDate = modifiedDate;
+    }
+
+    /**
+     * @return whether to continue producing the output even if the converter reports errors.
+     */
+    public Boolean getIgnoreConversionErrors() {
+        return ignoreConversionErrors;
+    }
+
+    /**
+     * @param ignoreConversionErrors when true, continue producing the output even if the converter reports errors.
+     */
+    public void setIgnoreConversionErrors(Boolean ignoreConversionErrors) {
+        this.ignoreConversionErrors = ignoreConversionErrors;
     }
 
     /**
@@ -1011,7 +1056,7 @@ public class PDFOptions {
             json.addProperty("output_validate_pdfa_level", getValidatePdfaLevel());
         }
         if (getUaCompliantPdf() != null) {
-            json.addProperty("output_ua_compliant_pdf", getUaCompliantPdf());
+            json.addProperty("output_ua_compliant", getUaCompliantPdf());
         }
         if (getCompressPdf() != null) {
             json.addProperty("output_compress_pdf", getCompressPdf());
@@ -1027,6 +1072,15 @@ public class PDFOptions {
         }
         if (getPdfProducer() != null) {
             json.addProperty("output_pdf_producer", getPdfProducer());
+        }
+        if (getCreatedDate() != null) {
+            json.addProperty("output_created_date", getCreatedDate());
+        }
+        if (getModifiedDate() != null) {
+            json.addProperty("output_modified_date", getModifiedDate());
+        }
+        if (getIgnoreConversionErrors() != null) {
+            json.addProperty("output_ignore_conversion_errors", getIgnoreConversionErrors());
         }
         if (getAttachmentName() != null) {
             json.addProperty("output_attachment_name", getAttachmentName());
