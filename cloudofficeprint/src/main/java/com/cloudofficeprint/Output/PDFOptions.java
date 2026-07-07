@@ -49,6 +49,9 @@ public class PDFOptions {
     private String signCertificate;
     private String signCertificatePassword;
     private String signCertificateTxt;
+    private String signCertificateField;
+    private String signCertificateBackgroundImage;
+    private String signCertificatePrivateKeyPassword;
     private String convertToPdfa;
     private String complyPdfaLevel;
     private String validatePdfaLevel;
@@ -799,6 +802,48 @@ public class PDFOptions {
     }
 
     /**
+     * @return the name of the signature field to sign.
+     */
+    public String getSignCertificateField() {
+        return signCertificateField;
+    }
+
+    /**
+     * @param signCertificateField the name of the signature field to sign (an invisible signature is placed otherwise).
+     */
+    public void setSignCertificateField(String signCertificateField) {
+        this.signCertificateField = signCertificateField;
+    }
+
+    /**
+     * @return the base64 encoded background image for the visible signature.
+     */
+    public String getSignCertificateBackgroundImage() {
+        return signCertificateBackgroundImage;
+    }
+
+    /**
+     * @param signCertificateBackgroundImage base64 encoded image used as background for the visible signature.
+     */
+    public void setSignCertificateBackgroundImage(String signCertificateBackgroundImage) {
+        this.signCertificateBackgroundImage = signCertificateBackgroundImage;
+    }
+
+    /**
+     * @return the private key password of the signing certificate.
+     */
+    public String getSignCertificatePrivateKeyPassword() {
+        return signCertificatePrivateKeyPassword;
+    }
+
+    /**
+     * @param signCertificatePrivateKeyPassword the private key password of the signing certificate.
+     */
+    public void setSignCertificatePrivateKeyPassword(String signCertificatePrivateKeyPassword) {
+        this.signCertificatePrivateKeyPassword = signCertificatePrivateKeyPassword;
+    }
+
+    /**
      * @return whether the output pdf should be converted to pdf/a format
      */
     public String getConvertToPdfa() { return convertToPdfa; }
@@ -1041,7 +1086,16 @@ public class PDFOptions {
             json.addProperty("output_sign_certificate_password", getSignCertificatePassword());
         }
         if (getSignCertificateTxt() != null) {
-            json.addProperty("output_sign_certificate_txt", getSignCertificateTxt());
+            json.addProperty("output_sign_certificate_custom_text", getSignCertificateTxt());
+        }
+        if (getSignCertificateField() != null) {
+            json.addProperty("output_sign_certificate_field", getSignCertificateField());
+        }
+        if (getSignCertificateBackgroundImage() != null) {
+            json.addProperty("output_sign_certificate_background_image", getSignCertificateBackgroundImage());
+        }
+        if (getSignCertificatePrivateKeyPassword() != null) {
+            json.addProperty("output_sign_certificate_privatekey_password", getSignCertificatePrivateKeyPassword());
         }
         if (getRemoveLastPage() != null) {
             json.addProperty("output_remove_last_page", getRemoveLastPage());

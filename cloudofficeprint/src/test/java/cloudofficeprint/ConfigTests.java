@@ -56,7 +56,7 @@ public class ConfigTests {
 
         Output output = new Output("pdf", "raw", "libreoffice", null, null, pdfOptions, null, true);
 
-        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'update_toc': true, 'output_read_password': 'test_pw', 'output_watermark': 'test_watermark','output_watermark_color':'blue','output_watermark_font':'Aerial','output_watermark_opacity': 60, 'output_watermark_size':30, 'output_watermark_rotation':45, 'output_page_width': '500', 'output_page_height': '500', 'output_even_page': True, 'output_merge_making_even': False, 'output_modify_password': 'test_modify_password', 'output_password_protection_flag': 0, 'lock_form': True, 'output_copies': 3, 'page_margin': {'top': 5, 'bottom': 5, 'left': 5, 'right': 5}, 'output_page_format': 'test_page_format', 'output_merge': False, 'output_sign_certificate': 'test_sign_certificate','output_sign_certificate_password':'Base64 certificate with password', 'output_sign_certificate_txt':'text in english', 'identify_form_fields': True, 'output_split': False,'output_remove_last_page':true, 'output_convert_to_pdfa':'1b', 'output_attachment_name':'sample_attachment_file.pdf', 'output_insert_barcode':true}";
+        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'update_toc': true, 'output_read_password': 'test_pw', 'output_watermark': 'test_watermark','output_watermark_color':'blue','output_watermark_font':'Aerial','output_watermark_opacity': 60, 'output_watermark_size':30, 'output_watermark_rotation':45, 'output_page_width': '500', 'output_page_height': '500', 'output_even_page': True, 'output_merge_making_even': False, 'output_modify_password': 'test_modify_password', 'output_password_protection_flag': 0, 'lock_form': True, 'output_copies': 3, 'page_margin': {'top': 5, 'bottom': 5, 'left': 5, 'right': 5}, 'output_page_format': 'test_page_format', 'output_merge': False, 'output_sign_certificate': 'test_sign_certificate','output_sign_certificate_password':'Base64 certificate with password', 'output_sign_certificate_custom_text':'text in english', 'identify_form_fields': True, 'output_split': False,'output_remove_last_page':true, 'output_convert_to_pdfa':'1b', 'output_attachment_name':'sample_attachment_file.pdf', 'output_insert_barcode':true}";
         // System.out.println(output.getJSON());
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
@@ -161,6 +161,23 @@ public class ConfigTests {
         Output output = new Output("pdf", "raw", "libreoffice", null, null, pdfOptions, null);
 
         String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'output_created_date': '2022-02-07T12:55:12', 'output_modified_date': '2022-02-08T09:33:00', 'output_ignore_conversion_errors': true}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, output.getJSON());
+    }
+
+    @Test
+    public void testSignCertificateOptions() {
+        PDFOptions pdfOptions = new PDFOptions();
+        pdfOptions.setSignCertificate("base64_certificate");
+        pdfOptions.setSignCertificatePassword("cert_password");
+        pdfOptions.setSignCertificateTxt("Signed by COP");
+        pdfOptions.setSignCertificateField("Signature1");
+        pdfOptions.setSignCertificateBackgroundImage("base64_image");
+        pdfOptions.setSignCertificatePrivateKeyPassword("privatekey_password");
+
+        Output output = new Output("pdf", "raw", "libreoffice", null, null, pdfOptions, null);
+
+        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'output_sign_certificate': 'base64_certificate', 'output_sign_certificate_password': 'cert_password', 'output_sign_certificate_custom_text': 'Signed by COP', 'output_sign_certificate_field': 'Signature1', 'output_sign_certificate_background_image': 'base64_image', 'output_sign_certificate_privatekey_password': 'privatekey_password'}";
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         assertEquals(jsonCorrect, output.getJSON());
     }
