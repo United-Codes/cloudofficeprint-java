@@ -102,6 +102,9 @@ public class Main {
   //      UsingPdfTextsAndImages usingPdfTextsAndImages = new UsingPdfTextsAndImages();
  //        usingPdfTextsAndImages.main();
 
+  //       UsingPdfTags usingPdfTags = new UsingPdfTags();
+   //      usingPdfTags.main();
+
 
 //         EXAMPLES
 //
