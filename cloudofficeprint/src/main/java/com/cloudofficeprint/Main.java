@@ -96,6 +96,9 @@ public class Main {
 //         UsingExtractMetadata usingExtractMetadata = new UsingExtractMetadata();
 //         usingExtractMetadata.main();
 
+         UsingSignCertificate usingSignCertificate = new UsingSignCertificate();
+         usingSignCertificate.main();
+
 //         EXAMPLES
 //
 //         Examples example = new Examples();
