@@ -114,8 +114,8 @@ public class FormElementsTest {
         data.addElement(new RadioButton("radiolist", "List A", "Option A", false));
         data.addElement(new RadioButton("radiolist", "List B", "Option B", true));
         String expected = "{'radiolist':["
-                + "{'type':'radio','name':'radiolist','value':'List A','text':'Option A','selected':0},"
-                + "{'type':'radio','name':'radiolist','value':'List B','text':'Option B','selected':1}]}";
+                + "{'type':'radio','name':'radiolist','value':'List A','text':'Option A','selected':false},"
+                + "{'type':'radio','name':'radiolist','value':'List B','text':'Option B','selected':true}]}";
         assertEquals(JsonParser.parseString(expected), data.getJSON());
     }
 }

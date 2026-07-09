@@ -105,6 +105,12 @@ public class Main {
   //       UsingPdfTags usingPdfTags = new UsingPdfTags();
    //      usingPdfTags.main();
 
+   //      UsingPdfFormFilling usingPdfFormFilling = new UsingPdfFormFilling();
+ //        usingPdfFormFilling.main();
+
+  //       UsingPdfBarcode usingPdfBarcode = new UsingPdfBarcode();
+//         usingPdfBarcode.main();
+
 
 //         EXAMPLES
 //
