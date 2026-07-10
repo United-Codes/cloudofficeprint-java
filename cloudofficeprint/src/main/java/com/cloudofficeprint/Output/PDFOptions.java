@@ -23,6 +23,19 @@ public class PDFOptions {
     private Integer watermarkOpacity;
     private Integer watermarkSize;
     private Integer watermarkRotation;
+    private String imageWatermark;
+    private Integer imageWatermarkOpacity;
+    private Integer imageWatermarkRotation;
+    private Integer imageWatermarkWidth;
+    private Integer imageWatermarkHeight;
+    private Boolean compressPdf;
+    private Integer splitByPage;
+    private String splitByString;
+    private Boolean splitAfterString;
+    private String pdfProducer;
+    private String createdDate;
+    private String modifiedDate;
+    private Boolean ignoreConversionErrors;
     private Boolean lockForm;
     private Integer copies;
     private int[] pageMargin;
@@ -36,7 +49,13 @@ public class PDFOptions {
     private String signCertificate;
     private String signCertificatePassword;
     private String signCertificateTxt;
+    private String signCertificateField;
+    private String signCertificateBackgroundImage;
+    private String signCertificatePrivateKeyPassword;
     private String convertToPdfa;
+    private String complyPdfaLevel;
+    private String validatePdfaLevel;
+    private String uaCompliantPdf;
     private String attachmentName;
     private Boolean convertAttachmentToJson;
     private Boolean insertBarcode;
@@ -242,6 +261,205 @@ public class PDFOptions {
         this.watermarkOpacity = opacity;
         this.watermarkSize = size;
         this.watermarkRotation = rotation;
+    }
+
+    /**
+     * @return the image watermark
+     */
+    public String getImageWatermark() {
+        return imageWatermark;
+    }
+
+    /**
+     * @param imageWatermark the image watermark
+     */
+    public void setImageWatermark(String imageWatermark) {
+        this.imageWatermark = imageWatermark;
+    }
+
+    /**
+     * @return opacity of the image watermark, as a percentage, i.e. 45.
+     */
+    public Integer getImageWatermarkOpacity() {
+        return imageWatermarkOpacity;
+    }
+
+    /**
+     * @param imageWatermarkOpacity opacity of the image watermark, as a percentage, i.e. 45.
+     */
+    public void setImageWatermarkOpacity(Integer imageWatermarkOpacity) {
+        this.imageWatermarkOpacity = imageWatermarkOpacity;
+    }
+
+    /**
+     * @return angle to rotate the image watermark, in degrees.
+     */
+    public Integer getImageWatermarkRotation() {
+        return imageWatermarkRotation;
+    }
+
+    /**
+     * @param imageWatermarkRotation angle to rotate the image watermark, in degrees.
+     */
+    public void setImageWatermarkRotation(Integer imageWatermarkRotation) {
+        this.imageWatermarkRotation = imageWatermarkRotation;
+    }
+
+    /**
+     * @return width of the image watermark in px.
+     */
+    public Integer getImageWatermarkWidth() {
+        return imageWatermarkWidth;
+    }
+
+    /**
+     * @param imageWatermarkWidth width of the image watermark in px.
+     */
+    public void setImageWatermarkWidth(Integer imageWatermarkWidth) {
+        this.imageWatermarkWidth = imageWatermarkWidth;
+    }
+
+    /**
+     * @return height of the image watermark in px.
+     */
+    public Integer getImageWatermarkHeight() {
+        return imageWatermarkHeight;
+    }
+
+    /**
+     * @param imageWatermarkHeight height of the image watermark in px.
+     */
+    public void setImageWatermarkHeight(Integer imageWatermarkHeight) {
+        this.imageWatermarkHeight = imageWatermarkHeight;
+    }
+
+    /**
+     * @return whether the PDF file size is compressed.
+     */
+    public Boolean getCompressPdf() {
+        return compressPdf;
+    }
+
+    /**
+     * @param compressPdf compresses the file size of the PDF. Only for PDF output.
+     */
+    public void setCompressPdf(Boolean compressPdf) {
+        this.compressPdf = compressPdf;
+    }
+
+    /**
+     * @return the number of pages per split output file.
+     */
+    public Integer getSplitByPage() {
+        return splitByPage;
+    }
+
+    /**
+     * @param splitByPage splits the output into a file per given number of pages. Only for PDF output.
+     */
+    public void setSplitByPage(Integer splitByPage) {
+        this.splitByPage = splitByPage;
+    }
+
+    /**
+     * @return the string that the output is split on.
+     */
+    public String getSplitByString() {
+        return splitByString;
+    }
+
+    /**
+     * @param splitByString splits the output into a separate file on each page where the given string is found. Only for PDF output.
+     */
+    public void setSplitByString(String splitByString) {
+        this.splitByString = splitByString;
+    }
+
+    /**
+     * @return whether to split after the matching page instead of before it.
+     */
+    public Boolean getSplitAfterString() {
+        return splitAfterString;
+    }
+
+    /**
+     * @param splitAfterString when using splitByString, split after the matching page instead of before it.
+     */
+    public void setSplitAfterString(Boolean splitAfterString) {
+        this.splitAfterString = splitAfterString;
+    }
+
+    /**
+     * @return the producer metadata tag of the PDF.
+     */
+    public String getPdfProducer() {
+        return pdfProducer;
+    }
+
+    /**
+     * @param pdfProducer sets the producer metadata tag of the PDF. Only for PDF output.
+     */
+    public void setPdfProducer(String pdfProducer) {
+        this.pdfProducer = pdfProducer;
+    }
+
+    /**
+     * @return the created date metadata of the output document.
+     */
+    public String getCreatedDate() {
+        return createdDate;
+    }
+
+    /**
+     * @param createdDate sets the created date metadata of the output document. Must be in ISO format (e.g. "2022-02-07T12:55:12").
+     */
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    /**
+     * @return the modified date metadata of the output document.
+     */
+    public String getModifiedDate() {
+        return modifiedDate;
+    }
+
+    /**
+     * @param modifiedDate sets the modified date metadata of the output document. Must be in ISO format (e.g. "2022-02-07T12:55:12").
+     */
+    public void setModifiedDate(String modifiedDate) {
+        this.modifiedDate = modifiedDate;
+    }
+
+    /**
+     * @return whether to continue producing the output even if the converter reports errors.
+     */
+    public Boolean getIgnoreConversionErrors() {
+        return ignoreConversionErrors;
+    }
+
+    /**
+     * @param ignoreConversionErrors when true, continue producing the output even if the converter reports errors.
+     */
+    public void setIgnoreConversionErrors(Boolean ignoreConversionErrors) {
+        this.ignoreConversionErrors = ignoreConversionErrors;
+    }
+
+    /**
+     * Set an image watermark on every page in the PDF file. Only for PDF output.
+     *
+     * @param image    the image as a  WaterMark
+     * @param opacity  opacity of the image watermark, as a percentage, i.e. 45.
+     * @param rotation angle to rotate the image watermark, in degrees.
+     * @param width    width of the image watermark in px.
+     * @param height   height of the image watermark in px.
+     */
+    public void setImageWatermark(String image, Integer opacity, Integer rotation, Integer width, Integer height) {
+        this.imageWatermark = image;
+        this.imageWatermarkOpacity = opacity;
+        this.imageWatermarkRotation = rotation;
+        this.imageWatermarkWidth = width;
+        this.imageWatermarkHeight = height;
     }
 
     /**
@@ -584,6 +802,48 @@ public class PDFOptions {
     }
 
     /**
+     * @return the name of the signature field to sign.
+     */
+    public String getSignCertificateField() {
+        return signCertificateField;
+    }
+
+    /**
+     * @param signCertificateField the name of the signature field to sign (an invisible signature is placed otherwise).
+     */
+    public void setSignCertificateField(String signCertificateField) {
+        this.signCertificateField = signCertificateField;
+    }
+
+    /**
+     * @return the base64 encoded background image for the visible signature.
+     */
+    public String getSignCertificateBackgroundImage() {
+        return signCertificateBackgroundImage;
+    }
+
+    /**
+     * @param signCertificateBackgroundImage base64 encoded image used as background for the visible signature.
+     */
+    public void setSignCertificateBackgroundImage(String signCertificateBackgroundImage) {
+        this.signCertificateBackgroundImage = signCertificateBackgroundImage;
+    }
+
+    /**
+     * @return the private key password of the signing certificate.
+     */
+    public String getSignCertificatePrivateKeyPassword() {
+        return signCertificatePrivateKeyPassword;
+    }
+
+    /**
+     * @param signCertificatePrivateKeyPassword the private key password of the signing certificate.
+     */
+    public void setSignCertificatePrivateKeyPassword(String signCertificatePrivateKeyPassword) {
+        this.signCertificatePrivateKeyPassword = signCertificatePrivateKeyPassword;
+    }
+
+    /**
      * @return whether the output pdf should be converted to pdf/a format
      */
     public String getConvertToPdfa() { return convertToPdfa; }
@@ -593,6 +853,47 @@ public class PDFOptions {
      */
     public void setConvertToPdfa(String convertToPdfa) {
         this.convertToPdfa = convertToPdfa;
+    }
+    /**
+     * @return the PDF/A compliance level (e.g. pdfa1a, pdfa1b, pdfa2b, ...)
+     */
+    public String getComplyPdfaLevel() {
+        return complyPdfaLevel;
+    }
+
+    /**
+     * @param complyPdfaLevel the PDF/A standard to comply to (e.g. pdfa1a, pdfa1b, pdfa2a)
+     */
+    public void setComplyPdfaLevel(String complyPdfaLevel) {
+        this.complyPdfaLevel = complyPdfaLevel;
+    }
+
+    /**
+     * @return the PDF/A level to validate against.
+     */
+    public String getValidatePdfaLevel() {
+        return validatePdfaLevel;
+    }
+
+    /**
+     * @param validatePdfaLevel the PDF/A standard to validate against (e.g. pdfa1a, pdfa1b, pdfa2a,)
+     */
+    public void setValidatePdfaLevel(String validatePdfaLevel) {
+        this.validatePdfaLevel = validatePdfaLevel;
+    }
+
+    /**
+     * @return whether the output is generated as a UA compliant PDF.
+     */
+    public String getUaCompliantPdf() {
+        return uaCompliantPdf;
+    }
+
+    /**
+     * @param uaCompliantPdf generate a UA  compliant PDF.
+     */
+    public void setUaCompliantPdf(String uaCompliantPdf) {
+        this.uaCompliantPdf = uaCompliantPdf;
     }
 
     /**
@@ -711,6 +1012,21 @@ public class PDFOptions {
         if (getWatermarkRotation() != null) {
             json.addProperty("output_watermark_rotation", getWatermarkRotation());
         }
+        if (getImageWatermark() != null) {
+            json.addProperty("output_watermark_image", getImageWatermark());
+        }
+        if (getImageWatermarkOpacity() != null) {
+            json.addProperty("output_watermark_image_opacity", getImageWatermarkOpacity());
+        }
+        if (getImageWatermarkRotation() != null) {
+            json.addProperty("output_watermark_image_rotation", getImageWatermarkRotation());
+        }
+        if (getImageWatermarkWidth() != null) {
+            json.addProperty("output_watermark_image_width", getImageWatermarkWidth());
+        }
+        if (getImageWatermarkHeight() != null) {
+            json.addProperty("output_watermark_image_height", getImageWatermarkHeight());
+        }
         if (getLockForm() != null) {
             json.addProperty("lock_form", getLockForm());
         }
@@ -770,13 +1086,55 @@ public class PDFOptions {
             json.addProperty("output_sign_certificate_password", getSignCertificatePassword());
         }
         if (getSignCertificateTxt() != null) {
-            json.addProperty("output_sign_certificate_txt", getSignCertificateTxt());
+            json.addProperty("output_sign_certificate_custom_text", getSignCertificateTxt());
+        }
+        if (getSignCertificateField() != null) {
+            json.addProperty("output_sign_certificate_field", getSignCertificateField());
+        }
+        if (getSignCertificateBackgroundImage() != null) {
+            json.addProperty("output_sign_certificate_background_image", getSignCertificateBackgroundImage());
+        }
+        if (getSignCertificatePrivateKeyPassword() != null) {
+            json.addProperty("output_sign_certificate_privatekey_password", getSignCertificatePrivateKeyPassword());
         }
         if (getRemoveLastPage() != null) {
             json.addProperty("output_remove_last_page", getRemoveLastPage());
         }
         if (getConvertToPdfa() != null) {
             json.addProperty("output_convert_to_pdfa", getConvertToPdfa());
+        }
+        if (getComplyPdfaLevel() != null) {
+            json.addProperty("output_comply_pdfa_level", getComplyPdfaLevel());
+        }
+        if (getValidatePdfaLevel() != null) {
+            json.addProperty("output_validate_pdfa_level", getValidatePdfaLevel());
+        }
+        if (getUaCompliantPdf() != null) {
+            json.addProperty("output_ua_compliant", getUaCompliantPdf());
+        }
+        if (getCompressPdf() != null) {
+            json.addProperty("output_compress_pdf", getCompressPdf());
+        }
+        if (getSplitByPage() != null) {
+            json.addProperty("output_split_by_page", getSplitByPage());
+        }
+        if (getSplitByString() != null) {
+            json.addProperty("output_split_by_string", getSplitByString());
+        }
+        if (getSplitAfterString() != null) {
+            json.addProperty("output_split_after_string", getSplitAfterString());
+        }
+        if (getPdfProducer() != null) {
+            json.addProperty("output_pdf_producer", getPdfProducer());
+        }
+        if (getCreatedDate() != null) {
+            json.addProperty("output_created_date", getCreatedDate());
+        }
+        if (getModifiedDate() != null) {
+            json.addProperty("output_modified_date", getModifiedDate());
+        }
+        if (getIgnoreConversionErrors() != null) {
+            json.addProperty("output_ignore_conversion_errors", getIgnoreConversionErrors());
         }
         if (getAttachmentName() != null) {
             json.addProperty("output_attachment_name", getAttachmentName());

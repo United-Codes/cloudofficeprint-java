@@ -1,6 +1,7 @@
 package com.cloudofficeprint.Output;
 
 import com.cloudofficeprint.Output.CloudAcessToken.CloudAccessToken;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
@@ -104,6 +105,10 @@ public class Output {
      * Controls whether to both save files to server directory and return them in the response.
      */
     private Boolean ReturnOutput = null;
+    /**
+     * Export only the specified sheets in the output file.
+     */
+    private String[] OutputExportSheets = null;
     /**
      * @return the encoding to use for the output.
      */
@@ -337,6 +342,21 @@ public class Output {
      */
     public void setReturnOutput(Boolean returnOutput) {
         this.ReturnOutput = returnOutput;
+    }
+
+    /**
+     * @return the sheet names to keep visible in a output.
+     */
+    public String[] getOutputExportSheets() {
+        return OutputExportSheets;
+    }
+
+    /**
+     * Sets the sheet names to export.
+     * @param outputExportSheets the sheet names to export
+     */
+    public void setOutputExportSheets(String[] outputExportSheets) {
+        this.OutputExportSheets = outputExportSheets;
     }
 
     /**
@@ -794,6 +814,13 @@ public class Output {
         }
         if (getReturnOutput() != null) {
             json.addProperty("return_output", getReturnOutput());
+        }
+        if (getOutputExportSheets() != null) {
+            JsonArray exportSheets = new JsonArray();
+            for (String sheet : getOutputExportSheets()) {
+                exportSheets.add(sheet);
+            }
+            json.add("output_export_sheets", exportSheets);
         }
         return json;
     }

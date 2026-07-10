@@ -168,7 +168,12 @@ public class ElementCollection extends RenderElement {
                 json.add(element.getName(), element.getJSON());
             } else {
                 for (Map.Entry<String, JsonElement> entry : element.getJSON().entrySet()) {
-                    json.add(entry.getKey(), entry.getValue());
+                    JsonElement existing = json.get(entry.getKey());
+                    if (existing != null && existing.isJsonArray() && entry.getValue().isJsonArray()) {
+                        existing.getAsJsonArray().addAll(entry.getValue().getAsJsonArray());
+                    } else {
+                        json.add(entry.getKey(), entry.getValue());
+                    }
                 }
             }
         }

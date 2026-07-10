@@ -76,8 +76,41 @@ public class Main {
 //         UsingCodes usingCodes = new UsingCodes();
 //         usingCodes.main();
 
-         UsingCodesXlsx usingCodesXlsx = new UsingCodesXlsx();
-         usingCodesXlsx.main();
+//         UsingCodesXlsx usingCodesXlsx = new UsingCodesXlsx();
+//         usingCodesXlsx.main();
+
+//         UsingExportSheets usingExportSheets = new UsingExportSheets();
+//         usingExportSheets.main();
+
+//         UsingImageWatermark usingImageWatermark = new UsingImageWatermark();
+//         usingImageWatermark.main();
+//        UsingCompressPdf usingCompressPdf = new UsingCompressPdf();
+//        usingCompressPdf.main();
+
+//         UsingSplitPdf usingSplitPdf = new UsingSplitPdf();
+//         usingSplitPdf.main();
+
+//         UsingPdfaCompliance usingPdfaCompliance = new UsingPdfaCompliance();
+//         usingPdfaCompliance.main();
+
+//         UsingExtractMetadata usingExtractMetadata = new UsingExtractMetadata();
+//         usingExtractMetadata.main();
+
+//         UsingSignCertificate usingSignCertificate = new UsingSignCertificate();
+//         usingSignCertificate.main();
+
+  //      UsingPdfTextsAndImages usingPdfTextsAndImages = new UsingPdfTextsAndImages();
+ //        usingPdfTextsAndImages.main();
+
+  //       UsingPdfTags usingPdfTags = new UsingPdfTags();
+   //      usingPdfTags.main();
+
+   //      UsingPdfFormFilling usingPdfFormFilling = new UsingPdfFormFilling();
+ //        usingPdfFormFilling.main();
+
+  //       UsingPdfBarcode usingPdfBarcode = new UsingPdfBarcode();
+//         usingPdfBarcode.main();
+
 
 //         EXAMPLES
 //

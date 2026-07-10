@@ -56,7 +56,7 @@ public class ConfigTests {
 
         Output output = new Output("pdf", "raw", "libreoffice", null, null, pdfOptions, null, true);
 
-        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'update_toc': true, 'output_read_password': 'test_pw', 'output_watermark': 'test_watermark','output_watermark_color':'blue','output_watermark_font':'Aerial','output_watermark_opacity': 60, 'output_watermark_size':30, 'output_watermark_rotation':45, 'output_page_width': '500', 'output_page_height': '500', 'output_even_page': True, 'output_merge_making_even': False, 'output_modify_password': 'test_modify_password', 'output_password_protection_flag': 0, 'lock_form': True, 'output_copies': 3, 'page_margin': {'top': 5, 'bottom': 5, 'left': 5, 'right': 5}, 'output_page_format': 'test_page_format', 'output_merge': False, 'output_sign_certificate': 'test_sign_certificate','output_sign_certificate_password':'Base64 certificate with password', 'output_sign_certificate_txt':'text in english', 'identify_form_fields': True, 'output_split': False,'output_remove_last_page':true, 'output_convert_to_pdfa':'1b', 'output_attachment_name':'sample_attachment_file.pdf', 'output_insert_barcode':true}";
+        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'update_toc': true, 'output_read_password': 'test_pw', 'output_watermark': 'test_watermark','output_watermark_color':'blue','output_watermark_font':'Aerial','output_watermark_opacity': 60, 'output_watermark_size':30, 'output_watermark_rotation':45, 'output_page_width': '500', 'output_page_height': '500', 'output_even_page': True, 'output_merge_making_even': False, 'output_modify_password': 'test_modify_password', 'output_password_protection_flag': 0, 'lock_form': True, 'output_copies': 3, 'page_margin': {'top': 5, 'bottom': 5, 'left': 5, 'right': 5}, 'output_page_format': 'test_page_format', 'output_merge': False, 'output_sign_certificate': 'test_sign_certificate','output_sign_certificate_password':'Base64 certificate with password', 'output_sign_certificate_custom_text':'text in english', 'identify_form_fields': True, 'output_split': False,'output_remove_last_page':true, 'output_convert_to_pdfa':'1b', 'output_attachment_name':'sample_attachment_file.pdf', 'output_insert_barcode':true}";
         // System.out.println(output.getJSON());
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         // System.out.println(jsonCorrect);
@@ -73,6 +73,111 @@ public class ConfigTests {
         Output output = new Output("pdf", "raw", "libreoffice", null, null, null, csvOptions);
 
         String correct = "{'output_type':'pdf','output_encoding':'raw','output_converter':'libreoffice', 'output_field_separator': 'fieldSep', 'output_text_delimiter': 'textDelim', 'output_character_set': 5}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, output.getJSON());
+    }
+
+    @Test
+    public void testOutputExportSheets() {
+        Output output = new Output("xlsx", "raw");
+        output.setOutputExportSheets(new String[] { "Sheet1", "Sheet3" });
+
+        String correct = "{'output_type': 'xlsx', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'output_export_sheets': ['Sheet1', 'Sheet3']}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, output.getJSON());
+    }
+
+    @Test
+    public void testImageWatermark() {
+        PDFOptions pdfOptions = new PDFOptions();
+        pdfOptions.setImageWatermark("logo_base64", 50, 45, 100, 80);
+
+        Output output = new Output("pdf", "raw", "libreoffice", null, null, pdfOptions, null);
+
+        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'output_watermark_image': 'logo_base64', 'output_watermark_image_opacity': 50, 'output_watermark_image_rotation': 45, 'output_watermark_image_width': 100, 'output_watermark_image_height': 80}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, output.getJSON());
+    }
+
+    @Test
+    public void testCompressPdf() {
+        PDFOptions pdfOptions = new PDFOptions();
+        pdfOptions.setCompressPdf(true);
+
+        Output output = new Output("pdf", "raw", "libreoffice", null, null, pdfOptions, null);
+
+        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'output_compress_pdf': true}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, output.getJSON());
+    }
+
+    @Test
+    public void testPdfSplitOptions() {
+        PDFOptions pdfOptions = new PDFOptions();
+        pdfOptions.setSplitByPage(2);
+        pdfOptions.setSplitByString("Invoice No");
+        pdfOptions.setSplitAfterString(true);
+
+        Output output = new Output("pdf", "raw", "libreoffice", null, null, pdfOptions, null);
+
+        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'output_split_by_page': 2, 'output_split_by_string': 'Invoice No', 'output_split_after_string': true}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, output.getJSON());
+    }
+
+    @Test
+    public void testPdfaCompliance() {
+        PDFOptions pdfOptions = new PDFOptions();
+        pdfOptions.setComplyPdfaLevel("pdfa1b");
+        pdfOptions.setValidatePdfaLevel("pdfa1b");
+        pdfOptions.setUaCompliantPdf("true");
+
+        Output output = new Output("pdf", "raw", "libreoffice", null, null, pdfOptions, null);
+
+        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'output_comply_pdfa_level': 'pdfa1b', 'output_validate_pdfa_level': 'pdfa1b', 'output_ua_compliant': 'true'}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, output.getJSON());
+    }
+
+    @Test
+    public void testPdfProducer() {
+        PDFOptions pdfOptions = new PDFOptions();
+        pdfOptions.setPdfProducer("Cloud Office Print-COP");
+
+        Output output = new Output("pdf", "raw", "libreoffice", null, null, pdfOptions, null);
+
+        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'output_pdf_producer': 'Cloud Office Print-COP'}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, output.getJSON());
+    }
+
+    @Test
+    public void testPdfMetadataDatesAndIgnoreErrors() {
+        PDFOptions pdfOptions = new PDFOptions();
+        pdfOptions.setCreatedDate("2022-02-07T12:55:12");
+        pdfOptions.setModifiedDate("2022-02-08T09:33:00");
+        pdfOptions.setIgnoreConversionErrors(true);
+
+        Output output = new Output("pdf", "raw", "libreoffice", null, null, pdfOptions, null);
+
+        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'output_created_date': '2022-02-07T12:55:12', 'output_modified_date': '2022-02-08T09:33:00', 'output_ignore_conversion_errors': true}";
+        JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
+        assertEquals(jsonCorrect, output.getJSON());
+    }
+
+    @Test
+    public void testSignCertificateOptions() {
+        PDFOptions pdfOptions = new PDFOptions();
+        pdfOptions.setSignCertificate("base64_certificate");
+        pdfOptions.setSignCertificatePassword("cert_password");
+        pdfOptions.setSignCertificateTxt("Signed by COP");
+        pdfOptions.setSignCertificateField("Signature1");
+        pdfOptions.setSignCertificateBackgroundImage("base64_image");
+        pdfOptions.setSignCertificatePrivateKeyPassword("privatekey_password");
+
+        Output output = new Output("pdf", "raw", "libreoffice", null, null, pdfOptions, null);
+
+        String correct = "{'output_type': 'pdf', 'output_encoding': 'raw', 'output_converter': 'libreoffice', 'output_sign_certificate': 'base64_certificate', 'output_sign_certificate_password': 'cert_password', 'output_sign_certificate_custom_text': 'Signed by COP', 'output_sign_certificate_field': 'Signature1', 'output_sign_certificate_background_image': 'base64_image', 'output_sign_certificate_privatekey_password': 'privatekey_password'}";
         JsonObject jsonCorrect = JsonParser.parseString(correct).getAsJsonObject();
         assertEquals(jsonCorrect, output.getJSON());
     }
